@@ -1,0 +1,31 @@
+/* --- TOOLBITE - GLOBAL STYLES --- */
+
+/* 1. Importăm fontul principal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+/* 2. Setări generale pentru întreaga platformă */
+html {
+    scroll-behavior: smooth; /* Face ca navigarea către ancore (ex: #link) să fie fluidă */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased; /* Face textul să se vadă mult mai "crisp" (clar) */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. Aici poți adăuga pe viitor alte reguli generale. 
+   De exemplu, personalizarea barei de scroll: */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9; 
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
+}

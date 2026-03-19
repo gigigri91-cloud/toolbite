@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Palette Generator | ToolBite.org</title>
+    <meta name="description" content="Generate beautiful, random color palettes instantly. Click to copy HEX codes. A free online tool for web designers, graphic artists, and developers.">
+    <link rel="canonical" href="https://toolbite.org/tools/color-palette-generator.html" />
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/global.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
+            <a href="../index.html" class="flex items-center gap-3 py-2 group">
+                <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="h-24 md:h-32 object-contain transition-transform duration-300 group-hover:scale-105">
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 items-center font-medium">
+                    <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
+                    <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+                    <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-12 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-2">
+            <div class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Color Palette Generator</h1>
+                <p class="text-gray-600 text-lg">Discover beautiful, random color combinations for your next design project.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-10">
+                
+                <div id="paletteContainer" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                    </div>
+                
+                <div class="text-center">
+                    <button onclick="generatePalette()" class="px-8 py-4 bg-orange-500 text-white font-extrabold text-lg rounded-2xl hover:bg-orange-600 transition shadow-lg transform hover:-translate-y-1">Generate New Palette</button>
+                    <p class="mt-4 text-gray-500 text-sm font-medium">💡 Tip: Click on any color to instantly copy its HEX code.</p>
+                </div>
+            </div>
+
+            <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">About the Color Palette Generator</h2>
+                <p class="mb-4">Finding the perfect color scheme can be one of the most time-consuming parts of web design, branding, or digital art. Our free Color Palette Generator eliminates the guesswork by providing instant, harmonious, and random color combinations with a single click. Whether you are building a new website UI on ToolBite, creating a logo, or designing a social media post, this tool gives you immediate inspiration.</p>
+                <p class="mb-4">Every time you click "Generate", our algorithm produces five unique HEX color codes. To make your workflow as fast as possible, we have built-in a one-click copy feature. You don't need to manually highlight and copy text; simply click on the color swatch you like, and the HEX code is instantly saved to your clipboard, ready to be pasted into Photoshop, Figma, or your CSS files.</p>
+                
+                <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">How to Use</h3>
+                <ol class="list-decimal pl-6 space-y-2 mb-6">
+                    <li>Click the "Generate New Palette" button to create a fresh set of 5 colors.</li>
+                    <li>Hover over the colors to see the exact HEX code (e.g., #FF5733).</li>
+                    <li>Click directly on the color block to copy the HEX code to your clipboard.</li>
+                </ol>
+
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h3>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <strong class="text-gray-900">What is a HEX code?</strong>
+                    <p class="mt-2 text-sm">A HEX code is a six-digit hexadecimal number used in HTML, CSS, and design software to represent colors on a screen. It tells the display exactly how much Red, Green, and Blue to mix.</p>
+                </div>
+            </article>
+        </div>
+
+        <aside class="space-y-6">
+		<div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl p-8 text-white shadow-2xl text-center relative overflow-hidden transform transition hover:-translate-y-1">
+                <div class="text-5xl mb-4">☕</div>
+                <h3 class="text-2xl font-bold mb-3">Keep ToolBite Free!</h3>
+                <p class="text-orange-50 text-sm mb-6 leading-relaxed">Server costs add up. If our tools saved you time today, consider buying us a coffee to keep the project alive, fast, and ad-light.</p>
+                <a href="https://www.buymeacoffee.com/toolbite" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-orange-600 font-extrabold px-8 py-4 rounded-xl hover:bg-orange-50 transition shadow-lg w-full text-lg">Buy me a coffee!</a>
+            </div>
+            <div class="bg-gradient-to-br from-pink-600 to-orange-500 rounded-3xl p-8 text-white shadow-2xl text-center relative overflow-hidden">
+                <span class="text-xs font-bold uppercase text-pink-200 tracking-widest mb-2 block">For Designers</span>
+                <h3 class="text-2xl font-bold mb-4">Envato Elements</h3>
+                <p class="text-orange-50 text-sm mb-6 leading-relaxed">Unlimited downloads of millions of graphics, templates, fonts, and assets for one low price.</p>
+                <a href="#" rel="nofollow" class="inline-block bg-white text-pink-700 font-extrabold px-8 py-3 rounded-xl hover:bg-orange-50 transition shadow-lg">Explore Assets</a>
+            </div>
+        </aside>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-500 font-medium">&copy; <span id="year"></span> ToolBite.org. All rights reserved.</p>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+                <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+                <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        function generateRandomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+        }
+
+        function copyColor(color, element) {
+            const tempInput = document.createElement('input');
+            tempInput.value = color;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const span = element.querySelector('span');
+            const originalText = span.innerText;
+            span.innerText = 'Copied!';
+            span.classList.add('text-green-600');
+            
+            setTimeout(() => {
+                span.innerText = originalText;
+                span.classList.remove('text-green-600');
+            }, 1500);
+        }
+
+        function generatePalette() {
+            const container = document.getElementById('paletteContainer');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 5; i++) {
+                const color = generateRandomColor();
+                const div = document.createElement('div');
+                div.className = 'flex flex-col items-center justify-end h-32 md:h-48 rounded-2xl cursor-pointer transition-transform duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group border border-gray-100';
+                div.style.backgroundColor = color;
+                div.onclick = () => copyColor(color, div);
+
+                const span = document.createElement('span');
+                span.className = 'mb-4 bg-white/95 backdrop-blur shadow-sm text-gray-800 font-bold py-2 px-4 rounded-xl text-sm transition-colors duration-200 group-hover:bg-white';
+                span.innerText = color;
+
+                div.appendChild(span);
+                container.appendChild(div);
+            }
+        }
+
+        // Generează o paletă la încărcarea paginii
+        window.onload = generatePalette;
+    </script>
+</body>
+</html>
