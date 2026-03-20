@@ -55,7 +55,15 @@
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
         </button>
     </div>
-</header>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-2 rounded-b-xl shadow-inner">
+        <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+            <li><a href="index.html" class="block hover:text-orange-500 transition">Home</a></li>
+            <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
+            <li><a href="contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+    </div>
+  </header>
 
   <section class="bg-gradient-to-r from-blue-600 to-orange-500 p-12 md:p-20 text-center text-white shadow-inner">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md">All Your Online Tools in One Place</h1>
@@ -161,22 +169,21 @@
   </footer>
 
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>  
-  <script>
-    // Setare automată a anului în footer
+  
+<script>
+    // 1. Setare automată a anului în footer
     document.getElementById("current-year").textContent = new Date().getFullYear();
     
-    // Logică pentru meniul pe mobil
-    const btn = document.getElementById('mobile-menu-button');
-    // Aici se poate adăuga scriptul de toggle pentru vizibilitatea meniului mobil
-  </script>
-  <script>
-    // Script pentru funcționalitatea meniului pe mobil (cele 3 linii)
+    // 2. Logică curățată pentru meniul pe mobil (cele 3 linii)
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
 
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
+    // Asigurăm că scriptul rulează doar dacă elementele există pe pagină
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
 </script>
 </body>
 </html>
