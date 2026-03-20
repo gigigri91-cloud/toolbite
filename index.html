@@ -37,61 +37,24 @@
 
   <header class="bg-white shadow-md p-4 sticky top-0 z-50">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
-  <header class="bg-white border-b border-gray-100 p-4 sticky top-0 z-50 transition-colors duration-300" id="main-header">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
-        
-        <a href="index.html" class="flex items-center gap-3 py-2 group">
-            <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" id="logo-img"
-                 class="h-24 md:h-32 object-contain transition-transform duration-300 group-hover:scale-105">
-        </a>
+      <a href="index.html" class="flex items-center gap-3 py-2 group">
+        <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" class="h-24 md:h-32 object-contain transition-transform duration-300 group-hover:scale-105">
+      </a>
+      
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
 
-        <nav class="flex items-center gap-6">
-            <ul class="hidden md:flex space-x-6 items-center font-bold text-gray-700" id="nav-links">
-                <li><a href="index.html" class="hover:text-blue-600 transition">Home</a></li>
-                <li><a href="categories/text-tools.html" class="hover:text-blue-600 transition">Tools</a></li>
-                <li><a href="contact.html" class="hover:text-blue-600 transition">Contact</a></li>
-            </ul>
-            
-            <button id="theme-toggle" class="p-2.5 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all border border-gray-200 flex items-center justify-center w-12 h-12">
-                <span id="theme-icon" class="text-xl">🌙</span>
-            </button>
-        </nav>
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6 items-center font-medium">
+          <li><a href="index.html" class="text-orange-500 font-bold">Home</a></li>
+          <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
+          <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+          <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-</header>
-
-<script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const header = document.getElementById('main-header');
-    const navLinks = document.getElementById('nav-links');
-    const body = document.body;
-
-    themeToggle.addEventListener('click', () => {
-        if (header.classList.contains('bg-white')) {
-            // ACTIVĂM DARK MODE
-            header.classList.replace('bg-white', 'bg-slate-900');
-            header.classList.replace('border-gray-100', 'border-white/10');
-            navLinks.classList.replace('text-gray-700', 'text-gray-200');
-            body.classList.replace('bg-gray-50', 'bg-slate-950'); // Fundalul paginii devine foarte închis
-            body.classList.add('text-white');
-            themeIcon.textContent = '☀️';
-            themeToggle.classList.replace('bg-gray-100', 'bg-white/10');
-            themeToggle.classList.replace('text-gray-600', 'text-gray-300');
-            themeToggle.classList.replace('border-gray-200', 'border-white/10');
-        } else {
-            // REVENIM LA LIGHT MODE
-            header.classList.replace('bg-slate-900', 'bg-white');
-            header.classList.replace('border-white/10', 'border-gray-100');
-            navLinks.classList.replace('text-gray-200', 'text-gray-700');
-            body.classList.replace('bg-slate-950', 'bg-gray-50');
-            body.classList.remove('text-white');
-            themeIcon.textContent = '🌙';
-            themeToggle.classList.replace('bg-white/10', 'bg-gray-100');
-            themeToggle.classList.replace('text-gray-300', 'text-gray-600');
-            themeToggle.classList.replace('border-white/10', 'border-gray-200');
-        }
-    });
-</script>
+  </header>
 
   <section class="bg-gradient-to-r from-blue-600 to-orange-500 p-12 md:p-20 text-center text-white shadow-inner">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md">All Your Online Tools in One Place</h1>
