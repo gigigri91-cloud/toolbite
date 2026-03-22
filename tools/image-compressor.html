@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Compressor (JPG, PNG, WebP) | ToolBite</title>
+  <meta name="description" content="Compress images in your browser. Adjust quality and download a smaller file—no upload to our servers.">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/tools/image-compressor.html" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/css/global.css">
+
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ToolBite Image Compressor",
+    "url": "https://toolbite.org/tools/image-compressor.html",
+    "description": "Reduce image file size using the browser canvas.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+  <header class="bg-white shadow-md p-4 sticky top-0 z-50">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
+      <a href="../index.html" class="flex items-center gap-3 py-2 group">
+        <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="header-logo transition-transform duration-300 group-hover:scale-105">
+      </a>
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6 items-center font-medium">
+          <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
+          <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+          <li><a href="../categories/image-tools.html" class="text-orange-500 font-bold">Image Tools</a></li>
+          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <div class="lg:col-span-2">
+      <div class="w-full bg-gray-200 h-24 flex items-center justify-center text-gray-400 text-sm mb-8 border border-gray-300 border-dashed rounded-xl">
+        [ AdSense Leaderboard ]
+      </div>
+
+      <div class="mb-6 text-center lg:text-left">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Image Compressor</h1>
+        <p class="text-gray-600">Resize by quality and format. Images are processed locally in your browser.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-10">
+        <input type="file" id="file-in" accept="image/*" class="block w-full text-sm text-gray-600 file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:bg-green-600 file:text-white file:font-bold hover:file:bg-green-700 mb-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2">Output format</label>
+            <select id="mime-out" class="w-full p-3 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-green-500">
+              <option value="image/jpeg">JPEG (best for photos)</option>
+              <option value="image/webp">WebP (smaller, modern browsers)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-2">Quality: <span id="q-val">0.85</span></label>
+            <input type="range" id="quality" min="0.3" max="1" step="0.05" value="0.85" class="w-full accent-green-600">
+          </div>
+        </div>
+
+        <p id="hint" class="text-sm text-amber-700 bg-amber-50 border border-amber-100 rounded-xl p-3 mb-6 hidden">PNG with transparency may get a white background when exported as JPEG or WebP.</p>
+
+        <div class="flex flex-wrap gap-4 items-center border-t pt-6">
+          <button type="button" id="compress-btn" class="px-8 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition disabled:opacity-50" disabled>Compress</button>
+          <a id="dl" href="#" download="compressed.jpg" class="hidden px-8 py-3 bg-gray-800 text-white font-bold rounded-xl hover:bg-gray-900 transition">Download</a>
+          <span id="stats" class="text-sm text-gray-600"></span>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Preview</p>
+            <canvas id="cv" class="max-w-full h-auto rounded-xl border border-gray-200 bg-gray-100"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Privacy</h2>
+        <p class="mb-4">Your file never leaves your device. We draw the image to a canvas and encode it with your chosen quality—useful before uploading to a blog, shop, or social network.</p>
+      </article>
+
+      <div class="w-full bg-gray-200 h-24 flex items-center justify-center text-gray-400 text-sm mt-8 border border-gray-300 border-dashed rounded-xl">
+        [ AdSense In-Article ]
+      </div>
+    </div>
+
+    <aside class="space-y-6">
+      <div class="w-full h-[400px] bg-gray-200 flex items-center justify-center text-gray-400 text-sm border border-gray-300 border-dashed rounded-3xl sticky top-24">
+        [ AdSense Large Rectangle ]
+      </div>
+    </aside>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="year"></span> ToolBite.org. All rights reserved.</p>
+      <div class="space-x-4 text-sm font-medium">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support me on Buy me a coffee!" data-message="Love ToolBite? Support us to keep these tools free!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    var fileIn = document.getElementById("file-in");
+    var btn = document.getElementById("compress-btn");
+    var cv = document.getElementById("cv");
+    var ctx = cv.getContext("2d");
+    var img = new Image();
+    var dl = document.getElementById("dl");
+    var stats = document.getElementById("stats");
+    var qInput = document.getElementById("quality");
+    var mimeSel = document.getElementById("mime-out");
+    var hint = document.getElementById("hint");
+    var lastBlobUrl = null;
+
+    qInput.addEventListener("input", function () {
+      document.getElementById("q-val").textContent = qInput.value;
+    });
+
+    fileIn.addEventListener("change", function () {
+      var f = fileIn.files && fileIn.files[0];
+      dl.classList.add("hidden");
+      stats.textContent = "";
+      if (lastBlobUrl) { URL.revokeObjectURL(lastBlobUrl); lastBlobUrl = null; }
+      if (!f) { btn.disabled = true; return; }
+      var url = URL.createObjectURL(f);
+      img.onload = function () {
+        URL.revokeObjectURL(url);
+        cv.width = img.naturalWidth;
+        cv.height = img.naturalHeight;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.drawImage(img, 0, 0);
+        btn.disabled = false;
+        hint.classList.toggle("hidden", f.type !== "image/png");
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        btn.disabled = true;
+      };
+      img.src = url;
+    });
+
+    btn.addEventListener("click", function () {
+      var mime = mimeSel.value;
+      var q = parseFloat(qInput.value, 10);
+      cv.toBlob(function (blob) {
+        finish(blob, mime);
+      }, mime, q);
+    });
+
+    function finish(blob, mime) {
+      if (!blob) {
+        stats.textContent = "Could not compress in this browser. Try another format.";
+        return;
+      }
+      if (lastBlobUrl) URL.revokeObjectURL(lastBlobUrl);
+      lastBlobUrl = URL.createObjectURL(blob);
+      dl.href = lastBlobUrl;
+      dl.download = mime === "image/webp" ? "compressed.webp" : "compressed.jpg";
+      dl.classList.remove("hidden");
+      var orig = fileIn.files[0];
+      var oSize = orig ? orig.size : 0;
+      stats.textContent = "Original ~ " + (oSize / 1024).toFixed(1) + " KB → compressed ~ " + (blob.size / 1024).toFixed(1) + " KB";
+    }
+  </script>
+</body>
+</html>

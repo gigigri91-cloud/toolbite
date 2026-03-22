@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | ToolBite</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="description" content="Terms of Service for ToolBite.org — rules for using our free online tools and website.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/global.css">
+
+    <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
+            <a href="index.html" class="flex items-center gap-3 py-2 group">
+                <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" class="header-logo transition-transform duration-300 group-hover:scale-105">
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 items-center font-medium">
+                    <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
+                    <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
+                    <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+                    <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full">
+
+        <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Terms of <span class="text-blue-600">Service</span></h1>
+            <p class="text-lg text-gray-500">Last updated: March 22, 2026</p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 text-gray-700 leading-relaxed">
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">1. Agreement</h2>
+            <p class="mb-8">By accessing or using ToolBite.org (“ToolBite”, “we”, “us”), you agree to these Terms of Service. If you do not agree, please do not use the site.</p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">2. Description of Service</h2>
+            <p class="mb-8">ToolBite provides free, browser-based utilities for personal and professional use. Features and tools may change at any time without notice.</p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">3. Acceptable Use</h2>
+            <p class="mb-4">You agree not to misuse the service. For example, you must not:</p>
+            <ul class="list-disc pl-6 space-y-2 mb-8">
+                <li>Attempt to disrupt, overload, or compromise the site or its infrastructure.</li>
+                <li>Use the tools to violate applicable laws or third-party rights.</li>
+                <li>Scrape or automate access in a way that degrades service for others.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">4. No Warranty</h2>
+            <p class="mb-8">The site and all tools are provided “as is” without warranties of any kind. We do not guarantee uninterrupted access, error-free results, or fitness for a particular purpose. You use ToolBite at your own risk.</p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">5. Limitation of Liability</h2>
+            <p class="mb-8">To the fullest extent permitted by law, ToolBite and its operators shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the site or reliance on any output from our tools.</p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">6. Third-Party Services</h2>
+            <p class="mb-8">The site may include links, advertisements, or embedded content from third parties (for example, advertising networks). Those services are governed by their own terms and policies.</p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">7. Changes</h2>
+            <p class="mb-8">We may update these terms from time to time. Continued use of ToolBite after changes constitutes acceptance of the revised terms.</p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">8. Contact</h2>
+            <p>For questions about these terms, please use our <a href="contact.html" class="text-blue-600 hover:underline">contact page</a>.</p>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+                <a href="terms.html" class="text-blue-600 font-bold transition">Terms of Service</a>
+                <a href="about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+                <a href="contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy me a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

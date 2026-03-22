@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToolBite - Premium Online Tools Hub</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <meta name="description" content="ToolBite offers over 50 free online tools: word counters, password generators, SEO utilities, and more. Fast, secure, and right in your browser.">
+  <meta name="description" content="ToolBite offers free online tools: word counters, password generators, JSON utilities, image compression, and more. Fast, secure, and right in your browser.">
   <meta name="keywords" content="online tools, web tools, seo tools, developer tools, word counter, free tools">
   
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,15 +13,18 @@
 
   <style>
     /* tranzitii pentru header și logo */
-    #site-header { transition: padding 180ms ease, box-shadow 180ms ease; }
-    #site-header .logo { transition: height 180ms ease; }
-
-    /* starea "mică" după scroll */
-    .header-small { padding-top: 0.25rem; padding-bottom: 0.25rem; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
-    .header-small .logo { height: 2rem !important; } /* suprascrie utilitarele Tailwind pentru logo */
+    #site-header { transition: padding 180ms ease, box-shadow 180ms ease; overflow: visible; }
+    #site-header .logo { transition: height 180ms ease, max-width 180ms ease; }
+    /* starea "mică" după scroll — wordmark încă lizibil */
+    #site-header.header-small { padding-top: 0.25rem; padding-bottom: 0.25rem; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+    #site-header.header-small .logo {
+      height: 2.125rem !important;
+      max-width: min(12rem, calc(100vw - 5.25rem)) !important;
+    }
   </style>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/">
@@ -37,7 +40,7 @@
     "url": "https://toolbite.org/",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://toolbite.org/search?q={search_term_string}",
+      "target": "https://toolbite.org/search.html?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -45,17 +48,18 @@
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-  <header id="site-header" class="bg-white shadow-md py-2 sticky top-0 z-50">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
-      <a href="index.html" class="flex items-center">
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4 min-h-[3.25rem] md:min-h-[3.5rem]">
+      <a href="index.html" class="group flex items-center min-w-0 shrink leading-none">
         <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo"
-             class="logo h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+             class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
 
       <nav class="hidden md:block">
         <ul class="flex space-x-8 items-center font-bold text-lg text-gray-700">
           <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
+          <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
           <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
@@ -69,6 +73,7 @@
       <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
         <li><a href="index.html" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
+        <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer Tools</a></li>
         <li><a href="contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
       </ul>
     </div>
@@ -77,10 +82,11 @@
   <section class="bg-gradient-to-r from-blue-600 to-orange-500 p-12 md:p-20 text-center text-white shadow-inner">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md">All Your Online Tools in One Place</h1>
     <p class="text-lg md:text-2xl mb-8 opacity-90 font-medium">Word counters, Password generators, Image tools & more – 100% free.</p>
-    <div class="max-w-2xl mx-auto relative">
-      <input type="text" placeholder="Search for a tool (e.g., 'Word Counter')..." class="w-full p-4 pl-6 pr-12 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300 text-lg transition">
-      <span class="absolute right-4 top-4 text-gray-400 text-xl">🔍</span>
-    </div>
+    <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
+      <label for="hero-search" class="sr-only">Search tools</label>
+      <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Word Counter)..." class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300 text-lg transition">
+      <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-2xl leading-none p-2 rounded-full hover:bg-gray-100 transition" aria-label="Search">🔍</button>
+    </form>
   </section>
 
   <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
@@ -143,7 +149,7 @@
       </div>
     </section>
 
-    <div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-center justify-between text-white shadow-2xl">
+    <div id="link-afiliat-hosting" class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-center justify-between text-white shadow-2xl scroll-mt-24">
       <div class="mb-6 md:mb-0">
         <span class="text-orange-400 font-bold uppercase tracking-widest text-sm block mb-2">★ Partner Offer</span>
         <h3 class="text-2xl md:text-3xl font-bold mb-2">Launch your own website today</h3>
@@ -159,8 +165,8 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <a href="categories/text-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">✍️ Text Tools</a>
         <a href="categories/developer-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">👨‍💻 Developer Tools</a>
-        <a href="#" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🖼️ Image Tools</a>
-        <a href="#" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🔍 SEO Tools</a>
+        <a href="categories/image-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🖼️ Image Tools</a>
+        <a href="categories/seo-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🔍 SEO Tools</a>
       </div>
     </section>
 
@@ -171,7 +177,8 @@
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <div class="space-x-4 text-sm font-medium">
         <a href="privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
-        <a href="about.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
       </div>
     </div>
