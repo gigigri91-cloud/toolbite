@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
 /* --- TOOLBITE - GLOBAL STYLES --- */
 
 .sr-only {
@@ -12,31 +14,39 @@
     border: 0;
 }
 
-/* Horizontal wordmark (icon + „ToolBite” text): fits nav height, room for menu on mobile */
+/*
+ * Wordmark orizontal: Tailwind CDN preflight pune img { height: auto; max-width: 100% }.
+ * În Chrome asta poate câștiga în cascade și face logo-ul uriaș. Blocăm box-ul explicit.
+ * max-width: 100% evită bug-uri cu 100vw + scrollbar în Chrome.
+ */
 img.header-logo {
-    height: 2.5rem;
-    width: auto;
-    max-width: min(16.5rem, calc(100vw - 5.5rem));
+    height: 2.5rem !important;
+    max-height: 2.5rem !important;
+    width: auto !important;
+    max-width: min(16.5rem, 100%) !important;
     object-fit: contain;
     object-position: left center;
     display: block;
 }
 @media (min-width: 640px) {
     img.header-logo {
-        height: 2.75rem;
-        max-width: min(18.5rem, calc(100vw - 6rem));
+        height: 2.75rem !important;
+        max-height: 2.75rem !important;
+        max-width: min(18.5rem, 100%) !important;
     }
 }
 @media (min-width: 768px) {
     img.header-logo {
-        height: 3rem;
-        max-width: min(21rem, 100%);
+        height: 3rem !important;
+        max-height: 3rem !important;
+        max-width: min(21rem, 100%) !important;
     }
 }
 @media (min-width: 1024px) {
     img.header-logo {
-        height: 3.125rem;
-        max-width: min(23rem, 100%);
+        height: 3.125rem !important;
+        max-height: 3.125rem !important;
+        max-width: min(23rem, 100%) !important;
     }
 }
 
@@ -44,32 +54,26 @@ header a:has(> img.header-logo) {
     min-width: 0;
 }
 
-/* 1. Importăm fontul principal */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
-/* 2. Setări generale pentru întreaga platformă */
 html {
-    scroll-behavior: smooth; /* Face ca navigarea către ancore (ex: #link) să fie fluidă */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased; /* Face textul să se vadă mult mai "crisp" (clar) */
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* 3. Aici poți adăuga pe viitor alte reguli generale. 
-   De exemplu, personalizarea barei de scroll: */
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #f1f5f9; 
+    background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1; 
+    background: #cbd5e1;
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8; 
+    background: #94a3b8;
 }
