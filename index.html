@@ -3,38 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolBite - Premium Online Tools Hub</title>
+  <title>ToolBite — Free Online Tools Hub</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/">
   <meta name="description" content="ToolBite offers free online tools: word counters, password generators, JSON utilities, image compression, and more. Fast, secure, and right in your browser.">
   <meta name="keywords" content="online tools, web tools, seo tools, developer tools, word counter, free tools">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/global.css">
 
-  <style>
-    /* Fără transition pe padding/înălțime la scroll: în Chrome reflow-ul animat sacadează. */
-    #site-header { overflow: visible; }
-    #site-header.header-small {
-      padding-top: 0.375rem;
-      padding-bottom: 0.375rem;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-    }
-    #site-header.header-small .logo {
-      height: 2.125rem !important;
-      max-height: 2.125rem !important;
-      max-width: min(12rem, 100%) !important;
-    }
-  </style>
-
-  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
-
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/">
-  <meta property="og:title" content="ToolBite - All Your Digital Tools in One Place">
+  <meta property="og:title" content="ToolBite — All Your Digital Tools in One Place">
   <meta property="og:description" content="Discover dozens of free, fast, and secure online tools for your daily tasks.">
-  <meta property="og:image" content="assets/images/social-preview.jpg">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ToolBite — All Your Digital Tools in One Place">
+  <meta name="twitter:description" content="Discover dozens of free, fast, and secure online tools for your daily tasks.">
 
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,34 +33,38 @@
     }
   }
   </script>
-  <meta name="google-site-verification" content="kiGtxsbAbPRi97iTMnH-Tyu17HuWN7ZlTP6n6gfVP60" />
+
+  <meta name="google-site-verification" content="kiGtxsbAbPRi97iTMnH-Tyu17HuWN7ZlTP6n6gfVP60">
+
+  <!-- AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
       <a href="index.html" class="group flex items-center min-w-0 shrink leading-none">
-        <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo"
-             class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
+        <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
-
       <nav class="hidden md:block">
         <ul class="flex space-x-8 items-center font-bold text-lg text-gray-700">
-          <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="index.html" class="text-orange-500">Home</a></li>
           <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
           <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
           <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
-
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-
     <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
       <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
-        <li><a href="index.html" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="index.html" class="block text-orange-500">Home</a></li>
         <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
         <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer Tools</a></li>
         <li><a href="contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
@@ -85,83 +74,73 @@
 
   <section class="bg-gradient-to-r from-blue-600 to-orange-500 p-12 md:p-20 text-center text-white shadow-inner">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md">All Your Online Tools in One Place</h1>
-    <p class="text-lg md:text-2xl mb-8 opacity-90 font-medium">Word counters, Password generators, Image tools & more – 100% free.</p>
+    <p class="text-lg md:text-2xl mb-8 opacity-90 font-medium">Word counters, Password generators, Image tools &amp; more — 100% free.</p>
     <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
       <label for="hero-search" class="sr-only">Search tools</label>
-      <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Word Counter)..." class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300 text-lg transition">
+      <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Word Counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300 text-lg transition">
       <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-2xl leading-none p-2 rounded-full hover:bg-gray-100 transition" aria-label="Search">🔍</button>
     </form>
   </section>
 
   <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
 
+    <!-- AdSense — Leaderboard (top of main content) -->
+    <div class="w-full mb-8 flex justify-center">
+      <ins class="adsbygoogle ads-slot"
+           style="display:block"
+           data-ad-client="ca-pub-5233222002046639"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
     <section class="mb-16">
       <div class="flex items-center justify-between border-b pb-3 mb-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🔥 Popular Tools</h2>
       </div>
-      
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        
+
         <a href="tools/word-counter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
-          <div>
-            <h3 class="font-bold text-gray-900 text-lg">Word Counter</h3>
-            <p class="text-sm text-gray-500">Count words & characters</p>
-          </div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Word Counter</h3><p class="text-sm text-gray-500">Count words &amp; characters</p></div>
         </a>
 
         <a href="tools/password-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-orange-500 group-hover:text-white transition">🔑</div>
-          <div>
-            <h3 class="font-bold text-gray-900 text-lg">Password Generator</h3>
-            <p class="text-sm text-gray-500">Create secure passwords</p>
-          </div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Password Generator</h3><p class="text-sm text-gray-500">Create secure passwords</p></div>
         </a>
 
         <a href="tools/image-compressor.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition">🖼️</div>
-          <div>
-            <h3 class="font-bold text-gray-900 text-lg">Image Compressor</h3>
-            <p class="text-sm text-gray-500">Reduce image file size</p>
-          </div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Image Compressor</h3><p class="text-sm text-gray-500">Reduce image file size</p></div>
         </a>
 
         <a href="tools/json-formatter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
-          <div>
-            <h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3>
-            <p class="text-sm text-gray-500">Beautify & validate JSON</p>
-          </div>
+          <div><h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3><p class="text-sm text-gray-500">Beautify &amp; validate JSON</p></div>
         </a>
 
         <a href="tools/lorem-ipsum.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-gray-800 group-hover:text-white transition">📄</div>
-          <div>
-            <h3 class="font-bold text-gray-900 text-lg">Lorem Ipsum</h3>
-            <p class="text-sm text-gray-500">Generate dummy text</p>
-          </div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Lorem Ipsum</h3><p class="text-sm text-gray-500">Generate dummy text</p></div>
         </a>
 
         <a href="tools/remove-extra-spaces.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-500 group-hover:text-white transition">🧹</div>
-          <div>
-            <h3 class="font-bold text-gray-900 text-lg">Remove Spaces</h3>
-            <p class="text-sm text-gray-500">Clean messy text</p>
-          </div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Remove Spaces</h3><p class="text-sm text-gray-500">Clean messy text</p></div>
         </a>
 
       </div>
     </section>
 
-    <div id="link-afiliat-hosting" class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-center justify-between text-white shadow-2xl scroll-mt-24">
-      <div class="mb-6 md:mb-0">
-        <span class="text-orange-400 font-bold uppercase tracking-widest text-sm block mb-2">★ Partner Offer</span>
-        <h3 class="text-2xl md:text-3xl font-bold mb-2">Launch your own website today</h3>
-        <p class="text-gray-400 text-lg">Get premium web hosting with a free domain. Up to 75% off for ToolBite users.</p>
-      </div>
-      <a href="#link-afiliat-hosting" rel="nofollow sponsored" class="bg-orange-500 hover:bg-orange-600 px-8 py-4 rounded-xl font-bold transition whitespace-nowrap text-lg shadow-lg">
-        Claim Discount
-      </a>
+    <!-- AdSense — In-content -->
+    <div class="w-full mb-10 flex justify-center">
+      <ins class="adsbygoogle ads-slot"
+           style="display:block"
+           data-ad-client="ca-pub-5233222002046639"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <section class="mb-12">
@@ -188,50 +167,7 @@
     </div>
   </footer>
 
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>  
-  
-<script>
-    // 1. Setare automată a anului în footer
-    document.getElementById("current-year").textContent = new Date().getFullYear();
-    
-    // 2. Logică curățată pentru meniul pe mobil (cele 3 linii)
-    const btn = document.getElementById('mobile-menu-button');
-    const menu = document.getElementById('mobile-menu');
-
-    // Asigurăm că scriptul rulează doar dacă elementele există pe pagină
-    if (btn && menu) {
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    }
-
-    // 3. Header shrink la scroll — rAF + histerezis (evită flicker și muncă în exces în Chrome)
-    (function () {
-      const header = document.getElementById('site-header');
-      if (!header) return;
-      const shrinkAfter = 56;
-      const growBelow = 24;
-      let ticking = false;
-      let isSmall = false;
-      function sync() {
-        ticking = false;
-        const y = window.scrollY || document.documentElement.scrollTop;
-        if (!isSmall && y > shrinkAfter) {
-          isSmall = true;
-          header.classList.add('header-small');
-        } else if (isSmall && y < growBelow) {
-          isSmall = false;
-          header.classList.remove('header-small');
-        }
-      }
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(sync);
-        }
-      }, { passive: true });
-      sync();
-    })();
-</script>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

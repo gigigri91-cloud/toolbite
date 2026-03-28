@@ -6,7 +6,7 @@
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
+    padding: -1px;
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
@@ -15,9 +15,10 @@
 }
 
 /*
- * Wordmark orizontal: Tailwind CDN preflight pune img { height: auto; max-width: 100% }.
- * În Chrome asta poate câștiga în cascade și face logo-ul uriaș. Blocăm box-ul explicit.
- * max-width: 100% evită bug-uri cu 100vw + scrollbar în Chrome.
+ * Horizontal wordmark logo fix:
+ * Tailwind CDN preflight sets img { height: auto; max-width: 100% }
+ * which can win in the cascade and make the logo huge in Chrome.
+ * We lock the box explicitly. max-width: 100% prevents Chrome scrollbar overflow bugs.
  */
 img.header-logo {
     height: 2.5rem !important;
@@ -54,6 +55,32 @@ header a:has(> img.header-logo) {
     min-width: 0;
 }
 
+/* Header shrink animation on scroll — no transition on padding/height
+   to avoid janky reflow in Chrome */
+#site-header { overflow: visible; }
+#site-header.header-small {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+#site-header.header-small .logo {
+    height: 2.125rem !important;
+    max-height: 2.125rem !important;
+    max-width: min(12rem, 100%) !important;
+}
+
+/* AdSense container — prevents layout shift before ads load */
+.ads-slot {
+    display: block;
+    min-height: 90px;
+    width: 100%;
+}
+.ads-slot-sidebar {
+    display: block;
+    min-height: 250px;
+    width: 100%;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -64,16 +91,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }

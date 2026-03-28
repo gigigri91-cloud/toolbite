@@ -3,63 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find and Replace Text Online - ToolBite</title>
-  <meta name="description" content="Quickly find and replace words or phrases in your text. Supports case-sensitivity and multiple replacements instantly.">
-  
+  <title>Find and Replace Text Online | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../assets/css/global.css">
-
+  <link rel="canonical" href="https://toolbite.org/tools/find-replace.html">
+  <meta name="description" content="Quickly find and replace words or phrases in your text. Supports case-sensitivity and multiple replacements instantly. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolbite.org/tools/find-replace.html">
+  <meta property="og:title" content="Find and Replace Text Online | ToolBite">
+  <meta property="og:description" content="Find and replace words or phrases instantly. Case-sensitive, free, and private.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite Find & Replace","url":"https://toolbite.org/tools/find-replace.html","description":"Find and replace text strings in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Text Tools","item":"https://toolbite.org/categories/text-tools.html"},{"@type":"ListItem","position":3,"name":"Find & Replace","item":"https://toolbite.org/tools/find-replace.html"}]}}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "ToolBite Find & Replace",
-    "url": "https://toolbite.org/tools/find-replace.html",
-    "description": "An online utility to find and replace text strings within a document.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-
-  <header class="bg-white shadow-md p-4 sticky top-0 z-50">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
-      <a href="../index.html" class="flex items-center gap-3 py-2 group">
-        <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="header-logo transition-transform duration-300 group-hover:scale-105">
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
+      <a href="../index.html" class="group flex items-center min-w-0 shrink leading-none">
+        <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
-      <nav class="hidden md:block">
-        <ul class="flex space-x-6 items-center font-medium">
-          <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
-          <li><a href="../categories/text-tools.html" class="text-orange-500 font-bold">Text Tools</a></li>
-          <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
-          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
-        </ul>
-      </nav>
+      <nav class="hidden md:block"><ul class="flex space-x-6 items-center font-bold text-gray-700">
+        <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/text-tools.html" class="text-orange-500">Text Tools</a></li>
+        <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+        <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+      </ul></nav>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+        <li><a href="../index.html" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/text-tools.html" class="block text-orange-500">Text Tools</a></li>
+        <li><a href="../categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer Tools</a></li>
+        <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
+      </ul>
     </div>
   </header>
 
   <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
     <div class="lg:col-span-2">
-      <div class="w-full bg-gray-200 h-24 flex items-center justify-center text-gray-400 text-sm mb-8 border border-gray-300 border-dashed rounded-xl">
-        [ AdSense Leaderboard ]
+      <div class="w-full mb-8">
+        <ins class="adsbygoogle ads-slot" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
-
-      <div class="mb-6 text-center lg:text-left">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Find & Replace Text</h1>
-        <p class="text-gray-600">Quickly search for specific words and replace them with new ones across your entire document.</p>
+      <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2">
+          <li><a href="../index.html" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+          <li><a href="../categories/text-tools.html" class="hover:text-blue-600 transition">Text Tools</a></li><li>›</li>
+          <li class="text-gray-800 font-medium">Find &amp; Replace</li>
+        </ol>
+      </nav>
+      <div class="mb-6">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Find &amp; Replace Text</h1>
+        <p class="text-gray-600">Quickly search for specific words and replace them across your entire document.</p>
       </div>
-
-      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-10">
+      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
         <textarea id="main-input" class="w-full h-64 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-100 outline-none resize-y mb-6 text-gray-700 bg-gray-50" placeholder="Paste your text here..."></textarea>
-        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
             <label class="block text-sm font-bold text-gray-700 mb-2">Find what:</label>
@@ -70,103 +74,52 @@
             <input type="text" id="replace-query" class="w-full p-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. orange">
           </div>
         </div>
-
         <div class="flex flex-wrap items-center gap-4 border-t pt-6">
           <button id="replace-btn" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform hover:-translate-y-1">Replace All</button>
-          
           <label class="flex items-center gap-2 cursor-pointer text-gray-600 font-medium">
-            <input type="checkbox" id="case-sensitive" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-            Case Sensitive
+            <input type="checkbox" id="case-sensitive" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"> Case Sensitive
           </label>
-
           <div class="flex-grow"></div>
-          
           <button id="copy-btn" class="px-6 py-4 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">Copy Result</button>
           <button id="clear-btn" class="px-4 py-4 text-red-500 font-bold hover:bg-red-50 rounded-xl transition">Clear</button>
         </div>
       </div>
-
+      <div class="w-full mb-8">
+        <ins class="adsbygoogle ads-slot" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
       <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Master Your Content with Find & Replace</h2>
-        <p class="mb-4">Managing large blocks of text can be tedious. Whether you are a developer refactoring variable names or a blogger updating old links, our <strong>Find and Replace</strong> tool simplifies the process. It's safe, fast, and stays entirely within your browser.</p>
-        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">Features include:</h3>
-        <ul class="list-disc pl-6 space-y-2 mb-4">
-          <li><strong>Instant Processing:</strong> Handle thousands of words in milliseconds.</li>
-          <li><strong>Privacy First:</strong> Your text is never uploaded to any server.</li>
-          <li><strong>Case Sensitivity Toggle:</strong> Choose whether to match the exact letter casing.</li>
-        </ul>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Master Your Content with Find &amp; Replace</h2>
+        <p class="mb-4">Whether you are a developer refactoring variable names or a blogger updating old links, our Find and Replace tool simplifies the process. It's safe, fast, and stays entirely within your browser.</p>
+        <p>Toggle case sensitivity to match exact letter casing, and handle thousands of words in milliseconds — all without uploading anything to a server.</p>
       </article>
-
-      <div class="w-full bg-gray-200 h-24 flex items-center justify-center text-gray-400 text-sm mt-8 border border-gray-300 border-dashed rounded-xl">
-        [ AdSense In-Article ]
-      </div>
     </div>
-
     <aside class="space-y-6">
-      <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-3xl p-8 text-white shadow-2xl text-center relative overflow-hidden">
-          <div class="relative z-10">
-              <span class="text-xs font-bold uppercase text-blue-300 tracking-widest mb-2 block">Special Partner</span>
-              <h3 class="text-2xl font-bold mb-4">Grammar Check Pro</h3>
-              <p class="text-blue-100 text-sm mb-6 leading-relaxed">Fix mistakes and improve your writing style instantly with AI-powered suggestions.</p>
-              <a href="#" rel="nofollow" class="inline-block bg-white text-blue-900 font-extrabold px-8 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg">Try Free Trial</a>
-          </div>
+      <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-3xl p-8 text-white shadow-2xl text-center">
+        <span class="text-xs font-bold uppercase text-blue-300 tracking-widest mb-2 block">Special Partner</span>
+        <h3 class="text-2xl font-bold mb-4">Grammar Check Pro</h3>
+        <p class="text-blue-100 text-sm mb-6 leading-relaxed">Fix mistakes and improve your writing style instantly with AI-powered suggestions.</p>
+        <a href="#" rel="nofollow" class="inline-block bg-white text-blue-900 font-extrabold px-8 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg">Try Free Trial</a>
       </div>
-
-      <div class="w-full h-[400px] bg-gray-200 flex items-center justify-center text-gray-400 text-sm border border-gray-300 border-dashed rounded-3xl sticky top-24">
-        [ AdSense Large Rectangle ]
+      <div class="sticky top-24">
+        <ins class="adsbygoogle ads-slot-sidebar" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
     </aside>
-
   </main>
 
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 font-medium">&copy; <span id="year"></span> ToolBite.org. All rights reserved.</p>
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <div class="space-x-4 text-sm font-medium">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
-        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
       </div>
     </div>
   </footer>
-
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support me on Buy me a coffee!" data-message="Love ToolBite? Support us to keep these tools free!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    const input = document.getElementById('main-input');
-    const findTxt = document.getElementById('find-query');
-    const replaceTxt = document.getElementById('replace-query');
-    const replaceBtn = document.getElementById('replace-btn');
-    const caseCheck = document.getElementById('case-sensitive');
-    const copyBtn = document.getElementById('copy-btn');
-
-    replaceBtn.onclick = () => {
-      const f = findTxt.value;
-      const r = replaceTxt.value;
-      if(!f) return;
-      const flags = caseCheck.checked ? 'g' : 'gi';
-      const regex = new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), flags);
-      input.value = input.value.replace(regex, r);
-      
-      replaceBtn.textContent = 'Done!';
-      setTimeout(() => replaceBtn.textContent = 'Replace All', 1500);
-    };
-
-    document.getElementById('clear-btn').onclick = () => input.value = '';
-
-    copyBtn.onclick = () => {
-      if(!input.value) return;
-      input.select(); document.execCommand('copy');
-      const originalText = copyBtn.textContent;
-      copyBtn.textContent = 'Copied!';
-      copyBtn.classList.replace('bg-gray-100', 'bg-green-100');
-      setTimeout(() => {
-        copyBtn.textContent = originalText;
-        copyBtn.classList.replace('bg-green-100', 'bg-gray-100');
-      }, 2000);
-    };
-  </script>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>

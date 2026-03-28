@@ -1,150 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free JSON Formatter & Validator | ToolBite.org</title>
-    <meta name="description" content="Format, beautify, and validate your JSON data instantly. A free, fast, and secure developer tool that runs directly in your browser.">
-    <link rel="canonical" href="https://toolbite.org/tools/json-formatter.html" />
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/global.css">
-
-    <meta name="google-adsense-account" content="ca-pub-5233222002046639">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JSON Formatter &amp; Validator | ToolBite.org</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/tools/json-formatter.html">
+  <meta name="description" content="Format, beautify, and validate your JSON data instantly. A free, fast, and secure developer tool that runs directly in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolbite.org/tools/json-formatter.html">
+  <meta property="og:title" content="Free JSON Formatter & Validator | ToolBite">
+  <meta property="og:description" content="Format, beautify, and validate your JSON data instantly. Runs in your browser — no server.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite JSON Formatter","url":"https://toolbite.org/tools/json-formatter.html","description":"Beautify, minify, and validate JSON in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"JSON Formatter","item":"https://toolbite.org/tools/json-formatter.html"}]}}</script>
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
+      <a href="../index.html" class="group flex items-center min-w-0 shrink leading-none">
+        <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
+      </a>
+      <nav class="hidden md:block"><ul class="flex space-x-6 items-center font-bold text-gray-700">
+        <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
+        <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer Tools</a></li>
+        <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+      </ul></nav>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+        <li><a href="../index.html" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
+        <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer Tools</a></li>
+        <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <header class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div class="flex justify-between items-center max-w-7xl mx-auto px-4">
-            <a href="../index.html" class="flex items-center gap-3 py-2 group">
-                <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="header-logo transition-transform duration-300 group-hover:scale-105">
-            </a>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-6 items-center font-medium">
-                    <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
-                    <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
-                    <li><a href="../categories/developer-tools.html" class="text-orange-500 font-bold">Developer Tools</a></li>
-                    <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
-                </ul>
-            </nav>
+  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+      <div class="w-full mb-8">
+        <ins class="adsbygoogle ads-slot" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2">
+          <li><a href="../index.html" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+          <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
+          <li class="text-gray-800 font-medium">JSON Formatter</li>
+        </ol>
+      </nav>
+      <div class="mb-6">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">JSON Formatter &amp; Validator</h1>
+        <p class="text-gray-600 text-lg">Beautify, minify, and validate your JSON code instantly.</p>
+      </div>
+      <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 mb-8">
+        <div class="flex flex-wrap gap-3 mb-4">
+          <button onclick="formatJSON()" class="px-5 py-2.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-sm">Format / Beautify</button>
+          <button onclick="minifyJSON()" class="px-5 py-2.5 bg-gray-200 text-gray-800 font-bold rounded-xl hover:bg-gray-300 transition">Minify</button>
+          <button onclick="clearJSON()" class="px-5 py-2.5 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition">Clear</button>
+          <div class="flex-grow"></div>
+          <button id="copyBtn" onclick="copyJSON()" class="px-5 py-2.5 bg-gray-800 text-white font-bold rounded-xl hover:bg-gray-900 transition shadow-sm">Copy Code</button>
         </div>
-    </header>
+        <textarea id="jsonInput" class="w-full h-96 p-4 font-mono text-sm border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none resize-y text-gray-800 bg-gray-50 leading-relaxed" placeholder='Paste your JSON here...' spellcheck="false"></textarea>
+        <div id="jsonMessage" class="hidden mt-4 p-4 rounded-xl font-medium"></div>
+      </div>
+      <div class="w-full mb-8">
+        <ins class="adsbygoogle ads-slot" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Why Use Our JSON Formatter?</h2>
+        <p class="mb-4">Working with APIs and configuration files often means dealing with raw, minified JSON. Our formatter transforms that messy string into a structured, readable format with proper indentation.</p>
+        <p>Everything runs entirely in your browser using local JavaScript — your sensitive API responses are never sent to external servers.</p>
+      </article>
+    </div>
+    <aside class="space-y-6">
+      <div class="bg-gradient-to-br from-purple-700 to-indigo-900 rounded-3xl p-8 text-white shadow-2xl text-center">
+        <span class="text-xs font-bold uppercase text-purple-300 tracking-widest mb-2 block">For Developers</span>
+        <h3 class="text-2xl font-bold mb-4">Premium Cloud Hosting</h3>
+        <p class="text-purple-100 text-sm mb-6 leading-relaxed">Deploy your apps faster with scalable infrastructure. Claim your $100 free credit today.</p>
+        <a href="#" rel="nofollow" class="inline-block bg-white text-indigo-900 font-extrabold px-8 py-3 rounded-xl hover:bg-indigo-50 transition shadow-lg">Start Building</a>
+      </div>
+      <div class="sticky top-24">
+        <ins class="adsbygoogle ads-slot-sidebar" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </aside>
+  </main>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-12 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <div class="lg:col-span-2">
-            <div class="mb-8">
-                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">JSON Formatter & Validator</h1>
-                <p class="text-gray-600 text-lg">Beautify, minify, and validate your JSON code instantly.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 mb-10">
-                
-                <div class="flex flex-wrap gap-3 mb-4">
-                    <button onclick="formatJSON()" class="px-5 py-2.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-sm">Format / Beautify</button>
-                    <button onclick="minifyJSON()" class="px-5 py-2.5 bg-gray-200 text-gray-800 font-bold rounded-xl hover:bg-gray-300 transition">Minify</button>
-                    <button onclick="clearJSON()" class="px-5 py-2.5 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition">Clear</button>
-                    <div class="flex-grow"></div>
-                    <button id="copyBtn" onclick="copyJSON()" class="px-5 py-2.5 bg-gray-800 text-white font-bold rounded-xl hover:bg-gray-900 transition shadow-sm">Copy Code</button>
-                </div>
-                
-                <textarea id="jsonInput" class="w-full h-96 p-4 font-mono text-sm border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none resize-y text-gray-800 bg-gray-50 leading-relaxed" placeholder='Paste your unformatted JSON here...&#10;{&#10;  "example": "data"&#10;}' spellcheck="false"></textarea>
-                
-                <div id="jsonMessage" class="hidden mt-4 p-4 rounded-xl font-medium"></div>
-            </div>
-
-            <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Why Use Our JSON Formatter?</h2>
-                <p class="mb-4">Working with APIs, configuration files, or databases usually means dealing with raw JSON data. Often, this data is minified into a single, unreadable block of text to save bandwidth. Our free JSON Formatter and Validator takes that messy string and transforms it into a structured, readable format with proper indentation.</p>
-                <p class="mb-4">Built specifically for developers, this tool not only beautifies your code but also acts as a strict validator. If there is a missing comma, an unclosed bracket, or a syntax error in your payload, ToolBite will instantly catch it and prevent broken code from reaching your production environment. Everything runs entirely in your browser using local JavaScript, ensuring your sensitive data and API responses are never sent to external servers.</p>
-                
-                <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">Features of the JSON Tool</h3>
-                <ul class="list-disc pl-6 space-y-2">
-                    <li><strong>Beautify:</strong> Adds proper spacing and line breaks (2 spaces indentation).</li>
-                    <li><strong>Minify:</strong> Removes all unnecessary whitespace to compress the payload.</li>
-                    <li><strong>Validate:</strong> Checks for standard JSON compliance and highlights structural errors.</li>
-                </ul>
-            </article>
-        </div>
-
-        <aside class="space-y-6">
-            <div class="bg-gradient-to-br from-purple-700 to-indigo-900 rounded-3xl p-8 text-white shadow-2xl text-center relative overflow-hidden">
-                <span class="text-xs font-bold uppercase text-purple-300 tracking-widest mb-2 block">For Developers</span>
-                <h3 class="text-2xl font-bold mb-4">Premium Cloud Hosting</h3>
-                <p class="text-purple-100 text-sm mb-6 leading-relaxed">Deploy your apps faster with scalable infrastructure. Claim your $100 free credit today.</p>
-                <a href="#" rel="nofollow" class="inline-block bg-white text-indigo-900 font-extrabold px-8 py-3 rounded-xl hover:bg-indigo-50 transition shadow-lg">Start Building</a>
-            </div>
-        </aside>
-
-    </main>
-
-    <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-gray-500 font-medium">&copy; <span id="year"></span> ToolBite.org. All rights reserved.</p>
-            <div class="space-x-4 text-sm font-medium">
-                <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
-                <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms</a>
-                <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
-                <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        const input = document.getElementById('jsonInput');
-        const msg = document.getElementById('jsonMessage');
-
-        function formatJSON() {
-            if(!input.value.trim()) return;
-            try {
-                const parsed = JSON.parse(input.value);
-                input.value = JSON.stringify(parsed, null, 2);
-                showMessage('✓ Valid JSON. Formatted successfully.', 'success');
-            } catch (e) {
-                showMessage('✗ Invalid JSON: ' + e.message, 'error');
-            }
-        }
-
-        function minifyJSON() {
-            if(!input.value.trim()) return;
-            try {
-                const parsed = JSON.parse(input.value);
-                input.value = JSON.stringify(parsed);
-                showMessage('✓ Valid JSON. Minified successfully.', 'success');
-            } catch (e) {
-                showMessage('✗ Invalid JSON: ' + e.message, 'error');
-            }
-        }
-
-        function clearJSON() {
-            input.value = '';
-            msg.className = 'hidden';
-        }
-
-        function copyJSON() {
-            if(!input.value) return;
-            input.select();
-            document.execCommand('copy');
-            const btn = document.getElementById('copyBtn');
-            const originalText = btn.innerText;
-            btn.innerText = 'Copied!';
-            btn.classList.replace('bg-gray-800', 'bg-green-600');
-            btn.classList.replace('hover:bg-gray-900', 'hover:bg-green-700');
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.classList.replace('bg-green-600', 'bg-gray-800');
-                btn.classList.replace('hover:bg-green-700', 'hover:bg-gray-900');
-            }, 2000);
-        }
-
-        function showMessage(text, type) {
-            msg.textContent = text;
-            msg.className = `mt-4 p-4 rounded-xl font-medium border ${type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'} block`;
-        }
-    </script>
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <div class="space-x-4 text-sm font-medium">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
