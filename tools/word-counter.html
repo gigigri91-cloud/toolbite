@@ -44,6 +44,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../assets/css/global.css">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this word counter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, ToolBite Word Counter is 100% free to use with no registration required."}},{"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"The tool processes text locally in your browser, so once the page is loaded it works without an active connection."}},{"@type":"Question","name":"Is my text sent to any server?","acceptedAnswer":{"@type":"Answer","text":"No. All counting happens client-side in JavaScript. Your text never leaves your device."}},{"@type":"Question","name":"What is the character limit?","acceptedAnswer":{"@type":"Answer","text":"There is no hard limit — you can paste documents of any length and get instant results."}}]}</script>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
@@ -152,40 +154,45 @@
           <li>Paste the text into the large text box above.</li>
           <li>The tool instantly calculates words, characters, sentences, and paragraphs.</li>
         </ul>
+      
+        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">Word Count Guidelines by Content Type</h3>
+        <p class="mb-3">Different types of content have different ideal word counts based on research and platform requirements:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>SEO blog post</strong> — 1,500 to 2,500 words for most topics. In-depth guides can reach 3,000-5,000 words.</li>
+          <li><strong>Meta description</strong> — Keep under 160 characters (approximately 25-30 words) to avoid truncation in Google.</li>
+          <li><strong>Twitter/X post</strong> — 280 characters maximum.</li>
+          <li><strong>LinkedIn post</strong> — 1,300 characters before the "See more" cut-off.</li>
+          <li><strong>Email subject line</strong> — 6-10 words (40-60 characters) for best open rates.</li>
+          <li><strong>Academic abstract</strong> — Typically 150-300 words depending on the institution's guidelines.</li>
+        </ul>
       </article>
+      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">🔗 Related Tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/find-replace.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">🔁</div>
+          <div><p class="font-bold text-gray-800 text-sm">Find & Replace</p><p class="text-xs text-gray-500">Bulk text edits</p></div>
+        </a>
+<a href="../tools/remove-extra-spaces.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">🧹</div>
+          <div><p class="font-bold text-gray-800 text-sm">Remove Extra Spaces</p><p class="text-xs text-gray-500">Clean whitespace</p></div>
+        </a>
+<a href="../tools/lorem-ipsum.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">📄</div>
+          <div><p class="font-bold text-gray-800 text-sm">Lorem Ipsum</p><p class="text-xs text-gray-500">Placeholder text</p></div>
+        </a>
+
+        </div>
+      </section>
     </div>
 
     <aside class="space-y-6">
-      <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-3xl p-8 text-white shadow-2xl text-center">
-        <span class="text-xs font-bold uppercase text-blue-300 tracking-widest mb-2 block">Special Partner</span>
-        <h3 class="text-2xl font-bold mb-4">Grammar Check Pro</h3>
-        <p class="text-blue-100 text-sm mb-6 leading-relaxed">Fix mistakes and improve your writing style instantly with AI-powered suggestions.</p>
-        <a href="#" rel="nofollow" class="inline-block bg-white text-blue-900 font-extrabold px-8 py-3 rounded-xl hover:bg-blue-50 transition shadow-lg">Try Free Trial</a>
+            <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl p-8 text-white shadow-2xl text-center">
+        <div class="text-5xl mb-4">☕</div>
+        <h3 class="text-2xl font-bold mb-3">Keep ToolBite Free!</h3>
+        <p class="text-orange-50 text-sm mb-6 leading-relaxed">All tools are 100% free. If we saved you time, consider buying the dev a coffee!</p>
+        <a href="https://www.buymeacoffee.com/toolbite" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-orange-600 font-extrabold px-8 py-4 rounded-xl hover:bg-orange-50 transition shadow-lg w-full text-lg">Buy me a coffee!</a>
       </div>
-
-      <!-- AdSense — Sidebar Rectangle -->
-      <div class="sticky top-24">
-        <ins class="adsbygoogle ads-slot-sidebar"
-             style="display:block"
-             data-ad-client="ca-pub-5233222002046639"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    </aside>
-
-  </main>
-
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
-        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
-        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
-        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
-        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
-    </div>
   </footer>
 
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>

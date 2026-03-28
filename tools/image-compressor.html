@@ -17,6 +17,8 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../assets/css/global.css">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does my image get uploaded to your servers?","acceptedAnswer":{"@type":"Answer","text":"No. The image is processed entirely in your browser using an HTML5 Canvas element — it never leaves your device."}},{"@type":"Question","name":"Which formats are supported?","acceptedAnswer":{"@type":"Answer","text":"You can upload JPG, PNG, GIF, and WebP images. Output can be saved as JPEG or WebP."}},{"@type":"Question","name":"What quality setting should I use?","acceptedAnswer":{"@type":"Answer","text":"0.85 is a good default — it balances quality and file size well for most photos. For web thumbnails, 0.70 is usually sufficient."}},{"@type":"Question","name":"Why does PNG compression result in a JPEG output?","acceptedAnswer":{"@type":"Answer","text":"True lossless PNG compression requires a different algorithm. This tool uses the browser's Canvas API, which outputs JPEG or WebP. For lossless PNG, dedicated tools are needed."}}]}</script>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
@@ -91,7 +93,32 @@
       <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">100% Private — Your Images Stay on Your Device</h2>
         <p>Your file never leaves your device. We draw the image to a canvas and encode it with your chosen quality — perfect before uploading to a blog, shop, or social network.</p>
+      
+      <div class="mt-6 space-y-4 text-gray-700">
+        <h3 class="text-xl font-bold text-gray-900">JPEG vs WebP — Which Should You Choose?</h3>
+        <p>Both formats use lossy compression, but WebP is a modern format developed by Google that typically achieves <strong>25-35% smaller file sizes</strong> than JPEG at equivalent visual quality. However, JPEG remains universally supported across all browsers, email clients, and devices.</p>
+        <ul class="list-disc pl-6 space-y-2 mt-3 mb-4">
+          <li><strong>Choose JPEG</strong> if you need maximum compatibility — for email attachments, legacy CMS systems, or sharing with non-technical users.</li>
+          <li><strong>Choose WebP</strong> if you are optimizing images for a modern website. All major browsers support it, and the smaller file size improves page load speed significantly.</li>
+        </ul>
+        <h3 class="text-xl font-bold text-gray-900">How Image Quality Settings Work</h3>
+        <p>The quality slider controls how aggressively the image is compressed. At 1.00 (100%), the output is nearly identical to the original. At 0.50 (50%), image quality degrades visibly but file sizes drop dramatically. For most website thumbnails and hero images, a quality between <strong>0.75 and 0.85</strong> offers the best balance — visually crisp with significantly reduced file size.</p>
+      </div>
       </article>
+      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">🔗 Related Tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/color-palette-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">🎨</div>
+          <div><p class="font-bold text-gray-800 text-sm">Color Palette</p><p class="text-xs text-gray-500">HEX color palettes</p></div>
+        </a>
+<a href="../tools/password-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">🔑</div>
+          <div><p class="font-bold text-gray-800 text-sm">Password Generator</p><p class="text-xs text-gray-500">Strong passwords</p></div>
+        </a>
+
+        </div>
+      </section>
     </div>
     <aside class="space-y-6">
       <div class="sticky top-24">
