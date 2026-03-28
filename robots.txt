@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /search.html
+
 Sitemap: https://toolbite.org/sitemap.xml
