@@ -716,6 +716,157 @@ function generatePalette() {
     });
 })();
 
+/* -----------------------------------------------
+   20. REMOVE DUPLICATE LINES
+----------------------------------------------- */
+(function () {
+    const ta = document.getElementById('dup-input');
+    if (!ta) return;
+    const trimChk = document.getElementById('dup-trim-compare');
+    const stats = document.getElementById('dup-stats');
+
+    function runDedupe() {
+        const lines = ta.value.split(/\r?\n/);
+        const useTrim = trimChk && trimChk.checked;
+        const seen = new Set();
+        const out = [];
+        for (const line of lines) {
+            const key = useTrim ? line.trim() : line;
+            if (seen.has(key)) continue;
+            seen.add(key);
+            out.push(line);
+        }
+        const removed = lines.length - out.length;
+        ta.value = out.join('\n');
+        if (stats) {
+            stats.textContent = removed > 0
+                ? `${lines.length} lines → ${out.length} lines (${removed} duplicate${removed === 1 ? '' : 's'} removed).`
+                : 'No duplicate lines found (or empty input).';
+        }
+    }
+
+    document.getElementById('dup-run-btn')?.addEventListener('click', runDedupe);
+    document.getElementById('dup-copy-btn')?.addEventListener('click', () => {
+        if (!ta.value) return;
+        ta.select();
+        document.execCommand('copy');
+        const b = document.getElementById('dup-copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+    document.getElementById('dup-clear-btn')?.addEventListener('click', () => {
+        ta.value = '';
+        if (stats) stats.textContent = '';
+    });
+})();
+
+/* -----------------------------------------------
+   21. SORT TEXT LINES
+----------------------------------------------- */
+(function () {
+    const ta = document.getElementById('sort-input');
+    if (!ta) return;
+    const ignCase = document.getElementById('sort-ignore-case');
+
+    function sortLines(desc) {
+        const raw = ta.value;
+        const lines = raw.split(/\r?\n/);
+        const ic = ignCase && ignCase.checked;
+        const sens = ic ? 'base' : 'variant';
+        lines.sort((a, b) => {
+            const cmp = a.localeCompare(b, undefined, { sensitivity: sens, numeric: true });
+            return desc ? -cmp : cmp;
+        });
+        ta.value = lines.join('\n');
+    }
+
+    document.getElementById('sort-asc-btn')?.addEventListener('click', () => sortLines(false));
+    document.getElementById('sort-desc-btn')?.addEventListener('click', () => sortLines(true));
+    document.getElementById('sort-copy-btn')?.addEventListener('click', () => {
+        if (!ta.value) return;
+        ta.select();
+        document.execCommand('copy');
+        const b = document.getElementById('sort-copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+    document.getElementById('sort-clear-btn')?.addEventListener('click', () => { ta.value = ''; });
+})();
+
+/* -----------------------------------------------
+   22. JWT DECODER
+----------------------------------------------- */
+(function () {
+    const inp = document.getElementById('jwt-input');
+    if (!inp) return;
+    const err = document.getElementById('jwt-error');
+    const headOut = document.getElementById('jwt-header-out');
+    const payOut = document.getElementById('jwt-payload-out');
+    const sigInfo = document.getElementById('jwt-sig-info');
+
+    function base64UrlToBytes(b64url) {
+        let s = b64url.replace(/-/g, '+').replace(/_/g, '/');
+        const pad = s.length % 4;
+        if (pad) s += '='.repeat(4 - pad);
+        const bin = atob(s);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return bytes;
+    }
+
+    function decodeSegment(seg) {
+        const json = new TextDecoder().decode(base64UrlToBytes(seg));
+        const obj = JSON.parse(json);
+        return JSON.stringify(obj, null, 2);
+    }
+
+    function clearOut() {
+        if (headOut) headOut.textContent = '';
+        if (payOut) payOut.textContent = '';
+        if (sigInfo) sigInfo.textContent = '—';
+    }
+
+    document.getElementById('jwt-decode-btn')?.addEventListener('click', () => {
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+        clearOut();
+        const raw = inp.value.trim();
+        if (!raw) {
+            if (err) { err.textContent = 'Paste a JWT first.'; err.classList.remove('hidden'); }
+            return;
+        }
+        const parts = raw.split('.');
+        if (parts.length < 2) {
+            if (err) { err.textContent = 'Expected at least two segments (header.payload…).'; err.classList.remove('hidden'); }
+            return;
+        }
+        try {
+            if (headOut) headOut.textContent = decodeSegment(parts[0]);
+            if (payOut) payOut.textContent = decodeSegment(parts[1]);
+            if (sigInfo) {
+                if (parts.length > 2) {
+                    sigInfo.textContent = `${parts[2].length} chars (not verified)`;
+                } else {
+                    sigInfo.textContent = 'none (unsecured JWT)';
+                }
+            }
+        } catch (e) {
+            if (err) {
+                err.textContent = e.message || 'Could not decode — invalid Base64url or JSON.';
+                err.classList.remove('hidden');
+            }
+            clearOut();
+        }
+    });
+
+    document.getElementById('jwt-clear-btn')?.addEventListener('click', () => {
+        inp.value = '';
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+        clearOut();
+    });
+})();
+
 window.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('passwordResult')) generatePassword();
     if (document.getElementById('paletteContainer')) generatePalette();
