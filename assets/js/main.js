@@ -867,6 +867,74 @@ function generatePalette() {
     });
 })();
 
+/* -----------------------------------------------
+   23. CATEGORY FILTER + SHARE HELPERS
+----------------------------------------------- */
+(function () {
+    const copyButtons = document.querySelectorAll('.copy-tool-link');
+    copyButtons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+            const orig = btn.textContent;
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(window.location.href);
+                } else {
+                    const tmp = document.createElement('input');
+                    tmp.value = window.location.href;
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tmp);
+                }
+                btn.textContent = 'Link copied!';
+            } catch (_) {
+                btn.textContent = 'Could not copy';
+            }
+            setTimeout(() => { btn.textContent = orig; }, 1500);
+        });
+    });
+
+    const searchInput = document.getElementById('category-search');
+    const grid = document.getElementById('category-tools-grid');
+    if (searchInput && grid) {
+        const cards = Array.from(grid.querySelectorAll('a[href*="/tools/"], a[href^="../tools/"], a[href^="tools/"]'));
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
+            cards.forEach((card) => {
+                const hay = card.textContent.toLowerCase();
+                card.classList.toggle('hidden', !!q && !hay.includes(q));
+            });
+        });
+    }
+
+    if (window.location.pathname.includes('/tools/')) {
+        const holder = document.createElement('div');
+        holder.className = 'fixed left-4 bottom-4 z-40';
+        holder.innerHTML = '<button type="button" id="quick-copy-tool-link" class="px-4 py-3 rounded-xl shadow-lg bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition">Copy tool URL</button>';
+        document.body.appendChild(holder);
+        const quickBtn = document.getElementById('quick-copy-tool-link');
+        quickBtn?.addEventListener('click', async () => {
+            const original = quickBtn.textContent;
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(window.location.href);
+                } else {
+                    const tmp = document.createElement('input');
+                    tmp.value = window.location.href;
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tmp);
+                }
+                quickBtn.textContent = 'Copied!';
+            } catch (_) {
+                quickBtn.textContent = 'Copy failed';
+            }
+            setTimeout(() => { quickBtn.textContent = original; }, 1500);
+        });
+    }
+})();
+
 window.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('passwordResult')) generatePassword();
     if (document.getElementById('paletteContainer')) generatePalette();

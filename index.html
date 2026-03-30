@@ -131,6 +131,16 @@
         <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Base64, slug, word counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300/80 text-lg transition bg-white/95 backdrop-blur-sm">
         <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-2xl leading-none p-2 rounded-full hover:bg-gray-100 transition" aria-label="Search">🔍</button>
       </form>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="#popular-tools" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-blue-700 font-extrabold shadow-lg hover:bg-blue-50 transition">Browse Popular Tools</a>
+        <a href="categories/text-tools.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-900/35 text-white border border-white/30 font-bold hover:bg-blue-900/45 transition">Start with Text Tools</a>
+      </div>
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        <span class="tb-chip bg-white/90">No account needed</span>
+        <span class="tb-chip bg-white/90">No uploads by default</span>
+        <span class="tb-chip bg-white/90">Free forever</span>
+        <span class="tb-chip bg-white/90">Fast in-browser</span>
+      </div>
     </div>
   </section>
 
@@ -146,13 +156,14 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <section class="mb-16">
+    <section id="popular-tools" class="mb-16">
       <div class="flex items-center justify-between border-b pb-3 mb-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🔥 Popular Tools</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-        <a href="tools/word-counter.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+        <a href="tools/word-counter.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+          <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-blue-600 text-white rounded-full shadow-sm">Popular</span>
           <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
           <div><h3 class="font-bold text-gray-900 text-lg">Word Counter</h3><p class="text-sm text-gray-500">Count words &amp; characters</p></div>
         </a>
@@ -172,7 +183,8 @@
           <div><h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3><p class="text-sm text-gray-500">Beautify &amp; validate JSON</p></div>
         </a>
 
-        <a href="tools/jwt-decoder.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+        <a href="tools/jwt-decoder.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+          <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-emerald-600 text-white rounded-full shadow-sm">New</span>
           <div class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🪪</div>
           <div><h3 class="font-bold text-gray-900 text-lg">JWT Decoder</h3><p class="text-sm text-gray-500">Inspect tokens locally</p></div>
         </a>

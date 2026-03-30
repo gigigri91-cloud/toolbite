@@ -98,9 +98,13 @@
     <div class="mb-10">
       <h1 class="text-4xl font-extrabold text-gray-900 mb-2">✍️ Text Tools</h1>
       <p class="text-lg text-gray-600 max-w-2xl">Edit, count, and clean text without uploading your content to a server. All processing happens locally in your browser.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <input id="category-search" type="search" placeholder="Filter tools in this category..." class="w-full sm:w-96 p-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-100 outline-none bg-white" aria-label="Filter text tools">
+        <button type="button" class="copy-tool-link inline-flex items-center px-4 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">Copy page link</button>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
       <a href="../tools/word-counter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
