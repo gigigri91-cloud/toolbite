@@ -23,11 +23,13 @@
       <a href="index.html" class="group flex items-center min-w-0 shrink leading-none">
         <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
-      <nav class="hidden md:block">
-        <ul class="flex space-x-8 items-center font-bold text-lg text-gray-700">
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 gap-y-1 items-center font-bold text-sm text-gray-700">
           <li><a href="index.html" class="hover:text-orange-500 transition">Home</a></li>
-          <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
-          <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+          <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
+          <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
+          <li><a href="categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
+          <li><a href="categories/seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
           <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
@@ -38,8 +40,10 @@
     <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
       <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
         <li><a href="index.html" class="block hover:text-orange-500 transition">Home</a></li>
-        <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
-        <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer Tools</a></li>
+        <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
+        <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer</a></li>
+        <li><a href="categories/image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
+        <li><a href="categories/seo-tools.html" class="block hover:text-orange-500 transition">SEO</a></li>
         <li><a href="contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
       </ul>
     </div>
@@ -94,6 +98,13 @@
       { name: "Remove Extra Spaces", desc: "Normalize whitespace and blank lines", url: "tools/remove-extra-spaces.html", icon: "🧹", tags: "spaces whitespace clean trim text" },
       { name: "Image Compressor", desc: "Compress JPG, PNG & WebP files", url: "tools/image-compressor.html", icon: "🖼️", tags: "image compress jpg png webp photo" },
       { name: "Color Palette Generator", desc: "Random HEX color palettes", url: "tools/color-palette-generator.html", icon: "🎨", tags: "color palette hex design generator" },
+      { name: "Case Converter", desc: "UPPER, lower, Title, Sentence, camelCase", url: "tools/case-converter.html", icon: "🔠", tags: "case uppercase lowercase title camelCase text" },
+      { name: "Text to Slug", desc: "SEO-friendly URL slugs", url: "tools/text-to-slug.html", icon: "🔗", tags: "slug url seo permalink hyphen" },
+      { name: "Read Time Calculator", desc: "Estimated reading time from word count", url: "tools/read-time-calculator.html", icon: "⏱️", tags: "read time wpm minutes blog seo" },
+      { name: "Base64 Encoder", desc: "Encode and decode UTF-8 text", url: "tools/base64-encoder.html", icon: "📎", tags: "base64 encode decode utf8 developer" },
+      { name: "UUID Generator", desc: "Random version 4 UUIDs for APIs and databases", url: "tools/uuid-generator.html", icon: "🆔", tags: "uuid guid random id rfc4122 v4" },
+      { name: "URL Encoder", desc: "Encode or decode URI components and full URLs", url: "tools/url-encoder.html", icon: "🔗", tags: "url encode decode encodeURIComponent encodeURI" },
+      { name: "Hash Generator", desc: "SHA-256 and SHA-1 hex digests of text", url: "tools/hash-generator.html", icon: "🔢", tags: "sha256 sha1 hash checksum hex crypto" },
     ];
 
     const params = new URLSearchParams(window.location.search);

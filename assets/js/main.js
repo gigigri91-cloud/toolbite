@@ -341,8 +341,381 @@ function generatePalette() {
 })();
 
 /* -----------------------------------------------
-   12. ON LOAD — auto-init tools that need it
+   13. CASE CONVERTER
 ----------------------------------------------- */
+(function () {
+    const ta = document.getElementById('case-input');
+    if (!ta) return;
+    const toTitle = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+    const toSentence = (s) => {
+        if (!s) return '';
+        const t = s.toLowerCase();
+        return t.charAt(0).toUpperCase() + t.slice(1).replace(/([.!?]\s+)([a-z])/g, (_, a, b) => a + b.toUpperCase());
+    };
+    const toCamel = (text) => {
+        const words = text.trim().split(/\s+/).filter(Boolean);
+        if (!words.length) return '';
+        return words[0].toLowerCase() + words.slice(1).map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('');
+    };
+    document.getElementById('btn-upper')?.addEventListener('click', () => { ta.value = ta.value.toUpperCase(); });
+    document.getElementById('btn-lower')?.addEventListener('click', () => { ta.value = ta.value.toLowerCase(); });
+    document.getElementById('btn-title')?.addEventListener('click', () => { ta.value = toTitle(ta.value); });
+    document.getElementById('btn-sentence')?.addEventListener('click', () => { ta.value = toSentence(ta.value); });
+    document.getElementById('btn-camel')?.addEventListener('click', () => { ta.value = toCamel(ta.value); });
+    document.getElementById('copy-btn')?.addEventListener('click', () => {
+        if (!ta.value) return;
+        ta.select();
+        document.execCommand('copy');
+        const b = document.getElementById('copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+    document.getElementById('clear-btn')?.addEventListener('click', () => { ta.value = ''; });
+})();
+
+/* -----------------------------------------------
+   14. TEXT TO SLUG
+----------------------------------------------- */
+(function () {
+    const input = document.getElementById('slug-input');
+    const out = document.getElementById('slug-output');
+    if (!input || !out) return;
+    function slugify(text) {
+        return text
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+    function refresh() {
+        out.textContent = slugify(input.value);
+    }
+    input.addEventListener('input', refresh);
+    refresh();
+    document.getElementById('slug-copy-btn')?.addEventListener('click', () => {
+        const s = out.textContent;
+        if (!s) return;
+        const tmp = document.createElement('input');
+        tmp.value = s;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand('copy');
+        document.body.removeChild(tmp);
+        const b = document.getElementById('slug-copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+    document.getElementById('slug-clear-btn')?.addEventListener('click', () => { input.value = ''; refresh(); });
+})();
+
+/* -----------------------------------------------
+   15. READ TIME CALCULATOR
+----------------------------------------------- */
+(function () {
+    const ta = document.getElementById('read-input');
+    const wpmEl = document.getElementById('read-wpm');
+    if (!ta || !wpmEl) return;
+    const wEl = document.getElementById('read-words');
+    const mEl = document.getElementById('read-min');
+    const sEl = document.getElementById('read-sec');
+    const sumEl = document.getElementById('read-summary');
+    function refresh() {
+        const wpm = Math.min(400, Math.max(1, parseInt(wpmEl.value, 10) || 200));
+        wpmEl.value = wpm;
+        const text = ta.value;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        const secondsTotal = words / wpm * 60;
+        const min = Math.floor(secondsTotal / 60);
+        const sec = Math.round(secondsTotal % 60);
+        if (wEl) wEl.textContent = words;
+        if (mEl) mEl.textContent = words ? String(min) : '0';
+        if (sEl) sEl.textContent = words ? String(sec) : '0';
+        if (sumEl) {
+            sumEl.textContent = words
+                ? `About ${min} min ${sec} s at ${wpm} WPM — ${words} words.`
+                : 'Paste text to estimate reading time.';
+        }
+    }
+    ta.addEventListener('input', refresh);
+    wpmEl.addEventListener('input', refresh);
+    document.getElementById('read-clear-btn')?.addEventListener('click', () => { ta.value = ''; refresh(); });
+    refresh();
+})();
+
+/* -----------------------------------------------
+   16. BASE64 ENCODER / DECODER
+----------------------------------------------- */
+(function () {
+    const inp = document.getElementById('b64-input');
+    const out = document.getElementById('b64-output');
+    if (!inp || !out) return;
+    const err = document.getElementById('b64-error');
+    const tabEnc = document.getElementById('b64-tab-encode');
+    const tabDec = document.getElementById('b64-tab-decode');
+    const hint = document.getElementById('b64-mode-hint');
+    const runBtn = document.getElementById('b64-run-btn');
+    let encodeMode = true;
+
+    function utf8ToB64(str) {
+        const bytes = new TextEncoder().encode(str);
+        let bin = '';
+        for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+        return btoa(bin);
+    }
+    function b64ToUtf8(b64) {
+        const clean = b64.trim().replace(/\s/g, '');
+        const bin = atob(clean);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return new TextDecoder().decode(bytes);
+    }
+
+    function setMode(enc) {
+        encodeMode = enc;
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+        if (tabEnc && tabDec) {
+            if (enc) {
+                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-amber-500 text-white text-sm';
+                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+            } else {
+                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-amber-500 text-white text-sm';
+                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+            }
+        }
+        if (hint) hint.textContent = enc ? 'Plain text → Base64' : 'Base64 → plain text (UTF-8)';
+        if (runBtn) runBtn.textContent = enc ? 'Encode to Base64' : 'Decode from Base64';
+    }
+
+    tabEnc?.addEventListener('click', () => setMode(true));
+    tabDec?.addEventListener('click', () => setMode(false));
+    setMode(true);
+
+    document.getElementById('b64-run-btn')?.addEventListener('click', () => {
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+        try {
+            if (encodeMode) {
+                out.value = utf8ToB64(inp.value);
+            } else {
+                out.value = b64ToUtf8(inp.value);
+            }
+        } catch (e) {
+            if (err) {
+                err.textContent = e.message || 'Could not decode — check your Base64 string.';
+                err.classList.remove('hidden');
+            }
+            out.value = '';
+        }
+    });
+
+    document.getElementById('b64-copy-btn')?.addEventListener('click', () => {
+        if (!out.value) return;
+        out.select();
+        document.execCommand('copy');
+        const b = document.getElementById('b64-copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+
+    document.getElementById('b64-clear-btn')?.addEventListener('click', () => {
+        inp.value = '';
+        out.value = '';
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+    });
+})();
+
+/* -----------------------------------------------
+   17. UUID GENERATOR (v4)
+----------------------------------------------- */
+(function () {
+    const out = document.getElementById('uuid-output');
+    const countEl = document.getElementById('uuid-count');
+    if (!out || !countEl) return;
+
+    function randomUUID() {
+        if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+            return crypto.randomUUID();
+        }
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    function generate() {
+        let n = parseInt(countEl.value, 10);
+        if (isNaN(n) || n < 1) n = 1;
+        if (n > 50) n = 50;
+        countEl.value = String(n);
+        const lines = [];
+        for (let i = 0; i < n; i++) lines.push(randomUUID());
+        out.value = lines.join('\n');
+    }
+
+    document.getElementById('uuid-generate-btn')?.addEventListener('click', generate);
+    document.getElementById('uuid-copy-btn')?.addEventListener('click', () => {
+        if (!out.value) return;
+        out.select();
+        document.execCommand('copy');
+        const b = document.getElementById('uuid-copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+    document.getElementById('uuid-clear-btn')?.addEventListener('click', () => {
+        out.value = '';
+        countEl.value = '1';
+    });
+})();
+
+/* -----------------------------------------------
+   18. URL ENCODER / DECODER
+----------------------------------------------- */
+(function () {
+    const inp = document.getElementById('url-input');
+    const out = document.getElementById('url-output');
+    if (!inp || !out) return;
+    const err = document.getElementById('url-error');
+    const fullChk = document.getElementById('url-full-url');
+    const hint = document.getElementById('url-mode-hint');
+    const tabEnc = document.getElementById('url-tab-encode');
+    const tabDec = document.getElementById('url-tab-decode');
+    let encodeMode = true;
+
+    function syncHint() {
+        if (!hint || !fullChk) return;
+        const full = fullChk.checked;
+        if (encodeMode) {
+            hint.textContent = full
+                ? 'Encode: full URL — encodeURI (keeps :, /, ?, # in structure).'
+                : 'Encode: component — encodeURIComponent (for query values & path segments).';
+        } else {
+            hint.textContent = full
+                ? 'Decode: full URL — decodeURI.'
+                : 'Decode: component — decodeURIComponent.';
+        }
+    }
+
+    function setTabs(enc) {
+        encodeMode = enc;
+        if (tabEnc && tabDec) {
+            if (enc) {
+                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-emerald-600 text-white text-sm';
+                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+            } else {
+                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-emerald-600 text-white text-sm';
+                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+            }
+        }
+        const run = document.getElementById('url-run-btn');
+        if (run) run.textContent = enc ? 'Encode' : 'Decode';
+        syncHint();
+    }
+
+    tabEnc?.addEventListener('click', () => setTabs(true));
+    tabDec?.addEventListener('click', () => setTabs(false));
+    fullChk?.addEventListener('change', syncHint);
+    setTabs(true);
+
+    document.getElementById('url-run-btn')?.addEventListener('click', () => {
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+        const full = fullChk && fullChk.checked;
+        const s = inp.value;
+        try {
+            if (encodeMode) {
+                out.value = full ? encodeURI(s) : encodeURIComponent(s);
+            } else {
+                out.value = full ? decodeURI(s) : decodeURIComponent(s);
+            }
+        } catch (e) {
+            out.value = '';
+            if (err) {
+                err.textContent = e.message || 'Invalid input for this decode mode — try toggling “Full URL mode”.';
+                err.classList.remove('hidden');
+            }
+        }
+    });
+
+    document.getElementById('url-copy-btn')?.addEventListener('click', () => {
+        if (!out.value) return;
+        out.select();
+        document.execCommand('copy');
+        const b = document.getElementById('url-copy-btn');
+        const o = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(() => { b.textContent = o; }, 1500);
+    });
+
+    document.getElementById('url-clear-btn')?.addEventListener('click', () => {
+        inp.value = '';
+        out.value = '';
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+    });
+})();
+
+/* -----------------------------------------------
+   19. SHA-256 / SHA-1 HASH
+----------------------------------------------- */
+(function () {
+    const inp = document.getElementById('hash-input');
+    const out = document.getElementById('hash-output');
+    const algoSel = document.getElementById('hash-algo');
+    const err = document.getElementById('hash-error');
+    const copyBtn = document.getElementById('hash-copy-btn');
+    if (!inp || !out || !algoSel) return;
+
+    function bufToHex(buffer) {
+        return Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    document.getElementById('hash-compute-btn')?.addEventListener('click', async () => {
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+        out.value = '';
+        if (copyBtn) copyBtn.disabled = true;
+
+        if (!window.crypto || !crypto.subtle) {
+            if (err) {
+                err.textContent = 'Web Crypto API unavailable. Use HTTPS or a modern browser.';
+                err.classList.remove('hidden');
+            }
+            return;
+        }
+
+        const algo = algoSel.value;
+        try {
+            const data = new TextEncoder().encode(inp.value);
+            const hashBuf = await crypto.subtle.digest(algo, data);
+            out.value = bufToHex(hashBuf);
+            if (copyBtn) copyBtn.disabled = false;
+        } catch (e) {
+            if (err) {
+                err.textContent = e.message || 'Could not compute hash.';
+                err.classList.remove('hidden');
+            }
+        }
+    });
+
+    copyBtn?.addEventListener('click', () => {
+        if (!out.value) return;
+        out.select();
+        document.execCommand('copy');
+        const o = copyBtn.textContent;
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => { copyBtn.textContent = o; }, 1500);
+    });
+
+    document.getElementById('hash-clear-btn')?.addEventListener('click', () => {
+        inp.value = '';
+        out.value = '';
+        if (copyBtn) copyBtn.disabled = true;
+        if (err) { err.classList.add('hidden'); err.textContent = ''; }
+    });
+})();
+
 window.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('passwordResult')) generatePassword();
     if (document.getElementById('paletteContainer')) generatePalette();

@@ -6,7 +6,7 @@
   <title>Free Developer Tools Online | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/categories/developer-tools.html">
-  <meta name="description" content="Free developer utilities: JSON formatter & validator, secure password generator, and color palette generator. All run locally in your browser.">
+  <meta name="description" content="Free developer utilities: JSON formatter, Base64, UUID generator, URL encoder, SHA-256/SHA-1 hashes, password generator, color palettes. All run locally in your browser.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -48,11 +48,13 @@
       <a href="../index.html" class="group flex items-center min-w-0 shrink leading-none">
         <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
-      <nav class="hidden md:block">
-        <ul class="flex space-x-6 items-center font-bold text-gray-700">
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 gap-y-1 items-center font-bold text-sm text-gray-700">
           <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
-          <li><a href="text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
-          <li><a href="developer-tools.html" class="text-orange-500">Developer Tools</a></li>
+          <li><a href="text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
+          <li><a href="developer-tools.html" class="text-orange-500">Developer</a></li>
+          <li><a href="image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
+          <li><a href="seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
           <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
@@ -63,8 +65,10 @@
     <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
       <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
         <li><a href="../index.html" class="block hover:text-orange-500 transition">Home</a></li>
-        <li><a href="text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
-        <li><a href="developer-tools.html" class="block text-orange-500">Developer Tools</a></li>
+        <li><a href="text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
+        <li><a href="developer-tools.html" class="block text-orange-500">Developer</a></li>
+        <li><a href="image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
+        <li><a href="seo-tools.html" class="block hover:text-orange-500 transition">SEO</a></li>
         <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
       </ul>
     </div>
@@ -118,6 +122,38 @@
         <div>
           <h2 class="font-bold text-gray-900 text-lg">Color Palette Generator</h2>
           <p class="text-sm text-gray-500">HEX palettes — click to copy</p>
+        </div>
+      </a>
+
+      <a href="../tools/base64-encoder.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">📎</div>
+        <div>
+          <h2 class="font-bold text-gray-900 text-lg">Base64 Encoder</h2>
+          <p class="text-sm text-gray-500">Encode &amp; decode UTF-8 text</p>
+        </div>
+      </a>
+
+      <a href="../tools/uuid-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">🆔</div>
+        <div>
+          <h2 class="font-bold text-gray-900 text-lg">UUID Generator</h2>
+          <p class="text-sm text-gray-500">Random v4 UUIDs (RFC 4122)</p>
+        </div>
+      </a>
+
+      <a href="../tools/url-encoder.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">🌐</div>
+        <div>
+          <h2 class="font-bold text-gray-900 text-lg">URL Encoder</h2>
+          <p class="text-sm text-gray-500">encodeURI &amp; encodeURIComponent</p>
+        </div>
+      </a>
+
+      <a href="../tools/hash-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-slate-800 group-hover:text-white transition">🔢</div>
+        <div>
+          <h2 class="font-bold text-gray-900 text-lg">Hash Generator</h2>
+          <p class="text-sm text-gray-500">SHA-256 &amp; SHA-1 (hex)</p>
         </div>
       </a>
 

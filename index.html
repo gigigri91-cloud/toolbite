@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolBite — Free Online Tools Hub</title>
+  <title>ToolBite — Free Online Tools: Text, SEO, Image &amp; Developer Utilities</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/">
-  <meta name="description" content="ToolBite offers free online tools: word counters, password generators, JSON utilities, image compression, and more. Fast, secure, and right in your browser.">
-  <meta name="keywords" content="online tools, web tools, seo tools, developer tools, word counter, free tools">
+  <meta name="description" content="ToolBite is a fast, privacy-first toolbox: word counter, case converter, slug generator, read time calculator, Base64 encoder, JSON formatter, password &amp; color tools, image compression — all free in your browser.">
+  <meta name="keywords" content="online tools, free web tools, SEO tools, text tools, developer tools, word counter, base64 encoder, slug generator, read time calculator, JSON formatter">
+  <meta name="theme-color" content="#2563eb">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/">
-  <meta property="og:title" content="ToolBite — All Your Digital Tools in One Place">
+  <meta property="og:title" content="ToolBite — Free Online Tools: Text, SEO, Image &amp; Developer">
   <meta property="og:description" content="Discover dozens of free, fast, and secure online tools for your daily tasks.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -33,6 +34,49 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ToolBite",
+    "url": "https://toolbite.org/",
+    "logo": "https://toolbite.org/assets/images/toolbite-logo.png",
+    "description": "Free browser-based utilities for writers, developers, and marketers.",
+    "sameAs": ["https://www.buymeacoffee.com/toolbite"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are ToolBite tools really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every tool on ToolBite is free to use in the browser. Optional support is available via Buy Me a Coffee; ads may appear through Google AdSense to help cover hosting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data uploaded to your servers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Text, images, and files you use in our tools are processed locally in your browser whenever possible. Nothing is sent to ToolBite for processing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use ToolBite for SEO and content work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We offer word counting, read time estimates, slug generation, JSON formatting for structured data, and more tools are added regularly."
+        }
+      }
+    ]
+  }
+  </script>
 
   <meta name="google-site-verification" content="kiGtxsbAbPRi97iTMnH-Tyu17HuWN7ZlTP6n6gfVP60">
 
@@ -50,11 +94,13 @@
       <a href="index.html" class="group flex items-center min-w-0 shrink leading-none">
         <img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
-      <nav class="hidden md:block">
-        <ul class="flex space-x-8 items-center font-bold text-lg text-gray-700">
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
           <li><a href="index.html" class="text-orange-500">Home</a></li>
-          <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text Tools</a></li>
-          <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer Tools</a></li>
+          <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
+          <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
+          <li><a href="categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
+          <li><a href="categories/seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
           <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
@@ -67,19 +113,24 @@
         <li><a href="index.html" class="block text-orange-500">Home</a></li>
         <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text Tools</a></li>
         <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer Tools</a></li>
+        <li><a href="categories/image-tools.html" class="block hover:text-orange-500 transition">Image Tools</a></li>
+        <li><a href="categories/seo-tools.html" class="block hover:text-orange-500 transition">SEO Tools</a></li>
         <li><a href="contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
       </ul>
     </div>
   </header>
 
-  <section class="bg-gradient-to-r from-blue-600 to-orange-500 p-12 md:p-20 text-center text-white shadow-inner">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md">All Your Online Tools in One Place</h1>
-    <p class="text-lg md:text-2xl mb-8 opacity-90 font-medium">Word counters, Password generators, Image tools &amp; more — 100% free.</p>
-    <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
-      <label for="hero-search" class="sr-only">Search tools</label>
-      <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Word Counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300 text-lg transition">
-      <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-2xl leading-none p-2 rounded-full hover:bg-gray-100 transition" aria-label="Search">🔍</button>
-    </form>
+  <section class="tb-hero p-12 md:p-20 text-center text-white shadow-inner">
+    <div class="tb-hero-inner max-w-4xl mx-auto">
+      <p class="text-sm md:text-base font-semibold uppercase tracking-widest text-blue-100/90 mb-3">Privacy-first · No uploads · Works offline after load</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-md font-display leading-tight">All Your Online Tools in One Place</h1>
+      <p class="text-lg md:text-2xl mb-8 text-white/90 font-medium">Text, SEO, images &amp; dev utilities — fast, free, and built for real workflows.</p>
+      <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
+        <label for="hero-search" class="sr-only">Search tools</label>
+        <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Base64, slug, word counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300/80 text-lg transition bg-white/95 backdrop-blur-sm">
+        <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-2xl leading-none p-2 rounded-full hover:bg-gray-100 transition" aria-label="Search">🔍</button>
+      </form>
+    </div>
   </section>
 
   <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
@@ -98,36 +149,71 @@
       <div class="flex items-center justify-between border-b pb-3 mb-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900">🔥 Popular Tools</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-        <a href="tools/word-counter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <a href="tools/word-counter.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
           <div><h3 class="font-bold text-gray-900 text-lg">Word Counter</h3><p class="text-sm text-gray-500">Count words &amp; characters</p></div>
         </a>
 
-        <a href="tools/password-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <a href="tools/password-generator.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-orange-500 group-hover:text-white transition">🔑</div>
           <div><h3 class="font-bold text-gray-900 text-lg">Password Generator</h3><p class="text-sm text-gray-500">Create secure passwords</p></div>
         </a>
 
-        <a href="tools/image-compressor.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <a href="tools/image-compressor.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition">🖼️</div>
           <div><h3 class="font-bold text-gray-900 text-lg">Image Compressor</h3><p class="text-sm text-gray-500">Reduce image file size</p></div>
         </a>
 
-        <a href="tools/json-formatter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <a href="tools/json-formatter.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
           <div><h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3><p class="text-sm text-gray-500">Beautify &amp; validate JSON</p></div>
         </a>
 
-        <a href="tools/lorem-ipsum.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <a href="tools/lorem-ipsum.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-gray-800 group-hover:text-white transition">📄</div>
           <div><h3 class="font-bold text-gray-900 text-lg">Lorem Ipsum</h3><p class="text-sm text-gray-500">Generate dummy text</p></div>
         </a>
 
-        <a href="tools/remove-extra-spaces.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+        <a href="tools/remove-extra-spaces.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
           <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-500 group-hover:text-white transition">🧹</div>
           <div><h3 class="font-bold text-gray-900 text-lg">Remove Spaces</h3><p class="text-sm text-gray-500">Clean messy text</p></div>
+        </a>
+
+        <a href="tools/case-converter.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-rose-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-rose-500 group-hover:text-white transition">🔠</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Case Converter</h3><p class="text-sm text-gray-500">UPPER, lower, Title, camelCase</p></div>
+        </a>
+
+        <a href="tools/text-to-slug.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-sky-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-sky-600 group-hover:text-white transition">🔗</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Text to Slug</h3><p class="text-sm text-gray-500">SEO-friendly URL strings</p></div>
+        </a>
+
+        <a href="tools/read-time-calculator.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">⏱️</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Read Time</h3><p class="text-sm text-gray-500">Estimate article reading time</p></div>
+        </a>
+
+        <a href="tools/base64-encoder.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">📎</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Base64 Encoder</h3><p class="text-sm text-gray-500">Encode &amp; decode in browser</p></div>
+        </a>
+
+        <a href="tools/uuid-generator.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">🆔</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">UUID Generator</h3><p class="text-sm text-gray-500">Random v4 IDs</p></div>
+        </a>
+
+        <a href="tools/url-encoder.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">🌐</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">URL Encoder</h3><p class="text-sm text-gray-500">URI component &amp; full URL</p></div>
+        </a>
+
+        <a href="tools/hash-generator.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group">
+          <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-slate-800 group-hover:text-white transition">🔢</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">Hash Generator</h3><p class="text-sm text-gray-500">SHA-256 &amp; SHA-1</p></div>
         </a>
 
       </div>
@@ -151,6 +237,21 @@
         <a href="categories/image-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🖼️ Image Tools</a>
         <a href="categories/seo-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🔍 SEO Tools</a>
       </div>
+    </section>
+
+    <section class="mb-12 rounded-3xl border border-orange-100 bg-gradient-to-br from-orange-50/80 via-white to-blue-50/60 p-8 md:p-10 shadow-sm" aria-labelledby="roadmap-heading">
+      <h2 id="roadmap-heading" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-display">Growing toolkit — what we ship next</h2>
+      <p class="text-gray-600 mb-6 max-w-3xl">ToolBite expands in small, fast releases. Here are high-demand utilities from our public roadmap (hashes, QR codes, meta generators, image resize — all client-side where possible).</p>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="tb-chip">MD5 / SHA hashes</span>
+        <span class="tb-chip">QR generator</span>
+        <span class="tb-chip">CSV ↔ JSON</span>
+        <span class="tb-chip">JWT decoder</span>
+        <span class="tb-chip">CSS gradient &amp; shadow tools</span>
+        <span class="tb-chip">SERP snippet preview</span>
+        <span class="tb-chip">Robots.txt builder</span>
+      </div>
+      <p class="text-sm text-gray-500">Tip: bookmark <a href="search.html" class="text-blue-600 font-semibold hover:underline">site search</a> and the category hubs above — new tools appear there first. Share direct links to individual utilities to help others discover them.</p>
     </section>
 
   </main>
