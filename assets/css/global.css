@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
-
 /* --- TOOLBITE - GLOBAL STYLES --- */
 
 /* Hero — layered gradient + soft mesh (no image assets) */
@@ -55,12 +53,31 @@ h1, h2, .font-display {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: -1px;
+    padding: 0;
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: #0f172a;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+}
+.skip-link:focus {
+    transform: translateY(0);
 }
 
 /*
@@ -73,6 +90,7 @@ img.header-logo {
     height: 2.5rem !important;
     max-height: 2.5rem !important;
     width: auto !important;
+    aspect-ratio: 1024 / 281;
     max-width: min(16.5rem, 100%) !important;
     object-fit: contain;
     object-position: left center;
@@ -129,15 +147,37 @@ header a:has(> img.header-logo) {
     min-height: 250px;
     width: 100%;
 }
+.ad-slot-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #64748b;
+}
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve small-text contrast on white cards/backgrounds */
+.text-gray-500 {
+    color: #4b5563 !important;
+}
+
+/* Keep footer links easy to tap on touch devices */
+footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0.35rem 0.15rem;
 }
 
 ::-webkit-scrollbar { width: 8px; }

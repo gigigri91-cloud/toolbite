@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; upgrade-insecure-requests">
   <title>Image Compressor (JPG, PNG, WebP) | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/tools/image-compressor.html">
@@ -14,10 +15,15 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Image Compressor | ToolBite">
   <meta name="twitter:description" content="Compress JPG and PNG images online with quality control. Fast, free, and privacy-first.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite Image Compressor","url":"https://toolbite.org/tools/image-compressor.html","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Image Tools","item":"https://toolbite.org/categories/image-tools.html"},{"@type":"ListItem","position":3,"name":"Image Compressor","item":"https://toolbite.org/tools/image-compressor.html"}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite Image Compressor","url":"https://toolbite.org/tools/image-compressor.html","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/index.html"},{"@type":"ListItem","position":2,"name":"Image Tools","item":"https://toolbite.org/categories/image-tools.html"},{"@type":"ListItem","position":3,"name":"Image Compressor","item":"https://toolbite.org/tools/image-compressor.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
   <link rel="stylesheet" href="../assets/css/global.css">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does my image get uploaded to your servers?","acceptedAnswer":{"@type":"Answer","text":"No. The image is processed entirely in your browser using an HTML5 Canvas element — it never leaves your device."}},{"@type":"Question","name":"Which formats are supported?","acceptedAnswer":{"@type":"Answer","text":"You can upload JPG, PNG, GIF, and WebP images. Output can be saved as JPEG or WebP."}},{"@type":"Question","name":"What quality setting should I use?","acceptedAnswer":{"@type":"Answer","text":"0.85 is a good default — it balances quality and file size well for most photos. For web thumbnails, 0.70 is usually sufficient."}},{"@type":"Question","name":"Why does PNG compression result in a JPEG output?","acceptedAnswer":{"@type":"Answer","text":"True lossless PNG compression requires a different algorithm. This tool uses the browser's Canvas API, which outputs JPEG or WebP. For lossless PNG, dedicated tools are needed."}}]}</script>
@@ -35,7 +41,7 @@
         <li><a href="../guides/index.html" class="hover:text-orange-500 transition">Guides</a></li>
         <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
       </ul></nav>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-label="Open menu">
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -54,7 +60,7 @@
     <div class="lg:col-span-2">
       <div class="w-full mb-8">
         <ins class="adsbygoogle ads-slot" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        
       </div>
       <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb"><ol class="flex items-center gap-2">
         <li><a href="../index.html" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
@@ -92,7 +98,7 @@
       </div>
       <div class="w-full mb-8">
         <ins class="adsbygoogle ads-slot" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        
       </div>
       <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">100% Private — Your Images Stay on Your Device</h2>
@@ -127,7 +133,7 @@
     <aside class="space-y-6">
       <div class="sticky top-24">
         <ins class="adsbygoogle ads-slot-sidebar" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        
       </div>
     </aside>
   </main>
@@ -144,7 +150,6 @@
       </div>
     </div>
   </footer>
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

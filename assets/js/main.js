@@ -1,18 +1,56 @@
 /* --- TOOLBITE MASTER JS --- */
 
 /* -----------------------------------------------
-   1. MOBILE MENU TOGGLE
+   1. GLOBAL ACCESSIBILITY HELPERS
 ----------------------------------------------- */
 (function () {
-    const btn  = document.getElementById('mobile-menu-button');
-    const menu = document.getElementById('mobile-menu');
-    if (btn && menu) {
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    const main = document.querySelector('main');
+    if (!main) return;
+    if (!main.id) main.id = 'main-content';
+
+    if (!document.querySelector('.skip-link')) {
+        const skip = document.createElement('a');
+        skip.href = `#${main.id}`;
+        skip.className = 'skip-link';
+        skip.textContent = 'Skip to main content';
+        document.body.insertBefore(skip, document.body.firstChild);
     }
 })();
 
 /* -----------------------------------------------
-   2. HEADER SHRINK ON SCROLL (hysteresis + rAF)
+   2. MOBILE MENU TOGGLE
+----------------------------------------------- */
+(function () {
+    const btn  = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    function setMenuOpen(isOpen) {
+        menu.classList.toggle('hidden', !isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
+        btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    }
+
+    btn.addEventListener('click', () => {
+        const isOpen = menu.classList.contains('hidden');
+        setMenuOpen(isOpen);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuOpen(false);
+    });
+
+    document.addEventListener('click', (event) => {
+        if (menu.classList.contains('hidden')) return;
+        if (menu.contains(event.target) || btn.contains(event.target)) return;
+        setMenuOpen(false);
+    });
+
+    setMenuOpen(false);
+})(); 
+
+/* -----------------------------------------------
+   3. HEADER SHRINK ON SCROLL (hysteresis + rAF)
 ----------------------------------------------- */
 (function () {
     const header = document.getElementById('site-header');
@@ -32,7 +70,7 @@
 })();
 
 /* -----------------------------------------------
-   3. FOOTER YEAR
+   4. FOOTER YEAR
 ----------------------------------------------- */
 (function () {
     const yearEl = document.getElementById('current-year');
@@ -141,9 +179,26 @@ function generatePassword() {
     if (document.getElementById('incNumbers').checked)   chars += '0123456789';
     if (document.getElementById('incSymbols').checked)   chars += '!@#$%^&*()_+~`|}{[]:;?><,./-=';
     if (!chars) { pwdResult.value = 'Select at least one option!'; return; }
+
+    if (!window.crypto || typeof window.crypto.getRandomValues !== 'function') {
+        pwdResult.value = 'Secure password generation requires a modern HTTPS browser.';
+        return;
+    }
+
+    function randomIndex(max) {
+        const limit = Math.floor(0x100000000 / max) * max;
+        const buffer = new Uint32Array(1);
+        let value = 0;
+        do {
+            window.crypto.getRandomValues(buffer);
+            value = buffer[0];
+        } while (value >= limit);
+        return value % max;
+    }
+
     let pwd = '';
     for (let i = 0; i < length; i++)
-        pwd += chars[Math.floor(Math.random() * chars.length)];
+        pwd += chars[randomIndex(chars.length)];
     pwdResult.value = pwd;
 }
 function copyPassword() {
@@ -907,10 +962,10 @@ function generatePalette() {
         });
     }
 
-    if (window.location.pathname.includes('/tools/')) {
+    if (window.location.pathname.includes('/tools/') && window.matchMedia('(min-width: 1024px)').matches) {
         const holder = document.createElement('div');
         holder.className = 'fixed left-4 bottom-4 z-40';
-        holder.innerHTML = '<button type="button" id="quick-copy-tool-link" class="px-4 py-3 rounded-xl shadow-lg bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition">Copy tool URL</button>';
+        holder.innerHTML = '<button type="button" id="quick-copy-tool-link" aria-label="Copy this tool URL" class="px-4 py-3 rounded-xl shadow-lg bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition">Copy tool URL</button>';
         document.body.appendChild(holder);
         const quickBtn = document.getElementById('quick-copy-tool-link');
         quickBtn?.addEventListener('click', async () => {
@@ -932,6 +987,105 @@ function generatePalette() {
             }
             setTimeout(() => { quickBtn.textContent = original; }, 1500);
         });
+    }
+})();
+
+/* -----------------------------------------------
+   24. DEFERRED ADSENSE + LAZY BMC WIDGET
+----------------------------------------------- */
+(function () {
+    let adsInitialized = false;
+    let bmcScheduled = false;
+    let bmcInjected = false;
+    let bmcTimer = null;
+
+    function labelAdSlots() {
+        const adNodes = document.querySelectorAll('ins.adsbygoogle');
+        adNodes.forEach((node) => {
+            const prev = node.previousElementSibling;
+            if (prev && prev.classList.contains('ad-slot-label')) return;
+            const label = document.createElement('div');
+            label.className = 'ad-slot-label';
+            label.textContent = 'Advertisement';
+            node.parentNode?.insertBefore(label, node);
+        });
+    }
+
+    function initAdSlots() {
+        if (adsInitialized) return;
+        adsInitialized = true;
+        const adNodes = document.querySelectorAll('ins.adsbygoogle');
+        if (!adNodes.length) return;
+        const adQueue = window.adsbygoogle = window.adsbygoogle || [];
+        adNodes.forEach(() => {
+            try { adQueue.push({}); } catch (_) {}
+        });
+    }
+
+    function scheduleAdBootstrap() {
+        const run = () => window.setTimeout(initAdSlots, 250);
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(run, { timeout: 2200 });
+        } else {
+            window.setTimeout(run, 1200);
+        }
+    }
+
+    function injectBuyMeACoffee() {
+        if (bmcInjected) return;
+        bmcInjected = true;
+        const cfg = document.getElementById('bmc-widget-config');
+        if (!cfg || document.querySelector('script[data-name="BMC-Widget"]')) return;
+
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
+        script.async = true;
+        script.setAttribute('data-name', 'BMC-Widget');
+        script.setAttribute('data-cfasync', 'false');
+
+        ['id', 'description', 'message', 'color', 'position', 'x_margin', 'y_margin'].forEach((name) => {
+            const value = cfg.getAttribute(`data-${name}`);
+            if (value) script.setAttribute(`data-${name}`, value);
+        });
+
+        document.body.appendChild(script);
+    }
+
+    function scheduleBmcLoad() {
+        if (bmcScheduled) return;
+        bmcScheduled = true;
+        if (bmcTimer) window.clearTimeout(bmcTimer);
+        bmcTimer = window.setTimeout(injectBuyMeACoffee, 300);
+        detachBmcTriggers();
+    }
+
+    const bmcTriggerEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+    function attachBmcTriggers() {
+        bmcTriggerEvents.forEach((eventName) => {
+            window.addEventListener(eventName, scheduleBmcLoad, { once: true, passive: true });
+        });
+    }
+    function detachBmcTriggers() {
+        bmcTriggerEvents.forEach((eventName) => {
+            window.removeEventListener(eventName, scheduleBmcLoad, { passive: true });
+        });
+    }
+
+    function bootstrapThirdParty() {
+        labelAdSlots();
+        scheduleAdBootstrap();
+        attachBmcTriggers();
+
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(scheduleBmcLoad, { timeout: 9000 });
+        }
+        window.setTimeout(scheduleBmcLoad, 7000);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootstrapThirdParty, { once: true });
+    } else {
+        bootstrapThirdParty();
     }
 })();
 

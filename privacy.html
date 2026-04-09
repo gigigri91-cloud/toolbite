@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; upgrade-insecure-requests">
   <title>Privacy Policy | ToolBite</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/privacy.html">
@@ -24,7 +25,11 @@
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="assets/css/tailwind.min.css">
   <link rel="stylesheet" href="assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -45,7 +50,7 @@
           <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-label="Open menu">
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -83,17 +88,17 @@
       <h2 class="text-2xl font-bold text-gray-900 mb-3">2. Local Processing (No Data Storage)</h2>
       <p class="mb-8"><strong>Most of our tools process data entirely within your browser.</strong> When you use tools like our JSON Formatter, Word Counter, or Image Compressor, your text, code, or files are <strong>not</strong> sent to our servers. All calculations and transformations happen locally on your device, ensuring maximum privacy and security.</p>
 
-      <h2 class="text-2xl font-bold text-gray-900 mb-3">3. Log Files</h2>
-      <p class="mb-8">ToolBite follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. This information is used for analyzing trends, administering the site, and gathering demographic information.</p>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">3. Hosting and Log Files</h2>
+      <p class="mb-8">ToolBite is delivered through third-party static hosting and CDN infrastructure. As with most websites, those providers may process basic request logs such as IP address, browser type, date/time, referrer, and requested pages in order to serve, cache, secure, and troubleshoot the site.</p>
 
       <h2 class="text-2xl font-bold text-gray-900 mb-3">4. Cookies and Web Beacons</h2>
-      <p class="mb-8">Like any other website, ToolBite uses cookies. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed. We use this information to optimize the users' experience by customizing our web page content based on visitors' browser type and other information.</p>
+      <p class="mb-8">ToolBite itself does not use a custom analytics backend or user account system. However, third-party services embedded on the site may use cookies, local storage, or similar technologies for advertising, fraud prevention, or widget behavior.</p>
 
       <h2 class="text-2xl font-bold text-gray-900 mb-3">5. Google AdSense &amp; DART Cookie</h2>
       <p class="mb-8">Google is one of our third-party advertising partners. It uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to <strong>toolbite.org</strong> and other sites on the internet. You may opt out of the use of DART cookies by visiting the Google ad and content network Privacy Policy at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline">https://policies.google.com/technologies/ads</a>.</p>
 
       <h2 class="text-2xl font-bold text-gray-900 mb-3">6. Third-Party Privacy Policies</h2>
-      <p class="mb-8">ToolBite's Privacy Policy does not apply to other advertisers or websites. We advise you to consult the respective Privacy Policies of these third-party ad servers for more detailed information, including their practices and instructions on how to opt out of certain options.</p>
+      <p class="mb-8">ToolBite's Privacy Policy does not apply to third-party advertisers, widget providers, hosting providers, or external websites. We advise you to consult the respective privacy policies of those services for more detailed information, including their practices and instructions on how to opt out of certain options.</p>
 
       <h2 class="text-2xl font-bold text-gray-900 mb-3">7. Consent</h2>
       <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms.</p>
@@ -113,7 +118,6 @@
     </div>
   </footer>
 
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

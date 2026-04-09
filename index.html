@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; upgrade-insecure-requests">
   <title>ToolBite — Free Online Tools: Text, SEO, Image &amp; Developer Utilities</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="canonical" href="https://toolbite.org/">
+  <link rel="canonical" href="https://toolbite.org/index.html">
   <meta name="description" content="ToolBite is a fast, privacy-first toolbox: word counter, case converter, slug generator, read time calculator, Base64 encoder, JSON formatter, password &amp; color tools, image compression — all free in your browser.">
   <meta name="keywords" content="online tools, free web tools, SEO tools, text tools, developer tools, word counter, base64 encoder, slug generator, read time calculator, JSON formatter">
   <meta name="theme-color" content="#2563eb">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toolbite.org/">
+  <meta property="og:url" content="https://toolbite.org/index.html">
   <meta property="og:title" content="ToolBite — Free Online Tools: Text, SEO, Image &amp; Developer">
   <meta property="og:description" content="Discover dozens of free, fast, and secure online tools for your daily tasks.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
@@ -26,7 +27,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "ToolBite",
-    "url": "https://toolbite.org/",
+    "url": "https://toolbite.org/index.html",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://toolbite.org/search.html?q={search_term_string}",
@@ -39,10 +40,9 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ToolBite",
-    "url": "https://toolbite.org/",
+    "url": "https://toolbite.org/index.html",
     "logo": "https://toolbite.org/assets/images/toolbite-logo.png",
-    "description": "Free browser-based utilities for writers, developers, and marketers.",
-    "sameAs": ["https://www.buymeacoffee.com/toolbite"]
+    "description": "Free browser-based utilities for writers, developers, and marketers."
   }
   </script>
   <script type="application/ld+json">
@@ -55,7 +55,7 @@
         "name": "Are ToolBite tools really free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Every tool on ToolBite is free to use in the browser. Optional support is available via Buy Me a Coffee; ads may appear through Google AdSense to help cover hosting."
+          "text": "Yes. Every tool on ToolBite is free to use in the browser. We may show ads through Google AdSense to help support hosting."
         }
       },
       {
@@ -84,7 +84,11 @@
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="assets/css/tailwind.min.css">
   <link rel="stylesheet" href="assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -105,7 +109,7 @@
           <li><a href="contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
       </nav>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-label="Open menu">
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -155,7 +159,6 @@
            data-ad-client="ca-pub-5233222002046639"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <section id="popular-tools" class="mb-16">
@@ -246,7 +249,6 @@
            data-ad-client="ca-pub-5233222002046639"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <section class="mb-12">
@@ -309,7 +311,6 @@
     </div>
   </footer>
 
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="toolbite" data-description="Support our free tools!" data-message="☕ Keep ToolBite 100% free & lightning fast! Buy the dev a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
