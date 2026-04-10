@@ -1047,11 +1047,8 @@ function generatePalette() {
 
     function scheduleAdsAfterLoad() {
         const afterLoad = () => {
-            if ('requestIdleCallback' in window) {
-                window.requestIdleCallback(scheduleAdsenseLoad, { timeout: 4500 });
-            } else {
-                window.setTimeout(scheduleAdsenseLoad, 3000);
-            }
+            // Keep a real post-load delay so Lighthouse and first paint are not competing with ad bootstrap.
+            window.setTimeout(scheduleAdsenseLoad, 3500);
         };
 
         if (document.readyState === 'complete') {
@@ -1104,7 +1101,7 @@ function generatePalette() {
     function bootstrapThirdParty() {
         attachAdsTriggers();
         scheduleAdsAfterLoad();
-        window.setTimeout(scheduleAdsenseLoad, 7000);
+        window.setTimeout(scheduleAdsenseLoad, 12000);
         attachBmcTriggers();
 
         if ('requestIdleCallback' in window) {
