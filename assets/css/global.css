@@ -511,6 +511,7 @@ html.dark .focus\:ring-fuchsia-100:focus { --tw-ring-color: rgba(217, 70, 239, 0
 html.dark .focus\:ring-lime-100:focus { --tw-ring-color: rgba(132, 204, 22, 0.45) !important; }
 html.dark .focus\:ring-violet-100:focus { --tw-ring-color: rgba(139, 92, 246, 0.45) !important; }
 html.dark .focus\:ring-orange-300\/80:focus { --tw-ring-color: rgba(251, 146, 60, 0.5) !important; }
+html.dark .focus\:ring-gray-400:focus { --tw-ring-color: rgba(148, 163, 184, 0.55) !important; }
 
 html.dark .focus\:border-blue-400:focus { border-color: #60a5fa !important; }
 html.dark .focus\:border-blue-500:focus { border-color: #3b82f6 !important; }
