@@ -212,6 +212,8 @@ footer a {
 /* --- DARK MODE (html.dark) — Tailwind build has no dark: variants; overrides use !important --- */
 html.dark {
     color-scheme: dark;
+    /* Tailwind focus rings default to a white offset; match page background in dark mode */
+    --tw-ring-offset-color: #0f172a;
 }
 
 html.dark body {
@@ -473,3 +475,42 @@ html.dark input::placeholder,
 html.dark textarea::placeholder {
     color: #64748b !important;
 }
+
+/* Hover / focus utilities that stay “light theme” in compiled Tailwind */
+html.dark .focus\:bg-white:focus {
+    background-color: #1e293b !important;
+}
+
+html.dark .hover\:bg-gray-100:hover { background-color: #334155 !important; }
+html.dark .hover\:bg-gray-200:hover { background-color: #475569 !important; }
+html.dark .hover\:bg-gray-300:hover { background-color: #64748b !important; }
+html.dark .hover\:bg-blue-50:hover { background-color: rgba(37, 99, 235, 0.18) !important; }
+html.dark .hover\:bg-red-50:hover { background-color: rgba(239, 68, 68, 0.14) !important; }
+html.dark .hover\:bg-red-100:hover { background-color: rgba(239, 68, 68, 0.22) !important; }
+html.dark .hover\:bg-orange-50:hover { background-color: rgba(234, 88, 12, 0.14) !important; }
+html.dark .hover\:bg-white:hover { background-color: #334155 !important; }
+html.dark .hover\:bg-slate-300:hover { background-color: #64748b !important; }
+html.dark .hover\:bg-teal-200:hover { background-color: rgba(13, 148, 136, 0.28) !important; }
+
+html.dark .hover\:text-blue-700:hover { color: #bfdbfe !important; }
+
+html.dark .bg-amber-50\/50 { background-color: rgba(245, 158, 11, 0.12) !important; }
+
+html.dark .text-gray-400 { color: #94a3b8 !important; }
+
+/* Focus rings: replace pale tints with visible color on dark surfaces */
+html.dark .focus\:ring-blue-100:focus { --tw-ring-color: rgba(59, 130, 246, 0.42) !important; }
+html.dark .focus\:ring-amber-100:focus { --tw-ring-color: rgba(245, 158, 11, 0.45) !important; }
+html.dark .focus\:ring-emerald-100:focus { --tw-ring-color: rgba(16, 185, 129, 0.42) !important; }
+html.dark .focus\:ring-indigo-100:focus { --tw-ring-color: rgba(99, 102, 241, 0.45) !important; }
+html.dark .focus\:ring-sky-100:focus { --tw-ring-color: rgba(14, 165, 233, 0.45) !important; }
+html.dark .focus\:ring-slate-200:focus { --tw-ring-color: rgba(148, 163, 184, 0.4) !important; }
+html.dark .focus\:ring-teal-100:focus { --tw-ring-color: rgba(20, 184, 166, 0.42) !important; }
+html.dark .focus\:ring-rose-100:focus { --tw-ring-color: rgba(244, 63, 94, 0.42) !important; }
+html.dark .focus\:ring-fuchsia-100:focus { --tw-ring-color: rgba(217, 70, 239, 0.42) !important; }
+html.dark .focus\:ring-lime-100:focus { --tw-ring-color: rgba(132, 204, 22, 0.45) !important; }
+html.dark .focus\:ring-violet-100:focus { --tw-ring-color: rgba(139, 92, 246, 0.45) !important; }
+html.dark .focus\:ring-orange-300\/80:focus { --tw-ring-color: rgba(251, 146, 60, 0.5) !important; }
+
+html.dark .focus\:border-blue-400:focus { border-color: #60a5fa !important; }
+html.dark .focus\:border-blue-500:focus { border-color: #3b82f6 !important; }
