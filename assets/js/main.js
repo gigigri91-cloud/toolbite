@@ -991,43 +991,74 @@ function generatePalette() {
 })();
 
 /* -----------------------------------------------
-   24. DEFERRED ADSENSE + LAZY BMC WIDGET
+   24. DEFERRED ADSENSE AUTO ADS + LAZY BMC WIDGET
 ----------------------------------------------- */
 (function () {
-    let adsInitialized = false;
+    const ADSENSE_BASE_SRC = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+    const adsAccountMeta = document.querySelector('meta[name="google-adsense-account"]');
+    const adsClientId = adsAccountMeta ? adsAccountMeta.getAttribute('content') : '';
+    let adsScheduled = false;
+    let adsInjected = false;
     let bmcScheduled = false;
     let bmcInjected = false;
     let bmcTimer = null;
+    const adTriggerEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
 
-    function labelAdSlots() {
-        const adNodes = document.querySelectorAll('ins.adsbygoogle');
-        adNodes.forEach((node) => {
-            const prev = node.previousElementSibling;
-            if (prev && prev.classList.contains('ad-slot-label')) return;
-            const label = document.createElement('div');
-            label.className = 'ad-slot-label';
-            label.textContent = 'Advertisement';
-            node.parentNode?.insertBefore(label, node);
-        });
+    function injectAdsenseScript() {
+        if (adsInjected) return;
+        if (!adsClientId || !/^ca-pub-/.test(adsClientId)) return;
+        if (document.querySelector('script[data-toolbite-adsense-loader]')) {
+            adsInjected = true;
+            return;
+        }
+
+        adsInjected = true;
+        const script = document.createElement('script');
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+        script.src = `${ADSENSE_BASE_SRC}?client=${encodeURIComponent(adsClientId)}`;
+        script.setAttribute('data-toolbite-adsense-loader', 'true');
+        document.head.appendChild(script);
     }
 
-    function initAdSlots() {
-        if (adsInitialized) return;
-        adsInitialized = true;
-        const adNodes = document.querySelectorAll('ins.adsbygoogle');
-        if (!adNodes.length) return;
-        const adQueue = window.adsbygoogle = window.adsbygoogle || [];
-        adNodes.forEach(() => {
-            try { adQueue.push({}); } catch (_) {}
-        });
-    }
+    function scheduleAdsenseLoad() {
+        if (adsScheduled) return;
+        adsScheduled = true;
+        detachAdsTriggers();
 
-    function scheduleAdBootstrap() {
-        const run = () => window.setTimeout(initAdSlots, 250);
+        const run = () => window.setTimeout(injectAdsenseScript, 250);
         if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(run, { timeout: 2200 });
+            window.requestIdleCallback(run, { timeout: 1800 });
         } else {
-            window.setTimeout(run, 1200);
+            run();
+        }
+    }
+
+    function attachAdsTriggers() {
+        adTriggerEvents.forEach((eventName) => {
+            window.addEventListener(eventName, scheduleAdsenseLoad, { once: true, passive: true });
+        });
+    }
+
+    function detachAdsTriggers() {
+        adTriggerEvents.forEach((eventName) => {
+            window.removeEventListener(eventName, scheduleAdsenseLoad, { passive: true });
+        });
+    }
+
+    function scheduleAdsAfterLoad() {
+        const afterLoad = () => {
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(scheduleAdsenseLoad, { timeout: 4500 });
+            } else {
+                window.setTimeout(scheduleAdsenseLoad, 3000);
+            }
+        };
+
+        if (document.readyState === 'complete') {
+            afterLoad();
+        } else {
+            window.addEventListener('load', afterLoad, { once: true });
         }
     }
 
@@ -1072,8 +1103,9 @@ function generatePalette() {
     }
 
     function bootstrapThirdParty() {
-        labelAdSlots();
-        scheduleAdBootstrap();
+        attachAdsTriggers();
+        scheduleAdsAfterLoad();
+        window.setTimeout(scheduleAdsenseLoad, 7000);
         attachBmcTriggers();
 
         if ('requestIdleCallback' in window) {
