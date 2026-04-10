@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Case Converter — ToolBite">
   <meta name="twitter:description" content="Convert text to UPPERCASE, lowercase, Title Case, Sentence case, or camelCase instantly. Free, private, runs in your browser.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite Case Converter","url":"https://toolbite.org/tools/case-converter.html","description":"Convert text between common case styles in the browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/index.html"},{"@type":"ListItem","position":2,"name":"Text Tools","item":"https://toolbite.org/categories/text-tools.html"},{"@type":"ListItem","position":3,"name":"Case Converter","item":"https://toolbite.org/tools/case-converter.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Text Tools","item":"https://toolbite.org/categories/text-tools.html"},{"@type":"ListItem","position":3,"name":"Case Converter","item":"https://toolbite.org/tools/case-converter.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,12 +30,12 @@
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
-      <a href="../index.html" class="group flex items-center min-w-0 shrink leading-none">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
       <nav class="hidden md:block" aria-label="Main">
         <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-6 gap-y-1 items-center font-bold text-sm text-gray-700">
-          <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="../categories/text-tools.html" class="text-orange-500">Text</a></li>
           <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
           <li><a href="../categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
@@ -50,7 +50,7 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
       <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
-        <li><a href="../index.html" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block text-orange-500">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer</a></li>
         <li><a href="../categories/image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
@@ -69,7 +69,7 @@
       </div>
       <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-2">
-          <li><a href="../index.html" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+          <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/text-tools.html" class="hover:text-blue-600 transition">Text Tools</a></li><li>›</li>
           <li class="text-gray-800 font-medium">Case Converter</li>
         </ol>
@@ -99,6 +99,12 @@
       <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">When to use each case style</h2>
         <p class="mb-4"><strong>Title Case</strong> is common for blog headlines. <strong>Sentence case</strong> reads naturally in paragraphs. <strong>camelCase</strong> matches JavaScript variables and JSON keys. All transformations run locally so drafts stay private.</p>
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Common editing scenarios</h3>
+        <p>Case conversion is useful when cleaning imported headlines, standardizing UI labels, fixing inconsistent capitalization in lists, preparing JSON keys, or turning rough notes into publishing-ready titles and headings.</p>
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Where mistakes usually happen</h3>
+        <p>Title Case is often overused in body copy, while Sentence case is sometimes forgotten in UI strings or metadata drafts. camelCase is convenient for variables but rarely appropriate for reader-facing text. Picking the right mode saves cleanup later in the workflow.</p>
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Simple workflow tip</h3>
+        <p>Convert the text first, then check slug, length, and final wording with related tools. That works better than generating a slug or word count from a heading that still has broken capitalization.</p>
       </article>
       <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
         <h2 class="text-xl font-bold text-gray-900 mb-4">Related tools</h2>
@@ -107,16 +113,37 @@
           <a href="../tools/word-counter.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3"><span class="text-xl">📝</span><div><p class="font-bold text-gray-800 text-sm">Word Counter</p><p class="text-xs text-gray-500">Count words &amp; chars</p></div></a>
         </div>
       </section>
+      <section class="mt-8 bg-rose-50 rounded-3xl border border-rose-100 shadow-sm p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Useful next steps</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/find-replace.html" class="bg-white border border-rose-100 p-4 rounded-xl hover:shadow-md transition">
+            <p class="font-bold text-gray-800 text-sm mb-1">Find &amp; Replace</p>
+            <p class="text-xs text-gray-500">Clean repeated terms or old naming conventions after fixing case style.</p>
+          </a>
+          <a href="../categories/text-tools.html" class="bg-white border border-rose-100 p-4 rounded-xl hover:shadow-md transition">
+            <p class="font-bold text-gray-800 text-sm mb-1">Browse Text Tools</p>
+            <p class="text-xs text-gray-500">Continue into whitespace cleanup, word counts, sorting, slugs, and other editing helpers.</p>
+          </a>
+        </div>
+      </section>
     </div>
     <aside class="space-y-6">
       <div class="sticky top-24">
         <ins class="adsbygoogle ads-slot-sidebar" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
         
       </div>
-      <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl p-8 text-white shadow-2xl text-center">
-        <div class="text-5xl mb-4">☕</div>
-        <h3 class="text-2xl font-bold mb-3">Keep ToolBite Free!</h3>
-        <p class="text-orange-50 text-sm mb-6 leading-relaxed">If this tool helped, you can support hosting &amp; new features.</p>
+      <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Connected text workflow</h3>
+        <div class="space-y-3 text-sm">
+          <a href="../guides/seo-slug-best-practices.html" class="block rounded-xl border border-gray-100 bg-gray-50 p-4 hover:shadow-md transition">
+            <span class="font-bold text-gray-800">SEO Slug Best Practices</span>
+            <span class="block text-gray-500 mt-1">Useful after converting headlines or product names into cleaner reader-facing copy.</span>
+          </a>
+          <a href="../guides/index.html" class="block rounded-xl border border-gray-100 bg-gray-50 p-4 hover:shadow-md transition">
+            <span class="font-bold text-gray-800">Browse ToolBite guides</span>
+            <span class="block text-gray-500 mt-1">Move from quick editing into SEO, JSON, JWT, and publishing tutorials.</span>
+          </a>
+        </div>
       </div>
     </aside>
   </main>
@@ -127,6 +154,7 @@
       <div class="space-x-4 text-sm font-medium">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
       </div>

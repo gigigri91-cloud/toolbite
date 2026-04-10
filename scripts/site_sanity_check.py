@@ -15,6 +15,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 HTML_FILES = sorted(ROOT.rglob("*.html"))
 TOOL_FILES = sorted((ROOT / "tools").glob("*.html"))
+SITEMAP_XML = ROOT / "sitemap.xml"
 
 
 CHECKS = [
@@ -145,6 +146,34 @@ def check_shared_structure() -> list[str]:
     return issues
 
 
+def check_indexation_and_breadcrumbs() -> list[str]:
+    issues: list[str] = []
+    sitemap_text = read_text(SITEMAP_XML) if SITEMAP_XML.exists() else ""
+
+    for html_path in HTML_FILES:
+        text = read_text(html_path)
+        rel = html_path.relative_to(ROOT)
+        canonical = extract_single(
+            re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.IGNORECASE),
+            text,
+        )
+        robots = extract_single(
+            re.compile(r'<meta\s+name="robots"\s+content="([^"]+)"', re.IGNORECASE),
+            text,
+        )
+        has_breadcrumb_nav = 'aria-label="Breadcrumb"' in text
+        has_breadcrumb_schema = '"@type":"BreadcrumbList"' in text or '"@type": "BreadcrumbList"' in text
+
+        if robots and "noindex" in robots.lower():
+            if canonical and canonical in sitemap_text:
+                issues.append(f"{rel} is noindex but still present in sitemap.xml")
+
+        if has_breadcrumb_nav and html_path.name != "index.html" and not has_breadcrumb_schema:
+            issues.append(f"{rel} has visible breadcrumbs but no BreadcrumbList schema")
+
+    return issues
+
+
 def main() -> int:
     print(f"Scanning {len(HTML_FILES)} HTML files under {ROOT}")
     print("")
@@ -196,6 +225,18 @@ def main() -> int:
             print(f"  ... and {len(structure_issues) - 30} more")
     else:
         print("[OK]   Shared structural/accessibility checks")
+
+    print("")
+    indexation_issues = check_indexation_and_breadcrumbs()
+    if indexation_issues:
+        failed = True
+        print("[FAIL] Indexation and breadcrumb consistency")
+        for issue in indexation_issues[:30]:
+            print(f"  - {issue}")
+        if len(indexation_issues) > 30:
+            print(f"  ... and {len(indexation_issues) - 30} more")
+    else:
+        print("[OK]   Indexation and breadcrumb consistency")
 
     print("")
     if failed:

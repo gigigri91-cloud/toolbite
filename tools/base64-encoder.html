@@ -16,8 +16,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Base64 Encoder & Decoder | ToolBite">
   <meta name="twitter:description" content="Encode or decode Base64 snippets locally in your browser.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite Base64 Encoder","url":"https://toolbite.org/tools/base64-encoder.html","description":"Encode and decode Base64 strings with UTF-8 support.","applicationCategory":"DeveloperApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/index.html"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"Base64","item":"https://toolbite.org/tools/base64-encoder.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Base64 Encoder & Decoder Online | ToolBite","url":"https://toolbite.org/tools/base64-encoder.html","description":"Encode and decode Base64 strings with UTF-8 support in your browser.","applicationCategory":"DeveloperApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"Base64","item":"https://toolbite.org/tools/base64-encoder.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,12 +30,12 @@
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
-      <a href="../index.html" class="group flex items-center min-w-0 shrink leading-none">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]">
       </a>
       <nav class="hidden md:block" aria-label="Main">
         <ul class="flex flex-wrap justify-end gap-x-5 gap-y-1 items-center font-bold text-sm text-gray-700">
-          <li><a href="../index.html" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
           <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
           <li><a href="../categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
@@ -50,7 +50,7 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
       <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
-        <li><a href="../index.html" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
         <li><a href="../categories/image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
@@ -69,14 +69,17 @@
       </div>
       <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-2">
-          <li><a href="../index.html" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+          <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
           <li class="text-gray-800 font-medium">Base64</li>
         </ol>
       </nav>
       <div class="mb-6">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">Base64 Encoder &amp; Decoder</h1>
-        <p class="text-gray-600">Convert between plain text and Base64 with UTF-8 support — useful for APIs, JWT payloads, and debugging.</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">Base64 Encoder &amp; Decoder Online</h1>
+        <p class="text-gray-600">Convert between plain text and Base64 with UTF-8 support for APIs, data URIs, JWT debugging, and quick developer workflows.</p>
+      </div>
+      <div class="bg-amber-50 border border-amber-100 rounded-2xl p-4 mb-6 text-sm text-amber-900">
+        <strong>Privacy:</strong> Base64 encoding and decoding run locally in your browser. Your text is not uploaded to ToolBite.
       </div>
       <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
         <div class="flex gap-2 mb-4" role="tablist">
@@ -102,16 +105,49 @@
       <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Safe handling</h2>
         <p>Decoding invalid Base64 shows an error instead of garbage output. For secrets, prefer local tools like this one over pasting into untrusted sites.</p>
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">When Base64 is useful</h3>
+        <p>Base64 commonly appears in API payloads, basic auth headers, JWT-related debugging, data URIs, and transport layers that need text-safe encoding. It is useful for moving binary-like content through systems that expect plain text, but it is not encryption and should never be treated as protection by itself.</p>
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">UTF-8 matters</h3>
+        <p>Modern text often includes accented characters, emojis, or non-Latin scripts. UTF-8-aware encoding avoids the garbled output that older ASCII-only examples can produce when you paste real-world content into a Base64 tool.</p>
+        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Quick checklist</h3>
+        <ul>
+          <li>Use Base64 for transport compatibility, not secrecy.</li>
+          <li>Decode locally if the string may contain private data.</li>
+          <li>Verify whether the source expects raw bytes, UTF-8 text, or URL-safe Base64.</li>
+          <li>For tokens and API debugging, inspect structure after decoding rather than trusting the content.</li>
+        </ul>
       </article>
+      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Related developer workflows</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/hash-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
+            <p class="font-bold text-gray-800 text-sm mb-1">Hash Generator</p>
+            <p class="text-xs text-gray-500">Useful when you also need digests, checksums, or non-reversible fingerprints for text values.</p>
+          </a>
+          <a href="../tools/url-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
+            <p class="font-bold text-gray-800 text-sm mb-1">URL Encoder</p>
+            <p class="text-xs text-gray-500">Helpful when encoded values also need to move safely through query strings or redirect parameters.</p>
+          </a>
+        </div>
+      </section>
     </div>
     <aside class="space-y-6">
       <div class="sticky top-24">
         <ins class="adsbygoogle ads-slot-sidebar" style="display:block" data-ad-client="ca-pub-5233222002046639" data-ad-format="auto" data-full-width-responsive="true"></ins>
         
       </div>
-      <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl p-8 text-white shadow-2xl text-center">
-        <div class="text-5xl mb-4">☕</div>
-        <h3 class="text-2xl font-bold mb-3">Support ToolBite</h3>
+      <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Related developer resources</h2>
+        <div class="space-y-3 text-sm">
+          <a href="../tools/jwt-decoder.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+            <p class="font-bold text-gray-800">JWT Decoder</p>
+            <p class="text-gray-500 mt-1">Inspect token payloads after decoding or handling Base64-like data.</p>
+          </a>
+          <a href="../categories/developer-tools.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+            <p class="font-bold text-gray-800">Developer Tools category</p>
+            <p class="text-gray-500 mt-1">Browse JSON, URL encoding, hashing, UUIDs, and more browser-based utilities.</p>
+          </a>
+        </div>
       </div>
     </aside>
   </main>
@@ -124,6 +160,7 @@
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+        <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
       </div>
     </div>
   </footer>

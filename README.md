@@ -119,12 +119,27 @@ Ad rendering is centralized in `main.js`.
 - Canonicals exist on content pages.
 - `search.html` intentionally has no canonical and is disallowed in `robots.txt`.
 - `sitemap.xml` contains root pages, categories, tools, and guides.
+- Page-family SEO requirements are documented in `SEO-PAGE-TYPES.md`.
 
 When adding/removing pages:
 1. update internal links
 2. update `sitemap.xml`
 3. verify canonical path
 4. keep robots rules coherent
+
+### 5.1 Page-family SEO contract
+
+Use `SEO-PAGE-TYPES.md` as the source of truth for minimum SEO requirements by page family:
+
+- homepage
+- category pages
+- tool pages
+- guide index
+- guide articles
+- root info pages
+- search page
+
+This matters because the repo does not use shared HTML templates. The `<head>`, breadcrumb, and schema patterns are repeated manually across many pages.
 
 ---
 
@@ -211,7 +226,9 @@ After meaningful edits, test:
 
 Before release, run:
 
-`python3 scripts/site_sanity_check.py`
+- `python3 scripts/site_sanity_check.py`
+- `python3 scripts/check_internal_links.py`
+- `python3 scripts/validate_html_structure.py`
 
 GitHub Actions also runs the same check automatically on:
 - every `push`
@@ -220,6 +237,9 @@ GitHub Actions also runs the same check automatically on:
 
 Workflow file:
 - `.github/workflows/site-sanity.yml`
+
+It runs:
+- `python3 scripts/site_sanity_check.py`
 - `python3 scripts/check_internal_links.py`
 - `python3 scripts/validate_html_structure.py`
 
@@ -231,6 +251,7 @@ It validates:
 - homepage canonical/OG/sitemap consistency
 - required OG/Twitter + schema completeness on tool pages
 - shared structural checks (`lang`, search noindex/canonical rules, menu ARIA)
+- page-family SEO checks (breadcrumb nav/schema, CollectionPage/WebApplication/Article expectations, noindex rules on special pages)
 - internal links, assets, and local anchors
 
 ### Additional CI workflows
