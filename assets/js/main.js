@@ -1007,7 +1007,7 @@ function generatePalette() {
     function injectAdsenseScript() {
         if (adsInjected) return;
         if (!adsClientId || !/^ca-pub-/.test(adsClientId)) return;
-        if (document.querySelector('script[data-toolbite-adsense-loader]')) {
+        if (Array.from(document.scripts).some((node) => node.src && node.src.indexOf(ADSENSE_BASE_SRC) === 0)) {
             adsInjected = true;
             return;
         }
@@ -1017,7 +1017,6 @@ function generatePalette() {
         script.async = true;
         script.crossOrigin = 'anonymous';
         script.src = `${ADSENSE_BASE_SRC}?client=${encodeURIComponent(adsClientId)}`;
-        script.setAttribute('data-toolbite-adsense-loader', 'true');
         document.head.appendChild(script);
     }
 
