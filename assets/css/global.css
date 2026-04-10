@@ -86,11 +86,15 @@ h1, h2, .font-display {
  * which can win in the cascade and make the logo huge in Chrome.
  * We lock the box explicitly. max-width: 100% prevents Chrome scrollbar overflow bugs.
  */
+picture.header-logo-picture {
+    display: block;
+    min-width: 0;
+}
 img.header-logo {
     height: 2.5rem !important;
     max-height: 2.5rem !important;
     width: auto !important;
-    aspect-ratio: 1024 / 281;
+    aspect-ratio: 384 / 105;
     max-width: min(16.5rem, 100%) !important;
     object-fit: contain;
     object-position: left center;
@@ -118,7 +122,7 @@ img.header-logo {
     }
 }
 
-header a:has(> img.header-logo) {
+header a:has(> picture.header-logo-picture) {
     min-width: 0;
 }
 
