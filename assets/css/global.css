@@ -138,6 +138,18 @@ header a:has(> picture.header-logo-picture) {
     min-width: 0;
 }
 
+/* Wordmark on dark header: blue lifts off slate; soft glow for legibility */
+html.dark img.header-logo {
+    filter: brightness(1.2) saturate(1.15) contrast(1.05)
+        drop-shadow(0 0 0.5rem rgba(147, 197, 253, 0.5))
+        drop-shadow(0 0 0.08rem rgba(255, 255, 255, 0.35));
+}
+html.dark #site-header.header-small img.header-logo {
+    filter: brightness(1.14) saturate(1.1) contrast(1.04)
+        drop-shadow(0 0 0.35rem rgba(147, 197, 253, 0.42))
+        drop-shadow(0 0 0.06rem rgba(255, 255, 255, 0.28));
+}
+
 /* Header shrink animation on scroll — no transition on padding/height
    to avoid janky reflow in Chrome */
 #site-header { overflow: visible; }
