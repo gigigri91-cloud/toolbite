@@ -1,5 +1,8 @@
 User-agent: *
-Allow: /
 Disallow: /search.html
+
+# Permite accesul explicit pentru ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
 
 Sitemap: https://toolbite.org/sitemap.xml

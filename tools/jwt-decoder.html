@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="JWT Decoder Online | Decode Header &amp; Payload Locally | ToolBite">
   <meta name="twitter:description" content="Inspect JWT header and payload online in your browser. Decode-only, no signature verification claims.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder Online | ToolBite","url":"https://toolbite.org/tools/jwt-decoder.html","description":"Decode JWT header and payload JSON in the browser without claiming signature verification.","applicationCategory":"DeveloperApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder Online | ToolBite","url":"https://toolbite.org/tools/jwt-decoder.html","description":"Decode JWT header and payload JSON in the browser without claiming signature verification.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-11","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"JWT Decoder","item":"https://toolbite.org/tools/jwt-decoder.html"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this JWT Decoder verify signatures?","acceptedAnswer":{"@type":"Answer","text":"No. It only decodes header and payload for inspection. Signature verification requires your secret or public key and must happen in your backend/auth flow."}},{"@type":"Question","name":"Is my token uploaded to ToolBite servers?","acceptedAnswer":{"@type":"Answer","text":"No. Decoding runs locally in your browser and nothing is sent to ToolBite for processing."}},{"@type":"Question","name":"Why do I see an invalid token error?","acceptedAnswer":{"@type":"Answer","text":"Common causes are malformed Base64url segments, missing dots between segments, or non-JSON data in header/payload."}}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
@@ -176,6 +176,24 @@
         </div>
       </div>
     </aside>
+    <section class="mt-10 lg:col-span-3 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 text-left" aria-labelledby="related-resources-heading">
+      <h2 id="related-resources-heading" class="text-2xl font-bold text-gray-900 mb-2 text-center md:text-left">Related Resources</h2>
+      <p class="text-sm text-gray-600 mb-6 text-center md:text-left max-w-2xl">Hand-picked links for token inspection, claim debugging, and adjacent structured-data tasks.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <a href="json-formatter.html" class="group bg-gray-50 border border-gray-100 rounded-2xl p-5 md:p-6 hover:shadow-md transition flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+          <span class="text-xs font-bold uppercase tracking-wide text-blue-600 mb-2">Tool</span>
+          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition">JSON Formatter</h3>
+          <p class="text-sm text-gray-600 flex-grow">Beautify or minify JSON that appears in JWT claims, API responses, and config snippets—processed locally in your browser.</p>
+          <span class="mt-4 text-sm font-semibold text-blue-600 group-hover:text-blue-800 transition">Open tool →</span>
+        </a>
+        <a href="../guides/jwt-decoder-guide.html" class="group bg-gray-50 border border-gray-100 rounded-2xl p-5 md:p-6 hover:shadow-md transition flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+          <span class="text-xs font-bold uppercase tracking-wide text-orange-600 mb-2">Guide</span>
+          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-700 transition">JWT Decoder Guide</h3>
+          <p class="text-sm text-gray-600 flex-grow">Learn decode vs verify, which claims matter for troubleshooting, and why signature checks belong on your backend.</p>
+          <span class="mt-4 text-sm font-semibold text-orange-600 group-hover:text-orange-800 transition">Read guide →</span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
