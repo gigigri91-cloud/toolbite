@@ -1,0 +1,264 @@
+{
+  "_meta": "Canonical SEO + JSON-LD sync for ToolBite HTML. Run: python3 scripts/seo_metadata.py --apply && python3 scripts/seo_metadata.py --check. page_type: homepage | category | tool | guide_hub | guide_article | trust | utility. Optional: og_title, og_description; schema_date_modified (YYYY-MM-DD or ISO); schema_breadcrumb_leaf (tool/guide last crumb); schema_article_headline (Article). FAQPage & ItemList blocks are not auto-edited.",
+  "origin": "https://toolbite.org",
+  "og_image": "https://toolbite.org/assets/images/social-preview.jpg",
+  "pages": {
+    "index.html": {
+      "page_type": "homepage",
+      "title": "ToolBite — Private, browser-based tools for text, developers & SEO",
+      "description": "Free utilities that run in your browser: text cleanup, JSON and JWT helpers, image compression, and SEO helpers. Routine processing stays on your device—no account required.",
+      "canonical": "https://toolbite.org/",
+      "og_type": "website",
+      "h1_target": "hero",
+      "h1_inner": "Fast, private &amp; local web tools"
+    },
+    "about.html": {
+      "page_type": "trust",
+      "title": "About ToolBite — Local-first browser utilities",
+      "description": "Who builds ToolBite, why we ship static client-side tools, and how we keep everyday workflows out of our servers when the tool allows it.",
+      "canonical": "https://toolbite.org/about.html",
+      "og_type": "website",
+      "h1_inner": "About <span class=\"text-blue-600\">ToolBite</span>"
+    },
+    "privacy.html": {
+      "page_type": "trust",
+      "title": "Privacy policy — ToolBite",
+      "description": "How ToolBite handles browser-local processing, hosting logs, cookies, Google AdSense, and third parties. Plain language, no hidden data collection pitch.",
+      "canonical": "https://toolbite.org/privacy.html",
+      "og_type": "website",
+      "h1_inner": "ToolBite <span class=\"text-blue-600\">Privacy Policy</span>"
+    },
+    "terms.html": {
+      "page_type": "trust",
+      "title": "Terms of service — ToolBite",
+      "description": "Rules for using ToolBite’s free browser tools: acceptable use, no-warranty stance, ads, and limitations—short and practical.",
+      "canonical": "https://toolbite.org/terms.html",
+      "og_type": "website",
+      "h1_inner": "ToolBite <span class=\"text-blue-600\">Terms of Service</span>"
+    },
+    "contact.html": {
+      "page_type": "trust",
+      "title": "Contact ToolBite — Bugs, ideas & partnerships",
+      "description": "Reach the ToolBite team for bug reports, tool requests, or partnerships. We read everything; response time varies.",
+      "canonical": "https://toolbite.org/contact.html",
+      "og_type": "website",
+      "h1_inner": "Contact <span class=\"text-blue-600\">ToolBite</span>"
+    },
+    "search.html": {
+      "page_type": "utility",
+      "title": "Search tools — ToolBite",
+      "description": "Find a ToolBite utility by name or keyword. Results load in your browser; this page is not indexed.",
+      "canonical": null,
+      "og_type": "website",
+      "h1_inner": "Search tools"
+    },
+    "categories/text-tools.html": {
+      "page_type": "category",
+      "title": "Text tools — edit & clean copy in your browser | ToolBite",
+      "description": "Case changes, spacing cleanup, counters, slugs, and line tools—all run locally in the browser so drafts stay on your device.",
+      "canonical": "https://toolbite.org/categories/text-tools.html",
+      "og_type": "website",
+      "h1_inner": "Text &amp; content tools"
+    },
+    "categories/developer-tools.html": {
+      "page_type": "category",
+      "title": "Developer tools — JSON, JWT, encoding & hashes | ToolBite",
+      "description": "Format JSON, decode JWT headers and payloads for inspection, Base64, URL encoding, UUIDs, and SHA helpers—client-side where the tool allows it.",
+      "canonical": "https://toolbite.org/categories/developer-tools.html",
+      "og_type": "website",
+      "h1_inner": "Developer &amp; debugging tools"
+    },
+    "categories/image-tools.html": {
+      "page_type": "category",
+      "title": "Image tools — compress & convert in the browser | ToolBite",
+      "description": "Resize-ready compression and lightweight image workflows using browser APIs—files are not uploaded to ToolBite for processing.",
+      "canonical": "https://toolbite.org/categories/image-tools.html",
+      "og_type": "website",
+      "h1_inner": "Image &amp; media tools"
+    },
+    "categories/seo-tools.html": {
+      "page_type": "category",
+      "title": "SEO tools — slugs, read time & publishing helpers | ToolBite",
+      "description": "Slug builders, read-time estimates, and small utilities that support SEO and publishing workflows without sending your copy to our servers.",
+      "canonical": "https://toolbite.org/categories/seo-tools.html",
+      "og_type": "website",
+      "h1_inner": "SEO &amp; content tools"
+    },
+    "guides/index.html": {
+      "page_type": "guide_hub",
+      "title": "Guides — JSON, JWT & SEO workflows | ToolBite",
+      "description": "Short, practical write-ups tied to ToolBite utilities: fix broken JSON, decode JWTs safely, and tighten URL slugs—all with a browser-first mindset.",
+      "canonical": "https://toolbite.org/guides/index.html",
+      "og_type": "website",
+      "h1_inner": "ToolBite guides &amp; tutorials"
+    },
+    "guides/json-formatter-guide.html": {
+      "page_type": "guide_article",
+      "title": "Guide: fix invalid JSON in the browser | ToolBite",
+      "description": "A straight checklist for trailing commas, quotes, and common parse errors—meant for API payloads and config you paste into ToolBite’s formatter.",
+      "canonical": "https://toolbite.org/guides/json-formatter-guide.html",
+      "og_type": "article",
+      "h1_inner": "JSON formatter guide: fix invalid JSON fast"
+    },
+    "guides/jwt-decoder-guide.html": {
+      "page_type": "guide_article",
+      "title": "Guide: decode JWTs safely (decode ≠ verify) | ToolBite",
+      "description": "What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.",
+      "canonical": "https://toolbite.org/guides/jwt-decoder-guide.html",
+      "og_type": "article",
+      "h1_inner": "How to decode JWT safely (without trusting payload)"
+    },
+    "guides/seo-slug-best-practices.html": {
+      "page_type": "guide_article",
+      "title": "Guide: SEO-friendly URL slugs | ToolBite",
+      "description": "Length, separators, keywords, and mistakes that waste crawl budget—paired with ToolBite’s text-to-slug helper for quick clean URLs.",
+      "canonical": "https://toolbite.org/guides/seo-slug-best-practices.html",
+      "og_type": "article",
+      "h1_inner": "SEO slug best practices (with examples)"
+    },
+    "tools/word-counter.html": {
+      "page_type": "tool",
+      "title": "Word counter — counts in your browser | ToolBite",
+      "description": "Words, characters, sentences, and paragraphs for drafts and specs. Everything runs locally after the page loads—paste long documents freely.",
+      "canonical": "https://toolbite.org/tools/word-counter.html",
+      "og_type": "website",
+      "h1_inner": "Word counter online"
+    },
+    "tools/password-generator.html": {
+      "page_type": "tool",
+      "title": "Password generator — cryptographically strong, local | ToolBite",
+      "description": "Generate long random passwords with the Web Crypto API where available. Nothing is sent to ToolBite; copy and store secrets in your own vault.",
+      "canonical": "https://toolbite.org/tools/password-generator.html",
+      "og_type": "website",
+      "h1_inner": "Password generator online"
+    },
+    "tools/json-formatter.html": {
+      "page_type": "tool",
+      "title": "JSON formatter & validator — beautify in the browser | ToolBite",
+      "description": "Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.",
+      "canonical": "https://toolbite.org/tools/json-formatter.html",
+      "og_type": "website",
+      "h1_inner": "JSON formatter &amp; validator online"
+    },
+    "tools/find-replace.html": {
+      "page_type": "tool",
+      "title": "Find & replace text — bulk edits locally | ToolBite",
+      "description": "Replace phrases across long pasted text with optional case sensitivity. Runs entirely in JavaScript—good for logs, lists, and CMS exports.",
+      "canonical": "https://toolbite.org/tools/find-replace.html",
+      "og_type": "website",
+      "h1_inner": "Find &amp; replace text online"
+    },
+    "tools/lorem-ipsum.html": {
+      "page_type": "tool",
+      "title": "Lorem ipsum generator — placeholder copy in-browser | ToolBite",
+      "description": "Classic filler paragraphs for layouts and CMS previews. Generated text never leaves your browser session.",
+      "canonical": "https://toolbite.org/tools/lorem-ipsum.html",
+      "og_type": "website",
+      "h1_inner": "Lorem ipsum generator"
+    },
+    "tools/remove-extra-spaces.html": {
+      "page_type": "tool",
+      "title": "Remove extra spaces — clean pasted text locally | ToolBite",
+      "description": "Collapse runs of spaces, trim lines, or strip blank lines from messy copy. All transformations happen client-side for privacy.",
+      "canonical": "https://toolbite.org/tools/remove-extra-spaces.html",
+      "og_type": "website",
+      "h1_inner": "Remove extra spaces online"
+    },
+    "tools/image-compressor.html": {
+      "page_type": "tool",
+      "title": "Image compressor — shrink files in your browser | ToolBite",
+      "description": "JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.",
+      "canonical": "https://toolbite.org/tools/image-compressor.html",
+      "og_type": "website",
+      "h1_inner": "Image compressor online"
+    },
+    "tools/color-palette-generator.html": {
+      "page_type": "tool",
+      "title": "Color palette generator — random HEX sets | ToolBite",
+      "description": "Spin up five-color palettes and copy HEX codes with one click. Useful for UI spikes; all randomness runs in the browser.",
+      "canonical": "https://toolbite.org/tools/color-palette-generator.html",
+      "og_type": "website",
+      "h1_inner": "Color palette generator online"
+    },
+    "tools/case-converter.html": {
+      "page_type": "tool",
+      "title": "Case converter — UPPER, lower, Title, camelCase | ToolBite",
+      "description": "Switch naming styles for code, headings, or data cleanup without sending strings to a backend—paste, convert, copy.",
+      "canonical": "https://toolbite.org/tools/case-converter.html",
+      "og_type": "website",
+      "h1_inner": "Case converter"
+    },
+    "tools/text-to-slug.html": {
+      "page_type": "tool",
+      "title": "Text to slug — URL-safe strings in-browser | ToolBite",
+      "description": "Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.",
+      "canonical": "https://toolbite.org/tools/text-to-slug.html",
+      "og_type": "website",
+      "h1_inner": "Text to slug generator online"
+    },
+    "tools/read-time-calculator.html": {
+      "page_type": "tool",
+      "title": "Read time calculator — estimate minutes to read | ToolBite",
+      "description": "Paste an article or doc to approximate reading time from word count. Handy before publishing; runs fully client-side.",
+      "canonical": "https://toolbite.org/tools/read-time-calculator.html",
+      "og_type": "website",
+      "h1_inner": "Reading time calculator"
+    },
+    "tools/base64-encoder.html": {
+      "page_type": "tool",
+      "title": "Base64 encoder & decoder — UTF-8 aware | ToolBite",
+      "description": "Encode or decode Base64 for tokens, snippets, and small payloads. Strings stay in your browser tab unless you copy them elsewhere.",
+      "canonical": "https://toolbite.org/tools/base64-encoder.html",
+      "og_type": "website",
+      "h1_inner": "Base64 encoder &amp; decoder online"
+    },
+    "tools/uuid-generator.html": {
+      "page_type": "tool",
+      "title": "UUID generator — version 4 IDs locally | ToolBite",
+      "description": "Generate random v4 UUIDs for databases, fixtures, and API tests. IDs are created in-browser; nothing is logged by ToolBite.",
+      "canonical": "https://toolbite.org/tools/uuid-generator.html",
+      "og_type": "website",
+      "h1_inner": "UUID / GUID generator"
+    },
+    "tools/url-encoder.html": {
+      "page_type": "tool",
+      "title": "URL encoder & decoder — query-safe strings | ToolBite",
+      "description": "Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.",
+      "canonical": "https://toolbite.org/tools/url-encoder.html",
+      "og_type": "website",
+      "h1_inner": "URL encoder &amp; decoder"
+    },
+    "tools/hash-generator.html": {
+      "page_type": "tool",
+      "title": "Hash generator — SHA-256 & SHA-1 in-browser | ToolBite",
+      "description": "Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.",
+      "canonical": "https://toolbite.org/tools/hash-generator.html",
+      "og_type": "website",
+      "h1_inner": "SHA-256 &amp; SHA-1 hash generator"
+    },
+    "tools/jwt-decoder.html": {
+      "page_type": "tool",
+      "title": "JWT decoder — inspect header & payload locally | ToolBite",
+      "description": "Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.",
+      "canonical": "https://toolbite.org/tools/jwt-decoder.html",
+      "og_type": "website",
+      "h1_inner": "JWT decoder online"
+    },
+    "tools/remove-duplicate-lines.html": {
+      "page_type": "tool",
+      "title": "Remove duplicate lines — dedupe lists locally | ToolBite",
+      "description": "Keep first occurrences of repeated lines in pasted logs, keywords, or inventories. No server round-trip for the dedupe logic.",
+      "canonical": "https://toolbite.org/tools/remove-duplicate-lines.html",
+      "og_type": "website",
+      "h1_inner": "Remove duplicate lines"
+    },
+    "tools/sort-text-lines.html": {
+      "page_type": "tool",
+      "title": "Sort text lines — alphabetical or reverse | ToolBite",
+      "description": "Alphabetize or reverse lines for quick cleanup of exports and checklists. Sorting runs entirely in your browser.",
+      "canonical": "https://toolbite.org/tools/sort-text-lines.html",
+      "og_type": "website",
+      "h1_inner": "Sort text lines"
+    }
+  }
+}

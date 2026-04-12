@@ -5,21 +5,22 @@
   <script src="assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>ToolBite — Fast, Privacy-First Text, SEO, Image &amp; Developer Tools (100% Local in Your Browser)</title>
+  <title>ToolBite — Private, browser-based tools for text, developers &amp; SEO</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/">
-  <meta name="description" content="ToolBite is a free suite of text, SEO, image, and developer utilities that run entirely in your browser on your device—no server uploads of your content, fast client-side processing, and a privacy-first workflow for everyday edits, checks, and conversions.">
-  <meta name="theme-color" content="#2563eb">
-
+  <meta name="description" content="Free utilities that run in your browser: text cleanup, JSON and JWT helpers, image compression, and SEO helpers. Routine processing stays on your device—no account required.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/">
-  <meta property="og:title" content="Free Online Tools for Text, SEO, Images &amp; Developers | ToolBite">
-  <meta property="og:description" content="Use privacy-first browser tools for text cleanup, SEO tasks, image work, and developer workflows.">
+  <meta property="og:title" content="ToolBite — Private, browser-based tools for text, developers &amp; SEO">
+  <meta property="og:description" content="Free utilities that run in your browser: text cleanup, JSON and JWT helpers, image compression, and SEO helpers. Routine processing stays on your device—no account required.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Online Tools for Text, SEO, Images &amp; Developers | ToolBite">
-  <meta name="twitter:description" content="Use privacy-first browser tools for text cleanup, SEO tasks, image work, and developer workflows.">
+  <meta name="twitter:title" content="ToolBite — Private, browser-based tools for text, developers &amp; SEO">
+  <meta name="twitter:description" content="Free utilities that run in your browser: text cleanup, JSON and JWT helpers, image compression, and SEO helpers. Routine processing stays on your device—no account required.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <meta name="theme-color" content="#2563eb">
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -28,7 +29,7 @@
     "@type": "WebSite",
     "name": "ToolBite",
     "url": "https://toolbite.org/",
-    "description": "Use free online tools for text, SEO, images, and developer workflows. ToolBite is privacy-first, browser-based, and built for fast everyday tasks.",
+    "description": "Free utilities that run in your browser: text cleanup, JSON and JWT helpers, image compression, and SEO helpers. Routine processing stays on your device—no account required.",
     "publisher": {
       "@type": "Organization",
       "name": "ToolBite",
@@ -42,13 +43,14 @@
       "@type": "Organization",
       "name": "ToolBite"
     },
-    "dateModified": "2026-04-11T00:00:00.000Z",
+    "dateModified": "2026-04-12T00:00:00.000Z",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://toolbite.org/search.html?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
+
   </script>
   <script type="application/ld+json">
   {
@@ -57,9 +59,10 @@
     "name": "ToolBite",
     "url": "https://toolbite.org/",
     "logo": "https://toolbite.org/assets/images/toolbite-logo.png",
-    "description": "Free browser-based utilities for writers, developers, and marketers.",
-    "dateModified": "2026-04-11T00:00:00.000Z"
+    "description": "Free utilities that run in your browser: text cleanup, JSON and JWT helpers, image compression, and SEO helpers. Routine processing stays on your device—no account required.",
+    "dateModified": "2026-04-12T00:00:00.000Z"
   }
+
   </script>
   <script type="application/ld+json">
   {
@@ -119,6 +122,8 @@
   <link rel="stylesheet" href="assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
 
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
@@ -157,13 +162,13 @@
   <section class="tb-hero p-12 md:p-20 text-center text-white shadow-inner" aria-labelledby="homepage-hero-title" style="background: linear-gradient(125deg, #1e40af 0%, #2563eb 42%, #c2410c 100%);">
     <div class="tb-hero-inner max-w-4xl mx-auto">
       <p class="text-sm md:text-base font-semibold uppercase tracking-widest text-blue-100/90 mb-3">Privacy-first · No uploads · Works offline after load</p>
-      <h1 id="homepage-hero-title" class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md font-display leading-tight">Free Text, SEO, Image &amp; Developer Tools That Run Locally in Your Browser</h1>
+      <h1 id="homepage-hero-title" class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md font-display leading-tight">Fast, private &amp; local web tools</h1>
       <p class="text-sm md:text-base text-blue-100/95 mb-6 font-semibold tracking-wide">
         <span class="sr-only">Author: </span><span class="text-white/95">ToolBite Team</span>
         <span class="mx-2 text-white/45 font-normal" aria-hidden="true">·</span>
         <time datetime="2026-04-11">Last updated April 11, 2026</time>
       </p>
-      <p class="text-lg md:text-2xl mb-8 text-white/90 font-medium">ToolBite helps you format text, tune SEO details, compress images, and handle common developer tasks with utilities that execute safely and quickly in your own browser—your input stays on your device with no routine uploads to our servers, so it is appropriate whenever you need a private, low-latency alternative to sending drafts, tokens, or files over the network.</p>
+      <p class="text-lg md:text-2xl mb-8 text-white/90 font-medium">ToolBite provides a collection of essential web utilities designed with privacy at their core. Unlike traditional online converters, our tools process your data entirely within your browser. This means your sensitive information never leaves your device, ensuring total security and instant results.</p>
       <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
         <label for="hero-search" class="sr-only">Search tools</label>
         <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Base64, slug, word counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300/80 text-lg transition bg-white/95 backdrop-blur-sm">
@@ -182,7 +187,7 @@
     </div>
   </section>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
 
     <section class="mb-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10" aria-labelledby="homepage-intro-title">
       <div class="max-w-4xl">
@@ -370,13 +375,13 @@
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
 

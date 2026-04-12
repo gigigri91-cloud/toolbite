@@ -1,0 +1,237 @@
+{
+  "_comment": "Per-tool copy for standard page blocks (how-to, use cases, FAQ when no FAQPage in HTML). category: text-tools | developer-tools | image-tools | seo-tools",
+  "tools/word-counter.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Paste or type your text in the box.",
+      "Watch words, characters, sentences, and paragraphs update instantly.",
+      "Use Copy or Clear when you are done."
+    ],
+    "use_cases": [
+      ["Drafts & essays", "Hit school or editorial word targets without uploading your document."],
+      ["SEO & meta copy", "Check title and description length before publishing."],
+      ["Social posts", "Stay within character limits for each platform."]
+    ]
+  },
+  "tools/password-generator.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Choose length and character types (letters, numbers, symbols).",
+      "Click Generate to create a new random password.",
+      "Copy once and store it in your password manager—never reuse across sites."
+    ],
+    "use_cases": [
+      ["New accounts", "Create a strong unique password for every signup."],
+      ["Rotations", "Generate a fresh secret when you suspect a leak."],
+      ["API keys & fixtures", "Use random strings for local test data (not production secrets alone)."]
+    ]
+  },
+  "tools/json-formatter.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Paste JSON into the editor.",
+      "Use Format/Beautify to read it, or Minify for compact output.",
+      "Fix any syntax error the validator reports, then copy the result."
+    ],
+    "use_cases": [
+      ["API responses", "Read nested payloads while debugging."],
+      ["JSON-LD & Schema.org", "Validate snippets before dropping them into templates."],
+      ["Config files", "Spot trailing commas and quoting issues quickly."]
+    ]
+  },
+  "tools/find-replace.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Paste your source text.",
+      "Enter find text and replacement (optionally enable case-sensitive mode).",
+      "Use Replace All or step through, then copy the result."
+    ],
+    "use_cases": [
+      ["CMS exports", "Rename repeated labels across a long paste."],
+      ["Logs & lists", "Swap delimiters or fix typos in bulk."],
+      ["Localization prep", "Replace placeholder tokens before translation."]
+    ]
+  },
+  "tools/lorem-ipsum.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Pick how many paragraphs you need.",
+      "Generate placeholder copy.",
+      "Copy into your layout or CMS preview."
+    ],
+    "use_cases": [
+      ["Wireframes", "Fill cards and columns before real copy exists."],
+      ["Theme demos", "Show typography rhythm without distracting text."],
+      ["Print mockups", "Stand in for body copy during reviews."]
+    ]
+  },
+  "tools/remove-extra-spaces.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Paste messy text from PDFs, email, or the web.",
+      "Choose collapse spaces, trim lines, and/or remove empty lines.",
+      "Copy the cleaned version into your doc or editor."
+    ],
+    "use_cases": [
+      ["Pasted PDFs", "Remove double spaces and broken line breaks."],
+      ["CSV prep", "Normalize whitespace before splitting columns."],
+      ["Chat logs", "Tighten blocks before quoting or archiving."]
+    ]
+  },
+  "tools/image-compressor.html": {
+    "category": "image-tools",
+    "how_to": [
+      "Drag in or select JPG, PNG, GIF, or WebP images.",
+      "Adjust quality and output format.",
+      "Download the smaller file—processing stays in your browser."
+    ],
+    "use_cases": [
+      ["Blog & CMS uploads", "Reduce hero and inline image weight."],
+      ["Email attachments", "Shrink photos before sending."],
+      ["Portfolio sites", "Balance quality and Lighthouse scores."]
+    ]
+  },
+  "tools/color-palette-generator.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Click Generate for a new five-color palette.",
+      "Click any swatch to copy its HEX code.",
+      "Repeat until you find a set that fits your UI spike."
+    ],
+    "use_cases": [
+      ["UI exploration", "Try unexpected combinations fast."],
+      ["Branding mood boards", "Collect candidates before refining."],
+      ["CSS variables", "Copy HEX values straight into your stylesheet."]
+    ]
+  },
+  "tools/case-converter.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Paste or type your text.",
+      "Tap UPPERCASE, Title Case, camelCase, or another mode.",
+      "Copy the converted text or clear and start over."
+    ],
+    "use_cases": [
+      ["Headlines & UI labels", "Normalize titles before publishing."],
+      ["Code & JSON keys", "Switch to camelCase for variables and APIs."],
+      ["Imported copy", "Fix inconsistent capitalization in one pass."]
+    ]
+  },
+  "tools/text-to-slug.html": {
+    "category": "seo-tools",
+    "how_to": [
+      "Paste a headline or phrase.",
+      "Review the generated slug (lowercase, hyphenated).",
+      "Copy into your CMS, router, or static site config."
+    ],
+    "use_cases": [
+      ["Blog permalinks", "Keep URLs short and readable."],
+      ["Product pages", "Align slug with primary keywords."],
+      ["Multilingual titles", "Strip accents and unsafe characters."]
+    ]
+  },
+  "tools/read-time-calculator.html": {
+    "category": "seo-tools",
+    "how_to": [
+      "Paste article body text (headings optional).",
+      "Adjust words-per-minute if your audience reads faster or slower.",
+      "Use the estimated read time in bylines or meta."
+    ],
+    "use_cases": [
+      ["Editorial briefs", "Set reader expectations up front."],
+      ["Newsletters", "Match depth to subscriber attention."],
+      ["Course modules", "Balance lesson length across a syllabus."]
+    ]
+  },
+  "tools/base64-encoder.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Paste UTF-8 text or a Base64 string.",
+      "Choose Encode or Decode.",
+      "Copy the output for tokens, snippets, or debugging."
+    ],
+    "use_cases": [
+      ["JWT segments", "Inspect Base64url payloads alongside the JWT decoder."],
+      ["Binary-safe text", "Move small blobs through JSON-safe strings."],
+      ["Local tests", "Encode fixtures without a CLI."]
+    ]
+  },
+  "tools/uuid-generator.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Click Generate for a random version 4 UUID.",
+      "Copy the value into your migration, fixture, or API client.",
+      "Generate as many as you need—each click is independent."
+    ],
+    "use_cases": [
+      ["Database keys", "Primary keys for new rows in dev."],
+      ["Correlation IDs", "Tag requests across services in logs."],
+      ["Mock APIs", "Stable-looking IDs for examples and tests."]
+    ]
+  },
+  "tools/url-encoder.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Paste a URL or a string that should be encoded/decoded.",
+      "Pick the mode that matches your use (component vs full URL).",
+      "Copy the transformed value into your code or browser bar."
+    ],
+    "use_cases": [
+      ["Query strings", "Encode reserved characters safely."],
+      ["Redirect URLs", "Wrap deep links passed as parameters."],
+      ["Debugging", "Decode messy URLs from logs."]
+    ]
+  },
+  "tools/hash-generator.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Paste the text you want to digest.",
+      "Choose SHA-256 or SHA-1 (hex output).",
+      "Copy the hash for checksums or quick comparisons."
+    ],
+    "use_cases": [
+      ["Integrity checks", "Compare hashes before and after a transfer."],
+      ["Cache keys", "Derive deterministic fingerprints from strings."],
+      ["Pair with other tools", "Hash JSON after formatting to spot silent edits."]
+    ]
+  },
+  "tools/jwt-decoder.html": {
+    "category": "developer-tools",
+    "how_to": [
+      "Paste a JWT (three Base64url segments separated by dots).",
+      "Read the decoded header and payload JSON locally.",
+      "Remember: decode ≠ verify—check signatures only in trusted backends."
+    ],
+    "use_cases": [
+      ["Auth debugging", "Inspect claims and expiry during integration."],
+      ["API gateways", "Compare issuer, audience, and scopes quickly."],
+      ["Learning", "Pair with the JWT guide for decode vs verify."]
+    ]
+  },
+  "tools/remove-duplicate-lines.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Paste one item per line.",
+      "Choose whether to trim whitespace before comparing keys.",
+      "Dedupe and copy—first occurrence is kept by default."
+    ],
+    "use_cases": [
+      ["Keyword lists", "Collapse repeated terms from exports."],
+      ["Logs", "Shrink noisy stack traces or events for review."],
+      ["Inventory", "Clean merged spreadsheets before sorting."]
+    ]
+  },
+  "tools/sort-text-lines.html": {
+    "category": "text-tools",
+    "how_to": [
+      "Paste lines (one row per item).",
+      "Toggle ignore-case if your list mixes capitalization.",
+      "Sort A→Z or Z→A, then copy the result."
+    ],
+    "use_cases": [
+      ["Glossaries & tags", "Alphabetize before publishing."],
+      ["Email lists", "Spot duplicates after sorting."],
+      ["Config keys", "Order entries for readable diffs."]
+    ]
+  }
+}

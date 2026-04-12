@@ -5,21 +5,25 @@
   <script src="../assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>Image Compressor Online | JPG, PNG &amp; WebP | ToolBite</title>
+  <title>Image compressor — shrink files in your browser | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/tools/image-compressor.html">
-  <meta name="description" content="Compress JPG, PNG, and WebP images online in your browser. Adjust quality, preview the result, and download a smaller file without uploading images to ToolBite.">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.">
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/tools/image-compressor.html">
-  <meta property="og:title" content="Image Compressor Online | JPG, PNG &amp; WebP | ToolBite">
-  <meta property="og:description" content="Compress JPG, PNG, and WebP images online in your browser with local processing and no upload step.">
+  <meta property="og:title" content="Image compressor — shrink files in your browser | ToolBite">
+  <meta property="og:description" content="JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Image Compressor Online | JPG, PNG &amp; WebP | ToolBite">
-  <meta name="twitter:description" content="Compress JPG, PNG, and WebP images online with local processing and quality control.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor Online | ToolBite","url":"https://toolbite.org/tools/image-compressor.html","description":"Compress JPG, PNG, and WebP images in your browser with local processing and quality control.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-11","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Image Tools","item":"https://toolbite.org/categories/image-tools.html"},{"@type":"ListItem","position":3,"name":"Image Compressor","item":"https://toolbite.org/tools/image-compressor.html"}]}</script>
+  <meta name="twitter:title" content="Image compressor — shrink files in your browser | ToolBite">
+  <meta name="twitter:description" content="JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+<meta name="theme-color" content="#2563eb">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image compressor — shrink files in your browser | ToolBite","url":"https://toolbite.org/tools/image-compressor.html","description":"JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-12","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Image Tools","item":"https://toolbite.org/categories/image-tools.html"},{"@type":"ListItem","position":3,"name":"Image compressor online","item":"https://toolbite.org/tools/image-compressor.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +35,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does my image get uploaded to your servers?","acceptedAnswer":{"@type":"Answer","text":"No. The image is processed entirely in your browser using an HTML5 Canvas element — it never leaves your device."}},{"@type":"Question","name":"Which formats are supported?","acceptedAnswer":{"@type":"Answer","text":"You can upload JPG, PNG, GIF, and WebP images. Output can be saved as JPEG or WebP."}},{"@type":"Question","name":"What quality setting should I use?","acceptedAnswer":{"@type":"Answer","text":"0.85 is a good default — it balances quality and file size well for most photos. For web thumbnails, 0.70 is usually sufficient."}},{"@type":"Question","name":"Why does PNG compression result in a JPEG output?","acceptedAnswer":{"@type":"Answer","text":"True lossless PNG compression requires a different algorithm. This tool uses the browser's Canvas API, which outputs JPEG or WebP. For lossless PNG, dedicated tools are needed."}}]}</script>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
@@ -62,17 +68,19 @@
     </div>
   </header>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2">
-      <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb"><ol class="flex items-center gap-2">
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <article class="tb-tool-primary min-w-0 lg:col-span-2">
+      <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb"><ol class="flex items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
         <li><a href="../categories/image-tools.html" class="hover:text-blue-600 transition">Image Tools</a></li><li>›</li>
         <li class="text-gray-800 font-medium">Image Compressor</li>
       </ol></nav>
-      <div class="mb-6">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Image Compressor Online</h1>
+      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <div class="mb-0">
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Image compressor online</h1>
         <p class="text-gray-600">Compress JPG, PNG, and WebP images with local browser processing and download a smaller file without an upload step.</p>
       </div>
+      </section>
       <div class="bg-green-50 border border-green-100 rounded-2xl p-4 mb-6 text-sm text-green-900">
         <strong>Privacy:</strong> Image compression runs on your device in the browser. Your files are not uploaded to ToolBite for processing.
       </div>
@@ -101,7 +109,90 @@
           <canvas id="cv" class="max-w-full h-auto rounded-xl border border-gray-200 bg-gray-100"></canvas>
         </div>
       </div>
-      <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+            <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+          <li>Drag in or select JPG, PNG, GIF, or WebP images.</li>
+          <li>Adjust quality and output format.</li>
+          <li>Download the smaller file—processing stays in your browser.</li>
+        </ol>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Blog &amp; CMS uploads</h3>
+            <p class="text-xs text-gray-600">Reduce hero and inline image weight.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Email attachments</h3>
+            <p class="text-xs text-gray-600">Shrink photos before sending.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Portfolio sites</h3>
+            <p class="text-xs text-gray-600">Balance quality and Lighthouse scores.</p>
+          </li>
+        </ul>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-2 max-w-3xl">
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does my image get uploaded to your servers?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">No. The image is processed entirely in your browser using an HTML5 Canvas element — it never leaves your device.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Which formats are supported?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">You can upload JPG, PNG, GIF, and WebP images. Output can be saved as JPEG or WebP.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>What quality setting should I use?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">0.85 is a good default — it balances quality and file size well for most photos. For web thumbnails, 0.70 is usually sufficient.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Why does PNG compression result in a JPEG output?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">True lossless PNG compression requires a different algorithm. This tool uses the browser&#x27;s Canvas API, which outputs JPEG or WebP. For lossless PNG, dedicated tools are needed.</p>
+          </details>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+        <h2 id="tb-related-tools-heading" class="text-lg font-bold text-gray-900 mb-3">Related tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/read-time-calculator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">⏱️</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Read time calculator</p>
+              <p class="text-xs text-gray-500">Pair images with article length</p>
+            </div>
+          </a>
+          <a href="../tools/text-to-slug.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">🔗</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Text to Slug</p>
+              <p class="text-xs text-gray-500">Clean URLs for posts</p>
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
+        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../guides/index.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
+            <p class="text-xs text-gray-500">Publishing and media tips.</p>
+          </a>
+          <a href="../guides/seo-slug-best-practices.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">SEO slug best practices</p>
+            <p class="text-xs text-gray-500">Light pages, clean URLs.</p>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
+        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <a href="../categories/image-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Image &amp; media tools</a>
+      </section>
+<section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">100% Private — Your Images Stay on Your Device</h2>
         <p>Your file never leaves your device. We draw the image to a canvas and encode it with your chosen quality — perfect before uploading to a blog, shop, or social network.</p>
       
@@ -124,38 +215,12 @@
           <li>Remember that transparency may be lost when exporting transparent PNGs to JPEG.</li>
         </ul>
       </div>
-      </article>
-      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">🔗 Related Tools</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../tools/color-palette-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
-          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">🎨</div>
-          <div><p class="font-bold text-gray-800 text-sm">Color Palette</p><p class="text-xs text-gray-500">HEX color palettes</p></div>
-        </a>
-<a href="../tools/read-time-calculator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md hover:-translate-y-0.5 transition duration-300 flex items-center gap-3 group">
-          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm group-hover:shadow border border-gray-100">⏱️</div>
-          <div><p class="font-bold text-gray-800 text-sm">Read Time Calculator</p><p class="text-xs text-gray-500">Package article content</p></div>
-        </a>
-
-        </div>
       </section>
-      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">More publishing workflow links</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../guides/index.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
-            <p class="font-bold text-gray-800 text-sm mb-1">ToolBite guides: JSON, JWT & SEO</p>
-            <p class="text-xs text-gray-500">Continue from asset prep into practical JSON, JWT, and SEO publishing guides.</p>
-          </a>
-          <a href="../categories/image-tools.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
-            <p class="font-bold text-gray-800 text-sm mb-1">Browse Image Tools</p>
-            <p class="text-xs text-gray-500">Return to the image workflow hub for compression and adjacent asset preparation tasks.</p>
-          </a>
-        </div>
-      </section>
-    </div>
-    <aside class="space-y-6">
+    </article>
+    <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
+      <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
-        <h2 class="text-lg font-bold text-gray-900 mb-4">Related publishing resources</h2>
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Related publishing resources</h3>
         <div class="space-y-3 text-sm">
           <a href="../categories/image-tools.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
             <p class="font-bold text-gray-800">Image Tools category</p>
@@ -168,36 +233,18 @@
         </div>
       </div>
     </aside>
-    <section class="mt-10 lg:col-span-3 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 text-left" aria-labelledby="related-resources-heading">
-      <h2 id="related-resources-heading" class="text-2xl font-bold text-gray-900 mb-2 text-center md:text-left">Related Resources</h2>
-      <p class="text-sm text-gray-600 mb-6 text-center md:text-left max-w-2xl">Hand-picked links for lighter assets, publishing prep, and adjacent design or SEO workflows.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        <a href="color-palette-generator.html" class="group bg-gray-50 border border-gray-100 rounded-2xl p-5 md:p-6 hover:shadow-md transition flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
-          <span class="text-xs font-bold uppercase tracking-wide text-blue-600 mb-2">Tool</span>
-          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition">Color Palette Generator</h3>
-          <p class="text-sm text-gray-600 flex-grow">Explore HEX palettes in the browser to pair compressed hero images with UI accents and marketing layouts.</p>
-          <span class="mt-4 text-sm font-semibold text-blue-600 group-hover:text-blue-800 transition">Open tool →</span>
-        </a>
-        <a href="../categories/seo-tools.html" class="group bg-gray-50 border border-gray-100 rounded-2xl p-5 md:p-6 hover:shadow-md transition flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600 mb-2">Category</span>
-          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-700 transition">SEO &amp; Content Tools</h3>
-          <p class="text-sm text-gray-600 flex-grow">After optimizing images, continue with slugs, read time, word counts, and other publishing helpers in one hub.</p>
-          <span class="mt-4 text-sm font-semibold text-orange-600 group-hover:text-orange-800 transition">Browse category →</span>
-        </a>
-      </div>
-    </section>
   </main>
 
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
-      </div>
+      </nav>
     </div>
   </footer>
   <script defer src="../assets/js/main.min.js"></script>

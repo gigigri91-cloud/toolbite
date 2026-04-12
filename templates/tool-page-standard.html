@@ -1,0 +1,101 @@
+<!--
+  ToolBite — STANDARD TOOL PAGE LAYOUT (reference)
+  Copy into tools/<name>.html inside <article class="tb-tool-primary min-w-0 lg:col-span-2">,
+  after site <header> and before <aside> / closing </main>.
+
+  Order (task-first, SEO + internal links after the interface):
+  1. Breadcrumb (nav.tb-breadcrumb)
+  2. HERO — section.tb-tool-hero: H1#tb-tool-hero-title + one short paragraph (optional privacy callout follows, outside hero)
+  3. UI — main tool card(s) (div.bg-white.rounded-3xl… or equivalent)
+  4. HOW TO USE — section[aria-labelledby="tb-how-to-heading"] — short <ol> (3 steps max)
+  5. USE CASES — section[aria-labelledby="tb-use-cases-heading"] — 3 compact cards
+  6. FAQ — section.tb-tool-faq[aria-labelledby="tb-faq-heading"] — <details> per Q (mirror FAQPage JSON-LD in <head>)
+  7. RELATED TOOLS — section[aria-labelledby="tb-related-tools-heading"] — 2 internal tool links
+  8. GUIDES — section[aria-labelledby="tb-guides-heading"] — 1–2 guide cards
+  9. BROWSE CATEGORY — section[aria-labelledby="tb-browse-category-heading"] — link to ../categories/<category>.html
+ 10. LONG SEO — section.tb-seo-notes[aria-label="About this tool"] — prose (keep below fold)
+
+  Data: data/tool_page_layout.json (+ RELATED / GUIDES in scripts/standardize_tool_pages.py)
+  Apply: python3 scripts/standardize_tool_pages.py
+-->
+
+<article class="tb-tool-primary min-w-0 lg:col-span-2">
+  <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-2">
+      <li><a href="../" class="hover:text-blue-600 transition">Home</a></li>
+      <li>›</li>
+      <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li>
+      <li>›</li>
+      <li class="text-gray-800 font-medium">Example Tool</li>
+    </ol>
+  </nav>
+
+  <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+    <div class="mb-0">
+      <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Example tool title</h1>
+      <p class="text-gray-600">One clear sentence on what the tool does and who it is for.</p>
+    </div>
+  </section>
+
+  <!-- Optional privacy strip -->
+  <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+    <strong>Privacy:</strong> …
+  </div>
+
+  <!-- Tool UI -->
+  <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
+    <!-- inputs, buttons, outputs -->
+  </div>
+
+  <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
+    <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
+    <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+      <li>Step one.</li>
+      <li>Step two.</li>
+      <li>Step three.</li>
+    </ol>
+  </section>
+
+  <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
+    <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
+    <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
+      <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+        <h3 class="font-bold text-gray-900 text-sm mb-1">Use case A</h3>
+        <p class="text-xs text-gray-600">Short description.</p>
+      </li>
+      <!-- … -->
+    </ul>
+  </section>
+
+  <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
+    <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+    <div class="space-y-2 max-w-3xl">
+      <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+        <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2">
+          <span>Question?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span>
+        </summary>
+        <p class="mt-2 text-sm text-gray-600 pb-1">Answer.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+    <h2 id="tb-related-tools-heading" class="text-lg font-bold text-gray-900 mb-3">Related tools</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><!-- tool links --></div>
+  </section>
+
+  <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
+    <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><!-- guide links --></div>
+  </section>
+
+  <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+    <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
+    <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more tools in the same group.</p>
+    <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
+  </section>
+
+  <section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
+    <!-- Long-form SEO content last -->
+  </section>
+</article>

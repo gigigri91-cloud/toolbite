@@ -5,20 +5,23 @@
   <script src="../assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>URL Encoder &amp; Decoder — encodeURIComponent Online | ToolBite</title>
+  <title>URL encoder &amp; decoder — query-safe strings | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/tools/url-encoder.html">
-  <meta name="description" content="Encode or decode URL strings: use component mode for query values, or full-URL mode to preserve slashes and colons. Runs locally in your browser.">
+  <meta name="description" content="Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.">
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/tools/url-encoder.html">
-  <meta property="og:title" content="URL Encoder & Decoder | ToolBite">
-  <meta property="og:description" content="Encode or decode URL components and full URIs — component vs encodeURI, locally in your browser.">
+  <meta property="og:title" content="URL encoder &amp; decoder — query-safe strings | ToolBite">
+  <meta property="og:description" content="Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="URL Encoder & Decoder | ToolBite">
-  <meta name="twitter:description" content="Encode or decode URL strings: use component mode for query values, or full-URL mode to preserve slashes and colons. Runs locally in your browser.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite URL Encoder","url":"https://toolbite.org/tools/url-encoder.html","description":"Encode and decode URI components and full URLs in the browser.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-11","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"URL Encoder","item":"https://toolbite.org/tools/url-encoder.html"}]}</script>
+  <meta name="twitter:title" content="URL encoder &amp; decoder — query-safe strings | ToolBite">
+  <meta name="twitter:description" content="Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL encoder & decoder — query-safe strings | ToolBite","url":"https://toolbite.org/tools/url-encoder.html","description":"Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-12","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"URL encoder & decoder","item":"https://toolbite.org/tools/url-encoder.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +29,11 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
   <link rel="stylesheet" href="../assets/css/tailwind.min.css">
   <link rel="stylesheet" href="../assets/css/global.css">
-</head>
+
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is my data sent to ToolBite servers when I use URL encoder &amp; decoder?", "acceptedAnswer": {"@type": "Answer", "text": "No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing."}}, {"@type": "Question", "name": "Does it work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Once the page is cached in your browser, many workflows keep working without an active network connection."}}, {"@type": "Question", "name": "Is this tool free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ToolBite tools are free to use; we may show ads to support hosting."}}, {"@type": "Question", "name": "Which browsers are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled."}}]}</script></head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
@@ -61,19 +67,21 @@
     </div>
   </header>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2">
-      <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <article class="tb-tool-primary min-w-0 lg:col-span-2">
+      <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-2">
           <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
           <li class="text-gray-800 font-medium">URL Encoder</li>
         </ol>
       </nav>
-      <div class="mb-6">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">URL Encoder &amp; Decoder</h1>
+      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <div class="mb-0">
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">URL encoder &amp; decoder</h1>
         <p class="text-gray-600">Switch between <strong class="text-gray-800">component</strong> encoding (<code class="bg-gray-100 px-1 rounded text-sm">encodeURIComponent</code>) and <strong class="text-gray-800">full URL</strong> encoding (<code class="bg-gray-100 px-1 rounded text-sm">encodeURI</code>) to match your use case.</p>
       </div>
+      </section>
       <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
         <div class="flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Encode or decode">
           <button type="button" id="url-tab-encode" class="px-4 py-2 rounded-xl font-bold bg-emerald-600 text-white text-sm">Encode</button>
@@ -95,7 +103,90 @@
           <button type="button" id="url-clear-btn" class="px-4 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition">Clear</button>
         </div>
       </div>
-      <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+            <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+          <li>Paste a URL or a string that should be encoded/decoded.</li>
+          <li>Pick the mode that matches your use (component vs full URL).</li>
+          <li>Copy the transformed value into your code or browser bar.</li>
+        </ol>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Query strings</h3>
+            <p class="text-xs text-gray-600">Encode reserved characters safely.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Redirect URLs</h3>
+            <p class="text-xs text-gray-600">Wrap deep links passed as parameters.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Debugging</h3>
+            <p class="text-xs text-gray-600">Decode messy URLs from logs.</p>
+          </li>
+        </ul>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-2 max-w-3xl">
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my data sent to ToolBite servers when I use URL encoder &amp;amp; decoder?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does it work offline?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Once the page is cached in your browser, many workflows keep working without an active network connection.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is this tool free?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Yes. ToolBite tools are free to use; we may show ads to support hosting.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Which browsers are supported?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled.</p>
+          </details>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+        <h2 id="tb-related-tools-heading" class="text-lg font-bold text-gray-900 mb-3">Related tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">📎</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Base64 Encoder</p>
+              <p class="text-xs text-gray-500">Binary-safe text</p>
+            </div>
+          </a>
+          <a href="../tools/json-formatter.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">💻</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">JSON Formatter</p>
+              <p class="text-xs text-gray-500">Validate payloads</p>
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
+        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../guides/json-formatter-guide.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">JSON checklist</p>
+            <p class="text-xs text-gray-500">URLs inside JSON.</p>
+          </a>
+          <a href="../guides/index.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
+            <p class="text-xs text-gray-500">More developer topics.</p>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
+        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
+      </section>
+<section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Which mode should I use?</h2>
         <p class="mb-3"><strong>Component</strong> — for a single query value, path segment, or any string that must become “fully” escaped. <strong>Full URL</strong> — when you need to encode a mostly valid URL but fix unsafe characters in the path or query without breaking <code class="bg-gray-100 px-1 rounded">://</code> and delimiters.</p>
         <p>Decoding must use the matching mode, or you may get a URI error.</p>
@@ -110,22 +201,10 @@
           <li>Decode with the same logic that was used to encode.</li>
           <li>Test the final URL in the actual app or request flow, not just in isolation.</li>
         </ul>
-      </article>
-      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">Related developer workflows</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
-            <p class="font-bold text-gray-800 text-sm mb-1">Base64 Encoder</p>
-            <p class="text-xs text-gray-500">Useful when debugging payload values, headers, or encoded strings alongside URL parameters.</p>
-          </a>
-          <a href="../tools/find-replace.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
-            <p class="font-bold text-gray-800 text-sm mb-1">Find &amp; Replace</p>
-            <p class="text-xs text-gray-500">Clean repeated query fragments or bulk-edit documentation before re-encoding links.</p>
-          </a>
-        </div>
       </section>
-    </div>
-    <aside class="space-y-6">
+    </article>
+    <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
+      <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Keep the request workflow moving</h3>
         <div class="space-y-3 text-sm">
@@ -145,13 +224,13 @@
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
   <script defer src="../assets/js/main.min.js"></script>

@@ -5,37 +5,44 @@
   <script src="../assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>Free Developer Tools for JSON, JWT &amp; Encoding | ToolBite</title>
+  <title>Developer tools — JSON, JWT, encoding &amp; hashes | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/categories/developer-tools.html">
-  <meta name="description" content="Use free developer tools for JSON formatting, JWT decoding, Base64, URL encoding, UUID generation, hashing, and secure password generation in your browser.">
-
+  <meta name="description" content="Format JSON, decode JWT headers and payloads for inspection, Base64, URL encoding, UUIDs, and SHA helpers—client-side where the tool allows it.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/categories/developer-tools.html">
-  <meta property="og:title" content="Free Developer Tools for JSON, JWT &amp; Encoding | ToolBite">
-  <meta property="og:description" content="Use browser-based developer tools for JSON, JWT, Base64, URL encoding, hashing, and password generation.">
+  <meta property="og:title" content="Developer tools — JSON, JWT, encoding &amp; hashes | ToolBite">
+  <meta property="og:description" content="Format JSON, decode JWT headers and payloads for inspection, Base64, URL encoding, UUIDs, and SHA helpers—client-side where the tool allows it.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Developer Tools for JSON, JWT &amp; Encoding | ToolBite">
-  <meta name="twitter:description" content="Browser-based tools for JSON, JWT, Base64, hashing, UUIDs, and password generation.">
+  <meta name="twitter:title" content="Developer tools — JSON, JWT, encoding &amp; hashes | ToolBite">
+  <meta name="twitter:description" content="Format JSON, decode JWT headers and payloads for inspection, Base64, URL encoding, UUIDs, and SHA helpers—client-side where the tool allows it.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
 
   <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Developer Tools for JSON, JWT & Encoding | ToolBite",
+    "name": "Developer tools — JSON, JWT, encoding & hashes | ToolBite",
     "url": "https://toolbite.org/categories/developer-tools.html",
-    "description": "A collection of free browser-based developer utility tools.",
-    "author": { "@type": "Organization", "name": "ToolBite" },
+    "description": "Format JSON, decode JWT headers and payloads for inspection, Base64, URL encoding, UUIDs, and SHA helpers—client-side where the tool allows it.",
+    "author": {
+      "@type": "Organization",
+      "name": "ToolBite"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "ToolBite",
-      "logo": { "@type": "ImageObject", "url": "https://toolbite.org/assets/images/toolbite-logo.png" }
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://toolbite.org/assets/images/toolbite-logo.png"
+      }
     },
-    "dateModified": "2026-04-11"
+    "dateModified": "2026-04-12"
   }
+
   </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"}]}</script>
 
@@ -48,6 +55,8 @@
   <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
 
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
@@ -82,9 +91,9 @@
     </div>
   </header>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
 
-    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li>
         <li>›</li>
@@ -93,8 +102,8 @@
     </nav>
 
     <div class="mb-10">
-      <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Developer Tools for JSON, JWT &amp; Encoding</h1>
-      <p class="text-lg text-gray-600 max-w-2xl">Format payloads, inspect tokens, encode strings, generate IDs, and create secure passwords with browser-based tools that keep routine inputs on your device.</p>
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Developer &amp; debugging tools</h1>
+      <p class="text-lg text-gray-600 max-w-2xl">Streamline your development workflow with utilities that prioritize security. Whether you're inspecting auth tokens or beautifying code, ToolBite ensures your data is processed on-device. No logs, no server-side processing, just speed.</p>
       <div class="mt-4 flex flex-wrap gap-3">
         <input id="category-search" type="search" placeholder="Filter tools in this category..." class="w-full sm:w-96 p-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-100 outline-none bg-white" aria-label="Filter developer tools">
         <button type="button" class="copy-tool-link inline-flex items-center px-4 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">Copy page link</button>
@@ -119,12 +128,18 @@
       </div>
     </section>
 
-    <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    <section id="category-tools" aria-labelledby="category-tools-heading" class="mb-12">
+
+
+      <h2 id="category-tools-heading" class="sr-only">Tools in this category</h2>
+
+
+      <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
       <a href="../tools/json-formatter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">JSON Formatter</h2>
+          <h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3>
           <p class="text-sm text-gray-500">Format, minify &amp; validate JSON</p>
         </div>
       </a>
@@ -132,7 +147,7 @@
       <a href="../tools/jwt-decoder.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🪪</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">JWT Decoder</h2>
+          <h3 class="font-bold text-gray-900 text-lg">JWT Decoder</h3>
           <p class="text-sm text-gray-500">View header &amp; payload (no verify)</p>
         </div>
       </a>
@@ -140,7 +155,7 @@
       <a href="../tools/password-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-orange-500 group-hover:text-white transition">🔑</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">Password Generator</h2>
+          <h3 class="font-bold text-gray-900 text-lg">Password Generator</h3>
           <p class="text-sm text-gray-500">Strong random passwords</p>
         </div>
       </a>
@@ -148,7 +163,7 @@
       <a href="../tools/color-palette-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-pink-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-pink-500 group-hover:text-white transition">🎨</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">Color Palette Generator</h2>
+          <h3 class="font-bold text-gray-900 text-lg">Color Palette Generator</h3>
           <p class="text-sm text-gray-500">HEX palettes — click to copy</p>
         </div>
       </a>
@@ -156,7 +171,7 @@
       <a href="../tools/base64-encoder.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">📎</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">Base64 Encoder</h2>
+          <h3 class="font-bold text-gray-900 text-lg">Base64 Encoder</h3>
           <p class="text-sm text-gray-500">Encode &amp; decode UTF-8 text</p>
         </div>
       </a>
@@ -164,7 +179,7 @@
       <a href="../tools/uuid-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">🆔</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">UUID Generator</h2>
+          <h3 class="font-bold text-gray-900 text-lg">UUID Generator</h3>
           <p class="text-sm text-gray-500">Random v4 UUIDs (RFC 4122)</p>
         </div>
       </a>
@@ -172,7 +187,7 @@
       <a href="../tools/url-encoder.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">🌐</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">URL Encoder</h2>
+          <h3 class="font-bold text-gray-900 text-lg">URL Encoder</h3>
           <p class="text-sm text-gray-500">encodeURI &amp; encodeURIComponent</p>
         </div>
       </a>
@@ -180,12 +195,17 @@
       <a href="../tools/hash-generator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
         <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-slate-800 group-hover:text-white transition">🔢</div>
         <div>
-          <h2 class="font-bold text-gray-900 text-lg">Hash Generator</h2>
+          <h3 class="font-bold text-gray-900 text-lg">Hash Generator</h3>
           <p class="text-sm text-gray-500">SHA-256 &amp; SHA-1 (hex)</p>
         </div>
       </a>
 
     </div>
+
+
+    </section>
+
+
 
     <section class="mb-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Guides for Developer Workflow</h2>
@@ -217,13 +237,13 @@
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
 

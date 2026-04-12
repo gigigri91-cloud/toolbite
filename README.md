@@ -1,13 +1,5 @@
-# ToolBite Local Docs
+# ToolBite
 
-Internal documentation has been moved to `_local-docs/`.
+Site static (HTML + CSS + JS). Documentația internă este într-un singur fișier:
 
-Main files:
-- `_local-docs/README.md`
-- `_local-docs/HANDOFF-RO.md`
-- `_local-docs/CONTINUE-FROM-HERE.md`
-- `_local-docs/SEO-PAGE-TYPES.md`
-- `_local-docs/SEO-INDEXATION-STATUS.md`
-- `_local-docs/SECURITY-HEADERS.md`
-
-The `_local-docs/` folder is listed in `.gitignore` so it does not get uploaded accidentally.
+- **`_local-docs/README.md`** — ghid scurt + **jurnal obligatoriu**: orice schimbare în site trebuie notată acolo (sau într-un fișier mare din același folder), ca următorul chat să continue aliniat la construcția agreată. **`_local-docs/AUDIT-TECHNIC-TOOLBITE-2026-04-12.md`** — audit tehnic; opțional `_local-docs/*.csv`. Folderul `_local-docs/` este în `.gitignore` ca să nu fie urcat accidental la remote/deploy; dacă vrei să versionezi documentația, scoate intrarea `_local-docs/` din `.gitignore`.

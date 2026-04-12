@@ -5,20 +5,23 @@
   <script src="../assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>How to Decode JWT Safely (Without Trusting Payload) | ToolBite</title>
+  <title>Guide: decode JWTs safely (decode ≠ verify) | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/guides/jwt-decoder-guide.html">
-  <meta name="description" content="Learn how to decode JWT tokens safely for debugging, what claims mean, and why signature verification must happen on your backend.">
+  <meta name="description" content="What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.">
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://toolbite.org/guides/jwt-decoder-guide.html">
-  <meta property="og:title" content="How to Decode JWT Safely | ToolBite">
-  <meta property="og:description" content="A practical JWT decoding guide with security best practices.">
+  <meta property="og:title" content="Guide: decode JWTs safely (decode ≠ verify) | ToolBite">
+  <meta property="og:description" content="What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How to Decode JWT Safely | ToolBite">
-  <meta name="twitter:description" content="Understand decode vs verify and JWT claim checks that matter.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Decode JWT Safely (Without Trusting Payload)","datePublished":"2026-03-30","dateModified":"2026-04-11","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"mainEntityOfPage":"https://toolbite.org/guides/jwt-decoder-guide.html"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolbite.org/guides/index.html"},{"@type":"ListItem","position":3,"name":"JWT Decoder Guide","item":"https://toolbite.org/guides/jwt-decoder-guide.html"}]}</script>
+  <meta name="twitter:title" content="Guide: decode JWTs safely (decode ≠ verify) | ToolBite">
+  <meta name="twitter:description" content="What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to decode JWT safely (without trusting payload)","datePublished":"2026-03-30","dateModified":"2026-04-12","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"mainEntityOfPage":"https://toolbite.org/guides/jwt-decoder-guide.html","description":"What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolbite.org/guides/index.html"},{"@type":"ListItem","position":3,"name":"How to decode JWT safely (without trusting payload)","item":"https://toolbite.org/guides/jwt-decoder-guide.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +31,8 @@
   <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
@@ -61,8 +66,8 @@
     </div>
   </header>
 
-  <main class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
-    <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+  <main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
       <ol class="flex flex-wrap items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
         <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
@@ -71,7 +76,7 @@
     </nav>
 
     <article class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 prose max-w-none">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">How to Decode JWT Safely (Without Trusting Payload)</h1>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">How to decode JWT safely (without trusting payload)</h1>
       <div class="text-sm text-gray-500 dark:text-gray-400 mb-8">
         <span>By <strong>ToolBite Team</strong></span> • 
         <span>Last updated: <time itemprop="dateModified" datetime="2026-04-11">April 11, 2026</time></span>
@@ -158,13 +163,13 @@
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
   <script defer src="../assets/js/main.min.js"></script>

@@ -1,24 +1,31 @@
 #!/usr/bin/env python3
-"""Submit the 10 most important recently modified ToolBite URLs to Bing IndexNow.
+"""Submit recently updated ToolBite URLs to IndexNow (shared API endpoint).
 
 Prerequisites:
     pip install requests
 
-Configuration (Bing Webmaster Tools → IndexNow):
-    Export your IndexNow key from Bing, host the key file at the site root, e.g.:
-        https://toolbite.org/<your-key>.txt
-    The file name (without .txt) must match the key string Bing shows, and the
-    file contents must be exactly that key (single line).
+By default this POSTs to the **IndexNow API** (notifies participating search engines,
+including Bing): https://api.indexnow.org/indexnow
+
+Configuration (e.g. Bing Webmaster Tools → IndexNow):
+    Host the key file at the site root, e.g. https://toolbite.org/<your-key>.txt
+    The basename must be <key>.txt and the file body must be exactly the key (one line).
 
 Environment variables:
     INDEXNOW_KEY          Required for a live POST (unless --key is passed).
+    INDEXNOW_URL          POST target (default: https://api.indexnow.org/indexnow).
     INDEXNOW_HOST         Default: toolbite.org
-    INDEXNOW_KEY_FILE     Basename of the key file (without path), e.g. "abc123xyz.txt".
-                          Default: "{INDEXNOW_KEY}.txt" if the key is used as the filename.
+    INDEXNOW_KEY_FILE     Basename of the key file (default: <key>.txt).
 
 Usage (repo root):
-    INDEXNOW_KEY='your-key-from-bing' python3 scripts/ping_indexnow.py
+    INDEXNOW_KEY='your-key' python3 scripts/ping_indexnow.py
     INDEXNOW_KEY='...' python3 scripts/ping_indexnow.py --dry-run
+    INDEXNOW_URL='https://www.bing.com/IndexNow' python3 scripts/ping_indexnow.py  # optional
+
+Phase 3 reference payload (see also example_phase3_payload() in code):
+    {"host": "toolbite.org", "key": "REPLACE_WITH_KEY",
+     "keyLocation": "https://toolbite.org/REPLACE_WITH_KEY.txt",
+     "urlList": ["https://toolbite.org/", "https://toolbite.org/tools/json-formatter.html", ...]}
 """
 
 from __future__ import annotations
@@ -38,9 +45,30 @@ except ImportError:
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-INDEXNOW_URL = "https://www.bing.com/IndexNow"
+# Shared IndexNow endpoint (see https://www.indexnow.org/documentation )
+DEFAULT_INDEXNOW_URL = "https://api.indexnow.org/indexnow"
 DEFAULT_HOST = "toolbite.org"
 DEFAULT_ORIGIN = f"https://{DEFAULT_HOST}"
+
+# Phase 3 template — swap REPLACE_WITH_KEY for your Bing/IndexNow key and publish
+# https://toolbite.org/REPLACE_WITH_KEY.txt at the site root before your first live POST.
+PLACEHOLDER_KEY = "REPLACE_WITH_KEY"
+SAMPLE_URL_LIST = [
+    "https://toolbite.org/",
+    "https://toolbite.org/tools/json-formatter.html",
+    "https://toolbite.org/tools/jwt-decoder.html",
+    "https://toolbite.org/about.html",
+]
+
+
+def example_phase3_payload() -> dict[str, str | list[str]]:
+    """Static JSON shape for documentation and copy/paste (not used for POST by default)."""
+    return {
+        "host": DEFAULT_HOST,
+        "key": PLACEHOLDER_KEY,
+        "keyLocation": f"{DEFAULT_ORIGIN}/{PLACEHOLDER_KEY}.txt",
+        "urlList": list(SAMPLE_URL_LIST),
+    }
 
 # Higher = more “important” when combining with recency (see score_url_candidates).
 IMPORTANCE: dict[str, int] = {
@@ -119,7 +147,7 @@ def build_payload(
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="POST top ToolBite URLs to Bing IndexNow.")
+    p = argparse.ArgumentParser(description="POST ToolBite URLs to IndexNow (api.indexnow.org by default).")
     p.add_argument(
         "--key",
         default=os.environ.get("INDEXNOW_KEY", ""),
@@ -158,6 +186,12 @@ def parse_args() -> argparse.Namespace:
         default=30.0,
         help="HTTP timeout in seconds (default: 30).",
     )
+    p.add_argument(
+        "--endpoint",
+        default=os.environ.get("INDEXNOW_URL", DEFAULT_INDEXNOW_URL),
+        metavar="URL",
+        help=f"IndexNow POST URL (default: env INDEXNOW_URL or {DEFAULT_INDEXNOW_URL}).",
+    )
     return p.parse_args()
 
 
@@ -168,9 +202,11 @@ def main() -> int:
         print(
             "IndexNow key is required. Set INDEXNOW_KEY or pass --key.\n"
             "Generate the key in Bing Webmaster Tools, publish https://toolbite.org/<key>.txt\n"
-            "at the root of the live site, then run again.",
+            "at the root of the live site, then run again.\n",
             file=sys.stderr,
         )
+        print("Example JSON body (replace REPLACE_WITH_KEY and extend urlList as needed):", file=sys.stderr)
+        print(json.dumps(example_phase3_payload(), indent=2, ensure_ascii=False), file=sys.stderr)
         return 2
 
     host = args.host.strip().lower().removeprefix("https://").removeprefix("http://").split("/")[0]
@@ -204,11 +240,14 @@ def main() -> int:
         url_list=url_list,
     )
 
+    endpoint = (args.endpoint or DEFAULT_INDEXNOW_URL).strip()
+
     print("IndexNow payload:", file=sys.stderr)
     print(json.dumps(payload, indent=2, ensure_ascii=False))
+    print(f"\nPOST {endpoint}", file=sys.stderr)
 
     if args.dry_run:
-        print("\nDry run: no request sent.", file=sys.stderr)
+        print("Dry run: no request sent.", file=sys.stderr)
         return 0
 
     if not key:
@@ -216,7 +255,7 @@ def main() -> int:
 
     try:
         r = requests.post(
-            INDEXNOW_URL,
+            endpoint,
             json=payload,
             headers={"Content-Type": "application/json; charset=utf-8"},
             timeout=args.timeout,
@@ -229,10 +268,56 @@ def main() -> int:
     if r.text:
         print(r.text[:2000], file=sys.stderr)
 
-    # Bing returns 200 / 202 on success; 4xx explains invalid key or URLs.
+    # IndexNow API and Bing typically return 200 / 202 on success.
     if r.status_code in (200, 202):
+        print("Success: IndexNow accepted the submission.", file=sys.stderr)
         return 0
+    print(f"Error: IndexNow returned HTTP {r.status_code}. Fix key, keyLocation, or urlList.", file=sys.stderr)
     return 1
+
+
+def ping_indexnow(
+    *,
+    key: str | None = None,
+    host: str = DEFAULT_HOST,
+    url_list: list[str] | None = None,
+    endpoint: str | None = None,
+    key_file: str | None = None,
+    timeout: float = 30.0,
+) -> requests.Response:
+    """Programmatic POST to IndexNow (same JSON shape as the CLI)."""
+    key = (key or os.environ.get("INDEXNOW_KEY", "")).strip()
+    if not key:
+        raise ValueError("key is required (argument or INDEXNOW_KEY)")
+
+    host_clean = host.strip().lower().removeprefix("https://").removeprefix("http://").split("/")[0]
+    if key_file and key_file.strip():
+        key_basename = key_file.strip()
+        if not key_basename.endswith(".txt"):
+            key_basename = f"{key_basename}.txt"
+    else:
+        key_basename = f"{key}.txt"
+    key_location = f"https://{host_clean}/{key_basename}"
+
+    urls = url_list if url_list is not None else discover_top_urls(limit=10)
+    if len(urls) > 10:
+        urls = urls[:10]
+    if not urls:
+        raise ValueError("url_list is empty")
+
+    payload = build_payload(
+        host=host_clean,
+        key=key,
+        key_location=key_location,
+        url_list=urls,
+    )
+    ep = (endpoint or os.environ.get("INDEXNOW_URL", DEFAULT_INDEXNOW_URL)).strip()
+    return requests.post(
+        ep,
+        json=payload,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        timeout=timeout,
+    )
 
 
 if __name__ == "__main__":

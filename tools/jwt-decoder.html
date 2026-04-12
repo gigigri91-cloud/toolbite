@@ -5,20 +5,23 @@
   <script src="../assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>JWT Decoder Online | Decode Header &amp; Payload Locally | ToolBite</title>
+  <title>JWT decoder — inspect header &amp; payload locally | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/tools/jwt-decoder.html">
-  <meta name="description" content="Decode JWT header and payload online in your browser. Inspect token claims locally with ToolBite without uploading tokens or pretending to verify signatures.">
+  <meta name="description" content="Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.">
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/tools/jwt-decoder.html">
-  <meta property="og:title" content="JWT Decoder Online | Decode Header &amp; Payload Locally | ToolBite">
-  <meta property="og:description" content="Inspect JWT header and payload online in your browser while keeping verification in your backend flow.">
+  <meta property="og:title" content="JWT decoder — inspect header &amp; payload locally | ToolBite">
+  <meta property="og:description" content="Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JWT Decoder Online | Decode Header &amp; Payload Locally | ToolBite">
-  <meta name="twitter:description" content="Inspect JWT header and payload online in your browser. Decode-only, no signature verification claims.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder Online | ToolBite","url":"https://toolbite.org/tools/jwt-decoder.html","description":"Decode JWT header and payload JSON in the browser without claiming signature verification.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-11","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"JWT Decoder","item":"https://toolbite.org/tools/jwt-decoder.html"}]}</script>
+  <meta name="twitter:title" content="JWT decoder — inspect header &amp; payload locally | ToolBite">
+  <meta name="twitter:description" content="Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT decoder — inspect header & payload locally | ToolBite","url":"https://toolbite.org/tools/jwt-decoder.html","description":"Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-12","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"JWT decoder online","item":"https://toolbite.org/tools/jwt-decoder.html"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this JWT Decoder verify signatures?","acceptedAnswer":{"@type":"Answer","text":"No. It only decodes header and payload for inspection. Signature verification requires your secret or public key and must happen in your backend/auth flow."}},{"@type":"Question","name":"Is my token uploaded to ToolBite servers?","acceptedAnswer":{"@type":"Answer","text":"No. Decoding runs locally in your browser and nothing is sent to ToolBite for processing."}},{"@type":"Question","name":"Why do I see an invalid token error?","acceptedAnswer":{"@type":"Answer","text":"Common causes are malformed Base64url segments, missing dots between segments, or non-JSON data in header/payload."}}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +32,8 @@
   <link rel="stylesheet" href="../assets/css/global.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
@@ -62,19 +67,21 @@
     </div>
   </header>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2">
-      <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <article class="tb-tool-primary min-w-0 lg:col-span-2">
+      <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-2">
           <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
           <li class="text-gray-800 font-medium">JWT Decoder</li>
         </ol>
       </nav>
-      <div class="mb-6">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">JWT Decoder Online</h1>
+      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <div class="mb-0">
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">JWT decoder online</h1>
         <p class="text-gray-600">Paste a JSON Web Token to read the <strong class="text-gray-800">header</strong> and <strong class="text-gray-800">payload</strong> as formatted JSON. The <strong class="text-gray-800">signature is not verified</strong>, so use this for local inspection and debugging only.</p>
       </div>
+      </section>
       <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-sm text-amber-900">
         <strong>Privacy:</strong> Parsing runs entirely in your browser. The token is never transmitted to ToolBite.
       </div>
@@ -98,7 +105,86 @@
           <button type="button" id="jwt-clear-btn" class="px-4 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition">Clear</button>
         </div>
       </div>
-      <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+            <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+          <li>Paste a JWT (three Base64url segments separated by dots).</li>
+          <li>Read the decoded header and payload JSON locally.</li>
+          <li>Remember: decode ≠ verify—check signatures only in trusted backends.</li>
+        </ol>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Auth debugging</h3>
+            <p class="text-xs text-gray-600">Inspect claims and expiry during integration.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">API gateways</h3>
+            <p class="text-xs text-gray-600">Compare issuer, audience, and scopes quickly.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Learning</h3>
+            <p class="text-xs text-gray-600">Pair with the JWT guide for decode vs verify.</p>
+          </li>
+        </ul>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-2 max-w-3xl">
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does this JWT Decoder verify signatures?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">No. It only decodes header and payload for inspection. Signature verification requires your secret or public key and must happen in your backend/auth flow.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my token uploaded to ToolBite servers?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">No. Decoding runs locally in your browser and nothing is sent to ToolBite for processing.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Why do I see an invalid token error?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Common causes are malformed Base64url segments, missing dots between segments, or non-JSON data in header/payload.</p>
+          </details>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+        <h2 id="tb-related-tools-heading" class="text-lg font-bold text-gray-900 mb-3">Related tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/json-formatter.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">💻</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">JSON Formatter</p>
+              <p class="text-xs text-gray-500">Pretty-print claims</p>
+            </div>
+          </a>
+          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">📎</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Base64 Encoder</p>
+              <p class="text-xs text-gray-500">Work with raw segments</p>
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
+        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../guides/jwt-decoder-guide.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">JWT decode vs verify</p>
+            <p class="text-xs text-gray-500">Production-safe practices.</p>
+          </a>
+          <a href="../guides/json-formatter-guide.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">Invalid JSON checklist</p>
+            <p class="text-xs text-gray-500">Claims are JSON too.</p>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
+        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
+      </section>
+<section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Why we do not verify signatures</h2>
         <p>Verifying a JWT requires the correct secret or public key. This tool only Base64url-decodes the first two segments so you can inspect claims (e.g. <code class="bg-gray-100 px-1 rounded">exp</code>, <code class="bg-gray-100 px-1 rounded">sub</code>) during development. Never treat decoded claims as authenticated without proper verification on your server.</p>
         <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">How to use in 3 steps</h3>
@@ -117,53 +203,12 @@
         <p>Once decoded, compare the algorithm in the header, confirm issuer and audience in the payload, and check whether time-based claims such as <code class="bg-gray-100 px-1 rounded">exp</code>, <code class="bg-gray-100 px-1 rounded">iat</code>, and <code class="bg-gray-100 px-1 rounded">nbf</code> match the environment you are testing. Those quick checks often explain auth bugs before you even step into backend logs.</p>
         <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Safer troubleshooting habit</h3>
         <p>Use local decode tools for inspection, but avoid pasting live production tokens into tickets, chat threads, or cloud tools. If you need to share an example with teammates, redact or regenerate the token first and keep real verification inside your application code or auth middleware.</p>
-      </article>
-      <section class="mt-8 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">What this JWT decoder helps with</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-700">
-          <div class="bg-white border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 mb-2">Claim inspection</h3>
-            <p>Check fields like <code class="bg-gray-100 px-1 rounded">exp</code>, <code class="bg-gray-100 px-1 rounded">aud</code>, and <code class="bg-gray-100 px-1 rounded">sub</code> during debugging.</p>
-          </div>
-          <div class="bg-white border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 mb-2">Header review</h3>
-            <p>Confirm the token algorithm and type before you move into server-side verification.</p>
-          </div>
-          <div class="bg-white border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 mb-2">Safer auth debugging</h3>
-            <p>Inspect token contents locally without turning a decode-only tool into a fake verifier.</p>
-          </div>
-        </div>
       </section>
-      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">Related tools</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3"><span class="text-xl">📎</span><div><p class="font-bold text-gray-800 text-sm">Base64</p><p class="text-xs text-gray-500">Similar encoding layer</p></div></a>
-          <a href="../tools/json-formatter.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3"><span class="text-xl">💻</span><div><p class="font-bold text-gray-800 text-sm">JSON Formatter</p><p class="text-xs text-gray-500">Format decoded JSON</p></div></a>
-        </div>
-      </section>
-      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">Continue the auth workflow</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../tools/hash-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
-            <p class="font-bold text-gray-800 text-sm mb-1">Hash Generator</p>
-            <p class="text-xs text-gray-500">Helpful for adjacent debugging where you need local fingerprints or checksum-style comparisons.</p>
-          </a>
-          <a href="../tools/url-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
-            <p class="font-bold text-gray-800 text-sm mb-1">URL Encoder</p>
-            <p class="text-xs text-gray-500">Useful when auth flows include encoded redirects, callback URLs, or query-string values.</p>
-          </a>
-        </div>
-      </section>
-      <section class="mt-8 bg-indigo-50 rounded-3xl border border-indigo-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-2">JWT best-practice guide</h2>
-        <p class="text-gray-700 mb-4">Understand what decoded claims mean and how to verify safely in production.</p>
-        <a href="../guides/jwt-decoder-guide.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition">JWT decode vs verify guide</a>
-      </section>
-    </div>
-    <aside class="space-y-6">
+    </article>
+    <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
+      <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
-        <h2 class="text-lg font-bold text-gray-900 mb-4">Related auth debugging resources</h2>
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Related auth debugging resources</h3>
         <div class="space-y-3 text-sm">
           <a href="../guides/jwt-decoder-guide.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
             <p class="font-bold text-gray-800">JWT decoding guide</p>
@@ -176,36 +221,18 @@
         </div>
       </div>
     </aside>
-    <section class="mt-10 lg:col-span-3 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 text-left" aria-labelledby="related-resources-heading">
-      <h2 id="related-resources-heading" class="text-2xl font-bold text-gray-900 mb-2 text-center md:text-left">Related Resources</h2>
-      <p class="text-sm text-gray-600 mb-6 text-center md:text-left max-w-2xl">Hand-picked links for token inspection, claim debugging, and adjacent structured-data tasks.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        <a href="json-formatter.html" class="group bg-gray-50 border border-gray-100 rounded-2xl p-5 md:p-6 hover:shadow-md transition flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
-          <span class="text-xs font-bold uppercase tracking-wide text-blue-600 mb-2">Tool</span>
-          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition">JSON Formatter</h3>
-          <p class="text-sm text-gray-600 flex-grow">Beautify or minify JSON that appears in JWT claims, API responses, and config snippets—processed locally in your browser.</p>
-          <span class="mt-4 text-sm font-semibold text-blue-600 group-hover:text-blue-800 transition">Open tool →</span>
-        </a>
-        <a href="../guides/jwt-decoder-guide.html" class="group bg-gray-50 border border-gray-100 rounded-2xl p-5 md:p-6 hover:shadow-md transition flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
-          <span class="text-xs font-bold uppercase tracking-wide text-orange-600 mb-2">Guide</span>
-          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-700 transition">JWT Decoder Guide</h3>
-          <p class="text-sm text-gray-600 flex-grow">Learn decode vs verify, which claims matter for troubleshooting, and why signature checks belong on your backend.</p>
-          <span class="mt-4 text-sm font-semibold text-orange-600 group-hover:text-orange-800 transition">Read guide →</span>
-        </a>
-      </div>
-    </section>
   </main>
 
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
   <script defer src="../assets/js/main.min.js"></script>

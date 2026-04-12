@@ -14,6 +14,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 HTML_FILES = sorted(ROOT.rglob("*.html"))
+PUBLISHED_HTML = [p for p in HTML_FILES if "templates" not in p.parts]
 TOOL_FILES = sorted((ROOT / "tools").glob("*.html"))
 SITEMAP_XML = ROOT / "sitemap.xml"
 
@@ -32,7 +33,7 @@ def read_text(path: pathlib.Path) -> str:
 
 def collect_pattern_hits(pattern: re.Pattern[str]) -> list[tuple[pathlib.Path, int, str]]:
     hits: list[tuple[pathlib.Path, int, str]] = []
-    for html_path in HTML_FILES:
+    for html_path in PUBLISHED_HTML:
         text = read_text(html_path)
         for idx, line in enumerate(text.splitlines(), start=1):
             if pattern.search(line):
@@ -121,7 +122,7 @@ def check_shared_structure() -> list[str]:
     issues: list[str] = []
     verification_file = ROOT / "googled245882dcee44e7c.html"
 
-    for html_path in HTML_FILES:
+    for html_path in PUBLISHED_HTML:
         if html_path == verification_file:
             continue
 
@@ -150,7 +151,7 @@ def check_indexation_and_breadcrumbs() -> list[str]:
     issues: list[str] = []
     sitemap_text = read_text(SITEMAP_XML) if SITEMAP_XML.exists() else ""
 
-    for html_path in HTML_FILES:
+    for html_path in PUBLISHED_HTML:
         text = read_text(html_path)
         rel = html_path.relative_to(ROOT)
         canonical = extract_single(
@@ -175,7 +176,7 @@ def check_indexation_and_breadcrumbs() -> list[str]:
 
 
 def main() -> int:
-    print(f"Scanning {len(HTML_FILES)} HTML files under {ROOT}")
+    print(f"Scanning {len(PUBLISHED_HTML)} HTML files under {ROOT}")
     print("")
 
     failed = False

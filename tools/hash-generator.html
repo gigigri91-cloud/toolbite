@@ -5,20 +5,23 @@
   <script src="../assets/js/theme-init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>SHA-256 &amp; SHA-1 Hash Generator Online | ToolBite</title>
+  <title>Hash generator — SHA-256 &amp; SHA-1 in-browser | ToolBite</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="canonical" href="https://toolbite.org/tools/hash-generator.html">
-  <meta name="description" content="Compute SHA-256 and SHA-1 hashes of any text using the Web Crypto API in your browser. Hex output, copy-ready — no uploads.">
+  <meta name="description" content="Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.">
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/tools/hash-generator.html">
-  <meta property="og:title" content="SHA-256 & SHA-1 Hash Generator | ToolBite">
-  <meta property="og:description" content="Compute SHA-256 and SHA-1 hex digests of text with Web Crypto — private and fast.">
+  <meta property="og:title" content="Hash generator — SHA-256 &amp; SHA-1 in-browser | ToolBite">
+  <meta property="og:description" content="Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SHA-256 & SHA-1 Hash Generator | ToolBite">
-  <meta name="twitter:description" content="Compute SHA-256 and SHA-1 hashes of any text using the Web Crypto API in your browser. Hex output, copy-ready — no uploads.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ToolBite Hash Generator","url":"https://toolbite.org/tools/hash-generator.html","description":"Compute SHA-256 and SHA-1 digests locally via Web Crypto.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-11","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"Hash Generator","item":"https://toolbite.org/tools/hash-generator.html"}]}</script>
+  <meta name="twitter:title" content="Hash generator — SHA-256 &amp; SHA-1 in-browser | ToolBite">
+  <meta name="twitter:description" content="Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hash generator — SHA-256 & SHA-1 in-browser | ToolBite","url":"https://toolbite.org/tools/hash-generator.html","description":"Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-12","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"SHA-256 & SHA-1 hash generator","item":"https://toolbite.org/tools/hash-generator.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +29,11 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
   <link rel="stylesheet" href="../assets/css/tailwind.min.css">
   <link rel="stylesheet" href="../assets/css/global.css">
-</head>
+
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is my data sent to ToolBite servers when I use SHA-256 &amp; SHA-1 hash generator?", "acceptedAnswer": {"@type": "Answer", "text": "No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing."}}, {"@type": "Question", "name": "Does it work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Once the page is cached in your browser, many workflows keep working without an active network connection."}}, {"@type": "Question", "name": "Is this tool free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ToolBite tools are free to use; we may show ads to support hosting."}}, {"@type": "Question", "name": "Which browsers are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled."}}]}</script></head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
@@ -61,19 +67,21 @@
     </div>
   </header>
 
-  <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2">
-      <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <article class="tb-tool-primary min-w-0 lg:col-span-2">
+      <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-2">
           <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
           <li class="text-gray-800 font-medium">Hash Generator</li>
         </ol>
       </nav>
-      <div class="mb-6">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">SHA-256 &amp; SHA-1 Hash Generator</h1>
+      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <div class="mb-0">
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display">SHA-256 &amp; SHA-1 hash generator</h1>
         <p class="text-gray-600">Fingerprint any UTF-8 text as lowercase hexadecimal. Uses the browser’s <strong class="text-gray-800">SubtleCrypto</strong> API — not for file checksums of large binaries (paste text only).</p>
       </div>
+      </section>
       <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
         <div class="flex flex-col sm:flex-row gap-4 mb-4">
           <div>
@@ -95,7 +103,90 @@
           <button type="button" id="hash-clear-btn" class="px-4 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition">Clear</button>
         </div>
       </div>
-      <article class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+            <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+          <li>Paste the text you want to digest.</li>
+          <li>Choose SHA-256 or SHA-1 (hex output).</li>
+          <li>Copy the hash for checksums or quick comparisons.</li>
+        </ol>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Integrity checks</h3>
+            <p class="text-xs text-gray-600">Compare hashes before and after a transfer.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Cache keys</h3>
+            <p class="text-xs text-gray-600">Derive deterministic fingerprints from strings.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Pair with other tools</h3>
+            <p class="text-xs text-gray-600">Hash JSON after formatting to spot silent edits.</p>
+          </li>
+        </ul>
+      </section>
+      <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-2 max-w-3xl">
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my data sent to ToolBite servers when I use SHA-256 &amp;amp; SHA-1 hash generator?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does it work offline?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Once the page is cached in your browser, many workflows keep working without an active network connection.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is this tool free?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Yes. ToolBite tools are free to use; we may show ads to support hosting.</p>
+          </details>
+          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Which browsers are supported?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 pb-1">Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled.</p>
+          </details>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+        <h2 id="tb-related-tools-heading" class="text-lg font-bold text-gray-900 mb-3">Related tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">📎</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Base64 Encoder</p>
+              <p class="text-xs text-gray-500">Encode decoded bytes</p>
+            </div>
+          </a>
+          <a href="../tools/uuid-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">🆔</span>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">UUID Generator</p>
+              <p class="text-xs text-gray-500">Unique identifiers</p>
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
+        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../guides/json-formatter-guide.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">JSON checklist</p>
+            <p class="text-xs text-gray-500">Compare payloads with hashes.</p>
+          </a>
+          <a href="../guides/index.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+            <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
+            <p class="text-xs text-gray-500">Browse all guides.</p>
+          </a>
+        </div>
+      </section>
+      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
+        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
+      </section>
+<section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Security notes</h2>
         <p class="mb-3">SHA-1 is deprecated for certificates and signatures, but still used for quick non-cryptographic checksums. Prefer <strong>SHA-256</strong> for new workflows.</p>
         <p class="mb-3">This page requires a secure context (<code class="bg-gray-100 px-1 rounded">https://</code> or <code class="bg-gray-100 px-1 rounded">localhost</code>) for <code class="bg-gray-100 px-1 rounded">crypto.subtle</code> in most browsers.</p>
@@ -111,16 +202,10 @@
           <li>Remember that even a one-character change produces a different digest.</li>
           <li>Do not use this page for large file checksums, since it hashes pasted text rather than binary file contents.</li>
         </ul>
-      </article>
-      <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">Related tools</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../tools/uuid-generator.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3"><span class="text-xl">🆔</span><div><p class="font-bold text-gray-800 text-sm">UUID Generator</p><p class="text-xs text-gray-500">Random v4 IDs</p></div></a>
-          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3"><span class="text-xl">📎</span><div><p class="font-bold text-gray-800 text-sm">Base64</p><p class="text-xs text-gray-500">Encode &amp; decode</p></div></a>
-        </div>
       </section>
-    </div>
-    <aside class="space-y-6">
+    </article>
+    <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
+      <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Related verification workflow</h3>
         <div class="space-y-3 text-sm">
@@ -140,13 +225,13 @@
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <div class="space-x-4 text-sm font-medium">
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-      </div>
+      </nav>
     </div>
   </footer>
   <script defer src="../assets/js/main.min.js"></script>
