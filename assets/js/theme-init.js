@@ -13,3 +13,21 @@
         }
     } catch (_) {}
 })();
+
+/* Load GA4 early for all pages that include this bootstrap script. */
+(function () {
+    try {
+        var GA_ID = 'G-CWQEQL5KL4';
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () {
+            window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', GA_ID);
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+        document.head.appendChild(script);
+    } catch (_) {}
+})();
