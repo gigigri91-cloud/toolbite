@@ -259,6 +259,24 @@
       "canonical": "https://toolbite.org/tools/sort-text-lines.html",
       "og_type": "website",
       "h1_inner": "Sort text lines"
+    },
+    "tools/qr-generator.html": {
+      "page_type": "tool",
+      "title": "QR Code Generator — Free, instant, browser-based | ToolBite",
+      "description": "Generate QR codes instantly for any URL, text, email or phone number. Download as PNG. No uploads, no account required — everything runs in your browser.",
+      "canonical": "https://toolbite.org/tools/qr-generator.html",
+      "og_type": "website",
+      "h1_inner": "QR Code Generator",
+      "schema_breadcrumb_leaf": "QR Code Generator"
+    },
+    "tools/csv-to-json.html": {
+      "page_type": "tool",
+      "title": "CSV to JSON Converter — Free, instant, browser-based | ToolBite",
+      "description": "Instantly convert CSV data to a valid JSON array in your browser. Paste your spreadsheet, configure options, copy the result. No uploads, no account required.",
+      "canonical": "https://toolbite.org/tools/csv-to-json.html",
+      "og_type": "website",
+      "h1_inner": "CSV to JSON Converter",
+      "schema_breadcrumb_leaf": "CSV to JSON Converter"
     }
   }
 }
