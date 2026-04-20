@@ -1,0 +1,32 @@
+name: External Link Checks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  external-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run external link checks
+        run: |
+          mkdir -p reports
+          python3 scripts/check_external_links.py | tee reports/external-links-report.txt
+
+      - name: Upload external links report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-links-report
+          path: reports/external-links-report.txt
+          if-no-files-found: warn

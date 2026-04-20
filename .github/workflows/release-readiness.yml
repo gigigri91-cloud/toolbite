@@ -1,0 +1,58 @@
+name: Release Readiness Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release-readiness:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run static sanity checks
+        run: |
+          python3 scripts/site_sanity_check.py
+          python3 scripts/check_internal_links.py
+          python3 scripts/validate_html_structure.py
+
+      - name: Run external link checks and save report
+        run: |
+          mkdir -p reports
+          python3 scripts/check_external_links.py | tee reports/external-links-report.txt
+
+      - name: Collect Lighthouse reports from live site
+        run: npx @lhci/cli@0.14.x collect --config=.lighthouserc.json
+
+      - name: Assert Lighthouse thresholds
+        run: npx @lhci/cli@0.14.x assert --config=.lighthouserc.json
+
+      - name: Upload Lighthouse reports to temporary public storage
+        run: npx @lhci/cli@0.14.x upload --config=.lighthouserc.json
+
+      - name: Upload external links artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-readiness-external-links
+          path: reports/external-links-report.txt
+          if-no-files-found: warn
+
+      - name: Upload Lighthouse artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-readiness-lighthouse
+          path: .lighthouseci
+          if-no-files-found: warn
