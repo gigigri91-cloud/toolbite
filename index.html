@@ -119,7 +119,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
   <link rel="stylesheet" href="assets/css/tailwind.min.css">
-  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/global.min.css">
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -288,6 +288,18 @@
           <div><h3 class="font-bold text-gray-900 text-lg">Hash Generator</h3><p class="text-sm text-gray-500">SHA-256 &amp; SHA-1</p></div>
         </a>
 
+        <a href="tools/qr-generator.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+          <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-violet-600 text-white rounded-full shadow-sm">New</span>
+          <div class="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">📱</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">QR Generator</h3><p class="text-sm text-gray-500">Create scannable QR codes</p></div>
+        </a>
+
+        <a href="tools/csv-to-json.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+          <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-teal-600 text-white rounded-full shadow-sm">New</span>
+          <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-600 group-hover:text-white transition">🔄</div>
+          <div><h3 class="font-bold text-gray-900 text-lg">CSV to JSON</h3><p class="text-sm text-gray-500">Convert spreadsheet data</p></div>
+        </a>
+
       </div>
     </section>
 
@@ -306,11 +318,11 @@
       <p class="text-gray-600 mb-6 max-w-3xl">ToolBite expands in small, fast releases. Here are high-demand utilities from our public roadmap (hashes, QR codes, meta generators, image resize — all client-side where possible).</p>
       <div class="flex flex-wrap gap-2 mb-4">
         <span class="tb-chip">MD5 / SHA hashes</span>
-        <span class="tb-chip">QR generator</span>
-        <span class="tb-chip">CSV ↔ JSON</span>
         <span class="tb-chip">CSS gradient &amp; shadow tools</span>
         <span class="tb-chip">SERP snippet preview</span>
         <span class="tb-chip">Robots.txt builder</span>
+        <span class="tb-chip">Markdown Preview</span>
+        <span class="tb-chip">Regex Tester</span>
       </div>
       <p class="text-sm text-gray-500">Tip: bookmark <a href="search.html" class="text-blue-600 font-semibold hover:underline">ToolBite online tool search</a> and the category hubs above — new tools appear there first. Share direct links to individual utilities to help others discover them.</p>
     </section>

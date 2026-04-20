@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="../assets/js/theme-init.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
+  <title>CSV to JSON Converter — Free, instant, browser-based | ToolBite</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/tools/csv-to-json.html">
+  <meta name="description" content="Instantly convert CSV data to a valid JSON array in your browser. Paste your spreadsheet, configure options, copy the result. No uploads, no account required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolbite.org/tools/csv-to-json.html">
+  <meta property="og:title" content="CSV to JSON Converter — Free, instant | ToolBite">
+  <meta property="og:description" content="Convert CSV to JSON instantly in your browser. No uploads, no account required.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSV to JSON Converter — Free, instant | ToolBite">
+  <meta name="twitter:description" content="Convert CSV to JSON instantly in your browser. No uploads, no account required.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSV to JSON Converter | ToolBite",
+    "url": "https://toolbite.org/tools/csv-to-json.html",
+    "description": "Convert CSV to JSON instantly in your browser. No uploads, no account required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "author": { "@type": "Organization", "name": "ToolBite" },
+    "publisher": { "@type": "Organization", "name": "ToolBite", "logo": { "@type": "ImageObject", "url": "https://toolbite.org/assets/images/toolbite-logo.png" } },
+    "dateModified": "2026-04-21",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolbite.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Developer Tools", "item": "https://toolbite.org/categories/developer-tools.html" },
+      { "@type": "ListItem", "position": 3, "name": "CSV to JSON Converter", "item": "https://toolbite.org/tools/csv-to-json.html" }
+    ]
+  }
+  </script>
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
+  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
+  <link rel="stylesheet" href="../assets/css/global.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
+        <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
+      </a>
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
+          <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
+          <li><a href="../categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
+          <li><a href="../categories/seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
+          <li><a href="../guides/index.html" class="hover:text-orange-500 transition">Guides</a></li>
+          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
+        <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
+        <li><a href="../categories/image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
+        <li><a href="../categories/seo-tools.html" class="block hover:text-orange-500 transition">SEO</a></li>
+        <li><a href="../guides/index.html" class="block hover:text-orange-500 transition">Guides</a></li>
+        <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <article class="tb-tool-primary min-w-0 lg:col-span-2">
+
+      <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2">
+          <li><a href="../" class="hover:text-blue-600 transition">Home</a></li>
+          <li>›</li>
+          <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li>
+          <li>›</li>
+          <li class="text-gray-800 font-medium">CSV to JSON</li>
+        </ol>
+      </nav>
+
+      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">CSV to JSON Converter</h1>
+        <p class="text-gray-600">Paste your CSV data and instantly get a clean JSON array. First row is used as keys. Works fully in your browser.</p>
+      </section>
+
+      <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+        <strong>Privacy:</strong> Your data is processed entirely in your browser and never uploaded to any server.
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-10">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="csv-input" class="block text-sm font-bold text-gray-700">CSV Input</label>
+              <button onclick="loadExample()" class="text-xs text-blue-600 hover:underline font-semibold">Load example</button>
+            </div>
+            <textarea id="csv-input" rows="12" placeholder="name,age,city&#10;Alice,30,London&#10;Bob,25,Paris" class="w-full border border-gray-300 rounded-xl p-3 text-gray-800 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"></textarea>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="json-output" class="block text-sm font-bold text-gray-700">JSON Output</label>
+              <button onclick="copyJSON()" id="copy-json-btn" class="text-xs text-blue-600 hover:underline font-semibold">Copy</button>
+            </div>
+            <textarea id="json-output" rows="12" readonly placeholder="JSON will appear here…" class="w-full border border-gray-200 bg-gray-50 rounded-xl p-3 text-gray-800 font-mono text-xs focus:outline-none resize-none"></textarea>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 items-center mb-6 text-sm">
+          <label class="flex items-center gap-2 font-medium text-gray-700 cursor-pointer">
+            <input type="checkbox" id="opt-header" checked class="w-4 h-4 rounded text-blue-600">
+            First row is header
+          </label>
+          <div class="flex items-center gap-2">
+            <label for="opt-delimiter" class="font-medium text-gray-700">Delimiter:</label>
+            <select id="opt-delimiter" class="border border-gray-300 rounded-lg px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+              <option value=",">Comma (,)</option>
+              <option value=";">Semicolon (;)</option>
+              <option value="&#9;">Tab (\t)</option>
+              <option value="|">Pipe (|)</option>
+            </select>
+          </div>
+          <label class="flex items-center gap-2 font-medium text-gray-700 cursor-pointer">
+            <input type="checkbox" id="opt-pretty" checked class="w-4 h-4 rounded text-blue-600">
+            Pretty print
+          </label>
+        </div>
+
+        <div class="flex gap-3 flex-wrap">
+          <button onclick="convertCSV()" class="flex-1 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-blue-900 transition shadow-lg transform hover:-translate-y-1">Convert to JSON</button>
+          <button onclick="clearAll()" class="px-6 py-4 bg-gray-100 text-gray-700 font-bold rounded-2xl hover:bg-gray-200 transition">Clear</button>
+        </div>
+
+        <div id="convert-status" class="mt-4 text-sm font-semibold hidden"></div>
+      </div>
+
+      <section class="tb-tool-section mt-4 not-prose" aria-labelledby="tb-how-to-heading">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+          <li>Paste your CSV text (e.g. exported from Excel or Google Sheets) into the left box.</li>
+          <li>Set your delimiter (comma, semicolon, tab, or pipe) and whether the first row is a header.</li>
+          <li>Click Convert to JSON and copy the result from the right box.</li>
+        </ol>
+      </section>
+
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 list-none p-0 m-0">
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">API development</h3>
+            <p class="text-xs text-gray-600">Turn exported spreadsheet data into JSON fixtures for API testing.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Data migration</h3>
+            <p class="text-xs text-gray-600">Convert legacy CSV exports to JSON for import into modern databases.</p>
+          </li>
+          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 text-sm mb-1">Config files</h3>
+            <p class="text-xs text-gray-600">Convert translation tables or product lists from spreadsheets to JSON configs.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+        <h2 id="tb-related-tools-heading" class="text-lg font-bold text-gray-900 mb-3">Related tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="../tools/json-formatter.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">💻</span>
+            <div><p class="font-bold text-gray-800 text-sm">JSON Formatter</p><p class="text-xs text-gray-500">Beautify & validate JSON</p></div>
+          </a>
+          <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition flex items-center gap-3">
+            <span class="text-xl" aria-hidden="true">📎</span>
+            <div><p class="font-bold text-gray-800 text-sm">Base64 Encoder</p><p class="text-xs text-gray-500">Encode & decode in browser</p></div>
+          </a>
+        </div>
+      </section>
+    </article>
+
+    <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
+      <h2 id="tb-tool-aside-heading" class="sr-only">Related links</h2>
+      <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Developer Tools</h3>
+        <div class="space-y-3 text-sm">
+          <a href="../categories/developer-tools.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+            <p class="font-bold text-gray-800">Browse all Developer Tools</p>
+            <p class="text-gray-500 mt-1">JSON, JWT, Base64, UUID, QR codes and more.</p>
+          </a>
+          <a href="../tools/json-formatter.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+            <p class="font-bold text-gray-800">JSON Formatter</p>
+            <p class="text-gray-500 mt-1">Beautify & validate any JSON string.</p>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+        <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function loadExample() {
+      document.getElementById('csv-input').value = 'name,age,city,active\nAlice,30,London,true\nBob,25,Paris,false\nCarol,35,Berlin,true';
+      convertCSV();
+    }
+
+    function parseCSVLine(line, delimiter) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') {
+          if (inQuotes && line[i + 1] === '"') { current += '"'; i++; }
+          else { inQuotes = !inQuotes; }
+        } else if (ch === delimiter && !inQuotes) {
+          result.push(current);
+          current = '';
+        } else {
+          current += ch;
+        }
+      }
+      result.push(current);
+      return result;
+    }
+
+    function coerce(val) {
+      if (val === 'true') return true;
+      if (val === 'false') return false;
+      if (val === '' || val === null) return null;
+      const n = Number(val);
+      return isNaN(n) ? val : n;
+    }
+
+    function convertCSV() {
+      const raw = document.getElementById('csv-input').value.trim();
+      const delim = document.getElementById('opt-delimiter').value;
+      const hasHeader = document.getElementById('opt-header').checked;
+      const pretty = document.getElementById('opt-pretty').checked;
+      const statusEl = document.getElementById('convert-status');
+
+      if (!raw) {
+        statusEl.textContent = '⚠️ Nothing to convert. Paste some CSV first.';
+        statusEl.className = 'mt-4 text-sm font-semibold text-amber-600';
+        statusEl.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const lines = raw.split(/\r?\n/).filter(l => l.trim() !== '');
+        let headers, dataLines;
+        if (hasHeader) {
+          headers = parseCSVLine(lines[0], delim).map(h => h.trim());
+          dataLines = lines.slice(1);
+        } else {
+          const cols = parseCSVLine(lines[0], delim).length;
+          headers = Array.from({ length: cols }, (_, i) => `col${i + 1}`);
+          dataLines = lines;
+        }
+
+        const result = dataLines.map(line => {
+          const vals = parseCSVLine(line, delim);
+          const obj = {};
+          headers.forEach((h, i) => { obj[h] = coerce((vals[i] || '').trim()); });
+          return obj;
+        });
+
+        document.getElementById('json-output').value = pretty ? JSON.stringify(result, null, 2) : JSON.stringify(result);
+        statusEl.textContent = `✅ Converted ${result.length} row(s) with ${headers.length} field(s).`;
+        statusEl.className = 'mt-4 text-sm font-semibold text-emerald-700';
+        statusEl.classList.remove('hidden');
+      } catch (err) {
+        statusEl.textContent = '❌ Parse error: ' + err.message;
+        statusEl.className = 'mt-4 text-sm font-semibold text-red-600';
+        statusEl.classList.remove('hidden');
+      }
+    }
+
+    function copyJSON() {
+      const out = document.getElementById('json-output').value;
+      if (!out) return;
+      navigator.clipboard.writeText(out).then(() => {
+        const btn = document.getElementById('copy-json-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    function clearAll() {
+      document.getElementById('csv-input').value = '';
+      document.getElementById('json-output').value = '';
+      document.getElementById('convert-status').classList.add('hidden');
+    }
+  </script>
+  <script defer src="../assets/js/main.min.js"></script>
+</body>
+</html>
