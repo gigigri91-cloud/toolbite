@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="../assets/js/theme-init.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
+  <title>QR codes explained — how to create, customize, and use them | ToolBite</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/guides/qr-code-guide.html">
+  <meta name="description" content="Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://toolbite.org/guides/qr-code-guide.html">
+  <meta property="og:title" content="QR codes explained — how to create, customize, and use them | ToolBite">
+  <meta property="og:description" content="Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QR codes explained — how to create, customize, and use them | ToolBite">
+  <meta name="twitter:description" content="Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"QR codes explained — how to create, customize, and use them","datePublished":"2026-04-22","dateModified":"2026-04-22","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"mainEntityOfPage":"https://toolbite.org/guides/qr-code-guide.html","description":"Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolbite.org/guides/index.html"},{"@type":"ListItem","position":3,"name":"QR codes explained — how to create, customize, and use them","item":"https://toolbite.org/guides/qr-code-guide.html"}]}</script>
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
+  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
+  <link rel="stylesheet" href="../assets/css/global.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
+        <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
+      </a>
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
+          <li><a href="index.html" class="text-orange-500">Guides</a></li>
+          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="index.html" class="block text-orange-500">Guides</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+        <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
+        <li class="text-gray-800 font-medium">QR codes explained</li>
+      </ol>
+    </nav>
+
+    <article class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 prose max-w-none">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">QR codes explained — how to create, customize, and use them</h1>
+      <div class="text-sm text-gray-500 mb-8">
+        <span>By <strong>ToolBite Team</strong></span> •
+        <span>Last updated: <time datetime="2026-04-22">April 22, 2026</time></span>
+      </div>
+      <p class="text-gray-600">QR codes are everywhere — on restaurant menus, product packaging, business cards, and event tickets. This guide explains how they work, what you can encode in them, and how to create one that actually scans reliably.</p>
+
+      <div class="not-prose mt-6 mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+        <strong>Best for:</strong> small business owners, marketers, event organisers, and anyone who needs to bridge physical materials with digital content.
+      </div>
+
+      <h2>What is a QR code?</h2>
+      <p>A <strong>QR code</strong> (Quick Response code) is a two-dimensional barcode that stores data as a pattern of black and white squares. Unlike a traditional barcode that encodes only ~20 digits, a QR code can hold up to 4,296 alphanumeric characters or 7,089 numeric digits.</p>
+      <p>QR codes were invented in 1994 by Denso Wave in Japan, originally for tracking automotive parts. Today, every modern smartphone camera can scan them natively — no app required.</p>
+
+      <h2>What can you store in a QR code?</h2>
+      <ul>
+        <li><strong>Website URLs</strong> — The most common use. Scanning opens a webpage directly in the browser.</li>
+        <li><strong>Plain text</strong> — Notes, product descriptions, instructions.</li>
+        <li><strong>Email addresses</strong> — Prefills a compose window with the recipient address.</li>
+        <li><strong>Phone numbers</strong> — Initiates a call or SMS when scanned.</li>
+        <li><strong>Wi-Fi credentials</strong> — Lets guests connect to your network by scanning (WIFI:T:WPA;S:NetworkName;P:Password;;).</li>
+        <li><strong>VCard contacts</strong> — Adds a contact to the phone's address book.</li>
+        <li><strong>Geographic coordinates</strong> — Opens a map location.</li>
+      </ul>
+      <p><strong>Important:</strong> Keep encoded content short. The more data you store, the denser and smaller the modules (dots) become, making the code harder to scan — especially when printed small.</p>
+
+      <h2>Error correction levels explained</h2>
+      <p>QR codes include built-in error correction so they can still be scanned even when partially damaged or obscured. There are four levels:</p>
+      <ul>
+        <li><strong>L (Low)</strong> — Recovers up to 7% of data. Produces the simplest, smallest code. Best for digital-only use where the image will not be damaged.</li>
+        <li><strong>M (Medium)</strong> — Recovers up to 15%. Good all-purpose choice for most uses.</li>
+        <li><strong>Q (Quartile)</strong> — Recovers up to 25%. Good for printed materials in environments with moderate wear.</li>
+        <li><strong>H (High)</strong> — Recovers up to 30%. Best for print when you want to overlay a logo on the QR code, as the logo covers part of the data area.</li>
+      </ul>
+      <p>Use <strong>H level</strong> if you plan to add a logo or brand icon in the centre of the QR code. Use <strong>M or L</strong> for digital use to keep the code clean and easy to scan.</p>
+
+      <h2>Best practices for reliable QR codes</h2>
+      <ul>
+        <li><strong>Minimum print size:</strong> 2 cm × 2 cm (about 0.8 in). Smaller codes may fail on older cameras.</li>
+        <li><strong>Quiet zone:</strong> Leave a white border of at least 4 modules (dots) around the code — this is part of the spec and required for reliable scanning.</li>
+        <li><strong>Contrast:</strong> Dark modules on a light background. Avoid placing QR codes on dark or busy backgrounds.</li>
+        <li><strong>Test before printing:</strong> Always scan the code with multiple devices (iPhone + Android) before sending to print.</li>
+        <li><strong>Use a short URL:</strong> If your target URL is long, use a URL shortener first. Shorter data = less dense code = easier scan.</li>
+        <li><strong>Dynamic vs static:</strong> Consider dynamic QR codes (via a service) if you want to update the destination URL without reprinting the physical code.</li>
+      </ul>
+
+      <h2>How to generate a QR code for free</h2>
+      <ol>
+        <li>Open <a href="../tools/qr-generator.html">ToolBite's QR code generator</a> — no account needed.</li>
+        <li>Type or paste your URL, text, or phone number into the input box.</li>
+        <li>Choose your size (300px for digital, 500px+ for print) and error correction level.</li>
+        <li>Click Generate QR Code to preview instantly.</li>
+        <li>Click Download PNG to save the file to your device.</li>
+      </ol>
+      <p>The QR code is generated entirely in your browser — your content is never sent to ToolBite's servers.</p>
+
+      <h2>Quick checklist before deploying</h2>
+      <ul>
+        <li>Scanned successfully on both iPhone and Android camera apps.</li>
+        <li>Minimum 2 cm × 2 cm when printed.</li>
+        <li>White quiet zone border is visible around the code.</li>
+        <li>High contrast — dark on light background.</li>
+        <li>URL is short and correct — test the destination link.</li>
+        <li>Error correction set to H if logo overlay is used.</li>
+      </ul>
+
+      <div class="not-prose mt-8 flex flex-wrap gap-3">
+        <a href="../tools/qr-generator.html" class="px-5 py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition">Generate a QR code now</a>
+        <a href="../tools/url-encoder.html" class="px-5 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">URL Encoder</a>
+      </div>
+    </article>
+
+    <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Continue with related resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="../tools/qr-generator.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">QR Code Generator</p>
+          <p class="text-xs text-gray-500 mt-1">Free, instant QR code generator in your browser.</p>
+        </a>
+        <a href="url-encoding-guide.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">URL Encoding Guide</p>
+          <p class="text-xs text-gray-500 mt-1">Understand how URLs work before encoding them in QR codes.</p>
+        </a>
+        <a href="index.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">All ToolBite Guides</p>
+          <p class="text-xs text-gray-500 mt-1">More practical guides for developers and creators.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      </nav>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.min.js"></script>
+</body>
+</html>

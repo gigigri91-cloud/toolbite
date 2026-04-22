@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="../assets/js/theme-init.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
+  <title>Base64 encoding explained — what it is and when to use it | ToolBite</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/guides/base64-encoding-guide.html">
+  <meta name="description" content="Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://toolbite.org/guides/base64-encoding-guide.html">
+  <meta property="og:title" content="Base64 encoding explained — what it is and when to use it | ToolBite">
+  <meta property="og:description" content="Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Base64 encoding explained — what it is and when to use it | ToolBite">
+  <meta name="twitter:description" content="Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Base64 encoding explained — what it is and when to use it","datePublished":"2026-04-22","dateModified":"2026-04-22","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"mainEntityOfPage":"https://toolbite.org/guides/base64-encoding-guide.html","description":"Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolbite.org/guides/index.html"},{"@type":"ListItem","position":3,"name":"Base64 encoding explained — what it is and when to use it","item":"https://toolbite.org/guides/base64-encoding-guide.html"}]}</script>
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
+  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
+  <link rel="stylesheet" href="../assets/css/global.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
+        <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
+      </a>
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
+          <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
+          <li><a href="../categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
+          <li><a href="../categories/seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
+          <li><a href="index.html" class="text-orange-500">Guides</a></li>
+          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer</a></li>
+        <li><a href="index.html" class="block text-orange-500">Guides</a></li>
+        <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+        <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
+        <li class="text-gray-800 font-medium">Base64 encoding explained</li>
+      </ol>
+    </nav>
+
+    <article class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 prose max-w-none">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Base64 encoding explained — what it is and when to use it</h1>
+      <div class="text-sm text-gray-500 mb-8">
+        <span>By <strong>ToolBite Team</strong></span> •
+        <span>Last updated: <time datetime="2026-04-22">April 22, 2026</time></span>
+      </div>
+      <p class="text-gray-600">Base64 appears everywhere in web development — API tokens, email attachments, data URIs, JWT tokens — yet many developers use it without understanding what it actually does. This guide explains it clearly.</p>
+
+      <div class="not-prose mt-6 mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+        <strong>Best for:</strong> developers working with APIs, email systems, JWT tokens, or embedding images/files in HTML and CSS.
+      </div>
+
+      <h2>What is Base64?</h2>
+      <p>Base64 is an <strong>encoding scheme</strong> that converts binary data into a string of 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It was designed to safely transmit binary data over text-based systems like email (SMTP) and HTTP headers that were not designed to handle raw bytes.</p>
+      <p>The name "Base64" comes from the fact that it uses 64 distinct characters to represent data. Each Base64 character encodes 6 bits of data (2⁶ = 64).</p>
+
+      <h2>How does Base64 encoding work?</h2>
+      <ol>
+        <li>Take the binary input (e.g., the bytes of an image or a string).</li>
+        <li>Group the bytes into 3-byte chunks (24 bits).</li>
+        <li>Split each 24-bit chunk into four 6-bit groups.</li>
+        <li>Map each 6-bit group to one of the 64 Base64 characters.</li>
+        <li>Pad with <code>=</code> characters if the input length is not divisible by 3.</li>
+      </ol>
+      <p>Example: the string <code>Hi!</code> encodes to <code>SGkh</code> in Base64. The encoded output is always about 33% larger than the original.</p>
+
+      <h2>Common use cases</h2>
+      <ul>
+        <li><strong>API authentication</strong> — Basic Auth sends credentials as <code>username:password</code> encoded in Base64 in the Authorization header.</li>
+        <li><strong>JWT tokens</strong> — The header and payload sections of a JSON Web Token are Base64url-encoded (a variant with - and _ instead of + and /).</li>
+        <li><strong>Data URIs</strong> — Embedding small images directly in HTML or CSS: <code>src="data:image/png;base64,iVBORw..."</code></li>
+        <li><strong>Email attachments</strong> — MIME protocol uses Base64 to encode binary attachments so they survive transit through SMTP servers.</li>
+        <li><strong>Storing binary in JSON</strong> — JSON is text-only, so binary data (files, images, keys) is often Base64-encoded before being stored in JSON fields.</li>
+      </ul>
+
+      <h2>Base64 is NOT encryption</h2>
+      <p>This is the most important thing to understand: <strong>Base64 is reversible by anyone, instantly, with no key required.</strong> It provides zero security. Never use Base64 to "hide" passwords, API secrets, or sensitive data.</p>
+      <p>A common mistake is to see a Base64 string and assume it is encrypted. It is not — it is just encoded for safe transport. Anyone can decode it in seconds.</p>
+      <p>For actual security, use proper encryption (AES-256) or hashing (SHA-256, bcrypt for passwords).</p>
+
+      <h2>Base64 vs Base64url</h2>
+      <p>Standard Base64 uses <code>+</code> and <code>/</code> which are special characters in URLs. <strong>Base64url</strong> replaces them with <code>-</code> and <code>_</code> to make the output safe for use in URLs and HTTP headers without percent-encoding. JWT tokens use Base64url.</p>
+
+      <h2>How to encode and decode in your browser</h2>
+      <ol>
+        <li>Open <a href="../tools/base64-encoder.html">ToolBite's Base64 encoder &amp; decoder</a>.</li>
+        <li>Paste your text or string into the input box.</li>
+        <li>Click Encode to get the Base64 output, or paste a Base64 string and click Decode to get the original.</li>
+        <li>Copy the result — it never leaves your browser tab.</li>
+      </ol>
+
+      <h2>Quick reference</h2>
+      <ul>
+        <li>Base64 output is ~33% larger than the input.</li>
+        <li>All Base64 strings end with 0, 1, or 2 padding <code>=</code> characters.</li>
+        <li>Base64 ≠ encryption — never use it to secure sensitive data.</li>
+        <li>JWT tokens use Base64url (not standard Base64).</li>
+        <li>Decoding in JavaScript: <code>atob(str)</code>. Encoding: <code>btoa(str)</code>.</li>
+      </ul>
+
+      <div class="not-prose mt-8 flex flex-wrap gap-3">
+        <a href="../tools/base64-encoder.html" class="px-5 py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition">Open Base64 encoder</a>
+        <a href="jwt-decoder-guide.html" class="px-5 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">JWT guide</a>
+      </div>
+    </article>
+
+    <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Continue with related resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="../tools/base64-encoder.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">Base64 Encoder &amp; Decoder</p>
+          <p class="text-xs text-gray-500 mt-1">Encode or decode Base64 strings in your browser.</p>
+        </a>
+        <a href="jwt-decoder-guide.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">JWT Decoder Guide</p>
+          <p class="text-xs text-gray-500 mt-1">Understand how Base64url is used in JWT tokens.</p>
+        </a>
+        <a href="../tools/hash-generator.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">Hash Generator</p>
+          <p class="text-xs text-gray-500 mt-1">SHA-256 &amp; SHA-1 hashing — actual one-way security.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      </nav>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.min.js"></script>
+</body>
+</html>

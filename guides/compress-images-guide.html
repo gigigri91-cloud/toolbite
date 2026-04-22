@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="../assets/js/theme-init.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
+  <title>How to compress images for web without losing quality | ToolBite</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="canonical" href="https://toolbite.org/guides/compress-images-guide.html">
+  <meta name="description" content="A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://toolbite.org/guides/compress-images-guide.html">
+  <meta property="og:title" content="How to compress images for web without losing quality | ToolBite">
+  <meta property="og:description" content="A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to compress images for web without losing quality | ToolBite">
+  <meta name="twitter:description" content="A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to compress images for web without losing quality","datePublished":"2026-04-22","dateModified":"2026-04-22","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"mainEntityOfPage":"https://toolbite.org/guides/compress-images-guide.html","description":"A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolbite.org/guides/index.html"},{"@type":"ListItem","position":3,"name":"How to compress images for web without losing quality","item":"https://toolbite.org/guides/compress-images-guide.html"}]}</script>
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
+  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
+  <link rel="stylesheet" href="../assets/css/global.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-3 max-w-7xl mx-auto px-4">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
+        <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
+      </a>
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
+          <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
+          <li><a href="../categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
+          <li><a href="../categories/seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
+          <li><a href="index.html" class="text-orange-500">Guides</a></li>
+          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
+        <li><a href="../categories/image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
+        <li><a href="index.html" class="block text-orange-500">Guides</a></li>
+        <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+        <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
+        <li class="text-gray-800 font-medium">Compress images for web</li>
+      </ol>
+    </nav>
+
+    <article class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 prose max-w-none">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">How to compress images for web without losing quality</h1>
+      <div class="text-sm text-gray-500 mb-8">
+        <span>By <strong>ToolBite Team</strong></span> •
+        <span>Last updated: <time datetime="2026-04-22">April 22, 2026</time></span>
+      </div>
+      <p class="text-gray-600">Large images are the single biggest cause of slow page loads. A photo straight from a camera can be 5–10 MB — on the web, the same image should be under 200 KB. This guide shows you how to get there without visible quality loss.</p>
+
+      <div class="not-prose mt-6 mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+        <strong>Best for:</strong> bloggers, web developers, e-commerce owners, and anyone preparing images for publishing on the web.
+      </div>
+
+      <h2>Why image size matters</h2>
+      <p>Google's Core Web Vitals use <strong>Largest Contentful Paint (LCP)</strong> as a ranking signal. A hero image that takes 3 seconds to load tanks your LCP score. Compressed images also save bandwidth costs for both you and your visitors — especially on mobile.</p>
+      <ul>
+        <li>A 1 MB image can often be compressed to under 100 KB with no visible difference.</li>
+        <li>Every 100 ms of page speed delay reduces conversions by ~1% (Deloitte research).</li>
+        <li>Google rewards faster pages with better rankings in mobile search.</li>
+      </ul>
+
+      <h2>Choosing the right format</h2>
+      <p>The format you choose has more impact than compression level alone:</p>
+      <ul>
+        <li><strong>WebP</strong> — Best choice for the web. 25–35% smaller than JPEG at the same quality. Supported in all modern browsers.</li>
+        <li><strong>JPEG</strong> — Good for photos. Lossy compression, very widely supported including older browsers and email clients.</li>
+        <li><strong>PNG</strong> — Best for graphics, logos, and screenshots that need transparency. Lossless but larger file sizes.</li>
+        <li><strong>SVG</strong> — Best for icons and illustrations. Resolution-independent and tiny file size for vector graphics.</li>
+      </ul>
+      <p><strong>Rule of thumb:</strong> Use WebP for photos on the web. Fall back to JPEG for older system compatibility. Use PNG only when you need transparency or lossless quality.</p>
+
+      <h2>What quality level to use</h2>
+      <p>For JPEG and WebP, quality is a slider from 0 (worst) to 100 (original). The sweet spot is:</p>
+      <ul>
+        <li><strong>70–80%</strong> for photos on blog posts and landing pages — usually invisible loss.</li>
+        <li><strong>80–85%</strong> for product images where detail matters (e-commerce).</li>
+        <li><strong>60–70%</strong> for thumbnails and preview images.</li>
+      </ul>
+      <p>Always compare the compressed image at 100% zoom before publishing. Compression artefacts appear mostly in areas with sharp edges and gradients.</p>
+
+      <h2>How to compress images in your browser</h2>
+      <ol>
+        <li>Open <a href="../tools/image-compressor.html">ToolBite's image compressor</a> — no upload to a server required.</li>
+        <li>Drop your image onto the tool or click to select a file (JPEG or PNG).</li>
+        <li>Adjust the quality slider — start at 80 and move down until you see the file size you want.</li>
+        <li>Choose output format: JPEG (wider compatibility) or WebP (smaller size).</li>
+        <li>Click Download to save the compressed file.</li>
+      </ol>
+      <p>Since everything runs in your browser, your images never leave your device. This is especially important for client work, sensitive product photos, or any image that hasn't been published yet.</p>
+
+      <h2>Serving images responsively (bonus)</h2>
+      <p>After compression, consider serving different sizes for different screens using the HTML <code>srcset</code> attribute:</p>
+      <pre><code>&lt;img
+  src="photo-800w.jpg"
+  srcset="photo-400w.jpg 400w, photo-800w.jpg 800w"
+  sizes="(max-width: 600px) 400px, 800px"
+  alt="Description"&gt;</code></pre>
+      <p>This ensures mobile visitors download a smaller image, saving data and improving LCP on mobile.</p>
+
+      <h2>Quick checklist before publishing</h2>
+      <ul>
+        <li>Image is under 200 KB (under 100 KB for thumbnails).</li>
+        <li>Format is WebP or JPEG (not PNG unless transparency is needed).</li>
+        <li>Quality tested at 70–85% — no visible artefacts at full zoom.</li>
+        <li>Alt text is descriptive (helps SEO and accessibility).</li>
+        <li>Width and height attributes are set on the <code>&lt;img&gt;</code> tag (prevents layout shift).</li>
+      </ul>
+
+      <div class="not-prose mt-8 flex flex-wrap gap-3">
+        <a href="../tools/image-compressor.html" class="px-5 py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition">Compress an image now</a>
+        <a href="index.html" class="px-5 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">All guides</a>
+      </div>
+    </article>
+
+    <section class="mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Continue with related resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="../tools/image-compressor.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">Image Compressor</p>
+          <p class="text-xs text-gray-500 mt-1">Compress JPEG and PNG to WebP or JPEG in your browser.</p>
+        </a>
+        <a href="../categories/image-tools.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">Image Tools</p>
+          <p class="text-xs text-gray-500 mt-1">Browse all image utilities available on ToolBite.</p>
+        </a>
+        <a href="index.html" class="bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <p class="font-bold text-gray-800 text-sm">All ToolBite Guides</p>
+          <p class="text-xs text-gray-500 mt-1">More practical guides for developers and content creators.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      </nav>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.min.js"></script>
+</body>
+</html>

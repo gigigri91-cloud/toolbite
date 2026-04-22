@@ -277,6 +277,54 @@
       "og_type": "website",
       "h1_inner": "CSV to JSON Converter",
       "schema_breadcrumb_leaf": "CSV to JSON Converter"
+    },
+    "guides/compress-images-guide.html": {
+      "page_type": "guide_article",
+      "title": "How to compress images for web without losing quality | ToolBite",
+      "description": "A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser.",
+      "canonical": "https://toolbite.org/guides/compress-images-guide.html",
+      "og_type": "article",
+      "h1_inner": "How to compress images for web without losing quality"
+    },
+    "guides/base64-encoding-guide.html": {
+      "page_type": "guide_article",
+      "title": "Base64 encoding explained — what it is and when to use it | ToolBite",
+      "description": "Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption.",
+      "canonical": "https://toolbite.org/guides/base64-encoding-guide.html",
+      "og_type": "article",
+      "h1_inner": "Base64 encoding explained — what it is and when to use it"
+    },
+    "guides/uuid-guid-guide.html": {
+      "page_type": "guide_article",
+      "title": "UUID and GUID explained — what they are and when to generate one | ToolBite",
+      "description": "What is a UUID? What is a GUID? Are they the same? This guide explains UUID versions, when to use them in databases and APIs, and how to generate them safely in your browser.",
+      "canonical": "https://toolbite.org/guides/uuid-guid-guide.html",
+      "og_type": "article",
+      "h1_inner": "UUID and GUID explained — what they are and when to generate one"
+    },
+    "guides/url-encoding-guide.html": {
+      "page_type": "guide_article",
+      "title": "URL encoding explained — what %20 means and how to fix broken links | ToolBite",
+      "description": "What is URL encoding? Why does a space become %20? This guide explains percent-encoding, which characters need encoding, encodeURI vs encodeURIComponent, and how to fix broken URLs.",
+      "canonical": "https://toolbite.org/guides/url-encoding-guide.html",
+      "og_type": "article",
+      "h1_inner": "URL encoding explained — what %20 means and how to fix broken links"
+    },
+    "guides/qr-code-guide.html": {
+      "page_type": "guide_article",
+      "title": "QR codes explained — how to create, customize, and use them | ToolBite",
+      "description": "Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser.",
+      "canonical": "https://toolbite.org/guides/qr-code-guide.html",
+      "og_type": "article",
+      "h1_inner": "QR codes explained — how to create, customize, and use them"
+    },
+    "guides/password-guide.html": {
+      "page_type": "guide_article",
+      "title": "How to generate strong passwords — and store them safely | ToolBite",
+      "description": "What makes a password strong, how long it should be, which characters to include, and how to store it safely without memorising random strings. A practical security guide.",
+      "canonical": "https://toolbite.org/guides/password-guide.html",
+      "og_type": "article",
+      "h1_inner": "How to generate strong passwords — and store them safely"
     }
   }
 }
