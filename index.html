@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="assets/js/theme-init.js"></script>
+  <script>/* Inline theme: prevents FOUC. Keep KEY in sync with main.js */
+  (function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
   <title>ToolBite — Private, browser-based tools for text, developers &amp; SEO</title>
@@ -114,12 +116,17 @@
   <meta name="google-site-verification" content="kiGtxsbAbPRi97iTMnH-Tyu17HuWN7ZlTP6n6gfVP60">
 
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <!-- Preload the LCP image (logo WebP) so the browser fetches it during HTML parse -->
+  <link rel="preload" as="image" href="assets/images/toolbite-logo.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
   <link rel="stylesheet" href="assets/css/tailwind.min.css">
   <link rel="stylesheet" href="assets/css/global.min.css">
+  <!-- GA4: async so it never blocks the parser -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
