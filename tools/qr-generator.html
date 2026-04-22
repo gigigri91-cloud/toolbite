@@ -62,6 +62,38 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What can I encode in a QR code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can encode URLs, plain text, email addresses, phone numbers, and Wi-Fi credentials. Any text up to a few thousand characters can be stored in a QR code, though shorter content produces simpler, easier-to-scan codes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this QR code generator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. ToolBite's QR code generator is completely free with no account required, no watermarks, and no download limits. You can generate and download as many PNG QR codes as you need."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the error correction level mean in a QR code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Error correction determines how much of the QR code can be obscured or damaged while still remaining scannable. Low (L) produces a smaller, simpler code for digital use. High (H) adds redundancy so the code works even when partially covered — ideal for printed materials where a logo might overlap the code."
+        }
+      }
+    ]
+  }
+  </script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,6 +226,24 @@
             <p class="text-xs text-gray-600">Create scannable codes for event tickets, menus, or product pages.</p>
           </li>
         </ul>
+      </section>
+
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">Frequently asked questions</h2>
+        <dl class="space-y-4">
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <dt class="font-bold text-gray-900 text-sm mb-1">What can I encode in a QR code?</dt>
+            <dd class="text-xs text-gray-600">URLs, plain text, email addresses, phone numbers, and Wi-Fi credentials. Any text up to a few thousand characters can be stored, though shorter content produces simpler, easier-to-scan codes.</dd>
+          </div>
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <dt class="font-bold text-gray-900 text-sm mb-1">Is this QR code generator free?</dt>
+            <dd class="text-xs text-gray-600">Yes — completely free, no account needed, no watermarks, no download limits. Generate and download as many PNG QR codes as you need.</dd>
+          </div>
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <dt class="font-bold text-gray-900 text-sm mb-1">What does the error correction level mean?</dt>
+            <dd class="text-xs text-gray-600">It determines how much of the QR code can be obscured while still scanning correctly. Low (L) gives a smaller, simpler code. High (H) adds redundancy — useful for print where a logo might overlap the code.</dd>
+          </div>
+        </dl>
       </section>
 
       <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">

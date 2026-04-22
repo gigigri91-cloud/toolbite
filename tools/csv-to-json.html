@@ -62,6 +62,38 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a CSV to JSON converter used for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A CSV to JSON converter transforms tabular data — rows and columns — into a structured JSON array that APIs and databases expect. Common uses include loading spreadsheet exports into JavaScript apps, preparing test fixtures, and migrating data between systems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my data get uploaded when I convert CSV to JSON?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. ToolBite's CSV to JSON converter runs entirely in your browser using JavaScript. Your data is never sent to any server, which makes it safe for confidential spreadsheets and sensitive business data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert CSV files that use semicolons instead of commas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The converter supports multiple delimiters: comma, semicolon, tab, and pipe. Use the Delimiter dropdown to select the separator your file uses before clicking Convert to JSON."
+        }
+      }
+    ]
+  }
+  </script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,6 +236,24 @@
             <p class="text-xs text-gray-600">Convert translation tables or product lists from spreadsheets to JSON configs.</p>
           </li>
         </ul>
+      </section>
+
+      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">Frequently asked questions</h2>
+        <dl class="space-y-4">
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <dt class="font-bold text-gray-900 text-sm mb-1">What is a CSV to JSON converter used for?</dt>
+            <dd class="text-xs text-gray-600">A CSV to JSON converter transforms tabular data — rows and columns — into a structured JSON array that APIs and databases expect. Common uses include loading spreadsheet exports into JavaScript apps, preparing test fixtures, and migrating data between systems.</dd>
+          </div>
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <dt class="font-bold text-gray-900 text-sm mb-1">Does my data get uploaded when I convert CSV to JSON?</dt>
+            <dd class="text-xs text-gray-600">No. ToolBite's converter runs entirely in your browser. Your data is never sent to any server, making it safe for confidential spreadsheets and sensitive business data.</dd>
+          </div>
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <dt class="font-bold text-gray-900 text-sm mb-1">Can I convert CSV files that use semicolons instead of commas?</dt>
+            <dd class="text-xs text-gray-600">Yes. The converter supports comma, semicolon, tab, and pipe as delimiters. Use the Delimiter dropdown to match your file's separator before clicking Convert to JSON.</dd>
+          </div>
+        </dl>
       </section>
 
       <section class="tb-tool-section mt-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-related-tools-heading">
