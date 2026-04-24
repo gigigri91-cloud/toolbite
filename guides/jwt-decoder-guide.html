@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
   <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-  <title>Guide: decode JWTs safely (decode ≠ verify) | ToolBite</title>
-  <style id="critical-css">body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb}.tb-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#1e40af 0%,#2563eb 42%,#c2410c 100%);color:#fff}.tb-hero::before,.tb-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(64px);opacity:.45;pointer-events:none}.tb-hero::before{width:min(80vw,28rem);height:min(80vw,28rem);background:#38bdf8;top:-15%;right:-5%}.tb-hero::after{width:min(70vw,22rem);height:min(70vw,22rem);background:#fb923c;bottom:-20%;left:-8%}.tb-hero-inner{position:relative;z-index:1}#site-header{background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:50}img.header-logo{height:2.5rem!important;width:auto!important;aspect-ratio:384/105;display:block}.skip-link{position:absolute;transform:translateY(-200%)}h1,h2{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:800}.favorite-btn{background:none;border:none;cursor:pointer;font-size:1.5rem;vertical-align:middle;line-height:1;transition:color 0.2s}.favorite-btn.active{color:#f59e0b}</style>
+<title>Guide: decode JWTs safely (decode ≠ verify) | ToolBite</title>
+  <style id="critical-css">body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb}.tb-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#1e40af 0%,#2563eb 42%,#c2410c 100%);color:#fff}.tb-hero::before,.tb-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(64px);opacity:.45;pointer-events:none}.tb-hero::before{width:min(80vw,28rem);height:min(80vw,28rem);background:#38bdf8;top:-15%;right:-5%}.tb-hero::after{width:min(70vw,22rem);height:min(70vw,22rem);background:#fb923c;bottom:-20%;left:-8%}.tb-hero-inner{position:relative;z-index:1}#site-header{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:50}img.header-logo{height:2.5rem!important;width:auto!important;aspect-ratio:384/105;display:block}.skip-link{position:absolute;transform:translateY(-200%)}h1,h2{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:800}.favorite-btn{background:none;border:none;cursor:pointer;font-size:1.5rem;vertical-align:middle;line-height:1;transition:color 0.2s}.favorite-btn.active{color:#f59e0b}</style>
 <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="manifest" href="../manifest.json">
   <link rel="canonical" href="https://toolbite.org/guides/jwt-decoder-guide.html">
 <meta name="description" content="What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.">
   <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://toolbite.org/guides/jwt-decoder-guide.html">
@@ -25,13 +26,15 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to decode JWT safely (without trusting payload)","datePublished":"2026-03-30","dateModified":"2026-04-24T00:00:00.000Z","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"mainEntityOfPage":"https://toolbite.org/guides/jwt-decoder-guide.html","description":"What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://toolbite.org/guides/index.html"},{"@type":"ListItem","position":3,"name":"How to decode JWT safely (without trusting payload)","item":"https://toolbite.org/guides/jwt-decoder-guide.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- GA4: async so it never blocks the parser -->
+  
+  <!-- GA4: async so it never blocks the parser -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
 
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"></noscript>
   <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
   <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -83,7 +86,7 @@
     </nav>
 
     <article class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 prose max-w-none">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">How to decode JWT safely (without trusting payload)  <button onclick="toggleFavorite('/guides/jwt-decoder-guide.html', document.title.split('—')[0].trim())" class="favorite-btn text-gray-300 hover:text-orange-500 transition-colors" title="Toggle Favorite">★</button></h1>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">How to decode JWT safely (without trusting payload)  <button onclick="toggleFavorite('/guides/jwt-decoder-guide.html', document.title.split('—')[0].trim())" class="favorite-btn text-gray-400 hover:text-orange-500 transition-colors" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
       <div class="text-sm text-gray-500 dark:text-gray-400 mb-8">
         <span>By <strong>ToolBite Team</strong></span> • 
         <span>Last updated: <time itemprop="dateModified" datetime="2026-04-11">April 11, 2026</time></span>

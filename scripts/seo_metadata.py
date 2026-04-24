@@ -218,6 +218,23 @@ def patch_header_toggle(html: str) -> str:
     return html
 
 
+def patch_header_logo(html: str) -> str:
+    """Ensure the header logo has fetchpriority='high' and decoding='async'."""
+    # Find the logo img tag inside #site-header
+    # We look for the one with class="logo header-logo"
+    m = re.search(r'(<img[^>]+class="[^"]*logo header-logo[^"]*"[^>]*>)', html, flags=re.I)
+    if not m:
+        return html
+    
+    img_tag = m.group(1)
+    if 'fetchpriority="high"' not in img_tag:
+        img_tag = re.sub(r'(<img\s+)', r'\1fetchpriority="high" ', img_tag, flags=re.I)
+    if 'decoding="async"' not in img_tag:
+        img_tag = re.sub(r'(<img\s+)', r'\1decoding="async" ', img_tag, flags=re.I)
+        
+    return html[: m.start()] + img_tag + html[m.end() :]
+
+
 def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
     """Add a star button next to the H1 for tools and guides."""
     if page_type not in ("tool", "guide_article"):
@@ -229,7 +246,7 @@ def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
     # Let's try inserting it right after the <h1> closing tag if it's in a flex container, 
     # or inside it. ToolBite usually has H1 in a centered div.
     
-    star_btn = f' <button onclick="toggleFavorite(\'/{rel_path}\', document.title.split(\'—\')[0].trim())" class="favorite-btn text-gray-300 hover:text-orange-500 transition-colors" title="Toggle Favorite">★</button>'
+    star_btn = f' <button onclick="toggleFavorite(\'/{rel_path}\', document.title.split(\'—\')[0].trim())" class="favorite-btn text-gray-400 hover:text-orange-500 transition-colors" title="Toggle Favorite" aria-label="Toggle Favorite">★</button>'
     
     # Match </h1> and insert before it
     html = re.sub(r'(</h1>)', r' ' + star_btn + r'\1', html, flags=re.I)
@@ -239,7 +256,7 @@ def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
 def make_css_async(head_inner: str, rel_path: str) -> str:
     """Strip and re-add core CSS links in async preload pattern for consistency."""
     # 1. Strip all existing CSS-related tags to prevent duplication/corruption
-    # More flexible regex to catch any order of attributes
+    head_inner = re.sub(r'<link[^>]+rel=["\']preconnect["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']style["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+as=["\']style["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
@@ -247,16 +264,19 @@ def make_css_async(head_inner: str, rel_path: str) -> str:
     
     # Remove all noscript blocks entirely from the head content
     head_inner = re.sub(r'<noscript>[\s\S]*?</noscript>', "", head_inner, flags=re.I)
-    
-    # Remove any stray </noscript> tags that might be left over from malformed HTML
     head_inner = head_inner.replace("</noscript>", "")
 
     # 2. Build the list of core CSS files with correct relative paths
     depth = rel_path.count("/")
     prefix = "../" * depth
     
+    # Resource Hints
+    head_inner += '\n  <link rel="preconnect" href="https://fonts.googleapis.com">'
+    head_inner += '\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    
     # Standard CSS for all pages
-    fonts_url = "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"
+    # Use swap instead of optional for better LCP (text appears faster)
+    fonts_url = "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
     tailwind_url = f"{prefix}assets/css/tailwind.min.css"
     global_url = f"{prefix}assets/css/global.min.css"
     
@@ -292,6 +312,38 @@ def insert_social_after_description(head_inner: str, block: str) -> str:
     return head_inner[: m.end()] + "\n" + block + "\n" + head_inner[m.end() :]
 
 
+def patch_csp(head_inner: str) -> str:
+    """Ensure a consistent and working CSP for all pages."""
+    # We define a standard policy that includes all necessary 3rd parties
+    # script-src: self, unsafe-inline, adsense, gtag, bmc
+    # connect-src: self, adsense, analytics, googletagmanager
+    # img-src: self, data:, https: (for tool icons and bmc)
+    
+    csp_content = (
+        "default-src 'self'; "
+        "base-uri 'self'; "
+        "form-action 'self' mailto:; "
+        "object-src 'none'; "
+        "img-src 'self' data: https:; "
+        "font-src 'self' https://fonts.gstatic.com; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+        "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com; "
+        "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; "
+        "frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; "
+        "upgrade-insecure-requests"
+    )
+    
+    # Scrub existing CSP
+    head_inner = re.sub(r'\n\s*<meta\s+http-equiv="Content-Security-Policy"[^>]*>\s*', "\n", head_inner, flags=re.I)
+    
+    # Insert after <meta charset> or at start
+    ins = f'\n  <meta http-equiv="Content-Security-Policy" content="{csp_content}">'
+    m = re.search(r'(<meta\s+charset="[^"]*"[^>]*>)', head_inner, flags=re.I)
+    if m:
+        return head_inner[: m.end()] + ins + head_inner[m.end() :]
+    return ins + head_inner
+
+
 def patch_manifest(head_inner: str, rel_path: str) -> str:
     """Add <link rel="manifest" href="/manifest.json"> if missing, with correct relative path."""
     if 'rel="manifest"' in head_inner:
@@ -308,6 +360,25 @@ def patch_manifest(head_inner: str, rel_path: str) -> str:
     if m:
         return head_inner[: m.end()] + ins + head_inner[m.end() :]
     return head_inner + ins
+
+
+def patch_lcp_image(head_inner: str, rel_path: str) -> str:
+    """Ensure the LCP logo has preload and fetchpriority='high'."""
+    # 1. Scrub existing logo preloads
+    head_inner = re.sub(r'<!--.*?-->\n\s*<link\s+rel="preload"\s+as="image"\s+href="[^"]*toolbite-logo\.webp"[^>]*>\s*', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link\s+rel="preload"\s+as="image"\s+href="[^"]*toolbite-logo\.webp"[^>]*>\s*', "", head_inner, flags=re.I)
+    
+    depth = rel_path.count("/")
+    prefix = "../" * depth
+    logo_webp = f"{prefix}assets/images/toolbite-logo.webp"
+    
+    # 2. Add preload at the start of head (or after theme-color)
+    preload_tag = f'\n  <link rel="preload" as="image" href="{logo_webp}" type="image/webp" fetchpriority="high">'
+    
+    m = re.search(r'(<meta\s+name="theme-color"[^>]*>)', head_inner, flags=re.I)
+    if m:
+        return head_inner[: m.end()] + preload_tag + head_inner[m.end() :]
+    return preload_tag + head_inner
 
 
 def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_color: str, critical_css: str, theme_init_js: str, rel_path: str) -> str:
@@ -347,6 +418,8 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
     hb = patch_critical_css(hb, critical_css)
     hb = patch_theme_init_js(hb, theme_init_js)
     hb = patch_manifest(hb, rel_path)
+    hb = patch_lcp_image(hb, rel_path)
+    hb = patch_csp(hb)
     hb = make_css_async(hb, rel_path)
     # Collapse runs of blank lines introduced by OG scrub/replace (keep JSON in <script> intact)
     hb = re.sub(r"\n(?:[ \t]*\n){2,}", "\n\n", hb)
@@ -378,6 +451,7 @@ def apply_page(path: pathlib.Path, spec: dict[str, Any], og_image: str, theme_co
     rel = path.relative_to(ROOT).as_posix()
     html = patch_head(raw, spec, og_image, theme_color, critical_css, theme_init_js, rel)
     html = patch_header_toggle(html)
+    html = patch_header_logo(html)
     html, ok = patch_h1(html, h1_inner, h1_target)
     if not ok:
         raise ValueError(f"could not patch <h1> (h1_target={h1_target!r})")
