@@ -255,6 +255,33 @@ def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
     return html
 
 
+def patch_external_preconnects(head_inner: str) -> str:
+    """Inject preconnect and dns-prefetch for external domains (Analytics, AdSense)."""
+    domains = [
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com",
+        "https://pagead2.googlesyndication.com",
+        "https://googleads.g.doubleclick.net",
+        "https://tpc.googlesyndication.com"
+    ]
+    
+    tags = ""
+    for d in domains:
+        tags += f'\n  <link rel="preconnect" href="{d}" crossorigin>'
+        tags += f'\n  <link rel="dns-prefetch" href="{d}">'
+    
+    # Scrub existing preconnects to these domains
+    for d in domains:
+        escaped_d = re.escape(d)
+        head_inner = re.sub(rf'\n\s*<link\s+rel=["\'](preconnect|dns-prefetch)["\']\s+href=["\']{escaped_d}["\'][^>]*>', "", head_inner, flags=re.I)
+        
+    # Insert after charset
+    m = re.search(r'(<meta\s+charset="[^"]*"[^>]*>)', head_inner, flags=re.I)
+    if m:
+        return head_inner[: m.end()] + tags + head_inner[m.end() :]
+    return tags + head_inner
+
+
 def patch_font_resources(head_inner: str, rel_path: str) -> str:
     """Inject local font preloads and @font-face early in the head for maximum priority."""
     depth = rel_path.count("/")
@@ -287,7 +314,8 @@ def patch_font_resources(head_inner: str, rel_path: str) -> str:
 def make_css_async(head_inner: str, rel_path: str) -> str:
     """Strip and re-add core CSS links in async preload pattern for consistency."""
     # 1. Strip all existing CSS-related tags and custom style blocks to prevent duplication/corruption
-    head_inner = re.sub(r'<link[^>]+rel=["\']preconnect["\'][^>]*>', "", head_inner, flags=re.I)
+    # Only scrub preconnects to fonts.gstatic.com as we host fonts locally now
+    head_inner = re.sub(r'<link[^>]+rel=["\']preconnect["\'][^>]+href=["\']https://fonts\.gstatic\.com["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']style["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+as=["\']style["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']font["\'][^>]*>', "", head_inner, flags=re.I)
@@ -482,6 +510,7 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
     hb = patch_theme_color(hb, theme_color)
     hb = patch_critical_css(hb, critical_css)
     hb = patch_theme_init_js(hb, theme_init_js)
+    hb = patch_external_preconnects(hb)
     hb = patch_manifest(hb, rel_path)
     hb = patch_lcp_image(hb, rel_path)
     hb = patch_csp(hb)
@@ -843,42 +872,44 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str, default_rat
     spec_with_rating = spec.copy()
     spec_with_rating["_default_rating"] = default_rating
 
-    # Extract FAQs if any
+    # 1. Extract FAQs if any
     faqs = extract_faqs_from_html(html)
 
+    # 2. Extract and remove all existing LD+JSON blocks
     pattern = re.compile(
-        r'(?P<prefix>\s*)<script\s+type="application/ld\+json"\s*>(?P<inner>[\s\S]*?)</script>',
+        r'\s*<script\s+type="application/ld\+json"\s*>(?P<inner>[\s\S]*?)</script>',
         re.I,
     )
+    
+    collected_data = []
+    
+    # We find all matches first
     matches = list(pattern.finditer(html))
-    
-    # If no LD+JSON exists but we have FAQs, we might need to create one, 
-    # but usually ToolBite pages have at least one block (Breadcrumb or WebPage).
-    
-    for m in reversed(matches):
+    for m in matches:
         inner = m.group("inner")
-        prefix = m.group("prefix")
-        compact = _ld_json_compact(inner)
         try:
             data = json.loads(inner)
+            if isinstance(data, dict):
+                collected_data.append(data)
         except json.JSONDecodeError:
             continue
-        if not isinstance(data, dict):
-            continue
-        
-        new_data = copy.deepcopy(data)
-        changed = mutate_ld_json(new_data, spec_with_rating, page_type)
-        
-        if changed:
-            serialized = _serialize_ld(new_data, compact)
-            if compact:
-                repl = f'{prefix}<script type="application/ld+json">{serialized}</script>'
-            else:
-                body = "\n".join("  " + line for line in serialized.splitlines())
-                repl = f'{prefix}<script type="application/ld+json">\n{body}\n{prefix}</script>'
-            html = html[: m.start()] + repl + html[m.end() :]
+            
+    # Remove all from HTML
+    html = pattern.sub("", html)
 
-    if faqs and 'FAQPage' not in html:
+    # 3. Process collected blocks
+    final_blocks = []
+    has_faq = False
+    
+    for data in collected_data:
+        new_data = copy.deepcopy(data)
+        mutate_ld_json(new_data, spec_with_rating, page_type)
+        final_blocks.append(new_data)
+        if new_data.get("@type") == "FAQPage":
+            has_faq = True
+
+    # 4. If we have FAQs from HTML but no FAQPage block yet, add it
+    if faqs and not has_faq:
         faq_ld = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -893,11 +924,21 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str, default_rat
                 } for f in faqs
             ]
         }
-        faq_json = json.dumps(faq_ld, indent=2, ensure_ascii=False)
-        faq_body = "\n".join("  " + line for line in faq_json.splitlines())
-        faq_block = f'\n  <script type="application/ld+json">\n{faq_body}\n  </script>'
-        html = html.replace("</head>", faq_block + "\n</head>")
+        final_blocks.append(faq_ld)
 
+    # 5. Build the script blocks string
+    ld_scripts_string = ""
+    for block in final_blocks:
+        serialized = json.dumps(block, indent=2, ensure_ascii=False)
+        body = "\n".join("  " + line for line in serialized.splitlines())
+        ld_scripts_string += f'\n  <script type="application/ld+json">\n{body}\n  </script>'
+
+    # 6. Inject before </body>
+    if "</body>" in html:
+        html = html.replace("</body>", ld_scripts_string + "\n</body>")
+    else:
+        html += ld_scripts_string
+        
     return html
 
 
