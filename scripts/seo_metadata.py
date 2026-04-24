@@ -424,7 +424,14 @@ def extract_h1_inner(html: str, h1_target: str) -> str | None:
         )
     else:
         m = re.search(r"<main\b[^>]*>[\s\S]*?<h1\b[^>]*>([\s\S]*?)</h1>", html, re.I)
-    return m.group(1).strip() if m else None
+    
+    if not m:
+        return None
+    
+    res = m.group(1).strip()
+    # Strip the favorite button if present
+    res = re.sub(r'\s*<button\s+onclick="toggleFavorite[\s\S]*?</button>', '', res, flags=re.I)
+    return res
 
 
 def norm_cmp(s: str) -> str:
