@@ -273,22 +273,24 @@ def make_css_async(head_inner: str, rel_path: str) -> str:
     # Resource Hints
     head_inner += '\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
     
-    # Preload critical font files (WOFF2 versions for better performance)
-    # We use common URLs or the ones we fetched
-    inter_woff2 = "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.woff2"
-    plus_jakarta_woff2 = "https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNSg.woff2"
+    # Preload critical font files (WOFF2 versions - Verified URLs from Google Fonts v20/v12)
+    # Inter v20 (Latin)
+    inter_woff2 = "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    # Plus Jakarta Sans v12 (Latin)
+    plus_jakarta_woff2 = "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2"
     
     head_inner += f'\n  <link rel="preload" href="{inter_woff2}" as="font" type="font/woff2" crossorigin>'
     head_inner += f'\n  <link rel="preload" href="{plus_jakarta_woff2}" as="font" type="font/woff2" crossorigin>'
 
     # Inline Font CSS to avoid extra request
+    # Note: Using the same URL for multiple weights is correct for modern Variable-capable files
     font_css = f"""
   <style id="font-css">
-    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url({inter_woff2}) format('woff2'); }}
-    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.woff2) format('woff2'); }}
-    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.woff2) format('woff2'); }}
-    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); }}
-    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUnNSg.woff2) format('woff2'); }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
   </style>"""
     head_inner += font_css
     
