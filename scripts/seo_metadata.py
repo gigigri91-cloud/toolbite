@@ -255,14 +255,16 @@ def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
     return html
 
 
-def patch_font_resources(head_inner: str) -> str:
-    """Inject font preloads and @font-face early in the head for maximum priority."""
-    # Preload critical font files (WOFF2 versions)
-    inter_woff2 = "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
-    plus_jakarta_woff2 = "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2"
+def patch_font_resources(head_inner: str, rel_path: str) -> str:
+    """Inject local font preloads and @font-face early in the head for maximum priority."""
+    depth = rel_path.count("/")
+    prefix = "../" * depth
     
-    res = '\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-    res += f'\n  <link rel="preload" href="{inter_woff2}" as="font" type="font/woff2" crossorigin>'
+    inter_woff2 = f"{prefix}assets/fonts/inter-v20.woff2"
+    plus_jakarta_woff2 = f"{prefix}assets/fonts/plus-jakarta-v12.woff2"
+    
+    # We don't need preconnect to fonts.gstatic.com anymore if we host locally
+    res = f'\n  <link rel="preload" href="{inter_woff2}" as="font" type="font/woff2" crossorigin>'
     res += f'\n  <link rel="preload" href="{plus_jakarta_woff2}" as="font" type="font/woff2" crossorigin>'
     
     font_css = f"""
@@ -288,6 +290,8 @@ def make_css_async(head_inner: str, rel_path: str) -> str:
     head_inner = re.sub(r'<link[^>]+rel=["\']preconnect["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']style["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+as=["\']style["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']font["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+as=["\']font["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+href="[^"]+"[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
     
@@ -482,7 +486,7 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
     hb = patch_lcp_image(hb, rel_path)
     hb = patch_csp(hb)
     hb = make_css_async(hb, rel_path)
-    hb = patch_font_resources(hb)
+    hb = patch_font_resources(hb, rel_path)
     # Collapse runs of blank lines introduced by OG scrub/replace (keep JSON in <script> intact)
     hb = re.sub(r"\n(?:[ \t]*\n){2,}", "\n\n", hb)
     # Restore common two-space indent if a tag lost its leading spaces after OG replacement
