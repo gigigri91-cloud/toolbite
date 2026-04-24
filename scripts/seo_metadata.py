@@ -255,12 +255,17 @@ def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
 
 def make_css_async(head_inner: str, rel_path: str) -> str:
     """Strip and re-add core CSS links in async preload pattern for consistency."""
-    # 1. Strip all existing CSS-related tags to prevent duplication/corruption
+    # 1. Strip all existing CSS-related tags and custom style blocks to prevent duplication/corruption
     head_inner = re.sub(r'<link[^>]+rel=["\']preconnect["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']style["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+as=["\']style["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']font["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+as=["\']font["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+href="[^"]+"[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
+    
+    # Strip existing font-css and critical-css blocks to prevent duplicate IDs
+    head_inner = re.sub(r'<style id=["\']font-css["\']>[\s\S]*?</style>', "", head_inner, flags=re.I)
     
     # Remove all noscript blocks entirely from the head content
     head_inner = re.sub(r'<noscript>[\s\S]*?</noscript>', "", head_inner, flags=re.I)
