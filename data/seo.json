@@ -25,6 +25,7 @@
     },
     "privacy.html": {
       "page_type": "trust",
+      "noindex": true,
       "title": "Privacy policy — ToolBite",
       "description": "How ToolBite handles browser-local processing, hosting logs, cookies, Google AdSense, and third parties. Plain language, no hidden data collection pitch.",
       "canonical": "https://toolbite.org/privacy.html",
@@ -33,6 +34,7 @@
     },
     "terms.html": {
       "page_type": "trust",
+      "noindex": true,
       "title": "Terms of service — ToolBite",
       "description": "Rules for using ToolBite’s free browser tools: acceptable use, no-warranty stance, ads, and limitations—short and practical.",
       "canonical": "https://toolbite.org/terms.html",
@@ -41,6 +43,7 @@
     },
     "contact.html": {
       "page_type": "trust",
+      "noindex": true,
       "title": "Contact ToolBite — Bugs, ideas & partnerships",
       "description": "Reach the ToolBite team for bug reports, tool requests, or partnerships. We read everything; response time varies.",
       "canonical": "https://toolbite.org/contact.html",

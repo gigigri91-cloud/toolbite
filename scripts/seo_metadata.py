@@ -991,8 +991,8 @@ def update_sitemap(pages: dict[str, Any], origin: str) -> None:
         spec = pages[rel]
         canonical = spec.get("canonical")
         
-        # Skip pages without canonical (like search.html)
-        if not canonical:
+        # Skip pages without canonical (like search.html) or marked as noindex
+        if not canonical or spec.get("noindex") is True:
             continue
             
         page_type = spec.get("page_type", "")
