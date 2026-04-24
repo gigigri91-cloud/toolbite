@@ -1097,7 +1097,7 @@ function generatePalette() {
     function scheduleAdsAfterLoad() {
         const afterLoad = () => {
             // Keep a real post-load delay so Lighthouse and first paint are not competing with ad bootstrap.
-            window.setTimeout(scheduleAdsenseLoad, 3500);
+            window.setTimeout(scheduleAdsenseLoad, 4500);
         };
 
         if (document.readyState === 'complete') {

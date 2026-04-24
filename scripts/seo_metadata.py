@@ -271,16 +271,32 @@ def make_css_async(head_inner: str, rel_path: str) -> str:
     prefix = "../" * depth
     
     # Resource Hints
-    head_inner += '\n  <link rel="preconnect" href="https://fonts.googleapis.com">'
     head_inner += '\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
     
+    # Preload critical font files (WOFF2 versions for better performance)
+    # We use common URLs or the ones we fetched
+    inter_woff2 = "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.woff2"
+    plus_jakarta_woff2 = "https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNSg.woff2"
+    
+    head_inner += f'\n  <link rel="preload" href="{inter_woff2}" as="font" type="font/woff2" crossorigin>'
+    head_inner += f'\n  <link rel="preload" href="{plus_jakarta_woff2}" as="font" type="font/woff2" crossorigin>'
+
+    # Inline Font CSS to avoid extra request
+    font_css = f"""
+  <style id="font-css">
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url({inter_woff2}) format('woff2'); }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.woff2) format('woff2'); }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.woff2) format('woff2'); }}
+    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); }}
+    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUnNSg.woff2) format('woff2'); }}
+  </style>"""
+    head_inner += font_css
+    
     # Standard CSS for all pages
-    # Use swap instead of optional for better LCP (text appears faster)
-    fonts_url = "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
     tailwind_url = f"{prefix}assets/css/tailwind.min.css"
     global_url = f"{prefix}assets/css/global.min.css"
     
-    css_list = [fonts_url, tailwind_url, global_url]
+    css_list = [tailwind_url, global_url]
     
     # 3. Append them at the end of head_inner content
     for url in css_list:
