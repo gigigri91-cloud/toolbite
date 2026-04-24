@@ -467,7 +467,85 @@ def patch_h1(html: str, h1_inner: str, h1_target: str) -> tuple[str, bool]:
     return html[: m.start(2)] + h1_inner + html[m.end(2) :], True
 
 
-def apply_page(path: pathlib.Path, spec: dict[str, Any], og_image: str, theme_color: str, critical_css: str, theme_init_js: str) -> str:
+def patch_related_tools(html_content: str, spec: dict[str, Any], pages: dict[str, Any], rel_path: str) -> str:
+    """Inject a dynamic 'Related Tools' section based on tags and categories."""
+    if spec.get("page_type") != "tool":
+        return html_content
+    
+    # 1. Scrub existing related tools section (if any)
+    # We look for a section with id="tb-related-tools-heading" or similar patterns
+    html_content = re.sub(r'\n\s*<section[^>]*aria-labelledby="tb-related-tools-heading"[\s\S]*?</section>\s*', "\n", html_content, flags=re.I)
+    html_content = re.sub(r'\n\s*<section[^>]*id="tb-related-tools-heading"[\s\S]*?</section>\s*', "\n", html_content, flags=re.I)
+
+    # 2. Find relevant tools
+    current_tags = set(spec.get("tags", "").split())
+    candidates = []
+    
+    depth = rel_path.count("/")
+    prefix = "../" * depth
+
+    for p_path, p_spec in pages.items():
+        if p_path == rel_path or p_spec.get("page_type") != "tool":
+            continue
+        
+        # Calculate relevance
+        p_tags = set(p_spec.get("tags", "").split())
+        score = len(current_tags.intersection(p_tags))
+        
+        # Boost if same category (inferred from path or tags)
+        if rel_path.split('/')[0] == p_path.split('/')[0]:
+            score += 1
+            
+        candidates.append({
+            "path": p_path,
+            "title": p_spec.get("h1_inner", p_spec.get("title", "")).split('—')[0].split('|')[0].strip(),
+            "desc": p_spec.get("description", "").split('.')[0] + ".",
+            "icon": p_spec.get("icon", "🛠️"),
+            "score": score
+        })
+    
+    # Sort by score descending and take top 3
+    candidates.sort(key=lambda x: x["score"], reverse=True)
+    top_3 = candidates[:3]
+    
+    if not top_3:
+        return html_content
+
+    # 3. Build HTML
+    related_html = f"""
+      <section class="tb-tool-section mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+        <div class="flex items-center justify-between mb-6">
+          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
+          <a href="{prefix}search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">"""
+    
+    for item in top_3:
+        # Fix relative path
+        href = f"{prefix}{item['path']}"
+        related_html += f"""
+          <a href="{href}" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+            <span class="text-3xl mb-3 block" aria-hidden="true">{item['icon']}</span>
+            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">{item['title']}</h3>
+            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">{item['desc']}</p>
+          </a>"""
+    
+    related_html += """
+        </div>
+      </section>"""
+
+    # 4. Inject before </main>
+    if "</main>" in html_content:
+        html_content = html_content.replace("</main>", related_html + "\n    </main>")
+    else:
+        # Fallback: before footer
+        if "<footer" in html_content:
+            html_content = html_content.replace("<footer", related_html + "\n  <footer")
+            
+    return html_content
+
+
+def apply_page(path: pathlib.Path, spec: dict[str, Any], pages: dict[str, Any], og_image: str, theme_color: str, critical_css: str, theme_init_js: str) -> str:
     raw = path.read_text(encoding="utf-8")
     h1_inner = str(spec["h1_inner"])
     h1_target = str(spec.get("h1_target", "main"))
@@ -479,6 +557,7 @@ def apply_page(path: pathlib.Path, spec: dict[str, Any], og_image: str, theme_co
     if not ok:
         raise ValueError(f"could not patch <h1> (h1_target={h1_target!r})")
     html = patch_favorite_button(html, rel, spec.get("page_type", ""))
+    html = patch_related_tools(html, spec, pages, rel)
     html = patch_ld_json_scripts(html, spec, rel)
     return html
 
@@ -667,19 +746,49 @@ def _serialize_ld(data: dict[str, Any], compact: bool) -> str:
     return json.dumps(data, indent=2, ensure_ascii=False)
 
 
+def extract_faqs_from_html(html_content: str) -> list[dict[str, str]]:
+    """Extract Q&A pairs from <details> blocks in tb-tool-faq sections."""
+    faqs = []
+    # Find sections with tb-tool-faq class
+    faq_sections = re.findall(r'<section[^>]*class="[^"]*tb-tool-faq[^"]*"[^>]*>([\s\S]*?)</section>', html_content, flags=re.I)
+    
+    for section in faq_sections:
+        # Find all details blocks
+        details_blocks = re.findall(r'<details[^>]*>([\s\S]*?)</details>', section, flags=re.I)
+        for block in details_blocks:
+            summary = re.search(r'<summary[^>]*>([\s\S]*?)</summary>', block, flags=re.I)
+            # Find the first paragraph or div after summary for the answer
+            answer_match = re.search(r'</summary>\s*<p[^>]*>([\s\S]*?)</p>', block, flags=re.I)
+            
+            if summary and answer_match:
+                # Clean up HTML from summary (often contains <span> or icon)
+                q = strip_html_tags(summary.group(1)).strip()
+                # Clean up ▾ icon or similar suffixes
+                q = re.sub(r'\s*[▾▼]$', '', q).strip()
+                
+                a = strip_html_tags(answer_match.group(1)).strip()
+                if q and a:
+                    faqs.append({"question": q, "answer": a})
+    return faqs
+
+
 def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str) -> str:
     page_type = str(spec.get("page_type", ""))
     if page_type == "utility":
         return html
+
+    # Extract FAQs if any
+    faqs = extract_faqs_from_html(html)
 
     pattern = re.compile(
         r'(?P<prefix>\s*)<script\s+type="application/ld\+json"\s*>(?P<inner>[\s\S]*?)</script>',
         re.I,
     )
     matches = list(pattern.finditer(html))
-    if not matches:
-        return html
-
+    
+    # If no LD+JSON exists but we have FAQs, we might need to create one, 
+    # but usually ToolBite pages have at least one block (Breadcrumb or WebPage).
+    
     for m in reversed(matches):
         inner = m.group("inner")
         prefix = m.group("prefix")
@@ -690,16 +799,49 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str) -> str:
             continue
         if not isinstance(data, dict):
             continue
+        
         new_data = copy.deepcopy(data)
-        if not mutate_ld_json(new_data, spec, page_type):
-            continue
-        serialized = _serialize_ld(new_data, compact)
-        if compact:
-            repl = f'{prefix}<script type="application/ld+json">{serialized}</script>'
-        else:
-            body = "\n".join("  " + line for line in serialized.splitlines())
-            repl = f'{prefix}<script type="application/ld+json">\n{body}\n{prefix}</script>'
-        html = html[: m.start()] + repl + html[m.end() :]
+        changed = mutate_ld_json(new_data, spec, page_type)
+        
+        # Inject FAQs into the main block or a dedicated one? 
+        # Usually better as a separate top-level object if using a Graph, 
+        # but ToolBite uses individual blocks. Let's see if we can append FAQPage.
+        
+        if changed:
+            serialized = _serialize_ld(new_data, compact)
+            if compact:
+                repl = f'{prefix}<script type="application/ld+json">{serialized}</script>'
+            else:
+                body = "\n".join("  " + line for line in serialized.splitlines())
+                repl = f'{prefix}<script type="application/ld+json">\n{body}\n{prefix}</script>'
+            html = html[: m.start()] + repl + html[m.end() :]
+
+    # If we found FAQs, add a dedicated FAQPage block if not already present
+    if faqs and 'FAQPage' not in html:
+        faq_ld = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": f["question"],
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": f["answer"]
+                    }
+                } for f in faqs
+            ]
+        }
+        faq_json = json.dumps(faq_ld, indent=2, ensure_ascii=False)
+        # Indent lines
+        faq_body = "\n".join("  " + line for line in faq_json.splitlines())
+        faq_block = f'\n  <script type="application/ld+json">\n{faq_body}\n  </script>'
+        
+        # Insert after the last ld+json script
+        last_match = list(re.finditer(r'</script>\s*(?!\s*<script type="application/ld\+json")', html, flags=re.I))
+        # This is tricky with regex. Let's just insert before </head> for simplicity
+        html = html.replace("</head>", faq_block + "\n</head>")
+
     return html
 
 
@@ -834,6 +976,57 @@ def update_search_tools(pages: dict[str, Any]) -> None:
         print("Updated TOOLS list in search.html")
 
 
+def update_sitemap(pages: dict[str, Any], origin: str) -> None:
+    """Generate sitemap.xml based on pages in seo.json."""
+    sitemap_path = ROOT / "sitemap.xml"
+    today = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+    
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
+    
+    # Sort pages for consistent output
+    for rel in sorted(pages.keys()):
+        spec = pages[rel]
+        canonical = spec.get("canonical")
+        
+        # Skip pages without canonical (like search.html)
+        if not canonical:
+            continue
+            
+        page_type = spec.get("page_type", "")
+        
+        # Determine priority
+        priority = "0.5"
+        changefreq = "monthly"
+        
+        if page_type == "homepage":
+            priority = "1.0"
+            changefreq = "weekly"
+        elif page_type == "tool":
+            priority = "0.9"
+        elif page_type == "category":
+            priority = "0.8"
+        elif page_type == "guide_article":
+            priority = "0.7"
+        elif page_type == "guide_hub":
+            priority = "0.7"
+            
+        lines.append('  <url>')
+        lines.append(f'    <loc>{html.escape(str(canonical))}</loc>')
+        lines.append(f'    <lastmod>{today}</lastmod>')
+        lines.append(f'    <changefreq>{changefreq}</changefreq>')
+        lines.append(f'    <priority>{priority}</priority>')
+        lines.append('  </url>')
+        
+    lines.append('</urlset>')
+    
+    content = "\n".join(lines) + "\n"
+    sitemap_path.write_text(content, encoding="utf-8")
+    print(f"Generated sitemap.xml with {len(lines)//8} entries")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
@@ -859,8 +1052,9 @@ def main() -> None:
     if args.apply:
         for rel, spec in pages.items():
             path = ROOT / rel
-            path.write_text(apply_page(path, spec, og_image, cfg["theme_color"], cfg["critical_css"], cfg["theme_init_js"]), encoding="utf-8")
+            path.write_text(apply_page(path, spec, pages, og_image, cfg["theme_color"], cfg["critical_css"], cfg["theme_init_js"]), encoding="utf-8")
         update_search_tools(pages)
+        update_sitemap(pages, cfg["origin"])
         print("Wrote", len(pages), "files from", SEO_JSON.relative_to(ROOT))
         return
 

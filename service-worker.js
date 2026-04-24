@@ -1,8 +1,12 @@
-const CACHE_NAME = 'toolbite-v1';
+const CACHE_NAME = 'toolbite-v2';
 const ASSETS = [
   '/',
   '/index.html',
   '/about.html',
+  '/categories/text-tools.html',
+  '/categories/developer-tools.html',
+  '/categories/image-tools.html',
+  '/categories/seo-tools.html',
   '/assets/css/tailwind.min.css',
   '/assets/css/global.min.css',
   '/assets/js/main.min.js',
