@@ -395,6 +395,14 @@
       "h1_inner": "How to generate strong passwords — and store them safely",
       "icon": "🔑",
       "tags": "password guide security"
+    },
+    "404.html": {
+      "page_type": "error",
+      "title": "404 Not Found — ToolBite",
+      "description": "The tool or page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+      "noindex": true,
+      "h1_inner": "404",
+      "h1_target": "main"
     }
   }
 }
