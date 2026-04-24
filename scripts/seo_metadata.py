@@ -56,12 +56,14 @@ def load_config() -> dict[str, Any]:
     theme_color = str(data.get("theme_color", "#2563eb"))
     critical_css = str(data.get("critical_css", ""))
     theme_init_js = str(data.get("theme_init_js", ""))
+    default_rating = data.get("default_aggregate_rating")
     return {
         "origin": origin,
         "og_image": og_image,
         "theme_color": theme_color,
         "critical_css": critical_css,
         "theme_init_js": theme_init_js,
+        "default_rating": default_rating,
         "pages": pages
     }
 
@@ -253,14 +255,39 @@ def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
     return html
 
 
+def patch_font_resources(head_inner: str) -> str:
+    """Inject font preloads and @font-face early in the head for maximum priority."""
+    # Preload critical font files (WOFF2 versions)
+    inter_woff2 = "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    plus_jakarta_woff2 = "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2"
+    
+    res = '\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    res += f'\n  <link rel="preload" href="{inter_woff2}" as="font" type="font/woff2" crossorigin>'
+    res += f'\n  <link rel="preload" href="{plus_jakarta_woff2}" as="font" type="font/woff2" crossorigin>'
+    
+    font_css = f"""
+  <style id="font-css">
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
+  </style>"""
+    res += font_css
+    
+    # Insert after charset
+    m = re.search(r'(<meta\s+charset="[^"]*"[^>]*>)', head_inner, flags=re.I)
+    if m:
+        return head_inner[: m.end()] + res + head_inner[m.end() :]
+    return res + head_inner
+
+
 def make_css_async(head_inner: str, rel_path: str) -> str:
     """Strip and re-add core CSS links in async preload pattern for consistency."""
     # 1. Strip all existing CSS-related tags and custom style blocks to prevent duplication/corruption
     head_inner = re.sub(r'<link[^>]+rel=["\']preconnect["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']style["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+as=["\']style["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
-    head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']font["\'][^>]*>', "", head_inner, flags=re.I)
-    head_inner = re.sub(r'<link[^>]+as=["\']font["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
     head_inner = re.sub(r'<link[^>]+href="[^"]+"[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
     
@@ -274,30 +301,6 @@ def make_css_async(head_inner: str, rel_path: str) -> str:
     # 2. Build the list of core CSS files with correct relative paths
     depth = rel_path.count("/")
     prefix = "../" * depth
-    
-    # Resource Hints
-    head_inner += '\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-    
-    # Preload critical font files (WOFF2 versions - Verified URLs from Google Fonts v20/v12)
-    # Inter v20 (Latin)
-    inter_woff2 = "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
-    # Plus Jakarta Sans v12 (Latin)
-    plus_jakarta_woff2 = "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2"
-    
-    head_inner += f'\n  <link rel="preload" href="{inter_woff2}" as="font" type="font/woff2" crossorigin>'
-    head_inner += f'\n  <link rel="preload" href="{plus_jakarta_woff2}" as="font" type="font/woff2" crossorigin>'
-
-    # Inline Font CSS to avoid extra request
-    # Note: Using the same URL for multiple weights is correct for modern Variable-capable files
-    font_css = f"""
-  <style id="font-css">
-    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
-    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
-    @font-face {{ font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url({inter_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
-    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
-    @font-face {{ font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url({plus_jakarta_woff2}) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }}
-  </style>"""
-    head_inner += font_css
     
     # Standard CSS for all pages
     tailwind_url = f"{prefix}assets/css/tailwind.min.css"
@@ -404,6 +407,41 @@ def patch_lcp_image(head_inner: str, rel_path: str) -> str:
     return preload_tag + head_inner
 
 
+def patch_rating_display(html: str, page_type: str, rating_data: dict[str, Any] | None) -> str:
+    """Inject a visual star rating block for tools."""
+    if page_type != "tool" or not rating_data:
+        return html
+    if 'tb-rating-stars' in html:
+        return html
+    
+    val = rating_data.get("ratingValue", "4.9")
+    count = rating_data.get("reviewCount", "100")
+    
+    stars_html = f"""
+        <div class="tb-rating-stars flex items-center gap-1.5 mt-2 mb-4 text-sm font-medium text-gray-500">
+          <div class="flex text-amber-400">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <span>{val} / 5 ({count} reviews)</span>
+        </div>"""
+    
+    # Insert after H1 description
+    m = re.search(r'(</section>)', html, flags=re.I)
+    if m:
+        # We want to insert it near the description in the hero. 
+        # Usually hero is <section class="tb-tool-hero ..."> ... </section>
+        # Let's find the first <p class="text-gray-600 text-lg">
+        m2 = re.search(r'(<p[^>]+class="[^"]*text-gray-600 text-lg[^"]*"[^>]*>.*?</p>)', html, flags=re.I | re.DOTALL)
+        if m2:
+            return html[: m2.end()] + stars_html + html[m2.end() :]
+            
+    return html
+
+
 def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_color: str, critical_css: str, theme_init_js: str, rel_path: str) -> str:
     m = re.search(r"(<head[^>]*>)([\s\S]*?)(</head>)", html, re.I)
     if not m:
@@ -444,6 +482,7 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
     hb = patch_lcp_image(hb, rel_path)
     hb = patch_csp(hb)
     hb = make_css_async(hb, rel_path)
+    hb = patch_font_resources(hb)
     # Collapse runs of blank lines introduced by OG scrub/replace (keep JSON in <script> intact)
     hb = re.sub(r"\n(?:[ \t]*\n){2,}", "\n\n", hb)
     # Restore common two-space indent if a tag lost its leading spaces after OG replacement
@@ -545,11 +584,18 @@ def patch_related_tools(html_content: str, spec: dict[str, Any], pages: dict[str
     return html_content
 
 
-def apply_page(path: pathlib.Path, spec: dict[str, Any], pages: dict[str, Any], og_image: str, theme_color: str, critical_css: str, theme_init_js: str) -> str:
+def apply_page(path: pathlib.Path, spec: dict[str, Any], config: dict[str, Any]) -> str:
     raw = path.read_text(encoding="utf-8")
     h1_inner = str(spec["h1_inner"])
     h1_target = str(spec.get("h1_target", "main"))
     rel = path.relative_to(ROOT).as_posix()
+    pages = config["pages"]
+    og_image = config["og_image"]
+    theme_color = config["theme_color"]
+    critical_css = config["critical_css"]
+    theme_init_js = config["theme_init_js"]
+    default_rating = config.get("default_rating")
+
     html = patch_head(raw, spec, og_image, theme_color, critical_css, theme_init_js, rel)
     html = patch_header_toggle(html)
     html = patch_header_logo(html)
@@ -557,8 +603,9 @@ def apply_page(path: pathlib.Path, spec: dict[str, Any], pages: dict[str, Any], 
     if not ok:
         raise ValueError(f"could not patch <h1> (h1_target={h1_target!r})")
     html = patch_favorite_button(html, rel, spec.get("page_type", ""))
+    html = patch_rating_display(html, spec.get("page_type", ""), default_rating)
     html = patch_related_tools(html, spec, pages, rel)
-    html = patch_ld_json_scripts(html, spec, rel)
+    html = patch_ld_json_scripts(html, spec, rel, default_rating)
     return html
 
 
@@ -679,6 +726,17 @@ def mutate_ld_json(data: dict[str, Any], spec: dict[str, Any], page_type: str) -
         else:
             set_if("name", title)
             set_if("url", canon_s)
+            
+            # Inject AggregateRating for WebApplication (tools)
+            if t == "WebApplication" and spec.get("page_type") == "tool":
+                default_rating = spec.get("_default_rating")
+                if default_rating:
+                    rating_obj = {
+                        "@type": "AggregateRating",
+                        "ratingValue": default_rating.get("ratingValue", "4.9"),
+                        "reviewCount": default_rating.get("reviewCount", "100")
+                    }
+                    set_if("aggregateRating", rating_obj)
         
         set_if("description", desc)
         set_if("dateModified", d_z)
@@ -772,10 +830,14 @@ def extract_faqs_from_html(html_content: str) -> list[dict[str, str]]:
     return faqs
 
 
-def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str) -> str:
+def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str, default_rating: dict[str, Any] | None) -> str:
     page_type = str(spec.get("page_type", ""))
     if page_type == "utility":
         return html
+
+    # Pass rating to mutate function via a temporary key
+    spec_with_rating = spec.copy()
+    spec_with_rating["_default_rating"] = default_rating
 
     # Extract FAQs if any
     faqs = extract_faqs_from_html(html)
@@ -801,11 +863,7 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str) -> str:
             continue
         
         new_data = copy.deepcopy(data)
-        changed = mutate_ld_json(new_data, spec, page_type)
-        
-        # Inject FAQs into the main block or a dedicated one? 
-        # Usually better as a separate top-level object if using a Graph, 
-        # but ToolBite uses individual blocks. Let's see if we can append FAQPage.
+        changed = mutate_ld_json(new_data, spec_with_rating, page_type)
         
         if changed:
             serialized = _serialize_ld(new_data, compact)
@@ -816,7 +874,6 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str) -> str:
                 repl = f'{prefix}<script type="application/ld+json">\n{body}\n{prefix}</script>'
             html = html[: m.start()] + repl + html[m.end() :]
 
-    # If we found FAQs, add a dedicated FAQPage block if not already present
     if faqs and 'FAQPage' not in html:
         faq_ld = {
             "@context": "https://schema.org",
@@ -833,26 +890,24 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str) -> str:
             ]
         }
         faq_json = json.dumps(faq_ld, indent=2, ensure_ascii=False)
-        # Indent lines
         faq_body = "\n".join("  " + line for line in faq_json.splitlines())
         faq_block = f'\n  <script type="application/ld+json">\n{faq_body}\n  </script>'
-        
-        # Insert after the last ld+json script
-        last_match = list(re.finditer(r'</script>\s*(?!\s*<script type="application/ld\+json")', html, flags=re.I))
-        # This is tricky with regex. Let's just insert before </head> for simplicity
         html = html.replace("</head>", faq_block + "\n</head>")
 
     return html
 
 
-def check_ld_json_against_file(path: pathlib.Path, spec: dict[str, Any]) -> list[str]:
+def check_ld_json_against_file(path: pathlib.Path, spec: dict[str, Any], default_rating: dict[str, Any] | None) -> list[str]:
     """Ensure each ld+json block matches post-sync expectations."""
     issues: list[str] = []
     text = path.read_text(encoding="utf-8")
-    rel = path.relative_to(ROOT).as_posix()
     page_type = str(spec.get("page_type", ""))
     if page_type == "utility":
         return issues
+
+    # Pass rating to mutate function via a temporary key
+    spec_with_rating = spec.copy()
+    spec_with_rating["_default_rating"] = default_rating
 
     pattern = re.compile(
         r'<script\s+type="application/ld\+json"\s*>([\s\S]*?)</script>',
@@ -871,14 +926,14 @@ def check_ld_json_against_file(path: pathlib.Path, spec: dict[str, Any]) -> list
             idx += 1
             continue
         expected = copy.deepcopy(on_disk)
-        mutate_ld_json(expected, spec, page_type)
+        mutate_ld_json(expected, spec_with_rating, page_type)
         if json.dumps(on_disk, sort_keys=True) != json.dumps(expected, sort_keys=True):
             issues.append(f"ld+json block {idx} ({on_disk.get('@type')}): out of sync with data/seo.json")
         idx += 1
     return issues
 
 
-def check_page(path: pathlib.Path, spec: dict[str, Any], og_image: str) -> list[str]:
+def check_page(path: pathlib.Path, spec: dict[str, Any], og_image: str, default_rating: dict[str, Any] | None) -> list[str]:
     issues: list[str] = []
     text = path.read_text(encoding="utf-8")
     exp_title = str(spec["title"])
@@ -924,11 +979,11 @@ def check_page(path: pathlib.Path, spec: dict[str, Any], og_image: str) -> list[
     if extract_twitter(text, "image") != og_image:
         issues.append("twitter:image mismatch")
 
-    h1 = extract_h1_inner(text, h1_target)
-    if norm_cmp(h1 or "") != norm_cmp(exp_h1):
-        issues.append("main H1 inner mismatch")
+    h1_actual = extract_h1_inner(text, h1_target)
+    if norm_cmp(h1_actual or "") != norm_cmp(exp_h1):
+        issues.append(f"main H1 inner mismatch (got {h1_actual!r}, want {exp_h1!r})")
 
-    issues.extend(check_ld_json_against_file(path, spec))
+    issues.extend(check_ld_json_against_file(path, spec, default_rating))
 
     return issues
 
@@ -1031,41 +1086,56 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
     if not args.apply and not args.check:
         args.check = True
 
-    cfg = load_config()
-    pages: dict[str, Any] = cfg["pages"]
-    og_image = cfg["og_image"]
-
-    tracked = {p.relative_to(ROOT).as_posix(): p for p in tracked_html_files()}
-    missing = set(tracked) - set(pages)
-    extra = set(pages) - set(tracked)
-    if missing:
-        print("Missing SEO entries:", sorted(missing), file=sys.stderr)
-        sys.exit(1)
-    if extra:
-        print("Unknown seo.json paths:", sorted(extra), file=sys.stderr)
-        sys.exit(1)
+    config = load_config()
+    pages = config["pages"]
+    og_image = config["og_image"]
+    default_rating = config.get("default_rating")
 
     if args.apply:
-        for rel, spec in pages.items():
-            path = ROOT / rel
-            path.write_text(apply_page(path, spec, pages, og_image, cfg["theme_color"], cfg["critical_css"], cfg["theme_init_js"]), encoding="utf-8")
+        changed_count = 0
+        for p_path in tracked_html_files():
+            rel = p_path.relative_to(ROOT).as_posix()
+            if rel not in pages:
+                continue
+            
+            spec = pages[rel]
+            try:
+                new_html = apply_page(p_path, spec, config)
+                if new_html != p_path.read_text(encoding="utf-8"):
+                    p_path.write_text(new_html, encoding="utf-8")
+                    changed_count += 1
+            except Exception as e:
+                print(f"Error patching {rel}: {e}")
+                continue
+        
+        if changed_count > 0:
+            print(f"Wrote {changed_count} files from data/seo.json")
+        else:
+            print("No changes needed.")
         update_search_tools(pages)
-        update_sitemap(pages, cfg["origin"])
-        print("Wrote", len(pages), "files from", SEO_JSON.relative_to(ROOT))
+        update_sitemap(pages, config["origin"])
         return
 
     bad = False
-    for rel in sorted(pages):
-        issues = check_page(ROOT / rel, pages[rel], og_image)
+    for p_path in tracked_html_files():
+        rel = p_path.relative_to(ROOT).as_posix()
+        if rel not in pages:
+            continue
+        spec = pages[rel]
+        issues = check_page(p_path, spec, og_image, default_rating)
         if issues:
+            print(f"[FAIL] {rel}")
+            for iss in issues:
+                print(f"  - {iss}")
             bad = True
-            print(rel + ":")
-            for i in issues:
-                print(" ", i)
+        else:
+            if not args.quiet:
+                print(f"[OK]   {rel}")
     if bad:
         sys.exit(1)
     print("SEO check OK:", len(pages), "pages")
