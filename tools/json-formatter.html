@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="../assets/js/theme-init.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
   <title>JSON formatter &amp; validator — beautify in the browser | ToolBite</title>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <style id="critical-css">body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb}.tb-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#1e40af 0%,#2563eb 42%,#c2410c 100%);color:#fff}.tb-hero::before,.tb-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(64px);opacity:.45;pointer-events:none}.tb-hero::before{width:min(80vw,28rem);height:min(80vw,28rem);background:#38bdf8;top:-15%;right:-5%}.tb-hero::after{width:min(70vw,22rem);height:min(70vw,22rem);background:#fb923c;bottom:-20%;left:-8%}.tb-hero-inner{position:relative;z-index:1}#site-header{background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:50}img.header-logo{height:2.5rem!important;width:auto!important;aspect-ratio:384/105;display:block}.skip-link{position:absolute;transform:translateY(-200%)}h1,h2{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:800}.favorite-btn{background:none;border:none;cursor:pointer;font-size:1.5rem;vertical-align:middle;line-height:1;transition:color 0.2s}.favorite-btn.active{color:#f59e0b}</style>
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="manifest" href="../manifest.json">
   <link rel="canonical" href="https://toolbite.org/tools/json-formatter.html">
-  <meta name="description" content="Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.">
+<meta name="description" content="Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.">
+  <meta name="theme-color" content="#2563eb">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolbite.org/tools/json-formatter.html">
@@ -19,22 +22,21 @@
   <meta name="twitter:title" content="JSON formatter &amp; validator — beautify in the browser | ToolBite">
   <meta name="twitter:description" content="Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.">
   <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON formatter & validator — beautify in the browser | ToolBite","url":"https://toolbite.org/tools/json-formatter.html","description":"Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-22","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON formatter & validator — beautify in the browser | ToolBite","url":"https://toolbite.org/tools/json-formatter.html","description":"Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.","applicationCategory":"DeveloperApplication","operatingSystem":"All","author":{"@type":"Organization","name":"ToolBite"},"publisher":{"@type":"Organization","name":"ToolBite","logo":{"@type":"ImageObject","url":"https://toolbite.org/assets/images/toolbite-logo.png"}},"dateModified":"2026-04-24T00:00:00.000Z","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolbite.org/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolbite.org/categories/developer-tools.html"},{"@type":"ListItem","position":3,"name":"JSON formatter & validator online","item":"https://toolbite.org/tools/json-formatter.html"}]}</script>
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
-  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
-  <link rel="stylesheet" href="../assets/css/global.min.css">
-
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my JSON data sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All formatting and validation runs locally in your browser using JavaScript."}},{"@type":"Question","name":"What is the difference between Format and Minify?","acceptedAnswer":{"@type":"Answer","text":"Format adds indentation and line breaks for human readability. Minify removes all whitespace to reduce file size."}},{"@type":"Question","name":"Does it support large JSON files?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can paste large JSON objects and the tool will format them instantly."}},{"@type":"Question","name":"Why is my JSON flagged as invalid?","acceptedAnswer":{"@type":"Answer","text":"Common causes are trailing commas, single quotes instead of double quotes, or an unquoted key. The error message shows the exact position."}}]}</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my JSON data sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All formatting and validation runs locally in your browser using JavaScript."}},{"@type":"Question","name":"What is the difference between Format and Minify?","acceptedAnswer":{"@type":"Answer","text":"Format adds indentation and line breaks for human readability. Minify removes all whitespace to reduce file size."}},{"@type":"Question","name":"Does it support large JSON files?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can paste large JSON objects and the tool will format them instantly."}},{"@type":"Question","name":"Why is my JSON flagged as invalid?","acceptedAnswer":{"@type":"Answer","text":"Common causes are trailing commas, single quotes instead of double quotes, or an unquoted key. The error message shows the exact position."}}]}</script>
   <!-- GA4: async so it never blocks the parser -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
-</head>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"></noscript>
+  <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
+  <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript></head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -52,6 +54,7 @@
         <li><a href="../guides/index.html" class="hover:text-orange-500 transition">Guides</a></li>
         <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
       </ul></nav>
+      <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
       <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
@@ -80,7 +83,7 @@
       </nav>
       <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
       <div class="mb-0">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">JSON formatter &amp; validator online</h1>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">JSON formatter &amp; validator online  <button onclick="toggleFavorite('/tools/json-formatter.html', document.title.split('—')[0].trim())" class="favorite-btn text-gray-300 hover:text-orange-500 transition-colors" title="Toggle Favorite">★</button></h1>
         <p class="text-gray-600 text-lg">Beautify, minify, and validate JSON in your browser for API payloads, config files, and structured data snippets.</p>
       </div>
       </section>

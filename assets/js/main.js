@@ -52,47 +52,49 @@
 /* -----------------------------------------------
    2b. THEME TOGGLE (light / dark, localStorage)
 ----------------------------------------------- */
+/* -----------------------------------------------
+   2b. THEME TOGGLE (light / dark, localStorage)
+----------------------------------------------- */
 (function () {
     const KEY = 'toolbite-theme';
-    const bar = document.querySelector('#site-header .max-w-7xl.flex');
+    let btn = document.getElementById('theme-toggle');
+    const headerDiv = document.querySelector('#site-header .max-w-7xl');
     const mobileBtn = document.getElementById('mobile-menu-button');
-    if (!bar || !mobileBtn) return;
+
+    // Fallback: create it if it's missing (for legacy pages not yet patched)
+    if (!btn && headerDiv && mobileBtn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'theme-toggle';
+        btn.className = 'theme-toggle-btn';
+        headerDiv.insertBefore(btn, mobileBtn);
+    }
+    if (!btn) return;
 
     const moon = '<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>';
     const sun = '<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>';
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.id = 'theme-toggle';
-    btn.className = 'theme-toggle-btn';
-
     function renderIcon() {
-        const dark = document.documentElement.classList.contains('dark');
-        btn.innerHTML = dark ? sun : moon;
-        btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
-
-    function apply(mode) {
-        const root = document.documentElement;
-        if (mode === 'dark') {
-            root.classList.add('dark');
-            try { localStorage.setItem(KEY, 'dark'); } catch (_) {}
-        } else {
-            root.classList.remove('dark');
-            try { localStorage.setItem(KEY, 'light'); } catch (_) {}
-        }
+        const isDark = document.documentElement.classList.contains('dark');
+        btn.innerHTML = isDark ? sun : moon;
+        btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        
+        // Also update meta theme-color
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
-            metaTheme.setAttribute('content', mode === 'dark' ? '#0f172a' : '#2563eb');
+            metaTheme.setAttribute('content', isDark ? '#0f172a' : '#2563eb');
         }
+    }
+
+    function toggle() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        try {
+            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+        } catch (_) {}
         renderIcon();
     }
 
-    btn.addEventListener('click', () => {
-        apply(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
-    });
-
-    bar.insertBefore(btn, mobileBtn);
+    btn.addEventListener('click', toggle);
     renderIcon();
 })();
 
@@ -1168,3 +1170,89 @@ window.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('passwordResult')) generatePassword();
     if (document.getElementById('paletteContainer')) generatePalette();
 });
+
+/* -----------------------------------------------
+   FAVORITES SYSTEM (localStorage)
+----------------------------------------------- */
+(function () {
+    const KEY = 'toolbite-favorites';
+    
+    function getFavorites() {
+        try {
+            return JSON.parse(localStorage.getItem(KEY)) || [];
+        } catch (_) { return []; }
+    }
+
+    function saveFavorites(favs) {
+        try {
+            localStorage.setItem(KEY, JSON.stringify(favs));
+        } catch (_) {}
+    }
+
+    window.toggleFavorite = function (url, name) {
+        let favs = getFavorites();
+        const idx = favs.findIndex(f => f.url === url);
+        if (idx > -1) {
+            favs.splice(idx, 1);
+        } else {
+            favs.push({ url, name });
+        }
+        saveFavorites(favs);
+        updateAllStarButtons();
+        document.dispatchEvent(new CustomEvent('favorites-updated'));
+    };
+
+    function updateAllStarButtons() {
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            // Extract the URL from the onclick attribute or data-url
+            const onclick = btn.getAttribute('onclick');
+            if (onclick) {
+                const match = onclick.match(/'([^']+)'/);
+                if (match && isFavorite(match[1])) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    window.isFavorite = function (url) {
+        return getFavorites().some(f => f.url === url);
+    };
+
+    function renderFavoritesSection() {
+        const container = document.getElementById('favorites-container');
+        const section = document.getElementById('favorites-section');
+        if (!container || !section) return;
+
+        const favs = getFavorites();
+        if (favs.length === 0) {
+            section.classList.add('hidden');
+            return;
+        }
+
+        section.classList.remove('hidden');
+        container.innerHTML = favs.map(f => `
+            <a href="${f.url}" class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition">
+                <span class="font-bold text-gray-900">${f.name}</span>
+                <span class="text-amber-500">★</span>
+            </a>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', updateAllStarButtons);
+    document.addEventListener('favorites-updated', renderFavoritesSection);
+    renderFavoritesSection();
+})();
+
+/* -----------------------------------------------
+   PWA SERVICE WORKER REGISTRATION
+----------------------------------------------- */
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => console.log('Service Worker registered', reg))
+            .catch(err => console.error('Service Worker registration failed', err));
+    });
+}

@@ -1,7 +1,10 @@
 {
-  "_meta": "Canonical SEO + JSON-LD sync for ToolBite HTML. Run: python3 scripts/seo_metadata.py --apply && python3 scripts/seo_metadata.py --check. page_type: homepage | category | tool | guide_hub | guide_article | trust | utility. Optional: og_title, og_description; schema_date_modified (YYYY-MM-DD or ISO); schema_breadcrumb_leaf (tool/guide last crumb); schema_article_headline (Article). FAQPage & ItemList blocks are not auto-edited.",
+  "_meta": "Canonical SEO + JSON-LD sync for ToolBite HTML. Run: python3 scripts/seo_metadata.py --apply && python3 scripts/seo_metadata.py --check. page_type: homepage | category | tool | guide_hub | guide_article | trust | utility. Optional: og_title, og_description; schema_date_modified (YYYY-MM-DD or ISO); schema_breadcrumb_leaf (tool/guide last crumb); schema_article_headline (Article); icon (for search); tags (for search). FAQPage & ItemList blocks are not auto-edited.",
   "origin": "https://toolbite.org",
   "og_image": "https://toolbite.org/assets/images/social-preview.jpg",
+  "theme_color": "#2563eb",
+  "critical_css": "body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb}.tb-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#1e40af 0%,#2563eb 42%,#c2410c 100%);color:#fff}.tb-hero::before,.tb-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(64px);opacity:.45;pointer-events:none}.tb-hero::before{width:min(80vw,28rem);height:min(80vw,28rem);background:#38bdf8;top:-15%;right:-5%}.tb-hero::after{width:min(70vw,22rem);height:min(70vw,22rem);background:#fb923c;bottom:-20%;left:-8%}.tb-hero-inner{position:relative;z-index:1}#site-header{background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:50}img.header-logo{height:2.5rem!important;width:auto!important;aspect-ratio:384/105;display:block}.skip-link{position:absolute;transform:translateY(-200%)}h1,h2{font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:800}.favorite-btn{background:none;border:none;cursor:pointer;font-size:1.5rem;vertical-align:middle;line-height:1;transition:color 0.2s}.favorite-btn.active{color:#f59e0b}",
+  "theme_init_js": "(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());",
   "pages": {
     "index.html": {
       "page_type": "homepage",
@@ -90,7 +93,9 @@
       "description": "Short, practical write-ups tied to ToolBite utilities: fix broken JSON, decode JWTs safely, and tighten URL slugs—all with a browser-first mindset.",
       "canonical": "https://toolbite.org/guides/index.html",
       "og_type": "website",
-      "h1_inner": "ToolBite guides &amp; tutorials"
+      "h1_inner": "ToolBite guides &amp; tutorials",
+      "icon": "📚",
+      "tags": "guides tutorials learning docs help"
     },
     "guides/json-formatter-guide.html": {
       "page_type": "guide_article",
@@ -98,7 +103,9 @@
       "description": "A straight checklist for trailing commas, quotes, and common parse errors—meant for API payloads and config you paste into ToolBite’s formatter.",
       "canonical": "https://toolbite.org/guides/json-formatter-guide.html",
       "og_type": "article",
-      "h1_inner": "JSON formatter guide: fix invalid JSON fast"
+      "h1_inner": "JSON formatter guide: fix invalid JSON fast",
+      "icon": "📘",
+      "tags": "json guide tutorial fix invalid json trailing comma quotes"
     },
     "guides/jwt-decoder-guide.html": {
       "page_type": "guide_article",
@@ -106,7 +113,9 @@
       "description": "What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.",
       "canonical": "https://toolbite.org/guides/jwt-decoder-guide.html",
       "og_type": "article",
-      "h1_inner": "How to decode JWT safely (without trusting payload)"
+      "h1_inner": "How to decode JWT safely (without trusting payload)",
+      "icon": "📗",
+      "tags": "jwt guide tutorial token verify claims security auth"
     },
     "guides/seo-slug-best-practices.html": {
       "page_type": "guide_article",
@@ -114,7 +123,9 @@
       "description": "Length, separators, keywords, and mistakes that waste crawl budget—paired with ToolBite’s text-to-slug helper for quick clean URLs.",
       "canonical": "https://toolbite.org/guides/seo-slug-best-practices.html",
       "og_type": "article",
-      "h1_inner": "SEO slug best practices (with examples)"
+      "h1_inner": "SEO slug best practices (with examples)",
+      "icon": "📙",
+      "tags": "seo slug guide url best practices permalink keywords hyphens"
     },
     "tools/word-counter.html": {
       "page_type": "tool",
@@ -122,7 +133,9 @@
       "description": "Words, characters, sentences, and paragraphs for drafts and specs. Everything runs locally after the page loads—paste long documents freely.",
       "canonical": "https://toolbite.org/tools/word-counter.html",
       "og_type": "website",
-      "h1_inner": "Word counter online"
+      "h1_inner": "Word counter online",
+      "icon": "📝",
+      "tags": "word counter characters sentences text"
     },
     "tools/password-generator.html": {
       "page_type": "tool",
@@ -130,7 +143,9 @@
       "description": "Generate long random passwords with the Web Crypto API where available. Nothing is sent to ToolBite; copy and store secrets in your own vault.",
       "canonical": "https://toolbite.org/tools/password-generator.html",
       "og_type": "website",
-      "h1_inner": "Password generator online"
+      "h1_inner": "Password generator online",
+      "icon": "🔑",
+      "tags": "password generator secure random"
     },
     "tools/json-formatter.html": {
       "page_type": "tool",
@@ -138,7 +153,9 @@
       "description": "Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.",
       "canonical": "https://toolbite.org/tools/json-formatter.html",
       "og_type": "website",
-      "h1_inner": "JSON formatter &amp; validator online"
+      "h1_inner": "JSON formatter &amp; validator online",
+      "icon": "💻",
+      "tags": "json formatter validator beautify developer"
     },
     "tools/find-replace.html": {
       "page_type": "tool",
@@ -146,7 +163,9 @@
       "description": "Replace phrases across long pasted text with optional case sensitivity. Runs entirely in JavaScript—good for logs, lists, and CMS exports.",
       "canonical": "https://toolbite.org/tools/find-replace.html",
       "og_type": "website",
-      "h1_inner": "Find &amp; replace text online"
+      "h1_inner": "Find &amp; replace text online",
+      "icon": "🔁",
+      "tags": "find replace text bulk"
     },
     "tools/lorem-ipsum.html": {
       "page_type": "tool",
@@ -154,7 +173,9 @@
       "description": "Classic filler paragraphs for layouts and CMS previews. Generated text never leaves your browser session.",
       "canonical": "https://toolbite.org/tools/lorem-ipsum.html",
       "og_type": "website",
-      "h1_inner": "Lorem ipsum generator"
+      "h1_inner": "Lorem ipsum generator",
+      "icon": "📄",
+      "tags": "lorem ipsum placeholder dummy text"
     },
     "tools/remove-extra-spaces.html": {
       "page_type": "tool",
@@ -162,7 +183,9 @@
       "description": "Collapse runs of spaces, trim lines, or strip blank lines from messy copy. All transformations happen client-side for privacy.",
       "canonical": "https://toolbite.org/tools/remove-extra-spaces.html",
       "og_type": "website",
-      "h1_inner": "Remove extra spaces online"
+      "h1_inner": "Remove extra spaces online",
+      "icon": "🧹",
+      "tags": "spaces whitespace clean trim text"
     },
     "tools/image-compressor.html": {
       "page_type": "tool",
@@ -170,7 +193,9 @@
       "description": "JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.",
       "canonical": "https://toolbite.org/tools/image-compressor.html",
       "og_type": "website",
-      "h1_inner": "Image compressor online"
+      "h1_inner": "Image compressor online",
+      "icon": "🖼️",
+      "tags": "image compress jpg png webp photo"
     },
     "tools/color-palette-generator.html": {
       "page_type": "tool",
@@ -178,7 +203,9 @@
       "description": "Spin up five-color palettes and copy HEX codes with one click. Useful for UI spikes; all randomness runs in the browser.",
       "canonical": "https://toolbite.org/tools/color-palette-generator.html",
       "og_type": "website",
-      "h1_inner": "Color palette generator online"
+      "h1_inner": "Color palette generator online",
+      "icon": "🎨",
+      "tags": "color palette hex design generator"
     },
     "tools/case-converter.html": {
       "page_type": "tool",
@@ -186,7 +213,9 @@
       "description": "Switch naming styles for code, headings, or data cleanup without sending strings to a backend—paste, convert, copy.",
       "canonical": "https://toolbite.org/tools/case-converter.html",
       "og_type": "website",
-      "h1_inner": "Case converter"
+      "h1_inner": "Case converter",
+      "icon": "🔠",
+      "tags": "case uppercase lowercase title camelCase text"
     },
     "tools/text-to-slug.html": {
       "page_type": "tool",
@@ -194,7 +223,9 @@
       "description": "Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.",
       "canonical": "https://toolbite.org/tools/text-to-slug.html",
       "og_type": "website",
-      "h1_inner": "Text to slug generator online"
+      "h1_inner": "Text to slug generator online",
+      "icon": "🔗",
+      "tags": "slug url seo permalink hyphen"
     },
     "tools/read-time-calculator.html": {
       "page_type": "tool",
@@ -202,7 +233,9 @@
       "description": "Paste an article or doc to approximate reading time from word count. Handy before publishing; runs fully client-side.",
       "canonical": "https://toolbite.org/tools/read-time-calculator.html",
       "og_type": "website",
-      "h1_inner": "Reading time calculator"
+      "h1_inner": "Reading time calculator",
+      "icon": "⏱️",
+      "tags": "read time wpm minutes blog seo"
     },
     "tools/base64-encoder.html": {
       "page_type": "tool",
@@ -210,7 +243,9 @@
       "description": "Encode or decode Base64 for tokens, snippets, and small payloads. Strings stay in your browser tab unless you copy them elsewhere.",
       "canonical": "https://toolbite.org/tools/base64-encoder.html",
       "og_type": "website",
-      "h1_inner": "Base64 encoder &amp; decoder online"
+      "h1_inner": "Base64 encoder &amp; decoder online",
+      "icon": "📎",
+      "tags": "base64 encode decode utf8 developer"
     },
     "tools/uuid-generator.html": {
       "page_type": "tool",
@@ -218,7 +253,9 @@
       "description": "Generate random v4 UUIDs for databases, fixtures, and API tests. IDs are created in-browser; nothing is logged by ToolBite.",
       "canonical": "https://toolbite.org/tools/uuid-generator.html",
       "og_type": "website",
-      "h1_inner": "UUID / GUID generator"
+      "h1_inner": "UUID / GUID generator",
+      "icon": "🆔",
+      "tags": "uuid guid random id rfc4122 v4"
     },
     "tools/url-encoder.html": {
       "page_type": "tool",
@@ -226,7 +263,9 @@
       "description": "Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.",
       "canonical": "https://toolbite.org/tools/url-encoder.html",
       "og_type": "website",
-      "h1_inner": "URL encoder &amp; decoder"
+      "h1_inner": "URL encoder &amp; decoder",
+      "icon": "🔗",
+      "tags": "url encode decode encodeURIComponent encodeURI"
     },
     "tools/hash-generator.html": {
       "page_type": "tool",
@@ -234,7 +273,9 @@
       "description": "Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.",
       "canonical": "https://toolbite.org/tools/hash-generator.html",
       "og_type": "website",
-      "h1_inner": "SHA-256 &amp; SHA-1 hash generator"
+      "h1_inner": "SHA-256 &amp; SHA-1 hash generator",
+      "icon": "🔢",
+      "tags": "sha256 sha1 hash checksum hex crypto"
     },
     "tools/jwt-decoder.html": {
       "page_type": "tool",
@@ -242,7 +283,9 @@
       "description": "Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.",
       "canonical": "https://toolbite.org/tools/jwt-decoder.html",
       "og_type": "website",
-      "h1_inner": "JWT decoder online"
+      "h1_inner": "JWT decoder online",
+      "icon": "🪪",
+      "tags": "jwt json web token decode bearer auth developer"
     },
     "tools/remove-duplicate-lines.html": {
       "page_type": "tool",
@@ -250,7 +293,9 @@
       "description": "Keep first occurrences of repeated lines in pasted logs, keywords, or inventories. No server round-trip for the dedupe logic.",
       "canonical": "https://toolbite.org/tools/remove-duplicate-lines.html",
       "og_type": "website",
-      "h1_inner": "Remove duplicate lines"
+      "h1_inner": "Remove duplicate lines",
+      "icon": "📋",
+      "tags": "duplicate dedupe unique lines list text"
     },
     "tools/sort-text-lines.html": {
       "page_type": "tool",
@@ -258,7 +303,9 @@
       "description": "Alphabetize or reverse lines for quick cleanup of exports and checklists. Sorting runs entirely in your browser.",
       "canonical": "https://toolbite.org/tools/sort-text-lines.html",
       "og_type": "website",
-      "h1_inner": "Sort text lines"
+      "h1_inner": "Sort text lines",
+      "icon": "🔤",
+      "tags": "sort lines alphabetical order text list"
     },
     "tools/qr-generator.html": {
       "page_type": "tool",
@@ -267,7 +314,9 @@
       "canonical": "https://toolbite.org/tools/qr-generator.html",
       "og_type": "website",
       "h1_inner": "QR Code Generator",
-      "schema_breadcrumb_leaf": "QR Code Generator"
+      "schema_breadcrumb_leaf": "QR Code Generator",
+      "icon": "📱",
+      "tags": "qr generator mobile scan code"
     },
     "tools/csv-to-json.html": {
       "page_type": "tool",
@@ -276,7 +325,9 @@
       "canonical": "https://toolbite.org/tools/csv-to-json.html",
       "og_type": "website",
       "h1_inner": "CSV to JSON Converter",
-      "schema_breadcrumb_leaf": "CSV to JSON Converter"
+      "schema_breadcrumb_leaf": "CSV to JSON Converter",
+      "icon": "🔄",
+      "tags": "csv json converter spreadsheet developer"
     },
     "guides/compress-images-guide.html": {
       "page_type": "guide_article",
@@ -284,7 +335,9 @@
       "description": "A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser.",
       "canonical": "https://toolbite.org/guides/compress-images-guide.html",
       "og_type": "article",
-      "h1_inner": "How to compress images for web without losing quality"
+      "h1_inner": "How to compress images for web without losing quality",
+      "icon": "🖼️",
+      "tags": "image compress guide webp optimization"
     },
     "guides/base64-encoding-guide.html": {
       "page_type": "guide_article",
@@ -292,7 +345,9 @@
       "description": "Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption.",
       "canonical": "https://toolbite.org/guides/base64-encoding-guide.html",
       "og_type": "article",
-      "h1_inner": "Base64 encoding explained — what it is and when to use it"
+      "h1_inner": "Base64 encoding explained — what it is and when to use it",
+      "icon": "📎",
+      "tags": "base64 guide encoding developer"
     },
     "guides/uuid-guid-guide.html": {
       "page_type": "guide_article",
@@ -300,7 +355,9 @@
       "description": "What is a UUID? What is a GUID? Are they the same? This guide explains UUID versions, when to use them in databases and APIs, and how to generate them safely in your browser.",
       "canonical": "https://toolbite.org/guides/uuid-guid-guide.html",
       "og_type": "article",
-      "h1_inner": "UUID and GUID explained — what they are and when to generate one"
+      "h1_inner": "UUID and GUID explained — what they are and when to generate one",
+      "icon": "🆔",
+      "tags": "uuid guid guide random id"
     },
     "guides/url-encoding-guide.html": {
       "page_type": "guide_article",
@@ -308,7 +365,9 @@
       "description": "What is URL encoding? Why does a space become %20? This guide explains percent-encoding, which characters need encoding, encodeURI vs encodeURIComponent, and how to fix broken URLs.",
       "canonical": "https://toolbite.org/guides/url-encoding-guide.html",
       "og_type": "article",
-      "h1_inner": "URL encoding explained — what %20 means and how to fix broken links"
+      "h1_inner": "URL encoding explained — what %20 means and how to fix broken links",
+      "icon": "🔗",
+      "tags": "url encode guide encoding"
     },
     "guides/qr-code-guide.html": {
       "page_type": "guide_article",
@@ -316,7 +375,9 @@
       "description": "Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser.",
       "canonical": "https://toolbite.org/guides/qr-code-guide.html",
       "og_type": "article",
-      "h1_inner": "QR codes explained — how to create, customize, and use them"
+      "h1_inner": "QR codes explained — how to create, customize, and use them",
+      "icon": "📱",
+      "tags": "qr guide scan code"
     },
     "guides/password-guide.html": {
       "page_type": "guide_article",
@@ -324,7 +385,9 @@
       "description": "What makes a password strong, how long it should be, which characters to include, and how to store it safely without memorising random strings. A practical security guide.",
       "canonical": "https://toolbite.org/guides/password-guide.html",
       "og_type": "article",
-      "h1_inner": "How to generate strong passwords — and store them safely"
+      "h1_inner": "How to generate strong passwords — and store them safely",
+      "icon": "🔑",
+      "tags": "password guide security"
     }
   }
 }

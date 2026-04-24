@@ -21,6 +21,7 @@ Optional per-page keys in data/seo.json:
   schema_date_modified   — YYYY-MM-DD or full ISO (default: today UTC date)
   schema_breadcrumb_leaf — last ListItem name on tool breadcrumbs (default: plain h1 text)
   schema_article_headline— Article.headline for guides (default: plain h1 text)
+  theme_color            — #hex color (default: root theme_color or #2563eb)
 
 Usage:
   python3 scripts/seo_metadata.py --check
@@ -52,7 +53,17 @@ def load_config() -> dict[str, Any]:
         raise SystemExit("data/seo.json: missing 'pages' object")
     origin = str(data.get("origin", "https://toolbite.org")).rstrip("/")
     og_image = str(data.get("og_image", f"{origin}/assets/images/social-preview.jpg"))
-    return {"origin": origin, "og_image": og_image, "pages": pages}
+    theme_color = str(data.get("theme_color", "#2563eb"))
+    critical_css = str(data.get("critical_css", ""))
+    theme_init_js = str(data.get("theme_init_js", ""))
+    return {
+        "origin": origin,
+        "og_image": og_image,
+        "theme_color": theme_color,
+        "critical_css": critical_css,
+        "theme_init_js": theme_init_js,
+        "pages": pages
+    }
 
 
 def tracked_html_files() -> list[pathlib.Path]:
@@ -144,6 +155,121 @@ def patch_meta_description(head_inner: str, desc: str) -> tuple[str, bool]:
     return head_inner[: m.start()] + repl + head_inner[m.end() :], True
 
 
+def patch_theme_color(head_inner: str, color: str) -> str:
+    """Replace or insert <meta name="theme-color">."""
+    head_inner = re.sub(r'\n\s*<meta\s+name="theme-color"\s+content="[^"]*"\s*/?>\s*', "\n", head_inner, flags=re.I)
+    m = re.search(r'(\n\s*<meta\s+name="description"\s+content="[^"]*"\s*>)', head_inner, flags=re.I)
+    if not m:
+        # Fallback: find any meta and insert before/after
+        m = re.search(r'(<meta\s+[^>]+>)', head_inner, flags=re.I)
+    
+    ins = f'\n  <meta name="theme-color" content="{esc_attr(color)}">'
+    if m:
+        return head_inner[: m.end()] + ins + head_inner[m.end() :]
+    return head_inner + ins
+
+
+def patch_critical_css(head_inner: str, css: str) -> str:
+    """Inject critical CSS into <style id="critical-css">."""
+    head_inner = re.sub(r'\n\s*<style\s+id="critical-css">[\s\S]*?</style>\s*', "\n", head_inner, flags=re.I)
+    if not css:
+        return head_inner
+    
+    # Insert after title
+    m = re.search(r'(</title>)', head_inner, flags=re.I)
+    ins = f'\n  <style id="critical-css">{css}</style>'
+    if m:
+        return head_inner[: m.end()] + ins + head_inner[m.end() :]
+    return head_inner + ins
+
+
+def patch_theme_init_js(head_inner: str, script_content: str) -> str:
+    """Inline theme-init logic to prevent FOUC."""
+    # Remove existing <script src="...theme-init.js">
+    head_inner = re.sub(r'\n\s*<script\s+src="[^"]*theme-init\.js"[^>]*>\s*</script>\s*', "\n", head_inner, flags=re.I)
+    # Remove existing inlined <script> blocks that look like theme-init
+    head_inner = re.sub(r'\n\s*<script>\s*/\* Inline theme:[\s\S]*?</script>\s*', "\n", head_inner, flags=re.I)
+    # Remove our own tagged version if re-running
+    head_inner = re.sub(r'\n\s*<script\s+id="theme-init">[\s\S]*?</script>\s*', "\n", head_inner, flags=re.I)
+    
+    if not script_content:
+        return head_inner
+
+    # Insert right after <meta charset> or early in head
+    m = re.search(r'(<meta\s+charset="[^"]*"\s*/?>)', head_inner, flags=re.I)
+    ins = f'\n  <script id="theme-init">{script_content}</script>'
+    if m:
+        return head_inner[: m.end()] + ins + head_inner[m.end() :]
+    return ins + head_inner
+
+
+def patch_header_toggle(html: str) -> str:
+    """Inject the theme-toggle button into the header if missing."""
+    if 'id="theme-toggle"' in html:
+        return html
+    
+    # Button HTML (empty, populated by main.js)
+    toggle_html = '\n      <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>'
+    
+    # Find mobile-menu-button and insert before it
+    m = re.search(r'(\n\s*<button\s+id="mobile-menu-button")', html, flags=re.I)
+    if m:
+        return html[: m.start()] + toggle_html + html[m.start() :]
+    return html
+
+
+def patch_favorite_button(html: str, rel_path: str, page_type: str) -> str:
+    """Add a star button next to the H1 for tools and guides."""
+    if page_type not in ("tool", "guide_article"):
+        return html
+    if 'toggleFavorite' in html:
+        return html
+    
+    # Insert inside the <h1> tag at the end, or after it
+    # Let's try inserting it right after the <h1> closing tag if it's in a flex container, 
+    # or inside it. ToolBite usually has H1 in a centered div.
+    
+    star_btn = f' <button onclick="toggleFavorite(\'/{rel_path}\', document.title.split(\'—\')[0].trim())" class="favorite-btn text-gray-300 hover:text-orange-500 transition-colors" title="Toggle Favorite">★</button>'
+    
+    # Match </h1> and insert before it
+    html = re.sub(r'(</h1>)', r' ' + star_btn + r'\1', html, flags=re.I)
+    return html
+
+
+def make_css_async(head_inner: str, rel_path: str) -> str:
+    """Strip and re-add core CSS links in async preload pattern for consistency."""
+    # 1. Strip all existing CSS-related tags to prevent duplication/corruption
+    # More flexible regex to catch any order of attributes
+    head_inner = re.sub(r'<link[^>]+rel=["\']preload["\'][^>]+as=["\']style["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+as=["\']style["\'][^>]+rel=["\']preload["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
+    head_inner = re.sub(r'<link[^>]+href="[^"]+"[^>]+rel=["\']stylesheet["\'][^>]*>', "", head_inner, flags=re.I)
+    
+    # Remove all noscript blocks entirely from the head content
+    head_inner = re.sub(r'<noscript>[\s\S]*?</noscript>', "", head_inner, flags=re.I)
+    
+    # Remove any stray </noscript> tags that might be left over from malformed HTML
+    head_inner = head_inner.replace("</noscript>", "")
+
+    # 2. Build the list of core CSS files with correct relative paths
+    depth = rel_path.count("/")
+    prefix = "../" * depth
+    
+    # Standard CSS for all pages
+    fonts_url = "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional"
+    tailwind_url = f"{prefix}assets/css/tailwind.min.css"
+    global_url = f"{prefix}assets/css/global.min.css"
+    
+    css_list = [fonts_url, tailwind_url, global_url]
+    
+    # 3. Append them at the end of head_inner content
+    for url in css_list:
+        head_inner += f'\n  <link rel="preload" href="{url}" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
+        head_inner += f'\n  <noscript><link rel="stylesheet" href="{url}"></noscript>'
+        
+    return head_inner
+
+
 def patch_canonical_in_head(head_inner: str, canonical: str | None) -> str:
     head_inner = re.sub(r"\n\s*<link\s+rel=\"canonical\"[^>]*>\s*", "\n", head_inner, flags=re.I)
     if canonical is None:
@@ -166,7 +292,25 @@ def insert_social_after_description(head_inner: str, block: str) -> str:
     return head_inner[: m.end()] + "\n" + block + "\n" + head_inner[m.end() :]
 
 
-def patch_head(html: str, spec: dict[str, Any], og_image: str) -> str:
+def patch_manifest(head_inner: str, rel_path: str) -> str:
+    """Add <link rel="manifest" href="/manifest.json"> if missing, with correct relative path."""
+    if 'rel="manifest"' in head_inner:
+        # If it's already there but potentially wrong, we could scrub it, but let's just scrub and re-add for safety
+        head_inner = re.sub(r'\n\s*<link\s+rel="manifest"[^>]*>\s*', "\n", head_inner, flags=re.I)
+    
+    # Calculate depth
+    depth = rel_path.count("/")
+    prefix = "../" * depth
+    
+    # Insert after favicon
+    m = re.search(r'(<link\s+rel="icon"[^>]*>)', head_inner, flags=re.I)
+    ins = f'\n  <link rel="manifest" href="{prefix}manifest.json">'
+    if m:
+        return head_inner[: m.end()] + ins + head_inner[m.end() :]
+    return head_inner + ins
+
+
+def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_color: str, critical_css: str, theme_init_js: str, rel_path: str) -> str:
     m = re.search(r"(<head[^>]*>)([\s\S]*?)(</head>)", html, re.I)
     if not m:
         raise ValueError("missing <head>")
@@ -180,6 +324,7 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str) -> str:
     og_type = str(spec.get("og_type", "website"))
     og_title = str(spec.get("og_title", title))
     og_description = str(spec.get("og_description", description))
+    theme_color = str(spec.get("theme_color", default_theme_color))
 
     hb, ok_t = patch_title(hb, title)
     if not ok_t:
@@ -198,6 +343,11 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str) -> str:
         og_image=og_image,
     )
     hb = insert_social_after_description(hb, block)
+    hb = patch_theme_color(hb, theme_color)
+    hb = patch_critical_css(hb, critical_css)
+    hb = patch_theme_init_js(hb, theme_init_js)
+    hb = patch_manifest(hb, rel_path)
+    hb = make_css_async(hb, rel_path)
     # Collapse runs of blank lines introduced by OG scrub/replace (keep JSON in <script> intact)
     hb = re.sub(r"\n(?:[ \t]*\n){2,}", "\n\n", hb)
     # Restore common two-space indent if a tag lost its leading spaces after OG replacement
@@ -221,15 +371,17 @@ def patch_h1(html: str, h1_inner: str, h1_target: str) -> tuple[str, bool]:
     return html[: m.start(2)] + h1_inner + html[m.end(2) :], True
 
 
-def apply_page(path: pathlib.Path, spec: dict[str, Any], og_image: str) -> str:
+def apply_page(path: pathlib.Path, spec: dict[str, Any], og_image: str, theme_color: str, critical_css: str, theme_init_js: str) -> str:
     raw = path.read_text(encoding="utf-8")
     h1_inner = str(spec["h1_inner"])
     h1_target = str(spec.get("h1_target", "main"))
     rel = path.relative_to(ROOT).as_posix()
-    html = patch_head(raw, spec, og_image)
+    html = patch_head(raw, spec, og_image, theme_color, critical_css, theme_init_js, rel)
+    html = patch_header_toggle(html)
     html, ok = patch_h1(html, h1_inner, h1_target)
     if not ok:
         raise ValueError(f"could not patch <h1> (h1_target={h1_target!r})")
+    html = patch_favorite_button(html, rel, spec.get("page_type", ""))
     html = patch_ld_json_scripts(html, spec, rel)
     return html
 
@@ -299,6 +451,12 @@ def schema_dates(spec: dict[str, Any]) -> tuple[str, str]:
     return d, f"{d}T00:00:00.000Z"
 
 
+def schema_date_z(spec: dict[str, Any]) -> str:
+    """Return full ISO 8601 string (end of day) for unified JSON-LD dateModified."""
+    _, dz = schema_dates(spec)
+    return dz
+
+
 def _is_schema_obj(data: Any) -> bool:
     return isinstance(data, dict) and (
         data.get("@context") in ("https://schema.org", "http://schema.org")
@@ -324,36 +482,21 @@ def mutate_ld_json(data: dict[str, Any], spec: dict[str, Any], page_type: str) -
             data[key] = val
             changed = True
 
-    if t == "WebApplication" and page_type == "tool" and canon_s:
-        set_if("name", title)
-        set_if("description", desc)
-        set_if("url", canon_s)
-        set_if("dateModified", d_short)
-        return changed
-
-    if t == "CollectionPage" and page_type in ("category", "guide_hub") and canon_s:
-        set_if("name", title)
-        set_if("description", desc)
-        set_if("url", canon_s)
-        set_if("dateModified", d_short)
-        return changed
-
-    if t == "WebPage" and page_type == "trust" and canon_s:
-        set_if("name", title)
-        set_if("description", desc)
-        set_if("url", canon_s)
-        set_if("dateModified", d_short)
-        return changed
-
-    if t == "Article" and page_type == "guide_article" and canon_s:
-        headline = str(spec.get("schema_article_headline") or plain_h1(spec) or title)
-        set_if("headline", headline)
-        set_if("description", desc)
-        set_if("mainEntityOfPage", canon_s)
-        set_if("dateModified", d_short)
-        return changed
-
     if t == "WebSite" and page_type == "homepage" and canon_s:
+        set_if("description", desc)
+        set_if("dateModified", d_z)
+        return changed
+
+    # Unified: Use full ISO format for all types as requested by audit
+    if t in ("WebApplication", "CollectionPage", "WebPage", "Article") and canon_s:
+        if t == "Article":
+            headline = str(spec.get("schema_article_headline") or plain_h1(spec) or title)
+            set_if("headline", headline)
+            set_if("mainEntityOfPage", canon_s)
+        else:
+            set_if("name", title)
+            set_if("url", canon_s)
+        
         set_if("description", desc)
         set_if("dateModified", d_z)
         return changed
@@ -544,6 +687,49 @@ def check_page(path: pathlib.Path, spec: dict[str, Any], og_image: str) -> list[
     return issues
 
 
+def update_search_tools(pages: dict[str, Any]) -> None:
+    """Sync the TOOLS array in search.html with tool/guide entries in seo.json."""
+    search_path = ROOT / "search.html"
+    if not search_path.exists():
+        return
+    
+    tools_list = []
+    for rel, spec in pages.items():
+        # Only include tools and guides in search
+        if spec.get("page_type") not in ("tool", "guide_article"):
+            continue
+        
+        name = strip_html_tags(str(spec.get("h1_inner", spec["title"])))
+        # Shorten names for search results if they have "online" suffix
+        name = re.sub(r"\s+online$", "", name, flags=re.I)
+        
+        tools_list.append({
+            "name": name,
+            "desc": spec["description"],
+            "url": rel,
+            "icon": spec.get("icon", "📝" if "tool" in spec.get("page_type") else "📘"),
+            "tags": spec.get("tags", name.lower())
+        })
+
+    # Sort tools by name
+    tools_list.sort(key=lambda x: x["name"])
+    
+    json_list = json.dumps(tools_list, indent=6, ensure_ascii=False)
+    # The script in search.html uses 6-space indent inside the array as a pattern
+    # Let's adjust to match the style or just replace the whole array
+    
+    content = search_path.read_text(encoding="utf-8")
+    new_content = re.sub(
+        r"(const TOOLS = )\[[\s\S]*?\];",
+        f"\\1{json_list};",
+        content,
+        count=1
+    )
+    if new_content != content:
+        search_path.write_text(new_content, encoding="utf-8")
+        print("Updated TOOLS list in search.html")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
@@ -569,7 +755,8 @@ def main() -> None:
     if args.apply:
         for rel, spec in pages.items():
             path = ROOT / rel
-            path.write_text(apply_page(path, spec, og_image), encoding="utf-8")
+            path.write_text(apply_page(path, spec, og_image, cfg["theme_color"], cfg["critical_css"], cfg["theme_init_js"]), encoding="utf-8")
+        update_search_tools(pages)
         print("Wrote", len(pages), "files from", SEO_JSON.relative_to(ROOT))
         return
 
