@@ -200,22 +200,50 @@
         </ul>
       </section>
 
-      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-faq-heading">
-        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">Frequently asked questions</h2>
-        <dl class="space-y-4">
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <dt class="font-bold text-gray-900 text-sm mb-1">What is a CSV to JSON converter used for?</dt>
-            <dd class="text-xs text-gray-600">A CSV to JSON converter transforms tabular data — rows and columns — into a structured JSON array that APIs and databases expect. Common uses include loading spreadsheet exports into JavaScript apps, preparing test fixtures, and migrating data between systems.</dd>
-          </div>
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <dt class="font-bold text-gray-900 text-sm mb-1">Does my data get uploaded when I convert CSV to JSON?</dt>
-            <dd class="text-xs text-gray-600">No. ToolBite's converter runs entirely in your browser. Your data is never sent to any server, making it safe for confidential spreadsheets and sensitive business data.</dd>
-          </div>
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <dt class="font-bold text-gray-900 text-sm mb-1">Can I convert CSV files that use semicolons instead of commas?</dt>
-            <dd class="text-xs text-gray-600">Yes. The converter supports comma, semicolon, tab, and pipe as delimiters. Use the Delimiter dropdown to match your file's separator before clicking Convert to JSON.</dd>
-          </div>
-        </dl>
+      <section class="tb-tool-faq mt-8 not-prose" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
+        <div class="space-y-3">
+          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+              <span>What is a CSV to JSON converter used for?</span>
+              <span class="transition group-open:rotate-180 text-blue-600">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+              <p>A CSV to JSON converter transforms tabular data — rows and columns — into a structured JSON array that APIs and databases expect. Common uses include loading spreadsheet exports into JavaScript apps, preparing test fixtures, and migrating data between systems.</p>
+            </div>
+          </details>
+          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+              <span>Does my data get uploaded when I convert CSV to JSON?</span>
+              <span class="transition group-open:rotate-180 text-blue-600">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+              <p>No. ToolBite's converter runs entirely in your browser. Your data is never sent to any server, making it safe for confidential spreadsheets and sensitive business data.</p>
+            </div>
+          </details>
+          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+              <span>Can I convert CSV files that use semicolons instead of commas?</span>
+              <span class="transition group-open:rotate-180 text-blue-600">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+              <p>Yes. The converter supports comma, semicolon, tab, and pipe as delimiters. Use the Delimiter dropdown to match your file's separator before clicking Convert to JSON.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="tb-seo-notes mt-8 text-xs text-gray-500 leading-relaxed prose prose-sm max-w-none">
+        <h2>About CSV and JSON Data Formats</h2>
+        <p><strong>Comma-Separated Values (CSV)</strong> is a simple, universally supported text format used to store tabular data (numbers and text) in plain text. Each line of the file is a data record, and each record consists of one or more fields, separated by commas. It is widely used by spreadsheet applications like Microsoft Excel and Google Sheets.</p>
+        <p><strong>JavaScript Object Notation (JSON)</strong> is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It has become the standard for data transfer in REST APIs and web applications due to its native compatibility with JavaScript.</p>
+        <p>Converting between the two formats is a common task in software engineering. ToolBite's instant browser-based converter eliminates the need for scripting languages like Python or Node.js by performing the string manipulation client-side, returning an array of nested objects instantly.</p>
       </section>
 </article>
 

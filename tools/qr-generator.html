@@ -190,26 +190,63 @@
         </ul>
       </section>
 
-      <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-faq-heading">
-        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">Frequently asked questions</h2>
-        <dl class="space-y-4">
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <dt class="font-bold text-gray-900 text-sm mb-1">What can I encode in a QR code?</dt>
-            <dd class="text-xs text-gray-600">URLs, plain text, email addresses, phone numbers, and Wi-Fi credentials. Any text up to a few thousand characters can be stored, though shorter content produces simpler, easier-to-scan codes.</dd>
-          </div>
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <dt class="font-bold text-gray-900 text-sm mb-1">Is this QR code generator free?</dt>
-            <dd class="text-xs text-gray-600">Yes — completely free, no account needed, no watermarks, no download limits. Generate and download as many PNG QR codes as you need.</dd>
-          </div>
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <dt class="font-bold text-gray-900 text-sm mb-1">What does the error correction level mean?</dt>
-            <dd class="text-xs text-gray-600">It determines how much of the QR code can be obscured while still scanning correctly. Low (L) gives a smaller, simpler code. High (H) adds redundancy — useful for print where a logo might overlap the code.</dd>
-          </div>
-        </dl>
+      <section class="tb-tool-faq mt-8 not-prose" aria-labelledby="tb-faq-heading">
+        <h2 id="tb-faq-heading" class="text-xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
+        <div class="space-y-3">
+          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+              <span>What can I encode in a QR code?</span>
+              <span class="transition group-open:rotate-180 text-blue-600">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+              <p>URLs, plain text, email addresses, phone numbers, and Wi-Fi credentials. Any text up to a few thousand characters can be stored, though shorter content produces simpler, easier-to-scan codes.</p>
+            </div>
+          </details>
+          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+              <span>Is this QR code generator free?</span>
+              <span class="transition group-open:rotate-180 text-blue-600">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+              <p>Yes — completely free, no account needed, no watermarks, no download limits. Generate and download as many PNG QR codes as you need.</p>
+            </div>
+          </details>
+          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+              <span>What does the error correction level mean?</span>
+              <span class="transition group-open:rotate-180 text-blue-600">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+              <p>It determines how much of the QR code can be obscured while still scanning correctly. Low (L) gives a smaller, simpler code. High (H) adds redundancy — useful for print where a logo might overlap the code.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="tb-seo-notes mt-8 text-xs text-gray-500 leading-relaxed prose prose-sm max-w-none">
+        <h2>About QR Codes and Encoding</h2>
+        <p>A <strong>QR code (Quick Response code)</strong> is a type of two-dimensional matrix barcode invented in 1994. Unlike standard linear barcodes, which store data in a single row of bars, QR codes store data vertically and horizontally, allowing them to hold significantly more information—up to 4,296 alphanumeric characters.</p>
+        <p>Because smartphones have built-in QR code scanners in their native camera apps, these codes have become the ubiquitous method for bridging offline physical media with online digital content. Whether printed on a restaurant menu, a business card, or a billboard, a simple scan instantly redirects the user to a target URL.</p>
+        <p>ToolBite's free QR Code Generator uses robust algorithms to map your input string into the black and white squares (modules) of the QR code. We expose adjustable error correction capabilities: higher error correction (Level H) means up to 30% of the QR code can be damaged, covered, or removed, and the data will still resolve perfectly.</p>
       </section>
 </article>
 
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
+
+      <div class="bg-blue-50/50 rounded-3xl p-6 border border-blue-100 shadow-sm mb-6">
+        <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">📖 Deep Dive</h3>
+        <a href="../guides/qr-code-guide.html" class="block bg-white border border-blue-200 rounded-xl p-4 hover:shadow-md hover:border-blue-400 transition group">
+          <p class="font-bold text-blue-800 group-hover:text-blue-600 transition-colors">QR codes explained — how to create, customize, and use them</p>
+          <p class="text-gray-600 text-xs mt-2 leading-relaxed">Everything you need to know about QR codes: what they store, how error correc...</p>
+        </a>
+      </div>
+
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Developer Tools</h3>
