@@ -90,6 +90,7 @@ def build_social_block(
     *,
     og_type: str,
     canonical: str | None,
+    page_title: str,
     og_title: str,
     og_description: str,
     og_image: str,
@@ -98,14 +99,22 @@ def build_social_block(
     lines = [
         "  <!-- Open Graph -->",
         f'  <meta property="og:type" content="{esc_attr(og_type)}">',
+        '  <meta property="og:site_name" content="ToolBite">',
         f'  <meta property="og:url" content="{esc_attr(url_for_og)}">',
         f'  <meta property="og:title" content="{esc_attr(og_title)}">',
         f'  <meta property="og:description" content="{esc_attr(og_description)}">',
         f'  <meta property="og:image" content="{esc_attr(og_image)}">',
+        '  <meta property="og:image:width" content="1200">',
+        '  <meta property="og:image:height" content="630">',
+        f'  <meta property="og:image:alt" content="{esc_attr(page_title)} — ToolBite">',
+        '  <meta property="og:locale" content="en_US">',
         '  <meta name="twitter:card" content="summary_large_image">',
+        '  <meta name="twitter:site" content="@toolbite">',
+        '  <meta name="twitter:creator" content="@toolbite">',
         f'  <meta name="twitter:title" content="{esc_attr(og_title)}">',
         f'  <meta name="twitter:description" content="{esc_attr(og_description)}">',
         f'  <meta name="twitter:image" content="{esc_attr(og_image)}">',
+        f'  <meta name="twitter:image:alt" content="{esc_attr(page_title)} — ToolBite">',
     ]
     return "\n".join(lines)
 
@@ -169,6 +178,18 @@ def patch_theme_color(head_inner: str, color: str) -> str:
     if m:
         return head_inner[: m.end()] + ins + head_inner[m.end() :]
     return head_inner + ins
+
+
+def patch_author_and_robots(head_inner: str) -> str:
+    """Ensure standard author + robots directives are present in <head>."""
+    head_inner = re.sub(r'\n\s*<meta\s+name="author"\s+content="[^"]*"\s*/?>\s*', "\n", head_inner, flags=re.I)
+    head_inner = re.sub(r'\n\s*<meta\s+name="robots"\s+content="[^"]*"\s*/?>\s*', "\n", head_inner, flags=re.I)
+    author_meta = '\n  <meta name="author" content="ToolBite">'
+    robots_meta = '\n  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">'
+    m = re.search(r'(\n\s*<meta\s+name="description"\s+content="[^"]*"\s*>)', head_inner, flags=re.I)
+    if m:
+        return head_inner[: m.end()] + author_meta + robots_meta + head_inner[m.end() :]
+    return head_inner + author_meta + robots_meta
 
 
 def patch_critical_css(head_inner: str, css: str) -> str:
@@ -502,11 +523,13 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
     block = build_social_block(
         og_type=og_type,
         canonical=canonical,
+        page_title=title,
         og_title=og_title,
         og_description=og_description,
         og_image=og_image,
     )
     hb = insert_social_after_description(hb, block)
+    hb = patch_author_and_robots(hb)
     hb = patch_theme_color(hb, theme_color)
     hb = patch_critical_css(hb, critical_css)
     hb = patch_theme_init_js(hb, theme_init_js)
@@ -762,6 +785,10 @@ def mutate_ld_json(data: dict[str, Any], spec: dict[str, Any], page_type: str) -
             
             # Inject AggregateRating for WebApplication (tools)
             if t == "WebApplication" and spec.get("page_type") == "tool":
+                set_if("isAccessibleForFree", True)
+                set_if("browserRequirements", "Requires JavaScript")
+                set_if("operatingSystem", "Any")
+                set_if("applicationSubCategory", "Developer Tools")
                 default_rating = spec.get("_default_rating")
                 if default_rating:
                     rating_obj = {
@@ -926,6 +953,58 @@ def patch_ld_json_scripts(html: str, spec: dict[str, Any], rel: str, default_rat
         }
         final_blocks.append(faq_ld)
 
+    canonical = str(spec.get("canonical") or "")
+    page_title = str(spec.get("title", "ToolBite"))
+    page_desc = str(spec.get("description", ""))
+    d_short, d_z = schema_dates(spec)
+
+    # 4b. Ensure homepage has WebPage schema.
+    if page_type == "homepage" and canonical:
+        has_webpage = any(isinstance(b, dict) and b.get("@type") == "WebPage" for b in final_blocks)
+        if not has_webpage:
+            final_blocks.append(
+                {
+                    "@context": "https://schema.org",
+                    "@type": "WebPage",
+                    "@id": f"{canonical}#webpage",
+                    "url": canonical,
+                    "name": page_title,
+                    "description": page_desc,
+                    "isPartOf": {"@id": f"{canonical}#website"},
+                    "about": {"@id": f"{canonical}#organization"},
+                    "dateModified": d_z,
+                    "breadcrumb": {
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": canonical,
+                            }
+                        ],
+                    },
+                }
+            )
+
+    # 4c. Ensure tool pages have WebPage schema.
+    if page_type == "tool" and canonical:
+        has_webpage = any(isinstance(b, dict) and b.get("@type") == "WebPage" for b in final_blocks)
+        if not has_webpage:
+            final_blocks.append(
+                {
+                    "@context": "https://schema.org",
+                    "@type": "WebPage",
+                    "@id": f"{canonical}#webpage",
+                    "url": canonical,
+                    "name": page_title,
+                    "description": page_desc,
+                    "isPartOf": {"@id": "https://toolbite.org/#website"},
+                    "datePublished": d_short,
+                    "dateModified": d_z,
+                }
+            )
+
     # 5. Build the script blocks string
     ld_scripts_string = ""
     for block in final_blocks:
@@ -1083,7 +1162,7 @@ def update_sitemap(pages: dict[str, Any], origin: str) -> None:
     
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
     ]
     
     # Sort pages for consistent output
@@ -1106,6 +1185,7 @@ def update_sitemap(pages: dict[str, Any], origin: str) -> None:
             changefreq = "weekly"
         elif page_type == "tool":
             priority = "0.9"
+            changefreq = "weekly"
         elif page_type == "category":
             priority = "0.8"
         elif page_type == "guide_article":
