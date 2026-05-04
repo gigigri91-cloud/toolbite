@@ -101,8 +101,8 @@ def build_social_block(
         f'  <meta property="og:type" content="{esc_attr(og_type)}">',
         '  <meta property="og:site_name" content="ToolBite">',
         f'  <meta property="og:url" content="{esc_attr(url_for_og)}">',
-        f'  <meta property="og:title" content="{esc_attr(og_title)}">',
-        f'  <meta property="og:description" content="{esc_attr(og_description)}">',
+        f'  <meta property="og:title" data-pseo-target="og-title" content="{esc_attr(og_title)}">',
+        f'  <meta property="og:description" data-pseo-target="og-description" content="{esc_attr(og_description)}">',
         f'  <meta property="og:image" content="{esc_attr(og_image)}">',
         '  <meta property="og:image:width" content="1200">',
         '  <meta property="og:image:height" content="630">',
@@ -144,8 +144,8 @@ def scrub_og_twitter(head_inner: str) -> str:
 
 def patch_title(head_inner: str, title: str) -> tuple[str, bool]:
     new, n = re.subn(
-        r"<title>.*?</title>",
-        f"<title>{esc_attr(title)}</title>",
+        r"<title[^>]*>.*?</title>",
+        f'<title data-pseo-target="meta-title">{esc_attr(title)}</title>',
         head_inner,
         count=1,
         flags=re.I | re.DOTALL,
@@ -162,7 +162,7 @@ def patch_meta_description(head_inner: str, desc: str) -> tuple[str, bool]:
     if not m:
         return head_inner, False
     # Normalize to two-space indent (matches the rest of ToolBite HTML)
-    repl = f'\n  <meta name="description" content="{esc_attr(desc)}">\n'
+    repl = f'\n  <meta name="description" data-pseo-target="meta-description" content="{esc_attr(desc)}">\n'
     return head_inner[: m.start()] + repl + head_inner[m.end() :], True
 
 
