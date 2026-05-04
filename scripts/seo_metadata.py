@@ -154,8 +154,9 @@ def patch_title(head_inner: str, title: str) -> tuple[str, bool]:
 
 
 def patch_meta_description(head_inner: str, desc: str) -> tuple[str, bool]:
+    # Allow optional attrs (e.g. data-pseo-target) before/after content=
     m = re.search(
-        r"\n\s*<meta\s+name=\"description\"\s+content=\"[^\"]*\"\s*/?>\s*",
+        r"\n\s*<meta\s+name=\"description\"[^>]+>\s*",
         head_inner,
         flags=re.I,
     )
@@ -169,7 +170,7 @@ def patch_meta_description(head_inner: str, desc: str) -> tuple[str, bool]:
 def patch_theme_color(head_inner: str, color: str) -> str:
     """Replace or insert <meta name="theme-color">."""
     head_inner = re.sub(r'\n\s*<meta\s+name="theme-color"\s+content="[^"]*"\s*/?>\s*', "\n", head_inner, flags=re.I)
-    m = re.search(r'(\n\s*<meta\s+name="description"\s+content="[^"]*"\s*>)', head_inner, flags=re.I)
+    m = re.search(r'(\n\s*<meta\s+name="description"[^>]+>)', head_inner, flags=re.I)
     if not m:
         # Fallback: find any meta and insert before/after
         m = re.search(r'(<meta\s+[^>]+>)', head_inner, flags=re.I)
@@ -187,7 +188,7 @@ def patch_author_and_robots(head_inner: str, noindex: bool) -> str:
     author_meta = '\n  <meta name="author" content="ToolBite">'
     robots_content = "noindex, follow" if noindex else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     robots_meta = f'\n  <meta name="robots" content="{robots_content}">'
-    m = re.search(r'(\n\s*<meta\s+name="description"\s+content="[^"]*"\s*>)', head_inner, flags=re.I)
+    m = re.search(r'(\n\s*<meta\s+name="description"[^>]+>)', head_inner, flags=re.I)
     if m:
         return head_inner[: m.end()] + author_meta + robots_meta + head_inner[m.end() :]
     return head_inner + author_meta + robots_meta
@@ -383,7 +384,7 @@ def patch_canonical_in_head(head_inner: str, canonical: str | None) -> str:
 
 def insert_social_after_description(head_inner: str, block: str) -> str:
     m = re.search(
-        r'(\n\s*<meta\s+name="description"\s+content="[^"]*"\s*>)',
+        r'(\n\s*<meta\s+name="description"[^>]+>)',
         head_inner,
         flags=re.I,
     )

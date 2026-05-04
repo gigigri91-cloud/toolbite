@@ -11,7 +11,7 @@
     @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
     @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   </style>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com https://resources.infolinks.com https://*.infolinks.com 'unsafe-eval'; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://resources.infolinks.com https://*.infolinks.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://resources.infolinks.com https://*.infolinks.com; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
@@ -30,9 +30,9 @@
 <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="manifest" href="../manifest.json">
   <link rel="canonical" href="https://toolbite.org/tools/text-to-slug.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/tools/text-to-slug.html">
+<link rel="alternate" hreflang="x-default" href="https://toolbite.org/tools/text-to-slug.html">
   <link rel="alternate" hreflang="en" href="https://toolbite.org/tools/text-to-slug.html">
-<meta name="description" data-pseo-target="meta-description" content="Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.">
+  <meta name="description" data-pseo-target="meta-description" content="Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.">
   <meta name="theme-color" content="#2563eb">
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
@@ -55,6 +55,9 @@
   <meta name="twitter:description" content="Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.">
   <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:image:alt" content="Text to slug — URL-safe strings in-browser | ToolBite — ToolBite">
+<meta property="og:title" data-pseo-target="og-title" content="Text to slug — URL-safe strings in-browser | ToolBite">
+  <meta property="og:description" data-pseo-target="og-description" content="Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.">
+
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">  <!-- GA4: async so it never blocks the parser -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
@@ -272,6 +275,42 @@
   </script>
   <script type="text/javascript" src="https://resources.infolinks.com/js/infolinks_main.js"></script>
 
+<!-- Buy Me a Coffee -->
+<a href="https://buymeacoffee.com/supportourdev"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Support us on Buy Me a Coffee"
+   style="
+     position: fixed;
+     bottom: 24px;
+     right: 24px;
+     z-index: 9999;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     background: #FFDD00;
+     color: #000000;
+     font-family: inherit;
+     font-size: 14px;
+     font-weight: 600;
+     text-decoration: none;
+     padding: 10px 18px;
+     border-radius: 999px;
+     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+   "
+   onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.18)'"
+>
+  <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+       alt="Buy me a coffee"
+       width="20"
+       height="20"
+       style="display:block" / loading="lazy">
+  Support us
+</a>
+
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -396,41 +435,5 @@
     ]
   }
   </script>
-
-<!-- Buy Me a Coffee -->
-<a href="https://buymeacoffee.com/supportourdev"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Support us on Buy Me a Coffee"
-   style="
-     position: fixed;
-     bottom: 24px;
-     right: 24px;
-     z-index: 9999;
-     display: flex;
-     align-items: center;
-     gap: 8px;
-     background: #FFDD00;
-     color: #000000;
-     font-family: inherit;
-     font-size: 14px;
-     font-weight: 600;
-     text-decoration: none;
-     padding: 10px 18px;
-     border-radius: 999px;
-     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-     transition: transform 0.2s ease, box-shadow 0.2s ease;
-   "
-   onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'"
-   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.18)'"
->
-  <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
-       alt="Buy me a coffee"
-       width="20"
-       height="20"
-       style="display:block" / loading="lazy">
-  Support us
-</a>
-
 </body>
 </html>
