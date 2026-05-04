@@ -382,6 +382,33 @@ def patch_canonical_in_head(head_inner: str, canonical: str | None) -> str:
     return head_inner[: m.start()] + ins + head_inner[m.end() :]
 
 
+def strip_infolinks_from_html(html: str) -> str:
+    """Remove Infolinks from CSP and known loader snippets only (idempotent)."""
+    html = html.replace(" https://resources.infolinks.com https://*.infolinks.com", "")
+    # Deferred inline loader (homepage / some tools)
+    html = re.sub(
+        r"\s*<script>\s*\(function\s*\(\)\s*\{[\s\S]*?loadInfolinks[\s\S]*?\}\)\(\);\s*</script>\s*",
+        "\n",
+        html,
+        flags=re.I,
+    )
+    # Classic: inline pid vars + external infolinks_main.js
+    html = re.sub(
+        r"\s*<script\s+type=[\"']text/javascript[\"']>\s*(?:var|window\.)\s*infolinks_pid[\s\S]*?</script>\s*<script[^>]*src=[\"']https://resources\.infolinks\.com/js/infolinks_main\.js[\"'][^>]*>\s*</script>\s*",
+        "\n",
+        html,
+        flags=re.I,
+    )
+    # Orphan external tag only
+    html = re.sub(
+        r"\s*<script[^>]*src=[\"']https://resources\.infolinks\.com/js/infolinks_main\.js[\"'][^>]*>\s*</script>\s*",
+        "\n",
+        html,
+        flags=re.I,
+    )
+    return html
+
+
 def insert_social_after_description(head_inner: str, block: str) -> str:
     m = re.search(
         r'(\n\s*<meta\s+name="description"[^>]+>)',
@@ -396,8 +423,8 @@ def insert_social_after_description(head_inner: str, block: str) -> str:
 def patch_csp(head_inner: str) -> str:
     """Ensure a consistent and working CSP for all pages."""
     # We define a standard policy that includes all necessary 3rd parties
-    # script-src: self, unsafe-inline, adsense, gtag, bmc, infolinks
-    # connect-src: self, adsense, analytics, googletagmanager, infolinks
+    # script-src: self, unsafe-inline, adsense, gtag, bmc
+    # connect-src: self, adsense, analytics, googletagmanager
     # img-src: self, data:, https: (for tool icons and bmc)
     
     csp_content = (
@@ -408,9 +435,9 @@ def patch_csp(head_inner: str) -> str:
         "img-src 'self' data: https:; "
         "font-src 'self' https://fonts.gstatic.com; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-        "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com https://resources.infolinks.com https://*.infolinks.com; "
-        "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://resources.infolinks.com https://*.infolinks.com; "
-        "frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://resources.infolinks.com https://*.infolinks.com; "
+        "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com; "
+        "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; "
+        "frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; "
         "upgrade-insecure-requests"
     )
     
@@ -664,6 +691,7 @@ def apply_page(path: pathlib.Path, spec: dict[str, Any], config: dict[str, Any])
     html = patch_rating_display(html, spec.get("page_type", ""), default_rating)
     html = patch_related_tools(html, spec, pages, rel)
     html = patch_ld_json_scripts(html, spec, rel, default_rating)
+    html = strip_infolinks_from_html(html)
     return html
 
 
@@ -1240,9 +1268,20 @@ def main() -> None:
                 print(f"Error patching {rel}: {e}")
                 continue
         
+        orphan_writes = 0
+        for p_path in tracked_html_files():
+            rel = p_path.relative_to(ROOT).as_posix()
+            if rel in pages:
+                continue
+            raw = p_path.read_text(encoding="utf-8")
+            new_html = strip_infolinks_from_html(raw)
+            if new_html != raw:
+                p_path.write_text(new_html, encoding="utf-8")
+                orphan_writes += 1
+                print(f"Wrote {rel} (orphan cleanup)")
         if changed_count > 0:
             print(f"Wrote {changed_count} files from data/seo.json")
-        else:
+        if changed_count == 0 and orphan_writes == 0:
             print("No changes needed.")
         update_search_tools(pages)
         update_sitemap(pages, config["origin"])
