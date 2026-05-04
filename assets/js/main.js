@@ -1262,3 +1262,80 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.error('Service Worker registration failed', err));
     });
 }
+
+/* -----------------------------------------------
+   EMBED WIDGET SYSTEM
+----------------------------------------------- */
+(function () {
+    // 1. Detect if we are inside an iframe and embed=true is in the URL
+    if (window.location.search.includes('embed=true')) {
+        document.documentElement.classList.add('embed-mode');
+        // Disable favorites button in embed mode if it exists
+        const favBtns = document.querySelectorAll('.favorite-btn');
+        favBtns.forEach(btn => btn.style.display = 'none');
+    }
+
+    // 2. Global functions for modal
+    window.showEmbedModal = function() {
+        let modal = document.getElementById('tb-embed-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'tb-embed-modal';
+            modal.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-gray-900/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300';
+            modal.innerHTML = `
+                <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-6 relative transform scale-95 transition-transform duration-300">
+                    <button onclick="closeEmbedModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition text-2xl leading-none">&times;</button>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Embed this tool</h2>
+                    <p class="text-sm text-gray-600 mb-4">Copy this code to add the tool to your own website or blog for free.</p>
+                    <textarea id="tb-embed-code" readonly class="w-full h-32 p-3 font-mono text-xs border border-gray-200 rounded-xl bg-gray-50 text-gray-700 focus:ring-2 focus:ring-blue-500 outline-none resize-none mb-4" onclick="this.select()"></textarea>
+                    <div class="flex items-center gap-3">
+                        <button onclick="copyEmbedCode()" id="tb-embed-copy-btn" class="flex-1 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition">Copy Code</button>
+                        <button onclick="closeEmbedModal()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition">Close</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Generate current URL
+        const urlObj = new URL(window.location.href);
+        urlObj.searchParams.set('embed', 'true');
+        const iframeUrl = urlObj.toString();
+        
+        const embedCode = `<iframe src="${iframeUrl}" width="100%" height="600" frameborder="0" style="border: 1px solid #e5e7eb; border-radius: 12px; max-width: 100%;"></iframe>\n<div style="text-align: center; font-family: sans-serif; font-size: 12px; margin-top: 8px;">\n  <a href="https://toolbite.org" target="_blank" style="color: #6b7280; text-decoration: none;">Powered by ToolBite</a>\n</div>`;
+        
+        document.getElementById('tb-embed-code').value = embedCode;
+        
+        // Show modal
+        modal.style.display = 'flex';
+        // Trigger reflow
+        void modal.offsetWidth;
+        modal.classList.remove('opacity-0');
+        modal.querySelector('div').classList.remove('scale-95');
+        
+        // Setup copy function
+        window.copyEmbedCode = function() {
+            const ta = document.getElementById('tb-embed-code');
+            ta.select();
+            document.execCommand('copy');
+            const btn = document.getElementById('tb-embed-copy-btn');
+            btn.textContent = 'Copied!';
+            btn.classList.replace('bg-blue-600', 'bg-green-600');
+            setTimeout(() => {
+                btn.textContent = 'Copy Code';
+                btn.classList.replace('bg-green-600', 'bg-blue-600');
+            }, 2000);
+        };
+    };
+
+    window.closeEmbedModal = function() {
+        const modal = document.getElementById('tb-embed-modal');
+        if (modal) {
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    };
+})();

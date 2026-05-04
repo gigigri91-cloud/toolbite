@@ -590,3 +590,42 @@ html.dark .group:hover .dark\:group-hover\:text-orange-400 {
 html.dark .group:hover .dark\:group-hover\:text-orange-300 {
     color: #fdba74 !important;
 }
+
+/* --- EMBED MODE OVERRIDES --- */
+html.embed-mode #site-header,
+html.embed-mode footer,
+html.embed-mode .tb-hero,
+html.embed-mode .tb-breadcrumb,
+html.embed-mode aside,
+html.embed-mode .tb-seo-notes,
+html.embed-mode .tb-tool-faq,
+html.embed-mode section[aria-labelledby="tb-guides-heading"],
+html.embed-mode section[aria-labelledby="tb-browse-category-heading"],
+html.embed-mode section[aria-labelledby="tb-related-tools-heading"],
+html.embed-mode section[aria-labelledby="tb-use-cases-heading"],
+html.embed-mode section[aria-labelledby="tb-how-to-heading"],
+html.embed-mode .skip-link,
+html.embed-mode a[href*="buymeacoffee.com"] {
+    display: none !important;
+}
+
+html.embed-mode body {
+    background: transparent !important;
+}
+
+html.embed-mode main {
+    padding: 0.5rem !important;
+}
+
+html.embed-mode .tb-tool-hero {
+    border-bottom: none !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0 !important;
+}
+
+html.embed-mode .bg-white.rounded-3xl {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}

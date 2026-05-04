@@ -156,7 +156,8 @@
           </div>
           <div class="flex gap-3 flex-wrap justify-center">
             <button onclick="downloadQR()" class="px-6 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition shadow">⬇ Download PNG</button>
-            <button onclick="copyQRLink()" id="copy-link-btn" class="px-6 py-3 bg-gray-100 text-gray-800 font-bold rounded-xl hover:bg-gray-200 transition shadow">🔗 Copy API Link</button>
+            <button type="button" class="px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition shadow-sm mr-2 hidden md:inline-block" onclick="showEmbedModal()">Embed</button>
+          <button onclick="copyQRLink()" id="copy-link-btn" class="px-6 py-3 bg-gray-100 text-gray-800 font-bold rounded-xl hover:bg-gray-200 transition shadow">🔗 Copy API Link</button>
           </div>
           <p id="qr-encoded-text" class="text-xs text-gray-400 text-center max-w-sm truncate"></p>
         </div>
