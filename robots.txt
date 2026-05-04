@@ -1,29 +1,15 @@
-# Allow all search engines
 User-agent: *
 Allow: /
+Disallow: /assets/
+Disallow: /_local-docs/
+Disallow: /scripts/
 
-# Block pages that should not be indexed
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /_next/static/
-Disallow: /404
-Disallow: /500
-
-# Block URL params that may create duplicate content
-Disallow: /*?preview=
-Disallow: /*?draft=
-Disallow: /*&sort=
-Disallow: /*?ref=
-
-# Google-specific: allow static assets for rendering
 User-agent: Googlebot
 Allow: /*.js$
 Allow: /*.css$
 Allow: /*.png$
 Allow: /*.jpg$
-Allow: /*.svg$
-Allow: /*.gif$
 Allow: /*.webp$
+Allow: /*.svg$
 
 Sitemap: https://toolbite.org/sitemap.xml
