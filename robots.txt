@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /_local-docs/
-Disallow: /scripts/
 
 Sitemap: https://toolbite.org/sitemap.xml
