@@ -1,34 +1,15 @@
-name: External Link Checks
+name: External Link Checks (local tooling)
+
+# Script: ../Toolbite.org/scripts/check_external_links.py (outside this repo)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 6 * * 1"
-
-
 
 jobs:
-  external-links:
+  reminder:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.x"
-
-      - name: Run external link checks
+      - name: Reminder — external link checker is not in this repository
         run: |
-          mkdir -p reports
-          python3 Toolbite.org/scripts/check_external_links.py | tee reports/external-links-report.txt
-
-      - name: Upload external links report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: external-links-report
-          path: reports/external-links-report.txt
-          if-no-files-found: warn
+          echo "Run check_external_links.py from your Toolbite.org tooling folder."
+          exit 0

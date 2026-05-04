@@ -1,33 +1,16 @@
-name: Site Sanity Checks
+name: Site Sanity Checks (local tooling)
+
+# Python scripts live in the sibling Toolbite.org/ folder (outside this repo).
+# Run locally from the site repo: python3 ../Toolbite.org/scripts/site_sanity_check.py
 
 on:
-  push:
-  pull_request:
   workflow_dispatch:
 
-
-
 jobs:
-  sanity-check:
+  reminder:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.x"
-
-      - name: Run static site sanity checks
-        run: python3 Toolbite.org/scripts/site_sanity_check.py
-
-      - name: Verify SEO metadata matches data/seo.json
-        run: python3 Toolbite.org/scripts/seo_metadata.py --check
-
-      - name: Run internal link checks
-        run: python3 Toolbite.org/scripts/check_internal_links.py
-
-      - name: Run HTML structure and page-family checks
-        run: python3 Toolbite.org/scripts/validate_html_structure.py
+      - name: Reminder — sanity scripts are not in this repository
+        run: |
+          echo "Sanity / SEO / link scripts live beside this repo (see README.md)."
+          exit 0
