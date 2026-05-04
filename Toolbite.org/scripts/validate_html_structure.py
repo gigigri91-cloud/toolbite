@@ -17,9 +17,10 @@ import re
 import sys
 
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.rglob("*.html"))
-VERIFICATION_FILE = ROOT / "googled245882dcee44e7c.html"
+from paths import SITE_ROOT
+
+HTML_FILES = sorted(SITE_ROOT.rglob("*.html"))
+VERIFICATION_FILE = SITE_ROOT / "googled245882dcee44e7c.html"
 
 
 class StructureParser(HTMLParser):
@@ -149,17 +150,17 @@ def heading_helpers_self_check() -> list[str]:
 
 
 def get_page_family(html_path: pathlib.Path) -> str:
-    rel = html_path.relative_to(ROOT)
+    rel = html_path.relative_to(SITE_ROOT)
 
-    if html_path == ROOT / "index.html":
+    if html_path == SITE_ROOT / "index.html":
         return "homepage"
-    if html_path == ROOT / "search.html":
+    if html_path == SITE_ROOT / "search.html":
         return "search"
-    if html_path.parent == ROOT / "categories":
+    if html_path.parent == SITE_ROOT / "categories":
         return "category"
-    if html_path.parent == ROOT / "tools":
+    if html_path.parent == SITE_ROOT / "tools":
         return "tool"
-    if html_path.parent == ROOT / "guides":
+    if html_path.parent == SITE_ROOT / "guides":
         if html_path.name == "index.html":
             return "guide-index"
         return "guide-article"
@@ -187,7 +188,7 @@ def main() -> int:
         parser = StructureParser()
         text = read_text(html_path)
         parser.feed(text)
-        rel = html_path.relative_to(ROOT)
+        rel = html_path.relative_to(SITE_ROOT)
         family = get_page_family(html_path)
 
         stripped = strip_non_markup_sections(text)

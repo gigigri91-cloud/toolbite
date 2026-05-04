@@ -18,9 +18,9 @@ Environment variables:
     INDEXNOW_KEY_FILE     Basename of the key file (default: <key>.txt).
 
 Usage (repo root):
-    INDEXNOW_KEY='your-key' python3 scripts/ping_indexnow.py
-    INDEXNOW_KEY='...' python3 scripts/ping_indexnow.py --dry-run
-    INDEXNOW_URL='https://www.bing.com/IndexNow' python3 scripts/ping_indexnow.py  # optional
+    INDEXNOW_KEY='your-key' python3 Toolbite.org/scripts/ping_indexnow.py
+    INDEXNOW_KEY='...' python3 Toolbite.org/scripts/ping_indexnow.py --dry-run
+    INDEXNOW_URL='https://www.bing.com/IndexNow' python3 Toolbite.org/scripts/ping_indexnow.py  # optional
 
 Phase 3 reference payload (see also example_phase3_payload() in code):
     {"host": "toolbite.org", "key": "REPLACE_WITH_KEY",
@@ -44,7 +44,7 @@ except ImportError:
     sys.exit(1)
 
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
+from paths import SITE_ROOT
 # Shared IndexNow endpoint (see https://www.indexnow.org/documentation )
 DEFAULT_INDEXNOW_URL = "https://api.indexnow.org/indexnow"
 DEFAULT_HOST = "toolbite.org"
@@ -95,8 +95,8 @@ def importance_for_path(rel_posix: str) -> int:
 
 
 def iter_site_html_files() -> Iterator[pathlib.Path]:
-    for path in ROOT.rglob("*.html"):
-        rel = path.relative_to(ROOT).as_posix()
+    for path in SITE_ROOT.rglob("*.html"):
+        rel = path.relative_to(SITE_ROOT).as_posix()
         if rel.startswith("."):
             continue
         # Site ownership verification HTML (not public content pages)
@@ -106,7 +106,7 @@ def iter_site_html_files() -> Iterator[pathlib.Path]:
 
 
 def file_to_canonical_url(path: pathlib.Path) -> str:
-    rel = path.relative_to(ROOT).as_posix()
+    rel = path.relative_to(SITE_ROOT).as_posix()
     if rel == "index.html":
         return f"{DEFAULT_ORIGIN}/"
     return f"{DEFAULT_ORIGIN}/{rel}"
@@ -120,7 +120,7 @@ def rank_paths_by_recency_then_importance(paths: list[pathlib.Path]) -> list[pat
             mtime = p.stat().st_mtime
         except OSError:
             mtime = 0.0
-        rel = p.relative_to(ROOT).as_posix()
+        rel = p.relative_to(SITE_ROOT).as_posix()
         return (mtime, importance_for_path(rel))
 
     return sorted(paths, key=sort_key, reverse=True)

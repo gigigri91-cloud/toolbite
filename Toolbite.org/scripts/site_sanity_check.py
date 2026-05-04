@@ -2,7 +2,7 @@
 """ToolBite static-site sanity checks.
 
 Run from repo root:
-    python3 scripts/site_sanity_check.py
+    python3 Toolbite.org/scripts/site_sanity_check.py
 """
 
 from __future__ import annotations
@@ -11,12 +11,12 @@ import pathlib
 import re
 import sys
 
+from paths import SITE_ROOT
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.rglob("*.html"))
+HTML_FILES = sorted(SITE_ROOT.rglob("*.html"))
 PUBLISHED_HTML = [p for p in HTML_FILES if "templates" not in p.parts]
-TOOL_FILES = sorted((ROOT / "tools").glob("*.html"))
-SITEMAP_XML = ROOT / "sitemap.xml"
+TOOL_FILES = sorted((SITE_ROOT / "tools").glob("*.html"))
+SITEMAP_XML = SITE_ROOT / "sitemap.xml"
 
 
 CHECKS = [
@@ -48,8 +48,8 @@ def extract_single(pattern: re.Pattern[str], text: str) -> str | None:
 
 def check_homepage_consistency() -> list[str]:
     issues: list[str] = []
-    index_html = ROOT / "index.html"
-    sitemap_xml = ROOT / "sitemap.xml"
+    index_html = SITE_ROOT / "index.html"
+    sitemap_xml = SITE_ROOT / "sitemap.xml"
 
     if not index_html.exists():
         return ["Missing index.html"]
@@ -109,7 +109,7 @@ def check_tool_meta_and_schema() -> list[str]:
 
     for tool_path in TOOL_FILES:
         text = read_text(tool_path)
-        rel = tool_path.relative_to(ROOT)
+        rel = tool_path.relative_to(SITE_ROOT)
         for label, pattern in required_patterns:
             if not pattern.search(text):
                 issues.append(f"{rel} is missing {label}")
@@ -120,14 +120,14 @@ def check_tool_meta_and_schema() -> list[str]:
 
 def check_shared_structure() -> list[str]:
     issues: list[str] = []
-    verification_file = ROOT / "googled245882dcee44e7c.html"
+    verification_file = SITE_ROOT / "googled245882dcee44e7c.html"
 
     for html_path in PUBLISHED_HTML:
         if html_path == verification_file:
             continue
 
         text = read_text(html_path)
-        rel = html_path.relative_to(ROOT)
+        rel = html_path.relative_to(SITE_ROOT)
 
         if not re.search(r'<html\s+lang="en">', text, re.IGNORECASE):
             issues.append(f"{rel} is missing `<html lang=\"en\">`")
@@ -153,7 +153,7 @@ def check_indexation_and_breadcrumbs() -> list[str]:
 
     for html_path in PUBLISHED_HTML:
         text = read_text(html_path)
-        rel = html_path.relative_to(ROOT)
+        rel = html_path.relative_to(SITE_ROOT)
         canonical = extract_single(
             re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.IGNORECASE),
             text,
@@ -176,7 +176,7 @@ def check_indexation_and_breadcrumbs() -> list[str]:
 
 
 def main() -> int:
-    print(f"Scanning {len(PUBLISHED_HTML)} HTML files under {ROOT}")
+    print(f"Scanning {len(PUBLISHED_HTML)} HTML files under {SITE_ROOT}")
     print("")
 
     failed = False
@@ -186,7 +186,7 @@ def main() -> int:
             failed = True
             print(f"[FAIL] {label}: {len(hits)} hit(s)")
             for path, line_no, line in hits[:20]:
-                rel = path.relative_to(ROOT)
+                rel = path.relative_to(SITE_ROOT)
                 print(f"  - {rel}:{line_no} -> {line}")
             if len(hits) > 20:
                 print(f"  ... and {len(hits) - 20} more")

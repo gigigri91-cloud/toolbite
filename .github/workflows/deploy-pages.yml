@@ -30,20 +30,7 @@ jobs:
       - name: Build site directory
         run: |
           mkdir _site
-          # Copy root files
-          cp *.html _site/
-          cp sitemap.xml _site/ || true
-          cp robots.txt _site/ || true
-          cp manifest.json _site/ || true
-          cp service-worker.js _site/ || true
-          cp ads.txt _site/ || true
-          cp CNAME _site/ || true
-          
-          # Copy directories
-          cp -r assets _site/
-          cp -r categories _site/
-          cp -r guides _site/
-          cp -r tools _site/
+          cp -a public/. _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

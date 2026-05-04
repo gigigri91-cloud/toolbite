@@ -1,8 +1,9 @@
 import pathlib
 import re
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.rglob("*.html"))
+from paths import SITE_ROOT
+
+HTML_FILES = sorted(SITE_ROOT.rglob("*.html"))
 
 def main():
     count = 0
@@ -29,7 +30,7 @@ def main():
 
             if new_content != content:
                 html_path.write_text(new_content, encoding="utf-8")
-                print(f"Added 'unsafe-eval' to CSP in {html_path.relative_to(ROOT)}")
+                print(f"Added 'unsafe-eval' to CSP in {html_path.relative_to(SITE_ROOT)}")
                 count += 1
 
     print(f"Successfully added 'unsafe-eval' to CSP in {count} files.")

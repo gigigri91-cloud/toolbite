@@ -21,13 +21,13 @@ jobs:
           node-version: "24"
 
       - name: Collect Lighthouse reports from live site
-        run: npx @lhci/cli@0.14.x collect --config=.lighthouserc.json
+        run: npx @lhci/cli@0.14.x collect --config=Toolbite.org/.lighthouserc.json
 
       - name: Assert Lighthouse thresholds
-        run: npx @lhci/cli@0.14.x assert --config=.lighthouserc.json
+        run: npx @lhci/cli@0.14.x assert --config=Toolbite.org/.lighthouserc.json
 
       - name: Upload Lighthouse reports to temporary public storage
-        run: npx @lhci/cli@0.14.x upload --config=.lighthouserc.json
+        run: npx @lhci/cli@0.14.x upload --config=Toolbite.org/.lighthouserc.json
 
       - name: Upload Lighthouse artifacts
         if: always()

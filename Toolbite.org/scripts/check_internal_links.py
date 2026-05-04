@@ -11,8 +11,9 @@ import sys
 from urllib.parse import urlparse
 
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.rglob("*.html"))
+from paths import SITE_ROOT
+
+HTML_FILES = sorted(SITE_ROOT.rglob("*.html"))
 ATTRS_TO_CHECK = {
     "a": ("href",),
     "link": ("href",),
@@ -80,7 +81,7 @@ def resolve_target(source_file: pathlib.Path, value: str) -> tuple[pathlib.Path 
         return source_file, fragment
 
     if path_part.startswith("/"):
-        target = ROOT / path_part.lstrip("/")
+        target = SITE_ROOT / path_part.lstrip("/")
     else:
         target = (source_file.parent / path_part).resolve()
 
@@ -101,7 +102,7 @@ def main() -> int:
                 continue
 
             if not target.exists():
-                rel = html_file.relative_to(ROOT)
+                rel = html_file.relative_to(SITE_ROOT)
                 errors.append(
                     f"{rel}:{ref.line} -> missing target for {ref.tag}[{ref.attr}]={ref.value}"
                 )
@@ -115,8 +116,8 @@ def main() -> int:
                         _, target_ids = parse_file(target_resolved)
                         ids_cache[target_resolved] = target_ids
                     if fragment not in target_ids:
-                        rel = html_file.relative_to(ROOT)
-                        target_rel = target_resolved.relative_to(ROOT)
+                        rel = html_file.relative_to(SITE_ROOT)
+                        target_rel = target_resolved.relative_to(SITE_ROOT)
                         errors.append(
                             f"{rel}:{ref.line} -> missing anchor #{fragment} in {target_rel}"
                         )

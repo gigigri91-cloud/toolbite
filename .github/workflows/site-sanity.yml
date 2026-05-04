@@ -21,13 +21,13 @@ jobs:
           python-version: "3.x"
 
       - name: Run static site sanity checks
-        run: python3 scripts/site_sanity_check.py
+        run: python3 Toolbite.org/scripts/site_sanity_check.py
 
       - name: Verify SEO metadata matches data/seo.json
-        run: python3 scripts/seo_metadata.py --check
+        run: python3 Toolbite.org/scripts/seo_metadata.py --check
 
       - name: Run internal link checks
-        run: python3 scripts/check_internal_links.py
+        run: python3 Toolbite.org/scripts/check_internal_links.py
 
       - name: Run HTML structure and page-family checks
-        run: python3 scripts/validate_html_structure.py
+        run: python3 Toolbite.org/scripts/validate_html_structure.py

@@ -2,9 +2,10 @@
 import pathlib
 import re
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-SRC = ROOT / "assets" / "css" / "global.css"
-DST = ROOT / "assets" / "css" / "global.min.css"
+from paths import SITE_ROOT
+
+SRC = SITE_ROOT / "assets" / "css" / "global.css"
+DST = SITE_ROOT / "assets" / "css" / "global.min.css"
 
 def minify(css: str) -> str:
     # Remove comments
@@ -22,7 +23,7 @@ def main():
     text = SRC.read_text(encoding="utf-8")
     minified = minify(text)
     DST.write_text(minified, encoding="utf-8")
-    print(f"Minified {SRC.relative_to(ROOT)} -> {DST.relative_to(ROOT)} ({len(text)} -> {len(minified)} bytes)")
+    print(f"Minified {SRC.relative_to(SITE_ROOT)} -> {DST.relative_to(SITE_ROOT)} ({len(text)} -> {len(minified)} bytes)")
 
 if __name__ == "__main__":
     main()

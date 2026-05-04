@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 One-shot semantic HTML improvements for ToolBite static pages.
-Run from repo root: python3 scripts/apply_semantic_html.py [--dry-run]
+Run from repo root: python3 Toolbite.org/scripts/apply_semantic_html.py [--dry-run]
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+from paths import SITE_ROOT
 
 TOOL_PROSE_OPEN = (
     '<article class="prose max-w-none text-gray-700 bg-white p-8 '
@@ -270,7 +270,7 @@ def footer_links_nav(html: str) -> str:
 def process_file(path: Path, dry: bool) -> bool:
     raw = path.read_text(encoding="utf-8")
     html = raw
-    rel = path.relative_to(ROOT)
+    rel = path.relative_to(SITE_ROOT)
 
     html = ensure_skip_link(html)
     html = ensure_main_id(html)
@@ -303,7 +303,7 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
     changed = 0
-    for path in sorted(ROOT.rglob("*.html")):
+    for path in sorted(SITE_ROOT.rglob("*.html")):
         if "googled" in path.name:
             continue
         if process_file(path, args.dry_run):

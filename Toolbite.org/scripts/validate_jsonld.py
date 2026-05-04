@@ -1,7 +1,10 @@
-import os
 import glob
-import re
 import json
+import os
+import re
+
+from paths import SITE_ROOT
+
 
 def process_html_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
@@ -23,8 +26,9 @@ def process_html_file(filepath):
         return errors
     return None
 
+
 def main():
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base_dir = str(SITE_ROOT)
     directories = [
         os.path.join(base_dir, "tools"),
         os.path.join(base_dir, "guides"),

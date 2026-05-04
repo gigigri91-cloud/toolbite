@@ -14,8 +14,9 @@ import sys
 import time
 
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(ROOT.rglob("*.html"))
+from paths import SITE_ROOT
+
+HTML_FILES = sorted(SITE_ROOT.rglob("*.html"))
 USER_AGENT = "ToolBiteLinkChecker/1.0 (+https://toolbite.org/)"
 TIMEOUT_SECONDS = 10
 RETRIES = 2

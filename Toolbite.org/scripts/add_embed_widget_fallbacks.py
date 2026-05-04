@@ -1,8 +1,10 @@
-import os
 import glob
+import os
 import re
 
-TOOLS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tools')
+from paths import SITE_ROOT
+
+TOOLS_DIR = str(SITE_ROOT / "tools")
 
 def main():
     files = glob.glob(os.path.join(TOOLS_DIR, '*.html'))

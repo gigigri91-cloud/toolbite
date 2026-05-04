@@ -8,9 +8,10 @@ from __future__ import annotations
 import pathlib
 import sys
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-SRC = ROOT / "assets" / "js" / "main.js"
-DST = ROOT / "assets" / "js" / "main.min.js"
+from paths import SITE_ROOT
+
+SRC = SITE_ROOT / "assets" / "js" / "main.js"
+DST = SITE_ROOT / "assets" / "js" / "main.min.js"
 
 
 def main() -> int:
@@ -22,7 +23,7 @@ def main() -> int:
     text = SRC.read_text(encoding="utf-8")
     out = rjsmin.jsmin(text)
     DST.write_text(out, encoding="utf-8")
-    print(f"Wrote {DST.relative_to(ROOT)} ({len(text)} -> {len(out)} bytes)")
+    print(f"Wrote {DST.relative_to(SITE_ROOT)} ({len(text)} -> {len(out)} bytes)")
     return 0
 
 

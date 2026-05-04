@@ -23,7 +23,7 @@ jobs:
       - name: Run external link checks
         run: |
           mkdir -p reports
-          python3 scripts/check_external_links.py | tee reports/external-links-report.txt
+          python3 Toolbite.org/scripts/check_external_links.py | tee reports/external-links-report.txt
 
       - name: Upload external links report artifact
         if: always()

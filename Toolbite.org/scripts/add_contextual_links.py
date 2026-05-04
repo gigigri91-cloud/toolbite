@@ -1,10 +1,11 @@
-import os
 import glob
+import os
 import re
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TOOLS_DIR = os.path.join(ROOT_DIR, 'tools')
-GUIDES_DIR = os.path.join(ROOT_DIR, 'guides')
+from paths import SITE_ROOT
+
+TOOLS_DIR = os.path.join(str(SITE_ROOT), 'tools')
+GUIDES_DIR = os.path.join(str(SITE_ROOT), 'guides')
 
 TOOL_TO_GUIDE_MAP = {
     'base64-encoder.html': 'base64-encoding-guide.html',

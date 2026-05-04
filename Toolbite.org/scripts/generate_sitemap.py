@@ -1,13 +1,11 @@
 import json
-import pathlib
 import datetime
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
-# Path configuration
-ROOT = pathlib.Path(__file__).parent.parent.absolute()
-SEO_JSON = ROOT / "data" / "seo.json"
-SITEMAP_XML = ROOT / "sitemap.xml"
+from paths import SEO_JSON, SITE_ROOT
+
+SITEMAP_XML = SITE_ROOT / "sitemap.xml"
 
 def generate_sitemap():
     if not SEO_JSON.exists():

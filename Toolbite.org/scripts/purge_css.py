@@ -123,32 +123,34 @@ def purge_css(css_path, content_paths, output_path, safelist=None):
     print(f"Saved to {output_path}")
 
 if __name__ == "__main__":
-    base_dir = "/Users/grijac/Desktop/My Sites/Toolbite.org/toolbite"
+    from paths import SITE_ROOT
+
+    base = SITE_ROOT
     content_dirs = [
-        os.path.join(base_dir, "index.html"),
-        os.path.join(base_dir, "about.html"),
-        os.path.join(base_dir, "contact.html"),
-        os.path.join(base_dir, "privacy.html"),
-        os.path.join(base_dir, "terms.html"),
-        os.path.join(base_dir, "search.html"),
-        os.path.join(base_dir, "categories"),
-        os.path.join(base_dir, "tools"),
-        os.path.join(base_dir, "guides"),
-        os.path.join(base_dir, "assets/js")
+        str(base / "index.html"),
+        str(base / "about.html"),
+        str(base / "contact.html"),
+        str(base / "privacy.html"),
+        str(base / "terms.html"),
+        str(base / "search.html"),
+        str(base / "categories"),
+        str(base / "tools"),
+        str(base / "guides"),
+        str(base / "assets/js"),
     ]
-    
+
     sl = ['dark', 'active', 'hidden', 'header-small', 'block', 'inline-block', 'flex', 'grid', 'hidden', 'bg-green-50', 'text-green-700', 'border-green-200', 'bg-red-50', 'text-red-700', 'border-red-200', 'bg-green-600', 'bg-green-500', 'text-green-600', 'bg-green-100', 'bg-gray-100', 'opacity-0', 'opacity-100', 'translate-y-0', 'translate-y-4']
-    
+
     purge_css(
-        os.path.join(base_dir, "assets/css/tailwind.min.css"),
+        str(base / "assets/css/tailwind.min.css"),
         content_dirs,
-        os.path.join(base_dir, "assets/css/tailwind.min.css"), # Overwrite for production
-        safelist=sl
+        str(base / "assets/css/tailwind.min.css"),
+        safelist=sl,
     )
-    
+
     purge_css(
-        os.path.join(base_dir, "assets/css/global.min.css"),
+        str(base / "assets/css/global.min.css"),
         content_dirs,
-        os.path.join(base_dir, "assets/css/global.min.css"), # Overwrite
-        safelist=sl
+        str(base / "assets/css/global.min.css"),
+        safelist=sl,
     )

@@ -24,8 +24,8 @@ Optional per-page keys in data/seo.json:
   theme_color            — #hex color (default: root theme_color or #2563eb)
 
 Usage:
-  python3 scripts/seo_metadata.py --check
-  python3 scripts/seo_metadata.py --apply
+  python3 Toolbite.org/scripts/seo_metadata.py --check
+  python3 Toolbite.org/scripts/seo_metadata.py --apply
 """
 
 from __future__ import annotations
@@ -40,9 +40,7 @@ import re
 import sys
 from typing import Any
 
-
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-SEO_JSON = ROOT / "data" / "seo.json"
+from paths import SEO_JSON, SITE_ROOT
 SKIP_NAMES = frozenset({"googled245882dcee44e7c.html"})
 ADSENSE_CLIENT_ID = "ca-pub-5233222002046639"
 GA4_MEASUREMENT_ID = "G-CWQEQL5KL4"
@@ -72,10 +70,10 @@ def load_config() -> dict[str, Any]:
 
 def tracked_html_files() -> list[pathlib.Path]:
     out: list[pathlib.Path] = []
-    for p in sorted(ROOT.rglob("*.html")):
+    for p in sorted(SITE_ROOT.rglob("*.html")):
         if p.name in SKIP_NAMES:
             continue
-        rel = p.relative_to(ROOT).as_posix()
+        rel = p.relative_to(SITE_ROOT).as_posix()
         if rel.startswith("_"):
             continue
         if "templates/" in rel:
@@ -704,7 +702,7 @@ def apply_page(path: pathlib.Path, spec: dict[str, Any], config: dict[str, Any])
     raw = path.read_text(encoding="utf-8")
     h1_inner = str(spec["h1_inner"])
     h1_target = str(spec.get("h1_target", "main"))
-    rel = path.relative_to(ROOT).as_posix()
+    rel = path.relative_to(SITE_ROOT).as_posix()
     pages = config["pages"]
     og_image = config["og_image"]
     theme_color = config["theme_color"]
@@ -1175,7 +1173,7 @@ def check_page(path: pathlib.Path, spec: dict[str, Any], og_image: str, default_
 
 def update_search_tools(pages: dict[str, Any]) -> None:
     """Sync the TOOLS array in search.html with tool/guide entries in seo.json."""
-    search_path = ROOT / "search.html"
+    search_path = SITE_ROOT / "search.html"
     if not search_path.exists():
         return
     
@@ -1218,7 +1216,7 @@ def update_search_tools(pages: dict[str, Any]) -> None:
 
 def update_sitemap(pages: dict[str, Any], origin: str) -> None:
     """Generate sitemap.xml based on pages in seo.json."""
-    sitemap_path = ROOT / "sitemap.xml"
+    sitemap_path = SITE_ROOT / "sitemap.xml"
     today = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
     
     lines = [
@@ -1285,7 +1283,7 @@ def main() -> None:
     if args.apply:
         changed_count = 0
         for p_path in tracked_html_files():
-            rel = p_path.relative_to(ROOT).as_posix()
+            rel = p_path.relative_to(SITE_ROOT).as_posix()
             if rel not in pages:
                 continue
             
@@ -1301,7 +1299,7 @@ def main() -> None:
         
         orphan_writes = 0
         for p_path in tracked_html_files():
-            rel = p_path.relative_to(ROOT).as_posix()
+            rel = p_path.relative_to(SITE_ROOT).as_posix()
             if rel in pages:
                 continue
             raw = p_path.read_text(encoding="utf-8")
@@ -1325,7 +1323,7 @@ def main() -> None:
 
     bad = False
     for p_path in tracked_html_files():
-        rel = p_path.relative_to(ROOT).as_posix()
+        rel = p_path.relative_to(SITE_ROOT).as_posix()
         if rel not in pages:
             continue
         spec = pages[rel]

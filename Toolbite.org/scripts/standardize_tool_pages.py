@@ -7,7 +7,7 @@ Apply the standard ToolBite tool-page block order inside <article class="tb-tool
 6. Related tools  7. Guides  8. Browse category
 → then existing tb-seo-notes (long SEO prose)
 
-Run from repo root: python3 scripts/standardize_tool_pages.py [--dry-run]
+Run from repo root: python3 Toolbite.org/scripts/standardize_tool_pages.py [--dry-run]
 """
 
 from __future__ import annotations
@@ -19,8 +19,9 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-LAYOUT_PATH = ROOT / "data" / "tool_page_layout.json"
+from paths import DATA_DIR, SITE_ROOT
+
+LAYOUT_PATH = DATA_DIR / "tool_page_layout.json"
 
 CATEGORY_LABEL = {
     "text-tools": "Text &amp; content tools",
@@ -472,7 +473,7 @@ def main() -> int:
     for rel, layout in layout_all.items():
         if rel.startswith("_"):
             continue
-        path = ROOT / rel
+        path = SITE_ROOT / rel
         if not path.exists():
             print(f"skip missing {rel}")
             continue
