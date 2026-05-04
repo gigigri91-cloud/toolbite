@@ -44,6 +44,8 @@ from typing import Any
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SEO_JSON = ROOT / "data" / "seo.json"
 SKIP_NAMES = frozenset({"googled245882dcee44e7c.html"})
+ADSENSE_CLIENT_ID = "ca-pub-5233222002046639"
+GA4_MEASUREMENT_ID = "G-CWQEQL5KL4"
 
 
 def load_config() -> dict[str, Any]:
@@ -382,6 +384,34 @@ def patch_canonical_in_head(head_inner: str, canonical: str | None) -> str:
     return head_inner[: m.start()] + ins + head_inner[m.end() :]
 
 
+def patch_adsense_uniform(head_inner: str) -> str:
+    """Normalize AdSense in <head>: one google-adsense-account meta + adsbygoogle.js after GA4 (or before CSS if no GA4)."""
+    h = head_inner
+    h = re.sub(
+        r"\n\s*<script\s+async\s+src=\"https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^\"]*\"[^>]*>\s*</script>\s*",
+        "\n",
+        h,
+        flags=re.I,
+    )
+    h = re.sub(r"\n\s*<meta\s+name=[\"']google-adsense-account[\"'][^>]*>\s*", "\n", h, flags=re.I)
+    block = (
+        f"\n  <meta name=\"google-adsense-account\" content=\"{ADSENSE_CLIENT_ID}\">\n"
+        f"  <script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT_ID}\" crossorigin=\"anonymous\"></script>\n"
+    )
+    mid = re.escape(GA4_MEASUREMENT_ID)
+    m = re.search(
+        rf"(<script>\s*window\.dataLayer\s*=\s*window\.dataLayer\s*\|\|\s*\[\]\s*;[\s\S]*?gtag\(\s*['\"]config['\"]\s*,\s*['\"]{mid}['\"]\s*\)[\s\S]*?</script>\s*\n)",
+        h,
+        re.I,
+    )
+    if m:
+        return h[: m.end()] + block + h[m.end() :]
+    m2 = re.search(r"(\n\s*<link\s+rel=[\"']preload[\"']\s+href=[\"'][^\"']*tailwind\.min\.css)", h, re.I)
+    if m2:
+        return h[: m2.start()] + block + h[m2.start() :]
+    return h + block
+
+
 def strip_infolinks_from_html(html: str) -> str:
     """Remove Infolinks from CSP and known loader snippets only (idempotent)."""
     html = html.replace(" https://resources.infolinks.com https://*.infolinks.com", "")
@@ -568,6 +598,7 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
     hb = patch_csp(hb)
     hb = make_css_async(hb, rel_path)
     hb = patch_font_resources(hb, rel_path)
+    hb = patch_adsense_uniform(hb)
     # Collapse runs of blank lines introduced by OG scrub/replace (keep JSON in <script> intact)
     hb = re.sub(r"\n(?:[ \t]*\n){2,}", "\n\n", hb)
     # Restore common two-space indent if a tag lost its leading spaces after OG replacement
@@ -1275,6 +1306,11 @@ def main() -> None:
                 continue
             raw = p_path.read_text(encoding="utf-8")
             new_html = strip_infolinks_from_html(raw)
+            m = re.search(r"(<head[^>]*>)([\s\S]*?)(</head>)", new_html, re.I)
+            if m:
+                oh = patch_adsense_uniform(m.group(2))
+                if oh != m.group(2):
+                    new_html = new_html[: m.start(2)] + oh + new_html[m.end(2) :]
             if new_html != raw:
                 p_path.write_text(new_html, encoding="utf-8")
                 orphan_writes += 1
