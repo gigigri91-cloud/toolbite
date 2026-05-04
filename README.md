@@ -1,6 +1,6 @@
 # Toolbite (repo)
 
-- **`public/`** — static site served on GitHub Pages (HTML, assets, `sitemap.xml`, etc.).
-- **`Toolbite.org/`** — tooling only: Python scripts, `data/` (e.g. `seo.json`), templates, Lighthouse config, and the longer project readme.
+- **Repository root** — the live static site (HTML, `assets/`, `sitemap.xml`, etc.), same tree GitHub Pages deploys.
+- **`Toolbite.org/`** — not part of the public site: Python scripts, `data/` (e.g. `seo.json`), templates, Lighthouse config, and the longer project readme.
 
 From the repository root, run checks with `python3 Toolbite.org/scripts/<script>.py` (see `Toolbite.org/README.md`).
