@@ -1,15 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /assets/
 Disallow: /_local-docs/
 Disallow: /scripts/
-
-User-agent: Googlebot
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.webp$
-Allow: /*.svg$
 
 Sitemap: https://toolbite.org/sitemap.xml
