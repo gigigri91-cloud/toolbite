@@ -94,15 +94,15 @@ def check_homepage_consistency() -> list[str]:
 def check_tool_meta_and_schema() -> list[str]:
     issues: list[str] = []
     required_patterns = [
-        ("canonical", re.compile(r'<link\s+rel="canonical"\s+href="[^"]+"', re.IGNORECASE)),
-        ("meta description", re.compile(r'<meta\s+name="description"\s+content="[^"]+"', re.IGNORECASE)),
-        ("og:type", re.compile(r'<meta\s+property="og:type"\s+content="website"', re.IGNORECASE)),
-        ("og:url", re.compile(r'<meta\s+property="og:url"\s+content="[^"]+"', re.IGNORECASE)),
-        ("og:title", re.compile(r'<meta\s+property="og:title"\s+content="[^"]+"', re.IGNORECASE)),
-        ("og:description", re.compile(r'<meta\s+property="og:description"\s+content="[^"]+"', re.IGNORECASE)),
-        ("twitter:card", re.compile(r'<meta\s+name="twitter:card"\s+content="summary_large_image"', re.IGNORECASE)),
-        ("twitter:title", re.compile(r'<meta\s+name="twitter:title"\s+content="[^"]+"', re.IGNORECASE)),
-        ("twitter:description", re.compile(r'<meta\s+name="twitter:description"\s+content="[^"]+"', re.IGNORECASE)),
+        ("canonical", re.compile(r'<link\s+rel="canonical"[^>]*href="[^"]+"', re.IGNORECASE)),
+        ("meta description", re.compile(r'<meta\s+name="description"[^>]*content="[^"]+"', re.IGNORECASE)),
+        ("og:type", re.compile(r'<meta\s+property="og:type"[^>]*content="website"', re.IGNORECASE)),
+        ("og:url", re.compile(r'<meta\s+property="og:url"[^>]*content="[^"]+"', re.IGNORECASE)),
+        ("og:title", re.compile(r'<meta\s+property="og:title"[^>]*content="[^"]+"', re.IGNORECASE)),
+        ("og:description", re.compile(r'<meta\s+property="og:description"[^>]*content="[^"]+"', re.IGNORECASE)),
+        ("twitter:card", re.compile(r'<meta\s+name="twitter:card"[^>]*content="summary_large_image"', re.IGNORECASE)),
+        ("twitter:title", re.compile(r'<meta\s+name="twitter:title"[^>]*content="[^"]+"', re.IGNORECASE)),
+        ("twitter:description", re.compile(r'<meta\s+name="twitter:description"[^>]*content="[^"]+"', re.IGNORECASE)),
         ("WebApplication schema", re.compile(r'"@type"\s*:\s*"WebApplication"')),
         ("BreadcrumbList schema", re.compile(r'"@type"\s*:\s*"BreadcrumbList"')),
     ]
