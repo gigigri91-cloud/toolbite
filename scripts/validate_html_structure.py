@@ -242,9 +242,8 @@ def main() -> int:
             if "noindex" not in robots_joined:
                 issues.append("search.html should include a noindex robots meta tag")
 
-        if html_path.name in {"contact.html", "privacy.html", "terms.html"}:
-            if "noindex" not in robots_joined:
-                issues.append(f"{rel} should include a noindex robots meta tag")
+        # Trust/legal root pages (contact, privacy, terms) are intentionally indexable
+        # for AdSense and Search Console; do not require noindex here.
 
         id_counts = Counter(id_value for id_value, _line in parser.ids)
         for id_value, count in sorted(id_counts.items()):
