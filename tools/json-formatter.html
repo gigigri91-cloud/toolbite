@@ -35,35 +35,35 @@
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Toolbite">
-  <meta property="og:title" content="JSON Formatter & Validator — Free Online Tool | Toolbite">
-  <meta property="og:description" content="Format, validate and beautify JSON data instantly. Supports minify, syntax highlighting and error detection.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolBite">
   <meta property="og:url" content="https://toolbite.org/tools/json-formatter.html">
-  <meta property="og:image" content="https://toolbite.org/assets/images/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JSON Formatter & Validator — Free Online Tool | Toolbite">
-  <meta name="twitter:description" content="Format, validate and beautify JSON data instantly. Supports minify, syntax highlighting and error detection.">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/og-image.png">
-<!-- Open Graph -->
-<meta property="og:image:width" content="1200">
+  <meta property="og:title" content="JSON formatter &amp; validator — beautify in the browser | ToolBite">
+  <meta property="og:description" content="Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="JSON formatter &amp; validator — beautify in the browser | ToolBite — ToolBite">
   <meta property="og:locale" content="en_US">
-<meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
   <meta name="twitter:creator" content="@toolbite">
-<meta name="twitter:image:alt" content="JSON formatter &amp; validator — beautify in the browser | ToolBite — ToolBite">
+  <meta name="twitter:title" content="JSON formatter &amp; validator — beautify in the browser | ToolBite">
+  <meta name="twitter:description" content="Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:image:alt" content="JSON formatter &amp; validator — beautify in the browser | ToolBite — ToolBite">
   <meta name="google-adsense-account" content="ca-pub-5233222002046639">
   <!-- GA4: async so it never blocks the parser -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWQEQL5KL4"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CWQEQL5KL4');</script>
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+
   <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
   <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
-</head>
+  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript></head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -367,6 +367,46 @@
             }
           }
         ]
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is my JSON data sent to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All formatting and validation runs locally in your browser using JavaScript."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Format and Minify?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Format adds indentation and line breaks for human readability. Minify removes all whitespace to reduce file size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it support large JSON files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can paste large JSON objects and the tool will format them instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my JSON flagged as invalid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common causes are trailing commas, single quotes instead of double quotes, or an unquoted key. The error message shows the exact position."
+        }
       }
     ]
   }
