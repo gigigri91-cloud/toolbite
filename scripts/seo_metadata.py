@@ -396,8 +396,8 @@ def insert_social_after_description(head_inner: str, block: str) -> str:
 def patch_csp(head_inner: str) -> str:
     """Ensure a consistent and working CSP for all pages."""
     # We define a standard policy that includes all necessary 3rd parties
-    # script-src: self, unsafe-inline, adsense, gtag, bmc
-    # connect-src: self, adsense, analytics, googletagmanager
+    # script-src: self, unsafe-inline, adsense, gtag, bmc, infolinks
+    # connect-src: self, adsense, analytics, googletagmanager, infolinks
     # img-src: self, data:, https: (for tool icons and bmc)
     
     csp_content = (
@@ -408,9 +408,9 @@ def patch_csp(head_inner: str) -> str:
         "img-src 'self' data: https:; "
         "font-src 'self' https://fonts.gstatic.com; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-        "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com; "
-        "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; "
-        "frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; "
+        "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.googletagmanager.com https://cdnjs.buymeacoffee.com https://resources.infolinks.com https://*.infolinks.com; "
+        "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://resources.infolinks.com https://*.infolinks.com; "
+        "frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://resources.infolinks.com https://*.infolinks.com; "
         "upgrade-insecure-requests"
     )
     
