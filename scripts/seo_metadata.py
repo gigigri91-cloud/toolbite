@@ -671,27 +671,27 @@ def html_unescape(s: str) -> str:
 
 
 def extract_title(html: str) -> str | None:
-    m = re.search(r"<title>(.*?)</title>", html, re.I | re.DOTALL)
+    m = re.search(r"<title[^>]*>(.*?)</title>", html, re.I | re.DOTALL)
     return html_unescape(m.group(1).strip()) if m else None
 
 
 def extract_meta_description(html: str) -> str | None:
-    m = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', html, re.I)
+    m = re.search(r'<meta\s+name="description"[^>]*content="([^"]*)"', html, re.I)
     return html_unescape(m.group(1)) if m else None
 
 
 def extract_canonical(html: str) -> str | None:
-    m = re.search(r'<link\s+rel="canonical"\s+href="([^"]*)"', html, re.I)
+    m = re.search(r'<link\s+rel="canonical"[^>]*href="([^"]*)"', html, re.I)
     return m.group(1) if m else None
 
 
 def extract_og(html: str, prop: str) -> str | None:
-    m = re.search(rf'<meta\s+property="og:{re.escape(prop)}"\s+content="([^"]*)"', html, re.I)
+    m = re.search(rf'<meta\s+property="og:{re.escape(prop)}"[^>]*content="([^"]*)"', html, re.I)
     return html_unescape(m.group(1)) if m else None
 
 
 def extract_twitter(html: str, name: str) -> str | None:
-    m = re.search(rf'<meta\s+name="twitter:{re.escape(name)}"\s+content="([^"]*)"', html, re.I)
+    m = re.search(rf'<meta\s+name="twitter:{re.escape(name)}"[^>]*content="([^"]*)"', html, re.I)
     return html_unescape(m.group(1)) if m else None
 
 
