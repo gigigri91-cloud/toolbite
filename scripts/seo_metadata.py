@@ -180,12 +180,13 @@ def patch_theme_color(head_inner: str, color: str) -> str:
     return head_inner + ins
 
 
-def patch_author_and_robots(head_inner: str) -> str:
+def patch_author_and_robots(head_inner: str, noindex: bool) -> str:
     """Ensure standard author + robots directives are present in <head>."""
     head_inner = re.sub(r'\n\s*<meta\s+name="author"\s+content="[^"]*"\s*/?>\s*', "\n", head_inner, flags=re.I)
     head_inner = re.sub(r'\n\s*<meta\s+name="robots"\s+content="[^"]*"\s*/?>\s*', "\n", head_inner, flags=re.I)
     author_meta = '\n  <meta name="author" content="ToolBite">'
-    robots_meta = '\n  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">'
+    robots_content = "noindex, follow" if noindex else "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    robots_meta = f'\n  <meta name="robots" content="{robots_content}">'
     m = re.search(r'(\n\s*<meta\s+name="description"\s+content="[^"]*"\s*>)', head_inner, flags=re.I)
     if m:
         return head_inner[: m.end()] + author_meta + robots_meta + head_inner[m.end() :]
@@ -529,7 +530,7 @@ def patch_head(html: str, spec: dict[str, Any], og_image: str, default_theme_col
         og_image=og_image,
     )
     hb = insert_social_after_description(hb, block)
-    hb = patch_author_and_robots(hb)
+    hb = patch_author_and_robots(hb, bool(spec.get("noindex") is True))
     hb = patch_theme_color(hb, theme_color)
     hb = patch_critical_css(hb, critical_css)
     hb = patch_theme_init_js(hb, theme_init_js)

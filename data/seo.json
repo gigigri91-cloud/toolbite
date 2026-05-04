@@ -56,6 +56,7 @@
     },
     "search.html": {
       "page_type": "utility",
+      "noindex": true,
       "title": "Search tools — ToolBite",
       "description": "Find a ToolBite utility by name or keyword. Results load in your browser; this page is not indexed.",
       "canonical": null,
