@@ -41,8 +41,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ToolBite">
   <meta property="og:url" content="https://toolbite.org/tools/text-to-slug.html">
-  <meta property="og:title" data-pseo-target="og-title" content="Text to slug — URL-safe strings in-browser | ToolBite">
-  <meta property="og:description" data-pseo-target="og-description" content="Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.">
+  <meta property="og:title" content="Text to slug — URL-safe strings in-browser | ToolBite">
+  <meta property="og:description" content="Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -64,7 +64,29 @@
 <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
   <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript></head>
+  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Text to slug generator online",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "text": "Paste a headline or phrase."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Review the generated slug (lowercase, hyphenated)."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Copy into your CMS, router, or static site config."
+    }
+  ]
+}
+</script>
+</head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -83,6 +105,7 @@
           <li><a href="../guides/index.html" class="hover:text-orange-500 transition">Guides</a></li>
           <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
+              <a href="../privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
       <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
@@ -251,20 +274,125 @@
           </a>
         </div>
       </section>
-    </main>
+    <section class="mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-5 md:p-6 not-prose" aria-label="Text & Content Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Text & Content Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/word-counter.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">📝</span><span>Word Counter</span></a><a href="../tools/case-converter.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🔠</span><span>Case Converter</span></a><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">🔗</span><span>Text to Slug</span></div><a href="../tools/lorem-ipsum.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">📄</span><span>Lorem Ipsum</span></a></div></section>
+</main>
 
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
+      <p class="text-xs text-gray-500">Tools run entirely in your browser. No data is sent to our servers.</p>
       <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
         <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../cookie-policy.html" class="text-gray-500 hover:text-blue-600 transition">Cookie Policy</a>
+        <a href="#" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</a>
         <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="../editorial-policy.html" class="text-gray-500 hover:text-blue-600 transition">Editorial Policy</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
       </nav>
     </div>
   </footer>
+  
+
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+    <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
+      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+    </div>
+  </div>
+
+  <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <div class="min-h-full flex items-center justify-center p-4">
+      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+        <div class="flex items-start justify-between gap-3 mb-4">
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <div class="space-y-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+            <span>
+              <span class="block font-semibold text-gray-900">Necessary</span>
+              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+            </span>
+            <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
+          </label>
+          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+            <span>
+              <span class="block font-semibold text-gray-900">Analytics</span>
+              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+            </span>
+            <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
+          </label>
+          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+            <span>
+              <span class="block font-semibold text-gray-900">Advertising</span>
+              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+            </span>
+            <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
+          </label>
+        </div>
+        <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
+          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'toolbite-cookie-preferences';
+      var banner = document.getElementById('cookie-consent-banner');
+      var modal = document.getElementById('cookie-preferences-modal');
+      var acceptBtn = document.getElementById('cookie-accept-btn');
+      var manageBtn = document.getElementById('cookie-manage-btn');
+      var closeBtn = document.getElementById('cookie-modal-close');
+      var saveBtn = document.getElementById('cookie-save-preferences');
+      var analyticsToggle = document.getElementById('cookie-analytics-toggle');
+      var advertisingToggle = document.getElementById('cookie-advertising-toggle');
+      if (!banner || !modal || !acceptBtn || !manageBtn || !closeBtn || !saveBtn || !analyticsToggle || !advertisingToggle) return;
+      function readPrefs() {
+        try {
+          var raw = localStorage.getItem(KEY);
+          return raw ? JSON.parse(raw) : null;
+        } catch (_) { return null; }
+      }
+      function writePrefs(prefs) {
+        try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (_) {}
+      }
+      function openModal() {
+        var prefs = readPrefs();
+        analyticsToggle.checked = !!(prefs && prefs.analytics);
+        advertisingToggle.checked = !!(prefs && prefs.advertising);
+        modal.classList.remove('hidden');
+      }
+      function closeModal() { modal.classList.add('hidden'); }
+      if (!readPrefs()) banner.classList.remove('hidden');
+      acceptBtn.addEventListener('click', function () {
+        writePrefs({ necessary: true, analytics: true, advertising: true, consentedAt: new Date().toISOString() });
+        banner.classList.add('hidden');
+      });
+      manageBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (event) { if (event.target === modal) closeModal(); });
+      saveBtn.addEventListener('click', function () {
+        writePrefs({ necessary: true, analytics: analyticsToggle.checked, advertising: advertisingToggle.checked, consentedAt: new Date().toISOString() });
+        banner.classList.add('hidden');
+        closeModal();
+      });
+      var reopenLinks = document.querySelectorAll('[data-open-cookie-settings="true"]');
+      reopenLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          banner.classList.add('hidden');
+          openModal();
+        });
+      });
+    }());
+  </script>
   <script defer src="../assets/js/main.min.js"></script>
 <!-- Buy Me a Coffee -->
 <a href="https://buymeacoffee.com/supportourdev"
@@ -296,7 +424,7 @@
        alt=""
        width="20"
        height="20"
-       style="display:block" / loading="lazy">
+       style="display:block" loading="lazy" />
   Support us
 </a>
 
@@ -315,7 +443,7 @@
     "dateModified": "2026-05-04T00:00:00.000Z"
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -384,45 +512,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is my data sent to ToolBite servers when I use Text to slug generator online?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it work offline?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Once the page is cached in your browser, many workflows keep working without an active network connection."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this tool free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. ToolBite tools are free to use; we may show ads to support hosting."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which browsers are supported?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled."
-        }
-      }
-    ]
-  }
-  </script>
+  
+  
 </body>
 </html>

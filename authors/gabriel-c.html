@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preload" href="../assets/fonts/inter-v20.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/plus-jakarta-v12.woff2" as="font" type="font/woff2" crossorigin>
+  <style id="font-css">
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); }
+    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); }
+    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriel C. — Author at ToolBite</title>
+  <meta name="description" content="Author profile for Gabriel C., Developer & Technical Writer at ToolBite.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://toolbite.org/authors/gabriel-c.html">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
+  <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
+  <meta property="og:title" content="Gabriel C. — Author at ToolBite">
+  <meta property="og:description" content="Author profile for Gabriel C., Developer &amp; Technical Writer at ToolBite.">
+  <meta property="og:url" content="https://toolbite.org/authors/gabriel-c.html">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+    <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
+      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
+        <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" class="logo header-logo"></picture>
+      </a>
+      <nav class="hidden md:block" aria-label="Main">
+        <ul class="flex flex-wrap justify-end gap-x-5 gap-y-1 items-center font-bold text-sm text-gray-700">
+          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
+          <li><a href="../guides/index.html" class="hover:text-orange-500 transition">Guides</a></li>
+          <li><a href="../about.html" class="hover:text-orange-500 transition">About</a></li>
+          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+        </ul>
+              <a href="../privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-3">Gabriel C.</h1>
+    <p class="text-sm font-semibold text-blue-700 mb-4">Developer &amp; Technical Writer</p>
+    <p class="text-gray-700 mb-6">Gabriel C. is an indie developer based in Bucharest, Romania, and built ToolBite as a free resource for developers and content creators.</p>
+
+    <div class="flex gap-4 mb-10 text-sm font-semibold">
+      <a href="#" class="text-blue-600 hover:underline">GitHub</a>
+      <a href="#" class="text-blue-600 hover:underline">LinkedIn</a>
+    </div>
+
+    <section class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-5">Guides by Gabriel C.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="author-guides-list"></div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+      <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
+      <p class="text-xs text-gray-500">Tools run entirely in your browser. No data is sent to our servers.</p>
+      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
+        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+        <a href="../cookie-policy.html" class="text-gray-500 hover:text-blue-600 transition">Cookie Policy</a>
+        <a href="#" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</a>
+        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+        <a href="../editorial-policy.html" class="text-gray-500 hover:text-blue-600 transition">Editorial Policy</a>
+        <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
+        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script defer src="../assets/js/main.min.js"></script>
+  <script>
+    const guideLinks = [
+      ['JSON formatter guide: fix invalid JSON fast', '../guides/json-formatter-guide.html'],
+      ['How to decode JWT safely', '../guides/jwt-decoder-guide.html'],
+      ['SEO slug best practices', '../guides/seo-slug-best-practices.html'],
+      ['How to compress images for web', '../guides/compress-images-guide.html'],
+      ['Base64 encoding explained', '../guides/base64-encoding-guide.html'],
+      ['UUID and GUID explained', '../guides/uuid-guid-guide.html'],
+      ['URL encoding explained', '../guides/url-encoding-guide.html'],
+      ['QR codes explained', '../guides/qr-code-guide.html'],
+      ['How to generate strong passwords', '../guides/password-guide.html']
+    ];
+    const host = document.getElementById('author-guides-list');
+    guideLinks.forEach(function (item) {
+      const a = document.createElement('a');
+      a.href = item[1];
+      a.className = 'bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition font-semibold text-gray-800 hover:text-blue-600';
+      a.textContent = item[0];
+      host.appendChild(a);
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriel C.",
+    "url": "https://toolbite.org/authors/gabriel-c.html",
+    "jobTitle": "Developer & Technical Writer",
+    "worksFor": { "@type": "Organization", "name": "ToolBite" },
+    "address": { "addressCountry": "RO" }
+  }
+  </script>
+</body>
+</html>

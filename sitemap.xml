@@ -7,6 +7,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://toolbite.org/authors/index.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/authors/gabriel-c.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://toolbite.org/categories/developer-tools.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -97,6 +109,42 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://toolbite.org/guides/hash-functions-explained.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/guides/url-encoding-explained.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/guides/password-security-guide.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/guides/json-formatting-best-practices.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/guides/understanding-jwt-tokens.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/guides/how-to-encode-decode-base64.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://toolbite.org/</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -105,6 +153,18 @@
   <url>
     <loc>https://toolbite.org/privacy.html</loc>
     <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/cookie-policy.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://toolbite.org/editorial-policy.html</loc>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
