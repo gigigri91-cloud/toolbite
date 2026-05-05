@@ -105,7 +105,6 @@
           <li><a href="../guides/index.html" class="hover:text-orange-500 transition">Guides</a></li>
           <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
         </ul>
-              <a href="../privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
       <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
@@ -201,6 +200,48 @@
           </details>
         </div>
       </section>
+
+      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-advanced-usage-heading">
+        <h2 id="tb-advanced-usage-heading" class="text-lg font-bold text-gray-900 mb-4">Advanced Usage &amp; Examples</h2>
+
+        <div class="space-y-5">
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2">Scenario 1: Headline normalization for CMS import</h3>
+            <pre class="bg-slate-900 text-slate-100 rounded-xl p-4 text-xs overflow-x-auto"><code>Input:
+best PRACTICES for api SECURITY in 2026
+
+Title Case:
+Best Practices For Api Security In 2026
+
+Manual final tweak:
+Best Practices for API Security in 2026</code></pre>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2">Scenario 2: Convert labels to camelCase keys</h3>
+            <pre class="bg-slate-900 text-slate-100 rounded-xl p-4 text-xs overflow-x-auto"><code>Input labels:
+user profile id
+account status code
+
+camelCase output:
+userProfileId
+accountStatusCode</code></pre>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-indigo-200 bg-indigo-50 p-4">
+          <p class="text-sm font-bold text-indigo-900 mb-1">Did you know? 🧠</p>
+          <p class="text-sm text-indigo-900">Automated case conversion rarely handles acronyms perfectly (API, JWT, SEO). A quick human review keeps brand and technical terminology correct.</p>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+          <p class="text-sm font-bold text-amber-900 mb-1">Limitations</p>
+          <p class="text-sm text-amber-900">Case rules vary by style guide and language. This tool applies generic rules, so edge cases like proper nouns may need manual refinement.</p>
+        </div>
+
+        <p class="mt-5 text-sm text-gray-700"><strong>How this differs from <a href="../tools/text-to-slug.html" class="text-blue-600 hover:underline">Text to Slug</a>:</strong> Case Converter preserves readable text variants; Text to Slug transforms phrases into URL-safe, hyphenated slugs.</p>
+      </section>
+
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
         <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -287,6 +328,7 @@
         <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
         <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
         <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+        <a href="../privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
       </nav>
     </div>
   </footer>
