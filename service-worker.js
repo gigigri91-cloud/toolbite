@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolbite-v2';
+const CACHE_NAME = 'toolbite-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -39,20 +39,25 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
 
+  // Network-first for CSS and JS — always get fresh styles/scripts
+  if (url.pathname.endsWith('.css') || url.pathname.endsWith('.js')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Cache-first for everything else (images, HTML)
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request).then(fetchResponse => {
-        // Optionally cache new successful responses here if they are local
-        return fetchResponse;
-      });
-    }).catch(() => {
-      // Offline fallback for HTML pages
-      if (event.request.headers.get('accept').includes('text/html')) {
-        return caches.match('/index.html');
-      }
-    })
+    caches.match(event.request).then(response => response || fetch(event.request))
   );
 });
