@@ -733,3 +733,92 @@ html.embed-mode .bg-white.rounded-3xl {
     padding: 0;
     margin-bottom: 0;
 }
+
+/* ==========================================
+   DARK MODE OVERRIDES — data-theme="dark"
+   Covers all Tailwind utility classes used
+   across the site that have no dark variant
+   ========================================== */
+
+html[data-theme="dark"] .bg-white,
+html[data-theme="dark"] .bg-gray-50,
+html[data-theme="dark"] .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .bg-indigo-50,
+html[data-theme="dark"] .bg-blue-50,
+html[data-theme="dark"] .bg-green-50,
+html[data-theme="dark"] .bg-yellow-50,
+html[data-theme="dark"] .bg-red-50,
+html[data-theme="dark"] .bg-purple-50,
+html[data-theme="dark"] .bg-pink-50,
+html[data-theme="dark"] .bg-orange-50,
+html[data-theme="dark"] .bg-teal-50,
+html[data-theme="dark"] .bg-cyan-50 {
+  background-color: #1e293b !important;
+}
+
+html[data-theme="dark"] .bg-indigo-100,
+html[data-theme="dark"] .bg-blue-100,
+html[data-theme="dark"] .bg-green-100,
+html[data-theme="dark"] .bg-yellow-100,
+html[data-theme="dark"] .bg-red-100,
+html[data-theme="dark"] .bg-purple-100,
+html[data-theme="dark"] .bg-pink-100,
+html[data-theme="dark"] .bg-orange-100,
+html[data-theme="dark"] .bg-teal-100,
+html[data-theme="dark"] .bg-cyan-100,
+html[data-theme="dark"] .bg-rose-100,
+html[data-theme="dark"] .bg-violet-100,
+html[data-theme="dark"] .bg-emerald-100,
+html[data-theme="dark"] .bg-amber-100,
+html[data-theme="dark"] .bg-sky-100 {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+html[data-theme="dark"] .text-gray-900,
+html[data-theme="dark"] .text-gray-800 {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] .text-gray-700,
+html[data-theme="dark"] .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .text-gray-500,
+html[data-theme="dark"] .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .text-indigo-600,
+html[data-theme="dark"] .text-blue-600,
+html[data-theme="dark"] .text-green-600,
+html[data-theme="dark"] .text-purple-600,
+html[data-theme="dark"] .text-pink-600,
+html[data-theme="dark"] .text-orange-600,
+html[data-theme="dark"] .text-teal-600,
+html[data-theme="dark"] .text-cyan-600,
+html[data-theme="dark"] .text-rose-600,
+html[data-theme="dark"] .text-violet-600,
+html[data-theme="dark"] .text-emerald-600,
+html[data-theme="dark"] .text-amber-600,
+html[data-theme="dark"] .text-sky-600,
+html[data-theme="dark"] .text-red-600,
+html[data-theme="dark"] .text-yellow-600 {
+  filter: brightness(1.4);
+}
+
+html[data-theme="dark"] .border-gray-100,
+html[data-theme="dark"] .border-gray-200,
+html[data-theme="dark"] .border-gray-300 {
+  border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .shadow-xl,
+html[data-theme="dark"] .shadow-lg,
+html[data-theme="dark"] .shadow-md,
+html[data-theme="dark"] .shadow-sm {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+}
