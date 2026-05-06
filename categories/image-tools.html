@@ -169,10 +169,10 @@
 
       <h2 id="category-tools-heading" class="sr-only">Tools in this category</h2>
 
-      <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div id="category-tools-grid" class="tb-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
       <a href="../tools/image-compressor.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-green-50 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition">🖼️</div>
+        <div class="tb-tool-icon tb-icon-violet">🖼️</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Image Compressor</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Smaller JPG, PNG &amp; WebP files</p>
@@ -411,5 +411,16 @@
     ]
   }
   </script>
+<script>
+const tbObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      tbObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.tb-reveal').forEach(el => tbObs.observe(el));
+</script>
 </body>
 </html>

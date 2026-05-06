@@ -169,10 +169,10 @@
 
       <h2 id="category-tools-heading" class="sr-only">Tools in this category</h2>
 
-      <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div id="category-tools-grid" class="tb-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
       <a href="../tools/json-formatter.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-purple-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
+        <div class="tb-tool-icon tb-icon-teal">💻</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">JSON Formatter</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Format, minify &amp; validate JSON</p>
@@ -180,7 +180,7 @@
       </a>
 
       <a href="../tools/jwt-decoder.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🪪</div>
+        <div class="tb-tool-icon tb-icon-indigo">🪪</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">JWT Decoder</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">View header &amp; payload (no verify)</p>
@@ -188,7 +188,7 @@
       </a>
 
       <a href="../tools/password-generator.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-orange-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-orange-500 group-hover:text-white transition">🔑</div>
+        <div class="tb-tool-icon tb-icon-amber">🔑</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Password Generator</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Strong random passwords</p>
@@ -196,7 +196,7 @@
       </a>
 
       <a href="../tools/color-palette-generator.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-pink-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-pink-500 group-hover:text-white transition">🎨</div>
+        <div class="tb-tool-icon tb-icon-fuchsia">🎨</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Color Palette Generator</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">HEX palettes — click to copy</p>
@@ -204,7 +204,7 @@
       </a>
 
       <a href="../tools/base64-encoder.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-amber-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">📎</div>
+        <div class="tb-tool-icon tb-icon-cyan">📎</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Base64 Encoder</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Encode &amp; decode UTF-8 text</p>
@@ -212,7 +212,7 @@
       </a>
 
       <a href="../tools/uuid-generator.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-cyan-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">🆔</div>
+        <div class="tb-tool-icon tb-icon-indigo">🆔</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">UUID Generator</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Random v4 UUIDs (RFC 4122)</p>
@@ -220,7 +220,7 @@
       </a>
 
       <a href="../tools/url-encoder.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">🌐</div>
+        <div class="tb-tool-icon tb-icon-cyan">🌐</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">URL Encoder</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">encodeURI &amp; encodeURIComponent</p>
@@ -228,7 +228,7 @@
       </a>
 
       <a href="../tools/hash-generator.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-slate-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-slate-800 group-hover:text-white transition">🔢</div>
+        <div class="tb-tool-icon tb-icon-rose">🔢</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Hash Generator</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">SHA-256 &amp; SHA-1 (hex)</p>
@@ -461,5 +461,16 @@
     ]
   }
   </script>
+<script>
+const tbObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      tbObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.tb-reveal').forEach(el => tbObs.observe(el));
+</script>
 </body>
 </html>

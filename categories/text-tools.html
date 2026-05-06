@@ -170,10 +170,10 @@
 
       <h2 id="category-tools-heading" class="sr-only">Tools in this category</h2>
 
-      <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div id="category-tools-grid" class="tb-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
       <a href="../tools/word-counter.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
+        <div class="tb-tool-icon tb-icon-blue">📝</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Word Counter</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Words, characters, sentences &amp; paragraphs</p>
@@ -181,7 +181,7 @@
       </a>
 
       <a href="../tools/find-replace.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🔁</div>
+        <div class="tb-tool-icon tb-icon-blue">🔁</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Find &amp; Replace</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Bulk text replacements with case control</p>
@@ -189,7 +189,7 @@
       </a>
 
       <a href="../tools/remove-extra-spaces.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-teal-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-500 group-hover:text-white transition">🧹</div>
+        <div class="tb-tool-icon tb-icon-blue">🧹</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Remove Extra Spaces</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Normalize whitespace and blank lines</p>
@@ -197,7 +197,7 @@
       </a>
 
       <a href="../tools/lorem-ipsum.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-gray-800 group-hover:text-white transition">📄</div>
+        <div class="tb-tool-icon tb-icon-indigo">📄</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Lorem Ipsum Generator</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Classic placeholder paragraphs</p>
@@ -205,7 +205,7 @@
       </a>
 
       <a href="../tools/case-converter.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-rose-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-rose-500 group-hover:text-white transition">🔠</div>
+        <div class="tb-tool-icon tb-icon-blue">🔠</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Case Converter</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">UPPER, lower, Title, camelCase</p>
@@ -213,7 +213,7 @@
       </a>
 
       <a href="../tools/text-to-slug.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-sky-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-sky-600 group-hover:text-white transition">🔗</div>
+        <div class="tb-tool-icon tb-icon-orange">🔗</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Text to Slug</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">SEO-friendly URL segments</p>
@@ -221,7 +221,7 @@
       </a>
 
       <a href="../tools/remove-duplicate-lines.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-fuchsia-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-fuchsia-600 group-hover:text-white transition">📋</div>
+        <div class="tb-tool-icon tb-icon-blue">📋</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Remove Duplicate Lines</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">Keep first occurrence, optional trim key</p>
@@ -229,7 +229,7 @@
       </a>
 
       <a href="../tools/sort-text-lines.html" class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="w-14 h-14 bg-lime-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-lime-600 group-hover:text-white transition">🔤</div>
+        <div class="tb-tool-icon tb-icon-blue">🔤</div>
         <div>
           <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Sort Text Lines</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">A→Z or Z→A, locale-aware</p>
@@ -463,5 +463,16 @@
     ]
   }
   </script>
+<script>
+const tbObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      tbObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.tb-reveal').forEach(el => tbObs.observe(el));
+</script>
 </body>
 </html>

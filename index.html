@@ -141,7 +141,7 @@
   <section class="tb-hero p-12 md:p-20 text-center text-white shadow-inner" aria-labelledby="homepage-hero-title" style="background: linear-gradient(125deg, #1e40af 0%, #2563eb 42%, #c2410c 100%);">
     <div class="tb-hero-inner max-w-4xl mx-auto">
       <p class="text-sm md:text-base font-semibold uppercase tracking-widest text-blue-100/90 mb-3">Privacy-first · No uploads · Works offline after load</p>
-      <h1 id="homepage-hero-title" class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md font-display leading-tight" data-pseo-target="h1">Fast, private &amp; local web tools</h1>
+      <h1 id="homepage-hero-title" class="tb-fade-up text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md font-display leading-tight" data-pseo-target="h1">Fast, private &amp; local web tools</h1>
 
       <p class="text-lg md:text-2xl mb-8 text-white/90 font-medium">ToolBite provides a collection of essential web utilities designed with privacy at their core. Unlike traditional online converters, our tools process your data entirely within your browser. This means your sensitive information never leaves your device, ensuring total security and instant results.</p>
       <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
@@ -166,7 +166,7 @@
 
   <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
 
-    <section class="tb-card tb-card-tool mb-12 md:p-10 dark:text-gray-100" aria-labelledby="homepage-intro-title">
+    <section class="tb-reveal tb-card tb-card-tool mb-12 md:p-10 dark:text-gray-100" aria-labelledby="homepage-intro-title">
       <div class="max-w-4xl">
         <h2 id="homepage-intro-title" class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">What you can do on ToolBite</h2>
         <p class="text-lg mb-6 text-gray-900 dark:text-gray-100">ToolBite brings together practical browser-based tools for text cleanup, JSON and JWT debugging, SEO tasks, and quick image workflows. Everything is designed to stay fast, readable, and useful without sending routine inputs to a custom backend.</p>
@@ -196,100 +196,100 @@
       </div>
     </section>
 
-    <section id="popular-tools" class="mb-16" aria-labelledby="popular-tools-title">
+    <section id="popular-tools" class="tb-reveal mb-16" aria-labelledby="popular-tools-title">
       <div class="flex items-center justify-between border-b pb-3 mb-8">
         <h2 id="popular-tools-title" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">🔥 Popular Tools</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div class="tb-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
         <a href="tools/word-counter.html" class="tb-card tb-card-interactive tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-blue-600 text-white rounded-full shadow-sm">Popular</span>
-          <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
+          <div class="tb-tool-icon tb-icon-blue">📝</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Word Counter</h3><p class="text-sm text-gray-500 dark:text-gray-400">Count words &amp; characters</p></div>
         </a>
 
         <a href="tools/password-generator.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-orange-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-orange-500 group-hover:text-white transition">🔑</div>
+          <div class="tb-tool-icon tb-icon-amber">🔑</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Password Generator</h3><p class="text-sm text-gray-500 dark:text-gray-400">Create secure passwords</p></div>
         </a>
 
         <a href="tools/image-compressor.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-green-50 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition">🖼️</div>
+          <div class="tb-tool-icon tb-icon-violet">🖼️</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Image Compressor</h3><p class="text-sm text-gray-500 dark:text-gray-400">Reduce image file size</p></div>
         </a>
 
         <a href="tools/json-formatter.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-purple-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
+          <div class="tb-tool-icon tb-icon-teal">💻</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">JSON Formatter</h3><p class="text-sm text-gray-500 dark:text-gray-400">Beautify &amp; validate JSON</p></div>
         </a>
 
         <a href="tools/jwt-decoder.html" class="tb-card tb-card-interactive tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-emerald-700 text-white rounded-full shadow-sm">New</span>
-          <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🪪</div>
+          <div class="tb-tool-icon tb-icon-indigo">🪪</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">JWT Decoder</h3><p class="text-sm text-gray-500 dark:text-gray-400">Inspect tokens locally</p></div>
         </a>
 
         <a href="tools/lorem-ipsum.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-gray-800 group-hover:text-white transition">📄</div>
+          <div class="tb-tool-icon tb-icon-indigo">📄</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Lorem Ipsum</h3><p class="text-sm text-gray-500 dark:text-gray-400">Generate dummy text</p></div>
         </a>
 
         <a href="tools/remove-extra-spaces.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-teal-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-500 group-hover:text-white transition">🧹</div>
+          <div class="tb-tool-icon tb-icon-blue">🧹</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Remove Spaces</h3><p class="text-sm text-gray-500 dark:text-gray-400">Clean messy text</p></div>
         </a>
 
         <a href="tools/case-converter.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-rose-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-rose-500 group-hover:text-white transition">🔠</div>
+          <div class="tb-tool-icon tb-icon-blue">🔠</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Case Converter</h3><p class="text-sm text-gray-500 dark:text-gray-400">UPPER, lower, Title, camelCase</p></div>
         </a>
 
         <a href="tools/text-to-slug.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-sky-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-sky-600 group-hover:text-white transition">🔗</div>
+          <div class="tb-tool-icon tb-icon-orange">🔗</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Text to Slug</h3><p class="text-sm text-gray-500 dark:text-gray-400">SEO-friendly URL strings</p></div>
         </a>
 
         <a href="tools/read-time-calculator.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-violet-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">⏱️</div>
+          <div class="tb-tool-icon tb-icon-blue">⏱️</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Read Time</h3><p class="text-sm text-gray-500 dark:text-gray-400">Estimate article reading time</p></div>
         </a>
 
         <a href="tools/base64-encoder.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-amber-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">📎</div>
+          <div class="tb-tool-icon tb-icon-cyan">📎</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Base64 Encoder</h3><p class="text-sm text-gray-500 dark:text-gray-400">Encode &amp; decode in browser</p></div>
         </a>
 
         <a href="tools/uuid-generator.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-cyan-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">🆔</div>
+          <div class="tb-tool-icon tb-icon-indigo">🆔</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">UUID Generator</h3><p class="text-sm text-gray-500 dark:text-gray-400">Random v4 IDs</p></div>
         </a>
 
         <a href="tools/url-encoder.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-emerald-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">🌐</div>
+          <div class="tb-tool-icon tb-icon-cyan">🌐</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">URL Encoder</h3><p class="text-sm text-gray-500 dark:text-gray-400">URI component &amp; full URL</p></div>
         </a>
 
         <a href="tools/hash-generator.html" class="tb-card-interactive tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-slate-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-slate-800 group-hover:text-white transition">🔢</div>
+          <div class="tb-tool-icon tb-icon-rose">🔢</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Hash Generator</h3><p class="text-sm text-gray-500 dark:text-gray-400">SHA-256 &amp; SHA-1</p></div>
         </a>
 
         <a href="tools/qr-generator.html" class="tb-card tb-card-interactive tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-violet-600 text-white rounded-full shadow-sm">New</span>
-          <div class="w-14 h-14 bg-violet-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">📱</div>
+          <div class="tb-tool-icon tb-icon-fuchsia">📱</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">QR Generator</h3><p class="text-sm text-gray-500 dark:text-gray-400">Create scannable QR codes</p></div>
         </a>
 
         <a href="tools/csv-to-json.html" class="tb-card tb-card-interactive tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-teal-700 text-white rounded-full shadow-sm">New</span>
-          <div class="w-14 h-14 bg-teal-50 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-700 group-hover:text-white transition">🔄</div>
+          <div class="tb-tool-icon tb-icon-teal">🔄</div>
           <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">CSV to JSON</h3><p class="text-sm text-gray-500 dark:text-gray-400">Convert spreadsheet data</p></div>
         </a>
 
       </div>
     </section>
 
-    <section class="mb-12" aria-labelledby="browse-category-title">
+    <section class="tb-reveal mb-12" aria-labelledby="browse-category-title">
       <h2 id="browse-category-title" class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100 border-b pb-3">Browse by Category</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <a href="categories/text-tools.html" class="tb-card tb-card-interactive transition font-bold dark:text-gray-300 hover:text-blue-700">✍️ Text Tools</a>
@@ -299,7 +299,7 @@
       </div>
     </section>
 
-    <section class="mb-12 rounded-3xl border border-orange-100 bg-gradient-to-br from-orange-50/80 via-white to-blue-50/60 p-8 md:p-10 shadow-sm" aria-labelledby="roadmap-heading">
+    <section class="tb-reveal mb-12 rounded-3xl border border-orange-100 bg-gradient-to-br from-orange-50/80 via-white to-blue-50/60 p-8 md:p-10 shadow-sm" aria-labelledby="roadmap-heading">
       <h2 id="roadmap-heading" class="text-xl md:text-2xl font-bold mb-2 font-display text-gray-900 dark:text-white">Growing toolkit — what we ship next</h2>
       <p class="mb-6 max-w-3xl text-gray-900 dark:text-gray-100">ToolBite expands in small, fast releases. Here are high-demand utilities from our public roadmap (hashes, QR codes, meta generators, image resize — all client-side where possible).</p>
       <div class="flex flex-wrap gap-2 mb-4">
@@ -313,7 +313,7 @@
       <p class="text-sm text-gray-500">Tip: bookmark <a href="search.html" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">ToolBite online tool search</a> and the category hubs above — new tools appear there first. Share direct links to individual utilities to help others discover them.</p>
     </section>
 
-    <section class="mb-12" aria-labelledby="guides-heading">
+    <section class="tb-reveal mb-12" aria-labelledby="guides-heading">
       <h2 id="guides-heading" class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100 border-b pb-3">Learning Guides</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="guides/json-formatter-guide.html" class="tb-card tb-card-pad-lg">
@@ -335,7 +335,7 @@
       <p class="text-center mt-8 text-sm text-gray-600 dark:text-gray-400">Want the full library? <a href="guides/index.html" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">Browse all ToolBite guides (JSON, JWT &amp; SEO)</a>.</p>
     </section>
 
-    <section class="tb-card tb-card-tool mb-12 md:p-10 dark:text-gray-100" aria-labelledby="more-tools-heading">
+    <section class="tb-reveal tb-card tb-card-tool mb-12 md:p-10 dark:text-gray-100" aria-labelledby="more-tools-heading">
       <div class="flex items-center justify-between border-b pb-3 mb-6">
         <h2 id="more-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">More Useful Tools to Explore</h2>
       </div>
@@ -662,5 +662,16 @@
   
   
   
+<script>
+const tbObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      tbObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.tb-reveal').forEach(el => tbObs.observe(el));
+</script>
 </body>
 </html>

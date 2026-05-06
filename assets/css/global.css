@@ -387,6 +387,108 @@ html[data-theme="dark"] body .tb-card-accent {
 .tb-card-sm { padding: 1rem; border-radius: 0.75rem; }
 .tb-card-lg { padding: 2.5rem; border-radius: 1.5rem; }
 
+/* ─── Tool Card Standard ─────────────────────────── */
+
+/* ─── Base icon wrapper ───────────────────────────── */
+.tb-tool-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 200ms ease;
+}
+
+/* Hover animation — same for ALL icons */
+.tb-card-interactive:hover .tb-tool-icon {
+  transform: scale(1.15) rotate(-6deg);
+  box-shadow: 0 8px 20px var(--icon-glow, rgb(0 0 0 / 0.15));
+}
+
+/* ─── Per-tool color themes ───────────────────────── */
+
+/* Text tools — warm blue */
+.tb-icon-blue   { background: #dbeafe; color: #1d4ed8; --icon-glow: rgb(59 130 246 / 0.3); }
+/* Developer tools — deep indigo */
+.tb-icon-indigo { background: #e0e7ff; color: #4338ca; --icon-glow: rgb(99 102 241 / 0.3); }
+/* Security/password — amber/gold */
+.tb-icon-amber  { background: #fef3c7; color: #d97706; --icon-glow: rgb(245 158 11 / 0.3); }
+/* Image tools — violet */
+.tb-icon-violet { background: #ede9fe; color: #7c3aed; --icon-glow: rgb(139 92 246 / 0.3); }
+/* Generator tools — emerald */
+.tb-icon-emerald{ background: #d1fae5; color: #059669; --icon-glow: rgb(16 185 129 / 0.3); }
+/* Encoding tools — cyan */
+.tb-icon-cyan   { background: #cffafe; color: #0e7490; --icon-glow: rgb(6 182 212 / 0.3); }
+/* SEO/slug tools — orange */
+.tb-icon-orange { background: #ffedd5; color: #ea580c; --icon-glow: rgb(249 115 22 / 0.3); }
+/* Hash/crypto — rose */
+.tb-icon-rose   { background: #ffe4e6; color: #e11d48; --icon-glow: rgb(244 63 94 / 0.3); }
+/* JSON/data — teal */
+.tb-icon-teal   { background: #ccfbf1; color: #0f766e; --icon-glow: rgb(20 184 166 / 0.3); }
+/* QR/scanner — fuchsia */
+.tb-icon-fuchsia{ background: #fae8ff; color: #a21caf; --icon-glow: rgb(217 70 239 / 0.3); }
+
+/* ─── Dark mode per color ─────────────────────────── */
+html[data-theme="dark"] body .tb-icon-blue   { background: #1e3a5f; color: #93c5fd; }
+html[data-theme="dark"] body .tb-icon-indigo { background: #1e1b4b; color: #a5b4fc; }
+html[data-theme="dark"] body .tb-icon-amber  { background: #431407; color: #fcd34d; }
+html[data-theme="dark"] body .tb-icon-violet { background: #2e1065; color: #c4b5fd; }
+html[data-theme="dark"] body .tb-icon-emerald{ background: #064e3b; color: #6ee7b7; }
+html[data-theme="dark"] body .tb-icon-cyan   { background: #164e63; color: #67e8f9; }
+html[data-theme="dark"] body .tb-icon-orange { background: #431407; color: #fdba74; }
+html[data-theme="dark"] body .tb-icon-rose   { background: #4c0519; color: #fda4af; }
+html[data-theme="dark"] body .tb-icon-teal   { background: #134e4a; color: #5eead4; }
+html[data-theme="dark"] body .tb-icon-fuchsia{ background: #4a044e; color: #f0abfc; }
+
+/* Tool card title */
+.tb-tool-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+html[data-theme="dark"] body .tb-tool-title {
+  color: #f3f2f0;
+}
+
+/* Tool card description */
+.tb-tool-desc {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+html[data-theme="dark"] body .tb-tool-desc {
+  color: #9ca3af;
+}
+
+/* Badge (POPULAR / NEW) */
+.tb-tool-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+.tb-tool-badge-popular {
+  background: #3b82f6;
+  color: #ffffff;
+}
+.tb-tool-badge-new {
+  background: #10b981;
+  color: #ffffff;
+}
+
 
 /* Ensure terminal-style blocks stay readable in light mode too */
 pre.bg-slate-900,
@@ -1085,6 +1187,148 @@ html[data-theme="dark"] body .tool-card-tb .text-gray-500,
 html[data-theme="dark"] body .tool-card-tb .text-gray-600,
 html[data-theme="dark"] body .tool-card-tb .text-gray-400 {
   color: #94a3b8 !important;
+}
+
+/* ─── Homepage / category motion utilities ───────────────── */
+@keyframes tb-fade-up-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes tb-stagger-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.tb-fade-up {
+  opacity: 0;
+  animation: tb-fade-up-in 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.tb-reveal {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tb-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.tb-stagger > * {
+  opacity: 0;
+  animation: tb-stagger-in 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.tb-stagger > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+.tb-stagger > *:nth-child(2) {
+  animation-delay: 80ms;
+}
+.tb-stagger > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.tb-stagger > *:nth-child(4) {
+  animation-delay: 160ms;
+}
+.tb-stagger > *:nth-child(5) {
+  animation-delay: 200ms;
+}
+.tb-stagger > *:nth-child(6) {
+  animation-delay: 240ms;
+}
+.tb-stagger > *:nth-child(7) {
+  animation-delay: 280ms;
+}
+.tb-stagger > *:nth-child(8) {
+  animation-delay: 320ms;
+}
+.tb-stagger > *:nth-child(9) {
+  animation-delay: 360ms;
+}
+.tb-stagger > *:nth-child(10) {
+  animation-delay: 400ms;
+}
+.tb-stagger > *:nth-child(11) {
+  animation-delay: 440ms;
+}
+.tb-stagger > *:nth-child(12) {
+  animation-delay: 480ms;
+}
+.tb-stagger > *:nth-child(13) {
+  animation-delay: 520ms;
+}
+.tb-stagger > *:nth-child(14) {
+  animation-delay: 560ms;
+}
+.tb-stagger > *:nth-child(15) {
+  animation-delay: 600ms;
+}
+.tb-stagger > *:nth-child(16) {
+  animation-delay: 640ms;
+}
+.tb-stagger > *:nth-child(17) {
+  animation-delay: 680ms;
+}
+.tb-stagger > *:nth-child(18) {
+  animation-delay: 720ms;
+}
+.tb-stagger > *:nth-child(19) {
+  animation-delay: 760ms;
+}
+.tb-stagger > *:nth-child(20) {
+  animation-delay: 800ms;
+}
+.tb-stagger > *:nth-child(21) {
+  animation-delay: 840ms;
+}
+.tb-stagger > *:nth-child(22) {
+  animation-delay: 880ms;
+}
+.tb-stagger > *:nth-child(23) {
+  animation-delay: 920ms;
+}
+.tb-stagger > *:nth-child(24) {
+  animation-delay: 960ms;
+}
+.tb-stagger > *:nth-child(25) {
+  animation-delay: 1000ms;
+}
+.tb-stagger > *:nth-child(26) {
+  animation-delay: 1040ms;
+}
+.tb-stagger > *:nth-child(27) {
+  animation-delay: 1080ms;
+}
+.tb-stagger > *:nth-child(28) {
+  animation-delay: 1120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tb-fade-up,
+  .tb-reveal,
+  .tb-reveal.is-visible,
+  .tb-stagger > * {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ============================================
