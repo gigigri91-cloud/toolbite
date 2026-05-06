@@ -134,6 +134,21 @@ h1, h2, .font-display {
     background: transparent;
 }
 .tb-btn-icon:hover { background: #f3f4f6; }
+html[data-theme="dark"] body .tb-btn-neutral {
+    background: #374151;
+    color: #f3f4f6;
+    border-color: #4b5563;
+}
+html[data-theme="dark"] body .tb-btn-neutral:hover {
+    background: #4b5563;
+}
+html[data-theme="dark"] body .tb-btn-outline {
+    color: #f3f4f6;
+    border-color: #4b5563;
+}
+html[data-theme="dark"] body .tb-btn-outline:hover {
+    background: #374151;
+}
 .tb-mobile-menu-btn {
     color: #4b5563;
     border: 0;
