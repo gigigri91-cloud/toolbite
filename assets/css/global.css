@@ -164,6 +164,15 @@ h1, h2, .font-display {
     box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.18);
     border-color: #dbeafe;
 }
+html[data-theme="dark"] body .tb-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+html[data-theme="dark"] body .tb-card:hover {
+    border-color: rgba(59, 130, 246, 0.45);
+    box-shadow: 0 12px 40px -12px rgba(37, 99, 235, 0.25);
+}
 .tb-card-pad-sm { padding: 1rem; }
 .tb-card-pad-md { padding: 1.25rem; }
 .tb-card-pad-lg { padding: 1.5rem; }
@@ -182,6 +191,30 @@ h1, h2, .font-display {
     gap: 0.75rem;
     color: #4b5563;
     font-size: 0.875rem;
+}
+html[data-theme="dark"] body .tb-card-soft {
+    background: #1e293b;
+    border-color: #334155;
+}
+html[data-theme="dark"] body .tb-card-soft:hover {
+    background: #1e293b;
+}
+html[data-theme="dark"] body .tb-card-tinted-blue {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: #334155;
+}
+html[data-theme="dark"] body .tb-card-tinted-indigo {
+    background: rgba(79, 70, 229, 0.12);
+    border-color: #334155;
+}
+html[data-theme="dark"] body .tb-card-panel,
+html[data-theme="dark"] body .tb-card-prose,
+html[data-theme="dark"] body .tb-card-note {
+    background: #1e293b;
+    border-color: #334155;
+}
+html[data-theme="dark"] body .tb-card-note {
+    color: #cbd5e1;
 }
 
 /* Semantic layout hooks (see scripts/apply_semantic_html.py): .tb-breadcrumb, .tb-tool-primary, .tb-seo-notes */
