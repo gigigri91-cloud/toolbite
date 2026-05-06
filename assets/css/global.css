@@ -822,3 +822,25 @@ html[data-theme="dark"] body .shadow-md,
 html[data-theme="dark"] body .shadow-sm {
   box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
 }
+
+html[data-theme="dark"] body .tool-card-tb h3,
+html[data-theme="dark"] body .tool-card-tb p,
+html[data-theme="dark"] body .tool-card-tb span:not([class*="bg-"]) {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] body .tool-card-tb p {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] body .tool-card-tb .text-gray-900,
+html[data-theme="dark"] body .tool-card-tb .text-gray-800,
+html[data-theme="dark"] body .tool-card-tb .text-gray-700 {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] body .tool-card-tb .text-gray-500,
+html[data-theme="dark"] body .tool-card-tb .text-gray-600,
+html[data-theme="dark"] body .tool-card-tb .text-gray-400 {
+  color: #94a3b8 !important;
+}
