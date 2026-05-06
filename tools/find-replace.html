@@ -135,25 +135,31 @@
         <p class="text-gray-600 dark:text-gray-400">Quickly search for specific words and replace them across drafts, documents, copy updates, and text snippets.</p>
       </div>
       </section>
-      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+      <div class="tb-card tb-card-accent mb-6">
         <strong>Privacy:</strong> Find and replace runs locally in your browser. Your text is not uploaded to ToolBite for processing.
       </div>
       <div class="tb-card tb-card-panel tb-card-pad-lg mb-8 md:p-8">
-        <textarea id="main-input" class="w-full h-64 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-100 outline-none resize-y mb-6 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700" placeholder="Paste your text here..."></textarea>
+        <textarea id="main-input" class="tb-textarea w-full h-64 border outline-none resize-y mb-6" placeholder="Paste your text here..."></textarea>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
-            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Find what:</label>
-            <input type="text" id="find-query" class="w-full p-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. apple">
+            <div class="tb-field">
+            <label class="tb-label block font-bold mb-2">Find what:</label>
+            <input type="text" id="find-query" class="tb-input w-full border outline-none" placeholder="e.g. apple">
+            </div>
           </div>
           <div>
-            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Replace with:</label>
-            <input type="text" id="replace-query" class="w-full p-4 border border-gray-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. orange">
+            <div class="tb-field">
+            <label class="tb-label block font-bold mb-2">Replace with:</label>
+            <input type="text" id="replace-query" class="tb-input w-full border outline-none" placeholder="e.g. orange">
+            </div>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-4 border-t pt-6">
-          <button id="replace-btn" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform hover:-translate-y-1">Replace All</button>
-          <label class="flex items-center gap-2 cursor-pointer text-gray-600 dark:text-gray-400 font-medium">
-            <input type="checkbox" id="case-sensitive" class="w-5 h-5 rounded border-gray-300 text-blue-600 dark:text-blue-400 focus:ring-blue-500"> Case Sensitive
+          <button id="replace-btn" class="tb-btn tb-btn-primary py-4 rounded-xl">Replace All</button>
+          <div class="tb-field">
+          <label class="tb-label flex items-center gap-2 cursor-pointer font-medium">
+            <input type="checkbox" id="case-sensitive" class="tb-input w-5 h-5"> Case Sensitive
+          </div>
           </label>
           <div class="flex-grow"></div>
           <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
@@ -223,7 +229,7 @@
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
         <h2 id="tb-browse-category-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Browse this category</h2>
         <p class="text-sm mb-4 max-w-2xl text-gray-900 dark:text-gray-100">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
-        <a href="../categories/text-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Text &amp; content tools</a>
+        <a href="../categories/text-tools.html" class="tb-btn tb-btn-outline inline-flex items-center px-5 py-3 rounded-xl">Open Text &amp; content tools</a>
       </section>
 <section class="prose max-w-none text-gray-700 dark:text-gray-300 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Master Your Content with Find &amp; Replace</h2>
@@ -316,7 +322,7 @@
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+  <div id="cookie-consent-banner" class="tb-card fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] md:p-5 z-[120] hidden dark:text-gray-100" role="region" aria-label="Cookie consent banner">
     <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
@@ -326,33 +332,33 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
+      <div class="tb-card w-full max-w-xl dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
-            <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
+            <input type="checkbox" checked disabled class="tb-input h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Optional</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Supports optional site features.</span>
             </span>
-            <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
+            <input type="checkbox" id="cookie-analytics-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
-            <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
+            <input type="checkbox" id="cookie-advertising-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">

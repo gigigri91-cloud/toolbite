@@ -140,25 +140,31 @@
         <p class="text-gray-600 dark:text-gray-400">Generate a QR code instantly from any URL, text, phone number or email. Download as PNG with one click.</p>
       </section>
 
-      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+      <div class="tb-card tb-card-accent mb-6">
         <strong>Privacy:</strong> QR codes are rendered entirely in your browser — your text is never sent to ToolBite servers.
       </div>
 
-      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 dark:border-gray-700 mb-10 text-gray-900 dark:text-gray-100">
+      <div class="tb-card md:p-8 mb-10 dark:text-gray-100">
 
         <div class="mb-5">
-          <label for="qr-input" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Text or URL to encode</label>
-          <textarea id="qr-input" rows="3" placeholder="https://toolbite.org or any text…" class="w-full border border-gray-300 rounded-xl p-3 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none text-sm"></textarea>
+          <div class="tb-field">
+          <label for="qr-input" class="tb-label block font-bold mb-2">Text or URL to encode</label>
+          <textarea id="qr-input" rows="3" placeholder="https://toolbite.org or any text…" class="tb-textarea w-full border resize-none"></textarea>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label for="qr-size" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Size: <span id="qr-size-label">300</span>px</label>
-            <input type="range" id="qr-size" min="100" max="600" step="50" value="300" class="w-full accent-blue-600">
+            <div class="tb-field">
+            <label for="qr-size" class="tb-label block font-bold mb-2">Size: <span id="qr-size-label">300</span>px</label>
+            <input type="range" id="qr-size" min="100" max="600" step="50" value="300" class="tb-input w-full accent-blue-600">
+            </div>
           </div>
           <div>
-            <label for="qr-error" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Error correction</label>
-            <select id="qr-error" class="w-full border border-gray-300 rounded-xl p-2 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <div class="tb-field">
+            <label for="qr-error" class="tb-label block font-bold mb-2">Error correction</label>
+            <select id="qr-error" class="tb-select w-full border">
+            </div>
               <option value="L">Low (L) — smaller QR</option>
               <option value="M" selected>Medium (M) — balanced</option>
               <option value="Q">Quartile (Q)</option>
@@ -170,13 +176,13 @@
         <button id="qr-generate-btn" onclick="generateQR()" class="tb-btn tb-btn-primary tb-btn-lg tb-btn-block mb-8">Generate QR Code</button>
 
         <div id="qr-result" class="hidden flex-col items-center gap-5">
-          <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl border-2 border-dashed border-blue-200 shadow-inner text-gray-900 dark:text-gray-100">
+          <div class="tb-card tb-card-flat dark:text-gray-100">
             <img id="qr-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Generated QR Code" class="block rounded-xl" style="image-rendering: pixelated;" loading="lazy">
           </div>
           <div class="flex gap-3 flex-wrap justify-center">
-            <button onclick="downloadQR()" class="tb-btn tb-btn-primary tb-btn-md shadow">⬇ Download PNG</button>
+            <button onclick="downloadQR()" class="tb-btn tb-btn-primary">⬇ Download PNG</button>
             <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
-          <button onclick="copyQRLink()" id="copy-link-btn" class="tb-btn tb-btn-neutral tb-btn-md shadow">🔗 Copy API Link</button>
+          <button onclick="copyQRLink()" id="copy-link-btn" class="tb-btn tb-btn-neutral">🔗 Copy API Link</button>
           </div>
           <p id="qr-encoded-text" class="text-xs text-gray-400 text-center max-w-sm truncate"></p>
         </div>
@@ -375,7 +381,7 @@
   </script>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+  <div id="cookie-consent-banner" class="tb-card fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] md:p-5 z-[120] hidden dark:text-gray-100" role="region" aria-label="Cookie consent banner">
     <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
@@ -385,33 +391,33 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
+      <div class="tb-card w-full max-w-xl dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
-            <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
+            <input type="checkbox" checked disabled class="tb-input h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Optional</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Supports optional site features.</span>
             </span>
-            <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
+            <input type="checkbox" id="cookie-analytics-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
-            <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
+            <input type="checkbox" id="cookie-advertising-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">

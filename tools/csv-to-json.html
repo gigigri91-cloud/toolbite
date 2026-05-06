@@ -140,53 +140,59 @@
         <p class="text-gray-600 dark:text-gray-400">Paste your CSV data and instantly get a clean JSON array. First row is used as keys. Works fully in your browser.</p>
       </section>
 
-      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+      <div class="tb-card tb-card-accent mb-6">
         <strong>Privacy:</strong> Your data is processed entirely in your browser and never uploaded to any server.
       </div>
 
-      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 dark:border-gray-700 mb-10 text-gray-900 dark:text-gray-100">
+      <div class="tb-card md:p-8 mb-10 dark:text-gray-100">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <div class="flex items-center justify-between mb-2">
-              <label for="csv-input" class="block text-sm font-bold text-gray-700 dark:text-gray-300">CSV Input</label>
+              <label for="csv-input" class="tb-label block font-bold">CSV Input</label>
               <button onclick="loadExample()" class="tb-btn tb-btn-link">Load example</button>
             </div>
-            <textarea id="csv-input" rows="12" placeholder="name,age,city&#10;Alice,30,London&#10;Bob,25,Paris" class="w-full border border-gray-300 rounded-xl p-3 text-gray-800 dark:text-gray-200 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"></textarea>
+            <textarea id="csv-input" rows="12" placeholder="name,age,city&#10;Alice,30,London&#10;Bob,25,Paris" class="tb-textarea w-full border font-mono resize-none"></textarea>
           </div>
           <div>
             <div class="flex items-center justify-between mb-2">
-              <label for="json-output" class="block text-sm font-bold text-gray-700 dark:text-gray-300">JSON Output</label>
+              <label for="json-output" class="tb-label block font-bold">JSON Output</label>
               <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
           <button onclick="copyJSON()" id="copy-json-btn" class="tb-btn tb-btn-link">Copy</button>
             </div>
-            <textarea id="json-output" rows="12" readonly placeholder="JSON will appear here…" class="w-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 rounded-xl p-3 text-gray-800 dark:text-gray-200 font-mono text-xs focus:outline-none resize-none"></textarea>
+            <textarea id="json-output" rows="12" readonly placeholder="JSON will appear here…" class="tb-textarea tb-textarea-mono w-full border font-mono resize-none"></textarea>
           </div>
         </div>
 
         <div class="flex flex-wrap gap-4 items-center mb-6 text-sm">
-          <label class="flex items-center gap-2 font-medium text-gray-700 dark:text-gray-300 cursor-pointer">
-            <input type="checkbox" id="opt-header" checked class="w-4 h-4 rounded text-blue-600 dark:text-blue-400">
+          <div class="tb-field">
+          <label class="tb-label flex items-center gap-2 font-medium cursor-pointer">
+            <input type="checkbox" id="opt-header" checked class="tb-input w-4 h-4">
+          </div>
             First row is header
           </label>
           <div class="flex items-center gap-2">
-            <label for="opt-delimiter" class="font-medium text-gray-700 dark:text-gray-300">Delimiter:</label>
-            <select id="opt-delimiter" class="border border-gray-300 rounded-lg px-2 py-1 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <div class="tb-field">
+            <label for="opt-delimiter" class="tb-label font-medium">Delimiter:</label>
+            <select id="opt-delimiter" class="tb-select border">
+            </div>
               <option value=",">Comma (,)</option>
               <option value=";">Semicolon (;)</option>
               <option value="&#9;">Tab (\t)</option>
               <option value="|">Pipe (|)</option>
             </select>
           </div>
-          <label class="flex items-center gap-2 font-medium text-gray-700 dark:text-gray-300 cursor-pointer">
-            <input type="checkbox" id="opt-pretty" checked class="w-4 h-4 rounded text-blue-600 dark:text-blue-400">
+          <div class="tb-field">
+          <label class="tb-label flex items-center gap-2 font-medium cursor-pointer">
+            <input type="checkbox" id="opt-pretty" checked class="tb-input w-4 h-4">
+          </div>
             Pretty print
           </label>
         </div>
 
         <div class="flex gap-3 flex-wrap">
-          <button onclick="convertCSV()" class="flex-1 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-blue-900 transition shadow-lg transform hover:-translate-y-1">Convert to JSON</button>
-          <button onclick="clearAll()" class="px-6 py-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold rounded-2xl hover:bg-gray-200 transition">Clear</button>
+          <button onclick="convertCSV()" class="tb-btn tb-btn-primary flex-1 py-4 text-lg rounded-2xl">Convert to JSON</button>
+          <button onclick="clearAll()" class="tb-btn tb-btn-neutral px-6 py-4 rounded-2xl">Clear</button>
         </div>
 
         <div id="convert-status" class="mt-4 text-sm font-semibold hidden"></div>
@@ -466,7 +472,7 @@ With header disabled -> generated keys:
   </script>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+  <div id="cookie-consent-banner" class="tb-card fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] md:p-5 z-[120] hidden dark:text-gray-100" role="region" aria-label="Cookie consent banner">
     <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
@@ -476,33 +482,33 @@ With header disabled -> generated keys:
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
+      <div class="tb-card w-full max-w-xl dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
-            <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
+            <input type="checkbox" checked disabled class="tb-input h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Optional</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Supports optional site features.</span>
             </span>
-            <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
+            <input type="checkbox" id="cookie-analytics-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
-            <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
+            <input type="checkbox" id="cookie-advertising-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">

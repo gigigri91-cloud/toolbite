@@ -145,19 +145,19 @@
         </div>
       </div>
       </section>
-      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+      <div class="tb-card tb-card-accent mb-6">
         <strong>Privacy:</strong> JSON formatting and validation run locally in your browser. Routine inputs are not uploaded to ToolBite for processing.
       </div>
-      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-gray-100 dark:border-gray-700 mb-8 text-gray-900 dark:text-gray-100">
+      <div class="tb-card mb-8 dark:text-gray-100">
         <div class="flex flex-wrap gap-3 mb-4">
-          <button onclick="formatJSON()" class="px-5 py-2.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-sm">Format / Beautify</button>
-          <button onclick="minifyJSON()" class="px-5 py-2.5 bg-gray-200 text-gray-800 dark:text-gray-200 font-bold rounded-xl hover:bg-gray-300 transition">Minify</button>
-          <button onclick="clearJSON()" class="px-5 py-2.5 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-bold rounded-xl hover:bg-red-100 transition">Clear</button>
+          <button onclick="formatJSON()" class="tb-btn tb-btn-primary px-5 rounded-xl">Format / Beautify</button>
+          <button onclick="minifyJSON()" class="tb-btn tb-btn-primary px-5 rounded-xl">Minify</button>
+          <button onclick="clearJSON()" class="tb-btn tb-btn-neutral px-5 rounded-xl">Clear</button>
           <div class="flex-grow"></div>
           <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
-          <button id="copyBtn" onclick="copyJSON()" class="px-5 py-2.5 bg-gray-800 text-white font-bold rounded-xl hover:bg-gray-900 transition shadow-sm">Copy Code</button>
+          <button id="copyBtn" onclick="copyJSON()" class="tb-btn tb-btn-neutral px-5 rounded-xl">Copy Code</button>
         </div>
-        <textarea id="jsonInput" class="w-full h-96 p-4 font-mono text-sm border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none resize-y text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 leading-relaxed" placeholder='Paste your JSON here...' spellcheck="false"></textarea>
+        <textarea id="jsonInput" class="tb-textarea tb-textarea-mono w-full h-96 font-mono outline-none resize-y leading-relaxed" placeholder='Paste your JSON here...' spellcheck="false"></textarea>
         <div id="jsonMessage" class="hidden mt-4 p-4 rounded-xl font-medium"></div>
       </div>
             <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
@@ -279,7 +279,7 @@ After formatting:
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
         <h2 id="tb-browse-category-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Browse this category</h2>
         <p class="text-sm mb-4 max-w-2xl text-gray-900 dark:text-gray-100">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
-        <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
+        <a href="../categories/developer-tools.html" class="tb-btn tb-btn-outline inline-flex items-center px-5 py-3 rounded-xl">Open Developer &amp; debugging tools</a>
       </section>
 <section class="prose max-w-none text-gray-700 dark:text-gray-300 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Why Use Our JSON Formatter?</h2>
@@ -354,7 +354,7 @@ After formatting:
           </a>
         </div>
       </section>
-    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="API & Data Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: API & Data Workflow</p><div class="flex flex-wrap gap-2"><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 dark:bg-blue-900/30 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">💻</span><span>JSON Formatter</span></div><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
+    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="API & Data Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: API & Data Workflow</p><div class="flex flex-wrap gap-2"><div class="tb-card tb-card-accent flex items-center gap-2 font-semibold" aria-current="page"><span aria-hidden="true">💻</span><span>JSON Formatter</span></div><a href="../tools/base64-encoder.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/jwt-decoder.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
 </main>
 
   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
@@ -377,7 +377,7 @@ After formatting:
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+  <div id="cookie-consent-banner" class="tb-card fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] md:p-5 z-[120] hidden dark:text-gray-100" role="region" aria-label="Cookie consent banner">
     <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
@@ -387,33 +387,33 @@ After formatting:
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
+      <div class="tb-card w-full max-w-xl dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
-            <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
+            <input type="checkbox" checked disabled class="tb-input h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Optional</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Supports optional site features.</span>
             </span>
-            <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
+            <input type="checkbox" id="cookie-analytics-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
-            <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
+            <input type="checkbox" id="cookie-advertising-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">

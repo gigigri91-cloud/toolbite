@@ -139,20 +139,26 @@
       <div class="tb-card tb-card-panel tb-card-pad-lg mb-8 md:p-8">
         <div class="flex flex-col sm:flex-row gap-4 mb-4">
           <div>
-            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2" for="hash-algo">Algorithm</label>
-            <select id="hash-algo" class="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-slate-400 outline-none bg-white dark:bg-gray-800 font-medium text-gray-800 dark:text-gray-200 min-w-[12rem]">
+            <div class="tb-field">
+            <label class="tb-label block font-bold mb-2" for="hash-algo">Algorithm</label>
+            <select id="hash-algo" class="tb-select border outline-none font-medium min-w-[12rem]">
+            </div>
               <option value="SHA-256">SHA-256 (recommended)</option>
               <option value="SHA-1">SHA-1 (legacy)</option>
             </select>
           </div>
         </div>
-        <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2" for="hash-input">Text to hash</label>
-        <textarea id="hash-input" class="w-full h-40 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-slate-200 outline-none resize-y mb-4 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 font-mono text-sm" placeholder="Paste any string…"></textarea>
-        <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2" for="hash-output">Hex digest</label>
-        <input type="text" id="hash-output" readonly class="w-full p-4 border border-slate-200 rounded-2xl bg-slate-50 mb-4 text-gray-900 dark:text-gray-100 font-mono text-sm break-all" placeholder="Click Compute hash…" aria-live="polite">
+        <div class="tb-field">
+        <label class="tb-label block font-bold mb-2" for="hash-input">Text to hash</label>
+        <textarea id="hash-input" class="tb-textarea tb-textarea-mono w-full h-40 border outline-none resize-y mb-4 font-mono" placeholder="Paste any string…"></textarea>
+        </div>
+        <div class="tb-field">
+        <label class="tb-label block font-bold mb-2" for="hash-output">Hex digest</label>
+        <input type="text" id="hash-output" readonly class="tb-input tb-input-mono w-full border mb-4 font-mono break-all" placeholder="Click Compute hash…" aria-live="polite">
+        </div>
         <p id="hash-error" class="text-red-600 dark:text-red-400 text-sm mb-4 hidden" role="alert"></p>
         <div class="flex flex-wrap gap-3">
-          <button type="button" id="hash-compute-btn" class="px-6 py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 transition">Compute hash</button>
+          <button type="button" id="hash-compute-btn" class="tb-btn tb-btn-primary px-6 py-3 rounded-xl">Compute hash</button>
           <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
           <button type="button" id="hash-copy-btn" class="tb-btn tb-btn-neutral tb-btn-md" disabled>Copy hex</button>
           <button type="button" id="hash-clear-btn" class="tb-btn tb-btn-danger-ghost tb-btn-md">Clear</button>
@@ -274,7 +280,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
         <h2 id="tb-browse-category-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Browse this category</h2>
         <p class="text-sm mb-4 max-w-2xl text-gray-900 dark:text-gray-100">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
-        <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
+        <a href="../categories/developer-tools.html" class="tb-btn tb-btn-outline inline-flex items-center px-5 py-3 rounded-xl">Open Developer &amp; debugging tools</a>
       </section>
 <section class="prose max-w-none text-gray-700 dark:text-gray-300 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Security notes</h2>
@@ -334,7 +340,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
           </a>
         </div>
       </section>
-    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="Security Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Security Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/password-generator.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🔑</span><span>Password Generator</span></a><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 dark:bg-blue-900/30 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">🔢</span><span>Hash Generator</span></div><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
+    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="Security Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Security Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/password-generator.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🔑</span><span>Password Generator</span></a><div class="tb-card tb-card-accent flex items-center gap-2 font-semibold" aria-current="page"><span aria-hidden="true">🔢</span><span>Hash Generator</span></div><a href="../tools/jwt-decoder.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
 </main>
 
   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
@@ -357,7 +363,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+  <div id="cookie-consent-banner" class="tb-card fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] md:p-5 z-[120] hidden dark:text-gray-100" role="region" aria-label="Cookie consent banner">
     <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
@@ -367,33 +373,33 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
+      <div class="tb-card w-full max-w-xl dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
-            <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
+            <input type="checkbox" checked disabled class="tb-input h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Optional</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Supports optional site features.</span>
             </span>
-            <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
+            <input type="checkbox" id="cookie-analytics-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow optional cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border">
             <span>
               <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
               <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
-            <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
+            <input type="checkbox" id="cookie-advertising-toggle" class="tb-input h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
