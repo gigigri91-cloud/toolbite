@@ -22,7 +22,7 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-pseo-target="meta-title">Hash generator — SHA-256 &amp; SHA-1 in-browser | ToolBite</title>
@@ -32,7 +32,7 @@
   <link rel="canonical" href="https://toolbite.org/tools/hash-generator.html">
 <link rel="alternate" hreflang="x-default" href="https://toolbite.org/tools/hash-generator.html">
   <link rel="alternate" hreflang="en" href="https://toolbite.org/tools/hash-generator.html">
-  <meta name="description" data-pseo-target="meta-description" content="Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.">
+  <meta name="description" data-pseo-target="meta-description" content="Generate SHA-1 and SHA-256 hashes from text input to verify integrity, compare values, and support debugging tasks where quick local digest output is needed.">
   <meta name="theme-color" content="#2563eb">
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
@@ -107,7 +107,7 @@
         </ul>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -135,11 +135,11 @@
       </nav>
       <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
       <div class="mb-0">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display" data-pseo-target="h1">SHA-256 &amp; SHA-1 hash generator  <button onclick="toggleFavorite('/tools/hash-generator.html', document.title.split('—')[0].trim())" class="favorite-btn text-gray-400 hover:text-orange-500 transition-colors" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display" data-pseo-target="h1">SHA-256 &amp; SHA-1 hash generator  <button onclick="toggleFavorite('/tools/hash-generator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
         <p class="text-gray-600">Fingerprint any UTF-8 text as lowercase hexadecimal. Uses the browser’s <strong class="text-gray-800">SubtleCrypto</strong> API — not for file checksums of large binaries (paste text only).</p>
       </div>
       </section>
-      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
+      <div class="tb-card tb-card-panel tb-card-pad-lg mb-8 md:p-8">
         <div class="flex flex-col sm:flex-row gap-4 mb-4">
           <div>
             <label class="block text-sm font-bold text-gray-700 mb-2" for="hash-algo">Algorithm</label>
@@ -156,9 +156,9 @@
         <p id="hash-error" class="text-red-600 text-sm mb-4 hidden" role="alert"></p>
         <div class="flex flex-wrap gap-3">
           <button type="button" id="hash-compute-btn" class="px-6 py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 transition">Compute hash</button>
-          <button type="button" class="px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition shadow-sm mr-2 hidden md:inline-block" onclick="showEmbedModal()">Embed</button>
-          <button type="button" id="hash-copy-btn" class="px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition" disabled>Copy hex</button>
-          <button type="button" id="hash-clear-btn" class="px-4 py-3 text-red-500 font-bold hover:bg-red-50 rounded-xl transition">Clear</button>
+          <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
+          <button type="button" id="hash-copy-btn" class="tb-btn tb-btn-neutral tb-btn-md" disabled>Copy hex</button>
+          <button type="button" id="hash-clear-btn" class="tb-btn tb-btn-danger-ghost tb-btn-md">Clear</button>
         </div>
       </div>
             <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
@@ -207,7 +207,7 @@
           </details>
         </div>
       </section>
-      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-advanced-usage-heading">
+      <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-advanced-usage-heading">
         <h2 id="tb-advanced-usage-heading" class="text-lg font-bold text-gray-900 mb-4">Advanced Usage &amp; Examples</h2>
 
         <div class="space-y-5">
@@ -248,7 +248,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
           </div>
         </div>
 
-        <div class="mt-6 rounded-2xl border border-indigo-200 bg-indigo-50 p-4">
+        <div class="tb-card tb-card-tinted-indigo tb-card-pad-sm mt-6">
           <p class="text-sm font-bold text-indigo-900 mb-1">Did you know? 🧠</p>
           <p class="text-sm text-indigo-900">Any tiny input change (even one space) creates a completely different hash output due to the avalanche effect.</p>
         </div>
@@ -264,22 +264,22 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
         <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../guides/json-formatter-guide.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+          <a href="../guides/json-formatter-guide.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800 text-sm mb-1">JSON checklist</p>
             <p class="text-xs text-gray-500">Compare payloads with hashes.</p>
           </a>
-          <a href="../guides/index.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+          <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
             <p class="text-xs text-gray-500">Browse all guides.</p>
           </a>
         </div>
       </section>
-      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+      <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
         <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
         <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
         <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
       </section>
-<section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
+<section class="prose max-w-none text-gray-700 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Security notes</h2>
         <p class="mb-3">SHA-1 is deprecated for certificates and signatures, but still used for quick non-cryptographic checksums. Prefer <strong>SHA-256</strong> for new workflows.</p>
         <p class="mb-3">This page requires a secure context (<code class="bg-gray-100 px-1 rounded">https://</code> or <code class="bg-gray-100 px-1 rounded">localhost</code>) for <code class="bg-gray-100 px-1 rounded">crypto.subtle</code> in most browsers.</p>
@@ -299,14 +299,14 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
     </article>
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
-      <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6">
+      <div class="tb-card tb-card-panel tb-card-pad-lg">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Related verification workflow</h3>
         <div class="space-y-3 text-sm">
-          <a href="../categories/developer-tools.html" class="block rounded-xl border border-gray-100 bg-gray-50 p-4 hover:shadow-md transition">
+          <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <span class="font-bold text-gray-800">Browse Developer Tools</span>
             <span class="block text-gray-500 mt-1">Continue into Base64, UUIDs, URL encoding, JSON formatting, and other debugging utilities.</span>
           </a>
-          <a href="../guides/index.html" class="block rounded-xl border border-gray-100 bg-gray-50 p-4 hover:shadow-md transition">
+          <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <span class="font-bold text-gray-800">ToolBite guides: JSON, JWT & SEO</span>
             <span class="block text-gray-500 mt-1">Jump from quick hashing into related developer and publishing tutorials.</span>
           </a>
@@ -314,30 +314,30 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
       </div>
     </aside>
 
-      <section class="tb-tool-section mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+      <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
           <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="../tools/color-palette-generator.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/color-palette-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🎨</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Color palette generator online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Spin up five-color palettes and copy HEX codes with one click.</p>
           </a>
-          <a href="../tools/word-counter.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📝</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Word counter online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Words, characters, sentences, and paragraphs for drafts and specs.</p>
           </a>
-          <a href="../tools/password-generator.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/password-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔑</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Password generator online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate long random passwords with the Web Crypto API where available.</p>
           </a>
         </div>
       </section>
-    <section class="mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-5 md:p-6 not-prose" aria-label="Security Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Security Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/password-generator.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🔑</span><span>Password Generator</span></a><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">🔢</span><span>Hash Generator</span></div><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
+    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="Security Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Security Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/password-generator.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🔑</span><span>Password Generator</span></a><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">🔢</span><span>Hash Generator</span></div><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
 </main>
 
   <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
@@ -363,8 +363,8 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
     <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
-      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+      <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
     </div>
   </div>
 
@@ -373,7 +373,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
-          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+          <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
@@ -400,7 +400,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
-          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+          <button type="button" id="cookie-save-preferences" class="tb-btn tb-btn-primary tb-btn-sm">Save Preferences</button>
         </div>
       </div>
     </div>

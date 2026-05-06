@@ -22,7 +22,7 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-pseo-target="meta-title">Image compressor — shrink files in your browser | ToolBite</title>
@@ -32,7 +32,7 @@
   <link rel="canonical" href="https://toolbite.org/tools/image-compressor.html">
 <link rel="alternate" hreflang="x-default" href="https://toolbite.org/tools/image-compressor.html">
   <link rel="alternate" hreflang="en" href="https://toolbite.org/tools/image-compressor.html">
-  <meta name="description" data-pseo-target="meta-description" content="JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.">
+  <meta name="description" data-pseo-target="meta-description" content="Compress images in JPG or WebP format with adjustable quality to reduce file size, improve page speed, and prepare uploads without external processing steps.">
   <meta name="theme-color" content="#2563eb">
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
@@ -106,7 +106,7 @@
       </ul>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -132,14 +132,14 @@
       </ol></nav>
       <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
       <div class="mb-0">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">Image compressor online  <button onclick="toggleFavorite('/tools/image-compressor.html', document.title.split('—')[0].trim())" class="favorite-btn text-gray-400 hover:text-orange-500 transition-colors" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">Image compressor online  <button onclick="toggleFavorite('/tools/image-compressor.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
         <p class="text-gray-600">Compress JPG, PNG, and WebP images with local browser processing and download a smaller file without an upload step.</p>
       </div>
       </section>
       <div class="bg-green-50 border border-green-100 rounded-2xl p-4 mb-6 text-sm text-green-900">
         <strong>Privacy:</strong> Image compression runs on your device in the browser. Your files are not uploaded to ToolBite for processing.
       </div>
-      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8">
+      <div class="tb-card tb-card-panel tb-card-pad-lg mb-8 md:p-8">
         <input type="file" id="file-in" accept="image/*" class="block w-full text-sm text-gray-600 file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:bg-green-600 file:text-white file:font-bold hover:file:bg-green-700 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
@@ -156,7 +156,7 @@
         </div>
         <p id="hint" class="text-sm text-amber-700 bg-amber-50 border border-amber-100 rounded-xl p-3 mb-6 hidden">PNG with transparency may get a white background when exported as JPEG or WebP.</p>
         <div class="flex flex-wrap gap-4 items-center border-t pt-6">
-          <button type="button" class="px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition shadow-sm mr-2 hidden md:inline-block" onclick="showEmbedModal()">Embed Tool</button>
+          <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed Tool</button>
           <button type="button" id="compress-btn" class="px-8 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition disabled:opacity-50" disabled>Compress</button>
           <a id="dl" href="#" download="compressed.jpg" class="hidden px-8 py-3 bg-gray-800 text-white font-bold rounded-xl hover:bg-gray-900 transition">Download</a>
           <span id="stats" class="text-sm text-gray-600"></span>
@@ -214,22 +214,22 @@
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
         <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <a href="../guides/index.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+          <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
             <p class="text-xs text-gray-500">Publishing and media tips.</p>
           </a>
-          <a href="../guides/seo-slug-best-practices.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition block">
+          <a href="../guides/seo-slug-best-practices.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800 text-sm mb-1">SEO slug best practices</p>
             <p class="text-xs text-gray-500">Light pages, clean URLs.</p>
           </a>
         </div>
       </section>
-      <section class="tb-tool-section mt-6 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-browse-category-heading">
+      <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
         <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
         <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
         <a href="../categories/image-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Image &amp; media tools</a>
       </section>
-<section class="prose max-w-none text-gray-700 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm tb-seo-notes" aria-label="About this tool">
+<section class="prose max-w-none text-gray-700 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">100% Private — Your Images Stay on Your Device</h2>
         <p>Your file never leaves your device. We draw the image to a canvas and encode it with your chosen quality — perfect before uploading to a blog, shop, or social network.</p>
       
@@ -256,23 +256,23 @@
     </article>
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
 
-      <div class="bg-blue-50/50 rounded-3xl p-6 border border-blue-100 shadow-sm mb-6">
+      <div class="tb-card tb-card-tinted-blue tb-card-pad-lg mb-6">
         <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">📖 Deep Dive</h3>
-        <a href="../guides/compress-images-guide.html" class="block bg-white border border-blue-200 rounded-xl p-4 hover:shadow-md hover:border-blue-400 transition group">
+        <a href="../guides/compress-images-guide.html" class="tb-card tb-card-pad-sm tb-card-clickable group border-blue-200 hover:border-blue-400">
           <p class="font-bold text-blue-800 group-hover:text-blue-600 transition-colors">How to compress images for web without losing quality</p>
           <p class="text-gray-600 text-xs mt-2 leading-relaxed">A practical guide to reducing image file size for faster web pages. Learn whi...</p>
         </a>
       </div>
 
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
-      <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
+      <div class="tb-card tb-card-pad-lg">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Related publishing resources</h3>
         <div class="space-y-3 text-sm">
-          <a href="../categories/image-tools.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <a href="../categories/image-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800">Image Tools category</p>
             <p class="text-gray-500 mt-1">Browse ToolBite's image workflow hub and related optimization tasks.</p>
           </a>
-          <a href="../categories/seo-tools.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <a href="../categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800">SEO &amp; Content Tools</p>
             <p class="text-gray-500 mt-1">Pair lighter images with slugs, read time, and other publishing helpers.</p>
           </a>
@@ -280,23 +280,23 @@
       </div>
     </aside>
 
-      <section class="tb-tool-section mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+      <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
           <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="../tools/word-counter.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📝</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Word counter online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Words, characters, sentences, and paragraphs for drafts and specs.</p>
           </a>
-          <a href="../tools/password-generator.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/password-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔑</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Password generator online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate long random passwords with the Web Crypto API where available.</p>
           </a>
-          <a href="../tools/json-formatter.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/json-formatter.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">💻</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">JSON formatter &amp; validator online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD.</p>
@@ -328,8 +328,8 @@
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
     <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
-      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+      <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
     </div>
   </div>
 
@@ -338,7 +338,7 @@
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
-          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+          <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
@@ -365,7 +365,7 @@
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
-          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+          <button type="button" id="cookie-save-preferences" class="tb-btn tb-btn-primary tb-btn-sm">Save Preferences</button>
         </div>
       </div>
     </div>

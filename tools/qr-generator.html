@@ -22,7 +22,7 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-pseo-target="meta-title">QR Code Generator — Free, instant, browser-based | ToolBite</title>
@@ -32,7 +32,7 @@
   <link rel="canonical" href="https://toolbite.org/tools/qr-generator.html">
 <link rel="alternate" hreflang="x-default" href="https://toolbite.org/tools/qr-generator.html">
   <link rel="alternate" hreflang="en" href="https://toolbite.org/tools/qr-generator.html">
-  <meta name="description" data-pseo-target="meta-description" content="Generate QR codes instantly for any URL, text, email or phone number. Download as PNG. No uploads, no account required — everything runs in your browser.">
+  <meta name="description" data-pseo-target="meta-description" content="Create QR codes from links, text, email, or phone values, then download PNG output for print assets, onboarding materials, and quick offline sharing use cases.">
   <meta name="theme-color" content="#2563eb">
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
@@ -107,7 +107,7 @@
         </ul>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -139,7 +139,7 @@
       </nav>
 
       <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">QR Code Generator  <button onclick="toggleFavorite('/tools/qr-generator.html', document.title.split('—')[0].trim())" class="favorite-btn text-gray-400 hover:text-orange-500 transition-colors" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">QR Code Generator  <button onclick="toggleFavorite('/tools/qr-generator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
         <p class="text-gray-600">Generate a QR code instantly from any URL, text, phone number or email. Download as PNG with one click.</p>
       </section>
 
@@ -170,16 +170,16 @@
           </div>
         </div>
 
-        <button id="qr-generate-btn" onclick="generateQR()" class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-blue-900 transition duration-300 shadow-lg transform hover:-translate-y-1 mb-8">Generate QR Code</button>
+        <button id="qr-generate-btn" onclick="generateQR()" class="tb-btn tb-btn-primary tb-btn-lg tb-btn-block mb-8">Generate QR Code</button>
 
         <div id="qr-result" class="hidden flex-col items-center gap-5">
           <div class="p-4 bg-white rounded-2xl border-2 border-dashed border-blue-200 shadow-inner">
             <img id="qr-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Generated QR Code" class="block rounded-xl" style="image-rendering: pixelated;" loading="lazy">
           </div>
           <div class="flex gap-3 flex-wrap justify-center">
-            <button onclick="downloadQR()" class="px-6 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition shadow">⬇ Download PNG</button>
-            <button type="button" class="px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition shadow-sm mr-2 hidden md:inline-block" onclick="showEmbedModal()">Embed</button>
-          <button onclick="copyQRLink()" id="copy-link-btn" class="px-6 py-3 bg-gray-100 text-gray-800 font-bold rounded-xl hover:bg-gray-200 transition shadow">🔗 Copy API Link</button>
+            <button onclick="downloadQR()" class="tb-btn tb-btn-primary tb-btn-md shadow">⬇ Download PNG</button>
+            <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
+          <button onclick="copyQRLink()" id="copy-link-btn" class="tb-btn tb-btn-neutral tb-btn-md shadow">🔗 Copy API Link</button>
           </div>
           <p id="qr-encoded-text" class="text-xs text-gray-400 text-center max-w-sm truncate"></p>
         </div>
@@ -261,23 +261,23 @@
 
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
 
-      <div class="bg-blue-50/50 rounded-3xl p-6 border border-blue-100 shadow-sm mb-6">
+      <div class="tb-card tb-card-tinted-blue tb-card-pad-lg mb-6">
         <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">📖 Deep Dive</h3>
-        <a href="../guides/qr-code-guide.html" class="block bg-white border border-blue-200 rounded-xl p-4 hover:shadow-md hover:border-blue-400 transition group">
+        <a href="../guides/qr-code-guide.html" class="tb-card tb-card-pad-sm tb-card-clickable group border-blue-200 hover:border-blue-400">
           <p class="font-bold text-blue-800 group-hover:text-blue-600 transition-colors">QR codes explained — how to create, customize, and use them</p>
           <p class="text-gray-600 text-xs mt-2 leading-relaxed">Everything you need to know about QR codes: what they store, how error correc...</p>
         </a>
       </div>
 
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
-      <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
+      <div class="tb-card tb-card-pad-lg">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Developer Tools</h3>
         <div class="space-y-3 text-sm">
-          <a href="../categories/developer-tools.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800">Browse all Developer Tools</p>
             <p class="text-gray-500 mt-1">JSON, JWT, Base64, UUID, hashing and more.</p>
           </a>
-          <a href="../tools/uuid-generator.html" class="block bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition">
+          <a href="../tools/uuid-generator.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
             <p class="font-bold text-gray-800">UUID Generator</p>
             <p class="text-gray-500 mt-1">Generate random v4 IDs instantly.</p>
           </a>
@@ -285,23 +285,23 @@
       </div>
     </aside>
 
-      <section class="tb-tool-section mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 not-prose" aria-labelledby="tb-related-tools-heading">
+      <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
           <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="../tools/password-generator.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/password-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔑</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Password generator online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate long random passwords with the Web Crypto API where available.</p>
           </a>
-          <a href="../tools/color-palette-generator.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/color-palette-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🎨</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Color palette generator online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Spin up five-color palettes and copy HEX codes with one click.</p>
           </a>
-          <a href="../tools/word-counter.html" class="group p-5 rounded-2xl border border-gray-50 bg-gray-50/50 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all">
+          <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📝</span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Word counter online</h3>
             <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Words, characters, sentences, and paragraphs for drafts and specs.</p>
@@ -381,8 +381,8 @@
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
     <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
-      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+      <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
     </div>
   </div>
 
@@ -391,7 +391,7 @@
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
-          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+          <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
@@ -418,7 +418,7 @@
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
-          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+          <button type="button" id="cookie-save-preferences" class="tb-btn tb-btn-primary tb-btn-sm">Save Preferences</button>
         </div>
       </div>
     </div>

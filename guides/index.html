@@ -22,7 +22,7 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-pseo-target="meta-title">Guides — JSON, JWT &amp; SEO workflows | ToolBite</title>
@@ -32,7 +32,7 @@
   <link rel="canonical" href="https://toolbite.org/guides/index.html">
 <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/index.html">
   <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/index.html">
-  <meta name="description" data-pseo-target="meta-description" content="Short, practical write-ups tied to ToolBite utilities: fix broken JSON, decode JWTs safely, and tighten URL slugs—all with a browser-first mindset.">
+  <meta name="description" data-pseo-target="meta-description" content="Browse ToolBite guides for JSON formatting, JWT decoding, URL encoding, password security, and SEO slugs, with practical walkthroughs for implementation tasks.">
   <meta name="theme-color" content="#2563eb">
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
@@ -85,7 +85,7 @@
         </ul>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -119,15 +119,15 @@
     <section class="mb-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8" aria-labelledby="guides-start-title">
       <h2 id="guides-start-title" class="text-xl font-bold text-gray-900 mb-4">Start with a workflow</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="../categories/developer-tools.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Developer tools</h3>
           <p class="text-sm text-gray-600">JSON formatting, JWT decoding, Base64, hashing, and other debugging helpers.</p>
         </a>
-        <a href="../categories/seo-tools.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">SEO workflows</h3>
           <p class="text-sm text-gray-600">Slug creation, read time, structured data cleanup, and content packaging tasks.</p>
         </a>
-        <a href="../categories/text-tools.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Text cleanup</h3>
           <p class="text-sm text-gray-600">Count, clean, convert, and bulk-edit text before publishing or sharing.</p>
         </a>
@@ -137,27 +137,27 @@
     <section class="mb-8 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8" aria-labelledby="guides-tools-title">
       <h2 id="guides-tools-title" class="text-xl font-bold text-gray-900 mb-4">Popular tools behind these guides</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a href="../tools/json-formatter.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/json-formatter.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">JSON Formatter</h3>
           <p class="text-sm text-gray-600">Use the formatter while following the JSON cleanup guide step by step.</p>
         </a>
-        <a href="../tools/jwt-decoder.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/jwt-decoder.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">JWT Decoder</h3>
           <p class="text-sm text-gray-600">Inspect token payloads locally before checking verification logic in your app.</p>
         </a>
-        <a href="../tools/text-to-slug.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/text-to-slug.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Text to Slug</h3>
           <p class="text-sm text-gray-600">Turn headlines into clean URL slugs while following the SEO slug best-practice guide.</p>
         </a>
-        <a href="../tools/read-time-calculator.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/read-time-calculator.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Reading Time Calculator</h3>
           <p class="text-sm text-gray-600">Estimate how long articles take to read before publishing supporting content.</p>
         </a>
-        <a href="../tools/word-counter.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Word Counter</h3>
           <p class="text-sm text-gray-600">Cross-check article length, excerpt sizes, and meta copy while editing.</p>
         </a>
-        <a href="../categories/seo-tools.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Browse SEO &amp; Content Tools</h3>
           <p class="text-sm text-gray-600">See the wider tool set that supports publishing, structured data, and content cleanup.</p>
         </a>
@@ -167,47 +167,47 @@
     <section class="mb-8" aria-labelledby="guides-library-heading">
       <h2 id="guides-library-heading" class="text-2xl font-bold text-gray-900 mb-6">Guide articles</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="json-formatter-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="json-formatter-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-blue-600 font-bold uppercase tracking-wide mb-2">Developer</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Fix Invalid JSON Fast</h3>
           <p class="text-gray-600 text-sm">Understand parser errors, fix the usual syntax mistakes, and choose beautify vs minify correctly.</p>
         </a>
-        <a href="jwt-decoder-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="jwt-decoder-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-indigo-600 font-bold uppercase tracking-wide mb-2">Security</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Decode JWT Safely</h3>
           <p class="text-gray-600 text-sm">Learn decode vs verify, which claims to inspect, and safe production practices for auth tokens.</p>
         </a>
-        <a href="seo-slug-best-practices.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="seo-slug-best-practices.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-sky-700 font-bold uppercase tracking-wide mb-2">SEO</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">SEO Slug Best Practices</h3>
           <p class="text-gray-600 text-sm">Write shorter, cleaner URLs with better keyword placement and fewer slug mistakes.</p>
         </a>
-        <a href="compress-images-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="compress-images-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-emerald-600 font-bold uppercase tracking-wide mb-2">Performance</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Compress Images for Web</h3>
           <p class="text-gray-600 text-sm">WebP vs JPEG, the quality slider sweet spot, and a checklist before publishing any image.</p>
         </a>
-        <a href="base64-encoding-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="base64-encoding-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-blue-600 font-bold uppercase tracking-wide mb-2">Developer</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Base64 Encoding Explained</h3>
           <p class="text-gray-600 text-sm">How encoding works, when to use it (tokens, data URIs, email), and why it is NOT encryption.</p>
         </a>
-        <a href="uuid-guid-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="uuid-guid-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-blue-600 font-bold uppercase tracking-wide mb-2">Developer</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">UUID and GUID Explained</h3>
           <p class="text-gray-600 text-sm">UUID versions, when to use v4 vs v7, database trade-offs, and GUID vs UUID demystified.</p>
         </a>
-        <a href="url-encoding-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="url-encoding-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-blue-600 font-bold uppercase tracking-wide mb-2">Developer</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">URL Encoding Explained</h3>
           <p class="text-gray-600 text-sm">What %20 means, encodeURI vs encodeURIComponent, and how to fix broken links with special characters.</p>
         </a>
-        <a href="qr-code-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="qr-code-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-orange-600 font-bold uppercase tracking-wide mb-2">Practical</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">QR Codes Explained</h3>
           <p class="text-gray-600 text-sm">What to encode, error correction levels, print vs digital best practices, and a deployment checklist.</p>
         </a>
-        <a href="password-guide.html" class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="password-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-red-600 font-bold uppercase tracking-wide mb-2">Security</p>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Strong Password Guide</h3>
           <p class="text-gray-600 text-sm">Password entropy, minimum lengths, why reuse is dangerous, and how to store passwords safely.</p>
@@ -239,8 +239,8 @@
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
     <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
-      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+      <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
     </div>
   </div>
 
@@ -249,7 +249,7 @@
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
-          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+          <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
@@ -276,7 +276,7 @@
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
-          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+          <button type="button" id="cookie-save-preferences" class="tb-btn tb-btn-primary tb-btn-sm">Save Preferences</button>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-pseo-target="meta-title">About ToolBite — Local-first browser utilities</title>
@@ -103,7 +103,7 @@
         </ul>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -159,7 +159,7 @@
       </div>
     </div>
 
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-left" aria-labelledby="privacy-approach-heading">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="privacy-approach-heading">
       <h2 id="privacy-approach-heading" class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Privacy-First Approach</h2>
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
         ToolBite’s utilities are built around <strong class="text-gray-900 dark:text-white">client-side execution</strong>: in normal use, the tool logic runs in your web browser on your device using JavaScript, rather than sending your pasted text, decoded tokens, generated passwords, or uploaded files to ToolBite for centralized processing.
@@ -173,7 +173,7 @@
       </p>
     </section>
 
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-left" aria-labelledby="publisher-heading">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="publisher-heading">
       <h2 id="publisher-heading" class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">The Publisher</h2>
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
         <strong class="text-gray-900 dark:text-white">ToolBite</strong> (published at <a href="https://toolbite.org/" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-800 dark:hover:text-blue-300 underline underline-offset-2">toolbite.org</a>) is a <strong class="text-gray-900 dark:text-white">dedicated, reliable resource</strong> for developers, digital professionals, and <strong class="text-gray-900 dark:text-white">SEO experts</strong> who need consistent, browser-based utilities alongside practical, citation-friendly guides.
@@ -189,15 +189,15 @@
     <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 text-left">
       <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center md:text-left">Explore ToolBite</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="categories/text-tools.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Text Tools</h3>
           <p class="text-sm text-gray-600">Word count, case conversion, slug creation, cleanup, and editing helpers.</p>
         </a>
-        <a href="categories/developer-tools.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Developer Tools</h3>
           <p class="text-sm text-gray-600">JSON, JWT, Base64, hashing, UUIDs, and fast browser-based debugging utilities.</p>
         </a>
-        <a href="guides/index.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Guides &amp; Tutorials</h3>
           <p class="text-sm text-gray-600">Short practical walkthroughs for JSON, JWT, SEO slugs, and related workflows.</p>
         </a>
@@ -224,17 +224,17 @@
     </section>
 
   
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-left" aria-labelledby="who-we-are-heading">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="who-we-are-heading">
       <h2 id="who-we-are-heading" class="text-3xl font-bold text-gray-900 mb-4">Who We Are</h2>
       <p class="text-lg text-gray-700 leading-relaxed">ToolBite is operated by <strong>Gabriel C.</strong>, an indie developer based in Bucharest, Romania. This is a solo project focused on practical browser-based tools and concise technical guides.</p>
     </section>
 
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-left" aria-labelledby="editorial-standards-heading">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="editorial-standards-heading">
       <h2 id="editorial-standards-heading" class="text-3xl font-bold text-gray-900 mb-4">Editorial Standards</h2>
       <p class="text-lg text-gray-700 leading-relaxed">Tool pages are tested manually before release, and guides are reviewed before publication. We do not publish AI-only, unreviewed content.</p>
     </section>
 
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10 text-left" aria-labelledby="contact-response-heading">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="contact-response-heading">
       <h2 id="contact-response-heading" class="text-3xl font-bold text-gray-900 mb-4">Contact &amp; Response Time</h2>
       <p class="text-lg text-gray-700 leading-relaxed">For bugs, corrections, or partnership requests, use the <a href="contact.html" class="text-blue-600 hover:underline font-semibold">contact page</a>. Typical response time is <strong>24–48 hours</strong>.</p>
     </section>
@@ -265,8 +265,8 @@
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
     <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
-      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+      <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
     </div>
   </div>
 
@@ -275,7 +275,7 @@
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
-          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+          <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
@@ -302,7 +302,7 @@
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
-          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+          <button type="button" id="cookie-save-preferences" class="tb-btn tb-btn-primary tb-btn-sm">Save Preferences</button>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var K='toolbite-theme',r=document.documentElement,s=localStorage.getItem(K);if(s==='dark')r.classList.add('dark');else if(s==='light')r.classList.remove('dark');else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)r.classList.add('dark');}catch(_){}}());</script>
+  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-pseo-target="meta-title">SEO tools — slugs, read time &amp; publishing helpers | ToolBite</title>
@@ -87,7 +87,7 @@
         </ul>
       </nav>
       <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
@@ -119,22 +119,22 @@
       <p class="text-lg text-gray-600 max-w-2xl">Prepare your content for the web with precision. Generate slugs, calculate read time, and format structured data locally. Our tools help you refine your SEO strategy without sending your drafts to any external server.</p>
       <div class="mt-4 flex flex-wrap gap-3">
         <input id="category-search" type="search" placeholder="Filter tools in this category..." class="w-full sm:w-96 p-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-100 outline-none bg-white" aria-label="Filter SEO tools">
-        <button type="button" class="copy-tool-link inline-flex items-center px-4 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold hover:bg-gray-200 transition">Copy page link</button>
+        <button type="button" class="copy-tool-link tb-btn tb-btn-neutral tb-btn-md">Copy page link</button>
       </div>
     </div>
 
-    <section class="mb-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8" aria-labelledby="seo-workflows-title">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mb-10 md:p-8" aria-labelledby="seo-workflows-title">
       <h2 id="seo-workflows-title" class="text-xl font-bold text-gray-900 mb-4">Useful for everyday SEO work</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="../tools/text-to-slug.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/text-to-slug.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Slug creation</h3>
           <p class="text-sm text-gray-600">Turn headlines or keywords into short, readable URLs for posts and landing pages.</p>
         </a>
-        <a href="../tools/read-time-calculator.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/read-time-calculator.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Content packaging</h3>
           <p class="text-sm text-gray-600">Estimate reading time and cross-check article length before you publish.</p>
         </a>
-        <a href="../tools/json-formatter.html" class="bg-gray-50 border border-gray-100 rounded-2xl p-4 hover:shadow-md transition">
+        <a href="../tools/json-formatter.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold text-gray-900 mb-2">Structured data cleanup</h3>
           <p class="text-sm text-gray-600">Format and validate JSON snippets before pasting Schema.org markup into a page.</p>
         </a>
@@ -149,7 +149,7 @@
 
       <div id="category-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
-      <a href="../tools/word-counter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+      <a href="../tools/word-counter.html" class="tb-card tb-card-pad-lg tb-card-row">
         <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
         <div>
           <h3 class="font-bold text-gray-900 text-lg">Word Counter</h3>
@@ -157,7 +157,7 @@
         </div>
       </a>
 
-      <a href="../tools/json-formatter.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+      <a href="../tools/json-formatter.html" class="tb-card tb-card-pad-lg tb-card-row">
         <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
         <div>
           <h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3>
@@ -165,7 +165,7 @@
         </div>
       </a>
 
-      <a href="../tools/find-replace.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+      <a href="../tools/find-replace.html" class="tb-card tb-card-pad-lg tb-card-row">
         <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">🔁</div>
         <div>
           <h3 class="font-bold text-gray-900 text-lg">Find &amp; Replace</h3>
@@ -173,7 +173,7 @@
         </div>
       </a>
 
-      <a href="../tools/read-time-calculator.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+      <a href="../tools/read-time-calculator.html" class="tb-card tb-card-pad-lg tb-card-row">
         <div class="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">⏱️</div>
         <div>
           <h3 class="font-bold text-gray-900 text-lg">Read Time Calculator</h3>
@@ -181,7 +181,7 @@
         </div>
       </a>
 
-      <a href="../tools/text-to-slug.html" class="bg-white shadow-sm border border-gray-100 p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition duration-300 flex items-center gap-4 group">
+      <a href="../tools/text-to-slug.html" class="tb-card tb-card-pad-lg tb-card-row">
         <div class="w-14 h-14 bg-sky-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-sky-600 group-hover:text-white transition">🔗</div>
         <div>
           <h3 class="font-bold text-gray-900 text-lg">Text to Slug</h3>
@@ -196,7 +196,7 @@
 
 
 
-    <section class="mb-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mb-10 md:p-8">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Guides for SEO & Content</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <a href="../guides/seo-slug-best-practices.html" class="bg-gray-50 border border-gray-100 p-4 rounded-xl hover:shadow-md transition">
@@ -215,9 +215,9 @@
     <section>
       <h2 class="text-xl font-bold text-gray-900 mb-4">Browse Other Categories</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <a href="text-tools.html" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 transition text-center font-bold text-gray-700 hover:text-blue-700">✍️ Text Tools</a>
-        <a href="developer-tools.html" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 transition text-center font-bold text-gray-700 hover:text-blue-700">👨‍💻 Developer Tools</a>
-        <a href="image-tools.html" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:bg-blue-50 transition text-center font-bold text-gray-700 hover:text-blue-700">🖼️ Image Tools</a>
+        <a href="text-tools.html" class="tb-card tb-card-pad-md tb-card-clickable text-center font-bold text-gray-700 hover:text-blue-700">✍️ Text Tools</a>
+        <a href="developer-tools.html" class="tb-card tb-card-pad-md tb-card-clickable text-center font-bold text-gray-700 hover:text-blue-700">👨‍💻 Developer Tools</a>
+        <a href="image-tools.html" class="tb-card tb-card-pad-md tb-card-clickable text-center font-bold text-gray-700 hover:text-blue-700">🖼️ Image Tools</a>
       </div>
     </section>
 
@@ -247,8 +247,8 @@
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
     <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-      <button type="button" id="cookie-manage-btn" class="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition">Manage Preferences</button>
-      <button type="button" id="cookie-accept-btn" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Accept All</button>
+      <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
+      <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
     </div>
   </div>
 
@@ -257,7 +257,7 @@
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
         <div class="flex items-start justify-between gap-3 mb-4">
           <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
-          <button type="button" id="cookie-modal-close" class="text-gray-500 hover:text-gray-800" aria-label="Close preferences">&#10005;</button>
+          <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
         <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
@@ -284,7 +284,7 @@
           </label>
         </div>
         <div class="mt-6 flex flex-col sm:flex-row sm:justify-end gap-2">
-          <button type="button" id="cookie-save-preferences" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition">Save Preferences</button>
+          <button type="button" id="cookie-save-preferences" class="tb-btn tb-btn-primary tb-btn-sm">Save Preferences</button>
         </div>
       </div>
     </div>
