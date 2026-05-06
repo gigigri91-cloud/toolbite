@@ -234,6 +234,19 @@ html[data-theme="dark"] body .tb-card:hover {
     color: #4b5563;
     font-size: 0.875rem;
 }
+/* Ensure terminal-style blocks stay readable in light mode too */
+pre.bg-slate-900,
+pre.bg-gray-900,
+pre.bg-slate-800,
+pre.bg-gray-800 {
+    color: #e2e8f0 !important;
+}
+pre.bg-slate-900 code,
+pre.bg-gray-900 code,
+pre.bg-slate-800 code,
+pre.bg-gray-800 code {
+    color: inherit !important;
+}
 html[data-theme="dark"] body .tb-card-soft {
     background: #1e293b;
     border-color: #334155;
