@@ -153,7 +153,7 @@
         <textarea id="hash-input" class="w-full h-40 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-slate-200 outline-none resize-y mb-4 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 font-mono text-sm" placeholder="Paste any string…"></textarea>
         <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2" for="hash-output">Hex digest</label>
         <input type="text" id="hash-output" readonly class="w-full p-4 border border-slate-200 rounded-2xl bg-slate-50 mb-4 text-gray-900 dark:text-gray-100 font-mono text-sm break-all" placeholder="Click Compute hash…" aria-live="polite">
-        <p id="hash-error" class="text-red-600 text-sm mb-4 hidden" role="alert"></p>
+        <p id="hash-error" class="text-red-600 dark:text-red-400 text-sm mb-4 hidden" role="alert"></p>
         <div class="flex flex-wrap gap-3">
           <button type="button" id="hash-compute-btn" class="px-6 py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 transition">Compute hash</button>
           <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
@@ -258,7 +258,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
           <p class="text-sm text-amber-900">This tool computes plain hashes, not keyed authentication (HMAC) and not digital signatures. Use cryptographic signing when authenticity must be proven.</p>
         </div>
 
-        <p class="mt-5 text-sm text-gray-900 dark:text-gray-100"><strong>How this differs from <a href="../tools/password-generator.html" class="text-blue-600 hover:underline">Password Generator</a>:</strong> Hash Generator transforms existing input deterministically; Password Generator creates new random secrets.</p>
+        <p class="mt-5 text-sm text-gray-900 dark:text-gray-100"><strong>How this differs from <a href="../tools/password-generator.html" class="text-blue-600 dark:text-blue-400 hover:underline">Password Generator</a>:</strong> Hash Generator transforms existing input deterministically; Password Generator creates new random secrets.</p>
       </section>
 
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
@@ -317,7 +317,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
           <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">Explore Related Tools</h2>
-          <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
+          <a href="../search.html" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="../tools/color-palette-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
@@ -337,7 +337,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
           </a>
         </div>
       </section>
-    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="Security Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Security Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/password-generator.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🔑</span><span>Password Generator</span></a><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 dark:bg-blue-900/30 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">🔢</span><span>Hash Generator</span></div><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
+    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="Security Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: Security Workflow</p><div class="flex flex-wrap gap-2"><a href="../tools/password-generator.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🔑</span><span>Password Generator</span></a><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 dark:bg-blue-900/30 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">🔢</span><span>Hash Generator</span></div><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
 </main>
 
   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
@@ -361,7 +361,7 @@ Stable deterministic ID for non-security test fixtures.</code></pre>
   
 
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>

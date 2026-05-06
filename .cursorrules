@@ -13,6 +13,24 @@ Never write a color class without its dark counterpart.
 - bg-green-50 → bg-green-50 dark:bg-green-900/30
 - bg-red-50 → bg-red-50 dark:bg-red-900/30
 
+### Icon Wrapper Backgrounds (Tool Cards)
+- bg-indigo-100 → bg-indigo-100 dark:bg-indigo-900/40
+- bg-blue-100 → bg-blue-100 dark:bg-blue-900/40
+- bg-green-100 → bg-green-100 dark:bg-green-900/40
+- bg-yellow-100 → bg-yellow-100 dark:bg-yellow-900/40
+- bg-red-100 → bg-red-100 dark:bg-red-900/40
+- bg-purple-100 → bg-purple-100 dark:bg-purple-900/40
+- bg-pink-100 → bg-pink-100 dark:bg-pink-900/40
+- bg-orange-100 → bg-orange-100 dark:bg-orange-900/40
+- bg-teal-100 → bg-teal-100 dark:bg-teal-900/40
+- bg-cyan-100 → bg-cyan-100 dark:bg-cyan-900/40
+- bg-rose-100 → bg-rose-100 dark:bg-rose-900/40
+- bg-violet-100 → bg-violet-100 dark:bg-violet-900/40
+- bg-emerald-100 → bg-emerald-100 dark:bg-emerald-900/40
+- bg-amber-100 → bg-amber-100 dark:bg-amber-900/40
+- bg-lime-100 → bg-lime-100 dark:bg-lime-900/40
+- bg-sky-100 → bg-sky-100 dark:bg-sky-900/40
+
 ### Text
 - text-gray-900 → text-gray-900 dark:text-gray-100
 - text-gray-800 → text-gray-800 dark:text-gray-200
@@ -20,10 +38,33 @@ Never write a color class without its dark counterpart.
 - text-gray-600 → text-gray-600 dark:text-gray-400
 - text-gray-500 → text-gray-500 dark:text-gray-400
 
+### Icon Text Colors (Tool Cards)
+- text-indigo-600 → text-indigo-600 dark:text-indigo-400
+- text-blue-600 → text-blue-600 dark:text-blue-400
+- text-green-600 → text-green-600 dark:text-green-400
+- text-yellow-600 → text-yellow-600 dark:text-yellow-400
+- text-red-600 → text-red-600 dark:text-red-400
+- text-purple-600 → text-purple-600 dark:text-purple-400
+- text-pink-600 → text-pink-600 dark:text-pink-400
+- text-orange-600 → text-orange-600 dark:text-orange-400
+- text-teal-600 → text-teal-600 dark:text-teal-400
+- text-cyan-600 → text-cyan-600 dark:text-cyan-400
+- text-rose-600 → text-rose-600 dark:text-rose-400
+- text-violet-600 → text-violet-600 dark:text-violet-400
+- text-emerald-600 → text-emerald-600 dark:text-emerald-400
+- text-amber-600 → text-amber-600 dark:text-amber-400
+- text-sky-600 → text-sky-600 dark:text-sky-400
+
 ### Borders
 - border-gray-100 → border-gray-100 dark:border-gray-700
 - border-gray-200 → border-gray-200 dark:border-gray-600
 - border-gray-300 → border-gray-300 dark:border-gray-600
+
+### Hover States
+- hover:bg-gray-50 → hover:bg-gray-50 dark:hover:bg-gray-700
+- hover:bg-indigo-50 → hover:bg-indigo-50 dark:hover:bg-indigo-900/30
+- hover:border-indigo-200 → hover:border-indigo-200 dark:hover:border-indigo-700
+- hover:border-blue-200 → hover:border-blue-200 dark:hover:border-blue-700
 
 ### Shadows
 - shadow-xl → shadow-xl dark:shadow-gray-900/50

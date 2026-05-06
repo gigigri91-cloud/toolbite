@@ -143,7 +143,7 @@
         <textarea id="text-in" class="w-full h-64 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-teal-100 outline-none resize-y mb-6 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700" placeholder="Paste your text here..."></textarea>
         <div class="flex flex-wrap gap-3 border-t pt-6">
           <button type="button" id="btn-collapse" class="px-6 py-3 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition">Collapse spaces</button>
-          <button type="button" id="btn-lines" class="px-6 py-3 bg-teal-100 text-teal-900 font-bold rounded-xl hover:bg-teal-200 transition">Trim each line</button>
+          <button type="button" id="btn-lines" class="px-6 py-3 bg-teal-100 dark:bg-teal-900/40 text-teal-900 font-bold rounded-xl hover:bg-teal-200 transition">Trim each line</button>
           <button type="button" id="btn-noblanks" class="px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold rounded-xl hover:bg-gray-200 transition">Remove empty lines</button>
           <div class="flex-grow"></div>
           <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
@@ -240,7 +240,7 @@ Then parse consistently in downstream tools.</code></pre>
           <p class="text-sm text-amber-900">Aggressive collapsing can harm formatting in poetry, code blocks, and aligned tables. Preview output before replacing source text permanently.</p>
         </div>
 
-        <p class="mt-5 text-sm text-gray-900 dark:text-gray-100"><strong>How this differs from <a href="../tools/find-replace.html" class="text-blue-600 hover:underline">Find &amp; Replace</a>:</strong> Remove Extra Spaces standardizes whitespace patterns globally, while Find &amp; Replace targets specific tokens or phrases.</p>
+        <p class="mt-5 text-sm text-gray-900 dark:text-gray-100"><strong>How this differs from <a href="../tools/find-replace.html" class="text-blue-600 dark:text-blue-400 hover:underline">Find &amp; Replace</a>:</strong> Remove Extra Spaces standardizes whitespace patterns globally, while Find &amp; Replace targets specific tokens or phrases.</p>
       </section>
 
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
@@ -301,7 +301,7 @@ Then parse consistently in downstream tools.</code></pre>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
           <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">Explore Related Tools</h2>
-          <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
+          <a href="../search.html" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-md">
@@ -344,7 +344,7 @@ Then parse consistently in downstream tools.</code></pre>
   
 
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>

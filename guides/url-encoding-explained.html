@@ -150,8 +150,8 @@
       <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white">URL encoding explained with practical implementation rules</h1>
       <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8 sm:flex-row sm:items-center sm:justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 hover:underline">Gabriel C.</a></span></p>
+          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
+          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
         </div>
         <p>Published: <time datetime="2026-05-05" class="font-medium text-gray-800 dark:text-gray-200">2026-05-05</time> • Last reviewed: <time datetime="2026-05-05" class="font-medium text-gray-800 dark:text-gray-200">May 5, 2026</time></p>
       </div>
@@ -180,7 +180,7 @@ console.log(url);
       <p>Also avoid over-engineering: if the problem is small and local, a simpler transport or storage model is often better than introducing abstraction layers that only one maintainer understands. Choose the minimum mechanism that preserves correctness and future maintainability.</p>
 
       <h2>External References</h2>
-      <ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">MDN: encodeURI()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">MDN: encodeURIComponent()</a></li><li><a href="https://url.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">WHATWG URL Standard</a></li></ul>
+      <ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">MDN: encodeURI()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">MDN: encodeURIComponent()</a></li><li><a href="https://url.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">WHATWG URL Standard</a></li></ul>
 
       <h2>Implementation Checklist</h2>
       <ol>
@@ -213,7 +213,7 @@ console.log(url);
       <p>Answering "yes" to each item above usually correlates with fewer regressions and faster incident resolution. If several answers are "no," fix those process gaps before optimization work. In practice, resilient systems are built through deliberate clarity, not through brittle shortcuts that only work under ideal input.</p>
 
     </article>
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a></div></section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 dark:hover:border-blue-700 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a></div></section>
 </main>
 
   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
@@ -237,7 +237,7 @@ console.log(url);
   
 
   <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
