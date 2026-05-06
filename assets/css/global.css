@@ -149,6 +149,33 @@ html[data-theme="dark"] body .tb-btn-outline {
 html[data-theme="dark"] body .tb-btn-outline:hover {
     background: #374151;
 }
+html[data-theme="dark"] body .tb-btn-primary {
+    background: #3b82f6;
+    color: #ffffff;
+}
+html[data-theme="dark"] body .tb-btn-primary:hover {
+    background: #2563eb;
+}
+html[data-theme="dark"] body .tb-btn-danger-ghost {
+    color: #f87171;
+}
+html[data-theme="dark"] body .tb-btn-danger-ghost:hover {
+    background: rgba(239, 68, 68, 0.18);
+}
+html[data-theme="dark"] body .tb-btn-soft {
+    background: rgba(79, 70, 229, 0.18);
+    color: #c7d2fe;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+html[data-theme="dark"] body .tb-btn-soft:hover {
+    background: rgba(79, 70, 229, 0.26);
+}
+html[data-theme="dark"] body .tb-btn-link {
+    color: #93c5fd;
+}
+html[data-theme="dark"] body .tb-btn-icon:hover {
+    background: #374151;
+}
 .tb-mobile-menu-btn {
     color: #4b5563;
     border: 0;
