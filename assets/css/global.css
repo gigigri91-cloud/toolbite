@@ -844,3 +844,46 @@ html[data-theme="dark"] body .tool-card-tb .text-gray-600,
 html[data-theme="dark"] body .tool-card-tb .text-gray-400 {
   color: #94a3b8 !important;
 }
+
+/* ============================================
+   DARK MODE NUCLEAR OVERRIDE
+   Forces all text to be readable in dark mode
+   ============================================ */
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] body * {
+  color: inherit;
+}
+
+html[data-theme="dark"] body h1,
+html[data-theme="dark"] body h2,
+html[data-theme="dark"] body h3,
+html[data-theme="dark"] body h4,
+html[data-theme="dark"] body h5,
+html[data-theme="dark"] body h6 {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] body p,
+html[data-theme="dark"] body li,
+html[data-theme="dark"] body td,
+html[data-theme="dark"] body th,
+html[data-theme="dark"] body label,
+html[data-theme="dark"] body span:not([class*="badge"]):not([class*="tag"]):not([class*="btn"]) {
+  color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] body a:not([class*="btn"]):not([class*="badge"]) {
+  color: #93c5fd !important;
+}
+
+html[data-theme="dark"] body code,
+html[data-theme="dark"] body pre {
+  color: #e2e8f0 !important;
+  background-color: #1e293b !important;
+}
+
+html[data-theme="dark"] body strong,
+html[data-theme="dark"] body b {
+  color: #f1f5f9 !important;
+}
