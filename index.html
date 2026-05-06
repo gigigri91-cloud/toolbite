@@ -85,17 +85,17 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="/" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="assets/images/toolbite-logo.webp" type="image/webp"><img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
       <nav class="hidden md:block" aria-label="Main">
-        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
           <li><a href="/" class="text-orange-700">Home</a></li>
           <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
           <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
@@ -110,8 +110,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="/" class="block text-orange-700">Home</a></li>
         <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer</a></li>
@@ -132,11 +132,11 @@
       <p class="text-lg md:text-2xl mb-8 text-white/90 font-medium">ToolBite provides a collection of essential web utilities designed with privacy at their core. Unlike traditional online converters, our tools process your data entirely within your browser. This means your sensitive information never leaves your device, ensuring total security and instant results.</p>
       <form action="search.html" method="get" class="max-w-2xl mx-auto relative" role="search">
         <label for="hero-search" class="sr-only">Search tools</label>
-        <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Base64, slug, word counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300/80 text-lg transition bg-white/95 backdrop-blur-sm">
+        <input type="search" name="q" id="hero-search" placeholder="Search for a tool (e.g., Base64, slug, word counter)…" class="w-full p-4 pl-6 pr-14 rounded-full text-gray-800 dark:text-gray-200 shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-300/80 text-lg transition bg-white/95 backdrop-blur-sm">
         <button type="submit" class="tb-btn tb-btn-icon absolute right-3 top-1/2 -translate-y-1/2 text-2xl leading-none" aria-label="Search">🔍</button>
       </form>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a href="#popular-tools" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-blue-700 font-extrabold shadow-lg hover:bg-blue-50 transition">Browse Popular Tools</a>
+        <a href="#popular-tools" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white dark:bg-gray-800 text-blue-700 font-extrabold shadow-lg hover:bg-blue-50 transition">Browse Popular Tools</a>
         <a href="categories/text-tools.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-900/35 text-white border border-white/30 font-bold hover:bg-blue-900/45 transition">Start with Text Tools</a>
       </div>
       <div class="mt-6 flex flex-wrap justify-center gap-2">
@@ -150,30 +150,30 @@
 
   <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
 
-    <section class="mb-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10" aria-labelledby="homepage-intro-title">
+    <section class="mb-12 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm p-8 md:p-10 text-gray-900 dark:text-gray-100" aria-labelledby="homepage-intro-title">
       <div class="max-w-4xl">
-        <h2 id="homepage-intro-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">What you can do on ToolBite</h2>
-        <p class="text-gray-600 text-lg mb-6">ToolBite brings together practical browser-based tools for text cleanup, JSON and JWT debugging, SEO tasks, and quick image workflows. Everything is designed to stay fast, readable, and useful without sending routine inputs to a custom backend.</p>
+        <h2 id="homepage-intro-title" class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">What you can do on ToolBite</h2>
+        <p class="text-lg mb-6 text-gray-900 dark:text-gray-100">ToolBite brings together practical browser-based tools for text cleanup, JSON and JWT debugging, SEO tasks, and quick image workflows. Everything is designed to stay fast, readable, and useful without sending routine inputs to a custom backend.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="categories/text-tools.html" class="bg-blue-50 border border-blue-100 rounded-2xl p-5 hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Text &amp; writing tasks</h3>
-          <p class="text-sm text-gray-600">Count words, fix spacing, convert case, create slugs, and clean text for publishing.</p>
+        <a href="categories/text-tools.html" class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-5 hover:shadow-md transition">
+          <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Text &amp; writing tasks</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Count words, fix spacing, convert case, create slugs, and clean text for publishing.</p>
         </a>
-        <a href="categories/developer-tools.html" class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Developer workflows</h3>
-          <p class="text-sm text-gray-600">Format JSON, inspect JWTs, generate hashes, encode URLs, and handle Base64 quickly.</p>
+        <a href="categories/developer-tools.html" class="bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 rounded-2xl p-5 hover:shadow-md transition">
+          <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Developer workflows</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Format JSON, inspect JWTs, generate hashes, encode URLs, and handle Base64 quickly.</p>
         </a>
         <a href="categories/image-tools.html" class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Image &amp; SEO utilities</h3>
-          <p class="text-sm text-gray-600">Compress images, build cleaner URLs, and use focused tools that support search-friendly publishing.</p>
+          <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Image &amp; SEO utilities</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Compress images, build cleaner URLs, and use focused tools that support search-friendly publishing.</p>
         </a>
       </div>
     </section>
 
     <section id="favorites-section" class="mb-12 hidden" aria-labelledby="favorites-title">
       <div class="flex items-center justify-between border-b pb-3 mb-8">
-        <h2 id="favorites-title" class="text-2xl md:text-3xl font-bold text-gray-900">⭐ Your Favorites</h2>
+        <h2 id="favorites-title" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">⭐ Your Favorites</h2>
       </div>
       <div id="favorites-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Populated by main.js -->
@@ -182,110 +182,110 @@
 
     <section id="popular-tools" class="mb-16" aria-labelledby="popular-tools-title">
       <div class="flex items-center justify-between border-b pb-3 mb-8">
-        <h2 id="popular-tools-title" class="text-2xl md:text-3xl font-bold text-gray-900">🔥 Popular Tools</h2>
+        <h2 id="popular-tools-title" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">🔥 Popular Tools</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-        <a href="tools/word-counter.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+        <a href="tools/word-counter.html" class="tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-blue-600 text-white rounded-full shadow-sm">Popular</span>
-          <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Word Counter</h3><p class="text-sm text-gray-500">Count words &amp; characters</p></div>
+          <div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">📝</div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Word Counter</h3><p class="text-sm text-gray-500">Count words &amp; characters</p></div>
         </a>
 
         <a href="tools/password-generator.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-orange-500 group-hover:text-white transition">🔑</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Password Generator</h3><p class="text-sm text-gray-500">Create secure passwords</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Password Generator</h3><p class="text-sm text-gray-500">Create secure passwords</p></div>
         </a>
 
         <a href="tools/image-compressor.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition">🖼️</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Image Compressor</h3><p class="text-sm text-gray-500">Reduce image file size</p></div>
+          <div class="w-14 h-14 bg-green-50 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition">🖼️</div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Image Compressor</h3><p class="text-sm text-gray-500">Reduce image file size</p></div>
         </a>
 
         <a href="tools/json-formatter.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">💻</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">JSON Formatter</h3><p class="text-sm text-gray-500">Beautify &amp; validate JSON</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">JSON Formatter</h3><p class="text-sm text-gray-500">Beautify &amp; validate JSON</p></div>
         </a>
 
-        <a href="tools/jwt-decoder.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+        <a href="tools/jwt-decoder.html" class="tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-emerald-700 text-white rounded-full shadow-sm">New</span>
-          <div class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🪪</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">JWT Decoder</h3><p class="text-sm text-gray-500">Inspect tokens locally</p></div>
+          <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition">🪪</div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">JWT Decoder</h3><p class="text-sm text-gray-500">Inspect tokens locally</p></div>
         </a>
 
         <a href="tools/lorem-ipsum.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
-          <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-gray-800 group-hover:text-white transition">📄</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Lorem Ipsum</h3><p class="text-sm text-gray-500">Generate dummy text</p></div>
+          <div class="w-14 h-14 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center text-2xl group-hover:bg-gray-800 group-hover:text-white transition">📄</div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Lorem Ipsum</h3><p class="text-sm text-gray-500">Generate dummy text</p></div>
         </a>
 
         <a href="tools/remove-extra-spaces.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-500 group-hover:text-white transition">🧹</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Remove Spaces</h3><p class="text-sm text-gray-500">Clean messy text</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Remove Spaces</h3><p class="text-sm text-gray-500">Clean messy text</p></div>
         </a>
 
         <a href="tools/case-converter.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-rose-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-rose-500 group-hover:text-white transition">🔠</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Case Converter</h3><p class="text-sm text-gray-500">UPPER, lower, Title, camelCase</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Case Converter</h3><p class="text-sm text-gray-500">UPPER, lower, Title, camelCase</p></div>
         </a>
 
         <a href="tools/text-to-slug.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-sky-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-sky-600 group-hover:text-white transition">🔗</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Text to Slug</h3><p class="text-sm text-gray-500">SEO-friendly URL strings</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Text to Slug</h3><p class="text-sm text-gray-500">SEO-friendly URL strings</p></div>
         </a>
 
         <a href="tools/read-time-calculator.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">⏱️</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Read Time</h3><p class="text-sm text-gray-500">Estimate article reading time</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Read Time</h3><p class="text-sm text-gray-500">Estimate article reading time</p></div>
         </a>
 
         <a href="tools/base64-encoder.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-white transition">📎</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Base64 Encoder</h3><p class="text-sm text-gray-500">Encode &amp; decode in browser</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Base64 Encoder</h3><p class="text-sm text-gray-500">Encode &amp; decode in browser</p></div>
         </a>
 
         <a href="tools/uuid-generator.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">🆔</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">UUID Generator</h3><p class="text-sm text-gray-500">Random v4 IDs</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">UUID Generator</h3><p class="text-sm text-gray-500">Random v4 IDs</p></div>
         </a>
 
         <a href="tools/url-encoder.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">🌐</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">URL Encoder</h3><p class="text-sm text-gray-500">URI component &amp; full URL</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">URL Encoder</h3><p class="text-sm text-gray-500">URI component &amp; full URL</p></div>
         </a>
 
         <a href="tools/hash-generator.html" class="tool-card-tb tb-card tb-card-pad-lg tb-card-row">
           <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-2xl group-hover:bg-slate-800 group-hover:text-white transition">🔢</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">Hash Generator</h3><p class="text-sm text-gray-500">SHA-256 &amp; SHA-1</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Hash Generator</h3><p class="text-sm text-gray-500">SHA-256 &amp; SHA-1</p></div>
         </a>
 
-        <a href="tools/qr-generator.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+        <a href="tools/qr-generator.html" class="tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-violet-600 text-white rounded-full shadow-sm">New</span>
           <div class="w-14 h-14 bg-violet-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-violet-600 group-hover:text-white transition">📱</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">QR Generator</h3><p class="text-sm text-gray-500">Create scannable QR codes</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">QR Generator</h3><p class="text-sm text-gray-500">Create scannable QR codes</p></div>
         </a>
 
-        <a href="tools/csv-to-json.html" class="tool-card-tb bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
+        <a href="tools/csv-to-json.html" class="tool-card-tb bg-white dark:bg-gray-800 p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group relative">
           <span class="absolute -top-2 -right-2 px-2 py-1 text-[10px] font-bold tracking-wide uppercase bg-teal-700 text-white rounded-full shadow-sm">New</span>
           <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-2xl group-hover:bg-teal-700 group-hover:text-white transition">🔄</div>
-          <div><h3 class="font-bold text-gray-900 text-lg">CSV to JSON</h3><p class="text-sm text-gray-500">Convert spreadsheet data</p></div>
+          <div><h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">CSV to JSON</h3><p class="text-sm text-gray-500">Convert spreadsheet data</p></div>
         </a>
 
       </div>
     </section>
 
     <section class="mb-12" aria-labelledby="browse-category-title">
-      <h2 id="browse-category-title" class="text-2xl font-bold mb-6 text-gray-900 border-b pb-3">Browse by Category</h2>
+      <h2 id="browse-category-title" class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100 border-b pb-3">Browse by Category</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <a href="categories/text-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">✍️ Text Tools</a>
-        <a href="categories/developer-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">👨‍💻 Developer Tools</a>
-        <a href="categories/image-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🖼️ Image Tools</a>
-        <a href="categories/seo-tools.html" class="bg-white shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 text-center font-bold text-gray-700 hover:text-blue-700">🔍 SEO Tools</a>
+        <a href="categories/text-tools.html" class="bg-white dark:bg-gray-800 shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 dark:border-gray-700 text-center font-bold text-gray-700 dark:text-gray-300 hover:text-blue-700">✍️ Text Tools</a>
+        <a href="categories/developer-tools.html" class="bg-white dark:bg-gray-800 shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 dark:border-gray-700 text-center font-bold text-gray-700 dark:text-gray-300 hover:text-blue-700">👨‍💻 Developer Tools</a>
+        <a href="categories/image-tools.html" class="bg-white dark:bg-gray-800 shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 dark:border-gray-700 text-center font-bold text-gray-700 dark:text-gray-300 hover:text-blue-700">🖼️ Image Tools</a>
+        <a href="categories/seo-tools.html" class="bg-white dark:bg-gray-800 shadow-sm p-6 rounded-xl hover:bg-blue-50 transition border border-gray-100 dark:border-gray-700 text-center font-bold text-gray-700 dark:text-gray-300 hover:text-blue-700">🔍 SEO Tools</a>
       </div>
     </section>
 
     <section class="mb-12 rounded-3xl border border-orange-100 bg-gradient-to-br from-orange-50/80 via-white to-blue-50/60 p-8 md:p-10 shadow-sm" aria-labelledby="roadmap-heading">
-      <h2 id="roadmap-heading" class="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-display">Growing toolkit — what we ship next</h2>
-      <p class="text-gray-600 mb-6 max-w-3xl">ToolBite expands in small, fast releases. Here are high-demand utilities from our public roadmap (hashes, QR codes, meta generators, image resize — all client-side where possible).</p>
+      <h2 id="roadmap-heading" class="text-xl md:text-2xl font-bold mb-2 font-display text-gray-900 dark:text-white">Growing toolkit — what we ship next</h2>
+      <p class="mb-6 max-w-3xl text-gray-900 dark:text-gray-100">ToolBite expands in small, fast releases. Here are high-demand utilities from our public roadmap (hashes, QR codes, meta generators, image resize — all client-side where possible).</p>
       <div class="flex flex-wrap gap-2 mb-4">
         <span class="tb-chip">MD5 / SHA hashes</span>
         <span class="tb-chip">CSS gradient &amp; shadow tools</span>
@@ -298,63 +298,63 @@
     </section>
 
     <section class="mb-12" aria-labelledby="guides-heading">
-      <h2 id="guides-heading" class="text-2xl font-bold mb-6 text-gray-900 border-b pb-3">Learning Guides</h2>
+      <h2 id="guides-heading" class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100 border-b pb-3">Learning Guides</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <a href="guides/json-formatter-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-blue-600 font-bold uppercase tracking-wide mb-2">Developer</p>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Fix Invalid JSON Fast</h3>
-          <p class="text-gray-600 text-sm">A short troubleshooting flow for trailing commas, quotes, and object key mistakes.</p>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Fix Invalid JSON Fast</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">A short troubleshooting flow for trailing commas, quotes, and object key mistakes.</p>
         </a>
         <a href="guides/jwt-decoder-guide.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-indigo-600 font-bold uppercase tracking-wide mb-2">Security</p>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Decode JWT Safely</h3>
-          <p class="text-gray-600 text-sm">Learn decode vs verify and the claim checks that matter before authorizing users.</p>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Decode JWT Safely</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Learn decode vs verify and the claim checks that matter before authorizing users.</p>
         </a>
         <a href="guides/seo-slug-best-practices.html" class="tb-card tb-card-pad-lg">
           <p class="text-sm text-sky-700 font-bold uppercase tracking-wide mb-2">SEO</p>
-          <h3 class="text-xl font-bold text-gray-900 mb-2">SEO Slug Best Practices</h3>
-          <p class="text-gray-600 text-sm">Practical rules and examples for writing cleaner, ranking-friendly URLs.</p>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">SEO Slug Best Practices</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Practical rules and examples for writing cleaner, ranking-friendly URLs.</p>
         </a>
       </div>
-      <p class="text-center mt-8 text-sm text-gray-600">Want the full library? <a href="guides/index.html" class="text-blue-600 font-semibold hover:underline">Browse all ToolBite guides (JSON, JWT &amp; SEO)</a>.</p>
+      <p class="text-center mt-8 text-sm text-gray-600 dark:text-gray-400">Want the full library? <a href="guides/index.html" class="text-blue-600 font-semibold hover:underline">Browse all ToolBite guides (JSON, JWT &amp; SEO)</a>.</p>
     </section>
 
-    <section class="mb-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10" aria-labelledby="more-tools-heading">
+    <section class="mb-12 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm p-8 md:p-10 text-gray-900 dark:text-gray-100" aria-labelledby="more-tools-heading">
       <div class="flex items-center justify-between border-b pb-3 mb-6">
-        <h2 id="more-tools-heading" class="text-2xl font-bold text-gray-900">More Useful Tools to Explore</h2>
+        <h2 id="more-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">More Useful Tools to Explore</h2>
       </div>
-      <p class="text-gray-600 mb-6 max-w-3xl">These browser-based utilities are useful for content cleanup, developer workflows, and publishing support, but they can be easy to miss if you only browse the most popular cards above.</p>
+      <p class="mb-6 max-w-3xl text-gray-900 dark:text-gray-100">These browser-based utilities are useful for content cleanup, developer workflows, and publishing support, but they can be easy to miss if you only browse the most popular cards above.</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <a href="tools/uuid-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
-          <h3 class="font-bold text-gray-900 mb-2">UUID Generator</h3>
-          <p class="text-sm text-gray-600">Create random v4 IDs for databases, APIs, fixtures, and local test data.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">UUID Generator</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Create random v4 IDs for databases, APIs, fixtures, and local test data.</p>
         </a>
         <a href="tools/url-encoder.html" class="tb-card tb-card-soft tb-card-pad-md">
-          <h3 class="font-bold text-gray-900 mb-2">URL Encoder</h3>
-          <p class="text-sm text-gray-600">Encode or decode URLs and query-string values for safer links and debugging.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">URL Encoder</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Encode or decode URLs and query-string values for safer links and debugging.</p>
         </a>
         <a href="tools/remove-duplicate-lines.html" class="tb-card tb-card-soft tb-card-pad-md">
-          <h3 class="font-bold text-gray-900 mb-2">Remove Duplicate Lines</h3>
-          <p class="text-sm text-gray-600">Deduplicate pasted lists, logs, or keyword sets while keeping the first occurrence.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Remove Duplicate Lines</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Deduplicate pasted lists, logs, or keyword sets while keeping the first occurrence.</p>
         </a>
         <a href="tools/sort-text-lines.html" class="tb-card tb-card-soft tb-card-pad-md">
-          <h3 class="font-bold text-gray-900 mb-2">Sort Text Lines</h3>
-          <p class="text-sm text-gray-600">Alphabetize lines for keyword cleanup, content lists, inventory exports, and quick edits.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Sort Text Lines</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Alphabetize lines for keyword cleanup, content lists, inventory exports, and quick edits.</p>
         </a>
         <a href="tools/lorem-ipsum.html" class="tb-card tb-card-soft tb-card-pad-md">
-          <h3 class="font-bold text-gray-900 mb-2">Lorem Ipsum Generator</h3>
-          <p class="text-sm text-gray-600">Generate predictable filler text for mockups, CMS previews, and layout testing.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Lorem Ipsum Generator</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Generate predictable filler text for mockups, CMS previews, and layout testing.</p>
         </a>
         <a href="tools/read-time-calculator.html" class="tb-card tb-card-soft tb-card-pad-md">
-          <h3 class="font-bold text-gray-900 mb-2">Reading Time Calculator</h3>
-          <p class="text-sm text-gray-600">Estimate reading time for articles and documentation before publishing them.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Reading Time Calculator</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Estimate reading time for articles and documentation before publishing them.</p>
         </a>
       </div>
     </section>
 
   </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -375,8 +375,8 @@
 
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -385,31 +385,31 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>

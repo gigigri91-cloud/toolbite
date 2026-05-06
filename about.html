@@ -82,17 +82,17 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="/" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="assets/images/toolbite-logo.webp" type="image/webp"><img src="assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
       <nav class="hidden md:block" aria-label="Main">
-        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
           <li><a href="/" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
           <li><a href="categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
@@ -107,8 +107,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="/" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer</a></li>
@@ -125,99 +125,99 @@
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
         <li>›</li>
-        <li class="text-gray-800 font-medium">About Us</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">About Us</li>
       </ol>
     </nav>
 
     <div class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4" data-pseo-target="h1">About <span class="text-blue-600">ToolBite</span></h1>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">About <span class="text-blue-600">ToolBite</span></h1>
       <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">ToolBite.org publishes free web utilities for developers, digital professionals, SEO experts, and writers. Our privacy-first architecture keeps routine tool processing in your browser: inputs are not uploaded to ToolBite for storage or later retrieval.</p>
     </div>
 
-    <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 relative overflow-hidden text-left">
+    <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 dark:border-gray-700 relative overflow-hidden text-left text-gray-900 dark:text-gray-100">
       <div class="text-6xl mb-6 text-center md:text-left">🚀</div>
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center md:text-left">Our Mission</h2>
-      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto md:mx-0 mb-6 leading-relaxed">
+      <h2 class="text-3xl font-bold mb-6 text-center md:text-left text-gray-900 dark:text-white">Our Mission</h2>
+      <p class="text-lg max-w-3xl mx-auto md:mx-0 mb-6 leading-relaxed text-gray-900 dark:text-gray-100">
         <strong class="text-gray-900 dark:text-white">Our mission is straightforward:</strong> provide fast, secure, and accessible web tools for everyone—whether you are shipping code, publishing content, or auditing SEO—without unnecessary friction, paywalls for basic utilities, or opaque data practices.
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto md:mx-0 mb-10 leading-relaxed">
+      <p class="text-lg max-w-3xl mx-auto md:mx-0 mb-10 leading-relaxed text-gray-900 dark:text-gray-100">
         We build for students, independent creators, engineers, marketers, SEO specialists, and teams who need dependable helpers for text cleanup, structured data checks, encoding, lightweight image optimization, and similar tasks. ToolBite is designed to stay readable, predictable, and quick to load so you can move from problem to result in seconds.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-blue-700 mb-2">⚡ Fast by design</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">Static pages and client-side processing keep interactions responsive. Where applicable, modern browser APIs help you complete cryptographic and formatting tasks without round-trips to an application server for the tool logic itself.</p>
+        <div class="bg-blue-50 dark:bg-blue-900/30 p-6 rounded-2xl border border-blue-100 hover:shadow-md transition">
+          <h3 class="text-lg font-bold text-blue-700 mb-2 text-gray-900 dark:text-white">⚡ Fast by design</h3>
+          <p class="text-sm leading-relaxed text-gray-900 dark:text-gray-100">Static pages and client-side processing keep interactions responsive. Where applicable, modern browser APIs help you complete cryptographic and formatting tasks without round-trips to an application server for the tool logic itself.</p>
         </div>
         <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-emerald-800 mb-2">🛡️ Secure defaults</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">We prioritize clear boundaries: your drafts, tokens, payloads, and files should remain under your control during routine tool use. When a workflow is browser-local, we say so plainly so you can choose the right tool for sensitive material.</p>
+          <h3 class="text-lg font-bold text-emerald-800 mb-2 text-gray-900 dark:text-white">🛡️ Secure defaults</h3>
+          <p class="text-sm leading-relaxed text-gray-900 dark:text-gray-100">We prioritize clear boundaries: your drafts, tokens, payloads, and files should remain under your control during routine tool use. When a workflow is browser-local, we say so plainly so you can choose the right tool for sensitive material.</p>
         </div>
         <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition">
-          <h3 class="text-lg font-bold text-orange-700 mb-2">♿ Accessible utilities</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">Accessibility matters for “tools for everyone.” We aim for legible typography, sensible contrast, keyboard-friendly layouts where possible, and descriptive labeling so professionals can work quickly without hunting for hidden controls.</p>
+          <h3 class="text-lg font-bold text-orange-700 mb-2 text-gray-900 dark:text-white">♿ Accessible utilities</h3>
+          <p class="text-sm leading-relaxed text-gray-900 dark:text-gray-100">Accessibility matters for “tools for everyone.” We aim for legible typography, sensible contrast, keyboard-friendly layouts where possible, and descriptive labeling so professionals can work quickly without hunting for hidden controls.</p>
         </div>
       </div>
     </div>
 
     <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="privacy-approach-heading">
-      <h2 id="privacy-approach-heading" class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Privacy-First Approach</h2>
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+      <h2 id="privacy-approach-heading" class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Privacy-First Approach</h2>
+      <p class="text-lg mb-4 leading-relaxed text-gray-900 dark:text-gray-100">
         ToolBite’s utilities are built around <strong class="text-gray-900 dark:text-white">client-side execution</strong>: in normal use, the tool logic runs in your web browser on your device using JavaScript, rather than sending your pasted text, decoded tokens, generated passwords, or uploaded files to ToolBite for centralized processing.
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+      <p class="text-lg mb-4 leading-relaxed text-gray-900 dark:text-gray-100">
         <strong class="text-gray-900 dark:text-white">Your routine tool inputs are never uploaded to our servers for storage.</strong> We do not operate a ToolBite account database of what you paste into calculators, formatters, encoders, or similar helpers, and we do not retain that content on our systems as part of delivering those features.
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+      <p class="text-lg mb-6 leading-relaxed text-gray-900 dark:text-gray-100">
         You should still treat highly sensitive secrets carefully (for example, never share private keys), and you should review third-party services that may load on pages (such as advertising or analytics) separately. For the full legal detail on cookies, ads, logging, and exceptions, read our <a href="privacy.html" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-800 dark:hover:text-blue-300 underline underline-offset-2">Privacy Policy</a> and <a href="cookie-policy.html" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-800 dark:hover:text-blue-300 underline underline-offset-2">Cookie Policy</a>
         <a href="#" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</a>.
       </p>
     </section>
 
     <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="publisher-heading">
-      <h2 id="publisher-heading" class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">The Publisher</h2>
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+      <h2 id="publisher-heading" class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">The Publisher</h2>
+      <p class="text-lg mb-4 leading-relaxed text-gray-900 dark:text-gray-100">
         <strong class="text-gray-900 dark:text-white">ToolBite</strong> (published at <a href="https://toolbite.org/" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-800 dark:hover:text-blue-300 underline underline-offset-2">toolbite.org</a>) is a <strong class="text-gray-900 dark:text-white">dedicated, reliable resource</strong> for developers, digital professionals, and <strong class="text-gray-900 dark:text-white">SEO experts</strong> who need consistent, browser-based utilities alongside practical, citation-friendly guides.
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+      <p class="text-lg mb-4 leading-relaxed text-gray-900 dark:text-gray-100">
         The site is organized as a catalog of focused tools (text, developer, image, and SEO categories) and short tutorials that explain safe workflows—so citations can point to a single publisher name (ToolBite), a stable domain (toolbite.org), and specific tool pages with consistent metadata.
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+      <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">
         If you are verifying ownership, authorship, or editorial responsibility for citations: ToolBite publishes this website as a cohesive utility collection; contact and policy pages describe how to reach the operator and what limitations apply.
       </p>
     </section>
 
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 text-left">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center md:text-left">Explore ToolBite</h2>
+    <section class="mt-10 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm p-6 md:p-8 text-left text-gray-900 dark:text-gray-100">
+      <h2 class="text-2xl font-bold mb-4 text-center md:text-left text-gray-900 dark:text-white">Explore ToolBite</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <a href="categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold text-gray-900 mb-2">Text Tools</h3>
-          <p class="text-sm text-gray-600">Word count, case conversion, slug creation, cleanup, and editing helpers.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Text Tools</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Word count, case conversion, slug creation, cleanup, and editing helpers.</p>
         </a>
         <a href="categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold text-gray-900 mb-2">Developer Tools</h3>
-          <p class="text-sm text-gray-600">JSON, JWT, Base64, hashing, UUIDs, and fast browser-based debugging utilities.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Developer Tools</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">JSON, JWT, Base64, hashing, UUIDs, and fast browser-based debugging utilities.</p>
         </a>
         <a href="guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold text-gray-900 mb-2">Guides &amp; Tutorials</h3>
-          <p class="text-sm text-gray-600">Short practical walkthroughs for JSON, JWT, SEO slugs, and related workflows.</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Guides &amp; Tutorials</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Short practical walkthroughs for JSON, JWT, SEO slugs, and related workflows.</p>
         </a>
       </div>
     </section>
 
-    <section class="mt-10 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 text-left" aria-labelledby="related-resources-heading">
-      <h2 id="related-resources-heading" class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2 text-center md:text-left">Related Resources</h2>
-      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 text-center md:text-left max-w-2xl">Hand-picked tool and guide pages that pair well with ToolBite’s developer-focused workflow.</p>
+    <section class="mt-10 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm p-6 md:p-8 text-left text-gray-900 dark:text-gray-100" aria-labelledby="related-resources-heading">
+      <h2 id="related-resources-heading" class="text-2xl font-bold mb-2 text-center md:text-left text-gray-900 dark:text-white">Related Resources</h2>
+      <p class="text-sm mb-6 text-center md:text-left max-w-2xl text-gray-900 dark:text-gray-100">Hand-picked tool and guide pages that pair well with ToolBite’s developer-focused workflow.</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="tools/jwt-decoder.html" class="group tool-card-tb bg-white rounded-2xl p-5 sm:p-6 flex flex-col h-full hover:-translate-y-1 duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+        <a href="tools/jwt-decoder.html" class="group tool-card-tb bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col h-full hover:-translate-y-1 duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
           <span class="text-xs font-bold uppercase tracking-wide text-blue-600 dark:text-blue-400 mb-2">Tool</span>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition">JWT Decoder</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 flex-grow">Inspect JWT headers and payloads in your browser for debugging—without uploading tokens for signature verification.</p>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition text-gray-900 dark:text-white">JWT Decoder</h3>
+          <p class="text-sm flex-grow text-gray-900 dark:text-gray-100">Inspect JWT headers and payloads in your browser for debugging—without uploading tokens for signature verification.</p>
           <span class="mt-4 text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition">Open tool →</span>
         </a>
-        <a href="guides/json-formatter-guide.html" class="group tool-card-tb bg-white rounded-2xl p-5 sm:p-6 flex flex-col h-full hover:-translate-y-1 duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+        <a href="guides/json-formatter-guide.html" class="group tool-card-tb bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col h-full hover:-translate-y-1 duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
           <span class="text-xs font-bold uppercase tracking-wide text-orange-600 dark:text-orange-400 mb-2">Guide</span>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-400 transition">JSON Formatter Guide</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 flex-grow">Fix common JSON errors, choose minify vs beautify, and format payloads safely using browser-local workflows.</p>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-400 transition text-gray-900 dark:text-white">JSON Formatter Guide</h3>
+          <p class="text-sm flex-grow text-gray-900 dark:text-gray-100">Fix common JSON errors, choose minify vs beautify, and format payloads safely using browser-local workflows.</p>
           <span class="mt-4 text-sm font-semibold text-orange-600 dark:text-orange-400 group-hover:text-orange-800 dark:group-hover:text-orange-300 transition">Read guide →</span>
         </a>
       </div>
@@ -225,23 +225,23 @@
 
   
     <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="who-we-are-heading">
-      <h2 id="who-we-are-heading" class="text-3xl font-bold text-gray-900 mb-4">Who We Are</h2>
-      <p class="text-lg text-gray-700 leading-relaxed">ToolBite is operated by <strong>Gabriel C.</strong>, an indie developer based in Bucharest, Romania. This is a solo project focused on practical browser-based tools and concise technical guides.</p>
+      <h2 id="who-we-are-heading" class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Who We Are</h2>
+      <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">ToolBite is operated by <strong>Gabriel C.</strong>, an indie developer based in Bucharest, Romania. This is a solo project focused on practical browser-based tools and concise technical guides.</p>
     </section>
 
     <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="editorial-standards-heading">
-      <h2 id="editorial-standards-heading" class="text-3xl font-bold text-gray-900 mb-4">Editorial Standards</h2>
-      <p class="text-lg text-gray-700 leading-relaxed">Tool pages are tested manually before release, and guides are reviewed before publication. We do not publish AI-only, unreviewed content.</p>
+      <h2 id="editorial-standards-heading" class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Editorial Standards</h2>
+      <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">Tool pages are tested manually before release, and guides are reviewed before publication. We do not publish AI-only, unreviewed content.</p>
     </section>
 
     <section class="tb-card tb-card-panel tb-card-pad-lg mt-10 text-left md:p-10" aria-labelledby="contact-response-heading">
-      <h2 id="contact-response-heading" class="text-3xl font-bold text-gray-900 mb-4">Contact &amp; Response Time</h2>
-      <p class="text-lg text-gray-700 leading-relaxed">For bugs, corrections, or partnership requests, use the <a href="contact.html" class="text-blue-600 hover:underline font-semibold">contact page</a>. Typical response time is <strong>24–48 hours</strong>.</p>
+      <h2 id="contact-response-heading" class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Contact &amp; Response Time</h2>
+      <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">For bugs, corrections, or partnership requests, use the <a href="contact.html" class="text-blue-600 hover:underline font-semibold">contact page</a>. Typical response time is <strong>24–48 hours</strong>.</p>
     </section>
 
   </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -262,8 +262,8 @@
 
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -272,31 +272,31 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>

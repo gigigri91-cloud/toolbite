@@ -87,15 +87,15 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
-      <nav class="hidden md:block" aria-label="Main"><ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+      <nav class="hidden md:block" aria-label="Main"><ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
         <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
@@ -110,8 +110,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
@@ -128,12 +128,12 @@
       <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb"><ol class="flex items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
         <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
-        <li class="text-gray-800 font-medium">Color Palette Generator</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">Color Palette Generator</li>
       </ol></nav>
-      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <section class="tb-tool-hero border-b border-gray-200 dark:border-gray-600 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
       <div class="mb-0">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">Color palette generator online  <button onclick="toggleFavorite('/tools/color-palette-generator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
-        <p class="text-gray-600">Generate random HEX color palettes instantly for UI design, branding ideas, and quick visual exploration.</p>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-2" data-pseo-target="h1">Color palette generator online  <button onclick="toggleFavorite('/tools/color-palette-generator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <p class="text-gray-600 dark:text-gray-400">Generate random HEX color palettes instantly for UI design, branding ideas, and quick visual exploration.</p>
       </div>
       </section>
       <div class="bg-orange-50 border border-orange-100 rounded-2xl p-4 mb-6 text-sm text-orange-900">
@@ -148,99 +148,99 @@
         </div>
       </div>
             <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
-        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
-        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1 max-w-2xl">
           <li>Click Generate for a new five-color palette.</li>
           <li>Click any swatch to copy its HEX code.</li>
           <li>Repeat until you find a set that fits your UI spike.</li>
         </ol>
       </section>
       <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
-        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
-        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">UI exploration</h3>
-            <p class="text-xs text-gray-600">Try unexpected combinations fast.</p>
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 dark:text-gray-300 list-none p-0 m-0">
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm mb-1">UI exploration</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Try unexpected combinations fast.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Branding mood boards</h3>
-            <p class="text-xs text-gray-600">Collect candidates before refining.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm mb-1">Branding mood boards</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Collect candidates before refining.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">CSS variables</h3>
-            <p class="text-xs text-gray-600">Copy HEX values straight into your stylesheet.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm mb-1">CSS variables</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Copy HEX values straight into your stylesheet.</p>
           </li>
         </ul>
       </section>
       <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
-        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">FAQ</h2>
         <div class="space-y-2 max-w-3xl">
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>How do I copy a color code?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Simply click any color swatch — the HEX code is instantly copied to your clipboard.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>How do I copy a color code?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">Simply click any color swatch — the HEX code is instantly copied to your clipboard.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Are the palettes truly random?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Yes, each click generates a new set of 5 fully random HEX colors.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Are the palettes truly random?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">Yes, each click generates a new set of 5 fully random HEX colors.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Can I use these palettes commercially?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Yes. Random colors are not subject to copyright. Use them freely in any project.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Can I use these palettes commercially?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">Yes. Random colors are not subject to copyright. Use them freely in any project.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>What is a HEX color code?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">A HEX code is a 6-digit hexadecimal number (e.g. #3A7BD5) used in web design and CSS to specify colors precisely.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>What is a HEX color code?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">A HEX code is a 6-digit hexadecimal number (e.g. #3A7BD5) used in web design and CSS to specify colors precisely.</p>
           </details>
         </div>
       </section>
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
-        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <h2 id="tb-guides-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Guides for this task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
+            <p class="font-bold text-sm mb-1 text-gray-900 dark:text-gray-100">All ToolBite guides</p>
             <p class="text-xs text-gray-500">Design-adjacent dev tutorials.</p>
           </a>
         </div>
       </section>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
-        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
-        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Browse this category</h2>
+        <p class="text-sm mb-4 max-w-2xl text-gray-900 dark:text-gray-100">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
         <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
       </section>
-<section class="prose max-w-none text-gray-700 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">About the Color Palette Generator</h2>
+<section class="prose max-w-none text-gray-700 dark:text-gray-300 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">About the Color Palette Generator</h2>
         <p class="mb-4">Finding the perfect color scheme can be one of the most time-consuming parts of web design. Our tool eliminates the guesswork by providing instant, random color combinations with a single click.</p>
-        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">How to Use</h3>
+        <h3 class="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white">How to Use</h3>
         <ol class="list-decimal pl-6 space-y-2 mb-6">
           <li>Click "Generate New Palette" to create a fresh set of 5 colors.</li>
           <li>Hover over any color to see the exact HEX code.</li>
           <li>Click directly on the color block to copy the HEX code to your clipboard.</li>
         </ol>
-        <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
-          <strong class="text-gray-900">What is a HEX code?</strong>
+        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl border border-gray-200 dark:border-gray-600">
+          <strong class="text-gray-900 dark:text-gray-100">What is a HEX code?</strong>
           <p class="mt-2 text-sm">A HEX code is a six-digit hexadecimal number used in HTML, CSS, and design software to represent colors on screen, specifying exactly how much Red, Green, and Blue to mix.</p>
         </div>
       
-        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">Color Theory Basics for Designers</h3>
+        <h3 class="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white">Color Theory Basics for Designers</h3>
         <p class="mb-3">Understanding how colors interact helps you evaluate generated palettes more quickly. A <strong>monochromatic palette</strong> uses tints and shades of a single hue — safe and elegant. A <strong>complementary palette</strong> pairs colors opposite each other on the color wheel for high contrast. An <strong>analogous palette</strong> groups colors that sit next to each other, creating a harmonious and natural feel.</p>
         <p>When using randomly generated palettes, look for a natural anchor color (usually the most neutral or muted tone) to use as your background, then use the more vivid colors for accent elements, buttons, and call-to-action items.</p>
-        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">A practical way to judge a random palette</h3>
+        <h3 class="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white">A practical way to judge a random palette</h3>
         <p>Do not evaluate five random colors as if they all deserve equal weight. In most interfaces, one or two colors do the heavy lifting while the rest act as accents or support shades. Look first for contrast, readability, and whether one color can serve as a stable base for text or UI surfaces.</p>
-        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">Useful next step after generating a palette</h3>
+        <h3 class="text-xl font-bold mb-3 mt-6 text-gray-900 dark:text-white">Useful next step after generating a palette</h3>
         <p>Copy the HEX values you like, test them in a mockup or CSS file, and pair them with compressed imagery so the final page still performs well. A random palette can be a fast starting point, but it still needs context from typography, layout, and contrast testing.</p>
       </section>
     </article>
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="tb-card tb-card-pad-lg">
-        <h3 class="text-lg font-bold text-gray-900 mb-4">Related visual tools</h3>
+        <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white">Related visual tools</h3>
         <div class="space-y-3 text-sm">
           <a href="../tools/image-compressor.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800">Image Compressor</p>
+            <p class="font-bold text-gray-900 dark:text-gray-100">Image Compressor</p>
             <p class="text-gray-500 mt-1">Pair palette work with lighter assets for websites, social posts, and landing pages.</p>
           </a>
           <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800">Developer Tools category</p>
+            <p class="font-bold text-gray-900 dark:text-gray-100">Developer Tools category</p>
             <p class="text-gray-500 mt-1">Browse related utilities used in front-end and publishing workflows.</p>
           </a>
         </div>
@@ -249,30 +249,30 @@
 
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
-          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
+          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="../tools/password-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔑</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Password generator online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate long random passwords with the Web Crypto API where available.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Password generator online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Generate long random passwords with the Web Crypto API where available.</p>
           </a>
           <a href="../tools/hash-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔢</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">SHA-256 &amp; SHA-1 hash generator</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Compute digests for strings using Web Crypto where available.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">SHA-256 &amp; SHA-1 hash generator</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Compute digests for strings using Web Crypto where available.</p>
           </a>
           <a href="../tools/qr-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📱</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">QR Code Generator</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate QR codes instantly for any URL, text, email or phone number.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">QR Code Generator</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Generate QR codes instantly for any URL, text, email or phone number.</p>
           </a>
         </div>
       </section>
     </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -292,8 +292,8 @@
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -302,31 +302,31 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>

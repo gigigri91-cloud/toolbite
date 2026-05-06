@@ -100,16 +100,16 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
       <nav class="hidden md:block" aria-label="Main">
-        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
           <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
           <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
@@ -124,8 +124,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
@@ -142,23 +142,23 @@
       <ol class="flex flex-wrap items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
         <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
-        <li class="text-gray-800 font-medium">How to encode and decode Base64 safely</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">How to encode and decode Base64 safely</li>
       </ol>
     </nav>
 
     <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">How to encode and decode Base64 safely</h1>
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white">How to encode and decode Base64 safely</h1>
       <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8 sm:flex-row sm:items-center sm:justify-between">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 hover:underline">Gabriel C.</a></span></p>
+          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 hover:underline">Gabriel C.</a></span></p>
         </div>
-        <p>Published: <time datetime="2026-05-05" class="font-medium text-gray-800">2026-05-05</time> • Last reviewed: <time datetime="2026-05-05" class="font-medium text-gray-800">May 5, 2026</time></p>
+        <p>Published: <time datetime="2026-05-05" class="font-medium text-gray-800 dark:text-gray-200">2026-05-05</time> • Last reviewed: <time datetime="2026-05-05" class="font-medium text-gray-800 dark:text-gray-200">May 5, 2026</time></p>
       </div>
 
-      <p class="text-gray-700">Base64 encoding and decoding show up in API payloads, data URIs, JWT segments, and quick debugging tasks. This guide focuses on practical usage, not mythology: when Base64 helps, when it causes problems, and how to avoid production mistakes.</p>
-      <p class="text-gray-700">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
-      <p class="text-gray-700">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
+      <p class="text-gray-900 dark:text-gray-100">Base64 encoding and decoding show up in API payloads, data URIs, JWT segments, and quick debugging tasks. This guide focuses on practical usage, not mythology: when Base64 helps, when it causes problems, and how to avoid production mistakes.</p>
+      <p class="text-gray-900 dark:text-gray-100">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
+      <p class="text-gray-900 dark:text-gray-100">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
 
       <h2>Common Mistakes</h2>
       <ul><li><strong>Treating Base64 as encryption.</strong> Base64 is reversible encoding, not protection. If you store secrets encoded-only, attackers can recover raw values instantly.</li><li><strong>Encoding already-encoded data repeatedly.</strong> Double-encoding breaks interoperability and causes invalid payload assumptions in downstream services.</li><li><strong>Ignoring character-set assumptions.</strong> Browser APIs, backend libraries, and CLI tools may default to different encodings; UTF-8 normalization should be explicit.</li><li><strong>Embedding huge binary blobs as Base64 in JSON when streaming would be better.</strong> This increases payload size and latency and can break mobile memory budgets.</li></ul>
@@ -210,10 +210,10 @@ console.log({ raw, encoded, decoded });
       <p>Answering "yes" to each item above usually correlates with fewer regressions and faster incident resolution. If several answers are "no," fix those process gaps before optimization work. In practice, resilient systems are built through deliberate clarity, not through brittle shortcuts that only work under ideal input.</p>
 
     </article>
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold text-gray-900 mb-4">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
 </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -233,8 +233,8 @@ console.log({ raw, encoded, decoded });
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -243,31 +243,31 @@ console.log({ raw, encoded, decoded });
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>

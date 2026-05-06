@@ -87,16 +87,16 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
       <nav class="hidden md:block" aria-label="Main">
-        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
           <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
           <li><a href="../categories/developer-tools.html" class="hover:text-orange-500 transition">Developer</a></li>
@@ -111,8 +111,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block hover:text-orange-500 transition">Developer</a></li>
@@ -130,29 +130,29 @@
         <ol class="flex flex-wrap items-center gap-2">
           <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/seo-tools.html" class="hover:text-blue-600 transition">SEO Tools</a></li><li>›</li>
-          <li class="text-gray-800 font-medium">Read Time</li>
+          <li class="text-gray-800 dark:text-gray-200 font-medium">Read Time</li>
         </ol>
       </nav>
-      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <section class="tb-tool-hero border-b border-gray-200 dark:border-gray-600 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
       <div class="mb-0">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 font-display" data-pseo-target="h1">Reading time calculator  <button onclick="toggleFavorite('/tools/read-time-calculator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
-        <p class="text-gray-600">Paste your draft to see estimated minutes and seconds — adjust reading speed (WPM) for your audience.</p>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-2 font-display" data-pseo-target="h1">Reading time calculator  <button onclick="toggleFavorite('/tools/read-time-calculator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <p class="text-gray-600 dark:text-gray-400">Paste your draft to see estimated minutes and seconds — adjust reading speed (WPM) for your audience.</p>
       </div>
       </section>
       <div class="tb-card tb-card-panel tb-card-pad-lg mb-8 md:p-8">
         <div class="flex flex-col sm:flex-row sm:items-end gap-4 mb-6">
           <div class="flex-grow">
-            <label class="block text-sm font-bold text-gray-700 mb-2" for="read-wpm">Reading speed (words per minute)</label>
+            <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2" for="read-wpm">Reading speed (words per minute)</label>
             <input type="number" id="read-wpm" min="100" max="400" value="200" class="w-full max-w-xs p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-violet-400 outline-none">
           </div>
         </div>
-        <textarea id="read-input" class="w-full h-48 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-violet-100 outline-none resize-y mb-6 text-gray-700 bg-gray-50" placeholder="Paste article text…"></textarea>
+        <textarea id="read-input" class="w-full h-48 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-violet-100 outline-none resize-y mb-6 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700" placeholder="Paste article text…"></textarea>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div class="bg-violet-50 border border-violet-100 rounded-2xl p-4 text-center">
             <span id="read-words" class="block text-3xl font-extrabold text-violet-700">0</span>
             <span class="text-sm font-bold text-gray-500 uppercase">Words</span>
           </div>
-          <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 text-center">
+          <div class="bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 rounded-2xl p-4 text-center">
             <span id="read-min" class="block text-3xl font-extrabold text-indigo-700">0</span>
             <span class="text-sm font-bold text-gray-500 uppercase">Minutes</span>
           </div>
@@ -161,96 +161,96 @@
             <span class="text-sm font-bold text-gray-500 uppercase">Seconds left</span>
           </div>
         </div>
-        <p id="read-summary" class="text-gray-600 font-medium mb-4" aria-live="polite"></p>
+        <p id="read-summary" class="font-medium mb-4 text-gray-900 dark:text-gray-100" aria-live="polite"></p>
         <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed Tool</button>
           <button type="button" id="read-clear-btn" class="tb-btn tb-btn-danger-ghost tb-btn-md">Clear</button>
       </div>
             <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
-        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
-        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1 max-w-2xl">
           <li>Paste article body text (headings optional).</li>
           <li>Adjust words-per-minute if your audience reads faster or slower.</li>
           <li>Use the estimated read time in bylines or meta.</li>
         </ol>
       </section>
       <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
-        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
-        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Editorial briefs</h3>
-            <p class="text-xs text-gray-600">Set reader expectations up front.</p>
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 dark:text-gray-300 list-none p-0 m-0">
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-sm mb-1 text-gray-900 dark:text-white">Editorial briefs</h3>
+            <p class="text-xs text-gray-900 dark:text-gray-100">Set reader expectations up front.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Newsletters</h3>
-            <p class="text-xs text-gray-600">Match depth to subscriber attention.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-sm mb-1 text-gray-900 dark:text-white">Newsletters</h3>
+            <p class="text-xs text-gray-900 dark:text-gray-100">Match depth to subscriber attention.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Course modules</h3>
-            <p class="text-xs text-gray-600">Balance lesson length across a syllabus.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-sm mb-1 text-gray-900 dark:text-white">Course modules</h3>
+            <p class="text-xs text-gray-900 dark:text-gray-100">Balance lesson length across a syllabus.</p>
           </li>
         </ul>
       </section>
       <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
-        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <h2 id="tb-faq-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">FAQ</h2>
         <div class="space-y-2 max-w-3xl">
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my data sent to ToolBite servers when I use Reading time calculator?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my data sent to ToolBite servers when I use Reading time calculator?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm pb-1 text-gray-900 dark:text-gray-100">No. Routine processing runs in your browser after the page loads; we do not upload your inputs for processing.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does it work offline?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Once the page is cached in your browser, many workflows keep working without an active network connection.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does it work offline?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm pb-1 text-gray-900 dark:text-gray-100">Once the page is cached in your browser, many workflows keep working without an active network connection.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is this tool free?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Yes. ToolBite tools are free to use; we may show ads to support hosting.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is this tool free?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm pb-1 text-gray-900 dark:text-gray-100">Yes. ToolBite tools are free to use; we may show ads to support hosting.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Which browsers are supported?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Which browsers are supported?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm pb-1 text-gray-900 dark:text-gray-100">Use an up-to-date Chrome, Firefox, Safari, or Edge with JavaScript enabled.</p>
           </details>
         </div>
       </section>
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
-        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <h2 id="tb-guides-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Guides for this task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a href="../guides/seo-slug-best-practices.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800 text-sm mb-1">SEO slug best practices</p>
+            <p class="font-bold text-sm mb-1 text-gray-900 dark:text-gray-100">SEO slug best practices</p>
             <p class="text-xs text-gray-500">Publishing checklist.</p>
           </a>
           <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
+            <p class="font-bold text-sm mb-1 text-gray-900 dark:text-gray-100">All ToolBite guides</p>
             <p class="text-xs text-gray-500">Browse all guides.</p>
           </a>
         </div>
       </section>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
-        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
-        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Browse this category</h2>
+        <p class="text-sm mb-4 max-w-2xl text-gray-900 dark:text-gray-100">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
         <a href="../categories/seo-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open SEO &amp; content tools</a>
       </section>
-<section class="prose max-w-none text-gray-700 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Why reading time matters</h2>
+<section class="prose max-w-none text-gray-700 dark:text-gray-300 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Why reading time matters</h2>
         <p>Many CMS themes show “X min read” next to the title. Using roughly 200 to 250 WPM matches how adults read non-fiction on screens. Slower WPM suits technical, legal, or documentation-heavy content where users pause more often.</p>
-        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">Useful publishing scenarios</h3>
+        <h3 class="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white">Useful publishing scenarios</h3>
         <p>Reading-time estimates help editorial teams package articles more clearly, especially on content hubs, newsletters, and knowledge bases. They also help UX teams compare short announcements against deep tutorials so users know what they are about to open.</p>
-        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">What influences the estimate</h3>
+        <h3 class="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white">What influences the estimate</h3>
         <p>A quick estimate depends mostly on word count, but actual reading speed changes with sentence complexity, technical vocabulary, formatting density, and whether the page includes code snippets, tables, or images that interrupt scanning flow.</p>
-        <h3 class="text-xl font-bold text-gray-900 mt-6 mb-3">When to use a slower WPM</h3>
+        <h3 class="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white">When to use a slower WPM</h3>
         <p>If you publish developer docs, policy pages, or detailed tutorials, choose a lower WPM to avoid underestimating time. For lighter marketing content or announcements, a faster WPM can be closer to reality.</p>
       </section>
     </article>
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="tb-card tb-card-panel tb-card-pad-lg">
-        <h3 class="text-lg font-bold text-gray-900 mb-3">Continue the workflow</h3>
+        <h3 class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Continue the workflow</h3>
         <div class="space-y-3 text-sm">
           <a href="../categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <span class="font-bold text-gray-800">Browse SEO &amp; Content Tools</span>
+            <span class="font-bold text-gray-900 dark:text-gray-100">Browse SEO &amp; Content Tools</span>
             <span class="block text-gray-500 mt-1">See other publishing helpers connected to slug, word count, and copy cleanup tasks.</span>
           </a>
           <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <span class="font-bold text-gray-800">Browse all ToolBite guides</span>
+            <span class="font-bold text-gray-900 dark:text-gray-100">Browse all ToolBite guides</span>
             <span class="block text-gray-500 mt-1">Jump into tutorials that connect directly to ToolBite tools and publishing workflows.</span>
           </a>
         </div>
@@ -259,30 +259,30 @@
 
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
-          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
+          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="../tools/text-to-slug.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔗</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Text to slug generator online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Turn headlines into lowercase, hyphenated slugs for blogs and product URLs.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Text to slug generator online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Turn headlines into lowercase, hyphenated slugs for blogs and product URLs.</p>
           </a>
           <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📝</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Word counter online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Words, characters, sentences, and paragraphs for drafts and specs.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Word counter online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Words, characters, sentences, and paragraphs for drafts and specs.</p>
           </a>
           <a href="../tools/password-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔑</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Password generator online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate long random passwords with the Web Crypto API where available.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Password generator online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Generate long random passwords with the Web Crypto API where available.</p>
           </a>
         </div>
       </section>
     </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -302,8 +302,8 @@
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -312,31 +312,31 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>

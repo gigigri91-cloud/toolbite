@@ -87,16 +87,16 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
       <nav class="hidden md:block" aria-label="Main">
-        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
           <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
           <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
           <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
@@ -111,8 +111,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
@@ -134,34 +134,34 @@
           <li>›</li>
           <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li>
           <li>›</li>
-          <li class="text-gray-800 font-medium">QR Code Generator</li>
+          <li class="text-gray-800 dark:text-gray-200 font-medium">QR Code Generator</li>
         </ol>
       </nav>
 
-      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">QR Code Generator  <button onclick="toggleFavorite('/tools/qr-generator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
-        <p class="text-gray-600">Generate a QR code instantly from any URL, text, phone number or email. Download as PNG with one click.</p>
+      <section class="tb-tool-hero border-b border-gray-200 dark:border-gray-600 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-2" data-pseo-target="h1">QR Code Generator  <button onclick="toggleFavorite('/tools/qr-generator.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <p class="text-gray-600 dark:text-gray-400">Generate a QR code instantly from any URL, text, phone number or email. Download as PNG with one click.</p>
       </section>
 
-      <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
         <strong>Privacy:</strong> QR codes are rendered entirely in your browser — your text is never sent to ToolBite servers.
       </div>
 
-      <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 mb-10">
+      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 md:p-8 border border-gray-100 dark:border-gray-700 mb-10 text-gray-900 dark:text-gray-100">
 
         <div class="mb-5">
-          <label for="qr-input" class="block text-sm font-bold text-gray-700 mb-2">Text or URL to encode</label>
-          <textarea id="qr-input" rows="3" placeholder="https://toolbite.org or any text…" class="w-full border border-gray-300 rounded-xl p-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none text-sm"></textarea>
+          <label for="qr-input" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Text or URL to encode</label>
+          <textarea id="qr-input" rows="3" placeholder="https://toolbite.org or any text…" class="w-full border border-gray-300 rounded-xl p-3 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none text-sm"></textarea>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label for="qr-size" class="block text-sm font-bold text-gray-700 mb-2">Size: <span id="qr-size-label">300</span>px</label>
+            <label for="qr-size" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Size: <span id="qr-size-label">300</span>px</label>
             <input type="range" id="qr-size" min="100" max="600" step="50" value="300" class="w-full accent-blue-600">
           </div>
           <div>
-            <label for="qr-error" class="block text-sm font-bold text-gray-700 mb-2">Error correction</label>
-            <select id="qr-error" class="w-full border border-gray-300 rounded-xl p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <label for="qr-error" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Error correction</label>
+            <select id="qr-error" class="w-full border border-gray-300 rounded-xl p-2 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
               <option value="L">Low (L) — smaller QR</option>
               <option value="M" selected>Medium (M) — balanced</option>
               <option value="Q">Quartile (Q)</option>
@@ -173,7 +173,7 @@
         <button id="qr-generate-btn" onclick="generateQR()" class="tb-btn tb-btn-primary tb-btn-lg tb-btn-block mb-8">Generate QR Code</button>
 
         <div id="qr-result" class="hidden flex-col items-center gap-5">
-          <div class="p-4 bg-white rounded-2xl border-2 border-dashed border-blue-200 shadow-inner">
+          <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl border-2 border-dashed border-blue-200 shadow-inner text-gray-900 dark:text-gray-100">
             <img id="qr-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Generated QR Code" class="block rounded-xl" style="image-rendering: pixelated;" loading="lazy">
           </div>
           <div class="flex gap-3 flex-wrap justify-center">
@@ -186,8 +186,8 @@
       </div>
 
       <section class="tb-tool-section mt-4 not-prose" aria-labelledby="tb-how-to-heading">
-        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
-        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1 max-w-2xl">
           <li>Type or paste your URL, text, phone number, or email in the box above.</li>
           <li>Choose a size and error correction level, then click Generate.</li>
           <li>Download the PNG or right-click the image to copy it directly.</li>
@@ -195,56 +195,56 @@
       </section>
 
       <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
-        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
-        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Business cards & print</h3>
-            <p class="text-xs text-gray-600">Add a QR code to flyers or cards that links to your website or contact info.</p>
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 dark:text-gray-300 list-none p-0 m-0">
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-sm mb-1 text-gray-900 dark:text-white">Business cards & print</h3>
+            <p class="text-xs text-gray-900 dark:text-gray-100">Add a QR code to flyers or cards that links to your website or contact info.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Wi-Fi sharing</h3>
-            <p class="text-xs text-gray-600">Encode your Wi-Fi credentials so guests scan to connect without typing.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-sm mb-1 text-gray-900 dark:text-white">Wi-Fi sharing</h3>
+            <p class="text-xs text-gray-900 dark:text-gray-100">Encode your Wi-Fi credentials so guests scan to connect without typing.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Event & product links</h3>
-            <p class="text-xs text-gray-600">Create scannable codes for event tickets, menus, or product pages.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-sm mb-1 text-gray-900 dark:text-white">Event & product links</h3>
+            <p class="text-xs text-gray-900 dark:text-gray-100">Create scannable codes for event tickets, menus, or product pages.</p>
           </li>
         </ul>
       </section>
 
       <section class="tb-tool-faq mt-8 not-prose" aria-labelledby="tb-faq-heading">
-        <h2 id="tb-faq-heading" class="text-xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
+        <h2 id="tb-faq-heading" class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Frequently asked questions</h2>
         <div class="space-y-3">
-          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+          <details class="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900 dark:text-gray-100">
               <span>What can I encode in a QR code?</span>
               <span class="transition group-open:rotate-180 text-blue-600">
                 <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+            <div class="text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 dark:border-gray-700 mt-2 text-gray-900 dark:text-gray-100">
               <p>URLs, plain text, email addresses, phone numbers, and Wi-Fi credentials. Any text up to a few thousand characters can be stored, though shorter content produces simpler, easier-to-scan codes.</p>
             </div>
           </details>
-          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+          <details class="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900 dark:text-gray-100">
               <span>Is this QR code generator free?</span>
               <span class="transition group-open:rotate-180 text-blue-600">
                 <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+            <div class="text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 dark:border-gray-700 mt-2 text-gray-900 dark:text-gray-100">
               <p>Yes — completely free, no account needed, no watermarks, no download limits. Generate and download as many PNG QR codes as you need.</p>
             </div>
           </details>
-          <details class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
-            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900">
+          <details class="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl overflow-hidden shadow-sm hover:border-blue-300 transition-colors">
+            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-4 text-gray-900 dark:text-gray-100">
               <span>What does the error correction level mean?</span>
               <span class="transition group-open:rotate-180 text-blue-600">
                 <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 mt-2">
+            <div class="text-sm p-4 pt-0 leading-relaxed border-t border-gray-100 dark:border-gray-700 mt-2 text-gray-900 dark:text-gray-100">
               <p>It determines how much of the QR code can be obscured while still scanning correctly. Low (L) gives a smaller, simpler code. High (H) adds redundancy — useful for print where a logo might overlap the code.</p>
             </div>
           </details>
@@ -262,23 +262,23 @@
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
 
       <div class="tb-card tb-card-tinted-blue tb-card-pad-lg mb-6">
-        <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">📖 Deep Dive</h3>
+        <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2 text-gray-900 dark:text-white">📖 Deep Dive</h3>
         <a href="../guides/qr-code-guide.html" class="tb-card tb-card-pad-sm tb-card-clickable group border-blue-200 hover:border-blue-400">
           <p class="font-bold text-blue-800 group-hover:text-blue-600 transition-colors">QR codes explained — how to create, customize, and use them</p>
-          <p class="text-gray-600 text-xs mt-2 leading-relaxed">Everything you need to know about QR codes: what they store, how error correc...</p>
+          <p class="text-xs mt-2 leading-relaxed text-gray-900 dark:text-gray-100">Everything you need to know about QR codes: what they store, how error correc...</p>
         </a>
       </div>
 
-      <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
+      <h2 id="tb-tool-aside-heading" class="sr-only text-gray-900 dark:text-white">Related links and tips</h2>
       <div class="tb-card tb-card-pad-lg">
-        <h3 class="text-lg font-bold text-gray-900 mb-4">Developer Tools</h3>
+        <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white">Developer Tools</h3>
         <div class="space-y-3 text-sm">
           <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800">Browse all Developer Tools</p>
+            <p class="font-bold text-gray-900 dark:text-gray-100">Browse all Developer Tools</p>
             <p class="text-gray-500 mt-1">JSON, JWT, Base64, UUID, hashing and more.</p>
           </a>
           <a href="../tools/uuid-generator.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800">UUID Generator</p>
+            <p class="font-bold text-gray-900 dark:text-gray-100">UUID Generator</p>
             <p class="text-gray-500 mt-1">Generate random v4 IDs instantly.</p>
           </a>
         </div>
@@ -287,30 +287,30 @@
 
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
-          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
+          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="../tools/password-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔑</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Password generator online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Generate long random passwords with the Web Crypto API where available.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Password generator online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Generate long random passwords with the Web Crypto API where available.</p>
           </a>
           <a href="../tools/color-palette-generator.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🎨</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Color palette generator online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Spin up five-color palettes and copy HEX codes with one click.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Color palette generator online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Spin up five-color palettes and copy HEX codes with one click.</p>
           </a>
           <a href="../tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📝</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Word counter online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Words, characters, sentences, and paragraphs for drafts and specs.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Word counter online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Words, characters, sentences, and paragraphs for drafts and specs.</p>
           </a>
         </div>
       </section>
     </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -378,8 +378,8 @@
   </script>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -388,31 +388,31 @@
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>

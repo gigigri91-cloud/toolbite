@@ -87,15 +87,15 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
+  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
     <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
       <a href="../" class="group flex items-center min-w-0 shrink leading-none">
         <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
       </a>
-      <nav class="hidden md:block" aria-label="Main"><ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700">
+      <nav class="hidden md:block" aria-label="Main"><ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
         <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
@@ -110,8 +110,8 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-200 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 text-center">
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
+      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
         <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
         <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
         <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
@@ -129,13 +129,13 @@
         <ol class="flex items-center gap-2">
           <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
           <li><a href="../categories/developer-tools.html" class="hover:text-blue-600 transition">Developer Tools</a></li><li>›</li>
-          <li class="text-gray-800 font-medium">JSON Formatter</li>
+          <li class="text-gray-800 dark:text-gray-200 font-medium">JSON Formatter</li>
         </ol>
       </nav>
-      <section class="tb-tool-hero border-b border-gray-200 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
+      <section class="tb-tool-hero border-b border-gray-200 dark:border-gray-600 pb-5 mb-6" aria-labelledby="tb-tool-hero-title">
       <div class="mb-0">
-        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2" data-pseo-target="h1">JSON formatter &amp; validator online  <button onclick="toggleFavorite('/tools/json-formatter.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
-        <p class="text-gray-600 text-lg">Beautify, minify, and validate JSON in your browser for API payloads, config files, and structured data snippets.</p>
+        <h1 id="tb-tool-hero-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-2" data-pseo-target="h1">JSON formatter &amp; validator online  <button onclick="toggleFavorite('/tools/json-formatter.html', document.title.split('—')[0].trim())" class="favorite-btn" title="Toggle Favorite" aria-label="Toggle Favorite">★</button></h1>
+        <p class="text-gray-600 dark:text-gray-400 text-lg">Beautify, minify, and validate JSON in your browser for API payloads, config files, and structured data snippets.</p>
         <div class="tb-rating-stars flex items-center gap-1.5 mt-2 mb-4 text-sm font-medium text-gray-500">
           <div class="flex text-amber-400">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -148,73 +148,73 @@
         </div>
       </div>
       </section>
-      <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
+      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 rounded-2xl p-4 mb-6 text-sm text-blue-900">
         <strong>Privacy:</strong> JSON formatting and validation run locally in your browser. Routine inputs are not uploaded to ToolBite for processing.
       </div>
-      <div class="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 mb-8">
+      <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 border border-gray-100 dark:border-gray-700 mb-8 text-gray-900 dark:text-gray-100">
         <div class="flex flex-wrap gap-3 mb-4">
           <button onclick="formatJSON()" class="px-5 py-2.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-sm">Format / Beautify</button>
-          <button onclick="minifyJSON()" class="px-5 py-2.5 bg-gray-200 text-gray-800 font-bold rounded-xl hover:bg-gray-300 transition">Minify</button>
-          <button onclick="clearJSON()" class="px-5 py-2.5 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition">Clear</button>
+          <button onclick="minifyJSON()" class="px-5 py-2.5 bg-gray-200 text-gray-800 dark:text-gray-200 font-bold rounded-xl hover:bg-gray-300 transition">Minify</button>
+          <button onclick="clearJSON()" class="px-5 py-2.5 bg-red-50 dark:bg-red-900/30 text-red-600 font-bold rounded-xl hover:bg-red-100 transition">Clear</button>
           <div class="flex-grow"></div>
           <button type="button" class="tb-btn tb-btn-soft tb-btn-sm hidden md:inline-flex mr-2" onclick="showEmbedModal()">Embed</button>
           <button id="copyBtn" onclick="copyJSON()" class="px-5 py-2.5 bg-gray-800 text-white font-bold rounded-xl hover:bg-gray-900 transition shadow-sm">Copy Code</button>
         </div>
-        <textarea id="jsonInput" class="w-full h-96 p-4 font-mono text-sm border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none resize-y text-gray-800 bg-gray-50 leading-relaxed" placeholder='Paste your JSON here...' spellcheck="false"></textarea>
+        <textarea id="jsonInput" class="w-full h-96 p-4 font-mono text-sm border-2 border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-400 outline-none resize-y text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 leading-relaxed" placeholder='Paste your JSON here...' spellcheck="false"></textarea>
         <div id="jsonMessage" class="hidden mt-4 p-4 rounded-xl font-medium"></div>
       </div>
             <section class="tb-tool-section mt-8 not-prose" aria-labelledby="tb-how-to-heading">
-        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 mb-3">How to use</h2>
-        <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1 max-w-2xl">
+        <h2 id="tb-how-to-heading" class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">How to use</h2>
+        <ol class="list-decimal pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1 max-w-2xl">
           <li>Paste JSON into the editor.</li>
           <li>Use Format/Beautify to read it, or Minify for compact output.</li>
           <li>Fix any syntax error the validator reports, then copy the result.</li>
         </ol>
       </section>
       <section class="tb-tool-section mt-6 not-prose" aria-labelledby="tb-use-cases-heading">
-        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 mb-3">Use cases</h2>
-        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 list-none p-0 m-0">
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">API responses</h3>
-            <p class="text-xs text-gray-600">Read nested payloads while debugging.</p>
+        <h2 id="tb-use-cases-heading" class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">Use cases</h2>
+        <ul class="grid sm:grid-cols-3 gap-3 text-gray-700 dark:text-gray-300 list-none p-0 m-0">
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm mb-1">API responses</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Read nested payloads while debugging.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">JSON-LD &amp; Schema.org</h3>
-            <p class="text-xs text-gray-600">Validate snippets before dropping them into templates.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm mb-1">JSON-LD &amp; Schema.org</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Validate snippets before dropping them into templates.</p>
           </li>
-          <li class="bg-gray-50 border border-gray-100 rounded-2xl p-4">
-            <h3 class="font-bold text-gray-900 text-sm mb-1">Config files</h3>
-            <p class="text-xs text-gray-600">Spot trailing commas and quoting issues quickly.</p>
+          <li class="bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-700 rounded-2xl p-4">
+            <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm mb-1">Config files</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Spot trailing commas and quoting issues quickly.</p>
           </li>
         </ul>
       </section>
       <section class="tb-tool-section mt-6 not-prose tb-tool-faq" aria-labelledby="tb-faq-heading">
-        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 mb-3">FAQ</h2>
+        <h2 id="tb-faq-heading" class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">FAQ</h2>
         <div class="space-y-2 max-w-3xl">
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my JSON data sent to a server?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">No. All formatting and validation runs locally in your browser using JavaScript.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Is my JSON data sent to a server?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">No. All formatting and validation runs locally in your browser using JavaScript.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>What is the difference between Format and Minify?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Format adds indentation and line breaks for human readability. Minify removes all whitespace to reduce file size.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>What is the difference between Format and Minify?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">Format adds indentation and line breaks for human readability. Minify removes all whitespace to reduce file size.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does it support large JSON files?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Yes, you can paste large JSON objects and the tool will format them instantly.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Does it support large JSON files?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">Yes, you can paste large JSON objects and the tool will format them instantly.</p>
           </details>
-          <details class="group border border-gray-100 rounded-xl bg-gray-50/90 px-4 py-2">
-            <summary class="cursor-pointer font-semibold text-gray-900 text-sm marker:content-none list-none flex justify-between gap-2"><span>Why is my JSON flagged as invalid?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
-            <p class="mt-2 text-sm text-gray-600 pb-1">Common causes are trailing commas, single quotes instead of double quotes, or an unquoted key. The error message shows the exact position.</p>
+          <details class="group border border-gray-100 dark:border-gray-700 rounded-xl bg-gray-50/90 px-4 py-2">
+            <summary class="cursor-pointer font-semibold text-gray-900 dark:text-gray-100 text-sm marker:content-none list-none flex justify-between gap-2"><span>Why is my JSON flagged as invalid?</span><span class="text-gray-400 text-xs shrink-0" aria-hidden="true">▾</span></summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 pb-1">Common causes are trailing commas, single quotes instead of double quotes, or an unquoted key. The error message shows the exact position.</p>
           </details>
         </div>
       </section>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-advanced-usage-heading">
-        <h2 id="tb-advanced-usage-heading" class="text-lg font-bold text-gray-900 mb-4">Advanced Usage &amp; Examples</h2>
+        <h2 id="tb-advanced-usage-heading" class="text-lg font-bold mb-4 text-gray-900 dark:text-white">Advanced Usage &amp; Examples</h2>
 
         <div class="space-y-5">
           <div>
-            <h3 class="font-bold text-gray-900 mb-2">Scenario 1: API payload triage during incident response</h3>
+            <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Scenario 1: API payload triage during incident response</h3>
             <pre class="bg-slate-900 text-slate-100 rounded-xl p-4 text-xs overflow-x-auto"><code>Input (broken):
 {"id":1024,"flags":["beta",],"active":true}
 
@@ -226,7 +226,7 @@ Fixed output:
           </div>
 
           <div>
-            <h3 class="font-bold text-gray-900 mb-2">Scenario 2: Validate JSON-LD before page release</h3>
+            <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Scenario 2: Validate JSON-LD before page release</h3>
             <pre class="bg-slate-900 text-slate-100 rounded-xl p-4 text-xs overflow-x-auto"><code>Input snippet:
 {"@context":"https://schema.org","@type":"Article","headline":"..."}
 
@@ -237,7 +237,7 @@ Workflow:
           </div>
 
           <div>
-            <h3 class="font-bold text-gray-900 mb-2">Scenario 3: Normalize exported config for code review</h3>
+            <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Scenario 3: Normalize exported config for code review</h3>
             <pre class="bg-slate-900 text-slate-100 rounded-xl p-4 text-xs overflow-x-auto"><code>Before:
 {"b":2,"a":1,"nested":{"z":0,"y":1}}
 
@@ -263,47 +263,47 @@ After formatting:
           <p class="text-sm text-amber-900">Syntax-valid JSON can still be semantically wrong for your API or schema. This tool validates JSON structure, not business rules or endpoint-specific contracts.</p>
         </div>
 
-        <p class="mt-5 text-sm text-gray-700"><strong>How this differs from <a href="../tools/csv-to-json.html" class="text-blue-600 hover:underline">CSV to JSON</a>:</strong> JSON Formatter validates and reshapes existing JSON; CSV to JSON transforms tabular text into JSON structures.</p>
+        <p class="mt-5 text-sm text-gray-900 dark:text-gray-100"><strong>How this differs from <a href="../tools/csv-to-json.html" class="text-blue-600 hover:underline">CSV to JSON</a>:</strong> JSON Formatter validates and reshapes existing JSON; CSV to JSON transforms tabular text into JSON structures.</p>
       </section>
 
 <section class="tb-tool-section mt-6 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 not-prose" aria-labelledby="tb-guides-heading">
-        <h2 id="tb-guides-heading" class="text-lg font-bold text-gray-900 mb-3">Guides for this task</h2>
+        <h2 id="tb-guides-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Guides for this task</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a href="../guides/json-formatter-guide.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800 text-sm mb-1">Invalid JSON checklist</p>
+            <p class="font-bold text-sm mb-1 text-gray-900 dark:text-gray-100">Invalid JSON checklist</p>
             <p class="text-xs text-gray-500">Trailing commas, quotes, and fixes.</p>
           </a>
           <a href="../guides/index.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800 text-sm mb-1">All ToolBite guides</p>
+            <p class="font-bold text-sm mb-1 text-gray-900 dark:text-gray-100">All ToolBite guides</p>
             <p class="text-xs text-gray-500">More browser-first workflows.</p>
           </a>
         </div>
       </section>
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-6 md:p-8" aria-labelledby="tb-browse-category-heading">
-        <h2 id="tb-browse-category-heading" class="text-lg font-bold text-gray-900 mb-3">Browse this category</h2>
-        <p class="text-sm text-gray-600 mb-4 max-w-2xl">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
+        <h2 id="tb-browse-category-heading" class="text-lg font-bold mb-3 text-gray-900 dark:text-white">Browse this category</h2>
+        <p class="text-sm mb-4 max-w-2xl text-gray-900 dark:text-gray-100">Explore more browser-based tools in the same group—everything stays fast and local where the tool allows it.</p>
         <a href="../categories/developer-tools.html" class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition">Open Developer &amp; debugging tools</a>
       </section>
-<section class="prose max-w-none text-gray-700 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Why Use Our JSON Formatter?</h2>
+<section class="prose max-w-none text-gray-700 dark:text-gray-300 tb-card tb-card-prose tb-card-pad-lg tb-seo-notes" aria-label="About this tool">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Why Use Our JSON Formatter?</h2>
         <p class="mb-4">Working with APIs and configuration files often means dealing with raw, minified JSON. Our formatter transforms that messy string into a structured, readable format with proper indentation.</p>
         <p>Everything runs entirely in your browser using local JavaScript — your sensitive API responses are never sent to external servers.</p>
       
-      <div class="mt-6 space-y-4 text-gray-700">
-        <h3 class="text-xl font-bold text-gray-900">Common JSON Errors and How to Fix Them</h3>
+      <div class="mt-6 space-y-4 text-gray-900 dark:text-gray-100">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Common JSON Errors and How to Fix Them</h3>
         <p>Even experienced developers encounter JSON syntax errors. Here are the most frequent mistakes our validator catches:</p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Trailing commas</strong> — JSON does not allow a comma after the last item in an array or object. <code class="bg-gray-100 px-1 rounded">{"key": "value",}</code> is invalid.</li>
-          <li><strong>Single quotes</strong> — All strings in JSON must use double quotes. <code class="bg-gray-100 px-1 rounded">{'key': 'value'}</code> is JavaScript, not JSON.</li>
-          <li><strong>Unquoted keys</strong> — Object keys must always be quoted strings. <code class="bg-gray-100 px-1 rounded">{key: "value"}</code> is invalid.</li>
+          <li><strong>Trailing commas</strong> — JSON does not allow a comma after the last item in an array or object. <code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">{"key": "value",}</code> is invalid.</li>
+          <li><strong>Single quotes</strong> — All strings in JSON must use double quotes. <code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">{'key': 'value'}</code> is JavaScript, not JSON.</li>
+          <li><strong>Unquoted keys</strong> — Object keys must always be quoted strings. <code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">{key: "value"}</code> is invalid.</li>
           <li><strong>Comments</strong> — Standard JSON does not support comments. Use JSONC (JSON with Comments) for configuration files that need them.</li>
         </ul>
-        <h3 class="text-xl font-bold text-gray-900 mt-6">When to Use Minified vs Formatted JSON</h3>
+        <h3 class="text-xl font-bold mt-6 text-gray-900 dark:text-white">When to Use Minified vs Formatted JSON</h3>
         <p class="mb-3">Use <strong>formatted JSON</strong> when reading, debugging, or sharing data with teammates. The indentation makes the structure immediately clear and greatly reduces the time spent hunting for a missing bracket.</p>
         <p>Use <strong>minified JSON</strong> in production API responses, configuration files bundled with your app, or any situation where every byte counts. Removing whitespace can reduce file size by 15-40% for typical payloads.</p>
-        <h3 class="text-xl font-bold text-gray-900 mt-6">A faster debugging workflow</h3>
+        <h3 class="text-xl font-bold mt-6 text-gray-900 dark:text-white">A faster debugging workflow</h3>
         <p>Start by validating the raw payload exactly as received. Fix the first syntax error, run formatting again, and only then decide whether you need a readable beautified version or a compact minified one for deployment. That sequence prevents secondary syntax errors from hiding the real problem.</p>
-        <h3 class="text-xl font-bold text-gray-900 mt-6">Where this tool helps beyond API work</h3>
+        <h3 class="text-xl font-bold mt-6 text-gray-900 dark:text-white">Where this tool helps beyond API work</h3>
         <p>JSON cleanup is also useful for Schema.org snippets, app settings, exported CMS data, and configuration review during code handoff. Even when the JSON is technically valid, formatting it first makes bad property names and incorrect nesting much easier to spot.</p>
       </div>
       </section>
@@ -311,23 +311,23 @@ After formatting:
     <aside class="space-y-6" aria-labelledby="tb-tool-aside-heading">
 
       <div class="tb-card tb-card-tinted-blue tb-card-pad-lg mb-6">
-        <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">📖 Deep Dive</h3>
+        <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2 text-gray-900 dark:text-white">📖 Deep Dive</h3>
         <a href="../guides/json-formatter-guide.html" class="tb-card tb-card-pad-sm tb-card-clickable group border-blue-200 hover:border-blue-400">
           <p class="font-bold text-blue-800 group-hover:text-blue-600 transition-colors">JSON formatter guide: fix invalid JSON fast</p>
-          <p class="text-gray-600 text-xs mt-2 leading-relaxed">A straight checklist for trailing commas, quotes, and common parse errors—mea...</p>
+          <p class="text-xs mt-2 leading-relaxed text-gray-900 dark:text-gray-100">A straight checklist for trailing commas, quotes, and common parse errors—mea...</p>
         </a>
       </div>
 
       <h2 id="tb-tool-aside-heading" class="sr-only">Related links and tips</h2>
       <div class="tb-card tb-card-pad-lg">
-        <h3 class="text-lg font-bold text-gray-900 mb-4">Explore developer resources</h3>
+        <h3 class="text-lg font-bold mb-4 text-gray-900 dark:text-white">Explore developer resources</h3>
         <div class="space-y-3 text-sm">
           <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800">Developer Tools category</p>
+            <p class="font-bold text-gray-900 dark:text-gray-100">Developer Tools category</p>
             <p class="text-gray-500 mt-1">Browse JSON, JWT, Base64, hashing, URL encoding, and more.</p>
           </a>
           <a href="../guides/json-formatter-guide.html" class="tb-card tb-card-soft tb-card-pad-sm tb-card-clickable">
-            <p class="font-bold text-gray-800">JSON troubleshooting guide</p>
+            <p class="font-bold text-gray-900 dark:text-gray-100">JSON troubleshooting guide</p>
             <p class="text-gray-500 mt-1">Fix common JSON syntax errors with a short practical checklist.</p>
           </a>
         </div>
@@ -336,31 +336,31 @@ After formatting:
 
       <section class="tb-tool-section tb-card tb-card-panel tb-card-pad-lg not-prose mt-12" aria-labelledby="tb-related-tools-heading">
         <div class="flex items-center justify-between mb-6">
-          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900">Explore Related Tools</h2>
+          <h2 id="tb-related-tools-heading" class="text-2xl font-bold text-gray-900 dark:text-white">Explore Related Tools</h2>
           <a href="../search.html" class="text-sm font-semibold text-blue-600 hover:underline">View all tools &rarr;</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a href="../tools/jwt-decoder.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🪪</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">JWT decoder online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Decode JWT header and payload JSON for debugging.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">JWT decoder online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Decode JWT header and payload JSON for debugging.</p>
           </a>
           <a href="../tools/csv-to-json.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">🔄</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">CSV to JSON Converter</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Instantly convert CSV data to a valid JSON array in your browser.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">CSV to JSON Converter</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Instantly convert CSV data to a valid JSON array in your browser.</p>
           </a>
           <a href="../tools/base64-encoder.html" class="tb-card tb-card-soft tb-card-pad-md">
             <span class="text-3xl mb-3 block" aria-hidden="true">📎</span>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">Base64 encoder &amp; decoder online</h3>
-            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">Encode or decode Base64 for tokens, snippets, and small payloads.</p>
+            <h3 class="font-bold group-hover:text-blue-600 transition-colors mb-2 text-gray-900 dark:text-white">Base64 encoder &amp; decoder online</h3>
+            <p class="text-xs line-clamp-2 leading-relaxed text-gray-900 dark:text-gray-100">Encode or decode Base64 for tokens, snippets, and small payloads.</p>
           </a>
         </div>
       </section>
-    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="API & Data Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: API & Data Workflow</p><div class="flex flex-wrap gap-2"><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">💻</span><span>JSON Formatter</span></div><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
+    <section class="tb-card tb-card-panel tb-card-pad-md mt-6 not-prose md:p-6" aria-label="API & Data Workflow"><p class="text-xs font-bold uppercase tracking-wide text-gray-500 mb-3">Part of: API & Data Workflow</p><div class="flex flex-wrap gap-2"><div class="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 dark:bg-blue-900/30 px-3 py-2 text-sm font-semibold text-blue-800" aria-current="page"><span aria-hidden="true">💻</span><span>JSON Formatter</span></div><a href="../tools/base64-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/jwt-decoder.html" class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm font-semibold hover:border-blue-200 hover:text-blue-700 hover:bg-blue-50 transition text-gray-900 dark:text-gray-100"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a></div></section>
 </main>
 
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
       <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
@@ -380,8 +380,8 @@ After formatting:
   </footer>
   
 
-  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white border border-gray-200 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden" role="region" aria-label="Cookie consent banner">
-    <p class="text-sm text-gray-700 mb-3">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
+  <div id="cookie-consent-banner" class="fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-2xl rounded-2xl p-4 md:p-5 z-[120] hidden text-gray-900 dark:text-gray-100" role="region" aria-label="Cookie consent banner">
+    <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">ToolBite uses necessary cookies and, with your choice, analytics and advertising cookies. Read our <a href="../cookie-policy.html" class="text-blue-600 hover:underline">Cookie Policy</a>.</p>
     <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
       <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">Manage Preferences</button>
       <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">Accept All</button>
@@ -390,31 +390,31 @@ After formatting:
 
   <div id="cookie-preferences-modal" class="fixed inset-0 bg-black/50 z-[130] hidden" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
     <div class="min-h-full flex items-center justify-center p-4">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 text-gray-900 dark:text-gray-100">
         <div class="flex items-start justify-between gap-3 mb-4">
-          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900">Cookie Preferences</h2>
+          <h2 id="cookie-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
           <button type="button" id="cookie-modal-close" class="tb-btn tb-btn-icon" aria-label="Close preferences">&#10005;</button>
         </div>
-        <p class="text-sm text-gray-600 mb-5">Choose which optional cookie categories you allow on ToolBite.</p>
+        <p class="text-sm mb-5 text-gray-900 dark:text-gray-100">Choose which optional cookie categories you allow on ToolBite.</p>
         <div class="space-y-4">
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4 bg-gray-50">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4 bg-gray-50 dark:bg-gray-700">
             <span>
-              <span class="block font-semibold text-gray-900">Necessary</span>
-              <span class="block text-xs text-gray-600">Required for core site operation. Always active.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Necessary</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Required for core site operation. Always active.</span>
             </span>
             <input type="checkbox" checked disabled class="h-5 w-5 accent-blue-600" aria-label="Necessary cookies always enabled">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Analytics</span>
-              <span class="block text-xs text-gray-600">Helps us understand site usage and improve tools.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Analytics</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Helps us understand site usage and improve tools.</span>
             </span>
             <input type="checkbox" id="cookie-analytics-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow analytics cookies">
           </label>
-          <label class="flex items-center justify-between gap-4 border border-gray-100 rounded-xl p-4">
+          <label class="flex items-center justify-between gap-4 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
             <span>
-              <span class="block font-semibold text-gray-900">Advertising</span>
-              <span class="block text-xs text-gray-600">Used by partners like Google AdSense for ad delivery and measurement.</span>
+              <span class="block font-semibold text-gray-900 dark:text-gray-100">Advertising</span>
+              <span class="block text-xs text-gray-900 dark:text-gray-100">Used by partners like Google AdSense for ad delivery and measurement.</span>
             </span>
             <input type="checkbox" id="cookie-advertising-toggle" class="h-5 w-5 accent-blue-600" aria-label="Allow advertising cookies">
           </label>
