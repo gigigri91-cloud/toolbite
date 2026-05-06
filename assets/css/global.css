@@ -336,14 +336,21 @@ html[data-theme="dark"] body .tb-card {
   cursor: pointer;
   text-decoration: none;
   display: block;
+  transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
 }
 .tb-card-interactive:hover {
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.10);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.10);
+  transform: translateY(-2px);
   border-color: #d1d5db;           /* gray-300 */
 }
 html[data-theme="dark"] body .tb-card-interactive:hover {
-  box-shadow: 0 4px 16px rgb(0 0 0 / 0.35);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
   border-color: #3f3e3c;
+  transform: translateY(-2px);
+}
+.tb-card-interactive:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
 }
 
 /* TOOL — wrapper principal al unui tool (înlocuiește bg-white rounded-2xl shadow-xl) */
