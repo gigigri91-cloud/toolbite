@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font preloads -->
   <link rel="preload" href="../assets/fonts/inter-v20.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/plus-jakarta-v12.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Font-face (inline critical CSS) -->
   <style id="font-css">
-    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
   </style>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://cdnjs.buymeacoffee.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://google.com https://*.adtrafficquality.google https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com; frame-src https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google; upgrade-insecure-requests">
-<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+
+  <!-- CSP (shared) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://formspree.io;">
+
+  <!-- Preconnect/DNS-prefetch (shared) -->
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
@@ -20,23 +29,46 @@
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
-  <script id="theme-init">(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var initialTheme=(storedTheme==='dark'||storedTheme==='light')?storedTheme:(prefersDark?'dark':'light');root.setAttribute('data-theme',initialTheme);}catch(_){document.documentElement.setAttribute('data-theme','light');}}());</script>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSON Formatter Guide – Guide | ToolBite</title>
-  <style id="critical-css">body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb}.tb-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#014f55 0%,#01696f 42%,#0f766e 100%);color:#fff;padding:3rem 1rem}.tb-hero::before,.tb-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(64px);opacity:.45;pointer-events:none}.tb-hero::before{width:min(80vw,28rem);height:min(80vw,28rem);background:#2dd4bf;top:-15%;right:-5%}.tb-hero::after{width:min(70vw,22rem);height:min(70vw,22rem);background:#34d399;bottom:-20%;left:-8%}.tb-hero-inner{position:relative;z-index:1;max-width:56rem;margin:0 auto}.tb-hero h1{font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:2.25rem;line-height:2.5rem;margin-bottom:1rem;color:#fff}@media (min-width:768px){.tb-hero{padding:5rem 1rem}.tb-hero h1{font-size:3.75rem;line-height:1}}.tb-hero p{font-size:1.125rem;line-height:1.75rem;color:rgba(255,255,255,0.9);font-weight:500;margin-bottom:2rem}@media (min-width:768px){.tb-hero p{font-size:1.5rem;line-height:2rem}}#site-header{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:50}img.header-logo{height:2.5rem!important;width:auto!important;aspect-ratio:384/105;display:block}.skip-link{position:absolute;transform:translateY(-200%)}h1,h2{font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800}.favorite-btn{background:none;border:none;cursor:pointer;font-size:1.5rem;vertical-align:middle;line-height:1;transition:color 0.2s}.favorite-btn.active{color:#f59e0b}.tb-breadcrumb ol{list-style:none;margin:0;padding:0}</style>
-<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <!-- Theme init (MUST stay inline) -->
+  <script id="theme-init">
+  (function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=storedTheme||(prefersDark?'dark':'light');root.classList.toggle('dark',theme==='dark')}catch(e){}})();
+  </script>
+
+  <!-- Critical CSS -->
+  <style id="critical-css">
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb;color:#1f2937}
+  </style>
+
+  <!-- CSS preloads -->
+  <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
+  <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
+  <link rel="preload" href="../assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/components.min.css"></noscript>
+
+  <!-- Favicon & manifest -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <link rel="manifest" href="../manifest.json">
-  <link rel="canonical" href="https://toolbite.org/guides/json-formatter-guide.html">
-<link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/json-formatter-guide.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/json-formatter-guide.html">
+
+  <!-- AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+
+  <!-- ============================================ -->
+  <!-- PAGE-SPECIFIC HEAD SECTION                  -->
+  <!-- ============================================ -->
+  <title>JSON Formatter Guide – Guide | ToolBite</title>
   <meta name="description" content="Read the JSON Formatter Guide guide to understand json concepts, avoid common mistakes, and apply best practices confidently, using practical steps you.">
+  <link rel="canonical" href="https://toolbite.org/guides/json-formatter-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/json-formatter-guide.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/json-formatter-guide.html">
   <meta name="theme-color" content="#01696f">
   <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
   <meta name="author" content="ToolBite">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
   <meta property="og:site_name" content="ToolBite">
   <meta property="og:url" content="https://toolbite.org/guides/json-formatter-guide.html">
   <meta property="og:title" content="JSON Formatter Guide – Guide | ToolBite">
@@ -44,88 +76,47 @@
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Guide: fix invalid JSON in the browser | ToolBite — ToolBite">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@toolbite">
   <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Guide: fix invalid JSON in the browser | ToolBite">
-  <meta name="twitter:description" content="A straight checklist for trailing commas, quotes, and common parse errors—meant for API payloads and config you paste into ToolBite’s formatter.">
+  <meta name="twitter:title" content="JSON Formatter Guide – Guide | ToolBite">
+  <meta name="twitter:description" content="Read the JSON Formatter Guide guide to understand json concepts, avoid common mistakes, and apply best practices confidently, using practical steps you.">
   <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta name="twitter:image:alt" content="Guide: fix invalid JSON in the browser | ToolBite — ToolBite">
-<!-- GA4: async so it never blocks the parser -->
-<meta name="google-adsense-account" content="ca-pub-5233222002046639">
+
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://toolbite.org"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Guides",
-      "item": "https://toolbite.org/guides/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "JSON Formatter Guide – Guide | ToolBite",
-      "item": "https://toolbite.org/guides/json-formatter-guide.html"
-    }
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolbite.org"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://toolbite.org/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "JSON Formatter Guide – Guide | ToolBite",
+        "item": "https://toolbite.org/guides/json-formatter-guide.html"
+      }
+    ]
+  }
+  </script>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
-<link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
-  
-  <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
-
+  <script defer src="../assets/js/inject-components.js"></script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header id="site-header" class="bg-white dark:bg-gray-800 shadow-md py-2 md:py-2.5 sticky top-0 z-50">
-    <div class="flex justify-between items-center gap-1 sm:gap-3 max-w-7xl mx-auto px-4">
-      <a href="../" class="group flex items-center min-w-0 shrink leading-none">
-        <picture class="header-logo-picture"><source srcset="../assets/images/toolbite-logo.webp" type="image/webp"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="384" height="105" fetchpriority="high" decoding="async" class="logo header-logo transition-transform duration-300 group-hover:scale-[1.02]"></picture>
-      </a>
-      <nav class="hidden md:block" aria-label="Main">
-        <ul class="flex flex-wrap justify-end gap-x-5 lg:gap-x-7 gap-y-1 items-center font-bold text-sm lg:text-base text-gray-700 dark:text-gray-300">
-          <li><a href="../" class="hover:text-orange-500 transition">Home</a></li>
-          <li><a href="../categories/text-tools.html" class="hover:text-orange-500 transition">Text</a></li>
-          <li><a href="../categories/developer-tools.html" class="text-orange-500">Developer</a></li>
-          <li><a href="../categories/image-tools.html" class="hover:text-orange-500 transition">Image</a></li>
-          <li><a href="../categories/seo-tools.html" class="hover:text-orange-500 transition">SEO</a></li>
-          <li><a href="index.html" class="hover:text-orange-500 transition">Guides</a></li>
-          <li><a href="../contact.html" class="hover:text-orange-500 transition">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme"></button>
-      <button id="mobile-menu-button" class="tb-btn tb-btn-icon tb-mobile-menu-btn md:hidden focus:outline-none" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 mt-1 rounded-b-xl shadow-inner">
-      <ul class="flex flex-col space-y-4 p-6 font-bold text-lg text-gray-700 dark:text-gray-300 text-center">
-        <li><a href="../" class="block hover:text-orange-500 transition">Home</a></li>
-        <li><a href="../categories/text-tools.html" class="block hover:text-orange-500 transition">Text</a></li>
-        <li><a href="../categories/developer-tools.html" class="block text-orange-500">Developer</a></li>
-        <li><a href="../categories/image-tools.html" class="block hover:text-orange-500 transition">Image</a></li>
-        <li><a href="../categories/seo-tools.html" class="block hover:text-orange-500 transition">SEO</a></li>
-        <li><a href="index.html" class="block hover:text-orange-500 transition">Guides</a></li>
-        <li><a href="../contact.html" class="block hover:text-orange-500 transition">Contact</a></li>
-      </ul>
-    </div>
-  </header>
+  
 
   <main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
@@ -223,24 +214,7 @@
   <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/json-formatter.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a><a href="../tools/csv-to-json.html" class="tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🔄</span><span>CSV to JSON</span></a></div></section>
 </main>
 
-  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
-      <p class="text-xs text-gray-500">Tools run entirely in your browser. No data is sent to our servers.</p>
-      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
-        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
-        <a href="../cookie-policy.html" class="text-gray-500 hover:text-blue-600 transition">Cookie Policy</a>
-        <a href="#" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</a>
-        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
-        <a href="../editorial-policy.html" class="text-gray-500 hover:text-blue-600 transition">Editorial Policy</a>
-        <a href="index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
-        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
-        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-        <a href="../privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
-      </nav>
-    </div>
-  </footer>
+  
   
 
   <div id="cookie-consent-banner" class="tb-card fixed inset-x-4 bottom-4 md:bottom-6 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 w-auto md:w-[min(56rem,calc(100%-2rem))] md:p-5 z-[120] hidden dark:text-gray-100" role="region" aria-label="Cookie consent banner">
@@ -289,91 +263,9 @@
     </div>
   </div>
 
-  <script>
-    (function () {
-      var KEY = 'toolbite-cookie-preferences';
-      var banner = document.getElementById('cookie-consent-banner');
-      var modal = document.getElementById('cookie-preferences-modal');
-      var acceptBtn = document.getElementById('cookie-accept-btn');
-      var manageBtn = document.getElementById('cookie-manage-btn');
-      var closeBtn = document.getElementById('cookie-modal-close');
-      var saveBtn = document.getElementById('cookie-save-preferences');
-      var analyticsToggle = document.getElementById('cookie-analytics-toggle');
-      var advertisingToggle = document.getElementById('cookie-advertising-toggle');
-      if (!banner || !modal || !acceptBtn || !manageBtn || !closeBtn || !saveBtn || !analyticsToggle || !advertisingToggle) return;
-      function readPrefs() {
-        try {
-          var raw = localStorage.getItem(KEY);
-          return raw ? JSON.parse(raw) : null;
-        } catch (_) { return null; }
-      }
-      function writePrefs(prefs) {
-        try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (_) {}
-      }
-      function openModal() {
-        var prefs = readPrefs();
-        analyticsToggle.checked = !!(prefs && prefs.analytics);
-        advertisingToggle.checked = !!(prefs && prefs.advertising);
-        modal.classList.remove('hidden');
-      }
-      function closeModal() { modal.classList.add('hidden'); }
-      if (!readPrefs()) banner.classList.remove('hidden');
-      acceptBtn.addEventListener('click', function () {
-        writePrefs({ necessary: true, analytics: true, advertising: true, consentedAt: new Date().toISOString() });
-        banner.classList.add('hidden');
-      });
-      manageBtn.addEventListener('click', openModal);
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', function (event) { if (event.target === modal) closeModal(); });
-      saveBtn.addEventListener('click', function () {
-        writePrefs({ necessary: true, analytics: analyticsToggle.checked, advertising: advertisingToggle.checked, consentedAt: new Date().toISOString() });
-        banner.classList.add('hidden');
-        closeModal();
-      });
-      var reopenLinks = document.querySelectorAll('[data-open-cookie-settings="true"]');
-      reopenLinks.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-          event.preventDefault();
-          banner.classList.add('hidden');
-          openModal();
-        });
-      });
-    }());
-  </script>
-  <script defer src="../assets/js/main.min.js"></script>
+<script defer src="../assets/js/main.min.js"></script>
 <!-- Buy Me a Coffee -->
-<a href="https://buymeacoffee.com/supportourdev"
-   target="_blank"
-   rel="noopener noreferrer"
-   style="
-     position: fixed;
-     bottom: 24px;
-     right: 24px;
-     z-index: 9999;
-     display: flex;
-     align-items: center;
-     gap: 8px;
-     background: #FFDD00;
-     color: #000000;
-     font-family: inherit;
-     font-size: 14px;
-     font-weight: 600;
-     text-decoration: none;
-     padding: 10px 18px;
-     border-radius: 999px;
-     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-     transition: transform 0.2s ease, box-shadow 0.2s ease;
-   "
-   onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'"
-   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.18)'"
->
-  <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
-       alt=""
-       width="20"
-       height="20"
-       style="display:block" loading="lazy" />
-  Support us
-</a>
+
 
   <script type="application/ld+json">
   {
@@ -426,5 +318,7 @@
   }
   </script>
   
+<script defer src="../assets/js/cookies.js"></script>
+    <script defer src="../assets/js/bmc-inject.js"></script>
 </body>
 </html>

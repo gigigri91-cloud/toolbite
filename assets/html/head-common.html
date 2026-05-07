@@ -1,0 +1,63 @@
+<!-- assets/html/head-common.html -->
+<!-- SHARED HEAD SECTION - Used on all pages -->
+<!-- This section should be placed inside <head> before page-specific meta tags -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Preload fonts -->
+<link rel="preload" href="{assetPath}assets/fonts/inter-v20.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{assetPath}assets/fonts/plus-jakarta-v12.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Font-face declarations (critical CSS - inline) -->
+<style id="font-css">
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url({assetPath}assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url({assetPath}assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url({assetPath}assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url({assetPath}assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url({assetPath}assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+
+<!-- Shared Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://formspree.io;">
+
+<!-- Google Analytics & AdSense preconnect/dns-prefetch (shared across all pages) -->
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+<link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+<link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+<link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
+<link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
+
+<!-- Theme initialization (critical - runs before page renders to prevent flicker) -->
+<script id="theme-init">
+(function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=storedTheme||(prefersDark?'dark':'light');root.classList.toggle('dark',theme==='dark')}catch(e){}})();
+</script>
+
+<!-- Critical CSS (inline) -->
+<style id="critical-css">
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb;color:#1f2937}
+</style>
+
+<!-- Main stylesheet preload -->
+<link rel="preload" href="{assetPath}assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{assetPath}assets/css/tailwind.min.css"></noscript>
+
+<link rel="preload" href="{assetPath}assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{assetPath}assets/css/global.min.css"></noscript>
+
+<!-- Component stylesheet (from Phase 1) -->
+<link rel="preload" href="{assetPath}assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{assetPath}assets/css/components.min.css"></noscript>
+
+<!-- Favicon & manifest -->
+<link rel="icon" type="image/png" href="{assetPath}assets/images/favicon.png">
+<link rel="manifest" href="{assetPath}manifest.json">
+
+<!-- Google AdSense account -->
+<meta name="google-adsense-account" content="ca-pub-5233222002046639">
+
+<!-- AdSense script (async - doesn't block rendering) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>

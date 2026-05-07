@@ -3,58 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authors | ToolBite</title>
-  <meta name="description" content="Browse Authors on ToolBite to discover published tools and guides, review useful topics, and find trusted resources for author workflows, without uploads.">
-  <link rel="canonical" href="https://toolbite.org/authors/index.html">
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-  <link rel="manifest" href="../manifest.json">
+
+  <!-- Font preloads -->
+  <link rel="preload" href="../assets/fonts/inter-v20.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/plus-jakarta-v12.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Font-face (inline critical CSS) -->
+  <style id="font-css">
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(../assets/fonts/inter-v20.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url(../assets/fonts/plus-jakarta-v12.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017B-017C, U+0191, U+0192, U+01A0-01A1, U+01AF-01B0, U+0260, U+0268, U+02BB-02BC, U+0300-0304, U+0308, U+0329, U+1E00-1EFF, U+2074, U+20A0-20CF, U+2212, U+2215, U+FEFF, U+FFFD; }
+  </style>
+
+  <!-- CSP (shared) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://formspree.io;">
+
+  <!-- Preconnect/DNS-prefetch (shared) -->
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
+  <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
+
+  <!-- Theme init (MUST stay inline) -->
+  <script id="theme-init">
+  (function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=storedTheme||(prefersDark?'dark':'light');root.classList.toggle('dark',theme==='dark')}catch(e){}})();
+  </script>
+
+  <!-- Critical CSS -->
+  <style id="critical-css">
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb;color:#1f2937}
+  </style>
+
+  <!-- CSS preloads -->
   <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
-  
   <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
-  
+  <link rel="preload" href="../assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/components.min.css"></noscript>
 
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Authors — ToolBite",
-    "url": "https://toolbite.org/authors/index.html",
-    "description": "Meet the authors behind ToolBite guides and tools."
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://toolbite.org/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Authors",
-        "item": "https://toolbite.org/authors/index.html"
-      }
-    ]
-  }
-  </script>
-  <meta property="og:title" content="Authors | ToolBite">
-  <meta property="og:description" content="Browse Authors on ToolBite to discover published tools and guides, review useful topics, and find trusted resources for author workflows, without uploads.">
+  <!-- Favicon & manifest -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="manifest" href="../manifest.json">
+
+  <!-- AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-5233222002046639">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
+
+  <!-- ============================================ -->
+  <!-- PAGE-SPECIFIC HEAD SECTION                  -->
+  <!-- ============================================ -->
+  <title>Authors | ToolBite</title>
+  <meta name="description" content="Meet the authors and creators behind ToolBite guides, tools, and practical web workflows, with transparent publishing standards and hands-on testing notes.">
+  <link rel="canonical" href="https://toolbite.org/authors/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/authors/index.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/authors/index.html">
+  <meta name="theme-color" content="#01696f">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolBite">
   <meta property="og:url" content="https://toolbite.org/authors/index.html">
+  <meta property="og:title" content="Authors | ToolBite">
+  <meta property="og:description" content="Meet the authors and creators behind ToolBite guides, tools, and practical web workflows, with transparent publishing standards and hands-on testing notes.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="Authors | ToolBite">
+  <meta name="twitter:description" content="Meet the authors and creators behind ToolBite guides, tools, and practical web workflows, with transparent publishing standards and hands-on testing notes.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
 
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image"></head>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Authors — ToolBite",
+      "url": "https://toolbite.org/authors/index.html",
+      "description": "Meet the authors behind ToolBite guides and tools."
+    }
+    </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://toolbite.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Authors",
+          "item": "https://toolbite.org/authors/index.html"
+        }
+      ]
+    }
+    </script>
+
+  <script defer src="../assets/js/inject-components.js"></script>
+</head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-  <header id="site-header" class="bg-white shadow-md py-2 md:py-2.5 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4"><a href="../" class="inline-flex items-center"><img src="../assets/images/toolbite-logo.png" alt="ToolBite Logo" width="192" height="53" class="h-10 w-auto"></a></div>
-  </header>
+  
   <main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
     <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Authors</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -70,24 +132,7 @@
       </a>
     </div>
   </main>
-  <footer class="bg-white border-t border-gray-200 p-10 text-center mt-auto">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
-      <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
-      <p class="text-xs text-gray-500">Tools run entirely in your browser. No data is sent to our servers.</p>
-      <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
-        <a href="../privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
-        <a href="../cookie-policy.html" class="text-gray-500 hover:text-blue-600 transition">Cookie Policy</a>
-        <a href="#" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</a>
-        <a href="../terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
-        <a href="../editorial-policy.html" class="text-gray-500 hover:text-blue-600 transition">Editorial Policy</a>
-        <a href="../guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
-        <a href="../about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
-        <a href="../contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
-              <a href="../privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
-      </nav>
-    </div>
-  </footer>
+  
   <script defer src="../assets/js/main.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!-- assets/html/footer.html -->
+<!--
+  Reusable footer component for all pages.
+  Path variables are replaced during injection:
+  - {pathPrefix} = relative path to root ("", "../", "../../", etc.)
+-->
+
+<footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 p-10 text-center mt-auto">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-gray-500 font-medium">&copy; <span id="current-year"></span> ToolBite.org. All rights reserved.</p>
+    <p class="text-xs text-gray-500">ToolBite is operated by Gabriel C., Bucharest, Romania</p>
+    <p class="text-xs text-gray-500">Tools run entirely in your browser. No data is sent to our servers.</p>
+    <nav class="space-x-4 text-sm font-medium" aria-label="Footer">
+      <a href="{pathPrefix}privacy.html" class="text-gray-500 hover:text-blue-600 transition">Privacy Policy</a>
+      <a href="{pathPrefix}cookie-policy.html" class="text-gray-500 hover:text-blue-600 transition">Cookie Policy</a>
+      <a href="#" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</a>
+      <a href="{pathPrefix}terms.html" class="text-gray-500 hover:text-blue-600 transition">Terms of Service</a>
+      <a href="{pathPrefix}editorial-policy.html" class="text-gray-500 hover:text-blue-600 transition">Editorial Policy</a>
+      <a href="{pathPrefix}guides/index.html" class="text-gray-500 hover:text-blue-600 transition">Guides</a>
+      <a href="{pathPrefix}about.html" class="text-gray-500 hover:text-blue-600 transition">About Us</a>
+      <a href="{pathPrefix}contact.html" class="text-gray-500 hover:text-blue-600 transition">Contact</a>
+      <a href="{pathPrefix}privacy.html#ads" class="text-gray-500 hover:text-blue-600 transition">About Ads</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Auto-update current year
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
