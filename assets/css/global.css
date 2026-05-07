@@ -19,11 +19,23 @@
 
 /* --- TOOLBITE - GLOBAL STYLES --- */
 
+/* Layout rhythm refresh (step 3): more breathing room between sections/grids */
+main {
+    padding-top: clamp(3rem, 5vw, 5rem) !important;
+    padding-bottom: clamp(3rem, 5vw, 5rem) !important;
+}
+main > section + section {
+    margin-top: clamp(2.25rem, 4vw, 3.75rem) !important;
+}
+main .grid {
+    gap: clamp(1.25rem, 2vw, 2rem) !important;
+}
+
 /* Hero — layered gradient + soft mesh (no image assets) */
 .tb-hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(125deg, #1e40af 0%, #2563eb 42%, #c2410c 100%);
+    background: linear-gradient(125deg, #014f55 0%, #01696f 42%, #0f766e 100%);
 }
 .tb-hero::before,
 .tb-hero::after {
@@ -37,14 +49,14 @@
 .tb-hero::before {
     width: min(80vw, 28rem);
     height: min(80vw, 28rem);
-    background: #38bdf8;
+    background: #2dd4bf;
     top: -15%;
     right: -5%;
 }
 .tb-hero::after {
     width: min(70vw, 22rem);
     height: min(70vw, 22rem);
-    background: #fb923c;
+    background: #34d399;
     bottom: -20%;
     left: -8%;
 }
@@ -109,7 +121,7 @@ h1, h2, .font-display {
   font-weight: 600;
   border-radius: 0.75rem;        /* rounded-xl */
   border: 1px solid transparent;
-  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -120,6 +132,12 @@ h1, h2, .font-display {
 .tb-btn:disabled {
   opacity: 0.45;
   pointer-events: none;
+}
+.tb-btn:hover {
+  transform: translateY(-1px);
+}
+.tb-btn:active {
+  transform: translateY(0);
 }
 
 /* ─── Variante ─────────────────────────────────── */
@@ -132,6 +150,14 @@ h1, h2, .font-display {
 }
 .tb-btn-primary:hover { background: #0c4e54; border-color: #0c4e54; }
 .tb-btn-primary:active { background: #0f3638; }
+
+/* CTA/link utility remap (brand teal) */
+.text-blue-600 { color: #01696f; }
+.text-blue-700 { color: #0c4e54; }
+.hover\:text-blue-600:hover { color: #01696f; }
+.hover\:text-blue-700:hover { color: #0c4e54; }
+.bg-blue-600 { background-color: #01696f; }
+.hover\:bg-blue-700:hover { background-color: #0c4e54; }
 
 /* NEUTRAL — acțiuni secundare (Clear, Reset, Copy etc.) */
 .tb-btn-neutral {
@@ -317,16 +343,23 @@ html[data-theme="dark"] body .tb-field-hint {
 /* ─── tb-card: Base ─────────────────────────────── */
 .tb-card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;        /* gray-200 */
+  border: 1px solid transparent;
   border-radius: 1rem;              /* rounded-2xl */
   padding: 1.5rem;                  /* p-6 */
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04);
-  transition: box-shadow 140ms ease;
+  box-shadow: 0 20px 40px -32px rgb(15 23 42 / 0.28), 0 10px 20px -18px rgb(15 23 42 / 0.2);
+  transition: transform 240ms ease, box-shadow 240ms ease;
 }
 html[data-theme="dark"] body .tb-card {
   background: #1c1b19;
-  border-color: #2d2c2a;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+  border-color: transparent;
+  box-shadow: 0 18px 36px -26px rgb(0 0 0 / 0.62), 0 0 0 1px rgb(148 163 184 / 0.12);
+}
+.tb-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 44px -28px rgb(15 23 42 / 0.3), 0 14px 24px -18px rgb(15 23 42 / 0.22);
+}
+html[data-theme="dark"] body .tb-card:hover {
+  box-shadow: 0 24px 46px -26px rgb(0 0 0 / 0.68), 0 0 0 1px rgb(94 234 212 / 0.24), 0 14px 24px -18px rgb(0 0 0 / 0.5);
 }
 
 /* ─── Variante ─────────────────────────────────── */
@@ -696,17 +729,28 @@ html[data-theme="dark"] body {
 #site-header {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.85);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.62) 100%);
+    border: 1px solid rgba(226, 232, 240, 0.75);
+    box-shadow: 0 14px 28px -22px rgb(15 23 42 / 0.28);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 html[data-theme="dark"] body #site-header {
-    background-color: rgba(30, 41, 59, 0.85);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.76) 0%, rgba(15, 23, 42, 0.68) 100%);
+    border-color: rgba(71, 85, 105, 0.6);
+    box-shadow: 0 16px 30px -24px rgb(0 0 0 / 0.6);
 }
 
 html[data-theme="dark"] body #site-header.header-small {
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.88) 0%, rgba(15, 23, 42, 0.84) 100%);
+    border-color: rgba(71, 85, 105, 0.72);
+    box-shadow: 0 18px 32px -24px rgb(0 0 0 / 0.68);
+}
+
+#site-header.header-small {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.82) 100%);
+    border-color: rgba(203, 213, 225, 0.85);
+    box-shadow: 0 18px 34px -24px rgb(15 23 42 / 0.34);
 }
 
 html[data-theme="dark"] body #mobile-menu {
@@ -782,8 +826,8 @@ html[data-theme="dark"] body .bg-blue-900\/35 {
 }
 
 /* Primary buttons (keep strong contrast) */
-html[data-theme="dark"] body .bg-blue-600 { background-color: #2563eb; }
-html[data-theme="dark"] body .hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+html[data-theme="dark"] body .bg-blue-600 { background-color: #01696f; }
+html[data-theme="dark"] body .hover\:bg-blue-700:hover { background-color: #0c4e54; }
 html[data-theme="dark"] body .bg-indigo-600 { background-color: #4f46e5; }
 html[data-theme="dark"] body .hover\:bg-indigo-700:hover { background-color: #4338ca; }
 html[data-theme="dark"] body .bg-sky-600 { background-color: #0284c7; }
@@ -834,8 +878,8 @@ html[data-theme="dark"] body .text-gray-500 {
 }
 
 html[data-theme="dark"] body .text-slate-800 { color: #e2e8f0; }
-html[data-theme="dark"] body .text-blue-600 { color: #93c5fd; }
-html[data-theme="dark"] body .text-blue-700 { color: #bfdbfe; }
+html[data-theme="dark"] body .text-blue-600 { color: #5fd4d9; }
+html[data-theme="dark"] body .text-blue-700 { color: #8fe3e6; }
 html[data-theme="dark"] body .text-blue-900 { color: #dbeafe; }
 html[data-theme="dark"] body .text-indigo-600 { color: #a5b4fc; }
 html[data-theme="dark"] body .text-indigo-700 { color: #c7d2fe; }
@@ -864,7 +908,7 @@ html[data-theme="dark"] body .text-red-500 { color: #f87171; }
 html[data-theme="dark"] body .text-red-600 { color: #fca5a5; }
 html[data-theme="dark"] body .text-cyan-300 { color: #67e8f9; }
 
-html[data-theme="dark"] body .hover\:text-blue-600:hover { color: #93c5fd; }
+html[data-theme="dark"] body .hover\:text-blue-600:hover { color: #5fd4d9; }
 html[data-theme="dark"] body .hover\:text-orange-500:hover { color: #fb923c; }
 
 /* Roadmap gradient card */
@@ -971,7 +1015,7 @@ html[data-theme="dark"] body .hover\:bg-white:hover { background-color: #334155;
 html[data-theme="dark"] body .hover\:bg-slate-300:hover { background-color: #64748b; }
 html[data-theme="dark"] body .hover\:bg-teal-200:hover { background-color: rgba(13, 148, 136, 0.28); }
 
-html[data-theme="dark"] body .hover\:text-blue-700:hover { color: #bfdbfe; }
+html[data-theme="dark"] body .hover\:text-blue-700:hover { color: #8fe3e6; }
 
 html[data-theme="dark"] body .bg-amber-50\/50 { background-color: rgba(245, 158, 11, 0.12); }
 
@@ -1201,6 +1245,17 @@ html[data-theme="dark"] body .tool-card-tb .text-gray-400 {
   }
 }
 
+@keyframes tb-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes tb-stagger-in {
   from {
     opacity: 0;
@@ -1215,6 +1270,30 @@ html[data-theme="dark"] body .tool-card-tb .text-gray-400 {
 .tb-fade-up {
   opacity: 0;
   animation: tb-fade-up-in 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  will-change: transform, opacity;
+}
+
+.fade-in-up.is-visible {
+  animation: tb-fade-in-up 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Smooth filtering transitions for search/category grids */
+.tb-filter-item {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 220ms ease, transform 220ms ease;
+  transform-origin: center top;
+}
+
+.tb-filter-item.is-filtered-out {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
 }
 
 .tb-reveal {
@@ -1321,9 +1400,13 @@ html[data-theme="dark"] body .tool-card-tb .text-gray-400 {
 
 @media (prefers-reduced-motion: reduce) {
   .tb-fade-up,
+  .fade-in-up,
+  .fade-in-up.is-visible,
   .tb-reveal,
   .tb-reveal.is-visible,
-  .tb-stagger > * {
+  .tb-stagger > *,
+  .tb-filter-item,
+  .tb-filter-item.is-filtered-out {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;

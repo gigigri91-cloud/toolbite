@@ -18,6 +18,43 @@
 })();
 
 /* -----------------------------------------------
+   1b. SCROLL REVEAL HOOKS (fade-in-up)
+----------------------------------------------- */
+(function () {
+    const candidates = new Set();
+    document.querySelectorAll('main > section').forEach((el) => candidates.add(el));
+    document.querySelectorAll('main .grid').forEach((el) => candidates.add(el));
+
+    const revealTargets = Array.from(candidates).filter((el) => {
+        if (!(el instanceof HTMLElement)) return false;
+        if (el.closest('[aria-hidden="true"]')) return false;
+        return !el.classList.contains('tb-stagger');
+    });
+
+    if (!revealTargets.length) return;
+
+    revealTargets.forEach((el) => el.classList.add('fade-in-up'));
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealTargets.forEach((el) => el.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px',
+    });
+
+    revealTargets.forEach((el) => observer.observe(el));
+})();
+
+/* -----------------------------------------------
    2. MOBILE MENU TOGGLE
 ----------------------------------------------- */
 (function () {
@@ -93,7 +130,7 @@
         // Also update meta theme-color
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
-            metaTheme.setAttribute('content', isDark ? '#0f172a' : '#2563eb');
+            metaTheme.setAttribute('content', isDark ? '#0f172a' : '#01696f');
         }
     }
 
@@ -1020,11 +1057,38 @@ function generatePalette() {
     const grid = document.getElementById('category-tools-grid');
     if (searchInput && grid) {
         const cards = Array.from(grid.querySelectorAll('a[href*="/tools/"], a[href^="../tools/"], a[href^="tools/"]'));
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        cards.forEach((card) => {
+            card.classList.add('tb-filter-item');
+            if (card.classList.contains('fade-in-up')) card.classList.add('is-visible');
+        });
+
+        const hideCard = (card) => {
+            if (card.classList.contains('hidden')) return;
+            if (reduceMotion) {
+                card.classList.add('hidden');
+                card.classList.remove('is-filtered-out');
+                return;
+            }
+            card.classList.add('is-filtered-out');
+            window.setTimeout(() => {
+                if (card.classList.contains('is-filtered-out')) card.classList.add('hidden');
+            }, 220);
+        };
+
+        const showCard = (card) => {
+            card.classList.remove('hidden');
+            card.classList.remove('is-filtered-out');
+            if (card.classList.contains('fade-in-up')) card.classList.add('is-visible');
+        };
+
         searchInput.addEventListener('input', () => {
             const q = searchInput.value.trim().toLowerCase();
             cards.forEach((card) => {
                 const hay = card.textContent.toLowerCase();
-                card.classList.toggle('hidden', !!q && !hay.includes(q));
+                const shouldShow = !q || hay.includes(q);
+                if (shouldShow) showCard(card);
+                else hideCard(card);
             });
         });
     }
