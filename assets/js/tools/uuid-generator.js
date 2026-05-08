@@ -29,7 +29,7 @@
     document.getElementById('uuid-copy-btn')?.addEventListener('click', () => {
         if (!out.value) return;
         out.select();
-        document.execCommand('copy');
+        window.tbCopyText(out.value, document.getElementById('uuid-copy-btn'));
         const b = document.getElementById('uuid-copy-btn');
         const o = b.textContent;
         b.textContent = 'Copied!';

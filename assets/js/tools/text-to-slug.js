@@ -23,7 +23,7 @@
         tmp.value = s;
         document.body.appendChild(tmp);
         tmp.select();
-        document.execCommand('copy');
+        window.tbCopyText(s, document.getElementById('slug-copy-btn'));
         document.body.removeChild(tmp);
         const b = document.getElementById('slug-copy-btn');
         const o = b.textContent;

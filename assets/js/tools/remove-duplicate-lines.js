@@ -29,7 +29,7 @@
     document.getElementById('dup-copy-btn')?.addEventListener('click', () => {
         if (!ta.value) return;
         ta.select();
-        document.execCommand('copy');
+        window.tbCopyText(ta.value, document.getElementById('dup-copy-btn'));
         const b = document.getElementById('dup-copy-btn');
         const o = b.textContent;
         b.textContent = 'Copied!';

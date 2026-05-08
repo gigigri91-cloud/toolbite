@@ -29,8 +29,7 @@
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
       if (!wordInput.value) return;
-      wordInput.select();
-      document.execCommand('copy');
+      window.tbCopyText(wordInput.value, copyBtn);
       const original = copyBtn.textContent;
       copyBtn.textContent = 'Copied!';
       window.setTimeout(function () {

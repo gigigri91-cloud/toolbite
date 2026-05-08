@@ -215,7 +215,7 @@
       </section>
 
       <div class="tb-card tb-card-accent mb-6">
-        <strong>Privacy:</strong> QR codes are rendered entirely in your browser — your text is never sent to ToolBite servers.
+        <strong>Privacy:</strong> QR codes are generated locally in your browser. ToolBite does not send your text to external QR services.
       </div>
 
       <div class="tb-card md:p-8 mb-10 dark:text-gray-100">
@@ -247,15 +247,15 @@
           </div>
         </div>
 
-        <button id="qr-generate-btn" onclick="generateQR()" class="tb-btn tb-btn-primary tb-btn-lg tb-btn-block mb-8">Generate QR Code</button>
+        <button id="qr-generate-btn" type="button" class="tb-btn tb-btn-primary tb-btn-lg tb-btn-block mb-8">Generate QR Code</button>
 
         <div id="qr-result" class="hidden flex-col items-center gap-6">
           <div class="tb-card tb-card-flat dark:text-gray-100">
-            <img id="qr-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Generated QR Code" class="block rounded-xl tb-img-pixelated" loading="lazy">
+            <canvas id="qr-canvas" width="300" height="300" aria-label="Generated QR code" class="block rounded-xl tb-img-pixelated"></canvas>
           </div>
           <div class="flex gap-3 flex-wrap justify-center">
-            <button onclick="downloadQR()" class="tb-btn tb-btn-primary">⬇ Download PNG</button>
-<button onclick="copyQRLink()" id="copy-link-btn" class="tb-btn tb-btn-neutral">🔗 Copy API Link</button>
+            <button type="button" id="qr-download-btn" class="tb-btn tb-btn-primary">⬇ Download PNG</button>
+<button type="button" id="copy-link-btn" class="tb-btn tb-btn-neutral">🔗 Copy PNG Data URL</button>
           </div>
           <p id="qr-encoded-text" class="text-xs text-gray-400 text-center max-w-sm truncate"></p>
         </div>
@@ -458,6 +458,7 @@
   </div>
 
 <script defer src="../assets/js/core.js"></script>
+<script defer src="../assets/js/lib/qrcode.js"></script>
 <script defer src="../assets/js/tools/qr-generator.js"></script>
 <!-- Buy Me a Coffee -->
 

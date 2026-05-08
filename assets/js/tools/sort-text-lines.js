@@ -21,7 +21,7 @@
     document.getElementById('sort-copy-btn')?.addEventListener('click', () => {
         if (!ta.value) return;
         ta.select();
-        document.execCommand('copy');
+        window.tbCopyText(ta.value, document.getElementById('sort-copy-btn'));
         const b = document.getElementById('sort-copy-btn');
         const o = b.textContent;
         b.textContent = 'Copied!';

@@ -7,7 +7,7 @@ function copyColor(color, element) {
     tmp.value = color;
     document.body.appendChild(tmp);
     tmp.select();
-    document.execCommand('copy');
+    window.tbCopyText(value, null);
     document.body.removeChild(tmp);
     const span = element.querySelector('span');
     const orig = span.innerText;

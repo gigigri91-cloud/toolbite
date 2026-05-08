@@ -22,13 +22,34 @@
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const form = document.querySelector('form[role="search"]');
   const cardMap = new Map();
+  let debounceTimer = null;
+
+  function isSafeRelativeUrl(url) {
+    return typeof url === 'string' && /^\/[a-z0-9\-_/]+\.html$/i.test(url);
+  }
 
   function createCard(tool) {
     const card = document.createElement('a');
-    card.href = tool.url;
-    card.className = 'tool-card-tb tb-filter-item fade-in-up is-visible bg-white p-6 rounded-2xl hover:-translate-y-1 duration-300 flex items-center gap-4 group border border-gray-100 shadow-sm hover:shadow-md';
-    card.innerHTML = '<div class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">' + tool.icon + '</div>' +
-      '<div><h3 class="font-bold text-lg text-gray-900 dark:text-white">' + tool.name + '</h3><p class="text-sm text-gray-500">' + tool.desc + '</p></div>';
+    card.href = isSafeRelativeUrl(tool.url) ? tool.url : '/search.html';
+    card.className = 'tb-card tb-card-interactive tb-card-pad-lg tb-card-row tool-card-tb tb-filter-item fade-in-up is-visible';
+
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'tb-tool-icon tb-icon-blue';
+    iconWrap.textContent = typeof tool.icon === 'string' && tool.icon.trim() ? tool.icon.trim() : '🧰';
+
+    const content = document.createElement('div');
+    const title = document.createElement('h3');
+    title.className = 'font-bold text-lg text-gray-900 dark:text-gray-100';
+    title.textContent = tool.name || 'Untitled tool';
+
+    const desc = document.createElement('p');
+    desc.className = 'text-sm text-gray-500 dark:text-gray-400';
+    desc.textContent = tool.desc || 'Open this tool to continue.';
+
+    content.appendChild(title);
+    content.appendChild(desc);
+    card.appendChild(iconWrap);
+    card.appendChild(content);
     return card;
   }
 
@@ -120,7 +141,10 @@
       buildCards();
       render(initialQ);
       input.addEventListener('input', function () {
-        render(input.value);
+        window.clearTimeout(debounceTimer);
+        debounceTimer = window.setTimeout(function () {
+          render(input.value);
+        }, 200);
       });
       if (form) {
         form.addEventListener('submit', function (event) {

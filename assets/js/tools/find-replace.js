@@ -21,7 +21,7 @@
     if (clearBtn) clearBtn.onclick = () => { input.value = ''; };
     if (copyBtn) copyBtn.onclick = () => {
         if (!input.value) return;
-        input.select(); document.execCommand('copy');
+        window.tbCopyText(input.value, copyBtn);
         const orig = copyBtn.textContent;
         copyBtn.textContent = 'Copied!';
         copyBtn.classList.replace('bg-gray-100', 'bg-green-100');

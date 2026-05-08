@@ -14,7 +14,7 @@
     };
     if (copyBtn) copyBtn.onclick = () => {
         if (!out.value) return;
-        out.select(); document.execCommand('copy');
+        window.tbCopyText(out.value, copyBtn);
         const orig = copyBtn.textContent;
         copyBtn.textContent = 'Copied!';
         setTimeout(() => { copyBtn.textContent = orig; }, 1500);

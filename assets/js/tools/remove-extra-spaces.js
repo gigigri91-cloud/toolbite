@@ -14,7 +14,7 @@
     if (clearBtn)    clearBtn.onclick    = () => { ta.value = ''; };
     if (copyBtn) copyBtn.onclick = () => {
         if (!ta.value) return;
-        ta.select(); document.execCommand('copy');
+        window.tbCopyText(ta.value, copyBtn);
         const orig = copyBtn.textContent;
         copyBtn.textContent = 'Copied!';
         setTimeout(() => { copyBtn.textContent = orig; }, 1500);

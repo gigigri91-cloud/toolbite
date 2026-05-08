@@ -63,8 +63,7 @@
 
     document.getElementById('b64-copy-btn')?.addEventListener('click', () => {
         if (!out.value) return;
-        out.select();
-        document.execCommand('copy');
+        window.tbCopyText(out.value, copyBtn);
         const b = document.getElementById('b64-copy-btn');
         const o = b.textContent;
         b.textContent = 'Copied!';

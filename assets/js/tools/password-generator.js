@@ -35,7 +35,7 @@ function copyPassword() {
     const pwdResult = document.getElementById('passwordResult');
     const copyBtn   = document.getElementById('copyBtn');
     if (!pwdResult || !pwdResult.value || pwdResult.value === 'Select at least one option!') return;
-    pwdResult.select(); document.execCommand('copy');
+    window.tbCopyText(pwdResult.value, btn);
     copyBtn.innerText = 'Copied!';
     copyBtn.classList.replace('bg-blue-600', 'bg-green-500');
     setTimeout(() => {

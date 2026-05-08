@@ -26,7 +26,7 @@ function copyJSON() {
     const input  = document.getElementById('jsonInput');
     const copyBtn = document.getElementById('copyBtn');
     if (!input || !input.value) return;
-    input.select(); document.execCommand('copy');
+    window.tbCopyText(input.value, copyBtn);
     const orig = copyBtn.innerText;
     copyBtn.innerText = 'Copied!';
     copyBtn.classList.replace('bg-gray-800', 'bg-green-600');

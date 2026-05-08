@@ -78,3 +78,45 @@
 
   revealTargets.forEach(function (el) { observer.observe(el); });
 })();
+
+(function () {
+  function flashButton(button, label) {
+    if (!button) return;
+    var original = button.textContent;
+    button.textContent = label;
+    window.setTimeout(function () {
+      button.textContent = original;
+    }, 1500);
+  }
+
+  window.tbCopyText = function (text, button) {
+    if (!text) return Promise.resolve(false);
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () {
+        flashButton(button, 'Copied!');
+        return true;
+      }).catch(function () {
+        flashButton(button, 'Copy failed');
+        return false;
+      });
+    }
+
+    var textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      flashButton(button, 'Copied!');
+      return Promise.resolve(true);
+    } catch (_) {
+      flashButton(button, 'Copy failed');
+      return Promise.resolve(false);
+    } finally {
+      textArea.remove();
+    }
+  };
+})();

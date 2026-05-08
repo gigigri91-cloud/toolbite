@@ -41,7 +41,7 @@
     copyBtn?.addEventListener('click', () => {
         if (!out.value) return;
         out.select();
-        document.execCommand('copy');
+        window.tbCopyText(out.value, copyBtn);
         const o = copyBtn.textContent;
         copyBtn.textContent = 'Copied!';
         setTimeout(() => { copyBtn.textContent = o; }, 1500);

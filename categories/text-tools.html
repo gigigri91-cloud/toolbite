@@ -362,6 +362,7 @@
   </div>
 
 <script defer src="../assets/js/core.js"></script>
+<script defer src="../assets/js/category.js"></script>
 <!-- Buy Me a Coffee -->
 
 
@@ -407,17 +408,6 @@
     ]
   }
   </script>
-<script>
-const tbObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('is-visible');
-      tbObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.tb-reveal').forEach(el => tbObs.observe(el));
-</script>
 <script defer src="../assets/js/cookies.js"></script>
 <a href="/contact.html#support" class="bmc-native-btn" aria-label="Support ToolBite">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">

@@ -66,8 +66,7 @@
 
     document.getElementById('url-copy-btn')?.addEventListener('click', () => {
         if (!out.value) return;
-        out.select();
-        document.execCommand('copy');
+        window.tbCopyText(out.value, copyBtn);
         const b = document.getElementById('url-copy-btn');
         const o = b.textContent;
         b.textContent = 'Copied!';
