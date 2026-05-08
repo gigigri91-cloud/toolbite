@@ -56,7 +56,7 @@
   <!-- PAGE-SPECIFIC HEAD SECTION                  -->
   <!-- ============================================ -->
   <title>404 – Page Not Found | ToolBite</title>
-  <meta name="description" content="The page you're looking for doesn't exist. Return to ToolBite and browse tools, guides, or search for what you need.">
+  <meta name="description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
   <link rel="canonical" href="https://toolbite.org/404.html">
   <meta name="theme-color" content="#1a68b1">
   <link rel="preload" as="image" href="assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
@@ -66,7 +66,7 @@
   <meta property="og:site_name" content="ToolBite">
   <meta property="og:url" content="https://toolbite.org/404.html">
   <meta property="og:title" content="404 – Page Not Found | ToolBite">
-  <meta property="og:description" content="The page you're looking for doesn't exist. Return to ToolBite and browse tools, guides, or search for what you need.">
+  <meta property="og:description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -75,7 +75,7 @@
   <meta name="twitter:site" content="@toolbite">
   <meta name="twitter:creator" content="@toolbite">
   <meta name="twitter:title" content="404 – Page Not Found | ToolBite">
-  <meta name="twitter:description" content="The page you're looking for doesn't exist. Return to ToolBite and browse tools, guides, or search for what you need.">
+  <meta name="twitter:description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
   <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
 </head>
 <body class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
@@ -130,9 +130,20 @@
     <p class="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-lg">
       The tool or page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
     </p>
-    <a href="/" class="tb-btn tb-btn-outline inline-block py-3 px-8 rounded-xl">
-      Return to Homepage
-    </a>
+    <div class="w-full max-w-xl mb-6">
+      <form action="search.html" method="get" role="search" class="tb-card tb-card-pad-sm flex items-center gap-2">
+        <label for="missing-search" class="sr-only">Search ToolBite</label>
+        <input id="missing-search" name="q" type="search" placeholder="Try: JSON formatter, QR generator, slug tool..." class="tb-input w-full border outline-none" />
+        <button type="submit" class="tb-btn tb-btn-primary">Search</button>
+      </form>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+      <a href="tools/json-formatter.html" class="tb-btn tb-btn-outline">JSON Formatter</a>
+      <a href="tools/password-generator.html" class="tb-btn tb-btn-outline">Password Generator</a>
+      <a href="tools/word-counter.html" class="tb-btn tb-btn-outline">Word Counter</a>
+      <a href="guides/index.html" class="tb-btn tb-btn-outline">Browse Guides</a>
+    </div>
+    <a href="/" class="tb-btn tb-btn-outline inline-block py-3 px-8 rounded-xl">Return to Homepage</a>
   </main>
 
   
