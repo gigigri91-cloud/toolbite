@@ -24,7 +24,13 @@
 
   <!-- Theme init (MUST stay inline) -->
   <script id="theme-init">
-  (function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=storedTheme||(prefersDark?'dark':'light');root.classList.toggle('dark',theme==='dark')}catch(e){}})();
+  (function () {
+    try {
+      var root = document.documentElement;
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    } catch (e) {}
+  })();
   </script>
 
   <!-- Critical CSS -->
@@ -82,8 +88,8 @@
     <p class="text-gray-700 mb-6">Gabriel C. is an indie developer based in Bucharest, Romania, and built ToolBite as a free resource for developers and content creators.</p>
 
     <div class="flex gap-4 mb-8 text-sm font-semibold">
-      <a href="#" class="text-blue-600 hover:underline">GitHub</a>
-      <a href="#" class="text-blue-600 hover:underline">LinkedIn</a>
+      <a href="" class="text-blue-600 hover:underline hidden" aria-hidden="true" tabindex="-1">GitHub</a>
+      <a href="" class="text-blue-600 hover:underline hidden" aria-hidden="true" tabindex="-1">LinkedIn</a>
     </div>
 
     <section class="tb-card md:p-8">
@@ -127,7 +133,7 @@
     "address": { "addressCountry": "RO" }
   }
   </script>
-  <a href="#" class="bmc-native-btn" aria-label="Support ToolBite">
+  <a href="/contact.html#support" class="bmc-native-btn" aria-label="Support ToolBite">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M5 8h12v7a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M17 10h1.5a2.5 2.5 0 1 1 0 5H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>

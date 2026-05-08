@@ -24,7 +24,13 @@
 
   <!-- Theme init (MUST stay inline) -->
   <script id="theme-init">
-  (function(){try{var KEY='toolbite-theme';var root=document.documentElement;var storedTheme=localStorage.getItem(KEY);var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=storedTheme||(prefersDark?'dark':'light');root.classList.toggle('dark',theme==='dark')}catch(e){}})();
+  (function () {
+    try {
+      var root = document.documentElement;
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    } catch (e) {}
+  })();
   </script>
 
   <!-- Critical CSS -->
@@ -50,7 +56,7 @@
   <!-- PAGE-SPECIFIC HEAD SECTION                  -->
   <!-- ============================================ -->
   <title>Guides – Guide | ToolBite</title>
-  <meta name="description" content="Read practical tutorials for JSON, JWT, SEO slugs, and other browser-based workflows that connect directly to ToolBite tools.">
+  <meta name="description" content="ToolBite offers free browser-based tools and practical guides for text, developer, image, and SEO tasks with fast results and privacy-first workflows.">
   <link rel="canonical" href="https://toolbite.org/guides/index.html">
   <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/index.html">
   <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/index.html">
@@ -62,7 +68,7 @@
   <meta property="og:site_name" content="ToolBite">
   <meta property="og:url" content="https://toolbite.org/guides/index.html">
   <meta property="og:title" content="Guides – Guide | ToolBite">
-  <meta property="og:description" content="Read practical tutorials for JSON, JWT, SEO slugs, and other browser-based workflows that connect directly to ToolBite tools.">
+  <meta property="og:description" content="ToolBite offers free browser-based tools and practical guides for text, developer, image, and SEO tasks with fast results and privacy-first workflows.">
   <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -72,7 +78,7 @@
   <meta name="twitter:site" content="@toolbite">
   <meta name="twitter:creator" content="@toolbite">
   <meta name="twitter:title" content="Guides – Guide | ToolBite">
-  <meta name="twitter:description" content="Read practical tutorials for JSON, JWT, SEO slugs, and other browser-based workflows that connect directly to ToolBite tools.">
+  <meta name="twitter:description" content="ToolBite offers free browser-based tools and practical guides for text, developer, image, and SEO tasks with fast results and privacy-first workflows.">
   <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
   <meta name="twitter:image:alt" content="Guides — JSON, JWT &amp; SEO workflows | ToolBite — ToolBite">
 
@@ -360,7 +366,7 @@
 
   
 <script defer src="../assets/js/cookies.js"></script>
-<a href="#" class="bmc-native-btn" aria-label="Support ToolBite">
+<a href="/contact.html#support" class="bmc-native-btn" aria-label="Support ToolBite">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M5 8h12v7a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M17 10h1.5a2.5 2.5 0 1 1 0 5H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,12 +1,18 @@
 {
-  "name": "ToolBite — Private Browser Tools",
+  "name": "ToolBite \u2014 Private Browser Tools",
   "short_name": "ToolBite",
   "description": "Fast, private browser-based utilities for text, developers, and SEO.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#01696f",
+  "theme_color": "#1a68b1",
   "icons": [
+    {
+      "src": "/assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/assets/images/favicon.png",
       "sizes": "128x128",

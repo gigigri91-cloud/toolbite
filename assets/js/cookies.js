@@ -11,15 +11,28 @@
 
   if (!banner || !modal || !acceptBtn || !manageBtn || !closeBtn || !saveBtn || !analyticsToggle || !advertisingToggle) return;
 
+  function getCookie(name) {
+    var prefix = name + '=';
+    var cookies = document.cookie ? document.cookie.split(';') : [];
+    for (var i = 0; i < cookies.length; i += 1) {
+      var cookie = cookies[i].trim();
+      if (cookie.indexOf(prefix) === 0) return cookie.slice(prefix.length);
+    }
+    return '';
+  }
+
   function readPrefs() {
     try {
-      var raw = localStorage.getItem(KEY);
-      return raw ? JSON.parse(raw) : null;
+      var raw = getCookie(KEY);
+      return raw ? JSON.parse(decodeURIComponent(raw)) : null;
     } catch (_) { return null; }
   }
 
   function writePrefs(prefs) {
-    try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (_) {}
+    try {
+      var encoded = encodeURIComponent(JSON.stringify(prefs));
+      document.cookie = KEY + '=' + encoded + '; path=/; max-age=' + (60 * 60 * 24 * 365) + '; SameSite=Lax';
+    } catch (_) {}
   }
 
   function openModal() {

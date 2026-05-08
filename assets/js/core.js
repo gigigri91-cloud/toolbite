@@ -27,19 +27,9 @@
 })();
 
 (function () {
-  var KEY = 'toolbite-theme';
   var root = document.documentElement;
   var toggle = document.getElementById('theme-toggle');
   if (!toggle) return;
-
-  function safeGetStoredTheme() {
-    try {
-      var value = localStorage.getItem(KEY);
-      return value === 'dark' || value === 'light' ? value : null;
-    } catch (_) {
-      return null;
-    }
-  }
 
   function getTheme() {
     return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -47,9 +37,6 @@
 
   function setTheme(theme) {
     root.setAttribute('data-theme', theme);
-    try {
-      localStorage.setItem(KEY, theme);
-    } catch (_) {}
   }
 
   function render() {
@@ -60,12 +47,7 @@
     toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
-  if (!safeGetStoredTheme()) {
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(prefersDark ? 'dark' : 'light');
-  } else {
-    setTheme(safeGetStoredTheme());
-  }
+  setTheme(getTheme());
 
   toggle.addEventListener('click', function () {
     setTheme(getTheme() === 'dark' ? 'light' : 'dark');
