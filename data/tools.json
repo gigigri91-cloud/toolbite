@@ -1,0 +1,205 @@
+[
+  {
+    "name": "Base64 encoder &amp; decoder",
+    "desc": "Encode or decode Base64 for tokens, snippets, and small payloads. Strings stay in your browser tab unless you copy them elsewhere.",
+    "url": "tools/base64-encoder.html",
+    "icon": "📎",
+    "tags": "base64 encode decode utf8 developer"
+  },
+  {
+    "name": "Base64 encoding explained — what it is and when to use it",
+    "desc": "Base64 explained in plain English: how the encoding works, why it exists, common use cases like API tokens and data URIs, and why it is NOT encryption.",
+    "url": "guides/base64-encoding-guide.html",
+    "icon": "📎",
+    "tags": "base64 guide encoding developer"
+  },
+  {
+    "name": "CSV to JSON Converter",
+    "desc": "Instantly convert CSV data to a valid JSON array in your browser. Paste your spreadsheet, configure options, copy the result. No uploads, no account required.",
+    "url": "tools/csv-to-json.html",
+    "icon": "🔄",
+    "tags": "csv json converter spreadsheet developer"
+  },
+  {
+    "name": "Case converter",
+    "desc": "Switch naming styles for code, headings, or data cleanup without sending strings to a backend—paste, convert, copy.",
+    "url": "tools/case-converter.html",
+    "icon": "🔠",
+    "tags": "case uppercase lowercase title camelCase text"
+  },
+  {
+    "name": "Color palette generator",
+    "desc": "Spin up five-color palettes and copy HEX codes with one click. Useful for UI spikes; all randomness runs in the browser.",
+    "url": "tools/color-palette-generator.html",
+    "icon": "🎨",
+    "tags": "color palette hex design generator"
+  },
+  {
+    "name": "Find &amp; replace text",
+    "desc": "Replace phrases across long pasted text with optional case sensitivity. Runs entirely in JavaScript—good for logs, lists, and CMS exports.",
+    "url": "tools/find-replace.html",
+    "icon": "🔁",
+    "tags": "find replace text bulk"
+  },
+  {
+    "name": "How to compress images for web without losing quality",
+    "desc": "A practical guide to reducing image file size for faster web pages. Learn which formats work best, what quality settings to use, and how to compress images safely in your browser.",
+    "url": "guides/compress-images-guide.html",
+    "icon": "🖼️",
+    "tags": "image compress guide webp optimization"
+  },
+  {
+    "name": "How to decode JWT safely (without trusting payload)",
+    "desc": "What a browser decoder can and cannot do, which claims to eyeball first, and why signature checks still belong on your server.",
+    "url": "guides/jwt-decoder-guide.html",
+    "icon": "📗",
+    "tags": "jwt guide tutorial token verify claims security auth"
+  },
+  {
+    "name": "How to generate strong passwords — and store them safely",
+    "desc": "What makes a password strong, how long it should be, which characters to include, and how to store it safely without memorising random strings. A practical security guide.",
+    "url": "guides/password-guide.html",
+    "icon": "🔑",
+    "tags": "password guide security"
+  },
+  {
+    "name": "Image compressor",
+    "desc": "JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.",
+    "url": "tools/image-compressor.html",
+    "icon": "🖼️",
+    "tags": "image compress jpg png webp photo"
+  },
+  {
+    "name": "JSON formatter &amp; validator",
+    "desc": "Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.",
+    "url": "tools/json-formatter.html",
+    "icon": "💻",
+    "tags": "json formatter validator beautify developer"
+  },
+  {
+    "name": "JSON formatter guide: fix invalid JSON fast",
+    "desc": "A straight checklist for trailing commas, quotes, and common parse errors—meant for API payloads and config you paste into ToolBite’s formatter.",
+    "url": "guides/json-formatter-guide.html",
+    "icon": "📘",
+    "tags": "json guide tutorial fix invalid json trailing comma quotes"
+  },
+  {
+    "name": "JWT decoder",
+    "desc": "Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.",
+    "url": "tools/jwt-decoder.html",
+    "icon": "🪪",
+    "tags": "jwt json web token decode bearer auth developer"
+  },
+  {
+    "name": "Lorem ipsum generator",
+    "desc": "Classic filler paragraphs for layouts and CMS previews. Generated text never leaves your browser session.",
+    "url": "tools/lorem-ipsum.html",
+    "icon": "📄",
+    "tags": "lorem ipsum placeholder dummy text"
+  },
+  {
+    "name": "Password generator",
+    "desc": "Generate long random passwords with the Web Crypto API where available. Nothing is sent to ToolBite; copy and store secrets in your own vault.",
+    "url": "tools/password-generator.html",
+    "icon": "🔑",
+    "tags": "password generator secure random"
+  },
+  {
+    "name": "QR Code Generator",
+    "desc": "Generate QR codes instantly for any URL, text, email or phone number. Download as PNG. No uploads, no account required — everything runs in your browser.",
+    "url": "tools/qr-generator.html",
+    "icon": "📱",
+    "tags": "qr generator mobile scan code"
+  },
+  {
+    "name": "QR codes explained — how to create, customize, and use them",
+    "desc": "Everything you need to know about QR codes: what they store, how error correction works, best practices for print vs digital use, and how to generate a QR code for free in your browser.",
+    "url": "guides/qr-code-guide.html",
+    "icon": "📱",
+    "tags": "qr guide scan code"
+  },
+  {
+    "name": "Reading time calculator",
+    "desc": "Paste an article or doc to approximate reading time from word count. Handy before publishing; runs fully client-side.",
+    "url": "tools/read-time-calculator.html",
+    "icon": "⏱️",
+    "tags": "read time wpm minutes blog seo"
+  },
+  {
+    "name": "Remove duplicate lines",
+    "desc": "Keep first occurrences of repeated lines in pasted logs, keywords, or inventories. No server round-trip for the dedupe logic.",
+    "url": "tools/remove-duplicate-lines.html",
+    "icon": "📋",
+    "tags": "duplicate dedupe unique lines list text"
+  },
+  {
+    "name": "Remove extra spaces",
+    "desc": "Collapse runs of spaces, trim lines, or strip blank lines from messy copy. All transformations happen client-side for privacy.",
+    "url": "tools/remove-extra-spaces.html",
+    "icon": "🧹",
+    "tags": "spaces whitespace clean trim text"
+  },
+  {
+    "name": "SEO slug best practices (with examples)",
+    "desc": "Length, separators, keywords, and mistakes that waste crawl budget—paired with ToolBite’s text-to-slug helper for quick clean URLs.",
+    "url": "guides/seo-slug-best-practices.html",
+    "icon": "📙",
+    "tags": "seo slug guide url best practices permalink keywords hyphens"
+  },
+  {
+    "name": "SHA-256 &amp; SHA-1 hash generator",
+    "desc": "Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.",
+    "url": "tools/hash-generator.html",
+    "icon": "🔢",
+    "tags": "sha256 sha1 hash checksum hex crypto"
+  },
+  {
+    "name": "Sort text lines",
+    "desc": "Alphabetize or reverse lines for quick cleanup of exports and checklists. Sorting runs entirely in your browser.",
+    "url": "tools/sort-text-lines.html",
+    "icon": "🔤",
+    "tags": "sort lines alphabetical order text list"
+  },
+  {
+    "name": "Text to slug generator",
+    "desc": "Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.",
+    "url": "tools/text-to-slug.html",
+    "icon": "🔗",
+    "tags": "slug url seo permalink hyphen"
+  },
+  {
+    "name": "URL encoder &amp; decoder",
+    "desc": "Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.",
+    "url": "tools/url-encoder.html",
+    "icon": "🔗",
+    "tags": "url encode decode encodeURIComponent encodeURI"
+  },
+  {
+    "name": "URL encoding explained — what %20 means and how to fix broken links",
+    "desc": "What is URL encoding? Why does a space become %20? This guide explains percent-encoding, which characters need encoding, encodeURI vs encodeURIComponent, and how to fix broken URLs.",
+    "url": "guides/url-encoding-guide.html",
+    "icon": "🔗",
+    "tags": "url encode guide encoding"
+  },
+  {
+    "name": "UUID / GUID generator",
+    "desc": "Generate random v4 UUIDs for databases, fixtures, and API tests. IDs are created in-browser; nothing is logged by ToolBite.",
+    "url": "tools/uuid-generator.html",
+    "icon": "🆔",
+    "tags": "uuid guid random id rfc4122 v4"
+  },
+  {
+    "name": "UUID and GUID explained — what they are and when to generate one",
+    "desc": "What is a UUID? What is a GUID? Are they the same? This guide explains UUID versions, when to use them in databases and APIs, and how to generate them safely in your browser.",
+    "url": "guides/uuid-guid-guide.html",
+    "icon": "🆔",
+    "tags": "uuid guid guide random id"
+  },
+  {
+    "name": "Word counter",
+    "desc": "Words, characters, sentences, and paragraphs for drafts and specs. Everything runs locally after the page loads—paste long documents freely.",
+    "url": "tools/word-counter.html",
+    "icon": "📝",
+    "tags": "word counter characters sentences text"
+  }
+]

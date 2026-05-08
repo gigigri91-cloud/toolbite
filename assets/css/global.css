@@ -19,6 +19,59 @@
 
 /* --- TOOLBITE - GLOBAL STYLES --- */
 
+:root {
+    --brand-blue: #1a68b1;
+    --brand-orange: #f27c22;
+}
+
+
+.text-brand-blue { color: var(--brand-blue) !important; }
+.bg-brand-blue { background-color: var(--brand-blue) !important; }
+.border-brand-blue { border-color: var(--brand-blue) !important; }
+
+.text-brand-orange { color: var(--brand-orange) !important; }
+.bg-brand-orange { background-color: var(--brand-orange) !important; }
+.border-brand-orange { border-color: var(--brand-orange) !important; }
+
+.hover\:bg-brand-orange-dark:hover { background-color: #d86c1a !important; }
+
+.bmc-native-btn {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 110;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.95rem;
+    border-radius: 9999px;
+    background-color: var(--brand-orange);
+    color: #ffffff;
+    border: 1px solid var(--brand-orange);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.45);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+.bmc-native-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 14px 26px -14px rgba(0, 0, 0, 0.52);
+    filter: brightness(1.02);
+}
+.bmc-native-btn:focus-visible {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .bmc-native-btn {
+        transition: none;
+    }
+    .bmc-native-btn:hover {
+        transform: none;
+    }
+}
+
 /* Layout rhythm refresh (step 3): more breathing room between sections/grids */
 main {
     padding-top: clamp(3rem, 5vw, 5rem) !important;
@@ -36,6 +89,9 @@ main .grid {
     position: relative;
     overflow: hidden;
     background: linear-gradient(125deg, #014f55 0%, #01696f 42%, #0f766e 100%);
+}
+.tb-hero-home {
+    background: linear-gradient(145deg, #eef4fb 0%, #ffffff 62%, #fff5eb 100%);
 }
 .tb-hero::before,
 .tb-hero::after {
@@ -327,18 +383,6 @@ html[data-theme="dark"] body .tb-field-hint {
 }
 .tb-mobile-menu-btn:hover { color: #f97316; background: transparent; }
 
-.favorite-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    vertical-align: middle;
-    line-height: 1;
-    color: #9ca3af;
-    transition: color 0.2s ease;
-}
-.favorite-btn:hover { color: #f97316; }
-.favorite-btn.active { color: #f59e0b; }
 
 /* ─── tb-card: Base ─────────────────────────────── */
 .tb-card {
@@ -1088,45 +1132,6 @@ html[data-theme="dark"] body .group:hover .dark\:group-hover\:text-orange-300 {
     color: #fdba74;
 }
 
-/* --- EMBED MODE OVERRIDES --- */
-html.embed-mode #site-header,
-html.embed-mode footer,
-html.embed-mode .tb-hero,
-html.embed-mode .tb-breadcrumb,
-html.embed-mode aside,
-html.embed-mode .tb-seo-notes,
-html.embed-mode .tb-tool-faq,
-html.embed-mode section[aria-labelledby="tb-guides-heading"],
-html.embed-mode section[aria-labelledby="tb-browse-category-heading"],
-html.embed-mode section[aria-labelledby="tb-related-tools-heading"],
-html.embed-mode section[aria-labelledby="tb-use-cases-heading"],
-html.embed-mode section[aria-labelledby="tb-how-to-heading"],
-html.embed-mode .skip-link,
-html.embed-mode a[href*="buymeacoffee.com"] {
-    display: none;
-}
-
-html.embed-mode body {
-    background: transparent;
-}
-
-html.embed-mode main {
-    padding: 0.5rem;
-}
-
-html.embed-mode .tb-tool-hero {
-    border-bottom: none;
-    margin-bottom: 1rem;
-    padding-bottom: 0;
-}
-
-html.embed-mode .bg-white.rounded-3xl {
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    margin-bottom: 0;
-}
-
 /* ==========================================
    DARK MODE OVERRIDES — data-theme="dark"
    Covers all Tailwind utility classes used
@@ -1454,3 +1459,6 @@ html[data-theme="dark"] body strong,
 html[data-theme="dark"] body b {
   color: #f1f5f9;
 }
+
+
+.tb-img-pixelated { image-rendering: pixelated; }

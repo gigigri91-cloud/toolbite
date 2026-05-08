@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolbite-v3';
+const CACHE_NAME = 'toolbite-v4';
 const ASSETS = [
   '/',
   '/index.html',
@@ -9,9 +9,9 @@ const ASSETS = [
   '/categories/seo-tools.html',
   '/assets/css/tailwind.min.css',
   '/assets/css/global.min.css',
-  '/assets/js/main.min.js',
+  '/assets/js/core.js',
   '/assets/images/toolbite-logo.webp',
-  '/assets/images/favicon.png'
+  '/assets/images/favicon.svg'
 ];
 
 self.addEventListener('install', event => {
@@ -56,7 +56,21 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Cache-first for everything else (images, HTML)
+  // Network-first for HTML so users get fresh page updates.
+  if (url.pathname.endsWith('.html') || url.pathname === '/' || !url.pathname.includes('.')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Cache-first for remaining static assets.
   event.respondWith(
     caches.match(event.request).then(response => response || fetch(event.request))
   );
