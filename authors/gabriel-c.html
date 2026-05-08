@@ -39,8 +39,10 @@
   </style>
 
   <!-- CSS preloads -->
-  <link rel="stylesheet" href="../assets/css/tailwind.min.css">
-  <link rel="stylesheet" href="../assets/css/global.min.css">
+  <link rel="preload" href="../assets/css/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/tailwind.min.css"></noscript>
+  <link rel="preload" href="../assets/css/global.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/global.min.css"></noscript>
 
   <!-- Favicon & manifest -->
   <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
@@ -94,7 +96,27 @@
   
 
   <script defer src="../assets/js/core.js"></script>
-  <script defer src="../assets/js/authors/gabriel-c.js"></script>
+  <script>
+    const guideLinks = [
+      ['JSON formatter guide: fix invalid JSON fast', '../guides/json-formatter-guide.html'],
+      ['How to decode JWT safely', '../guides/jwt-decoder-guide.html'],
+      ['SEO slug best practices', '../guides/seo-slug-best-practices.html'],
+      ['How to compress images for web', '../guides/compress-images-guide.html'],
+      ['Base64 encoding explained', '../guides/base64-encoding-guide.html'],
+      ['UUID and GUID explained', '../guides/uuid-guid-guide.html'],
+      ['URL encoding explained', '../guides/url-encoding-guide.html'],
+      ['QR codes explained', '../guides/qr-code-guide.html'],
+      ['How to generate strong passwords', '../guides/password-guide.html']
+    ];
+    const host = document.getElementById('author-guides-list');
+    guideLinks.forEach(function (item) {
+      const a = document.createElement('a');
+      a.href = item[1];
+      a.className = 'bg-gray-50 border border-gray-100 rounded-xl p-4 hover:shadow-md transition font-semibold text-gray-800 hover:text-blue-600';
+      a.textContent = item[0];
+      host.appendChild(a);
+    });
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
