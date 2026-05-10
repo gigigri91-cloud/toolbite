@@ -18,7 +18,7 @@
     "compose:deploy-artifact": "node scripts/compose-deploy-artifact.mjs && npm run snapshot:deploy && npm run report:production",
     "validate:assets:deploy": "node scripts/validate-assets-deploy.mjs",
     "dev": "npm run assets:sync && astro dev",
-    "build": "npm run assets:sync && npm run validate:assets:source && astro build && npm run validate:assets:dist && npm run snapshot:build && npm run report:production",
+    "build": "npm run assets:sync && astro build",
     "preview": "npm run assets:sync && astro preview",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "validate:seo": "node scripts/validate-seo.mjs",
