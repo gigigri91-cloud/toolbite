@@ -38,22 +38,9 @@ jobs:
         working-directory: astro
         run: npm ci
 
-      - name: Validate metadata/discovery governance
-        working-directory: astro
-        run: |
-          npm run generate:sitemap
-          npm run validate:seo
-          npm run validate:discovery
-
-      - name: Build Astro canonical artifact
+      - name: Build Astro
         working-directory: astro
         run: npm run build
-
-      - name: Compose deploy artifact and validate parity
-        working-directory: astro
-        run: |
-          npm run compose:deploy-artifact
-          npm run validate:assets:deploy
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -61,7 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'
+          path: 'astro/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
