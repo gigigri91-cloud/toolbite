@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title?: string;
+  privacyNote?: string;
+}
+
+const { title = "Use the tool", privacyNote } = Astro.props;
+---
+
+<section class="tb-card tb-card-pad-lg tb-tool-interface-wrapper">
+  <header class="tb-tool-interface-wrapper__head">
+    <h2 class="tb-tool-interface-wrapper__title">{title}</h2>
+    {privacyNote && <p class="tb-tool-interface-wrapper__privacy">{privacyNote}</p>}
+  </header>
+  <slot />
+</section>
+
+<style>
+  .tb-tool-interface-wrapper {
+    margin-bottom: 1.5rem;
+  }
+  .tb-tool-interface-wrapper__head {
+    margin-bottom: 1rem;
+  }
+  .tb-tool-interface-wrapper__title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgb(17 24 39);
+  }
+  .tb-tool-interface-wrapper__privacy {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    color: rgb(75 85 99);
+  }
+  html[data-theme="dark"] .tb-tool-interface-wrapper__title {
+    color: rgb(243 244 246);
+  }
+  html[data-theme="dark"] .tb-tool-interface-wrapper__privacy {
+    color: rgb(209 213 219);
+  }
+</style>

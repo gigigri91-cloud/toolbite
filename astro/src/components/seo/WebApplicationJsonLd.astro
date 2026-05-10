@@ -1,0 +1,15 @@
+---
+import JsonLd from "@/components/seo/JsonLd.astro";
+import { buildWebApplicationSchema } from "@/lib/schema";
+
+export interface Props {
+  name: string;
+  url: string;
+  description: string;
+  category: string;
+}
+
+const { name, url, description, category } = Astro.props;
+---
+
+<JsonLd schema={buildWebApplicationSchema({ name, url, description, category })} />

@@ -1,0 +1,163 @@
+---
+import GuideLayout from "@/layouts/GuideLayout.astro";
+
+const title = "URL Encoding Guide – Guide | ToolBite";
+const description = "Use URL Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for ev";
+const canonicalPath = "/guides/url-encoding-guide.html";
+const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+        <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">URL encoding explained</li>
+      </ol>
+    </nav>
+
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white" data-pseo-target="h1">URL encoding explained — what %20 means and how to fix broken links</h1>
+            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
+          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+        </div>
+        <p>Published: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">2026-04-22</time> • Last reviewed: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">April 22, 2026</time></p>
+      </div>
+      <p class="text-gray-900 dark:text-gray-100">Have you ever seen <code>%20</code> in a URL and wondered what it means? Or pasted a URL into an email only to have it break? This guide explains URL encoding (also called percent-encoding) and how to handle it correctly.</p>
+
+      <div class="tb-card tb-card-accent not-prose mt-6 mb-8">
+        <strong>Best for:</strong> developers building APIs, anyone debugging broken URLs, and content managers who need to embed links with special characters.
+      </div>
+
+      <h2>What is URL encoding?</h2>
+      <p>URLs can only contain a limited set of ASCII characters. Characters outside that set — spaces, accented letters, symbols like <code>&amp;</code>, <code>=</code>, <code>#</code> — must be encoded before being placed in a URL.</p>
+      <p><strong>URL encoding</strong> replaces unsafe characters with a <code>%</code> followed by the character's two-digit hexadecimal ASCII code. A space (ASCII 32 = 0x20) becomes <code>%20</code>. An ampersand becomes <code>%26</code>.</p>
+
+      <h2>Common encoded characters</h2>
+      <ul>
+        <li>Space → <code>%20</code> (or <code>+</code> in form data)</li>
+        <li><code>&amp;</code> → <code>%26</code></li>
+        <li><code>=</code> → <code>%3D</code></li>
+        <li><code>?</code> → <code>%3F</code></li>
+        <li><code>#</code> → <code>%23</code></li>
+        <li><code>/</code> → <code>%2F</code></li>
+        <li><code>+</code> → <code>%2B</code></li>
+        <li><code>@</code> → <code>%40</code></li>
+      </ul>
+
+      <h2>encodeURI vs encodeURIComponent (for developers)</h2>
+      <p>JavaScript provides two built-in functions for URL encoding:</p>
+      <ul>
+        <li><strong><code>encodeURI(url)</code></strong> — Encodes a complete URL. Leaves structural characters (<code>:</code>, <code>/</code>, <code>?</code>, <code>#</code>, <code>&amp;</code>, <code>=</code>) unencoded because they have meaning in URL structure.</li>
+        <li><strong><code>encodeURIComponent(value)</code></strong> — Encodes a URL component (like a query parameter value). Encodes everything including <code>&amp;</code>, <code>=</code>, <code>?</code>, and <code>/</code>. Use this for individual values you embed in query strings.</li>
+      </ul>
+      <p>Example: to build <code>https://example.com/search?q=hello world&amp;lang=en</code> correctly:</p>
+      <pre><code>const q = encodeURIComponent('hello world'); // → 'hello%20world'
+const url = \`https://example.com/search?q=\${q}&lang=en\`;</code></pre>
+
+      <h2>Why URLs break — common mistakes</h2>
+      <ul>
+        <li><strong>Double encoding</strong> — Encoding a URL that was already encoded, turning <code>%20</code> into <code>%2520</code>. Always decode first, then re-encode if needed.</li>
+        <li><strong>Not encoding query parameters</strong> — A parameter value containing <code>&amp;</code> or <code>=</code> will break the query string if not encoded.</li>
+        <li><strong>Using <code>+</code> for spaces in path segments</strong> — <code>+</code> means space only in form-encoded query strings (<code>application/x-www-form-urlencoded</code>). In URL paths, use <code>%20</code>.</li>
+        <li><strong>Non-ASCII characters</strong> — Accented characters like <code>é</code> or Cyrillic must be UTF-8 encoded first, then percent-encoded.</li>
+      </ul>
+
+      <h2>How to encode and decode URLs in your browser</h2>
+      <ol>
+        <li>Open <a href="../tools/url-encoder.html">ToolBite's URL encoder &amp; decoder</a>.</li>
+        <li>Paste your URL or text into the input.</li>
+        <li>Click Encode to percent-encode special characters, or Decode to convert <code>%xx</code> sequences back to readable text.</li>
+        <li>Copy the result directly from the output box.</li>
+      </ol>
+      <p>Everything runs locally in your browser — useful when debugging API endpoints that contain sensitive tokens you don't want to paste into third-party services.</p>
+
+      <h2>Quick checklist</h2>
+      <ul>
+        <li>Use <code>encodeURIComponent()</code> for query parameter values, not full URLs.</li>
+        <li>Check for double-encoding if you see <code>%25</code> in your URL (that's an encoded <code>%</code>).</li>
+        <li>Spaces in paths should be <code>%20</code>, not <code>+</code>.</li>
+        <li>Decode URLs before displaying them to users — no one wants to read <code>caf%C3%A9</code>.</li>
+      </ul>
+
+      <div class="not-prose mt-8 flex flex-wrap gap-3">
+        <a href="../tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline px-5 py-3 rounded-xl">Open URL encoder</a>
+        <a href="base64-encoding-guide.html" class="tb-btn tb-btn-outline px-5 py-3 rounded-xl">Base64 guide</a>
+      </div>
+    </article>
+
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 md:p-8">
+      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Continue with related resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="../tools/url-encoder.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">URL Encoder &amp; Decoder</p>
+          <p class="text-xs text-gray-500 mt-1">Encode and decode URLs instantly in your browser.</p>
+        </a>
+        <a href="base64-encoding-guide.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Base64 Encoding Guide</p>
+          <p class="text-xs text-gray-500 mt-1">Another encoding scheme developers encounter daily.</p>
+        </a>
+        <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Developer Tools</p>
+          <p class="text-xs text-gray-500 mt-1">JSON, JWT, Base64, UUID, hashing and more.</p>
+        </a>
+      </div>
+    </section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a><a href="../tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a></div></section>
+</main>`;
+const headHtml = String.raw`<title>URL Encoding Guide – Guide | ToolBite</title>
+  <meta name="description" content="Use URL Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for ev">
+  <link rel="canonical" href="https://toolbite.org/guides/url-encoding-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/url-encoding-guide.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/url-encoding-guide.html">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/guides/url-encoding-guide.html">
+  <meta property="og:title" content="URL Encoding Guide – Guide | ToolBite">
+  <meta property="og:description" content="Use URL Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for ev">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="URL Encoding Guide – Guide | ToolBite">
+  <meta name="twitter:description" content="Use URL Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for ev">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolbite.org"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://toolbite.org/guides/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "URL Encoding Guide – Guide | ToolBite",
+        "item": "https://toolbite.org/guides/url-encoding-guide.html"
+      }
+    ]
+  }
+  </script>`;
+---
+
+<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <Fragment set:html={mainHtml} />
+  <Fragment slot="head" set:html={headHtml} />
+</GuideLayout>

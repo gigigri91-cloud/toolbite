@@ -1,0 +1,152 @@
+---
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/navigation/Header.astro";
+import MobileMenu from "@/components/navigation/MobileMenu.astro";
+import MetaHead from "@/components/seo/MetaHead.astro";
+import JsonLd from "@/components/seo/JsonLd.astro";
+import CookieModal from "@/components/system/CookieModal.astro";
+import ThemeInitInline from "@/components/system/ThemeInitInline.astro";
+import type { PageMetadata } from "@/lib/seo";
+import { createMetadata } from "@/lib/seo";
+import type { JsonLdObject } from "@/lib/schema";
+import { dedupeSchemasByType } from "@/lib/schema";
+import "@/styles/tokens.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  rootPath?: string;
+  includeAdsense?: boolean;
+  includeCookieModal?: boolean;
+  metadata?: PageMetadata;
+  schemas?: JsonLdObject[];
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  rootPath = "/",
+  includeAdsense = true,
+  includeCookieModal = true,
+  metadata,
+  schemas = []
+} = Astro.props;
+
+const adsenseClient = "ca-pub-5233222002046639";
+const pageMeta = metadata ?? createMetadata({ title, description, canonicalPath });
+const uniqueSchemas = dedupeSchemasByType(schemas);
+
+// CSP mirrors the legacy meta tag exactly so AdSense and Google ad
+// origins keep working. Kept as a meta http-equiv (no server header) to
+// preserve hardening parity with non-migrated legacy pages.
+const cspContent = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "form-action 'self' mailto:",
+  "object-src 'none'",
+  "img-src 'self' data: https:",
+  "font-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google",
+  "script-src-elem 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google",
+  "style-src 'self' 'unsafe-inline'",
+  "frame-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.google.com",
+  "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google"
+].join("; ");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content={cspContent} />
+    <meta name="theme-color" content="#2563eb" />
+    <MetaHead meta={pageMeta} />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/inter-v20.woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/plus-jakarta-v12.woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/toolbite-logo.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+
+    <link rel="stylesheet" href="/assets/css/tailwind.min.css" />
+    <link rel="stylesheet" href="/assets/css/global.min.css" />
+
+    <ThemeInitInline />
+    {includeAdsense && (
+      <>
+        <meta name="google-adsense-account" content={adsenseClient} />
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossorigin="anonymous"
+        ></script>
+      </>
+    )}
+    {uniqueSchemas.map((schema) => <JsonLd schema={schema} />)}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <Header rootPath={rootPath} />
+    <MobileMenu rootPath={rootPath} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer rootPath={rootPath} />
+    {includeCookieModal && <CookieModal />}
+
+    <script defer src="/assets/js/core.js"></script>
+    {includeCookieModal && <script defer src="/assets/js/cookies.js"></script>}
+    <script defer src="/assets/js/runtime-health.js"></script>
+    <slot name="scripts" />
+
+    <script is:inline>
+      // Best-effort unregister of the legacy service worker on returning
+      // visitors. Fails silently and never breaks current navigation. No
+      // cache eviction is performed: the SW will release its caches on the
+      // browser's normal schedule after unregister.
+      (function () {
+        if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
+        try {
+          navigator.serviceWorker.getRegistrations().then(function (regs) {
+            regs.forEach(function (reg) {
+              try {
+                var url = (reg && reg.active && reg.active.scriptURL) || "";
+                if (url.indexOf("/service-worker.js") !== -1) reg.unregister();
+              } catch (_) {}
+            });
+          }).catch(function () {});
+        } catch (_) {}
+      })();
+
+      // Populate the legacy `current-year` footer span if present, matching
+      // the shell pattern used across non-migrated pages.
+      (function () {
+        var el = document.getElementById("current-year");
+        if (el && !el.textContent) el.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </body>
+</html>

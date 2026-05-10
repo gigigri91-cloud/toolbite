@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  toolScript?: string;
+}
+
+const { title, description, canonicalPath, toolScript } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+  <slot />
+
+  <Fragment slot="scripts">
+    {toolScript && <script defer src={toolScript}></script>}
+    <slot name="scripts" />
+  </Fragment>
+</BaseLayout>

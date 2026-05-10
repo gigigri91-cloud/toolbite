@@ -1,0 +1,8 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import { getTrendingTools } from "@/lib/tools";
+
+const tools = getTrendingTools(4);
+---
+
+<DiscoverySection title="Trending now" subtitle="High utility workflows users combine most often." tools={tools} />

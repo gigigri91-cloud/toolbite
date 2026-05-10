@@ -1,0 +1,31 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("url-encoder");
+---
+
+<ToolPageLayout slug="url-encoder" content={content} toolScript="/assets/js/tools/url-encoder.js">
+  <ToolInterfaceWrapper title="Encode and decode URLs" privacyNote="Encoding and decoding happen entirely in-browser.">
+    <div class="flex gap-2 mb-4" role="tablist">
+      <button type="button" id="url-tab-encode" class="tb-btn tb-btn-primary">Encode</button>
+      <button type="button" id="url-tab-decode" class="tb-btn tb-btn-neutral">Decode</button>
+    </div>
+    <label class="text-sm text-gray-700 dark:text-gray-300 mb-3 block">
+      <input id="url-full-url" type="checkbox" class="mr-1" />
+      Full URL mode
+    </label>
+    <p id="url-mode-hint" class="text-sm text-gray-500 dark:text-gray-400 mb-4"></p>
+    <label for="url-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Input</label>
+    <textarea id="url-input" class="tb-textarea tb-textarea-mono w-full h-32 mb-4"></textarea>
+    <label for="url-output" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Output</label>
+    <textarea id="url-output" readonly class="tb-textarea tb-textarea-mono w-full h-32 mb-4"></textarea>
+    <p id="url-error" class="hidden text-sm text-red-600 dark:text-red-400 mb-4"></p>
+    <div class="flex flex-wrap gap-2">
+      <button id="url-run-btn" class="tb-btn tb-btn-primary">Encode</button>
+      <button id="url-copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+      <button id="url-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

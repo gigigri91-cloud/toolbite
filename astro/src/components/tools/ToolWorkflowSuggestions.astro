@@ -1,0 +1,32 @@
+---
+export interface Props {
+  title?: string;
+  items: Array<{ name: string; href: string; icon?: string }>;
+}
+const { title = "Suggested workflow", items } = Astro.props;
+---
+
+<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-section">
+  <h2 class="tb-tool-section__title">{title}</h2>
+  <div class="tb-tool-workflow-list" data-tool-interaction-group="workflow">
+    {items.map((item) => (
+      <a href={item.href} class="tb-btn tb-btn-outline tb-tool-workflow-link" data-tool-discovery-link="true">
+        <span aria-hidden="true">{item.icon || "→"}</span>
+        <span>{item.name}</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .tb-tool-workflow-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tb-tool-workflow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+export interface Props {
+  items: string[];
+}
+const { items } = Astro.props;
+---
+
+<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-section">
+  <h2 class="tb-tool-section__title">Why this tool works well</h2>
+  <ul class="tb-tool-list">
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</section>
+
+<style>
+  .tb-tool-section {
+    margin-bottom: 1.25rem;
+  }
+</style>

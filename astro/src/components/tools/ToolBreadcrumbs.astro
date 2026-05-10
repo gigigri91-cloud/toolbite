@@ -1,0 +1,67 @@
+---
+export interface Props {
+  items: Array<{ name: string; href?: string }>;
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="tb-tool-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="tb-tool-breadcrumbs__list">
+    {items.map((item, index) => (
+      <>
+        <li>
+          {item.href ? (
+            <a href={item.href} class="tb-tool-breadcrumbs__link">
+              {item.name}
+            </a>
+          ) : (
+            <span class="tb-tool-breadcrumbs__current">{item.name}</span>
+          )}
+        </li>
+        {index < items.length - 1 && <li aria-hidden="true" class="tb-tool-breadcrumbs__sep">/</li>}
+      </>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .tb-tool-breadcrumbs {
+    margin-bottom: 1rem;
+  }
+  .tb-tool-breadcrumbs__list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: rgb(107 114 128);
+  }
+  .tb-tool-breadcrumbs__link {
+    color: rgb(75 85 99);
+    text-decoration: none;
+  }
+  .tb-tool-breadcrumbs__link:hover,
+  .tb-tool-breadcrumbs__link:focus-visible {
+    color: rgb(37 99 235);
+  }
+  .tb-tool-breadcrumbs__current {
+    color: rgb(17 24 39);
+    font-weight: 600;
+  }
+  .tb-tool-breadcrumbs__sep {
+    color: rgb(156 163 175);
+  }
+  html[data-theme="dark"] .tb-tool-breadcrumbs__list {
+    color: rgb(156 163 175);
+  }
+  html[data-theme="dark"] .tb-tool-breadcrumbs__link {
+    color: rgb(209 213 219);
+  }
+  html[data-theme="dark"] .tb-tool-breadcrumbs__link:hover,
+  html[data-theme="dark"] .tb-tool-breadcrumbs__link:focus-visible {
+    color: rgb(96 165 250);
+  }
+  html[data-theme="dark"] .tb-tool-breadcrumbs__current {
+    color: rgb(243 244 246);
+  }
+</style>

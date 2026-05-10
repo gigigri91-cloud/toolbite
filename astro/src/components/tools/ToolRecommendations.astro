@@ -1,0 +1,19 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import type { NormalizedTool } from "@/lib/tools";
+
+export interface Props {
+  tools: NormalizedTool[];
+}
+const { tools } = Astro.props;
+---
+
+{tools.length > 0 && (
+  <div data-tool-interaction-group="recommendations">
+    <DiscoverySection
+      title="Recommended next actions"
+      subtitle="High-utility picks across categories based on current intent."
+      tools={tools}
+    />
+  </div>
+)}

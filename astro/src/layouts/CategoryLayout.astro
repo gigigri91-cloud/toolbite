@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { PageMetadata } from "@/lib/seo";
+import type { JsonLdObject } from "@/lib/schema";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  metadata?: PageMetadata;
+  schemas?: JsonLdObject[];
+}
+
+const { title, description, canonicalPath, metadata, schemas = [] } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>
+  <slot />
+  <Fragment slot="scripts">
+    <script defer src="/assets/js/category.js"></script>
+    <slot name="scripts" />
+  </Fragment>
+</BaseLayout>

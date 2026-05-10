@@ -1,0 +1,20 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("uuid-generator");
+---
+
+<ToolPageLayout slug="uuid-generator" content={content} toolScript="/assets/js/tools/uuid-generator.js">
+  <ToolInterfaceWrapper title="Generate UUIDs" privacyNote="UUID generation happens in your browser session.">
+    <label for="uuid-count" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Count (1-50)</label>
+    <input id="uuid-count" type="number" min="1" max="50" value="1" class="tb-input mb-4" />
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button id="uuid-generate-btn" class="tb-btn tb-btn-primary">Generate</button>
+      <button id="uuid-copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+      <button id="uuid-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+    <textarea id="uuid-output" readonly class="tb-textarea tb-textarea-mono w-full h-64"></textarea>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "404 – Page Not Found | ToolBite";
+const description = "Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday";
+const canonicalPath = "/404.html";
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<div class="text-7xl mb-6">🕳️</div>
+    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 mb-6" data-pseo-target="h1">404</h1>
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">Page Not Found</h2>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-lg">
+      The tool or page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+    </p>
+    <div class="w-full max-w-xl mb-6">
+      <form action="search.html" method="get" role="search" class="tb-card tb-card-pad-sm flex items-center gap-2">
+        <label for="missing-search" class="sr-only">Search ToolBite</label>
+        <input id="missing-search" name="q" type="search" placeholder="Try: JSON formatter, QR generator, slug tool..." class="tb-input w-full border outline-none" />
+        <button type="submit" class="tb-btn tb-btn-primary">Search</button>
+      </form>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+      <a href="tools/json-formatter.html" class="tb-btn tb-btn-outline">JSON Formatter</a>
+      <a href="tools/password-generator.html" class="tb-btn tb-btn-outline">Password Generator</a>
+      <a href="tools/word-counter.html" class="tb-btn tb-btn-outline">Word Counter</a>
+      <a href="guides/index.html" class="tb-btn tb-btn-outline">Browse Guides</a>
+    </div>
+    <a href="/" class="tb-btn tb-btn-outline inline-block py-3 px-8 rounded-xl">Return to Homepage</a>
+
+  <Fragment slot="head">
+<title>404 – Page Not Found | ToolBite</title>
+  <meta name="description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
+  <link rel="canonical" href="https://toolbite.org/404.html">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/404.html">
+  <meta property="og:title" content="404 – Page Not Found | ToolBite">
+  <meta property="og:description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="404 – Page Not Found | ToolBite">
+  <meta name="twitter:description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  </Fragment>
+</BaseLayout>

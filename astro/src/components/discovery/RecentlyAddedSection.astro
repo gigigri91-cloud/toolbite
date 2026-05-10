@@ -1,0 +1,8 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import { getRecentlyAdded } from "@/lib/tools";
+
+const tools = getRecentlyAdded(4);
+---
+
+<DiscoverySection title="Recently added" subtitle="Latest tools and guides added to the ecosystem." tools={tools} />

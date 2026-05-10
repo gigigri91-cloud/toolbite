@@ -1,0 +1,24 @@
+---
+---
+
+<div class="tb-tool-shell">
+  <article class="tb-tool-shell__main">
+    <slot />
+  </article>
+  <aside class="tb-tool-shell__aside" aria-label="Tool recommendations and discovery">
+    <slot name="aside" />
+  </aside>
+</div>
+
+<style>
+  .tb-tool-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 1023px) {
+    .tb-tool-shell {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

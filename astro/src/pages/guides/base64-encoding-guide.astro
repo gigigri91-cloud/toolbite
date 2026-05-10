@@ -1,0 +1,160 @@
+---
+import GuideLayout from "@/layouts/GuideLayout.astro";
+
+const title = "Base64 Encoding Guide – Guide | ToolBite";
+const description = "Use Base64 Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for";
+const canonicalPath = "/guides/base64-encoding-guide.html";
+const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+        <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">Base64 encoding explained</li>
+      </ol>
+    </nav>
+
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white" data-pseo-target="h1">Base64 encoding explained — what it is and when to use it</h1>
+            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
+          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+        </div>
+        <p>Published: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">2026-04-22</time> • Last reviewed: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">April 22, 2026</time></p>
+      </div>
+      <p class="text-gray-900 dark:text-gray-100">Base64 appears everywhere in web development — API tokens, email attachments, data URIs, JWT tokens — yet many developers use it without understanding what it actually does. This guide explains it clearly.</p>
+
+      <div class="tb-card tb-card-accent not-prose mt-6 mb-8">
+        <strong>Best for:</strong> developers working with APIs, email systems, JWT tokens, or embedding images/files in HTML and CSS.
+      </div>
+
+      <h2>What is Base64?</h2>
+      <p>Base64 is an <strong>encoding scheme</strong> that converts binary data into a string of 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It was designed to safely transmit binary data over text-based systems like email (SMTP) and HTTP headers that were not designed to handle raw bytes.</p>
+      <p>The name "Base64" comes from the fact that it uses 64 distinct characters to represent data. Each Base64 character encodes 6 bits of data (2⁶ = 64).</p>
+
+      <h2>How does Base64 encoding work?</h2>
+      <ol>
+        <li>Take the binary input (e.g., the bytes of an image or a string).</li>
+        <li>Group the bytes into 3-byte chunks (24 bits).</li>
+        <li>Split each 24-bit chunk into four 6-bit groups.</li>
+        <li>Map each 6-bit group to one of the 64 Base64 characters.</li>
+        <li>Pad with <code>=</code> characters if the input length is not divisible by 3.</li>
+      </ol>
+      <p>Example: the string <code>Hi!</code> encodes to <code>SGkh</code> in Base64. The encoded output is always about 33% larger than the original.</p>
+
+      <h2>Common use cases</h2>
+      <ul>
+        <li><strong>API authentication</strong> — Basic Auth sends credentials as <code>username:password</code> encoded in Base64 in the Authorization header.</li>
+        <li><strong>JWT tokens</strong> — The header and payload sections of a JSON Web Token are Base64url-encoded (a variant with - and _ instead of + and /).</li>
+        <li><strong>Data URIs</strong> — Embedding small images directly in HTML or CSS: <code>src="data:image/png;base64,iVBORw..."</code></li>
+        <li><strong>Email attachments</strong> — MIME protocol uses Base64 to encode binary attachments so they survive transit through SMTP servers.</li>
+        <li><strong>Storing binary in JSON</strong> — JSON is text-only, so binary data (files, images, keys) is often Base64-encoded before being stored in JSON fields.</li>
+      </ul>
+
+      <h2>Base64 is NOT encryption</h2>
+      <p>This is the most important thing to understand: <strong>Base64 is reversible by anyone, instantly, with no key required.</strong> It provides zero security. Never use Base64 to "hide" passwords, API secrets, or sensitive data.</p>
+      <p>A common mistake is to see a Base64 string and assume it is encrypted. It is not — it is just encoded for safe transport. Anyone can decode it in seconds.</p>
+      <p>For actual security, use proper encryption (AES-256) or hashing (SHA-256, bcrypt for passwords).</p>
+
+      <h2>Base64 vs Base64url</h2>
+      <p>Standard Base64 uses <code>+</code> and <code>/</code> which are special characters in URLs. <strong>Base64url</strong> replaces them with <code>-</code> and <code>_</code> to make the output safe for use in URLs and HTTP headers without percent-encoding. JWT tokens use Base64url.</p>
+
+      <h2>How to encode and decode in your browser</h2>
+      <ol>
+        <li>Open <a href="../tools/base64-encoder.html">ToolBite's Base64 encoder &amp; decoder</a>.</li>
+        <li>Paste your text or string into the input box.</li>
+        <li>Click Encode to get the Base64 output, or paste a Base64 string and click Decode to get the original.</li>
+        <li>Copy the result — it never leaves your browser tab.</li>
+      </ol>
+
+      <h2>Quick reference</h2>
+      <ul>
+        <li>Base64 output is ~33% larger than the input.</li>
+        <li>All Base64 strings end with 0, 1, or 2 padding <code>=</code> characters.</li>
+        <li>Base64 ≠ encryption — never use it to secure sensitive data.</li>
+        <li>JWT tokens use Base64url (not standard Base64).</li>
+        <li>Decoding in JavaScript: <code>atob(str)</code>. Encoding: <code>btoa(str)</code>.</li>
+      </ul>
+
+      <div class="not-prose mt-8 flex flex-wrap gap-3">
+        <a href="../tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline px-5 py-3 rounded-xl">Open Base64 encoder</a>
+        <a href="jwt-decoder-guide.html" class="tb-btn tb-btn-outline px-5 py-3 rounded-xl">JWT guide</a>
+      </div>
+    </article>
+
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 md:p-8">
+      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Continue with related resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="../tools/base64-encoder.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Base64 Encoder &amp; Decoder</p>
+          <p class="text-xs text-gray-500 mt-1">Encode or decode Base64 strings in your browser.</p>
+        </a>
+        <a href="jwt-decoder-guide.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">JWT Decoder Guide</p>
+          <p class="text-xs text-gray-500 mt-1">Understand how Base64url is used in JWT tokens.</p>
+        </a>
+        <a href="../tools/hash-generator.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Hash Generator</p>
+          <p class="text-xs text-gray-500 mt-1">SHA-256 &amp; SHA-1 hashing — actual one-way security.</p>
+        </a>
+      </div>
+    </section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="../tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="../tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
+</main>`;
+const headHtml = String.raw`<title>Base64 Encoding Guide – Guide | ToolBite</title>
+  <meta name="description" content="Use Base64 Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for">
+  <link rel="canonical" href="https://toolbite.org/guides/base64-encoding-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/base64-encoding-guide.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/base64-encoding-guide.html">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/guides/base64-encoding-guide.html">
+  <meta property="og:title" content="Base64 Encoding Guide – Guide | ToolBite">
+  <meta property="og:description" content="Use Base64 Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="Base64 Encoding Guide – Guide | ToolBite">
+  <meta name="twitter:description" content="Use Base64 Encoding Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolbite.org"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://toolbite.org/guides/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Base64 Encoding Guide – Guide | ToolBite",
+        "item": "https://toolbite.org/guides/base64-encoding-guide.html"
+      }
+    ]
+  }
+  </script>`;
+---
+
+<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <Fragment set:html={mainHtml} />
+  <Fragment slot="head" set:html={headHtml} />
+</GuideLayout>

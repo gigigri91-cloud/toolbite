@@ -1,0 +1,43 @@
+---
+export interface Props {
+  items: Array<{ title: string; description: string }>;
+}
+const { items } = Astro.props;
+---
+
+<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-section">
+  <h2 class="tb-tool-section__title">Use cases</h2>
+  <div class="tb-tool-usecase-grid">
+    {items.map((item) => (
+      <article class="tb-card tb-card-pad-md tb-tool-usecase-item">
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .tb-tool-usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  .tb-tool-usecase-item h3 {
+    margin: 0 0 0.45rem;
+    font-size: 0.95rem;
+    color: rgb(17 24 39);
+  }
+  .tb-tool-usecase-item p {
+    margin: 0;
+    color: rgb(75 85 99);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  html[data-theme="dark"] .tb-tool-usecase-item h3 {
+    color: rgb(243 244 246);
+  }
+  html[data-theme="dark"] .tb-tool-usecase-item p {
+    color: rgb(209 213 219);
+  }
+</style>

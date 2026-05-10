@@ -1,0 +1,297 @@
+---
+import CategoryHighlights from "@/components/discovery/CategoryHighlights.astro";
+import PopularToolsSection from "@/components/discovery/PopularToolsSection.astro";
+import RecentlyAddedSection from "@/components/discovery/RecentlyAddedSection.astro";
+import RecommendedToolsSection from "@/components/discovery/RecommendedToolsSection.astro";
+import TrendingToolsSection from "@/components/discovery/TrendingToolsSection.astro";
+import SearchInput from "@/components/search/SearchInput.astro";
+import SearchOverlay from "@/components/search/SearchOverlay.astro";
+import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { HOMEPAGE_TITLE, createMetadata } from "@/lib/seo";
+import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
+import { getCategoryTools, getPopularTools } from "@/lib/tools";
+
+const title = HOMEPAGE_TITLE;
+const description = "Discover privacy-first AI productivity workflows for writing, development, SEO, and media optimization. Fast browser-native tools with startup-grade UX.";
+const canonicalPath = "/";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["ai productivity", "browser tools", "developer workflows", "seo workflows", "toolbite ecosystem"]
+});
+
+const schemas = [buildWebSiteSchema(), buildOrganizationSchema()];
+const popularTools = getPopularTools(6);
+const aiTools = getPopularTools(6).filter((tool) =>
+  tool.keywords.some((k) => ["json", "slug", "read", "jwt", "text", "image"].includes(k.toLowerCase()))
+);
+const trustStats = [
+  { label: "Browser-native workflows", value: "100%" },
+  { label: "Categories powering discovery", value: "4+" },
+  { label: "Tools and guides connected", value: "30+" },
+  { label: "Server upload required", value: "0" }
+];
+const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata} schemas={schemas}>
+  <section class="home-hero">
+    <div class="hero-glow hero-glow--primary"></div>
+    <div class="hero-glow hero-glow--secondary"></div>
+    <div class="hero-content">
+      <p class="hero-kicker">AI-powered productivity ecosystem</p>
+      <h1>Build faster workflows without leaving your browser.</h1>
+      <p class="hero-copy">
+        ToolBite turns isolated utilities into a connected discovery layer for writing, development, SEO, and media operations.
+        Explore, chain, and reuse workflows in seconds.
+      </p>
+      <div class="hero-actions">
+        <a href="/search.html" class="tb-btn tb-btn-primary">Start exploring tools</a>
+        <a href="/categories/developer-tools.html" class="tb-btn tb-btn-secondary">Open workflow categories</a>
+      </div>
+      <div class="hero-search">
+        <SearchInput id="search-input" placeholder="Search workflows, tools, or guides..." hotkeyLabel="Ctrl/⌘K" />
+      </div>
+      <SearchSuggestions />
+    </div>
+  </section>
+
+  <section class="home-section tb-reveal">
+    <div class="section-head">
+      <h2>Smart search command center</h2>
+      <p>Instant discovery with keyboard-first navigation and contextual suggestions.</p>
+    </div>
+    <div class="search-command-card tb-card tb-card-panel tb-card-pad-lg">
+      <div class="command-grid">
+        <div>
+          <p class="command-title">Quick-open style navigation</p>
+          <p class="command-copy">Press <kbd>Ctrl/⌘K</kbd> or <kbd>/</kbd> to jump into command-style search from anywhere.</p>
+        </div>
+        <a href="/search.html" class="tb-btn tb-btn-secondary">Open full search</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section tb-reveal">
+    <TrendingToolsSection />
+  </section>
+
+  <section class="home-section tb-reveal">
+    <div class="section-head">
+      <h2>AI tools for modern workflows</h2>
+      <p>Prompt-ready utilities for structured output, content transformation, and optimization loops.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {aiTools.map((tool) => (
+        <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-lg ai-card">
+          <p class="ai-label">AI workflow</p>
+          <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">{tool.icon || "🧠"} {tool.title}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-section tb-reveal">
+    <CategoryHighlights
+      categorySlug="developer-tools"
+      categoryTitle="Popular categories"
+      heroDescription="Explore curated category hubs with built-in cross-linking and workflow context."
+      featuredTools={categoryFeatured}
+    />
+  </section>
+
+  <section class="home-section tb-reveal">
+    <RecentlyAddedSection />
+  </section>
+
+  <section class="home-section tb-reveal">
+    <div class="section-head">
+      <h2>Why teams adopt ToolBite</h2>
+      <p>Engineered for speed, privacy, and operational clarity across daily tasks.</p>
+    </div>
+    <div class="benefits-grid">
+      <article class="tb-card tb-card-panel tb-card-pad-lg"><h3>Browser-native privacy</h3><p>Core workflows run locally, reducing upload friction and risk.</p></article>
+      <article class="tb-card tb-card-panel tb-card-pad-lg"><h3>Search-first exploration</h3><p>Command-style discovery helps users move from intent to action quickly.</p></article>
+      <article class="tb-card tb-card-panel tb-card-pad-lg"><h3>Connected ecosystem</h3><p>Contextual linking turns isolated tasks into repeatable multi-step workflows.</p></article>
+    </div>
+  </section>
+
+  <section class="home-section tb-reveal">
+    <div class="section-head">
+      <h2>Trust by architecture</h2>
+      <p>Platform fundamentals designed for reliability and scale.</p>
+    </div>
+    <div class="stats-grid">
+      {trustStats.map((item) => (
+        <article class="tb-card tb-card-panel tb-card-pad-lg stat-card">
+          <p class="stat-value">{item.value}</p>
+          <p class="stat-label">{item.label}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-section tb-reveal">
+    <RecommendedToolsSection />
+  </section>
+
+  <section class="home-section tb-reveal">
+    <div class="discovery-cta tb-card tb-card-panel tb-card-pad-lg">
+      <h2>Discover your next productivity stack</h2>
+      <p>Move from one-off utility usage to a high-velocity workflow ecosystem.</p>
+      <div class="hero-actions">
+        <a href="/search.html" class="tb-btn tb-btn-primary">Launch command search</a>
+        <a href="/categories/text-tools.html" class="tb-btn tb-btn-secondary">Browse all categories</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section tb-reveal">
+    <div class="premium-footer tb-card tb-card-panel tb-card-pad-lg">
+      <p class="hero-kicker">ToolBite ecosystem</p>
+      <h2>Built for modern operators, creators, and product teams.</h2>
+      <p>Ultra-fast static-first architecture with scalable discovery and SEO-safe growth for hundreds of tools.</p>
+      <div class="premium-links">
+        <a href="/guides/index.html">Guides</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+      </div>
+    </div>
+  </section>
+
+  <SearchOverlay>
+    <SearchInput id="search-overlay-input" placeholder="Quick open tools and guides..." />
+    <SearchSuggestions />
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-3">Press <kbd>Esc</kbd> to close command search.</p>
+  </SearchOverlay>
+
+  <Fragment slot="scripts">
+    <script defer src="/assets/js/search.js"></script>
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .home-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 1rem auto 1.75rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background:
+      radial-gradient(120% 130% at 90% -20%, rgba(59, 130, 246, 0.25), transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.92));
+  }
+  html[data-theme="dark"] .home-hero {
+    border-color: rgba(96, 165, 250, 0.25);
+    background:
+      radial-gradient(120% 130% at 90% -20%, rgba(56, 189, 248, 0.22), transparent 60%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+    box-shadow: 0 20px 60px rgba(2, 6, 23, 0.45);
+  }
+  .hero-content { position: relative; z-index: 2; padding: clamp(1.25rem, 3vw, 2.5rem); }
+  .hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 0.75rem;
+  }
+  html[data-theme="dark"] .hero-kicker { color: #7dd3fc; }
+  .home-hero h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4.4vw, 3.8rem);
+    line-height: 1.05;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+  }
+  html[data-theme="dark"] .home-hero h1 { color: #f8fafc; }
+  .hero-copy {
+    margin-top: 0.9rem;
+    max-width: 60ch;
+    font-size: clamp(1rem, 1.8vw, 1.12rem);
+    color: #334155;
+  }
+  html[data-theme="dark"] .hero-copy { color: #cbd5e1; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; }
+  .hero-search { margin-top: 1rem; max-width: 720px; }
+  .hero-glow { position: absolute; border-radius: 9999px; filter: blur(44px); opacity: 0.35; pointer-events: none; animation: glow-shift 10s ease-in-out infinite alternate; }
+  .hero-glow--primary { width: 260px; height: 260px; top: -80px; right: -60px; background: rgba(59, 130, 246, 0.5); }
+  .hero-glow--secondary { width: 220px; height: 220px; bottom: -100px; left: -80px; background: rgba(14, 165, 233, 0.35); animation-delay: 1.6s; }
+  .section-head h2 {
+    margin: 0;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: #0f172a;
+    letter-spacing: -0.01em;
+  }
+  html[data-theme="dark"] .section-head h2 { color: #f8fafc; }
+  .section-head p { margin: 0.35rem 0 0.85rem; color: #475569; }
+  html[data-theme="dark"] .section-head p { color: #94a3b8; }
+  .ai-card { transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+  .ai-card:hover { transform: translateY(-3px); border-color: rgba(37, 99, 235, 0.45); box-shadow: 0 12px 26px rgba(37, 99, 235, 0.18); }
+  .ai-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 0.4rem; }
+  html[data-theme="dark"] .ai-label { color: #94a3b8; }
+  .benefits-grid,
+  .stats-grid { display: grid; gap: 0.85rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  @media (min-width: 768px) {
+    .benefits-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  .benefits-grid h3 { margin: 0 0 0.45rem; font-size: 1.02rem; color: #0f172a; }
+  html[data-theme="dark"] .benefits-grid h3 { color: #f8fafc; }
+  .benefits-grid p { margin: 0; color: #475569; font-size: 0.95rem; }
+  html[data-theme="dark"] .benefits-grid p { color: #94a3b8; }
+  .stat-value { margin: 0; font-size: 1.7rem; font-weight: 800; color: #0f172a; }
+  html[data-theme="dark"] .stat-value { color: #f8fafc; }
+  .stat-label { margin: 0.25rem 0 0; color: #64748b; font-size: 0.88rem; }
+  html[data-theme="dark"] .stat-label { color: #94a3b8; }
+  .discovery-cta,
+  .premium-footer {
+    background:
+      radial-gradient(100% 120% at 90% -20%, rgba(37, 99, 235, 0.18), transparent 62%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+  }
+  html[data-theme="dark"] .discovery-cta,
+  html[data-theme="dark"] .premium-footer {
+    background:
+      radial-gradient(100% 120% at 90% -20%, rgba(125, 211, 252, 0.16), transparent 62%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.96));
+  }
+  .discovery-cta h2,
+  .premium-footer h2 { margin: 0 0 0.35rem; color: #0f172a; }
+  html[data-theme="dark"] .discovery-cta h2,
+  html[data-theme="dark"] .premium-footer h2 { color: #f8fafc; }
+  .discovery-cta p,
+  .premium-footer p { margin: 0; color: #475569; }
+  html[data-theme="dark"] .discovery-cta p,
+  html[data-theme="dark"] .premium-footer p { color: #94a3b8; }
+  .premium-links { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .premium-links a { color: #334155; text-decoration: none; border-bottom: 1px solid transparent; }
+  .premium-links a:hover { border-bottom-color: #2563eb; }
+  html[data-theme="dark"] .premium-links a { color: #cbd5e1; }
+  .search-command-card .command-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; }
+  .command-title { margin: 0 0 0.25rem; font-weight: 700; color: #0f172a; }
+  html[data-theme="dark"] .command-title { color: #f8fafc; }
+  .command-copy { margin: 0; color: #475569; }
+  html[data-theme="dark"] .command-copy { color: #94a3b8; }
+  @keyframes glow-shift {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-8px) scale(1.05); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow { animation: none; }
+    .ai-card { transition: none; }
+    .ai-card:hover { transform: none; }
+  }
+</style>

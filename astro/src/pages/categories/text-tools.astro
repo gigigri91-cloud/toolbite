@@ -1,0 +1,35 @@
+---
+import CategoryPage from "@/components/discovery/CategoryPage.astro";
+import CategoryLayout from "@/layouts/CategoryLayout.astro";
+import { createCategoryMetadata } from "@/lib/seo";
+
+const title = "Text Tools | ToolBite";
+const description = "Word counter, case converter, slug generator, find & replace, and more — all text tools run locally in your browser with zero uploads.";
+const canonicalPath = "/categories/text-tools.html";
+
+const metadata = createCategoryMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["text tools", "word counter", "find replace", "slug", "browser tools"]
+});
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Text tools — edit & clean copy in your browser | ToolBite",
+    url: "https://toolbite.org/categories/text-tools.html",
+    description: "Case changes, spacing cleanup, counters, slugs, and line tools-all run locally in the browser so drafts stay on your device.",
+    dateModified: "2026-05-08"
+  }
+];
+---
+
+<CategoryLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata} schemas={schemas}>
+  <CategoryPage
+    slug="text-tools"
+    title="Text & content tools"
+    heroDescription="Clean, convert, and refine text workflows instantly. Every transformation runs locally in your browser for privacy and speed."
+  />
+</CategoryLayout>

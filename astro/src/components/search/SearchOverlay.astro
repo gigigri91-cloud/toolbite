@@ -1,0 +1,33 @@
+<div id="search-overlay" class="search-overlay hidden" aria-hidden="true">
+  <div class="search-overlay__scrim" data-close-overlay></div>
+  <div class="search-overlay__panel" role="dialog" aria-modal="true" aria-label="Command search">
+    <p class="search-overlay__hint">Quick open</p>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .search-overlay { position: fixed; inset: 0; z-index: 80; }
+  .search-overlay__scrim { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.55); backdrop-filter: blur(2px); }
+  .search-overlay__panel {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 8vh auto 0;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+  }
+  html[data-theme="dark"] .search-overlay__panel {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  .search-overlay__hint { margin: 0 0 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; }
+  .search-overlay:not(.hidden) .search-overlay__panel { animation: overlay-enter 160ms ease; }
+  @keyframes overlay-enter {
+    from { transform: translateY(8px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>

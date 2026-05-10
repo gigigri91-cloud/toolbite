@@ -1,0 +1,19 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import type { NormalizedTool } from "@/lib/tools";
+
+export interface Props {
+  tools: NormalizedTool[];
+}
+const { tools } = Astro.props;
+---
+
+{tools.length > 0 && (
+  <div data-tool-interaction-group="related-tools">
+    <DiscoverySection
+      title="Related tools"
+      subtitle="Continue with closely related tools for faster multi-step workflows."
+      tools={tools}
+    />
+  </div>
+)}

@@ -1,0 +1,24 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("case-converter");
+---
+
+<ToolPageLayout slug="case-converter" content={content} toolScript="/assets/js/tools/case-converter.js">
+  <ToolInterfaceWrapper title="Convert text case" privacyNote="Your text stays in your browser and is not uploaded.">
+    <textarea id="case-input" class="tb-textarea w-full h-56 mb-4" placeholder="Paste or type your text here"></textarea>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button type="button" id="btn-upper" class="tb-btn tb-btn-primary">UPPERCASE</button>
+      <button type="button" id="btn-lower" class="tb-btn tb-btn-primary">lowercase</button>
+      <button type="button" id="btn-title" class="tb-btn tb-btn-primary">Title Case</button>
+      <button type="button" id="btn-sentence" class="tb-btn tb-btn-primary">Sentence case</button>
+      <button type="button" id="btn-camel" class="tb-btn tb-btn-primary">camelCase</button>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button type="button" id="copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+      <button type="button" id="clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

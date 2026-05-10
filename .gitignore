@@ -2,3 +2,26 @@ _local-docs/
 .DS_Store
 **/.DS_Store
 seo-meta-descriptions.csv
+
+# Generated deploy artifacts
+_site/
+_site_qa/
+
+# Astro build outputs and caches
+astro/dist/
+astro/.astro/
+
+# Test artifacts
+astro/test-results/
+astro/playwright-report/
+
+# Local Lighthouse output
+.lighthouseci/
+
+# Editor / OS junk
+Thumbs.db
+desktop.ini
+node_modules/
+astro/node_modules/
+astro/.astro/
+.cursor/

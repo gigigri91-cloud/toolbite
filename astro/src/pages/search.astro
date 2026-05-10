@@ -1,0 +1,87 @@
+---
+import SearchEmptyState from "@/components/search/SearchEmptyState.astro";
+import SearchInput from "@/components/search/SearchInput.astro";
+import SearchOverlay from "@/components/search/SearchOverlay.astro";
+import SearchResultCard from "@/components/search/SearchResultCard.astro";
+import SearchResults from "@/components/search/SearchResults.astro";
+import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createMetadata } from "@/lib/seo";
+import { getPopularTools } from "@/lib/tools";
+
+const title = "Search tools | ToolBite";
+const description = "Instantly search ToolBite tools and guides with keyboard-first navigation, category filters, and fast client-side results.";
+const canonicalPath = "/search.html";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  robots: { index: false, follow: true },
+  keywords: ["tool search", "toolbite search", "find tools", "productivity"]
+});
+const quickPicks = getPopularTools(6);
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata}>
+  <section class="tb-card tb-card-panel tb-card-pad-lg search-shell">
+    <header class="mb-4">
+      <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-100">Find the right tool, instantly</h1>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Keyboard-first discovery for tools, guides, and workflows.</p>
+    </header>
+
+    <div class="search-toolbar">
+      <SearchInput />
+      <label for="search-category-filter" class="sr-only">Filter by category</label>
+      <select id="search-category-filter" class="tb-input">
+        <option value="all">All categories</option>
+        <option value="text-tools">Text tools</option>
+        <option value="developer-tools">Developer tools</option>
+        <option value="image-tools">Image tools</option>
+        <option value="seo-tools">SEO tools</option>
+        <option value="guides">Guides</option>
+      </select>
+    </div>
+
+    <SearchSuggestions />
+    <SearchResults />
+    <SearchEmptyState />
+    <SearchResultCard />
+  </section>
+
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-6">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Quick picks</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {quickPicks.map((tool) => (
+        <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-md">
+          <span class="mr-2">{tool.icon || "🧰"}</span>{tool.title}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <SearchOverlay>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Use <kbd>Ctrl/Cmd + K</kbd> to focus search, arrows to navigate, Enter to open result.</p>
+    <SearchSuggestions />
+  </SearchOverlay>
+
+  <Fragment slot="scripts">
+    <script defer src="/assets/js/search.js"></script>
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .search-shell {
+    background:
+      radial-gradient(90% 120% at 90% -20%, rgba(59, 130, 246, 0.2), transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+  }
+  html[data-theme="dark"] .search-shell {
+    background:
+      radial-gradient(90% 120% at 90% -20%, rgba(125, 211, 252, 0.2), transparent 60%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.98));
+  }
+  .search-toolbar { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  @media (min-width: 768px) {
+    .search-toolbar { grid-template-columns: minmax(0, 1fr) 220px; }
+  }
+</style>

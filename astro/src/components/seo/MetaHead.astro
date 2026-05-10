@@ -1,0 +1,29 @@
+---
+import CanonicalLink from "@/components/seo/CanonicalLink.astro";
+import OpenGraphTags from "@/components/seo/OpenGraphTags.astro";
+import TwitterTags from "@/components/seo/TwitterTags.astro";
+import { SITE_BRAND, toRobotsContent, type PageMetadata } from "@/lib/seo";
+
+export interface Props {
+  meta: PageMetadata;
+}
+
+const { meta } = Astro.props;
+---
+
+<title>{meta.title}</title>
+<meta name="description" content={meta.description} />
+<meta name="keywords" content={meta.keywords.join(", ")} />
+<meta name="author" content={SITE_BRAND} />
+<meta name="robots" content={toRobotsContent(meta.robots)} />
+<CanonicalLink href={meta.canonicalUrl} />
+<link rel="alternate" hreflang="x-default" href={meta.canonicalUrl} />
+<link rel="alternate" hreflang="en" href={meta.canonicalUrl} />
+<OpenGraphTags
+  title={meta.title}
+  description={meta.description}
+  url={meta.canonicalUrl}
+  image={meta.ogImage}
+  type={meta.type}
+/>
+<TwitterTags title={meta.title} description={meta.description} image={meta.ogImage} />

@@ -1,0 +1,62 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+}
+
+const { title, description, eyebrow } = Astro.props;
+---
+
+<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-hero">
+  {eyebrow && <p class="tb-tool-hero__eyebrow">{eyebrow}</p>}
+  <h1 class="tb-tool-hero__title">{title}</h1>
+  <p class="tb-tool-hero__desc">{description}</p>
+</section>
+
+<style>
+  .tb-tool-hero {
+    margin-bottom: 1.25rem;
+    background:
+      radial-gradient(circle at top right, rgba(37, 99, 235, 0.09), transparent 45%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(249, 250, 251, 0.9));
+    border: 1px solid rgba(59, 130, 246, 0.18);
+  }
+  .tb-tool-hero__eyebrow {
+    margin: 0 0 0.625rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgb(37 99 235);
+    font-weight: 700;
+  }
+  .tb-tool-hero__title {
+    margin: 0;
+    font-size: clamp(1.8rem, 2vw + 1.2rem, 2.7rem);
+    line-height: 1.1;
+    font-weight: 800;
+    color: rgb(17 24 39);
+  }
+  .tb-tool-hero__desc {
+    margin: 0.9rem 0 0;
+    max-width: 60ch;
+    color: rgb(75 85 99);
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+  html[data-theme="dark"] .tb-tool-hero {
+    background:
+      radial-gradient(circle at top right, rgba(96, 165, 250, 0.2), transparent 40%),
+      linear-gradient(180deg, rgba(15, 23, 42, 0.85), rgba(17, 24, 39, 0.86));
+    border-color: rgba(96, 165, 250, 0.28);
+  }
+  html[data-theme="dark"] .tb-tool-hero__eyebrow {
+    color: rgb(147 197 253);
+  }
+  html[data-theme="dark"] .tb-tool-hero__title {
+    color: rgb(243 244 246);
+  }
+  html[data-theme="dark"] .tb-tool-hero__desc {
+    color: rgb(209 213 219);
+  }
+</style>

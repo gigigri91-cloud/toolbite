@@ -1,0 +1,8 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import { getPopularTools } from "@/lib/tools";
+
+const tools = getPopularTools(4);
+---
+
+<DiscoverySection title="Popular workflows" subtitle="Most stable and frequently reused productivity tools." tools={tools} />

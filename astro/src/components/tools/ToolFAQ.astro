@@ -1,0 +1,51 @@
+---
+export interface Props {
+  items: Array<{ question: string; answer: string }>;
+}
+const { items } = Astro.props;
+---
+
+<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-section">
+  <h2 class="tb-tool-section__title">FAQ</h2>
+  <div class="tb-tool-faq-list">
+    {items.map((item) => (
+      <details class="tb-tool-faq-item">
+        <summary>{item.question}</summary>
+        <p>{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .tb-tool-faq-list {
+    display: grid;
+    gap: 0.625rem;
+  }
+  .tb-tool-faq-item {
+    border: 1px solid rgb(229 231 235);
+    border-radius: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    background: rgb(249 250 251);
+  }
+  .tb-tool-faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: rgb(17 24 39);
+  }
+  .tb-tool-faq-item p {
+    margin: 0.6rem 0 0;
+    color: rgb(75 85 99);
+    font-size: 0.9rem;
+  }
+  html[data-theme="dark"] .tb-tool-faq-item {
+    border-color: rgb(75 85 99);
+    background: rgb(31 41 55);
+  }
+  html[data-theme="dark"] .tb-tool-faq-item summary {
+    color: rgb(243 244 246);
+  }
+  html[data-theme="dark"] .tb-tool-faq-item p {
+    color: rgb(209 213 219);
+  }
+</style>

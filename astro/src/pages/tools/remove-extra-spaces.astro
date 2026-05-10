@@ -1,0 +1,24 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("remove-extra-spaces");
+---
+
+<ToolPageLayout
+  slug="remove-extra-spaces"
+  content={content}
+  toolScript="/assets/js/tools/remove-extra-spaces.js"
+>
+  <ToolInterfaceWrapper title="Clean whitespace" privacyNote="Whitespace cleanup runs in your browser.">
+    <textarea id="text-in" class="tb-textarea w-full h-64 mb-4" placeholder="Paste text with extra spaces"></textarea>
+    <div class="flex flex-wrap gap-2">
+      <button id="btn-collapse" class="tb-btn tb-btn-primary">Collapse spaces</button>
+      <button id="btn-lines" class="tb-btn tb-btn-primary">Trim each line</button>
+      <button id="btn-noblanks" class="tb-btn tb-btn-primary">Remove blank lines</button>
+      <button id="copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+      <button id="clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

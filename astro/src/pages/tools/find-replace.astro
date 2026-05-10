@@ -1,0 +1,32 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("find-replace");
+---
+
+<ToolPageLayout slug="find-replace" content={content} toolScript="/assets/js/tools/find-replace.js">
+  <ToolInterfaceWrapper title="Find and replace text" privacyNote="Processing stays in your browser.">
+    <textarea id="main-input" class="tb-textarea w-full h-64 mb-4" placeholder="Paste your text here"></textarea>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label for="find-query" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Find what</label>
+        <input id="find-query" type="text" class="tb-input" />
+      </div>
+      <div>
+        <label for="replace-query" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Replace with</label>
+        <input id="replace-query" type="text" class="tb-input" />
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-2 items-center">
+      <button id="replace-btn" class="tb-btn tb-btn-primary">Replace All</button>
+      <label class="text-sm text-gray-700 dark:text-gray-300">
+        <input id="case-sensitive" type="checkbox" class="mr-1" />
+        Case Sensitive
+      </label>
+      <button id="copy-btn" class="tb-btn tb-btn-neutral">Copy Result</button>
+      <button id="clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

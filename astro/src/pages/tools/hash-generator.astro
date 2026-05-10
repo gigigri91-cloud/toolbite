@@ -1,0 +1,26 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("hash-generator");
+---
+
+<ToolPageLayout slug="hash-generator" content={content} toolScript="/assets/js/tools/hash-generator.js">
+  <ToolInterfaceWrapper title="Compute SHA hashes" privacyNote="Hashing is done locally with Web Crypto when available.">
+    <label for="hash-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Input text</label>
+    <textarea id="hash-input" class="tb-textarea tb-textarea-mono w-full h-36 mb-4"></textarea>
+    <label for="hash-algo" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Algorithm</label>
+    <select id="hash-algo" class="tb-select mb-4">
+      <option value="SHA-256">SHA-256</option>
+      <option value="SHA-1">SHA-1</option>
+    </select>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button id="hash-compute-btn" class="tb-btn tb-btn-primary">Compute hash</button>
+      <button id="hash-copy-btn" class="tb-btn tb-btn-neutral" disabled>Copy hash</button>
+      <button id="hash-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+    <p id="hash-error" class="hidden text-sm text-red-600 dark:text-red-400 mb-2"></p>
+    <textarea id="hash-output" readonly class="tb-textarea tb-textarea-mono w-full h-32"></textarea>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

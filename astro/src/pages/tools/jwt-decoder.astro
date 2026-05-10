@@ -1,0 +1,33 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("jwt-decoder");
+---
+
+<ToolPageLayout slug="jwt-decoder" content={content} toolScript="/assets/js/tools/jwt-decoder.js">
+  <ToolInterfaceWrapper
+    title="Decode JWT segments"
+    privacyNote="Decode-only helper. Signature verification should stay server-side."
+  >
+    <label for="jwt-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">JWT token</label>
+    <textarea id="jwt-input" class="tb-textarea tb-textarea-mono w-full h-36 mb-3" placeholder="Paste your JWT here"></textarea>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button id="jwt-decode-btn" class="tb-btn tb-btn-primary">Decode</button>
+      <button id="jwt-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+    <p id="jwt-error" class="hidden text-red-600 dark:text-red-400 text-sm mb-4"></p>
+    <div class="grid md:grid-cols-2 gap-3">
+      <section class="tb-card tb-card-pad-md">
+        <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100 mb-2">Header</h3>
+        <pre id="jwt-header-out" class="text-xs overflow-auto whitespace-pre-wrap text-gray-700 dark:text-gray-300"></pre>
+      </section>
+      <section class="tb-card tb-card-pad-md">
+        <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100 mb-2">Payload</h3>
+        <pre id="jwt-payload-out" class="text-xs overflow-auto whitespace-pre-wrap text-gray-700 dark:text-gray-300"></pre>
+      </section>
+    </div>
+    <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Signature: <span id="jwt-sig-info">—</span></p>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

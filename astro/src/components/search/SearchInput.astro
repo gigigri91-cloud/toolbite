@@ -1,0 +1,50 @@
+---
+export interface Props {
+  id?: string;
+  placeholder?: string;
+  hotkeyLabel?: string;
+}
+
+const { id = "search-input", placeholder = "Search tools, guides, or keywords...", hotkeyLabel = "/" } = Astro.props;
+---
+
+<div class="search-input-wrap">
+  <label for={id} class="sr-only">Search tools</label>
+  <input id={id} type="search" placeholder={placeholder} autocomplete="off" />
+  <kbd aria-hidden="true">{hotkeyLabel}</kbd>
+</div>
+
+<style>
+  .search-input-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-radius: 0.75rem;
+    background: #ffffff;
+    padding: 0.5rem 0.75rem;
+  }
+  html[data-theme="dark"] .search-input-wrap {
+    background: #0f172a;
+    border-color: rgba(96, 165, 250, 0.35);
+  }
+  #search-input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #111827;
+    font-size: 1rem;
+    width: 100%;
+  }
+  html[data-theme="dark"] #search-input { color: #f8fafc; }
+  kbd {
+    border: 1px solid #cbd5e1;
+    border-radius: 0.4rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.75rem;
+    color: #64748b;
+    background: #f8fafc;
+  }
+  html[data-theme="dark"] kbd { border-color: #334155; background: #1e293b; color: #94a3b8; }
+</style>

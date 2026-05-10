@@ -1,0 +1,230 @@
+---
+// Emulates the legacy cookie banner / preferences modal contract used by
+// `assets/js/cookies.js`. Required IDs and class-based hidden state must
+// match the legacy script exactly so the script does not early-return.
+---
+
+<div
+  id="cookie-consent-banner"
+  class="tb-card tb-cookie-banner hidden"
+  role="region"
+  aria-label="Cookie consent banner"
+>
+  <p class="tb-cookie-banner__copy">
+    ToolBite uses necessary cookies and, with your choice, advertising and analytics
+    cookies. Read our <a href="/cookie-policy.html">Cookie Policy</a>.
+  </p>
+  <div class="tb-cookie-banner__actions">
+    <button type="button" id="cookie-manage-btn" class="tb-btn tb-btn-outline tb-btn-sm">
+      Manage Preferences
+    </button>
+    <button type="button" id="cookie-accept-btn" class="tb-btn tb-btn-primary tb-btn-sm">
+      Accept All
+    </button>
+  </div>
+</div>
+
+<div
+  id="cookie-preferences-modal"
+  class="tb-cookie-modal-scrim hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-modal-title"
+>
+  <div class="tb-cookie-modal-panel tb-card">
+    <div class="tb-cookie-modal-head">
+      <h2 id="cookie-modal-title">Cookie Preferences</h2>
+      <button
+        type="button"
+        id="cookie-modal-close"
+        class="tb-btn tb-btn-icon"
+        aria-label="Close preferences"
+      >&#10005;</button>
+    </div>
+    <p class="tb-cookie-modal-copy">
+      Necessary cookies are always on so the site works. You can choose whether to allow
+      analytics and advertising cookies.
+    </p>
+    <ul class="tb-cookie-options">
+      <li>
+        <div>
+          <p class="tb-cookie-option-title">Necessary</p>
+          <p class="tb-cookie-option-copy">Required for security, language, and theme.</p>
+        </div>
+        <span class="tb-cookie-option-pill">Always on</span>
+      </li>
+      <li>
+        <div>
+          <p class="tb-cookie-option-title">Analytics</p>
+          <p class="tb-cookie-option-copy">Anonymous usage to improve the experience.</p>
+        </div>
+        <label class="tb-cookie-option-toggle">
+          <input
+            type="checkbox"
+            id="cookie-analytics-toggle"
+            class="tb-input"
+            aria-label="Allow analytics cookies"
+          />
+          <span>Allow</span>
+        </label>
+      </li>
+      <li>
+        <div>
+          <p class="tb-cookie-option-title">Advertising</p>
+          <p class="tb-cookie-option-copy">Used by partners for relevant ads.</p>
+        </div>
+        <label class="tb-cookie-option-toggle">
+          <input
+            type="checkbox"
+            id="cookie-advertising-toggle"
+            class="tb-input"
+            aria-label="Allow advertising cookies"
+          />
+          <span>Allow</span>
+        </label>
+      </li>
+    </ul>
+    <div class="tb-cookie-modal-actions">
+      <button
+        type="button"
+        id="cookie-save-preferences"
+        class="tb-btn tb-btn-primary tb-btn-sm"
+      >Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tb-cookie-banner.hidden,
+  .tb-cookie-modal-scrim.hidden {
+    display: none !important;
+  }
+
+  .tb-cookie-banner {
+    position: fixed;
+    inset-inline: 1rem;
+    bottom: 1rem;
+    z-index: 120;
+    padding: 1rem 1.1rem;
+    display: grid;
+    gap: 0.75rem;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text-primary);
+  }
+  @media (min-width: 768px) {
+    .tb-cookie-banner {
+      inset-inline: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(56rem, calc(100% - 2rem));
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 1rem 1.25rem;
+    }
+  }
+  .tb-cookie-banner__copy {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+  .tb-cookie-banner__copy a {
+    color: var(--color-brand-primary);
+  }
+  .tb-cookie-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .tb-cookie-modal-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 130;
+    background: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .tb-cookie-modal-panel {
+    width: min(36rem, 100%);
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
+    padding: 1.5rem;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+  }
+  .tb-cookie-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .tb-cookie-modal-head h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--color-text-primary);
+  }
+  .tb-cookie-modal-copy {
+    margin: 0 0 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.92rem;
+  }
+  .tb-cookie-options {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .tb-cookie-options li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+  }
+  .tb-cookie-option-title {
+    margin: 0 0 0.15rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+  }
+  .tb-cookie-option-copy {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+  .tb-cookie-option-pill {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-subtle);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-full);
+  }
+  .tb-cookie-option-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+  }
+  .tb-cookie-option-toggle input {
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--color-brand-primary);
+  }
+  .tb-cookie-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+</style>

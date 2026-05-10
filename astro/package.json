@@ -1,0 +1,39 @@
+{
+  "name": "toolbite-astro",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "assets:sync": "node scripts/sync-runtime-assets.mjs",
+    "snapshot:build": "node scripts/generate-snapshots.mjs --stage=post-build --target=dist",
+    "snapshot:deploy": "node scripts/generate-snapshots.mjs --stage=post-compose --target=_site",
+    "evidence:runtime": "node scripts/capture-runtime-evidence.mjs",
+    "release:bundle": "node scripts/generate-release-bundle.mjs",
+    "report:hygiene": "node scripts/report-artifact-hygiene.mjs",
+    "report:legacy": "node scripts/generate-legacy-decomposition.mjs",
+    "report:production": "node scripts/generate-production-status.mjs",
+    "validate:governance": "node scripts/validate-governance-registry.mjs",
+    "validate:assets:source": "node scripts/validate-assets-source.mjs",
+    "validate:assets:dist": "node scripts/validate-assets-dist.mjs",
+    "compose:deploy-artifact": "node scripts/compose-deploy-artifact.mjs && npm run snapshot:deploy && npm run report:production",
+    "validate:assets:deploy": "node scripts/validate-assets-deploy.mjs",
+    "dev": "npm run assets:sync && astro dev",
+    "build": "npm run assets:sync && npm run validate:assets:source && astro build && npm run validate:assets:dist && npm run snapshot:build && npm run report:production",
+    "preview": "npm run assets:sync && astro preview",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "validate:seo": "node scripts/validate-seo.mjs",
+    "validate:discovery": "node scripts/validate-discovery.mjs",
+    "validate:dom": "node scripts/validate-dom-contracts.mjs",
+    "validate:rendered": "node scripts/validate-rendered-output.mjs",
+    "validate:runtime": "node scripts/validate-runtime-dependencies.mjs",
+    "validate:ads": "node scripts/validate-ads.mjs",
+    "validate:release": "node scripts/validate-release.mjs",
+    "validate:all": "npm run validate:governance && npm run generate:sitemap && npm run validate:seo && npm run validate:discovery && npm run build && npm run validate:dom && npm run validate:rendered && npm run validate:runtime && npm run validate:ads && npm run compose:deploy-artifact && npm run validate:assets:deploy && npm run report:production && npm run report:legacy"
+  },
+  "dependencies": {
+    "astro": "^5.8.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}

@@ -1,0 +1,35 @@
+---
+import CategoryPage from "@/components/discovery/CategoryPage.astro";
+import CategoryLayout from "@/layouts/CategoryLayout.astro";
+import { createCategoryMetadata } from "@/lib/seo";
+
+const title = "SEO Tools | ToolBite";
+const description = "SEO slug generator, read time calculator, meta tools — lightweight browser-based utilities for faster publishing workflows.";
+const canonicalPath = "/categories/seo-tools.html";
+
+const metadata = createCategoryMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["seo tools", "slug generator", "read time", "publishing tools"]
+});
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "SEO tools — slugs, read time & publishing helpers | ToolBite",
+    url: "https://toolbite.org/categories/seo-tools.html",
+    description: "Slug builders, read-time estimates, and small utilities that support SEO and publishing workflows without sending your copy to our servers.",
+    dateModified: "2026-05-08"
+  }
+];
+---
+
+<CategoryLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata} schemas={schemas}>
+  <CategoryPage
+    slug="seo-tools"
+    title="SEO & content tools"
+    heroDescription="Prepare content for publication with precision, from slug hygiene and metadata readiness to readability and structure checks."
+  />
+</CategoryLayout>

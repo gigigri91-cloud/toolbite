@@ -1,0 +1,23 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("sort-text-lines");
+---
+
+<ToolPageLayout slug="sort-text-lines" content={content} toolScript="/assets/js/tools/sort-text-lines.js">
+  <ToolInterfaceWrapper title="Sort text lines" privacyNote="Sorting is done locally in your browser tab.">
+    <textarea id="sort-input" class="tb-textarea w-full h-64 mb-4" placeholder="One line per item"></textarea>
+    <label class="text-sm text-gray-700 dark:text-gray-300 mb-4 block">
+      <input id="sort-ignore-case" type="checkbox" class="mr-1" />
+      Ignore case when sorting
+    </label>
+    <div class="flex flex-wrap gap-2">
+      <button id="sort-asc-btn" class="tb-btn tb-btn-primary">Sort A to Z</button>
+      <button id="sort-desc-btn" class="tb-btn tb-btn-primary">Sort Z to A</button>
+      <button id="sort-copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+      <button id="sort-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

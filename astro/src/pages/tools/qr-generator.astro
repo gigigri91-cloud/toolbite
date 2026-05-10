@@ -1,0 +1,40 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("qr-generator");
+---
+
+<ToolPageLayout slug="qr-generator" content={content} toolScript="/assets/js/tools/qr-generator.js">
+  <ToolInterfaceWrapper title="Generate QR codes" privacyNote="QR generation runs locally in your browser.">
+    <label for="qr-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Text or URL</label>
+    <textarea id="qr-input" class="tb-textarea w-full h-28 mb-4" placeholder="https://example.com"></textarea>
+    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+      <div>
+        <label for="qr-size" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">
+          Size: <span id="qr-size-label">300</span>px
+        </label>
+        <input id="qr-size" type="range" min="128" max="1024" value="300" class="w-full" />
+      </div>
+      <div>
+        <label for="qr-error" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Error correction</label>
+        <select id="qr-error" class="tb-select">
+          <option value="L">Low</option>
+          <option value="M" selected>Medium</option>
+          <option value="Q">Quartile</option>
+          <option value="H">High</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button id="qr-generate-btn" class="tb-btn tb-btn-primary">Generate QR</button>
+      <button id="qr-download-btn" class="tb-btn tb-btn-neutral">Download PNG</button>
+      <button id="copy-link-btn" class="tb-btn tb-btn-outline">Copy PNG data URL</button>
+    </div>
+    <div id="qr-result" class="hidden flex-col items-center gap-2">
+      <canvas id="qr-canvas" class="border border-gray-200 dark:border-gray-600 rounded-xl"></canvas>
+      <p id="qr-encoded-text" class="text-sm text-gray-600 dark:text-gray-400"></p>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

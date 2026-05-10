@@ -1,0 +1,101 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Cookie Policy | ToolBite";
+const description = "Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.";
+const canonicalPath = "/cookie-policy.html";
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
+        <li>›</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">Cookie Policy</li>
+      </ol>
+    </nav>
+    <div class="text-center mb-8">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">ToolBite <span class="text-blue-600 dark:text-blue-400">Cookie Policy</span></h1>
+      <p class="text-lg text-gray-500">Last updated: May 5, 2026</p>
+    </div>
+
+    <div class="tb-card tb-card-tool md:p-12 leading-relaxed dark:text-gray-100">
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">1. What Are Cookies</h2>
+      <p class="mb-8">Cookies are small text files stored on your browser or device when you visit a website. They help websites remember settings, measure usage, and support features such as security and advertising. ToolBite uses cookies and similar storage technologies (such as local storage) to operate core features and, where enabled, improve analytics and ad relevance.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">2. Types of Cookies We Use</h2>
+      <p class="mb-3"><strong>Necessary cookies</strong> are required for core functionality and security. These include core preference storage and site operation helpers that keep essential functions available.</p>
+      <p class="mb-3"><strong>Optional cookies</strong> help us understand traffic and usage patterns so we can improve tool quality, content clarity, and performance. On ToolBite, analytics technology may include Google Optional.</p>
+      <p class="mb-8"><strong>Advertising cookies</strong> are used by ad partners such as Google AdSense to deliver ads, reduce repeated ads, and measure campaign effectiveness. These cookies may support ad personalization depending on provider settings and user controls.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">3. Third-Party Cookies</h2>
+      <p class="mb-3">ToolBite may load third-party services that set cookies under their own policies. Key examples include:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-8">
+        <li><strong>Google AdSense</strong> for ad delivery and reporting. Learn more at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Google Ads Policy</a>.</li>
+        <li><strong>Google Optional</strong> for aggregated traffic insights and site improvement. Learn more at <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener" class="text-blue-600 dark:text-blue-400 hover:underline">Google Privacy Policy</a>.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">4. How to Control Cookies</h2>
+      <p class="mb-3">You can control cookies in several ways:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-3">
+        <li>Use the ToolBite consent banner and Manage Preferences modal to choose analytics and advertising categories.</li>
+        <li>Adjust browser settings to block or delete cookies in Chrome, Safari, Firefox, or Edge.</li>
+        <li>Use Google account ad settings to manage personalized ad preferences.</li>
+      </ul>
+      <p class="mb-8">Blocking optional categories may reduce analytics visibility or ad relevance. Necessary functionality remains enabled for core site operation.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">5. Cookie Retention Periods</h2>
+      <p class="mb-8">Retention periods depend on cookie type and provider. Session cookies expire when your browser closes. Persistent cookies may remain for days or months unless you delete them sooner. Third-party providers such as Google define their own retention periods according to their policies.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">6. Updates to This Policy</h2>
+      <p class="mb-8">We may update this Cookie Policy to reflect legal, technical, or operational changes. We will update the "Last updated" date whenever changes are published.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">7. Contact</h2>
+      <p>If you have questions about this Cookie Policy or your cookie preferences, email <a href="mailto:contact@toolbite.org" class="text-blue-600 dark:text-blue-400 hover:underline">contact@toolbite.org</a> or use our <a href="contact.html" class="text-blue-600 dark:text-blue-400 hover:underline">contact page</a>.</p>
+    </div>
+
+    <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Related policy pages</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="privacy.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Privacy Policy</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Read how ToolBite handles local processing, logs, and third-party services.</p>
+        </a>
+        <a href="terms.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Terms of Service</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Understand the usage terms and service limitations for ToolBite.</p>
+        </a>
+        <a href="contact.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Contact</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Reach out if you need help with cookies or privacy preferences.</p>
+        </a>
+      </div>
+    </section>
+
+  <Fragment slot="head">
+<title>Cookie Policy | ToolBite</title>
+  <meta name="description" content="Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
+  <link rel="canonical" href="https://toolbite.org/cookie-policy.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/cookie-policy.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/cookie-policy.html">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/cookie-policy.html">
+  <meta property="og:title" content="Cookie Policy | ToolBite">
+  <meta property="og:description" content="Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="Cookie Policy | ToolBite">
+  <meta name="twitter:description" content="Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  </Fragment>
+</BaseLayout>

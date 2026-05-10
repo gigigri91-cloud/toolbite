@@ -1,0 +1,180 @@
+---
+import ToolAdContainer from "@/components/tools/ToolAdContainer.astro";
+import ToolBenefits from "@/components/tools/ToolBenefits.astro";
+import ToolBreadcrumbs from "@/components/tools/ToolBreadcrumbs.astro";
+import ToolExamples from "@/components/tools/ToolExamples.astro";
+import ToolFAQ from "@/components/tools/ToolFAQ.astro";
+import ToolHero from "@/components/tools/ToolHero.astro";
+import ToolRecommendations from "@/components/tools/ToolRecommendations.astro";
+import ToolRelatedTools from "@/components/tools/ToolRelatedTools.astro";
+import ToolShell from "@/components/tools/ToolShell.astro";
+import ToolUseCases from "@/components/tools/ToolUseCases.astro";
+import ToolWorkflowSuggestions from "@/components/tools/ToolWorkflowSuggestions.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getToolRecordBySlug, type ToolPageContent } from "@/data/tool-pages";
+import { createMetadataFromToolRecord } from "@/lib/seo";
+import { getContextualRecommendations } from "@/lib/linking";
+import { buildBreadcrumbSchema, buildFaqSchema, buildWebApplicationSchema } from "@/lib/schema";
+import { getRelatedTools } from "@/lib/tools";
+
+export interface Props {
+  slug: string;
+  content: ToolPageContent;
+  toolScript: string;
+}
+
+const { slug, content, toolScript } = Astro.props;
+const tool = getToolRecordBySlug(slug);
+
+if (!tool) {
+  throw new Error(`Tool metadata not found for ${slug}`);
+}
+
+const metadata = createMetadataFromToolRecord({
+  name: tool.name,
+  title: tool.title,
+  desc: tool.desc,
+  description: tool.description,
+  url: tool.url,
+  canonical: tool.canonical || `https://toolbite.org/${tool.url}`,
+  keywords: tool.keywords,
+  category: tool.category,
+  schemaType: "WebApplication",
+  relatedTools: tool.relatedTools || [],
+  ogImage: tool.ogImage || "/assets/images/social-preview.jpg",
+  robots: tool.robots || "index,follow",
+  adMode: tool.adMode || "auto"
+});
+
+const relatedTools = getRelatedTools(tool, 4);
+const recommendations = getContextualRecommendations(tool.url, 4);
+const breadcrumbItems = [
+  { name: "Home", href: "/" },
+  { name: content.categoryName, href: content.categoryHref },
+  { name: content.heroTitle }
+];
+
+const breadcrumbSchemaItems = [
+  { name: "Home", url: "https://toolbite.org/" },
+  { name: content.categoryName, url: `https://toolbite.org${content.categoryHref}` },
+  { name: content.heroTitle, url: metadata.canonicalUrl }
+];
+
+const schemas = [
+  buildWebApplicationSchema({
+    name: content.heroTitle,
+    url: metadata.canonicalUrl,
+    description: metadata.description,
+    category: "UtilityApplication"
+  }),
+  buildFaqSchema(content.faq, metadata.canonicalUrl),
+  buildBreadcrumbSchema(breadcrumbSchemaItems)
+];
+---
+
+<BaseLayout
+  title={metadata.title}
+  description={metadata.description}
+  canonicalPath={`/${tool.url}`}
+  metadata={metadata}
+  schemas={schemas}
+  rootPath="/"
+>
+  <div class="tb-tool-page">
+    <ToolBreadcrumbs items={breadcrumbItems} />
+    <ToolHero title={content.heroTitle} description={content.heroDescription} eyebrow={content.heroEyebrow} />
+
+    <ToolShell>
+      <slot />
+      <ToolBenefits items={content.benefits} />
+      <ToolUseCases items={content.useCases} />
+      <ToolExamples examples={content.examples} />
+      <ToolWorkflowSuggestions items={content.workflow} />
+      <ToolFAQ items={content.faq} />
+      <ToolRelatedTools tools={relatedTools} />
+      <ToolRecommendations tools={recommendations} />
+
+      <div slot="aside">
+        <ToolAdContainer label="Sponsored" />
+        <ToolWorkflowSuggestions title="Fast workflow path" items={content.workflow} />
+        <ToolAdContainer label="More tools" />
+      </div>
+    </ToolShell>
+  </div>
+
+  <Fragment slot="scripts">
+    <script defer src={toolScript}></script>
+    <script is:inline>
+      (() => {
+        const root = document.querySelector(".tb-tool-page");
+        if (!root) return;
+
+        root.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof Element)) return;
+          const link = target.closest("a");
+          if (!link) return;
+          const inGroup = link.closest("[data-tool-interaction-group]");
+          if (!inGroup) return;
+          const group = inGroup.getAttribute("data-tool-interaction-group") || "unknown";
+          document.dispatchEvent(
+            new CustomEvent("tb:tool-interaction", {
+              detail: {
+                group,
+                href: link.getAttribute("href") || "",
+                source: window.location.pathname
+              }
+            })
+          );
+        });
+      })();
+    </script>
+    <script is:inline>
+      if (window.adsbygoogle) {
+        const slots = document.querySelectorAll("ins.adsbygoogle");
+        slots.forEach((slot) => {
+          if (slot.getAttribute("data-adsbygoogle-status")) return;
+          try {
+            window.adsbygoogle.push({});
+          } catch (_) {
+            // Ignore duplicate push errors from ad runtime.
+          }
+        });
+      }
+    </script>
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .tb-tool-page {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2.25rem;
+  }
+  :global(.tb-tool-section__title) {
+    margin: 0 0 0.85rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgb(17 24 39);
+  }
+  :global(.tb-tool-list) {
+    margin: 0;
+    padding-left: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    color: rgb(75 85 99);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  html[data-theme="dark"] :global(.tb-tool-section__title) {
+    color: rgb(243 244 246);
+  }
+  html[data-theme="dark"] :global(.tb-tool-list) {
+    color: rgb(209 213 219);
+  }
+  @media (max-width: 767px) {
+    .tb-tool-page {
+      padding-top: 1rem;
+    }
+  }
+</style>

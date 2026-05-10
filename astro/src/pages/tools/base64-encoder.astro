@@ -1,0 +1,27 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("base64-encoder");
+---
+
+<ToolPageLayout slug="base64-encoder" content={content} toolScript="/assets/js/tools/base64-encoder.js">
+  <ToolInterfaceWrapper title="Encode and decode Base64" privacyNote="Base64 processing runs locally in your browser tab.">
+    <div class="flex gap-2 mb-4" role="tablist">
+      <button type="button" id="b64-tab-encode" class="tb-btn tb-btn-primary">Encode</button>
+      <button type="button" id="b64-tab-decode" class="tb-btn tb-btn-neutral">Decode</button>
+    </div>
+    <p id="b64-mode-hint" class="text-sm text-gray-500 dark:text-gray-400 mb-4">Plain text to Base64</p>
+    <label for="b64-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Input</label>
+    <textarea id="b64-input" class="tb-textarea tb-textarea-mono w-full h-36 mb-4" placeholder="Type or paste content"></textarea>
+    <label for="b64-output" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Output</label>
+    <textarea id="b64-output" readonly class="tb-textarea tb-textarea-mono w-full h-36 mb-4" placeholder="Result appears here"></textarea>
+    <p id="b64-error" class="hidden text-sm text-red-600 dark:text-red-400 mb-4"></p>
+    <div class="flex flex-wrap gap-2">
+      <button type="button" id="b64-run-btn" class="tb-btn tb-btn-primary">Encode to Base64</button>
+      <button type="button" id="b64-copy-btn" class="tb-btn tb-btn-neutral">Copy result</button>
+      <button type="button" id="b64-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

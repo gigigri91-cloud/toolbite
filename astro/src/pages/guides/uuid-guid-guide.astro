@@ -1,0 +1,152 @@
+---
+import GuideLayout from "@/layouts/GuideLayout.astro";
+
+const title = "UUID GUID Guide – Guide | ToolBite";
+const description = "Use UUID GUID Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for every";
+const canonicalPath = "/guides/uuid-guid-guide.html";
+const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
+        <li><a href="index.html" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">UUID and GUID explained</li>
+      </ol>
+    </nav>
+
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white" data-pseo-target="h1">UUID and GUID explained — what they are and when to generate one</h1>
+            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
+          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="../authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+        </div>
+        <p>Published: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">2026-04-22</time> • Last reviewed: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">April 22, 2026</time></p>
+      </div>
+      <p class="text-gray-900 dark:text-gray-100">If you've ever worked with a database or REST API, you've seen UUIDs: strings like <code>550e8400-e29b-41d4-a716-446655440000</code>. This guide explains what they are, why they exist, and when to use them.</p>
+
+      <div class="tb-card tb-card-accent not-prose mt-6 mb-8">
+        <strong>Best for:</strong> backend developers, database engineers, and anyone designing APIs or distributed systems that need unique identifiers.
+      </div>
+
+      <h2>What is a UUID?</h2>
+      <p>A <strong>UUID</strong> (Universally Unique Identifier) is a 128-bit number used to identify information in computer systems. It is standardised in RFC 4122 and formatted as 32 hexadecimal characters grouped by hyphens: <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</p>
+      <p>The goal of a UUID is to generate an identifier that is unique across all space and time — without requiring a central authority to coordinate ID assignment. Two different computers can generate UUIDs at the same millisecond and the chance of collision is astronomically small.</p>
+
+      <h2>UUID vs GUID — are they the same?</h2>
+      <p>Yes, essentially. <strong>GUID</strong> (Globally Unique Identifier) is Microsoft's name for the same concept. GUIDs and UUIDs follow the same RFC 4122 standard and are formatted identically. The terms are interchangeable in practice — Microsoft's .NET and SQL Server use "GUID", while Linux, PostgreSQL, and most open-source tooling use "UUID".</p>
+
+      <h2>UUID versions — which one to use?</h2>
+      <ul>
+        <li><strong>v1</strong> — Based on timestamp and MAC address. Sequential, but leaks your machine's network address. Avoid for security-sensitive IDs.</li>
+        <li><strong>v4</strong> — Randomly generated. The most widely used version. 122 bits of randomness means collisions are practically impossible. Use this for most purposes.</li>
+        <li><strong>v5</strong> — Deterministic: generated from a namespace and a name using SHA-1. Same inputs always produce the same UUID. Useful for content-addressable IDs.</li>
+        <li><strong>v7</strong> — New standard (2023). Timestamp-ordered random UUID. Sorts lexicographically by creation time — ideal for database primary keys where index performance matters.</li>
+      </ul>
+      <p><strong>For most use cases</strong>, use v4 (random). For database primary keys where you care about insert performance, consider v7.</p>
+
+      <h2>When to use UUIDs</h2>
+      <ul>
+        <li><strong>Database primary keys</strong> — UUIDs let you generate IDs on the client before inserting to the database, removing round-trips. No risk of sequential ID enumeration by users.</li>
+        <li><strong>API resource identifiers</strong> — <code>/users/550e8400-e29b-41d4-a716-446655440000</code> is safer than <code>/users/42</code> (no guessing other users' IDs).</li>
+        <li><strong>Distributed systems</strong> — Multiple services or nodes can generate IDs independently with no coordination and no conflicts.</li>
+        <li><strong>Test fixtures</strong> — Hard-coded UUIDs in test data are stable, readable, and won't collide with real data.</li>
+        <li><strong>File names</strong> — Rename uploaded files to UUIDs to prevent path traversal and naming conflicts.</li>
+      </ul>
+
+      <h2>UUID trade-offs</h2>
+      <p>UUIDs are not free:</p>
+      <ul>
+        <li>They are 36 characters vs a simple integer — larger storage and index size in databases.</li>
+        <li>Random v4 UUIDs cause index fragmentation in B-tree indexes because inserts land at random positions. Use v7 or ULID if this matters.</li>
+        <li>They are harder to type and remember than short IDs — don't use them in user-facing URLs if brevity matters.</li>
+      </ul>
+
+      <h2>How to generate UUIDs in your browser</h2>
+      <ol>
+        <li>Open <a href="../tools/uuid-generator.html">ToolBite's UUID generator</a>.</li>
+        <li>Click Generate to create a new random v4 UUID.</li>
+        <li>Click Copy to copy it to your clipboard instantly.</li>
+        <li>Generate as many as you need — each one is unique and created locally in your browser.</li>
+      </ol>
+
+      <div class="not-prose mt-8 flex flex-wrap gap-3">
+        <a href="../tools/uuid-generator.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline px-5 py-3 rounded-xl">Generate a UUID now</a>
+        <a href="../tools/hash-generator.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline px-5 py-3 rounded-xl">Hash Generator</a>
+      </div>
+    </article>
+
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 md:p-8">
+      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Continue with related resources</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="../tools/uuid-generator.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">UUID Generator</p>
+          <p class="text-xs text-gray-500 mt-1">Generate random v4 UUIDs instantly in your browser.</p>
+        </a>
+        <a href="../tools/hash-generator.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Hash Generator</p>
+          <p class="text-xs text-gray-500 mt-1">SHA-256 and SHA-1 hashes for data verification.</p>
+        </a>
+        <a href="../categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Developer Tools</p>
+          <p class="text-xs text-gray-500 mt-1">All developer utilities on ToolBite.</p>
+        </a>
+      </div>
+    </section>
+  </main>`;
+const headHtml = String.raw`<title>UUID GUID Guide – Guide | ToolBite</title>
+  <meta name="description" content="Use UUID GUID Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for every">
+  <link rel="canonical" href="https://toolbite.org/guides/uuid-guid-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/uuid-guid-guide.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/uuid-guid-guide.html">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="../assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/guides/uuid-guid-guide.html">
+  <meta property="og:title" content="UUID GUID Guide – Guide | ToolBite">
+  <meta property="og:description" content="Use UUID GUID Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for every">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="UUID GUID Guide – Guide | ToolBite">
+  <meta name="twitter:description" content="Use UUID GUID Guide – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for every">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://toolbite.org"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://toolbite.org/guides/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "UUID GUID Guide – Guide | ToolBite",
+        "item": "https://toolbite.org/guides/uuid-guid-guide.html"
+      }
+    ]
+  }
+  </script>`;
+---
+
+<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <Fragment set:html={mainHtml} />
+  <Fragment slot="head" set:html={headHtml} />
+</GuideLayout>

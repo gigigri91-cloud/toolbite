@@ -1,0 +1,80 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Authors | ToolBite";
+const description = "Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.";
+const canonicalPath = "/authors/index.html";
+const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Authors</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <a href="../gabriel-c.html" class="tb-card tb-card-interactive transition block">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-700 font-bold text-xl flex items-center justify-center">GC</div>
+          <div>
+            <h2 class="text-xl font-bold text-gray-900">Gabriel C.</h2>
+            <p class="text-sm text-blue-700 font-semibold">Developer &amp; Technical Writer</p>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm">Indie developer in Bucharest, Romania. Builds ToolBite as a free, practical resource for developers and content creators.</p>
+      </a>
+    </div>
+  </main>`;
+const headHtml = String.raw`<title>Authors | ToolBite</title>
+  <meta name="description" content="Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
+  <link rel="canonical" href="https://toolbite.org/authors/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/authors/index.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/authors/index.html">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/authors/index.html">
+  <meta property="og:title" content="Authors | ToolBite">
+  <meta property="og:description" content="Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="Authors | ToolBite">
+  <meta name="twitter:description" content="Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Authors — ToolBite",
+      "url": "https://toolbite.org/authors/index.html",
+      "description": "Meet the authors behind ToolBite guides and tools."
+    }
+    </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://toolbite.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Authors",
+          "item": "https://toolbite.org/authors/index.html"
+        }
+      ]
+    }
+    </script>`;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+  <Fragment set:html={mainHtml} />
+  <Fragment slot="head" set:html={headHtml} />
+</BaseLayout>

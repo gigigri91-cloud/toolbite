@@ -1,0 +1,14 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import { getAllTools, getRelatedTools } from "@/lib/tools";
+
+export interface Props {
+  currentUrl: string;
+}
+
+const { currentUrl } = Astro.props;
+const current = getAllTools().find((tool) => tool.url === currentUrl);
+const tools = current ? getRelatedTools(current, 4) : [];
+---
+
+{tools.length > 0 && <DiscoverySection title="Related tools" subtitle="Contextual suggestions based on tags, keywords, and category affinity." tools={tools} />}

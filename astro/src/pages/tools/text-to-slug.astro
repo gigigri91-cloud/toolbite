@@ -1,0 +1,25 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("text-to-slug");
+---
+
+<ToolPageLayout slug="text-to-slug" content={content} toolScript="/assets/js/tools/text-to-slug.js">
+  <ToolInterfaceWrapper
+    title="Generate clean slugs"
+    privacyNote="Input stays on your device and updates in real time."
+  >
+    <label for="slug-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Source text</label>
+    <textarea id="slug-input" class="tb-textarea w-full h-36 mb-4" placeholder="Paste title or phrase"></textarea>
+    <div class="tb-card tb-card-pad-md mb-4">
+      <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Slug output</p>
+      <code id="slug-output" class="text-base text-gray-900 dark:text-gray-100"></code>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button id="slug-copy-btn" class="tb-btn tb-btn-neutral">Copy Slug</button>
+      <button id="slug-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

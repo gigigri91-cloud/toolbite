@@ -1,0 +1,28 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("remove-duplicate-lines");
+---
+
+<ToolPageLayout
+  slug="remove-duplicate-lines"
+  content={content}
+  toolScript="/assets/js/tools/remove-duplicate-lines.js"
+>
+  <ToolInterfaceWrapper title="Remove duplicate lines" privacyNote="Dedupe runs locally and keeps your pasted data private.">
+    <label for="dup-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Input lines</label>
+    <textarea id="dup-input" class="tb-textarea w-full h-64 mb-4"></textarea>
+    <label class="text-sm text-gray-700 dark:text-gray-300 mb-4 block">
+      <input id="dup-trim-compare" type="checkbox" class="mr-1" />
+      Trim spaces before comparing lines
+    </label>
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="dup-run-btn" class="tb-btn tb-btn-primary">Remove duplicates</button>
+      <button id="dup-copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+      <button id="dup-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+    <p id="dup-stats" class="text-sm text-gray-600 dark:text-gray-400"></p>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

@@ -1,0 +1,19 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("lorem-ipsum");
+---
+
+<ToolPageLayout slug="lorem-ipsum" content={content} toolScript="/assets/js/tools/lorem-ipsum.js">
+  <ToolInterfaceWrapper title="Generate lorem ipsum" privacyNote="Text is generated in-browser.">
+    <label for="para-count" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Paragraphs (1-50)</label>
+    <input id="para-count" type="number" min="1" max="50" value="3" class="tb-input mb-4" />
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button id="gen-btn" class="tb-btn tb-btn-primary">Generate</button>
+      <button id="copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
+    </div>
+    <textarea id="out" class="tb-textarea w-full h-72"></textarea>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

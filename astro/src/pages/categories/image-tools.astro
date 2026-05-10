@@ -1,0 +1,35 @@
+---
+import CategoryPage from "@/components/discovery/CategoryPage.astro";
+import CategoryLayout from "@/layouts/CategoryLayout.astro";
+import { createCategoryMetadata } from "@/lib/seo";
+
+const title = "Image Tools | ToolBite";
+const description = "Compress images, convert formats, and optimize files for web — client-side image tools that never upload your files.";
+const canonicalPath = "/categories/image-tools.html";
+
+const metadata = createCategoryMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["image tools", "compress images", "webp", "optimize images"]
+});
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Image tools — compress & convert in the browser | ToolBite",
+    url: "https://toolbite.org/categories/image-tools.html",
+    description: "Resize-ready compression and lightweight image workflows using browser APIs-files are not uploaded to ToolBite for processing.",
+    dateModified: "2026-05-08"
+  }
+];
+---
+
+<CategoryLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata} schemas={schemas}>
+  <CategoryPage
+    slug="image-tools"
+    title="Image & media tools"
+    heroDescription="Optimize, compress, and repurpose media assets while keeping file processing local and secure in your browser."
+  />
+</CategoryLayout>

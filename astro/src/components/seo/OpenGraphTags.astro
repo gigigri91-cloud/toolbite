@@ -1,0 +1,31 @@
+---
+import {
+  SITE_BRAND,
+  SITE_LOCALE,
+  SITE_OG_IMAGE_HEIGHT,
+  SITE_OG_IMAGE_WIDTH,
+  toAbsoluteUrl
+} from "@/lib/seo";
+
+export interface Props {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  type?: "website" | "article";
+}
+
+const { title, description, url, image, type = "website" } = Astro.props;
+const absoluteImage = toAbsoluteUrl(image);
+const absoluteUrl = toAbsoluteUrl(url);
+---
+
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={absoluteUrl} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:image:width" content={String(SITE_OG_IMAGE_WIDTH)} />
+<meta property="og:image:height" content={String(SITE_OG_IMAGE_HEIGHT)} />
+<meta property="og:locale" content={SITE_LOCALE} />
+<meta property="og:site_name" content={SITE_BRAND} />

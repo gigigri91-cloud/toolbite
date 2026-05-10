@@ -1,0 +1,12 @@
+---
+import JsonLd from "@/components/seo/JsonLd.astro";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+
+export interface Props {
+  items: Array<{ name: string; url: string }>;
+}
+
+const { items } = Astro.props;
+---
+
+<JsonLd schema={buildBreadcrumbSchema(items)} />

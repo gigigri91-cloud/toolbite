@@ -1,0 +1,44 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("word-counter");
+---
+
+<ToolPageLayout slug="word-counter" content={content} toolScript="/assets/js/tools/word-counter.js">
+  <ToolInterfaceWrapper
+    title="Live text counter"
+    privacyNote="Counting happens locally in your browser. Your text is not uploaded."
+  >
+    <textarea
+      id="wordCounterInput"
+      class="tb-textarea w-full h-64 border border-gray-200 dark:border-gray-600 outline-none resize-y mb-5"
+      placeholder="Type or paste your text here..."
+    ></textarea>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+      <div class="tb-card tb-card-pad-md text-center">
+        <span id="wordCount" class="block text-3xl font-extrabold text-blue-600 dark:text-blue-400">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Words</span>
+      </div>
+      <div class="tb-card tb-card-pad-md text-center">
+        <span id="charCount" class="block text-3xl font-extrabold text-orange-600 dark:text-orange-400">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Characters</span>
+      </div>
+      <div class="tb-card tb-card-pad-md text-center">
+        <span id="sentenceCount" class="block text-3xl font-extrabold text-green-600 dark:text-green-400">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Sentences</span>
+      </div>
+      <div class="tb-card tb-card-pad-md text-center">
+        <span id="paragraphCount" class="block text-3xl font-extrabold text-purple-600 dark:text-purple-400">0</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Paragraphs</span>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      <button id="copy-btn" class="tb-btn tb-btn-neutral">Copy Text</button>
+      <button id="clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

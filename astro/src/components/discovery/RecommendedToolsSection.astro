@@ -1,0 +1,8 @@
+---
+import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
+import { getPopularTools, getRecentlyAdded } from "@/lib/tools";
+
+const tools = [...getPopularTools(2), ...getRecentlyAdded(2)];
+---
+
+<DiscoverySection title="Recommended next steps" subtitle="Balanced mix of proven and fresh tools for deeper sessions." tools={tools} />

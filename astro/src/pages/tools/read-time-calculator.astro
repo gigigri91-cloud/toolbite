@@ -1,0 +1,29 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("read-time-calculator");
+---
+
+<ToolPageLayout
+  slug="read-time-calculator"
+  content={content}
+  toolScript="/assets/js/tools/read-time-calculator.js"
+>
+  <ToolInterfaceWrapper title="Estimate reading time" privacyNote="Word counting and timing run on-device.">
+    <label for="read-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Text</label>
+    <textarea id="read-input" class="tb-textarea w-full h-56 mb-4"></textarea>
+    <div class="mb-4">
+      <label for="read-wpm" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Words per minute</label>
+      <input id="read-wpm" type="number" min="1" max="400" value="200" class="tb-input" />
+    </div>
+    <div class="grid grid-cols-3 gap-3 mb-4">
+      <div class="tb-card tb-card-pad-md text-center"><span id="read-words" class="text-xl font-bold">0</span><p class="text-xs text-gray-500 dark:text-gray-400">Words</p></div>
+      <div class="tb-card tb-card-pad-md text-center"><span id="read-min" class="text-xl font-bold">0</span><p class="text-xs text-gray-500 dark:text-gray-400">Minutes</p></div>
+      <div class="tb-card tb-card-pad-md text-center"><span id="read-sec" class="text-xl font-bold">0</span><p class="text-xs text-gray-500 dark:text-gray-400">Seconds</p></div>
+    </div>
+    <p id="read-summary" class="text-sm text-gray-600 dark:text-gray-400 mb-4"></p>
+    <button id="read-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

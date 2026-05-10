@@ -1,0 +1,444 @@
+{
+  "version": "1.0",
+  "generatedAt": "2026-05-10T13:45:09.049Z",
+  "updatedAt": "2026-05-10T12:00:00.000Z",
+  "stage": "Operationally Governed Hybrid",
+  "owners": {
+    "tools": "platform",
+    "categories": "platform",
+    "guides": "content",
+    "staticPages": "platform",
+    "layouts": "platform",
+    "components": "platform"
+  },
+  "surfaces": {
+    "tools": [
+      {
+        "id": "tools/base64-encoder.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/case-converter.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/color-palette-generator.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/csv-to-json.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/find-replace.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/hash-generator.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/image-compressor.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/json-formatter.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/jwt-decoder.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/lorem-ipsum.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/password-generator.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/qr-generator.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/read-time-calculator.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/remove-duplicate-lines.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/remove-extra-spaces.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/sort-text-lines.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/text-to-slug.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/url-encoder.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/uuid-generator.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "tools/word-counter.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      }
+    ],
+    "guides": [
+      {
+        "id": "guides/base64-encoding-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/compress-images-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/json-formatter-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/jwt-decoder-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/password-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/qr-code-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/seo-slug-best-practices.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/url-encoding-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "guides/uuid-guid-guide.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      }
+    ],
+    "categories": [
+      {
+        "id": "categories/developer-tools.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "categories/image-tools.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "categories/seo-tools.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "categories/text-tools.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      }
+    ],
+    "staticPages": [
+      {
+        "id": "404.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "about.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "authors/gabriel-c.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "authors/index.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "contact.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "cookie-policy.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "editorial-policy.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "index.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "privacy.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      },
+      {
+        "id": "search.html",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "terms.html",
+        "migrated": false,
+        "hardened": false,
+        "observed": false,
+        "production-safe": false,
+        "rollback-safe": true
+      }
+    ],
+    "layouts": [
+      {
+        "id": "astro/src/layouts/BaseLayout.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "astro/src/layouts/CategoryLayout.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "astro/src/layouts/GuideLayout.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "astro/src/layouts/ToolLayout.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "astro/src/layouts/ToolPageLayout.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      }
+    ],
+    "components": [
+      {
+        "id": "astro/src/components/seo/MetaHead.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "astro/src/components/system/CookieModal.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      },
+      {
+        "id": "astro/src/components/tools/ToolAdContainer.astro",
+        "migrated": true,
+        "hardened": true,
+        "observed": true,
+        "production-safe": true,
+        "rollback-safe": true
+      }
+    ]
+  }
+}

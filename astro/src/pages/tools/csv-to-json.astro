@@ -1,0 +1,50 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("csv-to-json");
+---
+
+<ToolPageLayout slug="csv-to-json" content={content} toolScript="/assets/js/tools/csv-to-json.js">
+  <ToolInterfaceWrapper title="Convert CSV to JSON" privacyNote="CSV parsing runs in-browser only.">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <label for="csv-input" class="text-sm text-gray-700 dark:text-gray-300">CSV Input</label>
+          <button onclick="loadExample()" class="tb-btn tb-btn-ghost">Load example</button>
+        </div>
+        <textarea id="csv-input" class="tb-textarea tb-textarea-mono w-full h-64"></textarea>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <label for="json-output" class="text-sm text-gray-700 dark:text-gray-300">JSON Output</label>
+          <button onclick="copyJSON()" id="copy-json-btn" class="tb-btn tb-btn-ghost">Copy</button>
+        </div>
+        <textarea id="json-output" readonly class="tb-textarea tb-textarea-mono w-full h-64"></textarea>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-3 items-center mb-4">
+      <label class="text-sm text-gray-700 dark:text-gray-300">
+        <input id="opt-header" type="checkbox" checked class="mr-1" />
+        First row is header
+      </label>
+      <label for="opt-delimiter" class="text-sm text-gray-700 dark:text-gray-300">Delimiter</label>
+      <select id="opt-delimiter" class="tb-select">
+        <option value=",">Comma (,)</option>
+        <option value=";">Semicolon (;)</option>
+        <option value="&#9;">Tab (\t)</option>
+        <option value="|">Pipe (|)</option>
+      </select>
+      <label class="text-sm text-gray-700 dark:text-gray-300">
+        <input id="opt-pretty" type="checkbox" checked class="mr-1" />
+        Pretty print
+      </label>
+    </div>
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button onclick="convertCSV()" class="tb-btn tb-btn-primary">Convert to JSON</button>
+      <button onclick="clearAll()" class="tb-btn tb-btn-outline">Clear</button>
+    </div>
+    <div id="convert-status" class="hidden text-sm"></div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>

@@ -1,0 +1,38 @@
+---
+export interface Props {
+  rootPath?: string;
+}
+
+const { rootPath = "/" } = Astro.props;
+---
+
+<footer id="site-footer" class="tb-shell-footer">
+  <div class="tb-shell-container">
+    <p class="tb-footer-copy">
+      &copy; <span id="current-year"></span> ToolBite.org. All rights reserved.
+    </p>
+    <nav class="tb-footer-nav" aria-label="Footer">
+      <a href={`${rootPath}about.html`}>About</a>
+      <a href={`${rootPath}contact.html`}>Contact</a>
+      <a href={`${rootPath}guides/index.html`}>Guides</a>
+      <a href={`${rootPath}editorial-policy.html`}>Editorial</a>
+      <a href={`${rootPath}privacy.html`}>Privacy</a>
+      <a href={`${rootPath}cookie-policy.html`}>Cookies</a>
+      <a href={`${rootPath}terms.html`}>Terms</a>
+      <a
+        href={`${rootPath}privacy.html#ads`}
+        data-open-cookie-settings="true"
+        aria-label="Manage cookie preferences"
+      >Manage cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .tb-shell-footer { border-top: 1px solid var(--color-border-subtle); margin-top: var(--space-12); background: var(--color-bg-surface); }
+  .tb-shell-footer .tb-shell-container { max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-5); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); }
+  .tb-footer-copy { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+  .tb-footer-nav { display: inline-flex; flex-wrap: wrap; gap: var(--space-4); }
+  .tb-footer-nav a { color: var(--color-text-secondary); text-decoration: none; font-size: var(--text-sm); }
+  .tb-footer-nav a:hover { color: var(--color-brand-primary); }
+</style>

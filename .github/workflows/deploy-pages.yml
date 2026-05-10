@@ -27,20 +27,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build site directory
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "astro/package-lock.json"
+
+      - name: Install Astro dependencies
+        working-directory: astro
+        run: npm ci
+
+      - name: Validate metadata/discovery governance
+        working-directory: astro
         run: |
-          mkdir _site
-          cp *.html _site/
-          cp sitemap.xml _site/ || true
-          cp robots.txt _site/ || true
-          cp manifest.json _site/ || true
-          cp service-worker.js _site/ || true
-          cp ads.txt _site/ || true
-          cp CNAME _site/ || true
-          cp -r assets _site/
-          cp -r categories _site/
-          cp -r guides _site/
-          cp -r tools _site/
+          npm run generate:sitemap
+          npm run validate:seo
+          npm run validate:discovery
+
+      - name: Build Astro canonical artifact
+        working-directory: astro
+        run: npm run build
+
+      - name: Compose deploy artifact and validate parity
+        working-directory: astro
+        run: |
+          npm run compose:deploy-artifact
+          npm run validate:assets:deploy
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

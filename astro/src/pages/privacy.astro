@@ -1,0 +1,98 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Privacy Policy | ToolBite";
+const description = "Use Privacy Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks";
+const canonicalPath = "/privacy.html";
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
+        <li>›</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium">Privacy Policy</li>
+      </ol>
+    </nav>
+    <div class="text-center mb-8">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">ToolBite <span class="text-blue-600 dark:text-blue-400">Privacy Policy</span></h1>
+      <p class="text-lg text-gray-500">Last updated: May 8, 2026</p>
+    </div>
+
+    <div class="tb-card tb-card-tool md:p-12 leading-relaxed text-gray-700 dark:text-gray-300">
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">1. Introduction</h2>
+      <p class="mb-8">At ToolBite.org, accessible from <a href="https://toolbite.org" class="text-blue-600 dark:text-blue-400 hover:underline">https://toolbite.org</a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document describes the types of information that is collected and recorded by ToolBite and how we use it.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">2. Local Processing (No Data Storage)</h2>
+      <p class="mb-8"><strong>Most of our tools process data entirely within your browser.</strong> When you use tools like our JSON Formatter, Word Counter, or Image Compressor, your text, code, or files are <strong>not</strong> sent to our servers. All calculations and transformations happen locally on your device, ensuring maximum privacy and security.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">3. Hosting and Log Files</h2>
+      <p class="mb-8">ToolBite is delivered through third-party static hosting and CDN infrastructure. As with most websites, those providers may process basic request logs such as IP address, browser type, date/time, referrer, and requested pages in order to serve, cache, secure, and troubleshoot the site.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">4. Cookies and Web Beacons</h2>
+      <p class="mb-8">ToolBite itself does not use a custom analytics backend or user account system. However, third-party services embedded on the site may use cookies, local storage, or similar technologies for advertising, fraud prevention, or widget behavior. For category-level details and controls, see our <a href="cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>
+        <button type="button" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</button>.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">5. Google AdSense &amp; DART Cookie</h2>
+      <p class="mb-8">Google is one of our third-party advertising partners. It uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to <strong>toolbite.org</strong> and other sites on the internet. You may opt out of the use of DART cookies by visiting the Google ad and content network Privacy Policy at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow noopener" class="text-blue-600 dark:text-blue-400 hover:underline">https://policies.google.com/technologies/ads</a>.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">6. Third-Party Privacy Policies</h2>
+      <p class="mb-8">ToolBite's Privacy Policy does not apply to third-party advertisers, widget providers, hosting providers, or external websites. We advise you to consult the respective privacy policies of those services for more detailed information, including their practices and instructions on how to opt out of certain options.</p>
+
+      
+
+      <h2 id="ads" class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">7. About Ads (Google AdSense)</h2>
+      <p class="mb-8">ToolBite may display Google AdSense ads to support hosting and maintenance. Ad providers may use cookies and similar technologies to deliver, measure, and improve ad relevance. We do not upload your routine tool inputs (text, payloads, files) to our servers for processing, but ad and analytics providers may process their own interaction data under their policies. You can review controls and opt-out options in Google’s ad settings and policy documentation.</p>
+
+      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">8. Consent</h2>
+      <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms.</p>
+    </div>
+
+    <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Relevant ToolBite pages</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="about.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">About ToolBite</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Learn more about the privacy-first approach behind the site.</p>
+        </a>
+        <a href="categories/image-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Image Tools</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Useful example of browser-based processing where files stay on your device.</p>
+        </a>
+        <a href="contact.html" class="tb-card tb-card-soft tb-card-pad-sm">
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Contact</h3>
+          <p class="text-sm text-gray-900 dark:text-gray-100">Reach out if you have questions about privacy, support, or feature requests.</p>
+        </a>
+      </div>
+    </section>
+
+  <Fragment slot="head">
+<title>Privacy Policy | ToolBite</title>
+  <meta name="description" content="Use Privacy Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks">
+  <link rel="canonical" href="https://toolbite.org/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://toolbite.org/privacy.html">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="preload" as="image" href="assets/images/toolbite-logo.webp" type="image/webp" fetchpriority="high">
+  <meta name="author" content="ToolBite">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolBite">
+  <meta property="og:url" content="https://toolbite.org/privacy.html">
+  <meta property="og:title" content="Privacy Policy | ToolBite">
+  <meta property="og:description" content="Use Privacy Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks">
+  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Privacy policy — ToolBite — ToolBite">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@toolbite">
+  <meta name="twitter:creator" content="@toolbite">
+  <meta name="twitter:title" content="Privacy Policy | ToolBite">
+  <meta name="twitter:description" content="Use Privacy Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks">
+  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
+  <meta name="twitter:image:alt" content="Privacy policy — ToolBite — ToolBite">
+  </Fragment>
+</BaseLayout>

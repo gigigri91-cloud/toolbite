@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_local-docs/
+
+Sitemap: https://toolbite.org/sitemap.xml

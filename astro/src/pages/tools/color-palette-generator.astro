@@ -1,0 +1,24 @@
+---
+import ToolInterfaceWrapper from "@/components/tools/ToolInterfaceWrapper.astro";
+import { getToolPageContent } from "@/data/tool-pages";
+import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
+
+const content = getToolPageContent("color-palette-generator");
+---
+
+<ToolPageLayout
+  slug="color-palette-generator"
+  content={content}
+  toolScript="/assets/js/tools/color-palette-generator.js"
+>
+  <ToolInterfaceWrapper
+    title="Generate color palettes"
+    privacyNote="Palette generation and HEX copy actions run locally in your browser."
+  >
+    <div id="paletteContainer" class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6"></div>
+    <div class="text-center">
+      <button onclick="generatePalette()" class="tb-btn tb-btn-primary">Generate New Palette</button>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">Click any swatch to copy its HEX code.</p>
+    </div>
+  </ToolInterfaceWrapper>
+</ToolPageLayout>
