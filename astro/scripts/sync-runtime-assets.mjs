@@ -39,8 +39,7 @@ function copyDir(fromDir, toDir) {
 const sources = [
   { from: path.join(REPO_ROOT, "assets"), to: path.join(PUBLIC_ROOT, "assets"), type: "dir" },
   { from: path.join(REPO_ROOT, "data", "tools.json"), to: path.join(PUBLIC_ROOT, "data", "tools.json"), type: "file" },
-  { from: path.join(REPO_ROOT, "manifest.json"), to: path.join(PUBLIC_ROOT, "manifest.json"), type: "file" },
-  { from: path.join(REPO_ROOT, "favicon.ico"), to: path.join(PUBLIC_ROOT, "favicon.ico"), type: "file" }
+  { from: path.join(REPO_ROOT, "manifest.json"), to: path.join(PUBLIC_ROOT, "manifest.json"), type: "file" }
 ];
 
 for (const source of sources) {
