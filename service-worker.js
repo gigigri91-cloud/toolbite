@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toolbite-v5';
+const CACHE_NAME = 'toolbite-v6';
 const ASSETS = [
   '/',
   '/index.html',
@@ -11,7 +11,7 @@ const ASSETS = [
   '/assets/css/global.min.css',
   '/assets/js/core.js',
   '/assets/images/toolbite-logo.webp',
-  '/assets/images/favicon.svg'
+  '/assets/images/favicon.png'
 ];
 
 self.addEventListener('install', event => {
