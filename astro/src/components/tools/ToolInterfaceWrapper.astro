@@ -7,7 +7,7 @@ export interface Props {
 const { title = "Use the tool", privacyNote } = Astro.props;
 ---
 
-<section class="tb-card tb-card-pad-lg tb-tool-interface-wrapper">
+<section class="tb-tool-interface-wrapper">
   <header class="tb-tool-interface-wrapper__head">
     <h2 class="tb-tool-interface-wrapper__title">{title}</h2>
     {privacyNote && <p class="tb-tool-interface-wrapper__privacy">{privacyNote}</p>}
@@ -18,6 +18,10 @@ const { title = "Use the tool", privacyNote } = Astro.props;
 <style>
   .tb-tool-interface-wrapper {
     margin-bottom: 1.5rem;
+    background: #090e18;
+    border: 1px solid #1a2535;
+    border-radius: 10px;
+    padding: 1.25rem 1.35rem;
   }
   .tb-tool-interface-wrapper__head {
     margin-bottom: 1rem;
@@ -26,17 +30,16 @@ const { title = "Use the tool", privacyNote } = Astro.props;
     margin: 0;
     font-size: 1.1rem;
     font-weight: 700;
-    color: rgb(17 24 39);
+    color: #ffffff;
   }
   .tb-tool-interface-wrapper__privacy {
     margin: 0.5rem 0 0;
     font-size: 0.9rem;
-    color: rgb(75 85 99);
+    color: #7a9ab8;
   }
-  html[data-theme="dark"] .tb-tool-interface-wrapper__title {
-    color: rgb(243 244 246);
-  }
-  html[data-theme="dark"] .tb-tool-interface-wrapper__privacy {
-    color: rgb(209 213 219);
+  .tb-tool-interface-wrapper :global(textarea.tb-textarea) {
+    background: #06080d !important;
+    border: 1px solid #1e2a3a !important;
+    color: #c8dff5 !important;
   }
 </style>

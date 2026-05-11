@@ -1,32 +1,89 @@
 ---
+import { getToolAccentFromHref } from "@/lib/wow-colors";
+
 export interface Props {
   title?: string;
   items: Array<{ name: string; href: string; icon?: string }>;
+  /** Sidebar panel on tool pages: tighter chrome + colored workflow links. */
+  variant?: "default" | "aside";
 }
-const { title = "Suggested workflow", items } = Astro.props;
+const { title = "Suggested workflow", items, variant = "default" } = Astro.props;
+const isAside = variant === "aside";
 ---
 
-<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-section">
-  <h2 class="tb-tool-section__title">{title}</h2>
+<section class:list={["tb-tool-section", { "tb-tool-workflow-panel tb-tool-workflow-panel--aside": isAside }, { "tb-card tb-card-panel tb-card-pad-lg": !isAside }]}>
+  <h2 class:list={["tb-tool-section__title", { "tb-tool-workflow-panel__title": isAside }]}>{title}</h2>
   <div class="tb-tool-workflow-list" data-tool-interaction-group="workflow">
-    {items.map((item) => (
-      <a href={item.href} class="tb-btn tb-btn-outline tb-tool-workflow-link" data-tool-discovery-link="true">
-        <span aria-hidden="true">{item.icon || "→"}</span>
-        <span>{item.name}</span>
-      </a>
-    ))}
+    {isAside
+      ? items.map((item) => {
+          const ac = getToolAccentFromHref(item.href);
+          return (
+            <a
+              href={item.href}
+              class="tb-tool-workflow-link tb-tool-workflow-link--aside"
+              data-tool-discovery-link="true"
+              style={`--wf-accent: ${ac}; border-left: 3px solid ${ac};`}
+            >
+              <span aria-hidden="true">{item.icon || "→"}</span>
+              <span>{item.name}</span>
+            </a>
+          );
+        })
+      : items.map((item) => (
+          <a href={item.href} class="tb-btn tb-btn-outline tb-tool-workflow-link" data-tool-discovery-link="true">
+            <span aria-hidden="true">{item.icon || "→"}</span>
+            <span>{item.name}</span>
+          </a>
+        ))}
   </div>
 </section>
 
 <style>
+  .tb-tool-workflow-panel {
+    background: #090e18;
+    border: 1px solid #1a2535;
+    border-radius: 10px;
+    padding: 1.15rem 1.2rem;
+  }
+  .tb-tool-workflow-panel--aside {
+    margin-bottom: 1rem;
+  }
+  .tb-tool-workflow-panel__title {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
   .tb-tool-workflow-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
+  .tb-tool-workflow-panel--aside .tb-tool-workflow-list {
+    flex-direction: column;
+  }
   .tb-tool-workflow-link {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
+  }
+  .tb-tool-workflow-link--aside {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #c8dff5;
+    background: rgba(6, 8, 13, 0.45);
+    border: 1px solid #1e2a3a;
+    border-left: 3px solid var(--wf-accent, #4d9fff);
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+  .tb-tool-workflow-link--aside:hover {
+    background: rgba(77, 159, 255, 0.06);
+    border-color: rgba(77, 159, 255, 0.25);
   }
 </style>

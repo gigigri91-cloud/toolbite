@@ -4,13 +4,14 @@ import PopularToolsSection from "@/components/discovery/PopularToolsSection.astr
 import RecentlyAddedSection from "@/components/discovery/RecentlyAddedSection.astro";
 import RecommendedToolsSection from "@/components/discovery/RecommendedToolsSection.astro";
 import TrendingToolsSection from "@/components/discovery/TrendingToolsSection.astro";
+import ToolCard from "@/components/discovery/ToolCard.astro";
 import SearchInput from "@/components/search/SearchInput.astro";
 import SearchOverlay from "@/components/search/SearchOverlay.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { HOMEPAGE_TITLE, createMetadata } from "@/lib/seo";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
-import { getCategoryTools, getPopularTools } from "@/lib/tools";
+import { getAllTools, getCategoryTools, getPopularTools } from "@/lib/tools";
 
 const title = HOMEPAGE_TITLE;
 const description = "Discover privacy-first AI productivity workflows for writing, development, SEO, and media optimization. Fast browser-native tools with startup-grade UX.";
@@ -23,7 +24,8 @@ const metadata = createMetadata({
 });
 
 const schemas = [buildWebSiteSchema(), buildOrganizationSchema()];
-const popularTools = getPopularTools(6);
+const popularGridTools = getPopularTools(12);
+const toolsTotal = getAllTools().length;
 const aiTools = getPopularTools(6).filter((tool) =>
   tool.keywords.some((k) => ["json", "slug", "read", "jwt", "text", "image"].includes(k.toLowerCase()))
 );
@@ -72,6 +74,18 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       <span class="stat-num teal">∞</span><span class="stat-label">free forever</span>
     </div>
   </div>
+
+  <section class="home-section tb-reveal home-popular-tools">
+    <p class="home-popular-kicker">
+      <span class="home-popular-kicker__accent">// popular tools</span>
+      <span class="home-popular-kicker__meta"> [ {toolsTotal} total ]</span>
+    </p>
+    <div class="tools-grid">
+      {popularGridTools.map((tool) => (
+        <ToolCard tool={tool} />
+      ))}
+    </div>
+  </section>
 
   <section class="home-section tb-reveal">
     <div class="section-head">
@@ -276,6 +290,33 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     letter-spacing: 0.1em;
     color: var(--text-muted, var(--color-text-muted));
     font-weight: 600;
+  }
+  .home-popular-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin: 0 0 0.65rem;
+    letter-spacing: 0.06em;
+  }
+  .home-popular-kicker__accent {
+    color: #f5a623;
+  }
+  .home-popular-kicker__meta {
+    color: #1e3a5a;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  @media (max-width: 960px) {
+    .tools-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 520px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
   }
   .hero-kicker {
     text-transform: uppercase;

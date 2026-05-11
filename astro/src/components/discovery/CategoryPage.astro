@@ -44,7 +44,7 @@ const related = all
     <input id="category-search" type="search" class="tb-input w-full sm:w-96 border" placeholder="Filter tools in this category..." aria-label={`Filter ${title}`} />
     <button type="button" class="copy-tool-link tb-btn tb-btn-secondary">Copy page link</button>
   </div>
-  <div id="category-tools-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+  <div id="category-tools-grid" class="tools-grid mt-4">
     {tools.map((tool) => (
       <ToolCard tool={tool} />
     ))}
@@ -69,4 +69,19 @@ const related = all
 
 <style>
   .search-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  @media (max-width: 960px) {
+    .tools-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 520px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

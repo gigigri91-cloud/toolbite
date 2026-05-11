@@ -49,6 +49,12 @@ export function getToolAccentFromSlug(slug: string): string {
   return TOOL_COLORS[slug] ?? DEFAULT_TOOL;
 }
 
+/** Accent from a site path like `/tools/json-formatter.html`. */
+export function getToolAccentFromHref(href: string): string {
+  const path = String(href || "").replace(/^\//, "");
+  return getToolAccentFromUrl(path);
+}
+
 export function getCategoryAccent(slug: string): string {
   return CATEGORY_COLORS[slug] ?? DEFAULT_CATEGORY;
 }

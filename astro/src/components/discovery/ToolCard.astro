@@ -14,15 +14,22 @@ const slug = toolSlugFromUrl(tool.url);
 const accent = toolColor ?? getToolAccentFromUrl(tool.url);
 const categoryHex = CATEGORY_COLORS[tool.category] ?? "#4d9fff";
 const categoryLabel = tool.category?.replace(/-/g, " ") ?? "tool";
+
+const cardStyle = [
+  "background:#090e18",
+  "border:1px solid #1a2535",
+  `border-top:2px solid ${accent}`,
+  "border-radius:10px"
+].join(";");
 ---
 
 <a
   href={href}
-  class="wow-tool-card tb-card tb-card-interactive tb-card-pad-lg tb-card-row discovery-card"
-  style={`--wow-tool-accent: ${accent}; --wow-cat-color: ${categoryHex};`}
+  class="wow-tool-card tb-card-interactive discovery-card"
+  style={cardStyle}
   data-tool-slug={slug}
 >
-  <div class="wow-tool-card__icon" aria-hidden="true">{tool.icon || "🧰"}</div>
+  <div class="wow-tool-card__icon" style={`--wow-tool-accent: ${accent};`} aria-hidden="true">{tool.icon || "🧰"}</div>
   <div class="wow-tool-card__body">
     {tool.category && (
       <p class="wow-tool-card__category" style={`color: ${categoryHex};`}>
@@ -37,16 +44,17 @@ const categoryLabel = tool.category?.replace(/-/g, " ") ?? "tool";
 <style>
   .wow-tool-card {
     --wow-tool-accent: #4d9fff;
-    background: var(--bg-card, var(--color-bg-card));
-    border: 1px solid var(--border-default, var(--color-border-primary));
-    border-radius: 10px;
-    border-top: 2px solid var(--wow-tool-accent);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.15rem;
     text-decoration: none;
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    transition: box-shadow 180ms ease, transform 180ms ease, filter 180ms ease;
   }
   .wow-tool-card:hover {
-    border-color: color-mix(in srgb, var(--wow-tool-accent) 55%, #ffffff 45%);
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--wow-tool-accent) 35%, transparent);
+    box-shadow: 0 0 0 1px rgba(77, 159, 255, 0.2);
+    transform: translateY(-2px);
   }
   .wow-tool-card__icon {
     width: 2.5rem;
@@ -81,8 +89,7 @@ const categoryLabel = tool.category?.replace(/-/g, " ") ?? "tool";
     margin: 0.35rem 0 0;
     font-size: 0.8125rem;
     line-height: 1.5;
-    color: #c8dff5;
-    opacity: 0.92;
+    color: #7a9ab8;
   }
   @media (prefers-reduced-motion: reduce) {
     .wow-tool-card {

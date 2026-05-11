@@ -8,29 +8,30 @@ export interface Props {
 }
 
 const { title, description, eyebrow, toolColor = "#4d9fff" } = Astro.props;
+const heroStyle = [
+  "background:#090e18",
+  "border:1px solid #1a2535",
+  `border-left:3px solid ${toolColor}`
+].join(";");
 ---
 
-<section class="tb-tool-hero tb-card tb-card-panel tb-card-pad-lg" style={`--wow-hero-accent: ${toolColor};`}>
-  {eyebrow && <p class="tb-tool-hero__eyebrow">{eyebrow}</p>}
+<section class="tb-tool-hero tb-card tb-card-panel tb-card-pad-lg" style={heroStyle}>
+  {eyebrow && <p class="tb-tool-hero__eyebrow" style={`color: ${toolColor};`}>{eyebrow}</p>}
   <h1 class="tb-tool-hero__title">{title}</h1>
   <p class="tb-tool-hero__desc">{description}</p>
 </section>
 
 <style>
   .tb-tool-hero {
-    --wow-hero-accent: #4d9fff;
     margin-bottom: 1.25rem;
-    background: var(--bg-card, var(--color-bg-card));
-    border: 1px solid var(--border-default, var(--color-border-primary));
-    border-left: 3px solid var(--wow-hero-accent);
   }
   .tb-tool-hero__eyebrow {
     margin: 0 0 0.625rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--wow-hero-accent);
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-weight: 600;
   }
   .tb-tool-hero__title {
     margin: 0;
@@ -42,7 +43,7 @@ const { title, description, eyebrow, toolColor = "#4d9fff" } = Astro.props;
   .tb-tool-hero__desc {
     margin: 0.9rem 0 0;
     max-width: 60ch;
-    color: var(--text-secondary, var(--color-text-secondary));
+    color: #7a9ab8;
     font-size: 1.02rem;
     line-height: 1.65;
   }

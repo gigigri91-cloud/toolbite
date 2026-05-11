@@ -10,7 +10,36 @@ export interface Props {
 }
 
 const { categorySlug, categoryTitle, heroDescription, featuredTools } = Astro.props;
-const relatedCategories = ["text-tools", "developer-tools", "image-tools", "seo-tools"].filter((c) => c !== categorySlug);
+
+const CATEGORY_TABS = [
+  { slug: "developer-tools", label: "Developer Tools" },
+  { slug: "text-tools", label: "Text Tools" },
+  { slug: "image-tools", label: "Image Tools" },
+  { slug: "seo-tools", label: "SEO Tools" }
+] as const;
+
+const TAB_THEME: Record<string, { color: string; border: string; bg: string }> = {
+  "developer-tools": {
+    color: "#4d9fff",
+    border: "rgba(77,159,255,0.3)",
+    bg: "rgba(13,30,53,0.5)"
+  },
+  "text-tools": {
+    color: "#a855f7",
+    border: "rgba(168,85,247,0.3)",
+    bg: "rgba(20,5,40,0.5)"
+  },
+  "image-tools": {
+    color: "#2dd4bf",
+    border: "rgba(45,212,191,0.3)",
+    bg: "rgba(5,25,25,0.5)"
+  },
+  "seo-tools": {
+    color: "#f5a623",
+    border: "rgba(245,166,35,0.3)",
+    bg: "rgba(30,15,0,0.5)"
+  }
+};
 
 const accent = getCategoryAccent(categorySlug);
 const { r, g, b } = hexToRgb(accent);
@@ -25,7 +54,7 @@ const chipBg = `rgba(${r}, ${g}, ${b}, 0.12)`;
   style={`--cat-accent: ${accent}; background: radial-gradient(80% 120% at 90% -10%, ${tintStrong}, transparent 55%), ${tintBg}; border: 1px solid ${tintBorder};`}
 >
   <p class="category-kicker" style={`color: ${accent};`}>Productivity ecosystem</p>
-  <h1 class="category-title" style={`color: ${accent};`}>{categoryTitle}</h1>
+  <h1 class="category-title">{categoryTitle}</h1>
   <p class="category-desc">{heroDescription}</p>
   <div class="hero-grid">
     {featuredTools.map((tool) => (
@@ -35,13 +64,22 @@ const chipBg = `rgba(${r}, ${g}, ${b}, 0.12)`;
       </a>
     ))}
   </div>
-  <div class="related-cats">
-    {relatedCategories.map((cat) => (
-      <a href={`/categories/${cat}.html`} class="cat-link">
-        {cat.replace(/-/g, " ")}
-      </a>
-    ))}
-  </div>
+  <nav class="related-cats" aria-label="Browse categories">
+    {CATEGORY_TABS.map((tab) => {
+      const theme = TAB_THEME[tab.slug];
+      const isActive = tab.slug === categorySlug;
+      return (
+        <a
+          href={`/categories/${tab.slug}.html`}
+          class:list={["cat-tab", { "cat-tab--active": isActive }]}
+          style={`color: ${theme.color}; border: 1px solid ${theme.border}; background: ${theme.bg};`}
+          aria-current={isActive ? "page" : undefined}
+        >
+          {tab.label}
+        </a>
+      );
+    })}
+  </nav>
 </section>
 
 <style>
@@ -61,13 +99,14 @@ const chipBg = `rgba(${r}, ${g}, ${b}, 0.12)`;
     font-size: clamp(1.75rem, 3vw, 2.35rem);
     font-weight: 800;
     letter-spacing: -0.02em;
+    color: #ffffff;
   }
   .category-desc {
     margin: 0;
     max-width: 52ch;
     font-size: 1.05rem;
     line-height: 1.6;
-    color: var(--text-secondary, var(--color-text-secondary));
+    color: #7a9ab8;
   }
   .hero-grid {
     display: grid;
@@ -109,23 +148,23 @@ const chipBg = `rgba(${r}, ${g}, ${b}, 0.12)`;
   .related-cats {
     margin-top: 1rem;
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
+    align-items: center;
   }
-  .cat-link {
+  .cat-tab {
     text-decoration: none;
-    color: var(--text-secondary, var(--color-text-secondary));
-    background: var(--bg-card, var(--color-bg-card));
-    border: 1px solid var(--border-default, var(--color-border-primary));
-    border-radius: 9999px;
-    padding: 0.35rem 0.8rem;
-    font-size: 0.875rem;
-    text-transform: capitalize;
-    transition: color 160ms ease, border-color 160ms ease;
+    border-radius: 20px;
+    padding: 0.45rem 1rem;
+    font-size: 13px;
+    font-weight: 600;
+    transition: filter 160ms ease, transform 160ms ease;
   }
-  .cat-link:hover {
-    color: var(--accent-blue, var(--color-brand-blue));
-    border-color: rgba(77, 159, 255, 0.35);
+  .cat-tab:hover {
+    filter: brightness(1.1);
+  }
+  .cat-tab--active {
+    box-shadow: 0 0 0 1px currentColor;
   }
   @media (prefers-reduced-motion: reduce) {
     .feature-chip {
@@ -133,6 +172,9 @@ const chipBg = `rgba(${r}, ${g}, ${b}, 0.12)`;
     }
     .feature-chip:hover {
       transform: none;
+    }
+    .cat-tab {
+      transition: none;
     }
   }
 </style>
