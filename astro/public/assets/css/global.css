@@ -49,7 +49,7 @@
     color: #ffffff;
     border: 1px solid var(--brand-orange);
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: 14px;
     text-decoration: none;
     box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.45);
     transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
@@ -136,6 +136,30 @@ h1, h2, .font-display {
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 }
 
+/* Default heading scale (scoped page styles may override) */
+h1 {
+  font-size: var(--font-size-h1, 2.8rem);
+}
+h2 {
+  font-size: var(--font-size-h2, 1.8rem);
+}
+h3 {
+  font-size: var(--font-size-h3, 1.35rem);
+}
+h4 {
+  font-size: var(--font-size-h4, 1.1rem);
+}
+
+/* Breadcrumb rows (guides, legal, etc. use `nav.tb-breadcrumb` + Tailwind text-sm) */
+nav.tb-breadcrumb {
+  font-size: 14px;
+}
+
+small,
+.text-muted {
+  font-size: var(--font-size-muted, 13px);
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -173,7 +197,7 @@ h1, h2, .font-display {
   align-items: center;
   gap: 0.375rem;
   padding: 0.5rem 1rem;          /* py-2 px-4 */
-  font-size: 0.875rem;           /* text-sm */
+  font-size: 14px;
   font-weight: 600;
   border-radius: 0.75rem;        /* rounded-xl */
   border: 1px solid transparent;
@@ -247,7 +271,7 @@ html[data-theme="dark"] body .tb-btn-outline:hover { background: #0f2e30; }
 .tb-btn-danger:hover { background: #b91c1c; }
 
 /* SIZE MODIFIER */
-.tb-btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; border-radius: 0.625rem; }
+.tb-btn-sm { padding: 0.375rem 0.75rem; font-size: 14px; border-radius: 0.625rem; }
 .tb-btn-lg { padding: 0.75rem 1.5rem;   font-size: 1rem;       border-radius: 0.875rem; }
 
 
@@ -257,7 +281,7 @@ html[data-theme="dark"] body .tb-btn-outline:hover { background: #0f2e30; }
 .tb-select {
   width: 100%;
   padding: 0.5rem 0.75rem;          /* py-2 px-3 */
-  font-size: 0.875rem;              /* text-sm */
+  font-size: 1rem;
   font-family: inherit;
   color: #111827;                   /* gray-900 */
   background: #ffffff;
@@ -320,7 +344,7 @@ html[data-theme="dark"] body .tb-select:focus {
 .tb-input-mono,
 .tb-textarea-mono {
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-  font-size: 0.8125rem;
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -331,7 +355,7 @@ html[data-theme="dark"] body .tb-select:focus {
 }
 
 /* SIZE MODIFIERS */
-.tb-input-sm { padding: 0.375rem 0.625rem; font-size: 0.8125rem; }
+.tb-input-sm { padding: 0.375rem 0.625rem; font-size: 1rem; }
 .tb-input-lg { padding: 0.75rem 1rem; font-size: 1rem; border-radius: 0.75rem; }
 
 /* ─── tb-textarea specifics ─────────────────────── */
@@ -353,7 +377,7 @@ html[data-theme="dark"] body .tb-select:focus {
 /* ─── tb-label ───────────────────────────────────── */
 .tb-label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 13px;
   font-weight: 500;
   color: #374151;                   /* gray-700 */
   margin-bottom: 0.375rem;
@@ -369,7 +393,7 @@ html[data-theme="dark"] body .tb-label {
   gap: 0.375rem;
 }
 .tb-field-hint {
-  font-size: 0.75rem;
+  font-size: 13px;
   color: #6b7280;                   /* gray-500 */
 }
 html[data-theme="dark"] body .tb-field-hint {
@@ -524,7 +548,7 @@ html[data-theme="dark"] body .tb-icon-fuchsia{ background: #4a044e; color: #f0ab
 
 /* Tool card title */
 .tb-tool-title {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: #111827;
   margin-bottom: 0.25rem;
@@ -536,7 +560,7 @@ html[data-theme="dark"] body .tb-tool-title {
 
 /* Tool card description */
 .tb-tool-desc {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #6b7280;
   line-height: 1.4;
 }
@@ -550,7 +574,7 @@ html[data-theme="dark"] body .tb-tool-desc {
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.6875rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
   padding: 2px 10px;
@@ -699,7 +723,7 @@ html[data-theme="dark"] body #site-header.header-small img.header-logo {
 .ad-slot-label {
     display: block;
     margin-bottom: 0.5rem;
-    font-size: 0.75rem;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -714,6 +738,12 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: var(--font-size-body, 17px);
+}
+
+p,
+td {
+  font-size: var(--font-size-body, 17px);
 }
 
 /* Improve small-text contrast on white cards/backgrounds */
@@ -741,7 +771,7 @@ footer a {
     gap: 0.35rem;
     padding: 0.35rem 0.75rem;
     border-radius: 9999px;
-    font-size: 0.8rem;
+    font-size: 12px;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.85);
     color: #334155;

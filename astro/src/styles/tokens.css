@@ -28,6 +28,17 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "Courier New", monospace;
 
+  /* Typography scale — readability (paired with assets/css/global.css) */
+  --font-size-body: 17px;
+  --font-size-muted: 13px;
+  --font-size-nav: 14px;
+  --font-size-mono-chip: 12px;
+  --font-size-h1: 2.8rem;
+  --font-size-h1-home-max: 3.6rem;
+  --font-size-h2: 1.8rem;
+  --font-size-h3: 1.35rem;
+  --font-size-h4: 1.1rem;
+
   /* Legacy token bridge (existing components + global.css) */
   --color-brand-blue: var(--accent-blue);
   --color-brand-blue-dark: var(--accent-blue-dark);
