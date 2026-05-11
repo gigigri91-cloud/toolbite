@@ -10,6 +10,7 @@ const { id = "search-input", placeholder = "Search tools, guides, or keywords...
 
 <div class="search-input-wrap">
   <label for={id} class="sr-only">Search tools</label>
+  <span class="search-prompt" aria-hidden="true">~$</span>
   <input id={id} type="search" placeholder={placeholder} autocomplete="off" />
   <kbd aria-hidden="true">{hotkeyLabel}</kbd>
 </div>
@@ -17,34 +18,36 @@ const { id = "search-input", placeholder = "Search tools, guides, or keywords...
 <style>
   .search-input-wrap {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 0.5rem;
-    border: 1px solid rgba(148, 163, 184, 0.45);
+    border: 1px solid var(--color-border-secondary);
     border-radius: 0.75rem;
-    background: #ffffff;
+    background: var(--color-bg-card);
     padding: 0.5rem 0.75rem;
   }
-  html[data-theme="dark"] .search-input-wrap {
-    background: #0f172a;
-    border-color: rgba(96, 165, 250, 0.35);
+  .search-prompt {
+    color: var(--color-brand-orange);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1;
   }
-  #search-input {
+  input[type="search"] {
     border: 0;
     outline: 0;
     background: transparent;
-    color: #111827;
+    color: var(--color-text-primary);
     font-size: 1rem;
     width: 100%;
   }
-  html[data-theme="dark"] #search-input { color: #f8fafc; }
+  input[type="search"]::placeholder { color: var(--color-text-muted); }
   kbd {
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--color-border-primary);
     border-radius: 0.4rem;
     padding: 0.1rem 0.4rem;
     font-size: 0.75rem;
-    color: #64748b;
-    background: #f8fafc;
+    color: var(--color-text-muted);
+    background: #0d1e35;
+    font-family: var(--font-mono);
   }
-  html[data-theme="dark"] kbd { border-color: #334155; background: #1e293b; color: #94a3b8; }
 </style>

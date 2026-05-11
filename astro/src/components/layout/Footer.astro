@@ -9,7 +9,7 @@ const { rootPath = "/" } = Astro.props;
 <footer id="site-footer" class="tb-shell-footer">
   <div class="tb-shell-container">
     <p class="tb-footer-copy">
-      &copy; <span id="current-year"></span> ToolBite.org. All rights reserved.
+      &copy; <span id="current-year"></span> <span class="tb-footer-brand"><span class="tb-brand-tool">Tool</span><span class="tb-brand-bite">Bite</span></span>.org. All rights reserved.
     </p>
     <nav class="tb-footer-nav" aria-label="Footer">
       <a href={`${rootPath}about.html`}>About</a>
@@ -29,10 +29,13 @@ const { rootPath = "/" } = Astro.props;
 </footer>
 
 <style>
-  .tb-shell-footer { border-top: 1px solid var(--color-border-subtle); margin-top: var(--space-12); background: var(--color-bg-surface); }
-  .tb-shell-footer .tb-shell-container { max-width: 1200px; margin: 0 auto; padding: var(--space-6) var(--space-5); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); }
-  .tb-footer-copy { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
-  .tb-footer-nav { display: inline-flex; flex-wrap: wrap; gap: var(--space-4); }
-  .tb-footer-nav a { color: var(--color-text-secondary); text-decoration: none; font-size: var(--text-sm); }
-  .tb-footer-nav a:hover { color: var(--color-brand-primary); }
+  .tb-shell-footer { border-top: 1px solid var(--color-border-primary); margin-top: 3rem; background: var(--color-bg-secondary); }
+  .tb-shell-footer .tb-shell-container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; }
+  .tb-footer-copy { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+  .tb-footer-brand { font-weight: 700; }
+  .tb-brand-tool { color: #e8f0ff; }
+  .tb-brand-bite { color: var(--color-brand-orange); }
+  .tb-footer-nav { display: inline-flex; flex-wrap: wrap; gap: 1rem; }
+  .tb-footer-nav a { color: var(--color-text-muted); text-decoration: none; font-size: 0.875rem; }
+  .tb-footer-nav a:hover { color: var(--color-brand-blue); }
 </style>

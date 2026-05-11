@@ -57,12 +57,12 @@ const cspContent = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background: var(--color-bg-primary);">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content={cspContent} />
-    <meta name="theme-color" content="#2563eb" />
+    <meta name="theme-color" content="#1a5fd9" />
     <MetaHead meta={pageMeta} />
 
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
@@ -70,7 +70,7 @@ const cspContent = [
 
 
     <link rel="stylesheet" href="/assets/css/tailwind.min.css" />
-    <link rel="stylesheet" href="/assets/css/global.min.css" />
+    <link rel="stylesheet" href="/assets/css/global.css" />
 
     <ThemeInitInline />
     {includeAdsense && (
@@ -87,7 +87,7 @@ const cspContent = [
 
     <slot name="head" />
   </head>
-  <body>
+  <body style="background: var(--color-bg-primary); color: var(--color-text-primary);">
     <Header rootPath={rootPath} />
     <MobileMenu rootPath={rootPath} />
     <main id="main-content">
