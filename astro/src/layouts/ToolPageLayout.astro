@@ -155,22 +155,23 @@ const schemas = [
     margin: 0 0 0.85rem;
     font-size: 1.1rem;
     font-weight: 700;
-    color: rgb(17 24 39);
+    color: rgb(243 244 246);
   }
   :global(.tb-tool-list) {
     margin: 0;
     padding-left: 1rem;
     display: grid;
     gap: 0.5rem;
-    color: rgb(75 85 99);
+    color: rgb(209 213 219);
     font-size: 0.94rem;
     line-height: 1.55;
   }
-  html[data-theme="dark"] :global(.tb-tool-section__title) {
-    color: rgb(243 244 246);
-  }
-  html[data-theme="dark"] :global(.tb-tool-list) {
-    color: rgb(209 213 219);
+  :global(.tb-tool-hero),
+  :global(.tool-hero),
+  :global(.tb-tool-header),
+  :global(.tool-header) {
+    background: #0e1520 !important;
+    border: 1px solid #1a2235 !important;
   }
   @media (max-width: 767px) {
     .tb-tool-page {

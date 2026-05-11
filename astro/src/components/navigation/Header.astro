@@ -8,8 +8,14 @@ const { rootPath = "/" } = Astro.props;
 
 <header id="site-header" class="tb-shell-header">
   <div class="tb-shell-container">
-    <a href={`${rootPath}`} class="tb-brand-link" aria-label="ToolBite home">
-      <span class="tb-brand-tool">Tool</span><span class="tb-brand-bite">Bite</span>
+    <a href={`${rootPath}`} class="logo-link" aria-label="ToolBite home">
+      <img
+        src="/assets/images/toolbite-logo.webp"
+        alt="ToolBite"
+        width="140"
+        height="36"
+        loading="eager"
+      />
     </a>
     <nav aria-label="Primary" class="tb-desktop-nav">
       <a href={`${rootPath}search.html`} class="is-active">Search</a>
@@ -18,7 +24,6 @@ const { rootPath = "/" } = Astro.props;
       <a href={`${rootPath}contact.html`}>Contact</a>
     </nav>
     <a href={`${rootPath}search.html`} class="tb-search-icon" aria-label="Open search">⌕</a>
-    <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme"></button>
     <button type="button" id="mobile-menu-button" class="tb-menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
       Menu
     </button>
@@ -26,9 +31,11 @@ const { rootPath = "/" } = Astro.props;
 </header>
 
 <style>
-  .tb-shell-header {
-    background: var(--color-bg-secondary);
-    border-bottom: 1px solid var(--color-border-primary);
+  .tb-shell-header,
+  #site-header.tb-shell-header {
+    background: #0e1218 !important;
+    background-color: #0e1218 !important;
+    border-bottom: 1px solid #1a2235 !important;
     position: sticky;
     top: 0;
     z-index: 50;
@@ -36,27 +43,14 @@ const { rootPath = "/" } = Astro.props;
     -webkit-backdrop-filter: saturate(130%) blur(8px);
   }
   .tb-shell-container { max-width: 1200px; margin: 0 auto; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .tb-brand-link { text-decoration: none; font-size: 1.125rem; font-weight: 700; display: inline-flex; align-items: center; }
-  .tb-brand-tool { color: #e8f0ff; }
-  .tb-brand-bite { color: var(--color-brand-orange); }
+  .logo-link { text-decoration: none; display: inline-flex; align-items: center; line-height: 1; }
+  .logo-link img { display: block; width: 140px; height: 36px; object-fit: contain; }
   .tb-desktop-nav { display: none; gap: 0.6rem; }
   .tb-desktop-nav a { color: var(--color-text-secondary); text-decoration: none; font-size: 0.85rem; font-family: var(--font-mono); padding: 0.35rem 0.5rem; border-radius: 5px; }
   .tb-desktop-nav a.is-active { color: var(--color-brand-blue); background: #0d1e35; }
   .tb-search-icon { color: var(--color-brand-blue); text-decoration: none; font-size: 1rem; line-height: 1; padding: 0.3rem; border-radius: 4px; }
   .tb-search-icon:hover { background: #0d1e35; }
   .tb-menu-toggle { border: 1px solid var(--color-border-primary); border-radius: 6px; padding: 0.45rem 0.7rem; background: var(--color-bg-card); color: var(--color-text-primary); font-family: var(--font-mono); }
-  .theme-toggle-btn {
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 6px;
-    width: 2.25rem;
-    height: 2.25rem;
-    padding: 0;
-    background: var(--color-bg-card);
-    color: var(--color-text-primary);
-    line-height: 1;
-  }
-  .theme-toggle-btn:hover { border-color: var(--color-border-accent-blue); background: #0d1e35; color: var(--color-brand-blue); }
-  .theme-toggle-btn:focus-visible { outline: 2px solid var(--color-brand-blue); outline-offset: 2px; }
   @media (min-width: 768px) {
     .tb-desktop-nav { display: inline-flex; }
     .tb-menu-toggle { display: none; }

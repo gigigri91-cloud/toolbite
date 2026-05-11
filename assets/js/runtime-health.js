@@ -35,19 +35,8 @@
     if (!has("search-overlay")) warn("search-overlay-missing", "search-input exists without search overlay");
   }
 
-  function validateThemeToggle() {
-    if (!has("theme-toggle")) {
-      warn("theme-toggle-missing");
-      return;
-    }
-    var theme = document.documentElement.getAttribute("data-theme");
-    if (theme !== "dark" && theme !== "light") {
-      warn("theme-attribute-invalid", theme || "(empty)");
-    }
-  }
-
   function validateCriticalHooks() {
-    var critical = ["mobile-menu-button", "mobile-menu", "theme-toggle"];
+    var critical = ["mobile-menu-button", "mobile-menu"];
     var missing = critical.filter(function (id) { return !has(id); });
     if (missing.length) warn("critical-dom-missing", missing.join(", "));
   }
@@ -82,7 +71,6 @@
   try {
     validateCookieContract();
     validateSearchOverlay();
-    validateThemeToggle();
     validateCriticalHooks();
     validateToolScriptAttach();
     validateDuplicateCoreListeners();
