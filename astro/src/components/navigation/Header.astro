@@ -1,9 +1,16 @@
 ---
+import SearchInput from "@/components/search/SearchInput.astro";
+
 export interface Props {
   rootPath?: string;
 }
 
 const { rootPath = "/" } = Astro.props;
+const path = Astro.url.pathname;
+const isSearch = path.includes("search");
+const isCategories = path.includes("categories");
+const isGuides = path.includes("/guides");
+const isContact = path.includes("contact");
 ---
 
 <header id="site-header" class="tb-shell-header">
@@ -12,18 +19,26 @@ const { rootPath = "/" } = Astro.props;
       <img
         src="/assets/images/toolbite-logo.webp"
         alt="ToolBite"
-        width="140"
-        height="36"
+        width="130"
+        height="34"
         loading="eager"
       />
     </a>
     <nav aria-label="Primary" class="tb-desktop-nav">
-      <a href={`${rootPath}search.html`} class="is-active">Search</a>
-      <a href={`${rootPath}categories/text-tools.html`}>Categories</a>
-      <a href="/guides/">Guides</a>
-      <a href={`${rootPath}contact.html`}>Contact</a>
+      <a href={`${rootPath}search.html`} class:list={{ "is-active": isSearch }}>Search</a>
+      <a href={`${rootPath}categories/text-tools.html`} class:list={{ "is-active": isCategories }}>Categories</a>
+      <a href="/guides/" class:list={{ "is-active": isGuides }}>Guides</a>
+      <a href={`${rootPath}contact.html`} class:list={{ "is-active": isContact }}>Contact</a>
     </nav>
-    <a href={`${rootPath}search.html`} class="tb-search-icon" aria-label="Open search">⌕</a>
+    <form class="tb-header-search" method="get" action={`${rootPath}search.html`} role="search" aria-label="Search ToolBite">
+      <SearchInput
+        id="header-search-input"
+        name="q"
+        placeholder="Search tools, guides, workflows…"
+        hotkeyLabel="Ctrl/⌘K"
+      />
+    </form>
+    <a href={`${rootPath}search.html`} class="tb-search-icon-mobile" aria-label="Open search">⌕</a>
     <button type="button" id="mobile-menu-button" class="tb-menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
       Menu
     </button>
@@ -33,26 +48,128 @@ const { rootPath = "/" } = Astro.props;
 <style>
   .tb-shell-header,
   #site-header.tb-shell-header {
-    background: #0e1218 !important;
-    background-color: #0e1218 !important;
-    border-bottom: 1px solid #1a2235 !important;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
     z-index: 50;
     backdrop-filter: saturate(130%) blur(8px);
     -webkit-backdrop-filter: saturate(130%) blur(8px);
   }
-  .tb-shell-container { max-width: 1200px; margin: 0 auto; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .logo-link { text-decoration: none; display: inline-flex; align-items: center; line-height: 1; }
-  .logo-link img { display: block; width: 140px; height: 36px; object-fit: contain; }
-  .tb-desktop-nav { display: none; gap: 0.6rem; }
-  .tb-desktop-nav a { color: var(--color-text-secondary); text-decoration: none; font-size: 0.85rem; font-family: var(--font-mono); padding: 0.35rem 0.5rem; border-radius: 5px; }
-  .tb-desktop-nav a.is-active { color: var(--color-brand-blue); background: #0d1e35; }
-  .tb-search-icon { color: var(--color-brand-blue); text-decoration: none; font-size: 1rem; line-height: 1; padding: 0.3rem; border-radius: 4px; }
-  .tb-search-icon:hover { background: #0d1e35; }
-  .tb-menu-toggle { border: 1px solid var(--color-border-primary); border-radius: 6px; padding: 0.45rem 0.7rem; background: var(--color-bg-card); color: var(--color-text-primary); font-family: var(--font-mono); }
+  .tb-shell-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.65rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+  .logo-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .logo-link img {
+    display: block;
+    width: 130px;
+    height: 34px;
+    object-fit: contain;
+  }
+  .tb-desktop-nav {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+  .tb-desktop-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    padding: 0.4rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+  }
+  .tb-desktop-nav a:hover,
+  .tb-desktop-nav a:focus-visible {
+    color: var(--accent-blue);
+    background: rgba(77, 159, 255, 0.08);
+    border-color: transparent;
+    outline: none;
+  }
+  .tb-desktop-nav a.is-active {
+    color: var(--accent-blue);
+    background: rgba(77, 159, 255, 0.08);
+  }
+  .tb-header-search {
+    display: none;
+    flex: 1 1 220px;
+    min-width: 0;
+    max-width: 420px;
+  }
+  .tb-header-search :global(.search-input-wrap) {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+  }
+  .tb-header-search :global(.search-prompt) {
+    color: var(--accent-orange);
+  }
+  .tb-header-search :global(input[type="search"]::placeholder) {
+    color: var(--text-muted);
+  }
+  .tb-search-icon-mobile {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0.35rem 0.45rem;
+    border-radius: 6px;
+    margin-left: auto;
+    border: 1px solid var(--border-default);
+    background: var(--bg-card);
+  }
+  .tb-search-icon-mobile:hover {
+    background: rgba(77, 159, 255, 0.08);
+    border-color: rgba(77, 159, 255, 0.25);
+  }
+  .tb-menu-toggle {
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    padding: 0.45rem 0.7rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
   @media (min-width: 768px) {
-    .tb-desktop-nav { display: inline-flex; }
-    .tb-menu-toggle { display: none; }
+    .tb-desktop-nav {
+      display: inline-flex;
+    }
+    .tb-header-search {
+      display: block;
+    }
+    .tb-search-icon-mobile {
+      display: none;
+    }
+    .tb-menu-toggle {
+      display: none;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .tb-shell-container {
+      row-gap: 0.65rem;
+    }
+    .tb-header-search {
+      order: 4;
+      flex: 1 1 100%;
+      max-width: none;
+    }
   }
 </style>

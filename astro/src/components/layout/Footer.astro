@@ -8,9 +8,9 @@ const { rootPath = "/" } = Astro.props;
 
 <footer id="site-footer" class="tb-shell-footer">
   <div class="tb-shell-container">
-    <p class="tb-footer-copy">
-      &copy; <span id="current-year"></span> <span class="tb-footer-brand"><span class="tb-brand-tool">Tool</span><span class="tb-brand-bite">Bite</span></span>.org. All rights reserved.
-    </p>
+    <a href={`${rootPath}`} class="tb-footer-logo-link" aria-label="ToolBite home">
+      <img src="/assets/images/toolbite-logo.webp" alt="ToolBite" width="120" height="32" loading="lazy" />
+    </a>
     <nav class="tb-footer-nav" aria-label="Footer">
       <a href={`${rootPath}about.html`}>About</a>
       <a href={`${rootPath}contact.html`}>Contact</a>
@@ -25,17 +25,82 @@ const { rootPath = "/" } = Astro.props;
         aria-label="Manage cookie preferences"
       >Manage cookies</a>
     </nav>
+    <p class="tb-footer-copy">
+      &copy; <span id="current-year"></span> ToolBite.org — all rights reserved.
+    </p>
   </div>
 </footer>
 
 <style>
-  .tb-shell-footer { border-top: 1px solid var(--color-border-primary); margin-top: 3rem; background: var(--color-bg-secondary); }
-  .tb-shell-footer .tb-shell-container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; }
-  .tb-footer-copy { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
-  .tb-footer-brand { font-weight: 700; }
-  .tb-brand-tool { color: #e8f0ff; }
-  .tb-brand-bite { color: var(--color-brand-orange); }
-  .tb-footer-nav { display: inline-flex; flex-wrap: wrap; gap: 1rem; }
-  .tb-footer-nav a { color: var(--color-text-muted); text-decoration: none; font-size: 0.875rem; }
-  .tb-footer-nav a:hover { color: var(--color-brand-blue); }
+  .tb-shell-footer {
+    margin-top: 3rem;
+    background: var(--bg-primary, var(--color-bg-primary));
+    border-top: 1px solid var(--border-subtle, var(--color-border-primary));
+  }
+  .tb-shell-footer .tb-shell-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.35rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .tb-shell-footer .tb-shell-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+    }
+  }
+  .tb-footer-logo-link {
+    display: inline-flex;
+    line-height: 0;
+  }
+  .tb-footer-logo-link img {
+    width: 120px;
+    height: 32px;
+    object-fit: contain;
+  }
+  .tb-footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem 1rem;
+  }
+  @media (min-width: 768px) {
+    .tb-footer-nav {
+      justify-content: flex-end;
+      flex: 1;
+    }
+  }
+  .tb-footer-nav a {
+    color: var(--text-muted, var(--color-text-muted));
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .tb-footer-nav a:hover,
+  .tb-footer-nav a:focus-visible {
+    color: var(--accent-blue, var(--color-brand-blue));
+    outline: none;
+  }
+  .tb-footer-copy {
+    margin: 0;
+    width: 100%;
+    color: var(--text-muted, var(--color-text-muted));
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+  @media (min-width: 768px) {
+    .tb-footer-copy {
+      width: auto;
+      flex-basis: 100%;
+      text-align: center;
+    }
+  }
 </style>

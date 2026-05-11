@@ -1,20 +1,62 @@
+---
+---
+
 <section aria-label="Search suggestions" class="search-suggestions">
-  <button type="button" data-suggestion="json">json</button>
-  <button type="button" data-suggestion="slug">slug</button>
-  <button type="button" data-suggestion="password">password</button>
-  <button type="button" data-suggestion="image">image</button>
-  <button type="button" data-suggestion="seo">seo</button>
+  <button type="button" class="search-chip chip-blue" data-suggestion="json">json</button>
+  <button type="button" class="search-chip chip-purple" data-suggestion="slug">slug</button>
+  <button type="button" class="search-chip chip-orange" data-suggestion="password">password</button>
+  <button type="button" class="search-chip chip-teal" data-suggestion="image">image</button>
+  <button type="button" class="search-chip chip-pink" data-suggestion="seo">seo</button>
 </section>
 
 <style>
-  .search-suggestions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
-  .search-suggestions button {
-    border: 1px solid var(--color-border-primary);
-    background: var(--color-bg-secondary);
-    color: var(--color-text-secondary);
-    border-radius: 9999px;
-    padding: 0.3rem 0.7rem;
-    font-size: 0.8rem;
+  .search-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
   }
-  .search-suggestions button:hover { border-color: var(--color-border-accent-blue); color: var(--color-brand-blue); }
+  .search-chip {
+    border-radius: 9999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: filter 160ms ease, border-color 160ms ease;
+  }
+  .search-chip:hover {
+    filter: brightness(1.08);
+  }
+  .chip-blue {
+    color: #4d9fff;
+    border-color: rgba(77, 159, 255, 0.25);
+    background: rgba(13, 30, 53, 0.6);
+  }
+  .chip-orange {
+    color: #f5a623;
+    border-color: rgba(245, 166, 35, 0.25);
+    background: rgba(30, 15, 0, 0.6);
+  }
+  .chip-purple {
+    color: #a855f7;
+    border-color: rgba(168, 85, 247, 0.25);
+    background: rgba(20, 5, 40, 0.6);
+  }
+  .chip-teal {
+    color: #2dd4bf;
+    border-color: rgba(45, 212, 191, 0.25);
+    background: rgba(5, 25, 25, 0.6);
+  }
+  .chip-pink {
+    color: #ec4899;
+    border-color: rgba(236, 72, 153, 0.25);
+    background: rgba(30, 5, 20, 0.6);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .search-chip {
+      transition: none;
+    }
+  }
 </style>

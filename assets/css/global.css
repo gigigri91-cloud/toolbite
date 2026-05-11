@@ -1538,19 +1538,49 @@ html[data-theme="dark"] body b {
 
 h1,
 h2,
-h3 {
-  color: var(--color-text-primary);
+h3,
+h4 {
+  color: #ffffff !important;
 }
 
-body,
+body {
+  color: #c8dff5;
+}
+
 p,
 li,
-td,
-th,
-label {
-  color: var(--color-text-secondary);
+td {
+  color: #c8dff5;
+}
+
+th {
+  color: #ffffff;
+}
+
+label,
+.tb-label {
+  color: #7a9ab8 !important;
+}
+
+.text-muted,
+small,
+.text-sm.text-muted {
+  color: #7a9ab8 !important;
 }
 
 a {
-  color: var(--color-brand-blue);
+  color: var(--accent-blue, var(--color-brand-blue));
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #2a4a6a;
+}
+
+.tb-input,
+.tb-textarea,
+.tb-select {
+  background: var(--bg-card, var(--color-bg-card)) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border-strong, var(--color-border-secondary)) !important;
 }

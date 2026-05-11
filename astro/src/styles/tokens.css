@@ -1,30 +1,52 @@
 :root {
-  /* Brand */
-  --color-brand-blue: #4d9fff;
-  --color-brand-blue-dark: #1a5fd9;
-  --color-brand-orange: #f5a623;
+  --bg-primary: #06080d;
+  --bg-secondary: #0c1117;
+  --bg-card: #090e18;
+  --bg-card-hover: #0c1220;
+
+  --border-default: #141e2e;
+  --border-subtle: #0f1a28;
+  --border-strong: #1e2a3a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #7a9ab8;
+  --text-muted: #2a4a6a;
+  --text-mono: #4d9fff;
+
+  --accent-blue: #4d9fff;
+  --accent-blue-dark: #1a5fd9;
+  --accent-orange: #f5a623;
+  --accent-purple: #a855f7;
+  --accent-teal: #2dd4bf;
+  --accent-pink: #ec4899;
+  --accent-green: #4ade80;
+  --accent-cyan: #22d3ee;
+  --accent-yellow: #facc15;
+  --accent-red: #f87171;
+  --accent-indigo: #818cf8;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Courier New", monospace;
+
+  /* Legacy token bridge (existing components + global.css) */
+  --color-brand-blue: var(--accent-blue);
+  --color-brand-blue-dark: var(--accent-blue-dark);
+  --color-brand-orange: var(--accent-orange);
   --color-brand-orange-dark: #c47d0a;
 
-  /* Backgrounds */
-  --color-bg-primary: #0a0d12;
-  --color-bg-secondary: #0e1218;
-  --color-bg-tertiary: #0e1520;
-  --color-bg-card: #0e1520;
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-card);
+  --color-bg-card: var(--bg-card);
 
-  /* Borders */
-  --color-border-primary: #1a2235;
-  --color-border-secondary: #1a2a40;
-  --color-border-accent-blue: #1a3a60;
-  --color-border-accent-orange: #3a2a0a;
+  --color-border-primary: var(--border-default);
+  --color-border-secondary: var(--border-strong);
+  --color-border-accent-blue: rgba(77, 159, 255, 0.35);
+  --color-border-accent-orange: rgba(245, 166, 35, 0.35);
 
-  /* Text */
-  --color-text-primary: #e8f0ff;
-  --color-text-secondary: #3a5a7a;
-  --color-text-muted: #2a4a6a;
-  --color-text-accent-blue: #4d9fff;
-  --color-text-accent-orange: #f5a623;
-
-  /* Fonts */
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-accent-blue: var(--accent-blue);
+  --color-text-accent-orange: var(--accent-orange);
 }

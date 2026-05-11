@@ -3,12 +3,14 @@ export interface Props {
   title: string;
   description: string;
   eyebrow?: string;
+  /** Hex accent for left border + eyebrow (per-tool WOW palette). */
+  toolColor?: string;
 }
 
-const { title, description, eyebrow } = Astro.props;
+const { title, description, eyebrow, toolColor = "#4d9fff" } = Astro.props;
 ---
 
-<section class="tb-card tb-card-panel tb-card-pad-lg tb-tool-hero">
+<section class="tb-tool-hero tb-card tb-card-panel tb-card-pad-lg" style={`--wow-hero-accent: ${toolColor};`}>
   {eyebrow && <p class="tb-tool-hero__eyebrow">{eyebrow}</p>}
   <h1 class="tb-tool-hero__title">{title}</h1>
   <p class="tb-tool-hero__desc">{description}</p>
@@ -16,16 +18,18 @@ const { title, description, eyebrow } = Astro.props;
 
 <style>
   .tb-tool-hero {
+    --wow-hero-accent: #4d9fff;
     margin-bottom: 1.25rem;
-    background: #0e1520;
-    border: 1px solid #1a2235;
+    background: var(--bg-card, var(--color-bg-card));
+    border: 1px solid var(--border-default, var(--color-border-primary));
+    border-left: 3px solid var(--wow-hero-accent);
   }
   .tb-tool-hero__eyebrow {
     margin: 0 0 0.625rem;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgb(147 197 253);
+    color: var(--wow-hero-accent);
     font-weight: 700;
   }
   .tb-tool-hero__title {
@@ -33,12 +37,12 @@ const { title, description, eyebrow } = Astro.props;
     font-size: clamp(1.8rem, 2vw + 1.2rem, 2.7rem);
     line-height: 1.1;
     font-weight: 800;
-    color: rgb(243 244 246);
+    color: #ffffff;
   }
   .tb-tool-hero__desc {
     margin: 0.9rem 0 0;
     max-width: 60ch;
-    color: rgb(209 213 219);
+    color: var(--text-secondary, var(--color-text-secondary));
     font-size: 1.02rem;
     line-height: 1.65;
   }

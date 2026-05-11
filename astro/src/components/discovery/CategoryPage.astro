@@ -6,7 +6,9 @@ import PopularToolsSection from "@/components/discovery/PopularToolsSection.astr
 import RecentlyAddedSection from "@/components/discovery/RecentlyAddedSection.astro";
 import RecommendedToolsSection from "@/components/discovery/RecommendedToolsSection.astro";
 import TrendingToolsSection from "@/components/discovery/TrendingToolsSection.astro";
+import ToolCard from "@/components/discovery/ToolCard.astro";
 import { getAllTools, getCategoryTools } from "@/lib/tools";
+import { getCategoryAccent, hexToRgb } from "@/lib/wow-colors";
 
 export interface Props {
   slug: string;
@@ -20,6 +22,11 @@ const featured = tools.slice(0, 4);
 const popularInCategory = [...tools].sort((a, b) => (b.keywords.length + (b.relatedTools?.length || 0)) - (a.keywords.length + (a.relatedTools?.length || 0))).slice(0, 4);
 const recentInCategory = [...tools].slice(-4).reverse();
 
+const catAccent = getCategoryAccent(slug);
+const { r, g, b } = hexToRgb(catAccent);
+const filterPanelBg = `rgba(${r}, ${g}, ${b}, 0.06)`;
+const filterPanelBorder = `rgba(${r}, ${g}, ${b}, 0.22)`;
+
 const all = getAllTools();
 const related = all
   .filter((tool) => tool.category !== slug && tool.keywords.some((k) => tools.some((t) => t.keywords.includes(k))))
@@ -29,20 +36,17 @@ const related = all
 
 <CategoryHighlights categorySlug={slug} categoryTitle={title} heroDescription={heroDescription} featuredTools={featured} />
 
-<section class="tb-card tb-card-panel tb-card-pad-lg mb-6">
+<section
+  class="tb-card tb-card-panel tb-card-pad-lg mb-6 category-filter-panel"
+  style={`background: ${filterPanelBg}; border: 1px solid ${filterPanelBorder}; border-radius: 10px;`}
+>
   <div class="search-row">
     <input id="category-search" type="search" class="tb-input w-full sm:w-96 border" placeholder="Filter tools in this category..." aria-label={`Filter ${title}`} />
     <button type="button" class="copy-tool-link tb-btn tb-btn-secondary">Copy page link</button>
   </div>
   <div id="category-tools-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
     {tools.map((tool) => (
-      <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row">
-        <div class="tb-tool-icon tb-icon-blue">{tool.icon || "🧰"}</div>
-        <div>
-          <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">{tool.title}</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
-        </div>
-      </a>
+      <ToolCard tool={tool} />
     ))}
   </div>
 </section>

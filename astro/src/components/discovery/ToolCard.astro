@@ -1,38 +1,95 @@
 ---
 import type { NormalizedTool } from "@/lib/tools";
+import { CATEGORY_COLORS, getToolAccentFromUrl, toolSlugFromUrl } from "@/lib/wow-colors";
 
 export interface Props {
   tool: NormalizedTool;
+  /** Optional override for accent (hex). Defaults from tool URL slug map. */
+  toolColor?: string;
 }
 
-const { tool } = Astro.props;
+const { tool, toolColor } = Astro.props;
 const href = `/${tool.url}`;
+const slug = toolSlugFromUrl(tool.url);
+const accent = toolColor ?? getToolAccentFromUrl(tool.url);
+const categoryHex = CATEGORY_COLORS[tool.category] ?? "#4d9fff";
+const categoryLabel = tool.category?.replace(/-/g, " ") ?? "tool";
 ---
 
-<a href={href} class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row discovery-card">
-  <div class="tb-tool-icon tb-icon-blue">{tool.icon || "🧰"}</div>
-  <div>
-    {tool.category && <p class="tool-category">// {tool.category}</p>}
-    <h3 class="font-bold text-lg tool-title">{tool.title}</h3>
-    <p class="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
+<a
+  href={href}
+  class="wow-tool-card tb-card tb-card-interactive tb-card-pad-lg tb-card-row discovery-card"
+  style={`--wow-tool-accent: ${accent}; --wow-cat-color: ${categoryHex};`}
+  data-tool-slug={slug}
+>
+  <div class="wow-tool-card__icon" aria-hidden="true">{tool.icon || "🧰"}</div>
+  <div class="wow-tool-card__body">
+    {tool.category && (
+      <p class="wow-tool-card__category" style={`color: ${categoryHex};`}>
+        // {categoryLabel}
+      </p>
+    )}
+    <h3 class="wow-tool-card__title">{tool.title}</h3>
+    <p class="wow-tool-card__desc">{tool.description}</p>
   </div>
 </a>
 
 <style>
-  .discovery-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border-secondary);
-    border-top: 2px solid var(--color-border-accent-blue);
+  .wow-tool-card {
+    --wow-tool-accent: #4d9fff;
+    background: var(--bg-card, var(--color-bg-card));
+    border: 1px solid var(--border-default, var(--color-border-primary));
+    border-radius: 10px;
+    border-top: 2px solid var(--wow-tool-accent);
+    text-decoration: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+  .wow-tool-card:hover {
+    border-color: color-mix(in srgb, var(--wow-tool-accent) 55%, #ffffff 45%);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--wow-tool-accent) 35%, transparent);
+  }
+  .wow-tool-card__icon {
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    background: color-mix(in srgb, var(--wow-tool-accent) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--wow-tool-accent) 35%, transparent);
+    flex-shrink: 0;
   }
-  .tool-title {
-    color: var(--color-text-accent-blue);
+  .wow-tool-card__body {
+    min-width: 0;
   }
-  .tool-category {
+  .wow-tool-card__category {
     margin: 0 0 0.35rem;
     font-family: var(--font-mono);
-    color: var(--color-text-muted);
-    font-size: 0.72rem;
+    font-size: 10px;
     text-transform: lowercase;
+    letter-spacing: 0.04em;
+  }
+  .wow-tool-card__title {
+    margin: 0;
+    color: #c8dff5;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .wow-tool-card__desc {
+    margin: 0.35rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #c8dff5;
+    opacity: 0.92;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wow-tool-card {
+      transition: none;
+    }
+    .wow-tool-card:hover {
+      transform: none;
+    }
   }
 </style>

@@ -1,6 +1,6 @@
 ---
 import type { NormalizedTool } from "@/lib/tools";
-import { getCategoryRelatedCategories } from "@/lib/tools";
+import { getCategoryAccent, hexToRgb } from "@/lib/wow-colors";
 
 export interface Props {
   categorySlug: string;
@@ -10,24 +10,36 @@ export interface Props {
 }
 
 const { categorySlug, categoryTitle, heroDescription, featuredTools } = Astro.props;
-const relatedCategories = getCategoryRelatedCategories(categorySlug);
+const relatedCategories = ["text-tools", "developer-tools", "image-tools", "seo-tools"].filter((c) => c !== categorySlug);
+
+const accent = getCategoryAccent(categorySlug);
+const { r, g, b } = hexToRgb(accent);
+const tintBg = `rgba(${r}, ${g}, ${b}, 0.08)`;
+const tintBorder = `rgba(${r}, ${g}, ${b}, 0.2)`;
+const tintStrong = `rgba(${r}, ${g}, ${b}, 0.35)`;
+const chipBg = `rgba(${r}, ${g}, ${b}, 0.12)`;
 ---
 
-<section class="category-hero tb-card tb-card-panel tb-card-pad-lg">
-  <p class="category-kicker">Productivity ecosystem</p>
-  <h1 class="text-4xl font-extrabold mb-2">{categoryTitle}</h1>
-  <p class="text-lg max-w-3xl">{heroDescription}</p>
+<section
+  class="category-hero tb-card tb-card-panel tb-card-pad-lg"
+  style={`--cat-accent: ${accent}; background: radial-gradient(80% 120% at 90% -10%, ${tintStrong}, transparent 55%), ${tintBg}; border: 1px solid ${tintBorder};`}
+>
+  <p class="category-kicker" style={`color: ${accent};`}>Productivity ecosystem</p>
+  <h1 class="category-title" style={`color: ${accent};`}>{categoryTitle}</h1>
+  <p class="category-desc">{heroDescription}</p>
   <div class="hero-grid">
     {featuredTools.map((tool) => (
-      <a href={`/${tool.url}`} class="feature-chip">
-        <span>{tool.icon || "🧰"}</span>
-        <span>{tool.title}</span>
+      <a href={`/${tool.url}`} class="feature-chip" style={`border-color: ${tintBorder}; background: ${chipBg};`}>
+        <span class="feature-chip__icon" style={`color: ${accent}; background: rgba(${r},${g},${b},0.18);`}>{tool.icon || "🧰"}</span>
+        <span class="feature-chip__label">{tool.title}</span>
       </a>
     ))}
   </div>
   <div class="related-cats">
     {relatedCategories.map((cat) => (
-      <a href={`/categories/${cat}.html`} class="cat-link">{cat.replace("-", " ")}</a>
+      <a href={`/categories/${cat}.html`} class="cat-link">
+        {cat.replace(/-/g, " ")}
+      </a>
     ))}
   </div>
 </section>
@@ -35,39 +47,92 @@ const relatedCategories = getCategoryRelatedCategories(categorySlug);
 <style>
   .category-hero {
     margin-bottom: 1.5rem;
-    background:
-      radial-gradient(80% 120% at 90% -10%, rgba(59, 130, 246, 0.2), transparent 60%),
-      linear-gradient(180deg, color-mix(in srgb, var(--color-brand-blue) 16%, transparent), transparent 62%),
-      var(--color-bg-card);
-    border: 1px solid var(--color-border-secondary);
+    border-radius: 10px;
   }
-  .category-kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; color: var(--color-brand-blue-dark); font-weight: 700; margin-bottom: 0.5rem; }
-  .category-hero h1 { color: var(--color-text-primary); }
-  .category-hero p { color: var(--color-text-secondary); }
-  .hero-grid { display: grid; gap: 0.75rem; margin-top: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .category-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .category-title {
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .category-desc {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary, var(--color-text-secondary));
+  }
+  .hero-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
   .feature-chip {
     text-decoration: none;
-    color: inherit;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 0.75rem;
+    color: var(--text-primary, #fff);
+    border-radius: 10px;
     padding: 0.75rem 1rem;
-    background: var(--color-bg-card);
     display: inline-flex;
     gap: 0.5rem;
     align-items: center;
-    transition: transform 180ms ease, border-color 180ms ease;
+    border: 1px solid transparent;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   }
-  .feature-chip:hover { transform: translateY(-2px); border-color: var(--color-border-accent-blue); }
-  .related-cats { margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .feature-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    border-color: color-mix(in srgb, var(--cat-accent) 50%, #ffffff 50%);
+  }
+  .feature-chip__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .feature-chip__label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #c8dff5;
+  }
+  .related-cats {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
   .cat-link {
     text-decoration: none;
-    color: var(--color-text-secondary);
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border-secondary);
+    color: var(--text-secondary, var(--color-text-secondary));
+    background: var(--bg-card, var(--color-bg-card));
+    border: 1px solid var(--border-default, var(--color-border-primary));
     border-radius: 9999px;
     padding: 0.35rem 0.8rem;
     font-size: 0.875rem;
     text-transform: capitalize;
+    transition: color 160ms ease, border-color 160ms ease;
   }
-  .cat-link:hover { color: var(--color-brand-blue); border-color: var(--color-border-accent-blue); }
+  .cat-link:hover {
+    color: var(--accent-blue, var(--color-brand-blue));
+    border-color: rgba(77, 159, 255, 0.35);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .feature-chip {
+      transition: none;
+    }
+    .feature-chip:hover {
+      transform: none;
+    }
+  }
 </style>

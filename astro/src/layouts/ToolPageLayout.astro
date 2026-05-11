@@ -16,6 +16,7 @@ import { createMetadataFromToolRecord } from "@/lib/seo";
 import { getContextualRecommendations } from "@/lib/linking";
 import { buildBreadcrumbSchema, buildFaqSchema, buildWebApplicationSchema } from "@/lib/schema";
 import { getRelatedTools } from "@/lib/tools";
+import { getToolAccentFromSlug } from "@/lib/wow-colors";
 
 export interface Props {
   slug: string;
@@ -60,6 +61,8 @@ const breadcrumbSchemaItems = [
   { name: content.heroTitle, url: metadata.canonicalUrl }
 ];
 
+const toolAccent = getToolAccentFromSlug(slug);
+
 const schemas = [
   buildWebApplicationSchema({
     name: content.heroTitle,
@@ -82,7 +85,7 @@ const schemas = [
 >
   <div class="tb-tool-page">
     <ToolBreadcrumbs items={breadcrumbItems} />
-    <ToolHero title={content.heroTitle} description={content.heroDescription} eyebrow={content.heroEyebrow} />
+    <ToolHero title={content.heroTitle} description={content.heroDescription} eyebrow={content.heroEyebrow} toolColor={toolAccent} />
 
     <ToolShell>
       <slot />
@@ -165,13 +168,6 @@ const schemas = [
     color: rgb(209 213 219);
     font-size: 0.94rem;
     line-height: 1.55;
-  }
-  :global(.tb-tool-hero),
-  :global(.tool-hero),
-  :global(.tb-tool-header),
-  :global(.tool-header) {
-    background: #0e1520 !important;
-    border: 1px solid #1a2235 !important;
   }
   @media (max-width: 767px) {
     .tb-tool-page {

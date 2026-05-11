@@ -13,8 +13,8 @@ const { title, subtitle, tools } = Astro.props;
 
 <section class="tb-card tb-card-panel tb-card-pad-lg discovery-section">
   <div class="discovery-header">
-    <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">{title}</h2>
-    {subtitle && <p class="text-sm text-gray-600 dark:text-gray-400">{subtitle}</p>}
+    <h2 class="wow-discovery-title">{title}</h2>
+    {subtitle && <p class="wow-discovery-sub">{subtitle}</p>}
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {tools.map((tool) => <ToolCard tool={tool} />)}
@@ -24,4 +24,17 @@ const { title, subtitle, tools } = Astro.props;
 <style>
   .discovery-section { margin-bottom: 1.5rem; }
   .discovery-header { margin-bottom: 1rem; }
+  .wow-discovery-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .wow-discovery-sub {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary, var(--color-text-secondary));
+    line-height: 1.5;
+  }
 </style>
