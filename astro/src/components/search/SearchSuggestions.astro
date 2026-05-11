@@ -9,16 +9,12 @@
 <style>
   .search-suggestions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
   .search-suggestions button {
-    border: 1px solid #cbd5e1;
-    background: #f8fafc;
-    color: #334155;
+    border: 1px solid var(--color-border-primary);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
     border-radius: 9999px;
     padding: 0.3rem 0.7rem;
     font-size: 0.8rem;
   }
-  html[data-theme="dark"] .search-suggestions button {
-    border-color: #475569;
-    background: #1e293b;
-    color: #cbd5e1;
-  }
+  .search-suggestions button:hover { border-color: var(--color-border-accent-blue); color: var(--color-brand-blue); }
 </style>

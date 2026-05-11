@@ -14,17 +14,13 @@
     z-index: 1;
     max-width: 860px;
     margin: 8vh auto 0;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
     border-radius: 1rem;
     padding: 1rem;
     box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
   }
-  html[data-theme="dark"] .search-overlay__panel {
-    background: #0f172a;
-    border-color: #334155;
-  }
-  .search-overlay__hint { margin: 0 0 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; }
+  .search-overlay__hint { margin: 0 0 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand-blue); }
   .search-overlay:not(.hidden) .search-overlay__panel { animation: overlay-enter 160ms ease; }
   @keyframes overlay-enter {
     from { transform: translateY(8px); opacity: 0; }

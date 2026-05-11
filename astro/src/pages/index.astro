@@ -87,8 +87,8 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       {aiTools.map((tool) => (
         <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-lg ai-card">
           <p class="ai-label">AI workflow</p>
-          <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">{tool.icon || "🧠"} {tool.title}</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400">{tool.description}</p>
+          <h3 class="font-bold text-lg">{tool.icon || "🧠"} {tool.title}</h3>
+          <p class="text-sm">{tool.description}</p>
         </a>
       ))}
     </div>
@@ -166,7 +166,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   <SearchOverlay>
     <SearchInput id="search-overlay-input" placeholder="Quick open tools and guides..." />
     <SearchSuggestions />
-    <p class="text-sm text-gray-600 dark:text-gray-400 mt-3">Press <kbd>Esc</kbd> to close command search.</p>
+    <p class="text-sm mt-3">Press <kbd>Esc</kbd> to close command search.</p>
   </SearchOverlay>
 
   <Fragment slot="scripts">
@@ -232,59 +232,42 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   .section-head h2 {
     margin: 0;
     font-size: clamp(1.3rem, 3vw, 2rem);
-    color: #0f172a;
+    color: var(--color-text-primary);
     letter-spacing: -0.01em;
   }
-  html[data-theme="dark"] .section-head h2 { color: #f8fafc; }
-  .section-head p { margin: 0.35rem 0 0.85rem; color: #475569; }
-  html[data-theme="dark"] .section-head p { color: #94a3b8; }
+  .section-head p { margin: 0.35rem 0 0.85rem; color: var(--color-text-secondary); }
   .ai-card { transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
-  .ai-card:hover { transform: translateY(-3px); border-color: rgba(37, 99, 235, 0.45); box-shadow: 0 12px 26px rgba(37, 99, 235, 0.18); }
-  .ai-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 0.4rem; }
-  html[data-theme="dark"] .ai-label { color: #94a3b8; }
+  .ai-card:hover { transform: translateY(-3px); border-color: var(--color-border-accent-blue); box-shadow: 0 12px 26px color-mix(in srgb, var(--color-brand-blue) 22%, transparent); }
+  .ai-card h3 { color: var(--color-text-primary); }
+  .ai-card p { color: var(--color-text-secondary); }
+  .ai-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-blue); margin-bottom: 0.4rem; }
   .benefits-grid,
   .stats-grid { display: grid; gap: 0.85rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
   @media (min-width: 768px) {
     .benefits-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
-  .benefits-grid h3 { margin: 0 0 0.45rem; font-size: 1.02rem; color: #0f172a; }
-  html[data-theme="dark"] .benefits-grid h3 { color: #f8fafc; }
-  .benefits-grid p { margin: 0; color: #475569; font-size: 0.95rem; }
-  html[data-theme="dark"] .benefits-grid p { color: #94a3b8; }
-  .stat-value { margin: 0; font-size: 1.7rem; font-weight: 800; color: #0f172a; }
-  html[data-theme="dark"] .stat-value { color: #f8fafc; }
-  .stat-label { margin: 0.25rem 0 0; color: #64748b; font-size: 0.88rem; }
-  html[data-theme="dark"] .stat-label { color: #94a3b8; }
+  .benefits-grid h3 { margin: 0 0 0.45rem; font-size: 1.02rem; color: var(--color-text-primary); }
+  .benefits-grid p { margin: 0; color: var(--color-text-secondary); font-size: 0.95rem; }
+  .stat-value { margin: 0; font-size: 1.7rem; font-weight: 800; color: var(--color-brand-blue); }
+  .stat-label { margin: 0.25rem 0 0; color: var(--color-text-muted); font-size: 0.88rem; }
   .discovery-cta,
   .premium-footer {
     background:
-      radial-gradient(100% 120% at 90% -20%, rgba(37, 99, 235, 0.18), transparent 62%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
-  }
-  html[data-theme="dark"] .discovery-cta,
-  html[data-theme="dark"] .premium-footer {
-    background:
-      radial-gradient(100% 120% at 90% -20%, rgba(125, 211, 252, 0.16), transparent 62%),
-      linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.96));
+      radial-gradient(100% 120% at 90% -20%, color-mix(in srgb, var(--color-brand-blue) 18%, transparent), transparent 62%),
+      var(--color-bg-card);
   }
   .discovery-cta h2,
-  .premium-footer h2 { margin: 0 0 0.35rem; color: #0f172a; }
-  html[data-theme="dark"] .discovery-cta h2,
-  html[data-theme="dark"] .premium-footer h2 { color: #f8fafc; }
+  .premium-footer h2 { margin: 0 0 0.35rem; color: var(--color-text-primary); }
   .discovery-cta p,
-  .premium-footer p { margin: 0; color: #475569; }
-  html[data-theme="dark"] .discovery-cta p,
-  html[data-theme="dark"] .premium-footer p { color: #94a3b8; }
+  .premium-footer p { margin: 0; color: var(--color-text-secondary); }
   .premium-links { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .premium-links a { color: #334155; text-decoration: none; border-bottom: 1px solid transparent; }
-  .premium-links a:hover { border-bottom-color: #2563eb; }
-  html[data-theme="dark"] .premium-links a { color: #cbd5e1; }
+  .premium-links a { color: var(--color-text-secondary); text-decoration: none; border-bottom: 1px solid transparent; }
+  .premium-links a:hover { border-bottom-color: var(--color-brand-blue); color: var(--color-brand-blue); }
   .search-command-card .command-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; }
-  .command-title { margin: 0 0 0.25rem; font-weight: 700; color: #0f172a; }
-  html[data-theme="dark"] .command-title { color: #f8fafc; }
-  .command-copy { margin: 0; color: #475569; }
-  html[data-theme="dark"] .command-copy { color: #94a3b8; }
+  .command-title { margin: 0 0 0.25rem; font-weight: 700; color: var(--color-text-primary); }
+  .command-copy { margin: 0; color: var(--color-text-secondary); }
+  .search-command-card kbd { color: var(--color-brand-orange); background: #0d1e35; border: 1px solid var(--color-border-accent-orange); border-radius: 4px; padding: 0.05rem 0.35rem; font-family: var(--font-mono); }
   @keyframes glow-shift {
     from { transform: translateY(0) scale(1); }
     to { transform: translateY(-8px) scale(1.05); }
