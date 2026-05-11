@@ -1,12 +1,20 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createMetadata } from "@/lib/seo";
 
-const title = "Contact | ToolBite";
-const description = "Contact ToolBite for bug reports, tool requests, or partnership inquiries. Typical response time is 24–48 hours.";
+const title = "Contact ToolBite — Support, Feedback & Partnerships";
+const description =
+  "Contact ToolBite for support, bugs, partnerships, and tool ideas. We read every message and reply within 48 hours with clear next steps on ToolBite today.";
 const canonicalPath = "/contact.html";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["contact ToolBite", "ToolBite support", "tool requests", "partnerships", "feedback"]
+});
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
 <nav class="tb-breadcrumb text-sm text-gray-500 mb-6 text-left" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -64,41 +72,20 @@ const canonicalPath = "/contact.html";
       </div>
     </section>
 
-  <Fragment slot="head">
-<title>Contact | ToolBite</title>
-  <style id="critical-css">body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background-color:#f9fafb}.tb-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#014f55 0%,#01696f 42%,#0f766e 100%);color:#fff;padding:3rem 1rem}.tb-hero::before,.tb-hero::after{content:'';position:absolute;border-radius:50%;filter:blur(64px);opacity:.45;pointer-events:none}.tb-hero::before{width:min(80vw,28rem);height:min(80vw,28rem);background:#2dd4bf;top:-15%;right:-5%}.tb-hero::after{width:min(70vw,22rem);height:min(70vw,22rem);background:#34d399;bottom:-20%;left:-8%}.tb-hero-inner{position:relative;z-index:1;max-width:56rem;margin:0 auto}.tb-hero h1{font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:2.25rem;line-height:2.5rem;margin-bottom:1rem;color:#fff}@media (min-width:768px){.tb-hero{padding:5rem 1rem}.tb-hero h1{font-size:3.75rem;line-height:1}}.tb-hero p{font-size:1.125rem;line-height:1.75rem;color:rgba(255,255,255,0.9);font-weight:500;margin-bottom:2rem}@media (min-width:768px){.tb-hero p{font-size:1.5rem;line-height:2rem}}#site-header{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:50}img.header-logo{height:2.5rem!important;width:auto!important;aspect-ratio:384/105;display:block}.skip-link{position:absolute;transform:translateY(-200%)}h1,h2{font-family:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800}.tb-breadcrumb ol{list-style:none;margin:0;padding:0}</style>
-<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
-  <link rel="manifest" href="manifest.json">
-  <link rel="canonical" href="https://toolbite.org/contact.html">
-<link rel="alternate" hreflang="x-default" href="https://toolbite.org/contact.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/contact.html">
-  <meta name="description" content="Contact ToolBite for bug reports, tool requests, or partnership inquiries. Typical response time is 24–48 hours.">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/contact.html">
-  <meta property="og:title" content="Contact | ToolBite">
-  <meta property="og:description" content="Use Contact | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Contact ToolBite — Bugs, ideas &amp; partnerships — ToolBite">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Contact ToolBite — Bugs, ideas &amp; partnerships">
-  <meta name="twitter:description" content="Use Contact | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta name="twitter:image:alt" content="Contact ToolBite — Bugs, ideas &amp; partnerships — ToolBite">
-<!-- GA4: async so it never blocks the parser -->
-<meta name="google-adsense-account" content="ca-pub-5233222002046639">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5233222002046639" crossorigin="anonymous"></script>
-  <noscript><link rel="stylesheet" href="assets/css/tailwind.min.css"></noscript>
-  
-  <noscript><link rel="stylesheet" href="assets/css/global.min.css"></noscript>
-  </Fragment>
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 text-left md:p-10" aria-labelledby="contact-detail-heading">
+      <h2 id="contact-detail-heading" class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">What to include so we can help faster</h2>
+      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+        When you report a bug, paste the exact URL of the tool page, describe what you expected versus what happened, and include a minimal sample that reproduces the issue without exposing secrets. Screenshots are welcome when layout or contrast is involved, but text reproduction steps are usually enough for formatter, encoder, and text utilities.
+      </p>
+      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+        For partnership or sponsorship inquiries, summarize your audience, the kind of collaboration you have in mind, and any timelines. ToolBite prioritizes proposals that respect reader trust and align with privacy-first, browser-local workflows. We do not accept paid links that disguise advertising as editorial content.
+      </p>
+      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+        If you are requesting a new tool or guide, explain the workflow you are trying to complete, how often you need it, and which existing ToolBite pages are closest today. Clear user stories help us decide whether to extend an existing tool, add a small variant, or publish a focused tutorial instead of a one-off feature.
+      </p>
+      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200">
+        Security-sensitive disclosures should still avoid sending private keys, live production tokens, or customer data through email. Describe impact and scope in plain language, and we will coordinate a responsible next step. Thank you for helping keep ToolBite accurate, fast, and trustworthy for everyone who relies on it.
+      </p>
+    </section>
+
 </BaseLayout>

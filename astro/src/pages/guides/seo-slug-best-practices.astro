@@ -1,9 +1,20 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
+import { SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
-const title = "SEO Slug Best Practices – Guide | ToolBite";
-const description = "Use SEO Slug Best Practices – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs f";
+const title = "SEO URL Slug Guide — Complete Guide | ToolBite";
+const description = "Improve SEO slug quality: keywords, hyphens, length limits, stop-word discipline, and matching URLs to intent. Practical examples free on ToolBite. Try today.";
 const canonicalPath = "/guides/seo-slug-best-practices.html";
+const pageUrl = `${SITE_URL}${canonicalPath}`;
+const schemas = [
+  buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Guides", url: `${SITE_URL}/guides/index.html` },
+    { name: "SEO slug best practices", url: pageUrl }
+  ])
+];
+
 const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
       <ol class="flex flex-wrap items-center gap-2">
@@ -103,59 +114,8 @@ const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl m
       </div>
     </section>
   </main>`;
-const headHtml = String.raw`<title>SEO Slug Best Practices – Guide | ToolBite</title>
-  <meta name="description" content="Use SEO Slug Best Practices – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs f">
-  <link rel="canonical" href="https://toolbite.org/guides/seo-slug-best-practices.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/seo-slug-best-practices.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/seo-slug-best-practices.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/guides/seo-slug-best-practices.html">
-  <meta property="og:title" content="SEO Slug Best Practices – Guide | ToolBite">
-  <meta property="og:description" content="Use SEO Slug Best Practices – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs f">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="SEO Slug Best Practices – Guide | ToolBite">
-  <meta name="twitter:description" content="Use SEO Slug Best Practices – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs f">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://toolbite.org"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://toolbite.org/guides/index.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "SEO Slug Best Practices – Guide | ToolBite",
-        "item": "https://toolbite.org/guides/seo-slug-best-practices.html"
-      }
-    ]
-  }
-  </script>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+<GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>
   <Fragment set:html={mainHtml} />
-  <Fragment slot="head" set:html={headHtml} />
 </GuideLayout>

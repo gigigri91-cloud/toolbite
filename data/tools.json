@@ -1,17 +1,26 @@
 [
   {
-    "name": "Base64 encoder &amp; decoder",
-    "title": "Base64 encoder &amp; decoder",
-    "desc": "Encode or decode Base64 for tokens, snippets, and small payloads. Strings stay in your browser tab unless you copy them elsewhere.",
-    "description": "Encode or decode Base64 for tokens, snippets, and small payloads. Strings stay in your browser tab unless you copy them elsewhere.",
+    "name": "Base64 encoder and decoder",
+    "title": "Base64 Encoder &amp; Decoder Online — Free Tool | ToolBite",
+    "desc": "Encode or decode Base64 strings instantly in your browser. Free Base64 encoder and decoder — no upload, no account, 100% client-side. Try it on ToolBite.",
+    "description": "Encode or decode Base64 strings instantly in your browser. Free Base64 encoder and decoder — no upload, no account, 100% client-side. Try it on ToolBite.",
     "url": "tools/base64-encoder.html",
     "canonical": "https://toolbite.org/tools/base64-encoder.html",
     "icon": "📎",
     "tags": "base64 encode decode utf8 developer",
-    "keywords": ["base64", "encode", "decode", "utf8", "developer"],
+    "keywords": [
+      "base64",
+      "encode",
+      "decode",
+      "utf8",
+      "developer"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/url-encoder.html", "tools/json-formatter.html"],
+    "relatedTools": [
+      "tools/url-encoder.html",
+      "tools/json-formatter.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -25,78 +34,119 @@
     "canonical": "https://toolbite.org/guides/base64-encoding-guide.html",
     "icon": "📎",
     "tags": "base64 guide encoding developer",
-    "keywords": ["base64", "guide", "encoding", "developer"],
+    "keywords": [
+      "base64",
+      "guide",
+      "encoding",
+      "developer"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/base64-encoder.html"],
+    "relatedTools": [
+      "tools/base64-encoder.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "CSV to JSON Converter",
-    "title": "CSV to JSON Converter",
-    "desc": "Instantly convert CSV data to a valid JSON array in your browser. Paste your spreadsheet, configure options, copy the result. No uploads, no account required.",
-    "description": "Instantly convert CSV data to a valid JSON array in your browser. Paste your spreadsheet, configure options, copy the result. No uploads, no account required.",
+    "name": "CSV to JSON converter",
+    "title": "CSV to JSON Converter Online — Free Tool | ToolBite",
+    "desc": "Convert CSV data to JSON format instantly in your browser. Paste your spreadsheet, configure options, and copy the result. Free CSV to JSON converter.",
+    "description": "Convert CSV data to JSON format instantly in your browser. Paste your spreadsheet, configure options, and copy the result. Free CSV to JSON converter.",
     "url": "tools/csv-to-json.html",
     "canonical": "https://toolbite.org/tools/csv-to-json.html",
     "icon": "🔄",
     "tags": "csv json converter spreadsheet developer",
-    "keywords": ["csv", "json", "converter", "spreadsheet", "developer"],
+    "keywords": [
+      "csv",
+      "json",
+      "converter",
+      "spreadsheet",
+      "developer"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/json-formatter.html"],
+    "relatedTools": [
+      "tools/json-formatter.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Case converter",
-    "title": "Case converter",
-    "desc": "Switch naming styles for code, headings, or data cleanup without sending strings to a backend—paste, convert, copy.",
-    "description": "Switch naming styles for code, headings, or data cleanup without sending strings to a backend—paste, convert, copy.",
+    "title": "Case Converter Online — UPPER, lower, Title Case Free | ToolBite",
+    "desc": "Convert text between uppercase, lowercase, title case, and more instantly. Free online case converter — paste text and transform in one click on ToolBite.",
+    "description": "Convert text between uppercase, lowercase, title case, and more instantly. Free online case converter — paste text and transform in one click on ToolBite.",
     "url": "tools/case-converter.html",
     "canonical": "https://toolbite.org/tools/case-converter.html",
     "icon": "🔠",
     "tags": "case uppercase lowercase title camelCase text",
-    "keywords": ["case", "uppercase", "lowercase", "camelCase", "text"],
+    "keywords": [
+      "case",
+      "uppercase",
+      "lowercase",
+      "camelCase",
+      "text"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/remove-extra-spaces.html", "tools/find-replace.html"],
+    "relatedTools": [
+      "tools/remove-extra-spaces.html",
+      "tools/find-replace.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Color palette generator",
-    "title": "Color palette generator",
-    "desc": "Spin up five-color palettes and copy HEX codes with one click. Useful for UI spikes; all randomness runs in the browser.",
-    "description": "Spin up five-color palettes and copy HEX codes with one click. Useful for UI spikes; all randomness runs in the browser.",
+    "title": "Color Palette Generator Online — Free Color Tool | ToolBite",
+    "desc": "Generate beautiful color palettes instantly for your design projects. Free online color palette generator — export hex codes in one click on ToolBite today.",
+    "description": "Generate beautiful color palettes instantly for your design projects. Free online color palette generator — export hex codes in one click on ToolBite today.",
     "url": "tools/color-palette-generator.html",
     "canonical": "https://toolbite.org/tools/color-palette-generator.html",
     "icon": "🎨",
     "tags": "color palette hex design generator",
-    "keywords": ["color", "palette", "hex", "design", "generator"],
+    "keywords": [
+      "color",
+      "palette",
+      "hex",
+      "design",
+      "generator"
+    ],
     "category": "image-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/qr-generator.html", "tools/image-compressor.html"],
+    "relatedTools": [
+      "tools/qr-generator.html",
+      "tools/image-compressor.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "Find &amp; replace text",
-    "title": "Find &amp; replace text",
-    "desc": "Replace phrases across long pasted text with optional case sensitivity. Runs entirely in JavaScript—good for logs, lists, and CMS exports.",
-    "description": "Replace phrases across long pasted text with optional case sensitivity. Runs entirely in JavaScript—good for logs, lists, and CMS exports.",
+    "name": "Find and replace text",
+    "title": "Find and Replace Text Online — Free Tool | ToolBite",
+    "desc": "Find and replace text in bulk instantly in your browser. Supports plain text and regex. Free online find and replace tool — no account needed. Try ToolBite now.",
+    "description": "Find and replace text in bulk instantly in your browser. Supports plain text and regex. Free online find and replace tool — no account needed. Try ToolBite now.",
     "url": "tools/find-replace.html",
     "canonical": "https://toolbite.org/tools/find-replace.html",
     "icon": "🔁",
     "tags": "find replace text bulk",
-    "keywords": ["find", "replace", "text", "bulk"],
+    "keywords": [
+      "find",
+      "replace",
+      "text",
+      "bulk"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/remove-extra-spaces.html", "tools/sort-text-lines.html"],
+    "relatedTools": [
+      "tools/remove-extra-spaces.html",
+      "tools/sort-text-lines.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -110,10 +160,18 @@
     "canonical": "https://toolbite.org/guides/compress-images-guide.html",
     "icon": "🖼️",
     "tags": "image compress guide webp optimization",
-    "keywords": ["image", "compress", "guide", "webp", "optimization"],
+    "keywords": [
+      "image",
+      "compress",
+      "guide",
+      "webp",
+      "optimization"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/image-compressor.html"],
+    "relatedTools": [
+      "tools/image-compressor.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -127,10 +185,18 @@
     "canonical": "https://toolbite.org/guides/jwt-decoder-guide.html",
     "icon": "📗",
     "tags": "jwt guide tutorial token verify claims security auth",
-    "keywords": ["jwt", "guide", "claims", "security", "auth"],
+    "keywords": [
+      "jwt",
+      "guide",
+      "claims",
+      "security",
+      "auth"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/jwt-decoder.html"],
+    "relatedTools": [
+      "tools/jwt-decoder.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -144,44 +210,67 @@
     "canonical": "https://toolbite.org/guides/password-guide.html",
     "icon": "🔑",
     "tags": "password guide security",
-    "keywords": ["password", "guide", "security"],
+    "keywords": [
+      "password",
+      "guide",
+      "security"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/password-generator.html"],
+    "relatedTools": [
+      "tools/password-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Image compressor",
-    "title": "Image compressor",
-    "desc": "JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.",
-    "description": "JPEG and WebP output with a quality slider using canvas APIs. Your images are not uploaded to ToolBite for processing.",
+    "title": "Image Compressor Online — Free Image Compression Tool | ToolBite",
+    "desc": "Compress JPEG, PNG, and WebP images instantly in your browser. Free online image compressor — reduce file size without losing quality. Runs fully client-side.",
+    "description": "Compress JPEG, PNG, and WebP images instantly in your browser. Free online image compressor — reduce file size without losing quality. Runs fully client-side.",
     "url": "tools/image-compressor.html",
     "canonical": "https://toolbite.org/tools/image-compressor.html",
     "icon": "🖼️",
     "tags": "image compress jpg png webp photo",
-    "keywords": ["image", "compress", "jpg", "png", "webp"],
+    "keywords": [
+      "image",
+      "compress",
+      "jpg",
+      "png",
+      "webp"
+    ],
     "category": "image-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/color-palette-generator.html", "tools/qr-generator.html"],
+    "relatedTools": [
+      "tools/color-palette-generator.html",
+      "tools/qr-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "JSON formatter &amp; validator",
-    "title": "JSON formatter &amp; validator",
-    "desc": "Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.",
-    "description": "Beautify, minify, and spot syntax errors before you ship payloads or JSON-LD. Parsing and formatting stay in your tab—not on our servers.",
+    "name": "JSON formatter and validator",
+    "title": "JSON Formatter &amp; Validator Online — Free Tool | ToolBite",
+    "desc": "Format, beautify, minify, and validate JSON instantly in your browser. No data sent to servers. Free JSON formatter with syntax highlighting. Try it now.",
+    "description": "Format, beautify, minify, and validate JSON instantly in your browser. No data sent to servers. Free JSON formatter with syntax highlighting. Try it now.",
     "url": "tools/json-formatter.html",
     "canonical": "https://toolbite.org/tools/json-formatter.html",
     "icon": "💻",
     "tags": "json formatter validator beautify developer",
-    "keywords": ["json", "formatter", "validator", "developer"],
+    "keywords": [
+      "json",
+      "formatter",
+      "validator",
+      "developer"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/csv-to-json.html", "tools/base64-encoder.html"],
+    "relatedTools": [
+      "tools/csv-to-json.html",
+      "tools/base64-encoder.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -195,78 +284,119 @@
     "canonical": "https://toolbite.org/guides/json-formatter-guide.html",
     "icon": "📘",
     "tags": "json guide tutorial fix invalid json trailing comma quotes",
-    "keywords": ["json", "guide", "trailing comma", "quotes", "validation"],
+    "keywords": [
+      "json",
+      "guide",
+      "trailing comma",
+      "quotes",
+      "validation"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/json-formatter.html"],
+    "relatedTools": [
+      "tools/json-formatter.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "JWT decoder",
-    "title": "JWT decoder",
-    "desc": "Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.",
-    "description": "Decode JWT header and payload JSON for debugging. This is decode-only: signature verification still belongs in your trusted backend.",
+    "title": "JWT Decoder Online — Decode JSON Web Tokens Free | ToolBite",
+    "desc": "Decode and inspect JWT tokens instantly in your browser. Read header, payload, and signature without sending data to any server. Free JWT decoder tool.",
+    "description": "Decode and inspect JWT tokens instantly in your browser. Read header, payload, and signature without sending data to any server. Free JWT decoder tool.",
     "url": "tools/jwt-decoder.html",
     "canonical": "https://toolbite.org/tools/jwt-decoder.html",
     "icon": "🪪",
     "tags": "jwt json web token decode bearer auth developer",
-    "keywords": ["jwt", "token", "decode", "auth", "developer"],
+    "keywords": [
+      "jwt",
+      "token",
+      "decode",
+      "auth",
+      "developer"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/base64-encoder.html", "tools/json-formatter.html"],
+    "relatedTools": [
+      "tools/base64-encoder.html",
+      "tools/json-formatter.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "Lorem ipsum generator",
-    "title": "Lorem ipsum generator",
-    "desc": "Classic filler paragraphs for layouts and CMS previews. Generated text never leaves your browser session.",
-    "description": "Classic filler paragraphs for layouts and CMS previews. Generated text never leaves your browser session.",
+    "name": "Lorem Ipsum generator",
+    "title": "Lorem Ipsum Generator Online — Free Placeholder Text | ToolBite",
+    "desc": "Generate Lorem Ipsum placeholder text instantly. Choose paragraphs, sentences, or words. Free Lorem Ipsum generator for designers and developers on ToolBite.",
+    "description": "Generate Lorem Ipsum placeholder text instantly. Choose paragraphs, sentences, or words. Free Lorem Ipsum generator for designers and developers on ToolBite.",
     "url": "tools/lorem-ipsum.html",
     "canonical": "https://toolbite.org/tools/lorem-ipsum.html",
     "icon": "📄",
     "tags": "lorem ipsum placeholder dummy text",
-    "keywords": ["lorem ipsum", "placeholder", "dummy text"],
+    "keywords": [
+      "lorem ipsum",
+      "placeholder",
+      "dummy text"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/word-counter.html", "tools/read-time-calculator.html"],
+    "relatedTools": [
+      "tools/word-counter.html",
+      "tools/read-time-calculator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Password generator",
-    "title": "Password generator",
-    "desc": "Generate long random passwords with the Web Crypto API where available. Nothing is sent to ToolBite; copy and store secrets in your own vault.",
-    "description": "Generate long random passwords with the Web Crypto API where available. Nothing is sent to ToolBite; copy and store secrets in your own vault.",
+    "title": "Password Generator Online — Strong Random Passwords Free | ToolBite",
+    "desc": "Generate strong, random passwords instantly in your browser. Customize length, symbols, and complexity. Free password generator — no account needed on ToolBite.",
+    "description": "Generate strong, random passwords instantly in your browser. Customize length, symbols, and complexity. Free password generator — no account needed on ToolBite.",
     "url": "tools/password-generator.html",
     "canonical": "https://toolbite.org/tools/password-generator.html",
     "icon": "🔑",
     "tags": "password generator secure random",
-    "keywords": ["password", "generator", "secure", "random"],
+    "keywords": [
+      "password",
+      "generator",
+      "secure",
+      "random"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/uuid-generator.html", "tools/hash-generator.html"],
+    "relatedTools": [
+      "tools/uuid-generator.html",
+      "tools/hash-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "QR Code Generator",
-    "title": "QR Code Generator",
-    "desc": "Generate QR codes instantly for any URL, text, email or phone number. Download as PNG. No uploads, no account required — everything runs in your browser.",
-    "description": "Generate QR codes instantly for any URL, text, email or phone number. Download as PNG. No uploads, no account required — everything runs in your browser.",
+    "name": "QR code generator",
+    "title": "QR Code Generator Online — Free QR Code Maker | ToolBite",
+    "desc": "Generate QR codes from any URL, text, or data instantly in your browser. Free online QR code generator — download as PNG, no account needed. Try ToolBite now.",
+    "description": "Generate QR codes from any URL, text, or data instantly in your browser. Free online QR code generator — download as PNG, no account needed. Try ToolBite now.",
     "url": "tools/qr-generator.html",
     "canonical": "https://toolbite.org/tools/qr-generator.html",
     "icon": "📱",
     "tags": "qr generator mobile scan code",
-    "keywords": ["qr", "generator", "scan", "code", "mobile"],
+    "keywords": [
+      "qr",
+      "generator",
+      "scan",
+      "code",
+      "mobile"
+    ],
     "category": "image-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/url-encoder.html", "tools/text-to-slug.html"],
+    "relatedTools": [
+      "tools/url-encoder.html",
+      "tools/text-to-slug.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -280,61 +410,95 @@
     "canonical": "https://toolbite.org/guides/qr-code-guide.html",
     "icon": "📱",
     "tags": "qr guide scan code",
-    "keywords": ["qr", "guide", "scan", "code"],
+    "keywords": [
+      "qr",
+      "guide",
+      "scan",
+      "code"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/qr-generator.html"],
+    "relatedTools": [
+      "tools/qr-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Reading time calculator",
-    "title": "Reading time calculator",
-    "desc": "Paste an article or doc to approximate reading time from word count. Handy before publishing; runs fully client-side.",
-    "description": "Paste an article or doc to approximate reading time from word count. Handy before publishing; runs fully client-side.",
+    "title": "Reading Time Calculator Online — Free Tool | ToolBite",
+    "desc": "Calculate the reading time of any text instantly. Free reading time estimator for bloggers, writers, and content creators. Accurate results on ToolBite.",
+    "description": "Calculate the reading time of any text instantly. Free reading time estimator for bloggers, writers, and content creators. Accurate results on ToolBite.",
     "url": "tools/read-time-calculator.html",
     "canonical": "https://toolbite.org/tools/read-time-calculator.html",
     "icon": "⏱️",
     "tags": "read time wpm minutes blog seo",
-    "keywords": ["read time", "wpm", "minutes", "blog", "seo"],
+    "keywords": [
+      "read time",
+      "wpm",
+      "minutes",
+      "blog",
+      "seo"
+    ],
     "category": "seo-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/word-counter.html", "tools/text-to-slug.html"],
+    "relatedTools": [
+      "tools/word-counter.html",
+      "tools/text-to-slug.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Remove duplicate lines",
-    "title": "Remove duplicate lines",
-    "desc": "Keep first occurrences of repeated lines in pasted logs, keywords, or inventories. No server round-trip for the dedupe logic.",
-    "description": "Keep first occurrences of repeated lines in pasted logs, keywords, or inventories. No server round-trip for the dedupe logic.",
+    "title": "Remove Duplicate Lines Online — Free Tool | ToolBite",
+    "desc": "Remove duplicate lines from any text instantly in your browser. Free online duplicate line remover — clean up lists and data in one click on ToolBite today.",
+    "description": "Remove duplicate lines from any text instantly in your browser. Free online duplicate line remover — clean up lists and data in one click on ToolBite today.",
     "url": "tools/remove-duplicate-lines.html",
     "canonical": "https://toolbite.org/tools/remove-duplicate-lines.html",
     "icon": "📋",
     "tags": "duplicate dedupe unique lines list text",
-    "keywords": ["duplicate", "dedupe", "unique", "lines", "text"],
+    "keywords": [
+      "duplicate",
+      "dedupe",
+      "unique",
+      "lines",
+      "text"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/sort-text-lines.html", "tools/remove-extra-spaces.html"],
+    "relatedTools": [
+      "tools/sort-text-lines.html",
+      "tools/remove-extra-spaces.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Remove extra spaces",
-    "title": "Remove extra spaces",
-    "desc": "Collapse runs of spaces, trim lines, or strip blank lines from messy copy. All transformations happen client-side for privacy.",
-    "description": "Collapse runs of spaces, trim lines, or strip blank lines from messy copy. All transformations happen client-side for privacy.",
+    "title": "Remove Extra Spaces Online — Free Whitespace Cleaner | ToolBite",
+    "desc": "Remove extra spaces, tabs, and whitespace from text instantly. Free online space remover tool — clean up messy text in one click on ToolBite today for free.",
+    "description": "Remove extra spaces, tabs, and whitespace from text instantly. Free online space remover tool — clean up messy text in one click on ToolBite today for free.",
     "url": "tools/remove-extra-spaces.html",
     "canonical": "https://toolbite.org/tools/remove-extra-spaces.html",
     "icon": "🧹",
     "tags": "spaces whitespace clean trim text",
-    "keywords": ["spaces", "whitespace", "trim", "clean", "text"],
+    "keywords": [
+      "spaces",
+      "whitespace",
+      "trim",
+      "clean",
+      "text"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/find-replace.html", "tools/remove-duplicate-lines.html"],
+    "relatedTools": [
+      "tools/find-replace.html",
+      "tools/remove-duplicate-lines.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -348,78 +512,121 @@
     "canonical": "https://toolbite.org/guides/seo-slug-best-practices.html",
     "icon": "📙",
     "tags": "seo slug guide url best practices permalink keywords hyphens",
-    "keywords": ["seo", "slug", "guide", "url", "permalink"],
+    "keywords": [
+      "seo",
+      "slug",
+      "guide",
+      "url",
+      "permalink"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/text-to-slug.html"],
+    "relatedTools": [
+      "tools/text-to-slug.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "SHA-256 &amp; SHA-1 hash generator",
-    "title": "SHA-256 &amp; SHA-1 hash generator",
-    "desc": "Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.",
-    "description": "Compute digests for strings using Web Crypto where available. Inputs are not uploaded; hashes are for local verification workflows.",
+    "name": "Hash generator",
+    "title": "Hash Generator Online — MD5, SHA-1, SHA-256 Free | ToolBite",
+    "desc": "Generate MD5, SHA-1, and SHA-256 hashes from any text instantly. Free online hash generator — 100% client-side, no data stored. Try it on ToolBite today.",
+    "description": "Generate MD5, SHA-1, and SHA-256 hashes from any text instantly. Free online hash generator — 100% client-side, no data stored. Try it on ToolBite today.",
     "url": "tools/hash-generator.html",
     "canonical": "https://toolbite.org/tools/hash-generator.html",
     "icon": "🔢",
     "tags": "sha256 sha1 hash checksum hex crypto",
-    "keywords": ["sha256", "sha1", "hash", "checksum", "crypto"],
+    "keywords": [
+      "sha256",
+      "sha1",
+      "hash",
+      "checksum",
+      "crypto"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/password-generator.html", "tools/base64-encoder.html"],
+    "relatedTools": [
+      "tools/password-generator.html",
+      "tools/base64-encoder.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Sort text lines",
-    "title": "Sort text lines",
-    "desc": "Alphabetize or reverse lines for quick cleanup of exports and checklists. Sorting runs entirely in your browser.",
-    "description": "Alphabetize or reverse lines for quick cleanup of exports and checklists. Sorting runs entirely in your browser.",
+    "title": "Sort Text Lines Online — Free Line Sorter Tool | ToolBite",
+    "desc": "Sort lines of text alphabetically, reverse, or randomly in one click. Free online line sorter — paste text, sort instantly, copy the result on ToolBite today.",
+    "description": "Sort lines of text alphabetically, reverse, or randomly in one click. Free online line sorter — paste text, sort instantly, copy the result on ToolBite today.",
     "url": "tools/sort-text-lines.html",
     "canonical": "https://toolbite.org/tools/sort-text-lines.html",
     "icon": "🔤",
     "tags": "sort lines alphabetical order text list",
-    "keywords": ["sort", "lines", "alphabetical", "text", "list"],
+    "keywords": [
+      "sort",
+      "lines",
+      "alphabetical",
+      "text",
+      "list"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/remove-duplicate-lines.html", "tools/find-replace.html"],
+    "relatedTools": [
+      "tools/remove-duplicate-lines.html",
+      "tools/find-replace.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "Text to slug generator",
-    "title": "Text to slug generator",
-    "desc": "Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.",
-    "description": "Turn headlines into lowercase, hyphenated slugs for blogs and product URLs. Processing stays on your device.",
+    "title": "Text to Slug Converter Online — Free URL Slug Generator | ToolBite",
+    "desc": "Convert any text to a clean URL slug instantly. Free text to slug converter — handles spaces, special characters, and accents automatically on ToolBite.",
+    "description": "Convert any text to a clean URL slug instantly. Free text to slug converter — handles spaces, special characters, and accents automatically on ToolBite.",
     "url": "tools/text-to-slug.html",
     "canonical": "https://toolbite.org/tools/text-to-slug.html",
     "icon": "🔗",
     "tags": "slug url seo permalink hyphen",
-    "keywords": ["slug", "url", "seo", "permalink", "hyphen"],
+    "keywords": [
+      "slug",
+      "url",
+      "seo",
+      "permalink",
+      "hyphen"
+    ],
     "category": "seo-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/read-time-calculator.html", "tools/url-encoder.html"],
+    "relatedTools": [
+      "tools/read-time-calculator.html",
+      "tools/url-encoder.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "URL encoder &amp; decoder",
-    "title": "URL encoder &amp; decoder",
-    "desc": "Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.",
-    "description": "Encode or decode URI components and full URLs for debugging and hand-built links. All work happens locally after load.",
+    "name": "URL encoder and decoder",
+    "title": "URL Encoder &amp; Decoder Online — Free Tool | ToolBite",
+    "desc": "Encode or decode URLs and query strings instantly in your browser. Free URL encoder and decoder — handles all special characters. Try it on ToolBite today.",
+    "description": "Encode or decode URLs and query strings instantly in your browser. Free URL encoder and decoder — handles all special characters. Try it on ToolBite today.",
     "url": "tools/url-encoder.html",
     "canonical": "https://toolbite.org/tools/url-encoder.html",
     "icon": "🔗",
     "tags": "url encode decode encodeURIComponent encodeURI",
-    "keywords": ["url", "encode", "decode", "encodeURIComponent"],
+    "keywords": [
+      "url",
+      "encode",
+      "decode",
+      "encodeURIComponent"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/base64-encoder.html", "tools/qr-generator.html"],
+    "relatedTools": [
+      "tools/base64-encoder.html",
+      "tools/qr-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -433,27 +640,43 @@
     "canonical": "https://toolbite.org/guides/url-encoding-guide.html",
     "icon": "🔗",
     "tags": "url encode guide encoding",
-    "keywords": ["url", "encode", "guide", "percent encoding"],
+    "keywords": [
+      "url",
+      "encode",
+      "guide",
+      "percent encoding"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/url-encoder.html"],
+    "relatedTools": [
+      "tools/url-encoder.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
     "name": "UUID / GUID generator",
-    "title": "UUID / GUID generator",
-    "desc": "Generate random v4 UUIDs for databases, fixtures, and API tests. IDs are created in-browser; nothing is logged by ToolBite.",
-    "description": "Generate random v4 UUIDs for databases, fixtures, and API tests. IDs are created in-browser; nothing is logged by ToolBite.",
+    "title": "UUID Generator Online — Free UUID v4 Generator | ToolBite",
+    "desc": "Generate random UUID v4 identifiers instantly in your browser. Free online UUID generator — bulk generation supported, no account needed. Try ToolBite.",
+    "description": "Generate random UUID v4 identifiers instantly in your browser. Free online UUID generator — bulk generation supported, no account needed. Try ToolBite.",
     "url": "tools/uuid-generator.html",
     "canonical": "https://toolbite.org/tools/uuid-generator.html",
     "icon": "🆔",
     "tags": "uuid guid random id rfc4122 v4",
-    "keywords": ["uuid", "guid", "random", "id", "v4"],
+    "keywords": [
+      "uuid",
+      "guid",
+      "random",
+      "id",
+      "v4"
+    ],
     "category": "developer-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/password-generator.html", "tools/hash-generator.html"],
+    "relatedTools": [
+      "tools/password-generator.html",
+      "tools/hash-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
@@ -467,27 +690,42 @@
     "canonical": "https://toolbite.org/guides/uuid-guid-guide.html",
     "icon": "🆔",
     "tags": "uuid guid guide random id",
-    "keywords": ["uuid", "guid", "guide", "id"],
+    "keywords": [
+      "uuid",
+      "guid",
+      "guide",
+      "id"
+    ],
     "category": "guides",
     "schemaType": "HowTo",
-    "relatedTools": ["tools/uuid-generator.html"],
+    "relatedTools": [
+      "tools/uuid-generator.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"
   },
   {
-    "name": "Word counter",
-    "title": "Word counter",
-    "desc": "Words, characters, sentences, and paragraphs for drafts and specs. Everything runs locally after the page loads—paste long documents freely.",
-    "description": "Words, characters, sentences, and paragraphs for drafts and specs. Everything runs locally after the page loads—paste long documents freely.",
+    "name": "Word counter online",
+    "title": "Word Counter Online — Free Words &amp; Characters Counter | ToolBite",
+    "desc": "Count words, characters, sentences, and paragraphs instantly. Free online word counter for writers, editors, and students. Real-time results on ToolBite.",
+    "description": "Count words, characters, sentences, and paragraphs instantly. Free online word counter for writers, editors, and students. Real-time results on ToolBite.",
     "url": "tools/word-counter.html",
     "canonical": "https://toolbite.org/tools/word-counter.html",
     "icon": "📝",
     "tags": "word counter characters sentences text",
-    "keywords": ["word counter", "characters", "sentences", "text"],
+    "keywords": [
+      "word counter",
+      "characters",
+      "sentences",
+      "text"
+    ],
     "category": "text-tools",
     "schemaType": "WebApplication",
-    "relatedTools": ["tools/read-time-calculator.html", "tools/lorem-ipsum.html"],
+    "relatedTools": [
+      "tools/read-time-calculator.html",
+      "tools/lorem-ipsum.html"
+    ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",
     "adMode": "auto"

@@ -1,12 +1,21 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createMetadata } from "@/lib/seo";
 
-const title = "404 – Page Not Found | ToolBite";
-const description = "Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday";
+const title = "404 Page Not Found — ToolBite Free Online Tools";
+const description =
+  "This ToolBite page is missing or moved. Search free JSON, text, image, and SEO tools, or return home. Find the right utility in seconds on ToolBite today.";
 const canonicalPath = "/404.html";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  robots: { index: false, follow: true },
+  keywords: ["404", "ToolBite", "page not found", "search tools"]
+});
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
 <div class="text-7xl mb-6">🕳️</div>
     <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 mb-6" data-pseo-target="h1">404</h1>
     <h2 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">Page Not Found</h2>
@@ -28,27 +37,4 @@ const canonicalPath = "/404.html";
     </div>
     <a href="/" class="tb-btn tb-btn-outline inline-block py-3 px-8 rounded-xl">Return to Homepage</a>
 
-  <Fragment slot="head">
-<title>404 – Page Not Found | ToolBite</title>
-  <meta name="description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
-  <link rel="canonical" href="https://toolbite.org/404.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="noindex, follow">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/404.html">
-  <meta property="og:title" content="404 – Page Not Found | ToolBite">
-  <meta property="og:description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="404 – Page Not Found | ToolBite">
-  <meta name="twitter:description" content="Use 404 – Page Not Found | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  </Fragment>
 </BaseLayout>

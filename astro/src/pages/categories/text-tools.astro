@@ -3,8 +3,9 @@ import CategoryPage from "@/components/discovery/CategoryPage.astro";
 import CategoryLayout from "@/layouts/CategoryLayout.astro";
 import { createCategoryMetadata } from "@/lib/seo";
 
-const title = "Text Tools | ToolBite";
-const description = "Word counter, case converter, slug generator, find & replace, and more — all text tools run locally in your browser with zero uploads.";
+const title = "Text Tools Online — Free Word Counter, Case Converter & More | ToolBite";
+const description =
+  "7 free text tools including word counter, case converter, find & replace, and Lorem Ipsum generator. Fast, free, no account—open ToolBite text tools today.";
 const canonicalPath = "/categories/text-tools.html";
 
 const metadata = createCategoryMetadata({
@@ -18,9 +19,10 @@ const schemas = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Text tools — edit & clean copy in your browser | ToolBite",
+    name: "Text Tools Online — Free Word Counter, Case Converter & More | ToolBite",
     url: "https://toolbite.org/categories/text-tools.html",
-    description: "Case changes, spacing cleanup, counters, slugs, and line tools-all run locally in the browser so drafts stay on your device.",
+    description:
+      "Seven free text utilities—word counter, case converter, find and replace, Lorem Ipsum, and cleanup helpers—run locally in your browser with zero uploads.",
     dateModified: "2026-05-08"
   }
 ];
@@ -29,7 +31,7 @@ const schemas = [
 <CategoryLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata} schemas={schemas}>
   <CategoryPage
     slug="text-tools"
-    title="Text & content tools"
+    title="Text & writing tools"
     heroDescription="Clean, convert, and refine text workflows instantly. Every transformation runs locally in your browser for privacy and speed."
   />
 </CategoryLayout>

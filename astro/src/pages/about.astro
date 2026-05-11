@@ -1,12 +1,22 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createMetadata } from "@/lib/seo";
+import { buildOrganizationSchema } from "@/lib/schema";
 
-const title = "About | ToolBite";
-const description = "Use About | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.";
+const title = "About ToolBite — Free Online Tools Built for Speed & Privacy";
+const description =
+  "Learn about ToolBite — a collection of 20 free browser-based tools built for developers, writers, and designers. No accounts. No data collection. Try ToolBite.";
 const canonicalPath = "/about.html";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["ToolBite", "about ToolBite", "free online tools", "privacy-first tools", "browser utilities"]
+});
+const schemas = [buildOrganizationSchema()];
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>
 <nav class="tb-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-6 text-left" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -125,48 +135,4 @@ const canonicalPath = "/about.html";
       <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">For bugs, corrections, or partnership requests, use the <a href="contact.html" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">contact page</a>. Typical response time is <strong>24–48 hours</strong>.</p>
     </section>
 
-  <Fragment slot="head">
-<title>About | ToolBite</title>
-  <meta name="description" content="Use About | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <link rel="canonical" href="https://toolbite.org/about.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/about.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/about.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/about.html">
-  <meta property="og:title" content="About | ToolBite">
-  <meta property="og:description" content="Use About | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="About ToolBite — Local-first browser utilities — ToolBite">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="About | ToolBite">
-  <meta name="twitter:description" content="Use About | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta name="twitter:image:alt" content="About ToolBite — Local-first browser utilities — ToolBite">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ToolBite",
-    "url": "https://toolbite.org",
-    "logo": "https://toolbite.org/assets/logo.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Gabriel C."
-    },
-    "address": {
-      "addressCountry": "RO"
-    }
-  }
-  </script>
-  </Fragment>
 </BaseLayout>

@@ -1,12 +1,20 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createLegalMetadata } from "@/lib/seo";
 
-const title = "Cookie Policy | ToolBite";
-const description = "Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.";
+const title = "Cookie Policy — ToolBite Free Online Tools";
+const description =
+  "Read the ToolBite cookie policy for categories, consent controls, third-party ads, analytics, and how to manage preferences in your browser on ToolBite today.";
 const canonicalPath = "/cookie-policy.html";
+const metadata = createLegalMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["ToolBite cookies", "cookie policy", "consent", "AdSense", "analytics"]
+});
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
 <nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -72,29 +80,4 @@ const canonicalPath = "/cookie-policy.html";
       </div>
     </section>
 
-  <Fragment slot="head">
-<title>Cookie Policy | ToolBite</title>
-  <meta name="description" content="Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <link rel="canonical" href="https://toolbite.org/cookie-policy.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/cookie-policy.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/cookie-policy.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/cookie-policy.html">
-  <meta property="og:title" content="Cookie Policy | ToolBite">
-  <meta property="og:description" content="Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Cookie Policy | ToolBite">
-  <meta name="twitter:description" content="Use Cookie Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  </Fragment>
 </BaseLayout>

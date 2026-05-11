@@ -1,9 +1,20 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
+import { SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
-const title = "Hash Functions Explained – Guide | ToolBite";
-const description = "Use Hash Functions Explained – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs";
+const title = "Hash Functions Explained — Complete Guide | ToolBite";
+const description = "Understand hash functions: MD5 vs SHA families, collisions, salting, and when each algorithm fits your workflow. Clear developer examples free on ToolBite.";
 const canonicalPath = "/guides/hash-functions-explained.html";
+const pageUrl = `${SITE_URL}${canonicalPath}`;
+const schemas = [
+  buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Guides", url: `${SITE_URL}/guides/index.html` },
+    { name: "Hash functions explained", url: pageUrl }
+  ])
+];
+
 const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
       <ol class="flex flex-wrap items-center gap-2">
@@ -81,83 +92,8 @@ console.log(fileDigest);</code></pre>
     </article>
   <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="/tools/hash-generator.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🔢</span><span>Hash Generator</span></a><a href="/tools/password-generator.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🔑</span><span>Password Generator</span></a></div></section>
 </main>`;
-const headHtml = String.raw`<title>Hash Functions Explained – Guide | ToolBite</title>
-  <meta name="description" content="Use Hash Functions Explained – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs">
-  <link rel="canonical" href="https://toolbite.org/guides/hash-functions-explained.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/hash-functions-explained.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/hash-functions-explained.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/guides/hash-functions-explained.html">
-  <meta property="og:title" content="Hash Functions Explained – Guide | ToolBite">
-  <meta property="og:description" content="Use Hash Functions Explained – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Hash Functions Explained – Guide | ToolBite">
-  <meta name="twitter:description" content="Use Hash Functions Explained – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://toolbite.org"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://toolbite.org/guides/index.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Hash Functions Explained – Guide | ToolBite",
-        "item": "https://toolbite.org/guides/hash-functions-explained.html"
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Hash functions explained for integrity and security workflows",
-    "datePublished": "2026-05-05",
-    "dateModified": "2026-05-08",
-    "author": {
-      "@type": "Person",
-      "name": "Gabriel C.",
-      "url": "https://toolbite.org/authors/gabriel-c.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ToolBite",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://toolbite.org/assets/images/toolbite-logo.png"
-      }
-    },
-    "mainEntityOfPage": "https://toolbite.org/guides/hash-functions-explained.html",
-    "description": "Understand cryptographic hash functions, practical use cases, and common misuse patterns across application and security workflows."
-  }
-  </script>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+<GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>
   <Fragment set:html={mainHtml} />
-  <Fragment slot="head" set:html={headHtml} />
 </GuideLayout>

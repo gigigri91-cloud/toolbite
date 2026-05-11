@@ -1,18 +1,27 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createGuideMetadata } from "@/lib/seo";
+import type { JsonLdObject } from "@/lib/schema";
 
 export interface Props {
   title: string;
   description: string;
   canonicalPath: string;
+  keywords?: string[];
+  schemas?: JsonLdObject[];
 }
 
-const { title, description, canonicalPath } = Astro.props;
+const { title, description, canonicalPath, keywords = [], schemas = [] } = Astro.props;
+const metadata = createGuideMetadata({ title, description, canonicalPath, keywords });
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  rootPath="/"
+  metadata={metadata}
+  schemas={schemas}
+>
   <slot />
-  <Fragment slot="head">
-    <slot name="head" />
-  </Fragment>
 </BaseLayout>

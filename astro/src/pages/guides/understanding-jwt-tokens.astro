@@ -1,9 +1,20 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
+import { SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
-const title = "Understanding JWT Tokens – Guide | ToolBite";
-const description = "Use Understanding JWT Tokens – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs";
+const title = "JWT Token Security — Complete Guide | ToolBite";
+const description = "Understand JWT tokens end to end: signed payloads, common claims, rotation, and safer handling in production apps. Practical examples free on ToolBite.";
 const canonicalPath = "/guides/understanding-jwt-tokens.html";
+const pageUrl = `${SITE_URL}${canonicalPath}`;
+const schemas = [
+  buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Guides", url: `${SITE_URL}/guides/index.html` },
+    { name: "Understanding JWT tokens", url: pageUrl }
+  ])
+];
+
 const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
       <ol class="flex flex-wrap items-center gap-2">
@@ -83,83 +94,8 @@ if (!payload || payload.scope?.includes(&quot;admin&quot;) === false) {
     </article>
   <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="/tools/jwt-decoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a><a href="/tools/json-formatter.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a></div></section>
 </main>`;
-const headHtml = String.raw`<title>Understanding JWT Tokens – Guide | ToolBite</title>
-  <meta name="description" content="Use Understanding JWT Tokens – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs">
-  <link rel="canonical" href="https://toolbite.org/guides/understanding-jwt-tokens.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/understanding-jwt-tokens.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/understanding-jwt-tokens.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/guides/understanding-jwt-tokens.html">
-  <meta property="og:title" content="Understanding JWT Tokens – Guide | ToolBite">
-  <meta property="og:description" content="Use Understanding JWT Tokens – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Understanding JWT Tokens – Guide | ToolBite">
-  <meta name="twitter:description" content="Use Understanding JWT Tokens – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://toolbite.org"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://toolbite.org/guides/index.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Understanding JWT Tokens – Guide | ToolBite",
-        "item": "https://toolbite.org/guides/understanding-jwt-tokens.html"
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Understanding JWT tokens in real systems",
-    "datePublished": "2026-05-05",
-    "dateModified": "2026-05-08",
-    "author": {
-      "@type": "Person",
-      "name": "Gabriel C.",
-      "url": "https://toolbite.org/authors/gabriel-c.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ToolBite",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://toolbite.org/assets/images/toolbite-logo.png"
-      }
-    },
-    "mainEntityOfPage": "https://toolbite.org/guides/understanding-jwt-tokens.html",
-    "description": "Understand JWT structure, trust boundaries, validation rules, and real-world token handling pitfalls with secure implementation guidance."
-  }
-  </script>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+<GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>
   <Fragment set:html={mainHtml} />
-  <Fragment slot="head" set:html={headHtml} />
 </GuideLayout>

@@ -1,9 +1,32 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SITE_URL, createMetadata } from "@/lib/seo";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
-const title = "Authors | ToolBite";
-const description = "Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.";
-const canonicalPath = "/authors/";
+const title = "ToolBite Authors — Guides & Technical Writers | ToolBite";
+const description =
+  "Discover who writes ToolBite guides and tool pages: editorial standards, expertise, and how to follow authors behind tutorials. Read more on ToolBite today.";
+const canonicalPath = "/authors/index.html";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["ToolBite authors", "technical writers", "guide authors", "ToolBite team", "Gabriel C."]
+});
+const pageUrl = `${SITE_URL}${canonicalPath}`;
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "ToolBite authors",
+    url: pageUrl,
+    description: "Meet the authors behind ToolBite guides and tools."
+  },
+  buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Authors", url: pageUrl }
+  ])
+];
 const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
     <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Authors</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -19,62 +42,8 @@ const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 
       </a>
     </div>
   </main>`;
-const headHtml = String.raw`<title>Authors | ToolBite</title>
-  <meta name="description" content="Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <link rel="canonical" href="https://toolbite.org/authors/index.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/authors/index.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/authors/index.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/authors/index.html">
-  <meta property="og:title" content="Authors | ToolBite">
-  <meta property="og:description" content="Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Authors | ToolBite">
-  <meta name="twitter:description" content="Use Authors | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks.">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Authors — ToolBite",
-      "url": "https://toolbite.org/authors/index.html",
-      "description": "Meet the authors behind ToolBite guides and tools."
-    }
-    </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://toolbite.org/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Authors",
-          "item": "https://toolbite.org/authors/index.html"
-        }
-      ]
-    }
-    </script>`;
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>
   <Fragment set:html={mainHtml} />
-  <Fragment slot="head" set:html={headHtml} />
 </BaseLayout>

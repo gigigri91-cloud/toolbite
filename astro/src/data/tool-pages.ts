@@ -1,4 +1,5 @@
 import { getAllTools } from "@/lib/tools";
+import { TOOL_SEO_EXPANSIONS } from "./tool-seo-expansions";
 
 export type ToolPageContent = {
   slug: string;
@@ -48,7 +49,7 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   },
   "json-formatter": {
     slug: "json-formatter",
-    heroEyebrow: "Developer payload utility",
+    heroEyebrow: "DEVELOPER PAYLOAD UTILITY",
     heroTitle: "JSON formatter and validator",
     heroDescription: "Beautify, minify, and validate JSON fast while keeping API payloads in your local browser context.",
     categoryName: "Developer Tools",
@@ -79,8 +80,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   },
   "jwt-decoder": {
     slug: "jwt-decoder",
-    heroEyebrow: "Token inspection",
-    heroTitle: "JWT decoder online",
+    heroEyebrow: "TOKEN INSPECTION",
+    heroTitle: "JWT decoder",
     heroDescription: "Decode JWT header and payload segments instantly for troubleshooting auth flows and claim inspection.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
@@ -111,7 +112,7 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   "image-compressor": {
     slug: "image-compressor",
     heroEyebrow: "Media optimization",
-    heroTitle: "Image compressor online",
+    heroTitle: "Image compressor",
     heroDescription: "Compress JPEG and WebP output in your browser to reduce transfer cost and improve page performance without uploads.",
     categoryName: "Image Tools",
     categoryHref: "/categories/image-tools.html",
@@ -204,7 +205,7 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   "case-converter": {
     slug: "case-converter",
     heroEyebrow: "Text normalization helper",
-    heroTitle: "Case converter online",
+    heroTitle: "Case converter",
     heroDescription: "Switch between uppercase, lowercase, title case, sentence case, and camelCase in one click.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
@@ -328,7 +329,7 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   "hash-generator": {
     slug: "hash-generator",
     heroEyebrow: "Digest computation utility",
-    heroTitle: "SHA hash generator",
+    heroTitle: "Hash generator",
     heroDescription: "Generate SHA-256 or SHA-1 hashes for text input using Web Crypto in modern browsers.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
@@ -359,7 +360,7 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   "lorem-ipsum": {
     slug: "lorem-ipsum",
     heroEyebrow: "Placeholder content helper",
-    heroTitle: "Lorem ipsum generator",
+    heroTitle: "Lorem Ipsum generator",
     heroDescription: "Generate classic placeholder paragraphs for layouts, prototypes, and publishing previews.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
@@ -606,8 +607,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   },
   "uuid-generator": {
     slug: "uuid-generator",
-    heroEyebrow: "Identifier utility",
-    heroTitle: "UUID generator",
+    heroEyebrow: "IDENTIFIER UTILITY",
+    heroTitle: "UUID / GUID generator",
     heroDescription: "Generate one or many random v4 UUIDs for databases, APIs, and fixture workflows.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
@@ -642,7 +643,16 @@ export function getToolPageContent(slug: string): ToolPageContent {
   if (!record) {
     throw new Error(`Missing tool content for ${slug}`);
   }
-  return record;
+  const exp = TOOL_SEO_EXPANSIONS[slug];
+  if (!exp) {
+    return record;
+  }
+  return {
+    ...record,
+    heroDescription: `${record.heroDescription} ${exp.heroAppend}`.trim(),
+    benefits: [...record.benefits, ...exp.extraBenefits],
+    faq: [...record.faq, ...exp.extraFaq]
+  };
 }
 
 export function getToolRecordBySlug(slug: string) {

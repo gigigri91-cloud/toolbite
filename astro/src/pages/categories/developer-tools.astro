@@ -3,8 +3,9 @@ import CategoryPage from "@/components/discovery/CategoryPage.astro";
 import CategoryLayout from "@/layouts/CategoryLayout.astro";
 import { createCategoryMetadata } from "@/lib/seo";
 
-const title = "Developer Tools | ToolBite";
-const description = "Format JSON, decode JWTs, encode Base64, generate UUIDs and hashes — browser-based developer utilities with no data sent to servers.";
+const title = "Developer Tools Online — Free JSON, UUID, Hash & More | ToolBite";
+const description =
+  "8 free developer tools including JSON formatter, UUID generator, JWT decoder, and Base64 encoder. All run in your browser — no account needed. Try ToolBite.";
 const canonicalPath = "/categories/developer-tools.html";
 
 const metadata = createCategoryMetadata({
@@ -18,9 +19,10 @@ const schemas = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Developer tools — JSON, JWT, encoding & hashes | ToolBite",
+    name: "Developer Tools Online — Free JSON, UUID, Hash & More | ToolBite",
     url: "https://toolbite.org/categories/developer-tools.html",
-    description: "Format JSON, decode JWT headers and payloads for inspection, Base64, URL encoding, UUIDs, and SHA helpers-client-side where the tool allows it.",
+    description:
+      "Eight free developer utilities—JSON formatter, JWT decoder, Base64, UUID, hashing, and more—run locally in your browser without uploading payloads.",
     dateModified: "2026-05-08"
   }
 ];

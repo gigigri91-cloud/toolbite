@@ -1,9 +1,25 @@
 ---
-import GuideLayout from "@/layouts/GuideLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SITE_URL, createMetadata } from "@/lib/seo";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
-const title = "JSON, JWT & SEO Guides | ToolBite";
-const description = "Short practical guides on JSON formatting, JWT decoding, SEO slugs, Base64, UUIDs, URL encoding, and image compression.";
+const title = "ToolBite Guides & Tutorials — Complete Guide | ToolBite";
+const description =
+  "Browse JSON, JWT, SEO, Base64, UUID, URL, password, and image guides linked to ToolBite tools. Step-by-step tutorials with examples. Free on ToolBite.";
 const canonicalPath = "/guides/index.html";
+const metadata = createMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["ToolBite guides", "JSON guide", "JWT tutorial", "SEO slug guide", "developer tutorials"]
+});
+const pageUrl = `${SITE_URL}${canonicalPath}`;
+const schemas = [
+  buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Guides", url: pageUrl }
+  ])
+];
 const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
@@ -117,61 +133,8 @@ const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-7xl m
       </div>
     </section>
   </main>`;
-const headHtml = String.raw`<title>JSON, JWT & SEO Guides | ToolBite</title>
-  <meta name="description" content="Short practical guides on JSON formatting, JWT decoding, SEO slugs, Base64, UUIDs, URL encoding, and image compression.">
-  <link rel="canonical" href="https://toolbite.org/guides/index.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/guides/index.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/guides/index.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/guides/index.html">
-  <meta property="og:title" content="Guides – Guide | ToolBite">
-  <meta property="og:description" content="Use Guides – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Guides — JSON, JWT &amp; SEO workflows | ToolBite — ToolBite">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Guides – Guide | ToolBite">
-  <meta name="twitter:description" content="Use Guides – Guide | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tasks">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta name="twitter:image:alt" content="Guides — JSON, JWT &amp; SEO workflows | ToolBite — ToolBite">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://toolbite.org"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Guides",
-        "item": "https://toolbite.org/guides/index.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Guides – Guide | ToolBite",
-        "item": "https://toolbite.org/guides/index.html"
-      }
-    ]
-  }
-  </script>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath}>
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>
   <Fragment set:html={mainHtml} />
-  <Fragment slot="head" set:html={headHtml} />
-</GuideLayout>
+</BaseLayout>

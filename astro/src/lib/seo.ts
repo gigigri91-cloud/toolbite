@@ -9,7 +9,7 @@ export const SITE_OG_IMAGE_HEIGHT = 630;
 const BRAND_TITLE_SUFFIX = ` | ${SITE_BRAND}`;
 const TOOL_TITLE_SUFFIX = ` – Free Online Tool${BRAND_TITLE_SUFFIX}`;
 const CATEGORY_TITLE_SUFFIX = ` Tools${BRAND_TITLE_SUFFIX}`;
-export const HOMEPAGE_TITLE = `${SITE_BRAND} | Free Online Tools for Developers, SEO & Content`;
+export const HOMEPAGE_TITLE = "ToolBite — 20 Free Online Tools for Developers, Writers & Designers";
 
 function endsWithBrandSuffix(title: string): boolean {
   return /\|\s*ToolBite\s*$/i.test(title);

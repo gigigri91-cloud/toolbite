@@ -32,7 +32,7 @@ export function buildWebApplicationSchema(input: {
   name: string;
   url: string;
   description: string;
-  category: string;
+  category?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -41,8 +41,13 @@ export function buildWebApplicationSchema(input: {
     name: input.name,
     url: input.url,
     description: input.description,
-    applicationCategory: input.category,
-    operatingSystem: "Any",
+    applicationCategory: input.category ?? "UtilityApplication",
+    operatingSystem: "Web Browser",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD"
+    },
     browserRequirements: "Requires JavaScript and a modern browser"
   };
 }

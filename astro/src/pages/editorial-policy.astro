@@ -1,12 +1,20 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createLegalMetadata } from "@/lib/seo";
 
-const title = "Editorial Policy | ToolBite";
-const description = "Use Editorial Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tas";
+const title = "Editorial Policy — ToolBite Guides & Accuracy Standards";
+const description =
+  "Read ToolBite's editorial policy for accuracy standards, review cadence, corrections, monetization disclosure, and how we publish guides on ToolBite today.";
 const canonicalPath = "/editorial-policy.html";
+const metadata = createLegalMetadata({
+  title,
+  description,
+  canonicalPath,
+  keywords: ["ToolBite editorial", "accuracy standards", "content policy", "ToolBite guides", "review process"]
+});
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/">
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
 <nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -54,29 +62,4 @@ const canonicalPath = "/editorial-policy.html";
       </div>
     </section>
 
-  <Fragment slot="head">
-<title>Editorial Policy | ToolBite</title>
-  <meta name="description" content="Use Editorial Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tas">
-  <link rel="canonical" href="https://toolbite.org/editorial-policy.html">
-  <link rel="alternate" hreflang="x-default" href="https://toolbite.org/editorial-policy.html">
-  <link rel="alternate" hreflang="en" href="https://toolbite.org/editorial-policy.html">
-  <meta name="theme-color" content="#0a0d12">
-  <meta name="author" content="ToolBite">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ToolBite">
-  <meta property="og:url" content="https://toolbite.org/editorial-policy.html">
-  <meta property="og:title" content="Editorial Policy | ToolBite">
-  <meta property="og:description" content="Use Editorial Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tas">
-  <meta property="og:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@toolbite">
-  <meta name="twitter:creator" content="@toolbite">
-  <meta name="twitter:title" content="Editorial Policy | ToolBite">
-  <meta name="twitter:description" content="Use Editorial Policy | ToolBite on ToolBite for fast, privacy-first browser workflows with practical steps, clear results, and reliable outputs for everyday tas">
-  <meta name="twitter:image" content="https://toolbite.org/assets/images/social-preview.jpg">
-  </Fragment>
 </BaseLayout>
