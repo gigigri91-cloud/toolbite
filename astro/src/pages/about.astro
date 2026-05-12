@@ -17,6 +17,8 @@ const schemas = [buildOrganizationSchema()];
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>
+  <div class="static-page-shell">
+    <div class="static-page-hero">
 <nav class="tb-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-6 text-left" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -29,7 +31,9 @@ const schemas = [buildOrganizationSchema()];
       <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">About <span class="text-blue-600 dark:text-blue-400">ToolBite</span></h1>
       <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">ToolBite.org publishes free web utilities for developers, digital professionals, SEO experts, and writers. Our privacy-first architecture keeps routine tool processing in your browser: inputs are not uploaded to ToolBite for storage or later retrieval.</p>
     </div>
+    </div>
 
+    <div class="static-page-cards">
     <div class="tb-card tb-card-tool md:p-12 relative overflow-hidden dark:text-gray-100">
       <div class="text-6xl mb-6 text-center md:text-left">🚀</div>
       <h2 class="text-3xl font-bold mb-6 text-center md:text-left text-gray-900 dark:text-white">Our Mission</h2>
@@ -85,11 +89,11 @@ const schemas = [buildOrganizationSchema()];
     <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
       <h2 class="text-2xl font-bold mb-4 text-center md:text-left text-gray-900 dark:text-white">Explore ToolBite</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+        <a href="/categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Text Tools</h3>
           <p class="text-sm text-gray-900 dark:text-gray-100">Word count, case conversion, slug creation, cleanup, and editing helpers.</p>
         </a>
-        <a href="categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+        <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Developer Tools</h3>
           <p class="text-sm text-gray-900 dark:text-gray-100">JSON, JWT, Base64, hashing, UUIDs, and fast browser-based debugging utilities.</p>
         </a>
@@ -104,13 +108,13 @@ const schemas = [buildOrganizationSchema()];
       <h2 id="related-resources-heading" class="text-2xl font-bold mb-2 text-center md:text-left text-gray-900 dark:text-white">Related Resources</h2>
       <p class="text-sm mb-6 text-center md:text-left max-w-2xl text-gray-900 dark:text-gray-100">Hand-picked tool and guide pages that pair well with ToolBite’s developer-focused workflow.</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="tools/jwt-decoder.html" class="tb-card tb-card-interactive group tool-card-tb bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col h-full duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+        <a href="/tools/jwt-decoder.html" class="tb-card tb-card-interactive group tool-card-tb bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col h-full duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
           <span class="text-xs font-bold uppercase tracking-wide text-blue-600 dark:text-blue-400 mb-2">Tool</span>
           <h3 class="text-lg font-bold mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition text-gray-900 dark:text-white">JWT Decoder</h3>
           <p class="text-sm flex-grow text-gray-900 dark:text-gray-100">Inspect JWT headers and payloads in your browser for debugging—without uploading tokens for signature verification.</p>
           <span class="mt-4 text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition">Open tool →</span>
         </a>
-        <a href="guides/json-formatter-guide.html" class="tb-card tb-card-interactive group tool-card-tb bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col h-full duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+        <a href="/guides/json-formatter-guide.html" class="tb-card tb-card-interactive group tool-card-tb bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col h-full duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
           <span class="text-xs font-bold uppercase tracking-wide text-orange-600 dark:text-orange-400 mb-2">Guide</span>
           <h3 class="text-lg font-bold mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-400 transition text-gray-900 dark:text-white">JSON Formatter Guide</h3>
           <p class="text-sm flex-grow text-gray-900 dark:text-gray-100">Fix common JSON errors, choose minify vs beautify, and format payloads safely using browser-local workflows.</p>
@@ -134,5 +138,7 @@ const schemas = [buildOrganizationSchema()];
       <h2 id="contact-response-heading" class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Contact &amp; Response Time</h2>
       <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">For bugs, corrections, or partnership requests, use the <a href="contact.html" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">contact page</a>. Typical response time is <strong>24–48 hours</strong>.</p>
     </section>
+    </div>
+  </div>
 
 </BaseLayout>

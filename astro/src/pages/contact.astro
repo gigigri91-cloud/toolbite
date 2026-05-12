@@ -15,6 +15,8 @@ const metadata = createMetadata({
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
+  <div class="static-page-shell">
+    <div class="static-page-hero">
 <nav class="tb-breadcrumb text-sm text-gray-500 mb-6 text-left" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -26,7 +28,9 @@ const metadata = createMetadata({
       <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">Contact <span class="text-blue-600 dark:text-blue-400">ToolBite</span></h1>
       <p class="text-xl text-gray-600 dark:text-gray-400">Send support questions, bug reports, partnership inquiries, or new tool ideas.</p>
     </div>
+    </div>
 
+    <div class="static-page-cards">
     <div id="support" class="tb-card tb-card-tool md:p-12 dark:text-gray-100">
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">For support, bug reports, partnerships, or tool requests, email us directly.</p>
       <a href="mailto:support@toolbite.org" class="tb-btn bg-brand-orange border-brand-orange text-white hover:bg-brand-orange-dark tb-btn-lg inline-flex">Email ToolBite Support</a>
@@ -65,7 +69,7 @@ const metadata = createMetadata({
           <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Guides</h3>
           <p class="text-sm text-gray-900 dark:text-gray-100">Read practical tutorials before sending a support question or feature request.</p>
         </a>
-        <a href="categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+        <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
           <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Developer Tools</h3>
           <p class="text-sm text-gray-900 dark:text-gray-100">Go directly to JSON, JWT, Base64, hashing, and encoding utilities.</p>
         </a>
@@ -87,5 +91,7 @@ const metadata = createMetadata({
         Security-sensitive disclosures should still avoid sending private keys, live production tokens, or customer data through email. Describe impact and scope in plain language, and we will coordinate a responsible next step. Thank you for helping keep ToolBite accurate, fast, and trustworthy for everyone who relies on it.
       </p>
     </section>
+    </div>
+  </div>
 
 </BaseLayout>

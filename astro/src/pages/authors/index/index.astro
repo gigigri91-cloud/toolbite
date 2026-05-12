@@ -27,7 +27,7 @@ const schemas = [
     { name: "Authors", url: pageUrl }
   ])
 ];
-const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
+const mainHtml = String.raw`<div class="authors-index-root w-full py-12">
     <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Authors</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <a href="../gabriel-c.html" class="tb-card tb-card-interactive transition block">
@@ -41,7 +41,7 @@ const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 
         <p class="text-gray-600 text-sm">Indie developer in Bucharest, Romania. Builds ToolBite as a free, practical resource for developers and content creators.</p>
       </a>
     </div>
-  </main>`;
+  </div>`;
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>

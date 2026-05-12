@@ -20,7 +20,7 @@ const schemas = [
     { name: "Guides", url: pageUrl }
   ])
 ];
-const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
+const mainHtml = String.raw`<div class="guides-index-root w-full max-w-5xl mx-auto py-10">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li>
@@ -132,7 +132,7 @@ const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-7xl m
         </a>
       </div>
     </section>
-  </main>`;
+  </div>`;
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>

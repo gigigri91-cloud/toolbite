@@ -22,6 +22,9 @@ const metadata = createGuideMetadata({ title, description, canonicalPath, keywor
   rootPath="/"
   metadata={metadata}
   schemas={schemas}
+  skipMainContainer
 >
-  <slot />
+  <div class="guide-layout-prose">
+    <slot />
+  </div>
 </BaseLayout>

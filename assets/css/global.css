@@ -84,6 +84,44 @@ main .grid {
     gap: clamp(1.25rem, 2vw, 2rem) !important;
 }
 
+/* Site content width: centered column inside <main> (Tool pages opt out via skipMainContainer). */
+.main-container {
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
+}
+
+/* Legal / about / contact: narrative vs card bands */
+.static-page-shell {
+    box-sizing: border-box;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
+}
+.static-page-hero {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Guide articles: readable measure (slot wraps injected HTML) */
+.guide-layout-prose {
+    box-sizing: border-box;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
+}
+
 /* Hero — layered gradient + soft mesh (no image assets) */
 .tb-hero {
     position: relative;

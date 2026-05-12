@@ -12,7 +12,7 @@ const metadata = createMetadata({
   canonicalPath,
   keywords: ["Gabriel C.", "ToolBite author", "technical writer", "ToolBite guides", "indie developer"]
 });
-const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
+const mainHtml = String.raw`<div class="author-page-root w-full py-12">
     <h1 class="text-4xl font-extrabold text-gray-900 mb-3">Gabriel C.</h1>
     <p class="text-sm font-semibold text-blue-700 mb-4">Developer &amp; Technical Writer</p>
     <p class="text-gray-700 mb-6">Gabriel C. is an indie developer based in Bucharest, Romania, and built ToolBite as a free resource for developers and content creators.</p>
@@ -21,7 +21,7 @@ const mainHtml = String.raw`<main class="flex-grow max-w-5xl mx-auto px-4 py-12 
       <h2 class="text-2xl font-bold text-gray-900 mb-5">Guides by Gabriel C.</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="author-guides-list"></div>
     </section>
-  </main>`;
+  </div>`;
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>

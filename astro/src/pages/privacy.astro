@@ -15,6 +15,8 @@ const metadata = createLegalMetadata({
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
+  <div class="static-page-shell">
+    <div class="static-page-hero">
 <nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2">
         <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
@@ -24,9 +26,10 @@ const metadata = createLegalMetadata({
     </nav>
     <div class="text-center mb-8">
       <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">ToolBite <span class="text-blue-600 dark:text-blue-400">Privacy Policy</span></h1>
-      <p class="text-lg text-gray-500">Last updated: May 8, 2026</p>
+    </div>
     </div>
 
+    <div class="static-page-cards">
     <div class="tb-card tb-card-tool md:p-12 leading-relaxed text-gray-700 dark:text-gray-300">
 
       <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">1. Introduction</h2>
@@ -74,5 +77,7 @@ const metadata = createLegalMetadata({
         </a>
       </div>
     </section>
+    </div>
+  </div>
 
 </BaseLayout>

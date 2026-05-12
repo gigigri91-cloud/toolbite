@@ -15,7 +15,7 @@ const schemas = [
   ])
 ];
 
-const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
     <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
       <ol class="flex flex-wrap items-center gap-2">
         <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
@@ -26,12 +26,11 @@ const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl m
 
     <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
       <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white" data-pseo-target="h1">How to compress images for web without losing quality</h1>
-            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8 sm:flex-row sm:items-center sm:justify-between">
+            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
           <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="/authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
         </div>
-        <p>Published: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">2026-04-22</time> • Last reviewed: <time datetime="2026-04-22" class="font-medium text-gray-800 dark:text-gray-200">April 22, 2026</time></p>
       </div>
       <p class="text-gray-900 dark:text-gray-100">Large images are the single biggest cause of slow page loads. A photo straight from a camera can be 5–10 MB — on the web, the same image should be under 200 KB. This guide shows you how to get there without visible quality loss.</p>
 
@@ -117,7 +116,7 @@ const mainHtml = String.raw`<main id="main-content" class="flex-grow max-w-5xl m
         </a>
       </div>
     </section>
-  </main>`;
+  </div>`;
 ---
 
 <GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>

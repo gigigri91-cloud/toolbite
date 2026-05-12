@@ -20,6 +20,8 @@ export interface Props {
   includeCookieModal?: boolean;
   metadata?: PageMetadata;
   schemas?: JsonLdObject[];
+  /** Tool pages bring their own max-width (.tb-tool-page); skip shared .main-container */
+  skipMainContainer?: boolean;
 }
 
 const {
@@ -30,7 +32,8 @@ const {
   includeAdsense = true,
   includeCookieModal = true,
   metadata,
-  schemas = []
+  schemas = [],
+  skipMainContainer = false
 } = Astro.props;
 
 const adsenseClient = "ca-pub-5233222002046639";
@@ -91,7 +94,13 @@ const cspContent = [
     <Header rootPath={rootPath} />
     <MobileMenu rootPath={rootPath} />
     <main id="main-content">
-      <slot />
+      {skipMainContainer ? (
+        <slot />
+      ) : (
+        <div class="main-container">
+          <slot />
+        </div>
+      )}
     </main>
     <Footer rootPath={rootPath} />
     {includeCookieModal && <CookieModal />}
