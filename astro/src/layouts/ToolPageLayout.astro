@@ -60,6 +60,11 @@ const breadcrumbSchemaItems = [
   { name: content.categoryName, url: `https://toolbite.org${content.categoryHref}` },
   { name: content.heroTitle, url: metadata.canonicalUrl }
 ];
+const heroDescriptionShort = (content.heroDescription || "")
+  .split(/(?<=[.!?])\s+/)
+  .slice(0, 1)
+  .join(" ")
+  .trim();
 
 const toolAccent = getToolAccentFromSlug(slug);
 
@@ -86,7 +91,11 @@ const schemas = [
 >
   <div class="tb-tool-page">
     <ToolBreadcrumbs items={breadcrumbItems} />
-    <ToolHero title={content.heroTitle} description={content.heroDescription} eyebrow={content.heroEyebrow} toolColor={toolAccent} />
+    <ToolHero title={content.heroTitle} description={heroDescriptionShort} eyebrow={content.heroEyebrow} toolColor={toolAccent} />
+
+    <div class="ad-slot ad-slot--content" aria-label="Advertisement">
+      <!-- AdSense content -->
+    </div>
 
     <ToolShell>
       <slot />

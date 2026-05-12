@@ -6,11 +6,8 @@ export interface Props {
 }
 
 const { rootPath = "/" } = Astro.props;
-const path = Astro.url.pathname;
-const isSearch = path.includes("search");
-const isCategories = path.includes("categories");
-const isGuides = path.includes("/guides");
-const isContact = path.includes("contact");
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) => currentPath.includes(path);
 ---
 
 <header id="site-header" class="tb-shell-header">
@@ -25,10 +22,10 @@ const isContact = path.includes("contact");
       />
     </a>
     <nav aria-label="Primary" class="tb-desktop-nav">
-      <a href={`${rootPath}search.html`} class:list={{ "is-active": isSearch }}>Search</a>
-      <a href={`${rootPath}categories/text-tools.html`} class:list={{ "is-active": isCategories }}>Categories</a>
-      <a href="/guides/" class:list={{ "is-active": isGuides }}>Guides</a>
-      <a href={`${rootPath}contact.html`} class:list={{ "is-active": isContact }}>Contact</a>
+      <a href={`${rootPath}search.html`} class:list={{ "is-active": isActive("/search") }}>Search</a>
+      <a href={`${rootPath}categories/text-tools.html`} class:list={{ "is-active": isActive("/categories") }}>Categories</a>
+      <a href="/guides/" class:list={{ "is-active": isActive("/guides") }}>Guides</a>
+      <a href={`${rootPath}contact.html`} class:list={{ "is-active": isActive("/contact") }}>Contact</a>
     </nav>
     <form class="tb-header-search" method="get" action={`${rootPath}search.html`} role="search" aria-label="Search ToolBite">
       <SearchInput

@@ -93,6 +93,9 @@ const cspContent = [
   <body style="background: var(--bg-primary); color: var(--text-primary);">
     <Header rootPath={rootPath} />
     <MobileMenu rootPath={rootPath} />
+    <div class="ad-slot ad-slot--leaderboard" aria-label="Advertisement">
+      <!-- AdSense leaderboard -->
+    </div>
     <main id="main-content">
       {skipMainContainer ? (
         <slot />

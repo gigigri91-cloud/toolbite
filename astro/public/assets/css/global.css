@@ -98,7 +98,7 @@ main .grid {
 /* Legal / about / contact: narrative vs card bands */
 .static-page-shell {
     box-sizing: border-box;
-    max-width: 1000px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.25rem;
@@ -114,12 +114,32 @@ main .grid {
 /* Guide articles: readable measure (slot wraps injected HTML) */
 .guide-layout-prose {
     box-sizing: border-box;
-    max-width: 800px;
+    max-width: 780px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding: 2rem 1.25rem;
     width: 100%;
+}
+
+/* Breadcrumb rendering hardening (prevents ordered list numbers). */
+nav[aria-label="breadcrumb"] ol,
+nav[aria-label="breadcrumb"] ul,
+nav[aria-label="Breadcrumb"] ol,
+nav[aria-label="Breadcrumb"] ul,
+.breadcrumb-list {
+  list-style: none !important;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+nav[aria-label="breadcrumb"] li,
+nav[aria-label="Breadcrumb"] li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* Hero — layered gradient + soft mesh (no image assets) */
@@ -191,6 +211,32 @@ h4 {
 /* Breadcrumb rows (guides, legal, etc. use `nav.tb-breadcrumb` + Tailwind text-sm) */
 nav.tb-breadcrumb {
   font-size: 14px;
+}
+nav.tb-breadcrumb ol > li {
+  color: #7a9ab8;
+}
+nav.tb-breadcrumb a {
+  color: #7a9ab8;
+}
+nav.tb-breadcrumb ol > li:nth-child(2n) {
+  color: #2a4a6a;
+}
+nav.tb-breadcrumb ol > li:last-child {
+  color: #ffffff;
+}
+nav.tb-breadcrumb li[aria-current="page"],
+nav.tb-breadcrumb .tb-tool-breadcrumbs__current {
+  color: #ffffff;
+}
+
+.static-page-cards > .tb-card,
+.static-page-cards > section.tb-card {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.static-page-cards > .tb-card-tool {
+  max-width: 100%;
 }
 
 small,
@@ -766,6 +812,48 @@ html[data-theme="dark"] body #site-header.header-small img.header-logo {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #64748b;
+}
+
+/* Empty ad placeholders prepared for future AdSense embeds. */
+.ad-slot {
+  width: 100%;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background: transparent;
+}
+.ad-slot--leaderboard { min-height: 90px; }
+.ad-slot--content { min-height: 250px; }
+.ad-slot--article-end { min-height: 250px; }
+.ad-slot--homepage { min-height: 90px; }
+
+/* Guide typography + "Best for" treatment. */
+.guide-layout-prose h2,
+.guide-layout-prose h3 {
+  color: #ffffff;
+  font-weight: 700;
+}
+.guide-layout-prose p,
+.guide-layout-prose li,
+.guide-layout-prose ol,
+.guide-layout-prose ul {
+  color: #c8dff5;
+  line-height: 1.7;
+}
+.guide-best-for {
+  background: rgba(77, 159, 255, 0.08);
+  border: 1px solid rgba(77, 159, 255, 0.2);
+  border-left: 3px solid #4d9fff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  color: #c8dff5;
+}
+.guide-best-for strong {
+  color: #4d9fff;
+  font-weight: 700;
 }
 
 html {
