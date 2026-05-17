@@ -89,6 +89,24 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     </div>
   </section>
 
+  <section class="why-section home-section tb-reveal" aria-labelledby="why-toolbite-heading">
+    <h2 id="why-toolbite-heading">Why developers and writers use ToolBite</h2>
+    <div class="why-grid">
+      <article class="why-card">
+        <h3>100% client-side processing</h3>
+        <p>Every tool on ToolBite runs entirely in your browser. Your JSON, passwords, tokens, and text are never sent to a server, never logged, and never stored. This matters when working with credentials, sensitive API responses, or confidential content.</p>
+      </article>
+      <article class="why-card">
+        <h3>No account required</h3>
+        <p>All 20 tools are free and accessible without registration. There is no trial period, no usage limit, and no feature gating. Open the tool you need and start working immediately.</p>
+      </article>
+      <article class="why-card">
+        <h3>Built for real workflows</h3>
+        <p>Each tool is designed around a specific task that appears regularly in development, writing, SEO, and design work. The interface stays focused — no unnecessary options, no distracting features, no ads interrupting the workspace.</p>
+      </article>
+    </div>
+  </section>
+
   <section class="home-section tb-reveal">
     <div class="section-head">
       <h2>Smart search command center</h2>
@@ -370,6 +388,46 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   .command-title { margin: 0 0 0.25rem; font-weight: 700; color: var(--color-text-primary); }
   .command-copy { margin: 0; color: var(--color-text-secondary); }
   .search-command-card kbd { color: var(--color-brand-orange); background: #0d1e35; border: 1px solid var(--color-border-accent-orange); border-radius: 4px; padding: 0.05rem 0.35rem; font-family: var(--font-mono); }
+  .why-section {
+    padding: 2rem 0;
+  }
+  .why-section h2 {
+    color: var(--color-text-primary);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .why-card {
+    background: var(--color-bg-card, #090e18);
+    border: 1px solid var(--color-border-primary, #1a2535);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .why-card h3 {
+    color: #4d9fff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  html[data-theme="dark"] .why-card h3 {
+    color: #4d9fff;
+  }
+  .why-card p {
+    color: var(--color-text-secondary, #c8dff5);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .ai-card { transition: none; }
     .ai-card:hover { transform: none; }

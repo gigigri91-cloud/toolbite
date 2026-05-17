@@ -20,7 +20,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "word-counter",
     heroEyebrow: "Writing flow helper",
     heroTitle: "Word counter online",
-    heroDescription: "Count words, characters, sentences, and paragraphs instantly for drafts, editorial checks, and publishing targets.",
+    heroDescription:
+      "Word count matters in more contexts than most writers realise. Blog platforms, academic submissions, job applications, social media posts, and legal documents all have length requirements or recommendations. The ToolBite word counter tracks words, characters (with and without spaces), sentences, and paragraphs in real time as you type or paste. There is no submit button — the count updates instantly. Your text stays in your browser tab and is not sent to any server.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -51,7 +52,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "json-formatter",
     heroEyebrow: "DEVELOPER PAYLOAD UTILITY",
     heroTitle: "JSON formatter and validator",
-    heroDescription: "Beautify, minify, and validate JSON fast while keeping API payloads in your local browser context.",
+    heroDescription:
+      "JSON is the backbone of modern APIs, configuration files, and data interchange. Malformed JSON breaks builds, crashes parsers, and wastes debugging time. The ToolBite JSON formatter validates your syntax in real time, highlights errors at the exact line, and produces clean output you can paste directly into your codebase. Unlike server-based formatters, your data never leaves the browser — useful when working with credentials, internal API responses, or confidential configuration files.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -82,7 +84,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "jwt-decoder",
     heroEyebrow: "TOKEN INSPECTION",
     heroTitle: "JWT decoder",
-    heroDescription: "Decode JWT header and payload segments instantly for troubleshooting auth flows and claim inspection.",
+    heroDescription:
+      "JSON Web Tokens carry authentication claims between services and clients. Every JWT has three Base64URL-encoded segments: a header describing the algorithm, a payload containing the claims, and a signature for verification. The ToolBite JWT decoder splits and decodes the header and payload instantly so you can inspect expiry timestamps, user roles, issued-at times, and custom claims without writing any code. Useful during API integration, debugging auth flows, or auditing tokens from third-party services.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -113,7 +116,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "image-compressor",
     heroEyebrow: "Media optimization",
     heroTitle: "Image compressor",
-    heroDescription: "Compress JPEG and WebP output in your browser to reduce transfer cost and improve page performance without uploads.",
+    heroDescription:
+      "Large image files slow down web pages, consume mobile data, and hurt Core Web Vitals scores. Compression reduces file size by removing data that is imperceptible to human vision — either losslessly (preserving every pixel) or with lossy compression (accepting minor quality tradeoffs for significant size reductions). The ToolBite image compressor processes JPEG, PNG, and WebP files entirely in your browser using the Canvas API. No image is uploaded to a server. Adjust the quality slider to balance file size against visual quality for your use case.",
     categoryName: "Image Tools",
     categoryHref: "/categories/image-tools.html",
     benefits: [
@@ -144,7 +148,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "text-to-slug",
     heroEyebrow: "URL publishing helper",
     heroTitle: "Text to slug generator",
-    heroDescription: "Turn titles into clean lowercase slugs for SEO-friendly URLs and consistent content operations.",
+    heroDescription:
+      "URL slugs are the human-readable, SEO-friendly segments of a web address that describe the page content. A well-formed slug uses only lowercase letters, numbers, and hyphens — no spaces, no special characters, no accented letters. This matters because slugs appear in URLs that are indexed by search engines, shared in links, and stored in databases. The ToolBite text to slug converter applies all the right transformations: lowercase conversion, accent removal, space-to-hyphen replacement, and special character stripping.",
     categoryName: "SEO Tools",
     categoryHref: "/categories/seo-tools.html",
     benefits: [
@@ -175,7 +180,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "base64-encoder",
     heroEyebrow: "Developer encoding utility",
     heroTitle: "Base64 encoder and decoder",
-    heroDescription: "Encode and decode Base64 strings quickly for payload debugging and data transport workflows.",
+    heroDescription:
+      "Base64 encoding converts binary data into ASCII text so it can travel safely through systems that handle text only — email attachments, JSON payloads, data URIs, and HTTP headers all rely on it. The ToolBite encoder handles both encoding and decoding in one interface. Paste a string to encode it, or paste a Base64 string to decode it back. No file uploads, no server calls — the conversion runs entirely in your browser tab.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -206,7 +212,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "case-converter",
     heroEyebrow: "Text normalization helper",
     heroTitle: "Case converter",
-    heroDescription: "Switch between uppercase, lowercase, title case, sentence case, and camelCase in one click.",
+    heroDescription:
+      "Text case consistency matters for code, content, and data processing. Variable names follow camelCase or snake_case conventions depending on the language. Titles follow Title Case. SQL identifiers are often UPPER_CASE. Copying text from one context to another frequently requires a case conversion that is tedious to do manually. The ToolBite case converter handles uppercase, lowercase, title case, sentence case, camelCase, snake_case, and kebab-case — select the output format and paste your text.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -237,7 +244,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "color-palette-generator",
     heroEyebrow: "Visual exploration utility",
     heroTitle: "Color palette generator",
-    heroDescription: "Generate random color palettes and copy HEX values instantly for UI and branding experiments.",
+    heroDescription:
+      "Color palettes define the visual identity of a design project. Choosing colors that work well together requires understanding relationships like complementary, analogous, and triadic combinations. The ToolBite color palette generator produces harmonious color sets that you can use as a starting point for a brand, UI, or illustration project. Each palette includes hex codes ready to copy into your design tool or CSS file. Palettes are generated randomly — refresh to get a new set until you find combinations that fit your direction.",
     categoryName: "Image Tools",
     categoryHref: "/categories/image-tools.html",
     benefits: [
@@ -268,7 +276,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "csv-to-json",
     heroEyebrow: "Data transformation helper",
     heroTitle: "CSV to JSON converter",
-    heroDescription: "Convert CSV data into structured JSON arrays with delimiter and formatting controls.",
+    heroDescription:
+      "CSV is the default export format for spreadsheets, databases, and data pipelines, but most modern APIs and applications expect JSON. Converting manually is tedious and error-prone for files with many columns. The ToolBite CSV to JSON converter reads your headers as keys and maps each row to a JSON object. Paste your CSV, adjust the delimiter if needed, and copy the JSON array. The conversion runs in your browser — no file upload, no server processing, no data retention.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -299,7 +308,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "find-replace",
     heroEyebrow: "Bulk editing helper",
     heroTitle: "Find and replace text",
-    heroDescription: "Replace repeated terms across pasted text quickly with optional case-sensitive matching.",
+    heroDescription:
+      "Find and replace is one of the most routine text editing operations, but browser text boxes do not support it natively. The ToolBite find and replace tool lets you search for a string and replace all occurrences, a specific occurrence, or just preview matches before committing. Plain text mode handles literal matches; regex mode supports pattern matching for advanced substitutions. Paste your text, define your search and replacement, and copy the result.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -330,7 +340,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "hash-generator",
     heroEyebrow: "Digest computation utility",
     heroTitle: "Hash generator",
-    heroDescription: "Generate SHA-256 or SHA-1 hashes for text input using Web Crypto in modern browsers.",
+    heroDescription:
+      "Cryptographic hash functions take any input and produce a fixed-length fingerprint that is practically impossible to reverse. SHA-256 produces a 256-bit output and is the standard for data integrity checks, digital signatures, and password storage (with a salt). SHA-1 produces a 160-bit output and is still used in legacy systems though no longer recommended for security-critical applications. The ToolBite hash generator computes both instantly in your browser — paste any text and get the hash in under a second.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -361,7 +372,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "lorem-ipsum",
     heroEyebrow: "Placeholder content helper",
     heroTitle: "Lorem Ipsum generator",
-    heroDescription: "Generate classic placeholder paragraphs for layouts, prototypes, and publishing previews.",
+    heroDescription:
+      "Lorem ipsum placeholder text has been used in typography and design since the 1500s. Designers use it to fill layouts before real copy is available, allowing clients and reviewers to evaluate visual design without being distracted by content. The ToolBite Lorem ipsum generator produces the standard Latin placeholder text in configurable quantities — choose paragraphs, sentences, or words. The output is ready to paste into Figma, a CMS, a code template, or any document that needs realistic-looking placeholder text.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -392,7 +404,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "password-generator",
     heroEyebrow: "Credential helper",
     heroTitle: "Password generator",
-    heroDescription: "Generate strong random passwords with configurable length and character sets.",
+    heroDescription:
+      "Weak passwords are the leading cause of account compromises. Dictionary words, names, and short strings can be cracked in seconds with modern hardware. The ToolBite password generator uses your browser's cryptographic random number generator to produce passwords that contain no patterns, no dictionary words, and no predictable sequences. Adjust the length and character set to match your target system's requirements, then copy the result. The password is generated locally — it is never transmitted or logged.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -423,7 +436,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "qr-generator",
     heroEyebrow: "Code generation utility",
     heroTitle: "QR code generator",
-    heroDescription: "Generate QR codes for text and URLs, then download as PNG directly from your browser.",
+    heroDescription:
+      "QR codes encode text, URLs, contact details, and other data into a scannable matrix pattern readable by any smartphone camera. They are widely used for sharing links at events, product packaging, printed materials, and contactless interactions. The ToolBite QR code generator creates a QR code from any text or URL you enter. The output is rendered as a downloadable image in your browser with no server processing — the entire generation runs client-side using a JavaScript library.",
     categoryName: "Image Tools",
     categoryHref: "/categories/image-tools.html",
     benefits: [
@@ -454,7 +468,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "read-time-calculator",
     heroEyebrow: "Publishing estimator",
     heroTitle: "Reading time calculator",
-    heroDescription: "Estimate reading duration from word count and adjustable words-per-minute speed.",
+    heroDescription:
+      "Reading time estimates help writers set expectations for their audience and help editors evaluate content length. The standard reference point is 200-250 words per minute for average adult reading speed, though technical content is read more slowly and narrative content more quickly. The ToolBite reading time calculator uses 230 words per minute as its baseline and updates the estimate in real time as you type or paste. Alongside the reading time, it also shows word count, character count, and sentence count.",
     categoryName: "SEO Tools",
     categoryHref: "/categories/seo-tools.html",
     benefits: [
@@ -485,7 +500,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "remove-duplicate-lines",
     heroEyebrow: "List cleanup utility",
     heroTitle: "Remove duplicate lines",
-    heroDescription: "Keep only first occurrences from repeated line sets in pasted logs, lists, and exports.",
+    heroDescription:
+      "Duplicate lines appear in exported data, logs, lists assembled from multiple sources, and copy-pasted content. Removing them manually is impractical for anything longer than a few dozen lines. The ToolBite duplicate line remover processes the entire input and returns only unique lines, preserving the first occurrence and discarding subsequent repeats. Case-sensitive and case-insensitive modes are both available — use case-insensitive mode when the same value appears in different capitalizations that should be treated as the same entry.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -516,7 +532,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "remove-extra-spaces",
     heroEyebrow: "Whitespace cleanup utility",
     heroTitle: "Remove extra spaces",
-    heroDescription: "Collapse repeated spaces, trim lines, and remove blank rows from pasted content.",
+    heroDescription:
+      "Extra whitespace accumulates in text when content is copied from PDFs, web pages, word processors, or generated by automated systems. Double spaces between words, leading spaces at the start of lines, and trailing spaces at the end are invisible but cause problems in data processing, database storage, and content display. The ToolBite whitespace cleaner normalises all whitespace in one operation — collapsing multiple spaces to single spaces, trimming line edges, and optionally removing blank lines.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -547,7 +564,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "sort-text-lines",
     heroEyebrow: "List organization helper",
     heroTitle: "Sort text lines",
-    heroDescription: "Sort pasted lines ascending or descending with optional case-insensitive behavior.",
+    heroDescription:
+      "Sorting lines of text is a common operation when working with lists of names, items, configuration values, or log entries that need to be ordered or deduplicated. Text editors and spreadsheets can sort, but they require saving a file or creating a new document. The ToolBite line sorter accepts pasted text and returns it sorted alphabetically, in reverse, numerically, or randomly — your choice. The result is ready to copy back into whatever you are working on without leaving the browser.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
@@ -578,7 +596,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "url-encoder",
     heroEyebrow: "URL utility",
     heroTitle: "URL encoder and decoder",
-    heroDescription: "Encode and decode URL components or full URLs for safer links and debug workflows.",
+    heroDescription:
+      "URLs can only contain a limited set of ASCII characters. Spaces, special characters, and non-ASCII text must be percent-encoded before they appear in a URL or query string. The ToolBite URL encoder converts characters to their %XX equivalents and decodes them back. This is useful when constructing API query parameters, debugging redirect URLs, or encoding values that will be embedded in links shared via email or messaging platforms where special characters may be misinterpreted.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -609,7 +628,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     slug: "uuid-generator",
     heroEyebrow: "IDENTIFIER UTILITY",
     heroTitle: "UUID / GUID generator",
-    heroDescription: "Generate one or many random v4 UUIDs for databases, APIs, and fixture workflows.",
+    heroDescription:
+      "UUIDs (Universally Unique Identifiers) are 128-bit values used to identify records, sessions, requests, and resources without a central authority assigning them. Version 4 UUIDs use random bytes, giving a collision probability so low it is negligible for any practical application. The ToolBite UUID generator produces cryptographically random v4 UUIDs using the browser's built-in crypto API — no server call, no predictable sequence, ready to copy and paste into your database migration, code, or API test.",
     categoryName: "Developer Tools",
     categoryHref: "/categories/developer-tools.html",
     benefits: [
@@ -649,7 +669,6 @@ export function getToolPageContent(slug: string): ToolPageContent {
   }
   return {
     ...record,
-    heroDescription: `${record.heroDescription} ${exp.heroAppend}`.trim(),
     benefits: [...record.benefits, ...exp.extraBenefits],
     faq: [...record.faq, ...exp.extraFaq]
   };
