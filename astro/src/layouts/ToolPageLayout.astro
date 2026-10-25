@@ -1,5 +1,4 @@
 ---
-import ToolAdContainer from "@/components/tools/ToolAdContainer.astro";
 import ToolBenefits from "@/components/tools/ToolBenefits.astro";
 import ToolBreadcrumbs from "@/components/tools/ToolBreadcrumbs.astro";
 import ToolExamples from "@/components/tools/ToolExamples.astro";
@@ -93,10 +92,6 @@ const schemas = [
     <ToolBreadcrumbs items={breadcrumbItems} />
     <ToolHero title={content.heroTitle} description={heroDescriptionShort} eyebrow={content.heroEyebrow} toolColor={toolAccent} />
 
-    <div class="ad-slot ad-slot--content" aria-label="Advertisement">
-      <!-- AdSense content -->
-    </div>
-
     <ToolShell>
       <slot />
       <ToolBenefits items={content.benefits} />
@@ -108,9 +103,7 @@ const schemas = [
       <ToolRecommendations tools={recommendations} />
 
       <div slot="aside">
-        <ToolAdContainer label="Sponsored" />
         <ToolWorkflowSuggestions title="Fast workflow path" items={content.workflow} variant="aside" />
-        <ToolAdContainer label="More tools" />
       </div>
     </ToolShell>
   </div>
@@ -141,19 +134,6 @@ const schemas = [
           );
         });
       })();
-    </script>
-    <script is:inline>
-      if (window.adsbygoogle) {
-        const slots = document.querySelectorAll("ins.adsbygoogle");
-        slots.forEach((slot) => {
-          if (slot.getAttribute("data-adsbygoogle-status")) return;
-          try {
-            window.adsbygoogle.push({});
-          } catch (_) {
-            // Ignore duplicate push errors from ad runtime.
-          }
-        });
-      }
     </script>
   </Fragment>
 </BaseLayout>

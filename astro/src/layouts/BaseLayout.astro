@@ -16,7 +16,6 @@ export interface Props {
   description: string;
   canonicalPath: string;
   rootPath?: string;
-  includeAdsense?: boolean;
   includeCookieModal?: boolean;
   metadata?: PageMetadata;
   schemas?: JsonLdObject[];
@@ -29,20 +28,15 @@ const {
   description,
   canonicalPath,
   rootPath = "/",
-  includeAdsense = true,
   includeCookieModal = true,
   metadata,
   schemas = [],
   skipMainContainer = false
 } = Astro.props;
 
-const adsenseClient = "ca-pub-5233222002046639";
 const pageMeta = metadata ?? createMetadata({ title, description, canonicalPath });
 const uniqueSchemas = dedupeSchemasByType(schemas);
 
-// CSP mirrors the legacy meta tag exactly so AdSense and Google ad
-// origins keep working. Kept as a meta http-equiv (no server header) to
-// preserve hardening parity with non-migrated legacy pages.
 const cspContent = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -50,11 +44,11 @@ const cspContent = [
   "object-src 'none'",
   "img-src 'self' data: https:",
   "font-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google",
-  "script-src-elem 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google",
+  "script-src 'self' 'unsafe-inline'",
+  "script-src-elem 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
-  "frame-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google https://www.google.com",
-  "connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.adtrafficquality.google"
+  "frame-src 'self'",
+  "connect-src 'self'"
 ].join("; ");
 ---
 
@@ -76,16 +70,6 @@ const cspContent = [
     <link rel="stylesheet" href="/assets/css/tailwind.min.css" />
     <link rel="stylesheet" href="/assets/css/global.min.css" />
 
-    {includeAdsense && (
-      <>
-        <meta name="google-adsense-account" content={adsenseClient} />
-        <script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-          crossorigin="anonymous"
-        ></script>
-      </>
-    )}
     {uniqueSchemas.map((schema) => <JsonLd schema={schema} />)}
 
     <slot name="head" />
@@ -93,9 +77,6 @@ const cspContent = [
   <body style="background: var(--bg-primary); color: var(--text-primary);">
     <Header rootPath={rootPath} />
     <MobileMenu rootPath={rootPath} />
-    <div class="ad-slot ad-slot--leaderboard" aria-label="Advertisement">
-      <!-- AdSense leaderboard -->
-    </div>
     <main id="main-content">
       {skipMainContainer ? (
         <slot />
