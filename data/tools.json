@@ -127,25 +127,27 @@
     "adMode": "auto"
   },
   {
-    "name": "Find and replace text",
-    "title": "Find and Replace Text Online — Free Tool | ToolBite",
-    "desc": "Find and replace text in bulk instantly in your browser. Supports plain text and regex. Free online find and replace tool — no account needed. Try ToolBite now.",
-    "description": "Find and replace text in bulk instantly in your browser. Supports plain text and regex. Free online find and replace tool — no account needed. Try ToolBite now.",
+    "name": "Find and Replace Online",
+    "title": "Find and Replace Online — Free Text Tool | ToolBite",
+    "desc": "Find and replace text online free — paste any text, type what to find and replace, click Replace All. Instant results, 100% browser-based, no sign-up needed.",
+    "description": "Find and replace text online free — paste any text, type what to find and replace, click Replace All. Instant results, 100% browser-based, no sign-up needed.",
     "url": "tools/find-replace.html",
     "canonical": "https://toolbite.org/tools/find-replace.html",
     "icon": "🔁",
-    "tags": "find replace text bulk",
+    "tags": "find replace text bulk online free",
     "keywords": [
-      "find",
-      "replace",
-      "text",
-      "bulk"
+      "find and replace online",
+      "find and replace text",
+      "find replace",
+      "text replace tool",
+      "bulk text replace"
     ],
     "category": "text-tools",
     "schemaType": "WebApplication",
     "relatedTools": [
       "tools/remove-extra-spaces.html",
-      "tools/sort-text-lines.html"
+      "tools/sort-text-lines.html",
+      "tools/case-converter.html"
     ],
     "ogImage": "/assets/images/social-preview.jpg",
     "robots": "index,follow",

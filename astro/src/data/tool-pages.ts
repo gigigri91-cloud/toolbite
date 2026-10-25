@@ -306,34 +306,74 @@ export const toolPageContent: Record<string, ToolPageContent> = {
   },
   "find-replace": {
     slug: "find-replace",
-    heroEyebrow: "Bulk editing helper",
-    heroTitle: "Find and replace text",
+    heroEyebrow: "Free online text editor",
+    heroTitle: "Find and Replace Online — Free Text Tool",
     heroDescription:
-      "Find and replace is one of the most routine text editing operations, but browser text boxes do not support it natively. The ToolBite find and replace tool lets you search for a string and replace all occurrences, a specific occurrence, or just preview matches before committing. Plain text mode handles literal matches; regex mode supports pattern matching for advanced substitutions. Paste your text, define your search and replacement, and copy the result.",
+      "Find and replace text online instantly — no software to install, no account required. Paste any text, type what you want to find, type your replacement, and hit Replace All. Every match updates in one click. Supports case-sensitive matching for precise edits and leaves your text entirely in your browser: nothing is sent to any server. Works with plain text, code snippets, CSV data, email drafts, and any other text you can paste.",
     categoryName: "Text Tools",
     categoryHref: "/categories/text-tools.html",
     benefits: [
-      "Replaces all matches in one action.",
-      "Case-sensitive mode supports controlled edits.",
-      "Text remains in-browser with no upload required."
+      "Replace all occurrences across large text blocks in one click.",
+      "Case-sensitive mode for precise, controlled substitutions.",
+      "100% browser-based — your text never leaves your device."
     ],
     useCases: [
-      { title: "Content refreshes", description: "Update repeated names or terms in long drafts." },
-      { title: "Log cleanup", description: "Replace noisy markers in exported logs." },
-      { title: "Template updates", description: "Swap placeholders quickly before publishing." }
+      {
+        title: "Content editing",
+        description: "Swap repeated words, brand names, or outdated terms across long articles or blog posts without manually scanning each line."
+      },
+      {
+        title: "Code and config updates",
+        description: "Replace variable names, API endpoints, or placeholder values in code snippets, JSON, or config files before deploying."
+      },
+      {
+        title: "Template customization",
+        description: "Fill in {{placeholders}} in email templates, contracts, or document drafts by replacing each token with the final value."
+      },
+      {
+        title: "CSV and data cleanup",
+        description: "Fix inconsistent labels, normalize status values, or correct typos repeated across exported spreadsheet data."
+      },
+      {
+        title: "Log sanitization",
+        description: "Strip or replace sensitive strings, email addresses, or noisy markers from log exports before sharing them."
+      }
     ],
     examples: [
-      { title: "Term replacement", input: "find old-name", output: "replace with new-name" },
-      { title: "Case-sensitive edit", input: "API and api", output: "Replace only exact case when enabled" }
+      { title: "Brand rename", input: "Acme Corp (appears 14 times)", output: "GlobalCo — all 14 replaced instantly" },
+      { title: "Placeholder fill", input: "{{first_name}} in email template", output: "Replace with 'Sarah' before sending" },
+      { title: "Case-sensitive fix", input: "api (lowercase)", output: "API (uppercase only, case-sensitive mode)" }
     ],
     faq: [
-      { question: "Does this replace all matches?", answer: "Yes, the Replace All action updates every match." },
-      { question: "Is there regex mode?", answer: "No, it performs plain text replacement with escaped matching." }
+      {
+        question: "How do I find and replace text online for free?",
+        answer: "Paste your text into the box above, type what you want to find in the 'Find what' field, type the replacement in 'Replace with', then click Replace All. All matches update instantly. No sign-up, no download required."
+      },
+      {
+        question: "Does it replace all occurrences at once?",
+        answer: "Yes. The Replace All button updates every match in one action. If your text contains the search term 50 times, all 50 are replaced simultaneously."
+      },
+      {
+        question: "Is the find and replace case sensitive?",
+        answer: "By default the search is case-insensitive, so 'hello' matches 'Hello', 'HELLO', and 'hello'. Enable the Case Sensitive checkbox to match exact capitalization only."
+      },
+      {
+        question: "Can I use this to find and replace in a document or Word file?",
+        answer: "This tool works with plain text. To use it with a Word document, copy the text from Word, paste it here, make your replacements, then paste the result back. For complex formatted documents, the built-in Find & Replace in Word (Ctrl+H) handles formatting changes better."
+      },
+      {
+        question: "Is my text private?",
+        answer: "Yes. All processing runs locally in your browser using JavaScript. Your text is never sent to ToolBite's servers or any third party. You can use it safely with sensitive or confidential content."
+      },
+      {
+        question: "Does this support regex (regular expressions)?",
+        answer: "The current version uses plain text matching. For pattern-based replacements, you can use your code editor's built-in find and replace with regex mode enabled."
+      }
     ],
     workflow: [
       { name: "Remove Extra Spaces", href: "/tools/remove-extra-spaces.html", icon: "🧹" },
       { name: "Sort Text Lines", href: "/tools/sort-text-lines.html", icon: "🔤" },
-      { name: "Word Counter", href: "/tools/word-counter.html", icon: "📝" }
+      { name: "Case Converter", href: "/tools/case-converter.html", icon: "🔡" }
     ]
   },
   "hash-generator": {
