@@ -35,6 +35,10 @@ const isActive = (path: string) => currentPath.includes(path);
         hotkeyLabel="Ctrl/⌘K"
       />
     </form>
+    <button type="button" id="theme-toggle" class="tb-theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-icon theme-icon--light" aria-hidden="true">☀️</span>
+      <span class="theme-icon theme-icon--dark" aria-hidden="true">🌙</span>
+    </button>
     <a href={`${rootPath}search.html`} class="tb-search-icon-mobile" aria-label="Open search">⌕</a>
     <button type="button" id="mobile-menu-button" class="tb-menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
       Menu
@@ -146,6 +150,31 @@ const isActive = (path: string) => currentPath.includes(path);
     font-family: var(--font-mono);
     font-size: 12px;
   }
+  /* Theme toggle */
+  .tb-theme-toggle {
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    padding: 0.35rem 0.45rem;
+    background: var(--bg-card);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+  .tb-theme-toggle:hover {
+    background: rgba(77, 159, 255, 0.08);
+    border-color: rgba(77, 159, 255, 0.25);
+  }
+  /* Show/hide icons based on current theme */
+  :global([data-theme="light"]) .theme-icon--light { display: none; }
+  :global([data-theme="light"]) .theme-icon--dark  { display: inline; }
+  :global([data-theme="dark"])  .theme-icon--dark  { display: none; }
+  :global([data-theme="dark"])  .theme-icon--light { display: inline; }
+
   @media (min-width: 768px) {
     .tb-desktop-nav {
       display: inline-flex;
@@ -171,3 +200,16 @@ const isActive = (path: string) => currentPath.includes(path);
     }
   }
 </style>
+
+<script>
+  const btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const root = document.documentElement;
+      const current = root.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("tb-theme", next); } catch (_) {}
+    });
+  }
+</script>
