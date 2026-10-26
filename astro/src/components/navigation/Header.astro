@@ -13,13 +13,8 @@ const isActive = (path: string) => currentPath.includes(path);
 <header id="site-header" class="tb-shell-header">
   <div class="tb-shell-container">
     <a href={`${rootPath}`} class="logo-link" aria-label="ToolBite home">
-      <img
-        src="/assets/images/toolbite-logo.webp"
-        alt="ToolBite"
-        width="130"
-        height="34"
-        loading="eager"
-      />
+      <span class="logo-icon" aria-hidden="true">🔧</span>
+      <span class="logo-text">Tool<span class="logo-bite">Bite</span></span>
     </a>
     <nav aria-label="Primary" class="tb-desktop-nav">
       <a href={`${rootPath}search.html`} class:list={{ "is-active": isActive("/search") }}>Search</a>
@@ -71,14 +66,31 @@ const isActive = (path: string) => currentPath.includes(path);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    gap: 0.45rem;
     line-height: 1;
     flex-shrink: 0;
   }
-  .logo-link img {
-    display: block;
-    width: 130px;
-    height: 34px;
-    object-fit: contain;
+  .logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #1E6FC2, #F07820);
+    border-radius: 8px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .logo-bite {
+    color: var(--accent-orange, #FF9A45);
   }
   .tb-desktop-nav {
     display: none;

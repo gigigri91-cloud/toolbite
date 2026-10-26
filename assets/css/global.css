@@ -142,35 +142,35 @@ nav[aria-label="Breadcrumb"] li {
   gap: 6px;
 }
 
-/* Hero — layered gradient + soft mesh (no image assets) */
+/* Hero — Dark Premium layered glow */
 .tb-hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(125deg, #014f55 0%, #01696f 42%, #0f766e 100%);
+    background: var(--bg-primary, #0B0F1A);
 }
 .tb-hero-home {
-    background: linear-gradient(145deg, #eef4fb 0%, #ffffff 62%, #fff5eb 100%);
+    background: var(--bg-primary, #0B0F1A);
 }
 .tb-hero::before,
 .tb-hero::after {
     content: '';
     position: absolute;
     border-radius: 50%;
-    filter: blur(64px);
-    opacity: 0.45;
+    filter: blur(80px);
+    opacity: 0.55;
     pointer-events: none;
 }
 .tb-hero::before {
-    width: min(80vw, 28rem);
-    height: min(80vw, 28rem);
-    background: #2dd4bf;
-    top: -15%;
+    width: min(80vw, 32rem);
+    height: min(80vw, 32rem);
+    background: rgba(74,159,224,0.22);
+    top: -20%;
     right: -5%;
 }
 .tb-hero::after {
-    width: min(70vw, 22rem);
-    height: min(70vw, 22rem);
-    background: #34d399;
+    width: min(70vw, 24rem);
+    height: min(70vw, 24rem);
+    background: rgba(255,154,69,0.15);
     bottom: -20%;
     left: -8%;
 }
@@ -179,15 +179,34 @@ nav[aria-label="Breadcrumb"] li {
     z-index: 1;
 }
 
-/* Tool cards — subtle glass border on hover */
+/* Tool cards — Dark Premium glow hover */
 .tool-card-tb {
-    border: 1px solid rgba(241, 245, 249, 0.9);
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border: 1px solid var(--border-default, rgba(255,255,255,0.07));
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    transition: transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms ease, border-color 260ms ease;
 }
 .tool-card-tb:hover {
-    border-color: rgba(59, 130, 246, 0.25);
-    box-shadow: 0 12px 40px -12px rgba(37, 99, 235, 0.18);
+    border-color: rgba(74,159,224,0.28);
+    box-shadow: 0 12px 40px rgba(74,159,224,0.14), 0 4px 16px rgba(0,0,0,0.3);
+    transform: translateY(-4px);
+}
+
+/* Fade-in la scroll — aplicat prin JS cu IntersectionObserver */
+@media (prefers-reduced-motion: no-preference) {
+  .tb-fadein {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tb-fadein.tb-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tb-fadein:nth-child(2) { transition-delay: 0.07s; }
+  .tb-fadein:nth-child(3) { transition-delay: 0.14s; }
+  .tb-fadein:nth-child(4) { transition-delay: 0.21s; }
+  .tb-fadein:nth-child(5) { transition-delay: 0.28s; }
+  .tb-fadein:nth-child(6) { transition-delay: 0.35s; }
 }
 
 h1, h2, .font-display {
@@ -306,22 +325,27 @@ small,
 
 /* ─── Variante ─────────────────────────────────── */
 
-/* PRIMARY — CTA principal, o singură acțiune per tool */
+/* PRIMARY — CTA principal, Dark Premium blue */
 .tb-btn-primary {
-  background: #01696f;
+  background: linear-gradient(135deg, #4A9FE0, #1E6FC2);
   color: #fff;
-  border-color: #01696f;
+  border-color: transparent;
+  box-shadow: 0 0 18px rgba(74,159,224,0.25);
 }
-.tb-btn-primary:hover { background: #0c4e54; border-color: #0c4e54; }
-.tb-btn-primary:active { background: #0f3638; }
+.tb-btn-primary:hover {
+  background: linear-gradient(135deg, #5AAFE8, #2B7FD4);
+  box-shadow: 0 4px 24px rgba(74,159,224,0.4);
+  transform: translateY(-2px);
+}
+.tb-btn-primary:active { transform: translateY(0); box-shadow: none; }
 
-/* CTA/link utility remap (brand teal) */
-.text-blue-600 { color: #01696f; }
-.text-blue-700 { color: #0c4e54; }
-.hover\:text-blue-600:hover { color: #01696f; }
-.hover\:text-blue-700:hover { color: #0c4e54; }
-.bg-blue-600 { background-color: #01696f; }
-.hover\:bg-blue-700:hover { background-color: #0c4e54; }
+/* CTA/link utility remap (brand blue) */
+.text-blue-600 { color: #4A9FE0; }
+.text-blue-700 { color: #1E6FC2; }
+.hover\:text-blue-600:hover { color: #4A9FE0; }
+.hover\:text-blue-700:hover { color: #1E6FC2; }
+.bg-blue-600 { background-color: #1E6FC2; }
+.hover\:bg-blue-700:hover { background-color: #1660AD; }
 
 /* NEUTRAL — acțiuni secundare (Clear, Reset, Copy etc.) */
 .tb-btn-neutral {
@@ -494,24 +518,17 @@ html[data-theme="dark"] body .tb-field-hint {
 
 /* ─── tb-card: Base ─────────────────────────────── */
 .tb-card {
-  background: #ffffff;
-  border: 1px solid transparent;
-  border-radius: 1rem;              /* rounded-2xl */
-  padding: 1.5rem;                  /* p-6 */
-  box-shadow: 0 20px 40px -32px rgb(15 23 42 / 0.28), 0 10px 20px -18px rgb(15 23 42 / 0.2);
-  transition: transform 240ms ease, box-shadow 240ms ease;
-}
-html[data-theme="dark"] body .tb-card {
-  background: #1e293b;
-  border-color: transparent;
-  box-shadow: 0 16px 34px -24px rgb(2 6 23 / 0.52), 0 8px 18px -14px rgb(2 6 23 / 0.38), 0 0 0 1px rgb(148 163 184 / 0.1);
+  background: var(--bg-card, #141D2E);
+  border: 1px solid var(--border-default, rgba(255,255,255,0.07));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  transition: transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms ease, border-color 260ms ease;
 }
 .tb-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 26px 44px -28px rgb(15 23 42 / 0.3), 0 14px 24px -18px rgb(15 23 42 / 0.22);
-}
-html[data-theme="dark"] body .tb-card:hover {
-  box-shadow: 0 22px 44px -24px rgb(2 6 23 / 0.58), 0 0 0 1px rgb(1 105 111 / 0.34), 0 12px 22px -16px rgb(2 6 23 / 0.44);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(74,159,224,0.12), 0 4px 16px rgba(0,0,0,0.3);
+  border-color: rgba(74,159,224,0.25);
 }
 
 /* ─── Variante ─────────────────────────────────── */
@@ -521,21 +538,16 @@ html[data-theme="dark"] body .tb-card:hover {
   cursor: pointer;
   text-decoration: none;
   display: block;
-  transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
+  transition: box-shadow 260ms cubic-bezier(.22,1,.36,1), transform 260ms cubic-bezier(.22,1,.36,1), border-color 260ms ease;
 }
 .tb-card-interactive:hover {
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.10);
-  transform: translateY(-2px);
-  border-color: #d1d5db;           /* gray-300 */
-}
-html[data-theme="dark"] body .tb-card-interactive:hover {
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
-  border-color: #3f3e3c;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(74,159,224,0.14), 0 4px 16px rgba(0,0,0,0.3);
+  border-color: rgba(74,159,224,0.28);
 }
 .tb-card-interactive:active {
-  transform: translateY(0px);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 /* TOOL — wrapper principal al unui tool (înlocuiește bg-white rounded-2xl shadow-xl) */

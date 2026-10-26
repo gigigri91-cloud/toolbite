@@ -43,10 +43,10 @@ const cspContent = [
   "form-action 'self' mailto:",
   "object-src 'none'",
   "img-src 'self' data: https:",
-  "font-src 'self'",
+  "font-src 'self' https://fonts.gstatic.com",
   "script-src 'self' 'unsafe-inline'",
   "script-src-elem 'self' 'unsafe-inline'",
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "frame-src 'self'",
   "connect-src 'self'"
 ].join("; ");
@@ -67,6 +67,9 @@ const cspContent = [
     <link rel="manifest" href="/manifest.json" />
 
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" />
     <link rel="stylesheet" href="/assets/css/tailwind.min.css" />
     <link rel="stylesheet" href="/assets/css/global.min.css" />
 
@@ -93,6 +96,27 @@ const cspContent = [
     {includeCookieModal && <script defer src="/assets/js/cookies.js"></script>}
     <script defer src="/assets/js/runtime-health.js"></script>
     <slot name="scripts" />
+
+    <script is:inline>
+      // Fade-in la scroll pentru tool cards și secțiuni
+      (function () {
+        if (!window.IntersectionObserver) return;
+        var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (mq && mq.matches) return;
+        var targets = document.querySelectorAll('.tool-card-tb, .tb-card-interactive');
+        if (!targets.length) return;
+        targets.forEach(function(el) { el.classList.add('tb-fadein'); });
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('tb-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+        targets.forEach(function(el) { io.observe(el); });
+      })();
+    </script>
 
     <script is:inline>
       // Best-effort unregister of the legacy service worker on returning

@@ -1,21 +1,22 @@
 :root {
-  --bg-primary: #06080d;
-  --bg-secondary: #0c1117;
-  --bg-card: #090e18;
-  --bg-card-hover: #0c1220;
+  /* Dark Premium — albastru #1E6FC2 + portocaliu #F07820 din logo */
+  --bg-primary: #0B0F1A;
+  --bg-secondary: #0f1623;
+  --bg-card: #141D2E;
+  --bg-card-hover: #192338;
 
-  --border-default: #141e2e;
-  --border-subtle: #0f1a28;
-  --border-strong: #1e2a3a;
+  --border-default: rgba(255,255,255,0.07);
+  --border-subtle: rgba(255,255,255,0.04);
+  --border-strong: rgba(74,159,224,0.18);
 
-  --text-primary: #ffffff;
-  --text-secondary: #7a9ab8;
-  --text-muted: #7a9ab8;
-  --text-mono: #4d9fff;
+  --text-primary: #E8EDFB;
+  --text-secondary: #8BA3C4;
+  --text-muted: #7A8BAD;
+  --text-mono: #4A9FE0;
 
-  --accent-blue: #4d9fff;
-  --accent-blue-dark: #1a5fd9;
-  --accent-orange: #f5a623;
+  --accent-blue: #4A9FE0;
+  --accent-blue-dark: #1E6FC2;
+  --accent-orange: #FF9A45;
   --accent-purple: #a855f7;
   --accent-teal: #2dd4bf;
   --accent-pink: #ec4899;
