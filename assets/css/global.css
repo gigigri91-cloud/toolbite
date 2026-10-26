@@ -793,17 +793,7 @@ html[data-theme="dark"] body #site-header.header-small img.header-logo {
     max-width: min(12rem, 100%);
 }
 
-/* AdSense container — prevents layout shift before ads load */
-.ads-slot {
-    display: block;
-    min-height: 90px;
-    width: 100%;
-}
-.ads-slot-sidebar {
-    display: block;
-    min-height: 250px;
-    width: 100%;
-}
+
 
 /* Guide typography + "Best for" treatment. */
 .guide-layout-prose h2,
