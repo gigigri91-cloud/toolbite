@@ -9,7 +9,8 @@ const { rootPath = "/" } = Astro.props;
 <footer id="site-footer" class="tb-shell-footer">
   <div class="tb-shell-container">
     <a href={`${rootPath}`} class="tb-footer-logo-link" aria-label="ToolBite home">
-      <img src="/assets/images/toolbite-logo.webp" alt="ToolBite" width="120" height="32" loading="lazy" />
+      <span class="footer-logo-icon" aria-hidden="true">🔧</span>
+      <span class="footer-logo-text">Tool<span class="footer-logo-bite">Bite</span></span>
     </a>
     <nav class="tb-footer-nav" aria-label="Footer">
       <a href={`${rootPath}about.html`}>About</a>
@@ -25,11 +26,31 @@ const { rootPath = "/" } = Astro.props;
         aria-label="Manage cookie preferences"
       >Manage cookies</a>
     </nav>
+    <div class="tb-footer-cta">
+      <p class="tb-footer-tagline">Browser tools that respect your time and privacy.</p>
+      <a href="#" id="random-tool-btn" class="tb-footer-random-btn" aria-label="Open a random tool">
+        <span aria-hidden="true">🎲</span> Try a random tool
+      </a>
+    </div>
     <p class="tb-footer-copy">
       &copy; <span id="current-year"></span> ToolBite.org — all rights reserved.
     </p>
   </div>
 </footer>
+
+<script is:inline>
+  (function() {
+    var tools = ["tools/base64-encoder.html","tools/csv-to-json.html","tools/case-converter.html","tools/color-palette-generator.html","tools/find-replace.html","tools/image-compressor.html","tools/json-formatter.html","tools/jwt-decoder.html","tools/lorem-ipsum.html","tools/password-generator.html","tools/qr-generator.html","tools/read-time-calculator.html","tools/remove-duplicate-lines.html","tools/remove-extra-spaces.html","tools/hash-generator.html","tools/sort-text-lines.html","tools/text-to-slug.html","tools/url-encoder.html","tools/uuid-generator.html","tools/word-counter.html"];
+    var btn = document.getElementById('random-tool-btn');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var pick = tools[Math.floor(Math.random() * tools.length)];
+        window.location.href = '/' + pick;
+      });
+    }
+  })();
+</script>
 
 <style>
   .tb-shell-footer {
@@ -58,12 +79,33 @@ const { rootPath = "/" } = Astro.props;
   }
   .tb-footer-logo-link {
     display: inline-flex;
-    line-height: 0;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    line-height: 1;
+    flex-shrink: 0;
   }
-  .tb-footer-logo-link img {
-    width: 120px;
-    height: 32px;
-    object-fit: contain;
+  .footer-logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #1E6FC2, #F07820);
+    border-radius: 7px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .footer-logo-text {
+    font-family: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .footer-logo-bite {
+    color: #FF9A45;
   }
   .tb-footer-nav {
     display: flex;
@@ -87,6 +129,49 @@ const { rootPath = "/" } = Astro.props;
   .tb-footer-nav a:focus-visible {
     color: #c8dff5;
     outline: none;
+  }
+  .tb-footer-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border-subtle, rgba(255,255,255,0.04));
+  }
+  @media (min-width: 768px) {
+    .tb-footer-cta {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+    }
+  }
+  .tb-footer-tagline {
+    margin: 0;
+    color: var(--text-muted, #7A8BAD);
+    font-size: 13px;
+    font-style: italic;
+  }
+  .tb-footer-random-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-blue, #4A9FE0);
+    border: 1px solid rgba(74,159,224,0.25);
+    border-radius: 6px;
+    padding: 0.35rem 0.75rem;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(74,159,224,0.06);
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+    white-space: nowrap;
+  }
+  .tb-footer-random-btn:hover {
+    background: rgba(74,159,224,0.14);
+    border-color: rgba(74,159,224,0.45);
+    color: #6bb8f0;
   }
   .tb-footer-copy {
     margin: 0;

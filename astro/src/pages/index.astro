@@ -60,7 +60,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
 
   <div class="stats-bar tb-reveal">
     <div class="stat">
-      <span class="stat-num blue">20</span><span class="stat-label">free tools</span>
+      <span class="stat-num blue">{toolsTotal}</span><span class="stat-label">free tools</span>
     </div>
     <div class="stat">
       <span class="stat-num orange">100%</span><span class="stat-label">client-side</span>
@@ -86,19 +86,40 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   </section>
 
   <section class="why-section home-section tb-reveal" aria-labelledby="why-toolbite-heading">
-    <h2 id="why-toolbite-heading">Why developers and writers use ToolBite</h2>
+    <div class="section-head">
+      <h2 id="why-toolbite-heading">Why developers and writers use ToolBite</h2>
+      <p>Built for privacy, speed, and real daily workflows — no strings attached.</p>
+    </div>
     <div class="why-grid">
-      <article class="why-card">
+      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+        <span class="why-icon" aria-hidden="true">🔒</span>
         <h3>100% client-side processing</h3>
-        <p>Every tool on ToolBite runs entirely in your browser. Your JSON, passwords, tokens, and text are never sent to a server, never logged, and never stored. This matters when working with credentials, sensitive API responses, or confidential content.</p>
+        <p>Every tool runs entirely in your browser. Your JSON, passwords, tokens, and text are never sent to a server, never logged, and never stored.</p>
       </article>
-      <article class="why-card">
+      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+        <span class="why-icon" aria-hidden="true">⚡</span>
         <h3>No account required</h3>
-        <p>All 20 tools are free and accessible without registration. There is no trial period, no usage limit, and no feature gating. Open the tool you need and start working immediately.</p>
+        <p>All tools are free and accessible without registration — no trial period, no usage limit, no feature gating. Open and start working immediately.</p>
       </article>
-      <article class="why-card">
+      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+        <span class="why-icon" aria-hidden="true">🔗</span>
         <h3>Built for real workflows</h3>
-        <p>Each tool is designed around a specific task that appears regularly in development, writing, SEO, and design work. The interface stays focused — no unnecessary options, no distracting features, no ads interrupting the workspace.</p>
+        <p>Focused interfaces for development, writing, SEO, and design. Contextual links turn isolated tasks into repeatable multi-step workflows.</p>
+      </article>
+      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+        <span class="why-icon" aria-hidden="true">🔍</span>
+        <h3>Search-first exploration</h3>
+        <p>Command-style discovery with <kbd>Ctrl/⌘K</kbd> helps you move from intent to action in seconds.</p>
+      </article>
+      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+        <span class="why-icon" aria-hidden="true">🌐</span>
+        <h3>Connected ecosystem</h3>
+        <p>Cross-linked tools and guides create a discovery layer that grows with your knowledge, not just your bookmark list.</p>
+      </article>
+      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+        <span class="why-icon" aria-hidden="true">♾️</span>
+        <h3>Free forever by design</h3>
+        <p>No freemium gates, no premium tiers. The full toolset is available to everyone, every time.</p>
       </article>
     </div>
   </section>
@@ -154,18 +175,6 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
 
   <section class="home-section tb-reveal">
     <div class="section-head">
-      <h2>Why teams adopt ToolBite</h2>
-      <p>Engineered for speed, privacy, and operational clarity across daily tasks.</p>
-    </div>
-    <div class="benefits-grid">
-      <article class="tb-card tb-card-panel tb-card-pad-lg"><h3>Browser-native privacy</h3><p>Core workflows run locally, reducing upload friction and risk.</p></article>
-      <article class="tb-card tb-card-panel tb-card-pad-lg"><h3>Search-first exploration</h3><p>Command-style discovery helps users move from intent to action quickly.</p></article>
-      <article class="tb-card tb-card-panel tb-card-pad-lg"><h3>Connected ecosystem</h3><p>Contextual linking turns isolated tasks into repeatable multi-step workflows.</p></article>
-    </div>
-  </section>
-
-  <section class="home-section tb-reveal">
-    <div class="section-head">
       <h2>Trust by architecture</h2>
       <p>Platform fundamentals designed for reliability and scale.</p>
     </div>
@@ -201,6 +210,18 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     padding: 0;
     margin-bottom: 1.5rem;
   }
+  /* Accent vizual subtil între secțiuni — linie gradient */
+  .home-section + .home-section {
+    position: relative;
+  }
+  .home-section + .home-section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74,159,224,0.12), rgba(255,154,69,0.08), transparent);
+    margin-bottom: 1.5rem;
+  }
   .home-hero {
     position: relative;
     overflow: hidden;
@@ -215,7 +236,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   .hero-content {
     position: relative;
     z-index: 1;
-    padding: clamp(1.25rem, 3vw, 2.5rem) 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 4vw, 2.5rem);
   }
   .hero-glow-blue {
     position: absolute;
@@ -353,24 +374,20 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   }
   .section-head p { margin: 0.35rem 0 0.85rem; color: var(--color-text-secondary); }
   .ai-card { transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
-  .ai-card:hover { transform: translateY(-3px); border-color: var(--color-border-accent-blue); box-shadow: 0 12px 26px color-mix(in srgb, var(--color-brand-blue) 22%, transparent); }
+  .ai-card:hover { transform: translateY(-3px); border-color: var(--color-border-accent-blue); box-shadow: 0 12px 26px rgba(74, 159, 224, 0.22); }
   .ai-card h3 { color: var(--color-text-primary); }
   .ai-card p { color: var(--color-text-secondary); }
   .ai-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-blue); margin-bottom: 0.4rem; }
-  .benefits-grid,
   .stats-grid { display: grid; gap: 0.85rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
   @media (min-width: 768px) {
-    .benefits-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
-  .benefits-grid h3 { margin: 0 0 0.45rem; font-size: 1.02rem; color: var(--color-text-primary); }
-  .benefits-grid p { margin: 0; color: var(--color-text-secondary); font-size: 0.95rem; }
   .stat-value { margin: 0; font-size: 1.7rem; font-weight: 800; color: var(--color-brand-blue); }
   .stat-card .stat-label { margin: 0.25rem 0 0; color: #7a9ab8; font-size: 0.88rem; }
   .discovery-cta,
   .premium-footer {
     background:
-      radial-gradient(100% 120% at 90% -20%, color-mix(in srgb, var(--color-brand-blue) 18%, transparent), transparent 62%),
+      radial-gradient(100% 120% at 90% -20%, rgba(74, 159, 224, 0.18), transparent 62%),
       var(--color-bg-card);
   }
   .discovery-cta h2,
@@ -385,41 +402,52 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   .command-copy { margin: 0; color: var(--color-text-secondary); }
   .search-command-card kbd { color: var(--color-brand-orange); background: #0d1e35; border: 1px solid var(--color-border-accent-orange); border-radius: 4px; padding: 0.05rem 0.35rem; font-family: var(--font-mono); }
   .why-section {
-    padding: 2rem 0;
-  }
-  .why-section h2 {
-    color: var(--color-text-primary);
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    padding: 1.5rem 0;
   }
   .why-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.85rem;
+    margin-top: 0;
   }
-  .why-card {
-    background: var(--color-bg-card, #090e18);
-    border: 1px solid var(--color-border-primary, #1a2535);
-    border-radius: 10px;
-    padding: 1.5rem;
+  .why-card-new {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  .why-card h3 {
-    color: #4d9fff;
+  .why-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .why-card-new h3 {
+    color: var(--accent-blue, #4A9FE0);
     font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
-  html[data-theme="dark"] .why-card h3 {
-    color: #4d9fff;
-  }
-  .why-card p {
-    color: var(--color-text-secondary, #c8dff5);
-    font-size: 0.95rem;
-    line-height: 1.65;
     margin: 0;
   }
-  @media (max-width: 768px) {
+  .why-card-new p {
+    color: var(--text-secondary, #8BA3C4);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .why-card-new kbd {
+    color: var(--accent-orange, #FF9A45);
+    background: rgba(255, 154, 69, 0.08);
+    border: 1px solid rgba(255, 154, 69, 0.2);
+    border-radius: 4px;
+    padding: 0.05rem 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+  }
+  @media (max-width: 900px) {
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
     .why-grid {
       grid-template-columns: 1fr;
     }

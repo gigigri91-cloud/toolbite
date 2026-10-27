@@ -186,9 +186,9 @@ nav[aria-label="Breadcrumb"] li {
     transition: transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms ease, border-color 260ms ease;
 }
 .tool-card-tb:hover {
-    border-color: rgba(74,159,224,0.28);
-    box-shadow: 0 12px 40px rgba(74,159,224,0.14), 0 4px 16px rgba(0,0,0,0.3);
-    transform: translateY(-4px);
+    border-color: rgba(74,159,224,0.4);
+    box-shadow: 0 16px 48px rgba(74,159,224,0.22), 0 6px 20px rgba(0,0,0,0.35);
+    transform: translateY(-5px);
 }
 
 /* Fade-in la scroll — aplicat prin JS cu IntersectionObserver */
@@ -526,9 +526,9 @@ html[data-theme="dark"] body .tb-field-hint {
   transition: transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms ease, border-color 260ms ease;
 }
 .tb-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(74,159,224,0.12), 0 4px 16px rgba(0,0,0,0.3);
-  border-color: rgba(74,159,224,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(74,159,224,0.20), 0 6px 20px rgba(0,0,0,0.35);
+  border-color: rgba(74,159,224,0.35);
 }
 
 /* ─── Variante ─────────────────────────────────── */
@@ -541,9 +541,9 @@ html[data-theme="dark"] body .tb-field-hint {
   transition: box-shadow 260ms cubic-bezier(.22,1,.36,1), transform 260ms cubic-bezier(.22,1,.36,1), border-color 260ms ease;
 }
 .tb-card-interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(74,159,224,0.14), 0 4px 16px rgba(0,0,0,0.3);
-  border-color: rgba(74,159,224,0.28);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(74,159,224,0.22), 0 6px 20px rgba(0,0,0,0.35);
+  border-color: rgba(74,159,224,0.4);
 }
 .tb-card-interactive:active {
   transform: translateY(-1px);
