@@ -64,8 +64,8 @@ const cardStyle = [
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
-    background: color-mix(in srgb, var(--wow-tool-accent) 18%, transparent);
-    border: 1px solid color-mix(in srgb, var(--wow-tool-accent) 35%, transparent);
+    background: rgba(74, 159, 224, 0.14);
+    border: 1px solid rgba(74, 159, 224, 0.28);
     flex-shrink: 0;
   }
   .wow-tool-card__body {
@@ -80,7 +80,7 @@ const cardStyle = [
   }
   .wow-tool-card__title {
     margin: 0;
-    color: #c8dff5;
+    color: var(--text-primary, #E8EDFB);
     font-weight: 700;
     font-size: 14px;
     line-height: 1.35;
@@ -89,7 +89,7 @@ const cardStyle = [
     margin: 0.35rem 0 0;
     font-size: 14px;
     line-height: 1.5;
-    color: #7a9ab8;
+    color: var(--text-secondary, #8BA3C4);
   }
   @media (prefers-reduced-motion: reduce) {
     .wow-tool-card {

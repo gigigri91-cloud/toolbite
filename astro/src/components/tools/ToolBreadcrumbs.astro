@@ -37,21 +37,23 @@ const { items } = Astro.props;
     align-items: center;
     gap: 0.5rem;
     font-size: 14px;
-    color: rgb(156 163 175);
+    color: var(--text-muted, #7A8BAD);
   }
   .tb-tool-breadcrumbs__link {
-    color: rgb(209 213 219);
+    color: var(--text-secondary, #8BA3C4);
     text-decoration: none;
+    transition: color 140ms ease;
   }
   .tb-tool-breadcrumbs__link:hover,
   .tb-tool-breadcrumbs__link:focus-visible {
-    color: rgb(96 165 250);
+    color: var(--accent-blue, #4A9FE0);
+    outline: none;
   }
   .tb-tool-breadcrumbs__current {
-    color: rgb(243 244 246);
+    color: var(--text-primary, #E8EDFB);
     font-weight: 600;
   }
   .tb-tool-breadcrumbs__sep {
-    color: rgb(156 163 175);
+    color: var(--text-muted, #7A8BAD);
   }
 </style>

@@ -16,36 +16,95 @@ const metadata = createMetadata({
 ---
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
-<div class="text-7xl mb-6">🕳️</div>
-    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 mb-6" data-pseo-target="h1">404</h1>
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">Page Not Found</h2>
-    <p class="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-lg">
+  <div class="nf-wrap">
+    <div class="nf-icon" aria-hidden="true">🕳️</div>
+    <h1 class="nf-h1" data-pseo-target="h1">404</h1>
+    <h2 class="nf-h2">Page Not Found</h2>
+    <p class="nf-lead">
       The tool or page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
     </p>
-    <div class="w-full max-w-xl mb-6">
-      <form action="search.html" method="get" role="search" class="tb-card tb-card-pad-sm flex items-center gap-2">
+    <div class="nf-search">
+      <form action="search.html" method="get" role="search" class="tb-card tb-card-pad-sm nf-search-form">
         <label for="missing-search" class="sr-only">Search ToolBite</label>
-        <input id="missing-search" name="q" type="search" placeholder="Try: JSON formatter, QR generator, slug tool..." class="tb-input w-full border outline-none" />
+        <input id="missing-search" name="q" type="search" placeholder="Try: JSON formatter, QR generator, slug tool..." class="tb-input nf-search-input" />
         <button type="submit" class="tb-btn tb-btn-primary">Search</button>
       </form>
     </div>
-    <div class="flex flex-wrap justify-center gap-3 mb-8">
+    <div class="nf-quick-links">
       <a href="tools/json-formatter.html" class="tb-btn tb-btn-outline">JSON Formatter</a>
       <a href="tools/password-generator.html" class="tb-btn tb-btn-outline">Password Generator</a>
       <a href="tools/word-counter.html" class="tb-btn tb-btn-outline">Word Counter</a>
       <a href="/guides/" class="tb-btn tb-btn-outline">Browse Guides</a>
     </div>
-
-    <section class="not-found-help tb-card tb-card-panel tb-card-pad-lg max-w-2xl mx-auto text-left mb-8">
-      <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Looking for something specific?</h2>
-      <p class="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
+    <section class="not-found-help tb-card tb-card-panel tb-card-pad-lg">
+      <h2 class="nf-section-h2">Looking for something specific?</h2>
+      <p class="nf-body">
         The page you requested may have moved or the URL may contain a typo. Use the search bar above to find tools and guides by name or task. You can also browse all tools from the homepage or explore tools by category.
       </p>
-      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      <p class="nf-body">
         If you followed a link that brought you here, the destination may have changed. Popular tools include the JSON Formatter, Password Generator, Base64 Encoder, and Word Counter — all accessible from the homepage.
       </p>
     </section>
-
-    <a href="/" class="tb-btn tb-btn-outline inline-block py-3 px-8 rounded-xl">Return to Homepage</a>
-
+    <a href="/" class="tb-btn tb-btn-outline nf-home-btn">Return to Homepage</a>
+  </div>
 </BaseLayout>
+
+<style>
+  .nf-wrap {
+    max-width: 42rem;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 0 1.25rem;
+  }
+  .nf-icon { font-size: 4rem; margin-bottom: 1.25rem; }
+  .nf-h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.5rem;
+    font-family: 'Syne', system-ui, sans-serif;
+  }
+  .nf-h2 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--accent-blue, #4A9FE0);
+    margin: 0 0 1.25rem;
+  }
+  .nf-lead {
+    font-size: 1.05rem;
+    color: var(--text-secondary, #8BA3C4);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+  }
+  .nf-search { width: 100%; margin-bottom: 1.5rem; }
+  .nf-search-form { display: flex; align-items: center; gap: 0.5rem; }
+  .nf-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text-primary, #E8EDFB);
+    font-size: 1rem;
+  }
+  .nf-quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+  }
+  .not-found-help { text-align: left; margin-bottom: 1.5rem; }
+  .nf-section-h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.75rem;
+  }
+  .nf-body {
+    color: var(--text-secondary, #8BA3C4);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 0.75rem;
+  }
+  .nf-home-btn { padding: 0.75rem 2rem; }
+</style>
