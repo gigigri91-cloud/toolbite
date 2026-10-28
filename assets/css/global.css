@@ -1597,9 +1597,19 @@ html[data-theme="dark"] body b {
 }
 
 .tb-btn-primary {
-  background: var(--color-brand-blue-dark);
+  background: linear-gradient(135deg, var(--accent-blue, #4A9FE0), var(--accent-blue-dark, #1E6FC2));
   color: #e8f0ff;
-  border-color: var(--color-brand-blue-dark);
+  border-color: transparent;
+}
+
+.tb-btn-secondary {
+  background: var(--bg-card, #141D2E);
+  color: var(--text-primary, #E8EDFB);
+  border: 1px solid var(--border-default, rgba(255,255,255,0.07));
+}
+.tb-btn-secondary:hover {
+  border-color: var(--accent-blue, #4A9FE0);
+  color: var(--accent-blue, #4A9FE0);
 }
 
 .tb-btn-outline {
@@ -1670,6 +1680,13 @@ h2,
 h3,
 h4 {
   color: #ffffff !important;
+}
+/* Componente cu accent color pe headings — override !important de mai sus */
+.tb-tool-usecase-item h3,
+.tb-tool-example-item h3,
+.tb-why-card h3,
+.tb-card-interactive h3 {
+  color: inherit !important;
 }
 
 body {
