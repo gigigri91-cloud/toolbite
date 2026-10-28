@@ -1700,6 +1700,11 @@ small,
 a {
   color: var(--accent-blue, var(--color-brand-blue));
 }
+/* Logo override — forțează culoarea Bite portocaliu indiferent de moștenire */
+.logo-link .logo-bite,
+.tb-footer-logo-link .footer-logo-bite {
+  color: #FF9A45 !important;
+}
 
 input::placeholder,
 textarea::placeholder {
