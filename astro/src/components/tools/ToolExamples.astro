@@ -26,18 +26,17 @@ const { examples } = Astro.props;
   .tb-tool-example-item h3 {
     margin: 0 0 0.5rem;
     font-size: 0.95rem;
-    color: rgb(17 24 39);
+    color: var(--accent-orange, #FF9A45);
+    font-weight: 700;
   }
   .tb-tool-example-item p {
     margin: 0.3rem 0;
-    color: rgb(75 85 99);
+    color: var(--text-secondary, #8BA3C4);
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.55;
   }
-  html[data-theme="dark"] .tb-tool-example-item h3 {
-    color: rgb(243 244 246);
-  }
-  html[data-theme="dark"] .tb-tool-example-item p {
-    color: rgb(209 213 219);
+  .tb-tool-example-item strong {
+    color: var(--text-primary, #E8EDFB);
+    font-weight: 600;
   }
 </style>

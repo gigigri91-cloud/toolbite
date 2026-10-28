@@ -23,29 +23,35 @@ const { items } = Astro.props;
     gap: 0.625rem;
   }
   .tb-tool-faq-item {
-    border: 1px solid rgb(229 231 235);
+    border: 1px solid var(--border-default, rgba(255,255,255,0.07));
     border-radius: 0.9rem;
     padding: 0.7rem 0.9rem;
-    background: rgb(249 250 251);
+    background: var(--bg-card-hover, #192338);
+    transition: border-color 160ms ease;
+  }
+  .tb-tool-faq-item:hover {
+    border-color: var(--border-strong, rgba(74,159,224,0.18));
   }
   .tb-tool-faq-item summary {
     cursor: pointer;
     font-weight: 600;
-    color: rgb(17 24 39);
+    color: var(--text-primary, #E8EDFB);
+    list-style: none;
+  }
+  .tb-tool-faq-item summary::-webkit-details-marker { display: none; }
+  .tb-tool-faq-item summary::before {
+    content: '▸ ';
+    color: var(--accent-blue, #4A9FE0);
+    font-size: 0.8em;
+  }
+  details[open] .tb-tool-faq-item summary::before,
+  .tb-tool-faq-item[open] summary::before {
+    content: '▾ ';
   }
   .tb-tool-faq-item p {
     margin: 0.6rem 0 0;
-    color: rgb(75 85 99);
+    color: var(--text-secondary, #8BA3C4);
     font-size: 0.9rem;
-  }
-  html[data-theme="dark"] .tb-tool-faq-item {
-    border-color: rgb(75 85 99);
-    background: rgb(31 41 55);
-  }
-  html[data-theme="dark"] .tb-tool-faq-item summary {
-    color: rgb(243 244 246);
-  }
-  html[data-theme="dark"] .tb-tool-faq-item p {
-    color: rgb(209 213 219);
+    line-height: 1.6;
   }
 </style>

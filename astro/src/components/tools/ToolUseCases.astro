@@ -26,18 +26,13 @@ const { items } = Astro.props;
   .tb-tool-usecase-item h3 {
     margin: 0 0 0.45rem;
     font-size: 0.95rem;
-    color: rgb(17 24 39);
+    color: var(--accent-blue, #4A9FE0);
+    font-weight: 700;
   }
   .tb-tool-usecase-item p {
     margin: 0;
-    color: rgb(75 85 99);
+    color: var(--text-secondary, #8BA3C4);
     font-size: 0.875rem;
-    line-height: 1.5;
-  }
-  html[data-theme="dark"] .tb-tool-usecase-item h3 {
-    color: rgb(243 244 246);
-  }
-  html[data-theme="dark"] .tb-tool-usecase-item p {
-    color: rgb(209 213 219);
+    line-height: 1.55;
   }
 </style>
