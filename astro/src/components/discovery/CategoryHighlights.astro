@@ -52,14 +52,14 @@ const tintHoverBorder = `rgba(${r}, ${g}, ${b}, 0.6)`;
 
 <section
   class="category-hero tb-card tb-card-panel tb-card-pad-lg"
-  style={`--cat-accent: ${accent}; --cat-accent-hover-border: ${tintHoverBorder}; background: radial-gradient(80% 120% at 90% -10%, ${tintStrong}, transparent 55%), ${tintBg}; border: 1px solid ${tintBorder};`}
+  style={`--cat-accent: ${accent}; --cat-chip-border: ${tintBorder}; --cat-chip-bg: ${chipBg}; --cat-accent-hover-border: ${tintHoverBorder}; background: radial-gradient(80% 120% at 90% -10%, ${tintStrong}, transparent 55%), ${tintBg}; border: 1px solid ${tintBorder};`}
 >
   <p class="category-kicker" style={`color: ${accent};`}>Productivity ecosystem</p>
   <h1 class="category-title">{categoryTitle}</h1>
   <p class="category-desc">{heroDescription}</p>
   <div class="hero-grid">
     {featuredTools.map((tool) => (
-      <a href={`/${tool.url}`} class="feature-chip" style={`border-color: ${tintBorder}; background: ${chipBg};`}>
+      <a href={`/${tool.url}`} class="feature-chip">
         <span class="feature-chip__icon" style={`color: ${accent}; background: rgba(${r},${g},${b},0.18);`}>{tool.icon || "🧰"}</span>
         <span class="feature-chip__label">{tool.title}</span>
       </a>
@@ -123,7 +123,8 @@ const tintHoverBorder = `rgba(${r}, ${g}, ${b}, 0.6)`;
     display: inline-flex;
     gap: 0.5rem;
     align-items: center;
-    border: 1px solid transparent;
+    border: 1px solid var(--cat-chip-border, rgba(74,159,224,0.2));
+    background: var(--cat-chip-bg, rgba(74,159,224,0.12));
     transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   }
   .feature-chip:hover {
