@@ -348,11 +348,14 @@ small,
 
 /* NEUTRAL — acțiuni secundare (Clear, Reset, Copy etc.) */
 .tb-btn-neutral {
-  background: #f3f4f6;           /* gray-100 */
-  color: #374151;                /* gray-700 */
-  border-color: #e5e7eb;        /* gray-200 */
+  background: var(--bg-card-hover, #192338);
+  color: var(--text-secondary, #8BA3C4);
+  border-color: var(--border-default, rgba(255,255,255,0.07));
 }
-.tb-btn-neutral:hover { background: #e5e7eb; }
+.tb-btn-neutral:hover {
+  background: var(--bg-card, #141D2E);
+  color: var(--text-primary, #E8EDFB);
+}
 
 /* OUTLINE — terțiar, ghost cu border */
 .tb-btn-outline {
@@ -1140,7 +1143,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: #ffffff !important;
+  color: var(--text-primary, #E8EDFB) !important;
 }
 /* Componente cu accent color pe headings — override !important de mai sus */
 .tb-tool-usecase-item h3,
@@ -1193,6 +1196,6 @@ textarea::placeholder {
 .tb-textarea,
 .tb-select {
   background: var(--bg-card, var(--color-bg-card)) !important;
-  color: #ffffff !important;
+  color: var(--text-primary, #E8EDFB) !important;
   border: 1px solid var(--border-strong, var(--color-border-secondary)) !important;
 }
