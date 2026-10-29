@@ -4,8 +4,8 @@
   "description": "Fast, private browser-based utilities for text, developers, and SEO.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1a68b1",
+  "background_color": "#090e18",
+  "theme_color": "#4A9FE0",
   "icons": [
     {
       "src": "/assets/images/favicon.png",
