@@ -64,6 +64,37 @@
     }, 1500);
   }
 
+  // Ctrl+K / Cmd+K → search
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      var overlay = document.getElementById('tb-search-overlay');
+      if (overlay && typeof overlay.show === 'function') {
+        overlay.show();
+      } else {
+        window.location.href = '/search.html';
+      }
+    }
+  });
+
+  // Recent tools — salvează ultimele 5 tool-uri vizitate
+  (function () {
+    var path = window.location.pathname;
+    if (!path.includes('/tools/')) return;
+    try {
+      var slug = path.split('/tools/')[1].replace('.html', '');
+      var title = document.title.split('—')[0].trim() || slug;
+      var icon = document.querySelector('.tb-tool-hero__eyebrow') ? '🔧' : '🔧';
+      var iconEl = document.querySelector('.wow-tool-card__icon, .tb-tool-hero [data-icon]');
+      if (iconEl) icon = iconEl.textContent.trim().charAt(0) || icon;
+      var recent = JSON.parse(localStorage.getItem('tb_recent') || '[]');
+      recent = recent.filter(function (t) { return t.slug !== slug; });
+      recent.unshift({ slug: slug, title: title, icon: icon, path: path });
+      recent = recent.slice(0, 5);
+      localStorage.setItem('tb_recent', JSON.stringify(recent));
+    } catch (_) {}
+  })();
+
   window.tbCopyText = function (text, button) {
     if (!text) return Promise.resolve(false);
     if (navigator.clipboard && window.isSecureContext) {

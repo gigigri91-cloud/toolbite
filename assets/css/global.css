@@ -19,6 +19,24 @@
 
 /* --- TOOLBITE - GLOBAL STYLES --- */
 
+/* Skip-to-content — accesibilitate keyboard */
+.tb-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--accent-blue, #4A9FE0);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 180ms ease;
+}
+.tb-skip-link:focus {
+  top: 0;
+}
+
 :root {
     --brand-blue: #1a68b1;
     --brand-orange: #f27c22;

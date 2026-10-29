@@ -120,14 +120,14 @@ const { rootPath = "/" } = Astro.props;
     }
   }
   .tb-footer-nav a {
-    color: #7a9ab8;
+    color: var(--text-muted, #7A8BAD);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
   }
   .tb-footer-nav a:hover,
   .tb-footer-nav a:focus-visible {
-    color: #c8dff5;
+    color: var(--text-secondary, #8BA3C4);
     outline: none;
   }
   .tb-footer-cta {
@@ -176,7 +176,7 @@ const { rootPath = "/" } = Astro.props;
   .tb-footer-copy {
     margin: 0;
     width: 100%;
-    color: #7a9ab8;
+    color: var(--text-muted, #7A8BAD);
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.02em;
