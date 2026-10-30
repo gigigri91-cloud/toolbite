@@ -1,6 +1,20 @@
-<section id="no-results" class="tb-card tb-card-panel tb-card-pad-lg hidden">
-  <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">No results found</h2>
-  <p class="text-sm text-gray-600 dark:text-gray-400">
+<section id="no-results" class="tb-card tb-card-panel tb-card-pad-lg src-empty hidden">
+  <h2 class="src-empty__title">No results found</h2>
+  <p class="src-empty__hint">
     Try broader keywords, switch category filters, or use one of the suggested shortcuts.
   </p>
 </section>
+
+<style>
+  .src-empty__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.5rem;
+  }
+  .src-empty__hint {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #8BA3C4);
+    margin: 0;
+  }
+</style>

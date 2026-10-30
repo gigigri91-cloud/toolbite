@@ -13,7 +13,8 @@ import { HOMEPAGE_TITLE, createMetadata } from "@/lib/seo";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
 import { getAllTools, getCategoryTools, getPopularTools } from "@/lib/tools";
 
-const toolsTotal = getAllTools().length;
+const toolsTotal = getAllTools().filter(t => t.url.startsWith('tools/')).length;
+const allItemsTotal = getAllTools().length;
 const title = HOMEPAGE_TITLE;
 const description =
   `${toolsTotal} free browser-based tools for JSON formatting, passwords, image compression, and text editing. No account, no upload—100% client-side. Start on ToolBite.`;
@@ -33,7 +34,7 @@ const aiTools = getPopularTools(6).filter((tool) =>
 const trustStats = [
   { label: "Browser-native workflows", value: "100%" },
   { label: "Categories powering discovery", value: "4+" },
-  { label: "Tools and guides connected", value: "30+" },
+  { label: "Tools and guides connected", value: `${allItemsTotal}+` },
   { label: "Server upload required", value: "0" }
 ];
 const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);

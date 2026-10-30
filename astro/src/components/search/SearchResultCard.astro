@@ -2,8 +2,22 @@
   <a class="tb-card tb-card-interactive tb-card-pad-lg tb-card-row search-result-card" href="/search.html">
     <div class="tb-tool-icon tb-icon-blue">🧰</div>
     <div>
-      <h3 class="font-bold text-gray-900 dark:text-gray-100 text-lg">Result</h3>
-      <p class="text-sm text-gray-500 dark:text-gray-400">Description</p>
+      <h3 class="src-result-title">Result</h3>
+      <p class="src-result-desc">Description</p>
     </div>
   </a>
 </template>
+
+<style>
+  .src-result-title {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.2rem;
+  }
+  .src-result-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted, #7A8BAD);
+    margin: 0;
+  }
+</style>

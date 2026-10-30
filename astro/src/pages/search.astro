@@ -7,8 +7,9 @@ import SearchResults from "@/components/search/SearchResults.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { createMetadata } from "@/lib/seo";
-import { getPopularTools } from "@/lib/tools";
+import { getAllTools, getPopularTools } from "@/lib/tools";
 
+const toolsTotal = getAllTools().filter(t => t.url.startsWith('tools/')).length;
 const title = "Search ToolBite Tools & Guides Online — Free Discovery | ToolBite";
 const description =
   "Search ToolBite tools and guides instantly: JSON, JWT, text, SEO, and image utilities with keyboard-first results. Find the right workflow on ToolBite today.";
@@ -25,9 +26,9 @@ const quickPicks = getPopularTools(6);
 
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata}>
   <section class="tb-card tb-card-panel tb-card-pad-lg search-shell">
-    <header class="mb-4">
-      <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-100">Find the right tool, instantly</h1>
-      <p class="text-sm text-gray-600 dark:text-gray-400">Keyboard-first discovery for tools, guides, and workflows.</p>
+    <header class="search-header">
+      <h1 class="search-page-title">Find the right tool, instantly</h1>
+      <p class="search-page-sub">Keyboard-first discovery for tools, guides, and workflows.</p>
     </header>
 
     <div class="search-toolbar">
@@ -49,9 +50,9 @@ const quickPicks = getPopularTools(6);
     <SearchResultCard />
   </section>
 
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-6">
-    <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Quick picks</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+  <section class="tb-card tb-card-panel tb-card-pad-lg search-quickpicks">
+    <h2 class="search-section-title">Quick picks</h2>
+    <div class="quickpicks-grid">
       {quickPicks.map((tool) => (
         <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-md">
           <span class="mr-2">{tool.icon || "🧰"}</span>{tool.title}
@@ -60,18 +61,18 @@ const quickPicks = getPopularTools(6);
     </div>
   </section>
 
-  <section class="search-help tb-card tb-card-panel tb-card-pad-lg mt-6">
-    <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Search tips</h2>
-    <p class="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
-      Search across all 20 ToolBite tools, guides, and categories. Type the name of a tool, a task (like "encode" or "format"), or a file type (like "JSON" or "CSV") to find relevant tools and guides. Results update as you type.
+  <section class="search-help tb-card tb-card-panel tb-card-pad-lg">
+    <h2 class="search-section-title">Search tips</h2>
+    <p class="search-help-text">
+      Search across all {toolsTotal} ToolBite tools, guides, and categories. Type the name of a tool, a task (like "encode" or "format"), or a file type (like "JSON" or "CSV") to find relevant tools and guides. Results update as you type.
     </p>
-    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    <p class="search-help-text">
       If you are looking for a specific type of tool, try browsing by category: Developer Tools, Text Tools, Image Tools, or SEO Tools. Categories group tools by the type of work they support.
     </p>
   </section>
 
   <SearchOverlay>
-    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Use <kbd>Ctrl/Cmd + K</kbd> to focus search, arrows to navigate, Enter to open result.</p>
+    <p class="search-overlay-hint">Use <kbd>Ctrl/Cmd + K</kbd> to focus search, arrows to navigate, Enter to open result.</p>
     <SearchSuggestions />
   </SearchOverlay>
 
@@ -83,16 +84,52 @@ const quickPicks = getPopularTools(6);
 <style>
   .search-shell {
     background:
-      radial-gradient(90% 120% at 90% -20%, rgba(59, 130, 246, 0.2), transparent 60%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+      radial-gradient(90% 120% at 90% -20%, rgba(74, 159, 224, 0.15), transparent 60%),
+      var(--bg-secondary, #0d1521);
   }
-  html[data-theme="dark"] .search-shell {
-    background:
-      radial-gradient(90% 120% at 90% -20%, rgba(125, 211, 252, 0.2), transparent 60%),
-      linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.98));
+  .search-header { margin-bottom: 1rem; }
+  .search-page-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.35rem;
+  }
+  .search-page-sub {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #8BA3C4);
+    margin: 0;
   }
   .search-toolbar { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
   @media (min-width: 768px) {
     .search-toolbar { grid-template-columns: minmax(0, 1fr) 220px; }
+  }
+  .search-quickpicks, .search-help { margin-top: 1.5rem; }
+  .search-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.75rem;
+  }
+  .quickpicks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .quickpicks-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .quickpicks-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .search-help-text {
+    color: var(--text-secondary, #8BA3C4);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  .search-help-text:last-child { margin-bottom: 0; }
+  .search-overlay-hint {
+    font-size: 0.875rem;
+    color: var(--text-muted, #7A8BAD);
+    margin-bottom: 0.5rem;
   }
 </style>
