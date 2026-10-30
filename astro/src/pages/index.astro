@@ -13,9 +13,10 @@ import { HOMEPAGE_TITLE, createMetadata } from "@/lib/seo";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
 import { getAllTools, getCategoryTools, getPopularTools } from "@/lib/tools";
 
+const toolsTotal = getAllTools().length;
 const title = HOMEPAGE_TITLE;
 const description =
-  "20 free browser-based tools for JSON formatting, passwords, image compression, and text editing. No account, no upload—100% client-side. Start on ToolBite.";
+  `${toolsTotal} free browser-based tools for JSON formatting, passwords, image compression, and text editing. No account, no upload—100% client-side. Start on ToolBite.`;
 const canonicalPath = "/";
 const metadata = createMetadata({
   title,
@@ -26,7 +27,6 @@ const metadata = createMetadata({
 
 const schemas = [buildWebSiteSchema(), buildOrganizationSchema()];
 const popularGridTools = getPopularTools(12);
-const toolsTotal = getAllTools().length;
 const aiTools = getPopularTools(6).filter((tool) =>
   tool.keywords.some((k) => ["json", "slug", "read", "jwt", "text", "image"].includes(k.toLowerCase()))
 );
@@ -44,7 +44,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     <div class="hero-glow-blue" aria-hidden="true"></div>
     <div class="hero-glow-orange" aria-hidden="true"></div>
     <div class="hero-content">
-      <div class="terminal-tag">▶ 20 free tools — no login required</div>
+      <div class="terminal-tag">▶ {toolsTotal} free tools — no login required</div>
       <h1>Build faster workflows without leaving your browser.</h1>
       <p class="hero-copy">
         ToolBite turns isolated utilities into a connected discovery layer for writing, development, SEO, and media operations.
@@ -149,12 +149,12 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       <h2>AI tools for modern workflows</h2>
       <p>Prompt-ready utilities for structured output, content transformation, and optimization loops.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="ai-tools-grid">
       {aiTools.map((tool) => (
         <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-lg ai-card">
           <p class="ai-label">AI workflow</p>
-          <h3 class="font-bold text-lg">{tool.icon || "🧠"} {tool.title}</h3>
-          <p class="text-sm">{tool.description}</p>
+          <h3 class="ai-card__title">{tool.icon || "🧠"} {tool.title}</h3>
+          <p class="ai-card__desc">{tool.description}</p>
         </a>
       ))}
     </div>
@@ -195,7 +195,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   <SearchOverlay>
     <SearchInput id="search-overlay-input" placeholder="Quick open tools and guides..." />
     <SearchSuggestions />
-    <p class="text-sm mt-3">Press <kbd>Esc</kbd> to close command search.</p>
+    <p class="search-esc-hint">Press <kbd>Esc</kbd> to close command search.</p>
   </SearchOverlay>
 
   <Fragment slot="scripts">
@@ -302,7 +302,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #7a9ab8;
+    color: var(--text-muted, #7A8BAD);
     font-weight: 600;
   }
   .home-popular-kicker {
@@ -312,10 +312,10 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     letter-spacing: 0.06em;
   }
   .home-popular-kicker__accent {
-    color: #f5a623;
+    color: var(--accent-orange, #FF9A45);
   }
   .home-popular-kicker__meta {
-    color: #4a6a8a;
+    color: var(--text-muted, #7A8BAD);
   }
   .tools-grid {
     display: grid;
@@ -337,13 +337,13 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     letter-spacing: 0.12em;
     font-size: 13px;
     font-weight: 700;
-    color: #7a9ab8;
+    color: var(--text-muted, #7A8BAD);
     margin-bottom: 0.75rem;
   }
   .terminal-tag {
     font-family: var(--font-mono);
     color: var(--color-brand-blue);
-    background: #0d1e35;
+    background: var(--bg-secondary, #0d1e35);
     border: 1px solid var(--color-border-accent-blue);
     padding: 0.375rem 0.875rem;
     border-radius: 4px;
@@ -373,17 +373,29 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     letter-spacing: -0.01em;
   }
   .section-head p { margin: 0.35rem 0 0.85rem; color: var(--color-text-secondary); }
+  .ai-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .ai-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .ai-tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
   .ai-card { transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
   .ai-card:hover { transform: translateY(-3px); border-color: var(--color-border-accent-blue); box-shadow: 0 12px 26px rgba(74, 159, 224, 0.22); }
-  .ai-card h3 { color: var(--color-text-primary); }
-  .ai-card p { color: var(--color-text-secondary); }
+  .ai-card__title { color: var(--text-primary, #E8EDFB); font-size: 1.125rem; font-weight: 700; margin: 0 0 0.35rem; }
+  .ai-card__desc { color: var(--text-secondary, #8BA3C4); font-size: 0.875rem; margin: 0; line-height: 1.55; }
   .ai-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-blue); margin-bottom: 0.4rem; }
+  .search-esc-hint { font-size: 0.875rem; margin-top: 0.75rem; color: var(--text-muted, #7A8BAD); }
   .stats-grid { display: grid; gap: 0.85rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
   @media (min-width: 768px) {
     .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
   .stat-value { margin: 0; font-size: 1.7rem; font-weight: 800; color: var(--color-brand-blue); }
-  .stat-card .stat-label { margin: 0.25rem 0 0; color: #7a9ab8; font-size: 0.88rem; }
+  .stat-card .stat-label { margin: 0.25rem 0 0; color: var(--text-muted, #7A8BAD); font-size: 0.88rem; }
   .discovery-cta,
   .premium-footer {
     background:
@@ -400,7 +412,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   .search-command-card .command-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; }
   .command-title { margin: 0 0 0.25rem; font-weight: 700; color: var(--color-text-primary); }
   .command-copy { margin: 0; color: var(--color-text-secondary); }
-  .search-command-card kbd { color: var(--color-brand-orange); background: #0d1e35; border: 1px solid var(--color-border-accent-orange); border-radius: 4px; padding: 0.05rem 0.35rem; font-family: var(--font-mono); }
+  .search-command-card kbd { color: var(--color-brand-orange); background: var(--bg-secondary, #0d1e35); border: 1px solid var(--color-border-accent-orange); border-radius: 4px; padding: 0.05rem 0.35rem; font-family: var(--font-mono); }
   .why-section {
     padding: 1.5rem 0;
   }
