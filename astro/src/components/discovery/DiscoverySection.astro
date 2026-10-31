@@ -16,7 +16,7 @@ const { title, subtitle, tools } = Astro.props;
     <h2 class="wow-discovery-title">{title}</h2>
     {subtitle && <p class="wow-discovery-sub">{subtitle}</p>}
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="discovery-grid">
     {tools.map((tool) => <ToolCard tool={tool} />)}
   </div>
 </section>
@@ -37,4 +37,10 @@ const { title, subtitle, tools } = Astro.props;
     color: var(--text-secondary, var(--color-text-secondary));
     line-height: 1.5;
   }
+  .discovery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) { .discovery-grid { grid-template-columns: repeat(2, 1fr); } }
 </style>

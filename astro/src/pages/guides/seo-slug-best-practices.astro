@@ -16,23 +16,23 @@ const schemas = [
 ];
 
 const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
-    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
-        <li><a href="/guides/" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">SEO Slug Best Practices</li>
+    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="../" class="">Home</a></li><li>›</li>
+        <li><a href="/guides/" class="">Guides</a></li><li>›</li>
+        <li class="breadcrumb-current">SEO Slug Best Practices</li>
       </ol>
     </nav>
 
-    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white" data-pseo-target="h1">SEO slug best practices (with examples)</h1>
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none">
+      <h1 class="guide-h1" data-pseo-target="h1">SEO slug best practices (with examples)</h1>
             <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="/authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+          <div class="guide-author__avatar">GC</div>
+          <p><span class="guide-author__name">Written by <a href="/authors/gabriel-c.html" class="guide-link">Gabriel C.</a></span></p>
         </div>
       </div>
-      <p class="text-gray-900 dark:text-gray-100">A strong slug improves clarity for users and search engines. Here is a practical checklist you can apply in minutes.</p>
+      <p class="guide-lead">A strong slug improves clarity for users and search engines. Here is a practical checklist you can apply in minutes.</p>
 
       <div class="not-prose mt-6 mb-8 rounded-2xl border border-sky-100 bg-sky-50 p-4 text-sm text-sky-900">
         <strong>Use this guide when:</strong> you are publishing a new page, cleaning old URLs, or checking whether a slug is too long, too vague, or too noisy.
@@ -82,33 +82,33 @@ const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
       </div>
     </article>
 
-    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 md:p-8">
-      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Continue with related resources</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8">
+      <h2 class="guide-section-title">Continue with related resources</h2>
+      <div class="guide-grid-3">
         <a href="/categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">SEO &amp; Content Tools</p>
-          <p class="text-xs text-gray-500 mt-1">Browse slug, read time, structured data, and content cleanup tools.</p>
+          <p class="guide-card-title">SEO &amp; Content Tools</p>
+          <p class="guide-card-desc">Browse slug, read time, structured data, and content cleanup tools.</p>
         </a>
         <a href="/guides/" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">All ToolBite guides</p>
-          <p class="text-xs text-gray-500 mt-1">See the rest of the guide library for adjacent workflows.</p>
+          <p class="guide-card-title">All ToolBite guides</p>
+          <p class="guide-card-desc">See the rest of the guide library for adjacent workflows.</p>
         </a>
         <a href="/tools/word-counter.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Word Counter</p>
-          <p class="text-xs text-gray-500 mt-1">Useful for pairing URL work with title, excerpt, and meta length checks.</p>
+          <p class="guide-card-title">Word Counter</p>
+          <p class="guide-card-desc">Useful for pairing URL work with title, excerpt, and meta length checks.</p>
         </a>
       </div>
     </section>
-    <section class="mt-8 bg-sky-50 rounded-3xl border border-sky-100 shadow-sm p-6 md:p-8">
-      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Related content optimization tools</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <section class="mt-8 bg-sky-50 rounded-3xl border border-sky-100 shadow-sm p-6">
+      <h2 class="guide-section-title">Related content optimization tools</h2>
+      <div class="guide-grid-2">
         <a href="/tools/find-replace.html" class="tb-card tb-card-interactive">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Find &amp; Replace</p>
-          <p class="text-xs text-gray-500 mt-1">Useful when you need to clean repeated words or boilerplate before generating a slug.</p>
+          <p class="guide-card-title">Find &amp; Replace</p>
+          <p class="guide-card-desc">Useful when you need to clean repeated words or boilerplate before generating a slug.</p>
         </a>
         <a href="/categories/seo-tools.html" class="tb-card tb-card-interactive">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Browse SEO &amp; Content Tools</p>
-          <p class="text-xs text-gray-500 mt-1">Continue into read time, word count, JSON formatting, and other publishing helpers.</p>
+          <p class="guide-card-title">Browse SEO &amp; Content Tools</p>
+          <p class="guide-card-desc">Continue into read time, word count, JSON formatting, and other publishing helpers.</p>
         </a>
       </div>
     </section>

@@ -17,22 +17,22 @@ const content = getToolPageContent("word-counter");
       placeholder="Type or paste your text here..."
     ></textarea>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+    <div class="tool-stats-grid">
       <div class="tb-card tb-card-pad-md text-center">
-        <span id="wordCount" class="block text-3xl font-extrabold text-blue-600 dark:text-blue-400">0</span>
-        <span class="text-sm text-gray-500 dark:text-gray-400">Words</span>
+        <span id="wordCount" class="stat-value stat-value--blue">0</span>
+        <span class="stat-label">Words</span>
       </div>
       <div class="tb-card tb-card-pad-md text-center">
-        <span id="charCount" class="block text-3xl font-extrabold text-blue-600 dark:text-blue-400">0</span>
-        <span class="text-sm text-gray-500 dark:text-gray-400">Characters</span>
+        <span id="charCount" class="stat-value stat-value--blue">0</span>
+        <span class="stat-label">Characters</span>
       </div>
       <div class="tb-card tb-card-pad-md text-center">
-        <span id="sentenceCount" class="block text-3xl font-extrabold text-blue-600 dark:text-blue-400">0</span>
-        <span class="text-sm text-gray-500 dark:text-gray-400">Sentences</span>
+        <span id="sentenceCount" class="stat-value stat-value--blue">0</span>
+        <span class="stat-label">Sentences</span>
       </div>
       <div class="tb-card tb-card-pad-md text-center">
-        <span id="paragraphCount" class="block text-3xl font-extrabold text-purple-600 dark:text-purple-400">0</span>
-        <span class="text-sm text-gray-500 dark:text-gray-400">Paragraphs</span>
+        <span id="paragraphCount" class="stat-value stat-value--purple">0</span>
+        <span class="stat-label">Paragraphs</span>
       </div>
     </div>
 

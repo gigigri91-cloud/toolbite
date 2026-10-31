@@ -16,23 +16,23 @@ const schemas = [
 ];
 
 const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
-    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
-        <li><a href="/guides/" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">Compress images for web</li>
+    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="../" class="">Home</a></li><li>›</li>
+        <li><a href="/guides/" class="">Guides</a></li><li>›</li>
+        <li class="breadcrumb-current">Compress images for web</li>
       </ol>
     </nav>
 
-    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white" data-pseo-target="h1">How to compress images for web without losing quality</h1>
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none">
+      <h1 class="guide-h1" data-pseo-target="h1">How to compress images for web without losing quality</h1>
             <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="/authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+          <div class="guide-author__avatar">GC</div>
+          <p><span class="guide-author__name">Written by <a href="/authors/gabriel-c.html" class="guide-link">Gabriel C.</a></span></p>
         </div>
       </div>
-      <p class="text-gray-900 dark:text-gray-100">Large images are the single biggest cause of slow page loads. A photo straight from a camera can be 5–10 MB — on the web, the same image should be under 200 KB. This guide shows you how to get there without visible quality loss.</p>
+      <p class="guide-lead">Large images are the single biggest cause of slow page loads. A photo straight from a camera can be 5–10 MB — on the web, the same image should be under 200 KB. This guide shows you how to get there without visible quality loss.</p>
 
       <div class="guide-best-for not-prose mt-6 mb-8">
         <strong>Best for:</strong> bloggers, web developers, e-commerce owners, and anyone preparing images for publishing on the web.
@@ -99,20 +99,20 @@ const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
       </div>
     </article>
 
-    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 md:p-8">
-      <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Continue with related resources</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8">
+      <h2 class="guide-section-title">Continue with related resources</h2>
+      <div class="guide-grid-3">
         <a href="/tools/image-compressor.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Image Compressor</p>
-          <p class="text-xs text-gray-500 mt-1">Compress JPEG and PNG to WebP or JPEG in your browser.</p>
+          <p class="guide-card-title">Image Compressor</p>
+          <p class="guide-card-desc">Compress JPEG and PNG to WebP or JPEG in your browser.</p>
         </a>
         <a href="/categories/image-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">Image Tools</p>
-          <p class="text-xs text-gray-500 mt-1">Browse all image utilities available on ToolBite.</p>
+          <p class="guide-card-title">Image Tools</p>
+          <p class="guide-card-desc">Browse all image utilities available on ToolBite.</p>
         </a>
         <a href="/guides/" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="font-bold text-sm text-gray-900 dark:text-gray-100">All ToolBite Guides</p>
-          <p class="text-xs text-gray-500 mt-1">More practical guides for developers and content creators.</p>
+          <p class="guide-card-title">All ToolBite Guides</p>
+          <p class="guide-card-desc">More practical guides for developers and content creators.</p>
         </a>
       </div>
     </section>

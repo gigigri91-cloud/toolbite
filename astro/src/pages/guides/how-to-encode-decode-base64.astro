@@ -16,26 +16,26 @@ const schemas = [
 ];
 
 const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
-    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
-        <li><a href="/guides/" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">How to encode and decode Base64 safely</li>
+    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="../" class="">Home</a></li><li>›</li>
+        <li><a href="/guides/" class="">Guides</a></li><li>›</li>
+        <li class="breadcrumb-current">How to encode and decode Base64 safely</li>
       </ol>
     </nav>
 
-    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white">How to encode and decode Base64 safely</h1>
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none">
+      <h1 class="guide-h1">How to encode and decode Base64 safely</h1>
       <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="/authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+          <div class="guide-author__avatar">GC</div>
+          <p><span class="guide-author__name">Written by <a href="/authors/gabriel-c.html" class="guide-link">Gabriel C.</a></span></p>
         </div>
       </div>
 
-      <p class="text-gray-900 dark:text-gray-100">Base64 encoding and decoding show up in API payloads, data URIs, JWT segments, and quick debugging tasks. This guide focuses on practical usage, not mythology: when Base64 helps, when it causes problems, and how to avoid production mistakes.</p>
-      <p class="text-gray-900 dark:text-gray-100">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
-      <p class="text-gray-900 dark:text-gray-100">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
+      <p class="guide-lead">Base64 encoding and decoding show up in API payloads, data URIs, JWT segments, and quick debugging tasks. This guide focuses on practical usage, not mythology: when Base64 helps, when it causes problems, and how to avoid production mistakes.</p>
+      <p class="guide-lead">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
+      <p class="guide-lead">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
 
       <h2>Common Mistakes</h2>
       <ul><li><strong>Treating Base64 as encryption.</strong> Base64 is reversible encoding, not protection. If you store secrets encoded-only, attackers can recover raw values instantly.</li><li><strong>Encoding already-encoded data repeatedly.</strong> Double-encoding breaks interoperability and causes invalid payload assumptions in downstream services.</li><li><strong>Ignoring character-set assumptions.</strong> Browser APIs, backend libraries, and CLI tools may default to different encodings; UTF-8 normalization should be explicit.</li><li><strong>Embedding huge binary blobs as Base64 in JSON when streaming would be better.</strong> This increases payload size and latency and can break mobile memory budgets.</li></ul>
@@ -54,7 +54,7 @@ console.log({ raw, encoded, decoded });
       <p>Also avoid over-engineering: if the problem is small and local, a simpler transport or storage model is often better than introducing abstraction layers that only one maintainer understands. Choose the minimum mechanism that preserves correctness and future maintainability.</p>
 
       <h2>External References</h2>
-      <ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/atob" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">MDN: Window.atob()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">MDN: Window.btoa()</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc4648" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">RFC 4648: Base16/Base32/Base64</a></li></ul>
+      <ul><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/atob" target="_blank" rel="noopener noreferrer" class="guide-link">MDN: Window.atob()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" target="_blank" rel="noopener noreferrer" class="guide-link">MDN: Window.btoa()</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc4648" target="_blank" rel="noopener noreferrer" class="guide-link">RFC 4648: Base16/Base32/Base64</a></li></ul>
 
       <h2>Implementation Checklist</h2>
       <ol>
@@ -87,7 +87,7 @@ console.log({ raw, encoded, decoded });
       <p>Answering "yes" to each item above usually correlates with fewer regressions and faster incident resolution. If several answers are "no," fix those process gaps before optimization work. In practice, resilient systems are built through deliberate clarity, not through brittle shortcuts that only work under ideal input.</p>
 
     </article>
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="/tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="/tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
 </div>`;
 ---
 

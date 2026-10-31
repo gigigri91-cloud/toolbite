@@ -9,19 +9,19 @@ const content = getToolPageContent("find-replace");
 <ToolPageLayout slug="find-replace" content={content} toolScript="/assets/js/tools/find-replace.js">
   <ToolInterfaceWrapper title="Find and replace text" privacyNote="Processing stays in your browser.">
     <textarea id="main-input" class="tb-textarea w-full h-64 mb-4" placeholder="Paste your text here"></textarea>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="tool-output-grid">
       <div>
-        <label for="find-query" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Find what</label>
+        <label for="find-query" class="tool-label">Find what</label>
         <input id="find-query" type="text" class="tb-input" />
       </div>
       <div>
-        <label for="replace-query" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Replace with</label>
+        <label for="replace-query" class="tool-label">Replace with</label>
         <input id="replace-query" type="text" class="tb-input" />
       </div>
     </div>
     <div class="flex flex-wrap gap-2 items-center">
       <button id="replace-btn" class="tb-btn tb-btn-primary">Replace All</button>
-      <label class="text-sm text-gray-700 dark:text-gray-300">
+      <label class="tool-label">
         <input id="case-sensitive" type="checkbox" class="mr-1" />
         Case Sensitive
       </label>

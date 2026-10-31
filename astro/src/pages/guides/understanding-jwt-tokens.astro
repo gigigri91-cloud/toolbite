@@ -16,26 +16,26 @@ const schemas = [
 ];
 
 const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
-    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
-        <li><a href="/guides/" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">Understanding JWT tokens in real systems</li>
+    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="../" class="">Home</a></li><li>›</li>
+        <li><a href="/guides/" class="">Guides</a></li><li>›</li>
+        <li class="breadcrumb-current">Understanding JWT tokens in real systems</li>
       </ol>
     </nav>
 
-    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white">Understanding JWT tokens in real systems</h1>
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none">
+      <h1 class="guide-h1">Understanding JWT tokens in real systems</h1>
       <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="/authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+          <div class="guide-author__avatar">GC</div>
+          <p><span class="guide-author__name">Written by <a href="/authors/gabriel-c.html" class="guide-link">Gabriel C.</a></span></p>
         </div>
       </div>
 
-      <p class="text-gray-900 dark:text-gray-100">JWTs are simple to decode but easy to misuse. This guide explains what a token can safely tell you, what must always be verified server-side, and how teams avoid auth bugs in production systems.</p>
-      <p class="text-gray-900 dark:text-gray-100">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
-      <p class="text-gray-900 dark:text-gray-100">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
+      <p class="guide-lead">JWTs are simple to decode but easy to misuse. This guide explains what a token can safely tell you, what must always be verified server-side, and how teams avoid auth bugs in production systems.</p>
+      <p class="guide-lead">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
+      <p class="guide-lead">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
 
       <h2>Common Mistakes</h2>
       <ul><li><strong>Authorizing users from decoded payload alone.</strong> Decoding does not verify signature integrity, issuer, or audience trust.</li><li><strong>Accepting \`alg\` values without strict allow-listing.</strong> Algorithm confusion is still a real implementation bug class.</li><li><strong>Skipping clock-skew handling for \`exp\` and \`nbf\`.</strong> Hard cutoffs without small tolerance can break valid sessions under distributed latency.</li><li><strong>Long-lived tokens without revocation strategy.</strong> Compromised tokens remain valid too long if rotation and revocation are missing.</li></ul>
@@ -58,7 +58,7 @@ if (!payload || payload.scope?.includes(&quot;admin&quot;) === false) {
       <p>Also avoid over-engineering: if the problem is small and local, a simpler transport or storage model is often better than introducing abstraction layers that only one maintainer understands. Choose the minimum mechanism that preserves correctness and future maintainability.</p>
 
       <h2>External References</h2>
-      <ul><li><a href="https://www.rfc-editor.org/rfc/rfc7519" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">RFC 7519: JSON Web Token (JWT)</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">OWASP JWT Cheat Sheet</a></li><li><a href="https://www.iana.org/assignments/jose/jose.xhtml" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">IANA JOSE Algorithms</a></li></ul>
+      <ul><li><a href="https://www.rfc-editor.org/rfc/rfc7519" target="_blank" rel="noopener noreferrer" class="guide-link">RFC 7519: JSON Web Token (JWT)</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer" class="guide-link">OWASP JWT Cheat Sheet</a></li><li><a href="https://www.iana.org/assignments/jose/jose.xhtml" target="_blank" rel="noopener noreferrer" class="guide-link">IANA JOSE Algorithms</a></li></ul>
 
       <h2>Implementation Checklist</h2>
       <ol>
@@ -91,7 +91,7 @@ if (!payload || payload.scope?.includes(&quot;admin&quot;) === false) {
       <p>Answering "yes" to each item above usually correlates with fewer regressions and faster incident resolution. If several answers are "no," fix those process gaps before optimization work. In practice, resilient systems are built through deliberate clarity, not through brittle shortcuts that only work under ideal input.</p>
 
     </article>
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="/tools/jwt-decoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a><a href="/tools/json-formatter.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a></div></section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/jwt-decoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a><a href="/tools/json-formatter.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a></div></section>
 </div>`;
 ---
 

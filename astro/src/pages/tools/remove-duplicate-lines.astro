@@ -12,9 +12,9 @@ const content = getToolPageContent("remove-duplicate-lines");
   toolScript="/assets/js/tools/remove-duplicate-lines.js"
 >
   <ToolInterfaceWrapper title="Remove duplicate lines" privacyNote="Dedupe runs locally and keeps your pasted data private.">
-    <label for="dup-input" class="block mb-2 text-sm text-gray-700 dark:text-gray-300">Input lines</label>
+    <label for="dup-input" class="tool-label">Input lines</label>
     <textarea id="dup-input" class="tb-textarea w-full h-64 mb-4"></textarea>
-    <label class="text-sm text-gray-700 dark:text-gray-300 mb-4 block">
+    <label class="tool-label">
       <input id="dup-trim-compare" type="checkbox" class="mr-1" />
       Trim spaces before comparing lines
     </label>
@@ -23,6 +23,6 @@ const content = getToolPageContent("remove-duplicate-lines");
       <button id="dup-copy-btn" class="tb-btn tb-btn-neutral">Copy</button>
       <button id="dup-clear-btn" class="tb-btn tb-btn-outline">Clear</button>
     </div>
-    <p id="dup-stats" class="text-sm text-gray-600 dark:text-gray-400"></p>
+    <p id="dup-stats" class="tool-hint"></p>
   </ToolInterfaceWrapper>
 </ToolPageLayout>

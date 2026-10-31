@@ -16,26 +16,26 @@ const schemas = [
 ];
 
 const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
-    <nav class="tb-breadcrumb text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="../" class="hover:text-blue-600 transition">Home</a></li><li>›</li>
-        <li><a href="/guides/" class="hover:text-blue-600 transition">Guides</a></li><li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">JSON formatting best practices for debugging and delivery</li>
+    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="../" class="">Home</a></li><li>›</li>
+        <li><a href="/guides/" class="">Guides</a></li><li>›</li>
+        <li class="breadcrumb-current">JSON formatting best practices for debugging and delivery</li>
       </ol>
     </nav>
 
-    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none md:p-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white">JSON formatting best practices for debugging and delivery</h1>
+    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none">
+      <h1 class="guide-h1">JSON formatting best practices for debugging and delivery</h1>
       <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 font-bold text-xs flex items-center justify-center">GC</div>
-          <p><span class="font-semibold text-gray-900 dark:text-gray-100">Written by <a href="/authors/gabriel-c.html" class="text-blue-600 dark:text-blue-400 hover:underline">Gabriel C.</a></span></p>
+          <div class="guide-author__avatar">GC</div>
+          <p><span class="guide-author__name">Written by <a href="/authors/gabriel-c.html" class="guide-link">Gabriel C.</a></span></p>
         </div>
       </div>
 
-      <p class="text-gray-900 dark:text-gray-100">Most JSON failures are not complex; they are small syntax and workflow mistakes repeated at scale. This guide gives practical formatting and validation habits that reduce debugging time and production incidents.</p>
-      <p class="text-gray-900 dark:text-gray-100">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
-      <p class="text-gray-900 dark:text-gray-100">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
+      <p class="guide-lead">Most JSON failures are not complex; they are small syntax and workflow mistakes repeated at scale. This guide gives practical formatting and validation habits that reduce debugging time and production incidents.</p>
+      <p class="guide-lead">In practice, teams use this topic at the boundaries between tools: browser to API, CLI to deployment, and editor to CI pipelines. Small misunderstandings at these boundaries become recurring defects because they are copied into snippets, templates, and handover docs. The goal of this guide is to reduce those recurring defects with explicit decision rules and realistic examples.</p>
+      <p class="guide-lead">You can treat this as an implementation checklist: understand the trust boundary, validate assumptions early, and prefer explicit behavior over convenience defaults. Even experienced developers ship bugs when data handling is implicit, because implicit behavior is rarely obvious during reviews.</p>
 
       <h2>Common Mistakes</h2>
       <ul><li><strong>Manually editing minified JSON in production incidents.</strong> One invisible typo can create cascading parse failures.</li><li><strong>Using comments in strict JSON payloads.</strong> JSONC habits from config files fail in APIs expecting RFC-compliant JSON.</li><li><strong>Inconsistent formatting in pull requests.</strong> This hides real semantic changes in noisy diffs.</li><li><strong>Serializing numbers as strings without schema agreement.</strong> Downstream type assumptions then fail silently.</li></ul>
@@ -59,7 +59,7 @@ console.log(pretty);
       <p>Also avoid over-engineering: if the problem is small and local, a simpler transport or storage model is often better than introducing abstraction layers that only one maintainer understands. Choose the minimum mechanism that preserves correctness and future maintainability.</p>
 
       <h2>External References</h2>
-      <ul><li><a href="https://www.rfc-editor.org/rfc/rfc8259" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">RFC 8259: The JSON Data Interchange Format</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">MDN: JSON.parse()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">MDN: JSON.stringify()</a></li></ul>
+      <ul><li><a href="https://www.rfc-editor.org/rfc/rfc8259" target="_blank" rel="noopener noreferrer" class="guide-link">RFC 8259: The JSON Data Interchange Format</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" target="_blank" rel="noopener noreferrer" class="guide-link">MDN: JSON.parse()</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank" rel="noopener noreferrer" class="guide-link">MDN: JSON.stringify()</a></li></ul>
 
       <h2>Implementation Checklist</h2>
       <ol>
@@ -92,7 +92,7 @@ console.log(pretty);
       <p>Answering "yes" to each item above usually correlates with fewer regressions and faster incident resolution. If several answers are "no," fix those process gaps before optimization work. In practice, resilient systems are built through deliberate clarity, not through brittle shortcuts that only work under ideal input.</p>
 
     </article>
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose md:p-8" aria-label="Tools used in this guide"><h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Tools used in this guide</h2><div class="flex flex-wrap gap-2"><a href="/tools/json-formatter.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a><a href="/tools/csv-to-json.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🔄</span><span>CSV to JSON</span></a></div></section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/json-formatter.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a><a href="/tools/csv-to-json.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🔄</span><span>CSV to JSON</span></a></div></section>
 </div>`;
 ---
 
