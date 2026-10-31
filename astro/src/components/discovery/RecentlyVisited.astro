@@ -1,0 +1,153 @@
+---
+/**
+ * RecentlyVisited — afișează ultimele tool-uri vizitate din tb_recent (localStorage).
+ * Randat server-side fără conținut (SSG), populat client-side la DOMContentLoaded.
+ * Ascuns complet dacă localStorage e gol sau indisponibil.
+ */
+export interface Props {
+  /** "bar" = rând orizontal compact (homepage), "list" = coloană verticală (overlay) */
+  variant?: "bar" | "list";
+  maxItems?: number;
+}
+
+const { variant = "bar", maxItems = 5 } = Astro.props;
+---
+
+<div
+  id={`tb-recent-${variant}`}
+  class={`tb-recent tb-recent--${variant} hidden`}
+  data-max={maxItems}
+  aria-label="Recently visited tools"
+>
+  <p class="tb-recent__label">
+    <span aria-hidden="true">🕐</span> Recently visited
+  </p>
+  <div class="tb-recent__list" role="list"></div>
+</div>
+
+<script is:inline>
+(function () {
+  function initRecent(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var maxItems = parseInt(container.dataset.max || '5', 10);
+    var recent;
+    try {
+      recent = JSON.parse(localStorage.getItem('tb_recent') || '[]');
+    } catch (_) { return; }
+    if (!Array.isArray(recent) || !recent.length) return;
+    var list = container.querySelector('.tb-recent__list');
+    if (!list) return;
+    recent.slice(0, maxItems).forEach(function (item) {
+      if (!item || !item.path || !item.title) return;
+      var li = document.createElement('li');
+      li.setAttribute('role', 'listitem');
+      var a = document.createElement('a');
+      a.href = item.path;
+      a.className = 'tb-recent__item';
+      a.title = item.title;
+      var icon = document.createElement('span');
+      icon.className = 'tb-recent__icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = item.icon || '🔧';
+      var label = document.createElement('span');
+      label.className = 'tb-recent__name';
+      label.textContent = item.title;
+      a.appendChild(icon);
+      a.appendChild(label);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    container.classList.remove('hidden');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initRecent('tb-recent-bar');
+      initRecent('tb-recent-list');
+    });
+  } else {
+    initRecent('tb-recent-bar');
+    initRecent('tb-recent-list');
+  }
+})();
+</script>
+
+<style>
+  .tb-recent { margin-bottom: 0.75rem; }
+  .tb-recent.hidden { display: none !important; }
+
+  .tb-recent__label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-muted, #7A8BAD);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  /* BAR variant — rând orizontal scrollabil */
+  .tb-recent--bar .tb-recent__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tb-recent--bar .tb-recent__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-default, rgba(255,255,255,0.07));
+    background: var(--bg-card, #141D2E);
+    color: var(--text-secondary, #8BA3C4);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+    white-space: nowrap;
+    max-width: 160px;
+  }
+  .tb-recent--bar .tb-recent__item:hover {
+    border-color: var(--accent-blue, #4A9FE0);
+    color: var(--text-primary, #E8EDFB);
+    background: var(--bg-card-hover, #192338);
+  }
+  .tb-recent--bar .tb-recent__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* LIST variant — coloană verticală (search overlay) */
+  .tb-recent--list .tb-recent__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tb-recent--list .tb-recent__item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    color: var(--text-secondary, #8BA3C4);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .tb-recent--list .tb-recent__item:hover {
+    background: var(--bg-card, #141D2E);
+    color: var(--text-primary, #E8EDFB);
+  }
+  .tb-recent__icon { flex-shrink: 0; font-size: 1em; line-height: 1; }
+</style>

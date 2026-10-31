@@ -17,14 +17,78 @@ const heroStyle = [
 
 <section class="tb-tool-hero tb-card tb-card-panel tb-card-pad-lg" style={heroStyle}>
   {eyebrow && <p class="tb-tool-hero__eyebrow" style={`color: ${toolColor};`}>{eyebrow}</p>}
-  <h1 class="tb-tool-hero__title">{title}</h1>
+  <div class="tb-tool-hero__top">
+    <h1 class="tb-tool-hero__title">{title}</h1>
+    <button
+      type="button"
+      class="tb-share-btn"
+      aria-label="Share this tool"
+      data-title={title}
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+      <span class="tb-share-btn__label">Share</span>
+    </button>
+  </div>
   <p class="tb-tool-hero__desc">{description}</p>
 </section>
 
-<style>
-  .tb-tool-hero {
-    margin-bottom: 1.25rem;
+<script is:inline>
+(function () {
+  var btn = document.querySelector('.tb-share-btn');
+  if (!btn) return;
+  var toolTitle = btn.dataset.title || document.title;
+  var url = window.location.href;
+
+  btn.addEventListener('click', function () {
+    // navigator.share — nativ pe mobile, Chrome 89+, Safari 15+
+    if (navigator.share) {
+      navigator.share({
+        title: toolTitle + ' — ToolBite',
+        text: 'Free browser tool: ' + toolTitle,
+        url: url
+      }).catch(function () {}); // user cancelled — ignore
+      return;
+    }
+    // Fallback: copy URL
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(function () {
+        showFeedback(btn, 'Copied!');
+      }).catch(function () {
+        showFeedback(btn, 'Copy failed');
+      });
+    } else {
+      // Fallback legacy
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showFeedback(btn, 'Copied!'); }
+      catch (_) { showFeedback(btn, 'Copy failed'); }
+      ta.remove();
+    }
+  });
+
+  function showFeedback(button, text) {
+    var label = button.querySelector('.tb-share-btn__label');
+    if (!label) return;
+    var original = label.textContent;
+    label.textContent = text;
+    button.disabled = true;
+    setTimeout(function () {
+      label.textContent = original;
+      button.disabled = false;
+    }, 1800);
   }
+})();
+</script>
+
+<style>
+  .tb-tool-hero { margin-bottom: 1.25rem; }
   .tb-tool-hero__eyebrow {
     margin: 0 0 0.625rem;
     font-size: 13px;
@@ -33,12 +97,19 @@ const heroStyle = [
     font-family: var(--font-mono);
     font-weight: 600;
   }
+  .tb-tool-hero__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
   .tb-tool-hero__title {
     margin: 0;
     font-size: clamp(1.8rem, 2vw + 1.2rem, 2.7rem);
     line-height: 1.1;
     font-weight: 800;
     color: var(--text-primary, #E8EDFB);
+    flex: 1;
   }
   .tb-tool-hero__desc {
     margin: 0.9rem 0 0;
@@ -46,5 +117,35 @@ const heroStyle = [
     color: var(--text-secondary, #8BA3C4);
     font-size: 16px;
     line-height: 1.65;
+  }
+  .tb-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-default, rgba(255,255,255,0.07));
+    background: var(--bg-card, #141D2E);
+    color: var(--text-muted, #7A8BAD);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+  .tb-share-btn:hover {
+    border-color: var(--accent-blue, #4A9FE0);
+    color: var(--accent-blue, #4A9FE0);
+    background: rgba(74,159,224,0.07);
+  }
+  .tb-share-btn:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
+  @media (max-width: 480px) {
+    .tb-share-btn__label { display: none; }
+    .tb-share-btn { padding: 0.4rem; }
   }
 </style>

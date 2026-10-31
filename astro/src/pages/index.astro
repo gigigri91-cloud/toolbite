@@ -2,6 +2,7 @@
 import CategoryHighlights from "@/components/discovery/CategoryHighlights.astro";
 import PopularToolsSection from "@/components/discovery/PopularToolsSection.astro";
 import RecentlyAddedSection from "@/components/discovery/RecentlyAddedSection.astro";
+import RecentlyVisited from "@/components/discovery/RecentlyVisited.astro";
 import RecommendedToolsSection from "@/components/discovery/RecommendedToolsSection.astro";
 import TrendingToolsSection from "@/components/discovery/TrendingToolsSection.astro";
 import ToolCard from "@/components/discovery/ToolCard.astro";
@@ -10,7 +11,7 @@ import SearchOverlay from "@/components/search/SearchOverlay.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { HOMEPAGE_TITLE, createMetadata } from "@/lib/seo";
-import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
+import { buildOrganizationSchema, buildWebSiteSchema, buildFaqSchema } from "@/lib/schema";
 import { getAllTools, getCategoryTools, getPopularTools } from "@/lib/tools";
 
 const toolsTotal = getAllTools().filter(t => t.url.startsWith('tools/')).length;
@@ -26,7 +27,25 @@ const metadata = createMetadata({
   keywords: ["ai productivity", "browser tools", "developer workflows", "seo workflows", "toolbite ecosystem"]
 });
 
-const schemas = [buildWebSiteSchema(), buildOrganizationSchema()];
+const homepageFaq = [
+  {
+    question: "Are all ToolBite tools free to use?",
+    answer: "Yes. Every tool on ToolBite is completely free with no account required, no usage limits, and no feature gating. The full toolset is available to everyone."
+  },
+  {
+    question: "Do ToolBite tools store or upload my data?",
+    answer: "No. All tools run entirely in your browser using JavaScript. Your text, files, tokens, and passwords are never sent to our servers or stored anywhere."
+  },
+  {
+    question: "What types of tools does ToolBite offer?",
+    answer: `ToolBite offers ${toolsTotal} browser-based tools across four categories: Developer Tools (JSON formatter, JWT decoder, Base64, UUID generator, hash generator), Text Tools (word counter, case converter, slug generator, lorem ipsum), Image Tools (image compressor, color palette generator), and SEO Tools (text-to-slug, read time calculator).`
+  },
+  {
+    question: "How do I find a tool quickly on ToolBite?",
+    answer: "Use the keyboard shortcut Ctrl+K (or Cmd+K on Mac) to open command-style search from any page. You can also browse by category or use the full search page at toolbite.org/search.html."
+  }
+];
+const schemas = [buildWebSiteSchema(), buildOrganizationSchema(), buildFaqSchema(homepageFaq, "https://toolbite.org/")];
 const popularGridTools = getPopularTools(12);
 const aiTools = getPopularTools(6).filter((tool) =>
   tool.keywords.some((k) => ["json", "slug", "read", "jwt", "text", "image"].includes(k.toLowerCase()))
@@ -58,6 +77,8 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       <SearchSuggestions />
     </div>
   </section>
+
+  <RecentlyVisited variant="bar" maxItems={5} />
 
   <div class="stats-bar tb-reveal">
     <div class="stat">
@@ -193,8 +214,27 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     <RecommendedToolsSection />
   </section>
 
+  <section class="home-section tb-reveal" aria-labelledby="faq-heading">
+    <div class="section-head">
+      <h2 id="faq-heading">Frequently asked questions</h2>
+      <p>Everything you need to know about ToolBite.</p>
+    </div>
+    <div class="faq-list">
+      {homepageFaq.map((item, i) => (
+        <details class="faq-item tb-card tb-card-panel" name="homepage-faq">
+          <summary class="faq-question">
+            <span class="faq-q-text">{item.question}</span>
+            <span class="faq-chevron" aria-hidden="true">›</span>
+          </summary>
+          <p class="faq-answer">{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
   <SearchOverlay>
     <SearchInput id="search-overlay-input" placeholder="Quick open tools and guides..." />
+    <RecentlyVisited variant="list" maxItems={5} />
     <SearchSuggestions />
     <p class="search-esc-hint">Press <kbd>Esc</kbd> to close command search.</p>
   </SearchOverlay>
@@ -468,5 +508,45 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   @media (prefers-reduced-motion: reduce) {
     .ai-card { transition: none; }
     .ai-card:hover { transform: none; }
+  }
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .faq-item {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
+    cursor: pointer;
+    list-style: none;
+    color: var(--text-primary, #E8EDFB);
+    font-weight: 600;
+    font-size: 0.975rem;
+    user-select: none;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-q-text { flex: 1; }
+  .faq-chevron {
+    font-size: 1.3rem;
+    color: var(--accent-blue, #4A9FE0);
+    transition: transform 200ms ease;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .faq-item[open] .faq-chevron { transform: rotate(90deg); }
+  .faq-item[open] .faq-question { color: var(--accent-blue, #4A9FE0); }
+  .faq-answer {
+    margin: 0;
+    padding: 0 1.1rem 1rem;
+    color: var(--text-secondary, #8BA3C4);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    border-top: 1px solid var(--border-subtle, rgba(255,255,255,0.04));
+    padding-top: 0.75rem;
   }
 </style>

@@ -5,6 +5,7 @@ import SearchOverlay from "@/components/search/SearchOverlay.astro";
 import SearchResultCard from "@/components/search/SearchResultCard.astro";
 import SearchResults from "@/components/search/SearchResults.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
+import RecentlyVisited from "@/components/discovery/RecentlyVisited.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { createMetadata } from "@/lib/seo";
 import { getAllTools, getPopularTools } from "@/lib/tools";
@@ -44,6 +45,7 @@ const quickPicks = getPopularTools(6);
       </select>
     </div>
 
+    <RecentlyVisited variant="list" maxItems={5} />
     <SearchSuggestions />
     <SearchResults />
     <SearchEmptyState />
