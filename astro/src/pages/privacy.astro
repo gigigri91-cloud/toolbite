@@ -17,67 +17,151 @@ const metadata = createLegalMetadata({
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
   <div class="static-page-shell">
     <div class="static-page-hero">
-<nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2">
-        <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
-        <li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">Privacy Policy</li>
-      </ol>
-    </nav>
-    <div class="text-center mb-8">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">ToolBite <span class="text-blue-600 dark:text-blue-400">Privacy Policy</span></h1>
-    </div>
+      <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li>›</li>
+          <li class="breadcrumb-current">Privacy Policy</li>
+        </ol>
+      </nav>
+      <div class="legal-hero">
+        <h1 data-pseo-target="h1">ToolBite <span class="legal-hero__accent">Privacy Policy</span></h1>
+      </div>
     </div>
 
     <div class="static-page-cards">
-    <div class="tb-card tb-card-tool md:p-12 leading-relaxed text-gray-700 dark:text-gray-300">
+      <div class="tb-card tb-card-tool legal-body-card">
+        <h2 class="legal-h2">1. Introduction</h2>
+        <p class="legal-body">At ToolBite.org, accessible from <a href="https://toolbite.org" class="legal-link">https://toolbite.org</a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document describes the types of information that is collected and recorded by ToolBite and how we use it.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">1. Introduction</h2>
-      <p class="mb-8">At ToolBite.org, accessible from <a href="https://toolbite.org" class="text-blue-600 dark:text-blue-400 hover:underline">https://toolbite.org</a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document describes the types of information that is collected and recorded by ToolBite and how we use it.</p>
+        <h2 class="legal-h2">2. Local Processing (No Data Storage)</h2>
+        <p class="legal-body"><strong>Most of our tools process data entirely within your browser.</strong> When you use tools like our JSON Formatter, Word Counter, or Image Compressor, your text, code, or files are <strong>not</strong> sent to our servers. All calculations and transformations happen locally on your device, ensuring maximum privacy and security.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">2. Local Processing (No Data Storage)</h2>
-      <p class="mb-8"><strong>Most of our tools process data entirely within your browser.</strong> When you use tools like our JSON Formatter, Word Counter, or Image Compressor, your text, code, or files are <strong>not</strong> sent to our servers. All calculations and transformations happen locally on your device, ensuring maximum privacy and security.</p>
+        <h2 class="legal-h2">3. Hosting and Log Files</h2>
+        <p class="legal-body">ToolBite is delivered through third-party static hosting and CDN infrastructure. As with most websites, those providers may process basic request logs such as IP address, browser type, date/time, referrer, and requested pages in order to serve, cache, secure, and troubleshoot the site.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">3. Hosting and Log Files</h2>
-      <p class="mb-8">ToolBite is delivered through third-party static hosting and CDN infrastructure. As with most websites, those providers may process basic request logs such as IP address, browser type, date/time, referrer, and requested pages in order to serve, cache, secure, and troubleshoot the site.</p>
+        <h2 class="legal-h2">4. Cookies and Web Beacons</h2>
+        <p class="legal-body">ToolBite itself does not use a custom analytics backend or user account system. However, third-party services embedded on the site may use cookies, local storage, or similar technologies for advertising, fraud prevention, or widget behavior. For category-level details and controls, see our <a href="/cookie-policy.html" class="legal-link">Cookie Policy</a>
+          <button type="button" data-open-cookie-settings="true" class="cookie-settings-btn">Cookie Settings</button>.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">4. Cookies and Web Beacons</h2>
-      <p class="mb-8">ToolBite itself does not use a custom analytics backend or user account system. However, third-party services embedded on the site may use cookies, local storage, or similar technologies for advertising, fraud prevention, or widget behavior. For category-level details and controls, see our <a href="/cookie-policy.html" class="text-blue-600 dark:text-blue-400 hover:underline">Cookie Policy</a>
-        <button type="button" data-open-cookie-settings="true" class="text-gray-500 hover:text-blue-600 transition">Cookie Settings</button>.</p>
+        <h2 class="legal-h2">5. Google AdSense &amp; DART Cookie</h2>
+        <p class="legal-body">Google is one of our third-party advertising partners. It uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to <strong>toolbite.org</strong> and other sites on the internet. You may opt out of the use of DART cookies by visiting the Google ad and content network Privacy Policy at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow noopener" class="legal-link">https://policies.google.com/technologies/ads</a>.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">5. Google AdSense &amp; DART Cookie</h2>
-      <p class="mb-8">Google is one of our third-party advertising partners. It uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to <strong>toolbite.org</strong> and other sites on the internet. You may opt out of the use of DART cookies by visiting the Google ad and content network Privacy Policy at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow noopener" class="text-blue-600 dark:text-blue-400 hover:underline">https://policies.google.com/technologies/ads</a>.</p>
+        <h2 class="legal-h2">6. Third-Party Privacy Policies</h2>
+        <p class="legal-body">ToolBite's Privacy Policy does not apply to third-party advertisers, widget providers, hosting providers, or external websites. We advise you to consult the respective privacy policies of those services for more detailed information, including their practices and instructions on how to opt out of certain options.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">6. Third-Party Privacy Policies</h2>
-      <p class="mb-8">ToolBite's Privacy Policy does not apply to third-party advertisers, widget providers, hosting providers, or external websites. We advise you to consult the respective privacy policies of those services for more detailed information, including their practices and instructions on how to opt out of certain options.</p>
+        <h2 id="ads" class="legal-h2">7. About Ads (Google AdSense)</h2>
+        <p class="legal-body">ToolBite may display Google AdSense ads to support hosting and maintenance. Ad providers may use cookies and similar technologies to deliver, measure, and improve ad relevance. We do not upload your routine tool inputs (text, payloads, files) to our servers for processing, but ad and analytics providers may process their own interaction data under their policies. You can review controls and opt-out options in Google's ad settings and policy documentation.</p>
 
-      
-
-      <h2 id="ads" class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">7. About Ads (Google AdSense)</h2>
-      <p class="mb-8">ToolBite may display Google AdSense ads to support hosting and maintenance. Ad providers may use cookies and similar technologies to deliver, measure, and improve ad relevance. We do not upload your routine tool inputs (text, payloads, files) to our servers for processing, but ad and analytics providers may process their own interaction data under their policies. You can review controls and opt-out options in Google’s ad settings and policy documentation.</p>
-
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">8. Consent</h2>
-      <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms.</p>
-    </div>
-
-    <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
-      <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Relevant ToolBite pages</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="/about.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">About ToolBite</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Learn more about the privacy-first approach behind the site.</p>
-        </a>
-        <a href="/categories/image-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Image Tools</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Useful example of browser-based processing where files stay on your device.</p>
-        </a>
-        <a href="/contact.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Contact</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Reach out if you have questions about privacy, support, or feature requests.</p>
-        </a>
+        <h2 class="legal-h2">8. Consent</h2>
+        <p class="legal-body">By using our website, you hereby consent to our Privacy Policy and agree to its Terms.</p>
       </div>
-    </section>
+
+      <section class="tb-card legal-nav-section">
+        <h2 class="legal-h2-sm">Relevant ToolBite pages</h2>
+        <div class="legal-grid-3">
+          <a href="/about.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">About ToolBite</h3>
+            <p class="legal-card__body">Learn more about the privacy-first approach behind the site.</p>
+          </a>
+          <a href="/categories/image-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">Image Tools</h3>
+            <p class="legal-card__body">Useful example of browser-based processing where files stay on your device.</p>
+          </a>
+          <a href="/contact.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">Contact</h3>
+            <p class="legal-card__body">Reach out if you have questions about privacy, support, or feature requests.</p>
+          </a>
+        </div>
+      </section>
     </div>
   </div>
-
 </BaseLayout>
+
+<style>
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    font-size: 0.875rem;
+    color: var(--text-muted, #7A8BAD);
+  }
+  .breadcrumb-list a { color: var(--text-muted, #7A8BAD); text-decoration: none; transition: color 140ms; }
+  .breadcrumb-list a:hover { color: var(--accent-blue, #4A9FE0); }
+  .breadcrumb-current { color: var(--text-secondary, #8BA3C4); font-weight: 500; }
+
+  .legal-hero { margin-bottom: 2rem; text-align: center; }
+  .legal-hero h1 {
+    font-size: clamp(1.8rem, 3vw + 1rem, 2.75rem);
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .legal-hero__accent { color: var(--accent-blue, #4A9FE0); }
+
+  .legal-body-card { padding: 1.5rem; line-height: 1.7; }
+  @media (min-width: 768px) { .legal-body-card { padding: 3rem; } }
+
+  .legal-h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 2rem 0 0.75rem;
+  }
+  .legal-h2:first-child { margin-top: 0; }
+  .legal-h2-sm {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1rem;
+  }
+  .legal-body {
+    color: var(--text-secondary, #8BA3C4);
+    margin: 0 0 0;
+    font-size: 1rem;
+  }
+  .legal-link {
+    color: var(--accent-blue, #4A9FE0);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 140ms;
+  }
+  .legal-link:hover { color: #79bfef; }
+
+  .cookie-settings-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted, #7A8BAD);
+    font-size: inherit;
+    padding: 0;
+    transition: color 140ms;
+  }
+  .cookie-settings-btn:hover { color: var(--accent-blue, #4A9FE0); }
+
+  .legal-nav-section { margin-top: 1.5rem; padding: 1.5rem; }
+  @media (min-width: 768px) { .legal-nav-section { padding: 2rem; } }
+
+  .legal-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) { .legal-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+  .legal-card__title {
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.5rem;
+  }
+  .legal-card__body {
+    font-size: 0.875rem;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.55;
+  }
+</style>

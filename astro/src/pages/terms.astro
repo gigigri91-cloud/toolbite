@@ -17,69 +17,154 @@ const metadata = createLegalMetadata({
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
   <div class="static-page-shell">
     <div class="static-page-hero">
-<nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2">
-        <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
-        <li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">Terms of Service</li>
-      </ol>
-    </nav>
-    <div class="text-center mb-8">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">ToolBite <span class="text-blue-600 dark:text-blue-400">Terms of Service</span></h1>
-    </div>
+      <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li>›</li>
+          <li class="breadcrumb-current">Terms of Service</li>
+        </ol>
+      </nav>
+      <div class="legal-hero">
+        <h1 data-pseo-target="h1">ToolBite <span class="legal-hero__accent">Terms of Service</span></h1>
+      </div>
     </div>
 
     <div class="static-page-cards">
-    <div class="tb-card tb-card-tool md:p-12 leading-relaxed text-gray-700 dark:text-gray-300">
+      <div class="tb-card tb-card-tool legal-body-card">
+        <h2 class="legal-h2">1. Agreement</h2>
+        <p class="legal-body">By accessing or using ToolBite.org ("ToolBite", "we", "us"), you agree to these Terms of Service. If you do not agree, please do not use the site.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">1. Agreement</h2>
-      <p class="mb-8">By accessing or using ToolBite.org ("ToolBite", "we", "us"), you agree to these Terms of Service. If you do not agree, please do not use the site.</p>
+        <h2 class="legal-h2">2. Description of Service</h2>
+        <p class="legal-body">ToolBite provides free, browser-based utilities for personal and professional use. Features and tools may change at any time without notice.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">2. Description of Service</h2>
-      <p class="mb-8">ToolBite provides free, browser-based utilities for personal and professional use. Features and tools may change at any time without notice.</p>
+        <h2 class="legal-h2">3. Acceptable Use</h2>
+        <p class="legal-body">You agree not to misuse the service. For example, you must not:</p>
+        <ul class="legal-list">
+          <li>Attempt to disrupt, overload, or compromise the site or its infrastructure.</li>
+          <li>Use the tools to violate applicable laws or third-party rights.</li>
+          <li>Scrape or automate access in a way that degrades service for others.</li>
+        </ul>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">3. Acceptable Use</h2>
-      <p class="mb-4">You agree not to misuse the service. For example, you must not:</p>
-      <ul class="list-disc pl-6 space-y-2 mb-8">
-        <li>Attempt to disrupt, overload, or compromise the site or its infrastructure.</li>
-        <li>Use the tools to violate applicable laws or third-party rights.</li>
-        <li>Scrape or automate access in a way that degrades service for others.</li>
-      </ul>
+        <h2 class="legal-h2">4. No Warranty</h2>
+        <p class="legal-body">The site and all tools are provided "as is" without warranties of any kind. We do not guarantee uninterrupted access, error-free results, or fitness for a particular purpose. You use ToolBite at your own risk.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">4. No Warranty</h2>
-      <p class="mb-8">The site and all tools are provided "as is" without warranties of any kind. We do not guarantee uninterrupted access, error-free results, or fitness for a particular purpose. You use ToolBite at your own risk.</p>
+        <h2 class="legal-h2">5. Limitation of Liability</h2>
+        <p class="legal-body">To the fullest extent permitted by law, ToolBite and its operators shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the site or reliance on any output from our tools.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">5. Limitation of Liability</h2>
-      <p class="mb-8">To the fullest extent permitted by law, ToolBite and its operators shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the site or reliance on any output from our tools.</p>
+        <h2 class="legal-h2">6. Third-Party Services</h2>
+        <p class="legal-body">The site may include links, advertisements, or embedded content from third parties (for example, advertising networks). Those services are governed by their own terms and policies.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">6. Third-Party Services</h2>
-      <p class="mb-8">The site may include links, advertisements, or embedded content from third parties (for example, advertising networks). Those services are governed by their own terms and policies.</p>
+        <h2 class="legal-h2">7. Changes</h2>
+        <p class="legal-body">We may update these terms from time to time. Continued use of ToolBite after changes constitutes acceptance of the revised terms.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">7. Changes</h2>
-      <p class="mb-8">We may update these terms from time to time. Continued use of ToolBite after changes constitutes acceptance of the revised terms.</p>
-
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">8. Contact</h2>
-      <p>For questions about these terms, please use our <a href="/contact.html" class="text-blue-600 dark:text-blue-400 hover:underline">contact page</a>.</p>
-    </div>
-
-    <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
-      <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Explore related pages</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="/privacy.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Privacy Policy</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">See how ToolBite handles local processing, ads, cookies, and third-party services.</p>
-        </a>
-        <a href="/about.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">About ToolBite</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Read the product positioning and privacy-first mission behind the tools.</p>
-        </a>
-        <a href="/categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Text Tools</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Browse one of the main tool hubs linked from across the site.</p>
-        </a>
+        <h2 class="legal-h2">8. Contact</h2>
+        <p class="legal-body">For questions about these terms, please use our <a href="/contact.html" class="legal-link">contact page</a>.</p>
       </div>
-    </section>
+
+      <section class="tb-card legal-nav-section">
+        <h2 class="legal-h2-sm">Explore related pages</h2>
+        <div class="legal-grid-3">
+          <a href="/privacy.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">Privacy Policy</h3>
+            <p class="legal-card__body">See how ToolBite handles local processing, ads, cookies, and third-party services.</p>
+          </a>
+          <a href="/about.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">About ToolBite</h3>
+            <p class="legal-card__body">Read the product positioning and privacy-first mission behind the tools.</p>
+          </a>
+          <a href="/categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">Text Tools</h3>
+            <p class="legal-card__body">Browse one of the main tool hubs linked from across the site.</p>
+          </a>
+        </div>
+      </section>
     </div>
   </div>
-
 </BaseLayout>
+
+<style>
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    font-size: 0.875rem;
+    color: var(--text-muted, #7A8BAD);
+  }
+  .breadcrumb-list a { color: var(--text-muted, #7A8BAD); text-decoration: none; transition: color 140ms; }
+  .breadcrumb-list a:hover { color: var(--accent-blue, #4A9FE0); }
+  .breadcrumb-current { color: var(--text-secondary, #8BA3C4); font-weight: 500; }
+
+  .legal-hero { margin-bottom: 2rem; text-align: center; }
+  .legal-hero h1 {
+    font-size: clamp(1.8rem, 3vw + 1rem, 2.75rem);
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .legal-hero__accent { color: var(--accent-blue, #4A9FE0); }
+
+  .legal-body-card { padding: 1.5rem; line-height: 1.7; }
+  @media (min-width: 768px) { .legal-body-card { padding: 3rem; } }
+
+  .legal-h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 2rem 0 0.75rem;
+  }
+  .legal-h2:first-child { margin-top: 0; }
+  .legal-h2-sm {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1rem;
+  }
+  .legal-body {
+    color: var(--text-secondary, #8BA3C4);
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+  }
+  .legal-body:last-child { margin-bottom: 0; }
+  .legal-list {
+    color: var(--text-secondary, #8BA3C4);
+    margin: 0.5rem 0 0.75rem 1.25rem;
+    padding: 0;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .legal-link {
+    color: var(--accent-blue, #4A9FE0);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 140ms;
+  }
+  .legal-link:hover { color: #79bfef; }
+
+  .legal-nav-section { margin-top: 1.5rem; padding: 1.5rem; }
+  @media (min-width: 768px) { .legal-nav-section { padding: 2rem; } }
+
+  .legal-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) { .legal-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+  .legal-card__title {
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.5rem;
+  }
+  .legal-card__body {
+    font-size: 0.875rem;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.55;
+  }
+</style>

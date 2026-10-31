@@ -17,81 +17,158 @@ const metadata = createMetadata({
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
   <div class="static-page-shell">
     <div class="static-page-hero">
-<nav class="tb-breadcrumb text-sm text-gray-500 mb-6 text-left" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2">
-        <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
-        <li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">Contact</li>
-      </ol>
-    </nav>
-    <div class="mb-8">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">Contact <span class="text-blue-600 dark:text-blue-400">ToolBite</span></h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400">Send support questions, bug reports, partnership inquiries, or new tool ideas.</p>
-    </div>
+      <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li>›</li>
+          <li class="breadcrumb-current">Contact</li>
+        </ol>
+      </nav>
+      <div class="contact-hero">
+        <h1 data-pseo-target="h1">Contact <span class="contact-hero__accent">ToolBite</span></h1>
+        <p class="contact-hero__sub">Send support questions, bug reports, partnership inquiries, or new tool ideas.</p>
+      </div>
     </div>
 
     <div class="static-page-cards">
-    <div id="support" class="tb-card tb-card-tool md:p-12 dark:text-gray-100">
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">For support, bug reports, partnerships, or tool requests, email us directly.</p>
-      <a href="mailto:support@toolbite.org" class="tb-btn bg-brand-orange border-brand-orange text-white hover:bg-brand-orange-dark tb-btn-lg inline-flex">Email ToolBite Support</a>
-    </div>
-
-
-    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 text-left md:p-10" aria-labelledby="contact-help-heading">
-      <h2 id="contact-help-heading" class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">How we help</h2>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
-        ToolBite support focuses on practical issues that block real work: tool bugs, confusing results,
-        broken flows, content corrections, and feature requests that improve day-to-day utility. If a tool
-        behaves unexpectedly, include the page URL, browser version, and the shortest reproducible example.
-        That context helps us verify quickly and reduce back-and-forth.
-      </p>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
-        We also review partnership inquiries, feedback on category coverage, and ideas for new guides.
-        Requests tied to developer workflows, text operations, SEO utility, and browser-first privacy are
-        prioritized because they align with ToolBite's core mission. If your request is time-sensitive,
-        mention deadlines and impact so we can triage appropriately.
-      </p>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200">
-        Typical response time is <strong>24-48 hours</strong>. Complex issues can take longer when a fix needs
-        reproduction, regression checks, or content updates across related pages. We still acknowledge every
-        valid report and follow up with status when work is scheduled.
-      </p>
-    </section>
-
-    <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
-      <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Popular places to continue</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="/" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Homepage</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Start from the main hub to browse popular tools and categories.</p>
-        </a>
-        <a href="/guides/" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Guides</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Read practical tutorials before sending a support question or feature request.</p>
-        </a>
-        <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Developer Tools</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Go directly to JSON, JWT, Base64, hashing, and encoding utilities.</p>
-        </a>
+      <div id="support" class="tb-card tb-card-tool contact-cta-card">
+        <p class="contact-cta__text">For support, bug reports, partnerships, or tool requests, email us directly.</p>
+        <a href="mailto:support@toolbite.org" class="tb-btn bg-brand-orange border-brand-orange text-white hover:bg-brand-orange-dark tb-btn-lg inline-flex">Email ToolBite Support</a>
       </div>
-    </section>
 
-    <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 text-left md:p-10" aria-labelledby="contact-detail-heading">
-      <h2 id="contact-detail-heading" class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">What to include so we can help faster</h2>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
-        When you report a bug, paste the exact URL of the tool page, describe what you expected versus what happened, and include a minimal sample that reproduces the issue without exposing secrets. Screenshots are welcome when layout or contrast is involved, but text reproduction steps are usually enough for formatter, encoder, and text utilities.
-      </p>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
-        For partnership or sponsorship inquiries, summarize your audience, the kind of collaboration you have in mind, and any timelines. ToolBite prioritizes proposals that respect reader trust and align with privacy-first, browser-local workflows. We do not accept paid links that disguise advertising as editorial content.
-      </p>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
-        If you are requesting a new tool or guide, explain the workflow you are trying to complete, how often you need it, and which existing ToolBite pages are closest today. Clear user stories help us decide whether to extend an existing tool, add a small variant, or publish a focused tutorial instead of a one-off feature.
-      </p>
-      <p class="text-base leading-relaxed text-gray-800 dark:text-gray-200">
-        Security-sensitive disclosures should still avoid sending private keys, live production tokens, or customer data through email. Describe impact and scope in plain language, and we will coordinate a responsible next step. Thank you for helping keep ToolBite accurate, fast, and trustworthy for everyone who relies on it.
-      </p>
-    </section>
+      <section class="tb-card tb-card-panel tb-card-pad-lg contact-section" aria-labelledby="contact-help-heading">
+        <h2 id="contact-help-heading" class="contact-h2">How we help</h2>
+        <p class="contact-body">
+          ToolBite support focuses on practical issues that block real work: tool bugs, confusing results,
+          broken flows, content corrections, and feature requests that improve day-to-day utility. If a tool
+          behaves unexpectedly, include the page URL, browser version, and the shortest reproducible example.
+          That context helps us verify quickly and reduce back-and-forth.
+        </p>
+        <p class="contact-body">
+          We also review partnership inquiries, feedback on category coverage, and ideas for new guides.
+          Requests tied to developer workflows, text operations, SEO utility, and browser-first privacy are
+          prioritized because they align with ToolBite's core mission. If your request is time-sensitive,
+          mention deadlines and impact so we can triage appropriately.
+        </p>
+        <p class="contact-body">
+          Typical response time is <strong>24-48 hours</strong>. Complex issues can take longer when a fix needs
+          reproduction, regression checks, or content updates across related pages. We still acknowledge every
+          valid report and follow up with status when work is scheduled.
+        </p>
+      </section>
+
+      <section class="tb-card contact-nav-section">
+        <h2 class="contact-h2-sm">Popular places to continue</h2>
+        <div class="contact-grid-3">
+          <a href="/" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="contact-card__title">Homepage</h3>
+            <p class="contact-card__body">Start from the main hub to browse popular tools and categories.</p>
+          </a>
+          <a href="/guides/" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="contact-card__title">Guides</h3>
+            <p class="contact-card__body">Read practical tutorials before sending a support question or feature request.</p>
+          </a>
+          <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="contact-card__title">Developer Tools</h3>
+            <p class="contact-card__body">Go directly to JSON, JWT, Base64, hashing, and encoding utilities.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="tb-card tb-card-panel tb-card-pad-lg contact-section" aria-labelledby="contact-detail-heading">
+        <h2 id="contact-detail-heading" class="contact-h2">What to include so we can help faster</h2>
+        <p class="contact-body">
+          When you report a bug, paste the exact URL of the tool page, describe what you expected versus what happened, and include a minimal sample that reproduces the issue without exposing secrets. Screenshots are welcome when layout or contrast is involved, but text reproduction steps are usually enough for formatter, encoder, and text utilities.
+        </p>
+        <p class="contact-body">
+          For partnership or sponsorship inquiries, summarize your audience, the kind of collaboration you have in mind, and any timelines. ToolBite prioritizes proposals that respect reader trust and align with privacy-first, browser-local workflows. We do not accept paid links that disguise advertising as editorial content.
+        </p>
+        <p class="contact-body">
+          If you are requesting a new tool or guide, explain the workflow you are trying to complete, how often you need it, and which existing ToolBite pages are closest today. Clear user stories help us decide whether to extend an existing tool, add a small variant, or publish a focused tutorial instead of a one-off feature.
+        </p>
+        <p class="contact-body">
+          Security-sensitive disclosures should still avoid sending private keys, live production tokens, or customer data through email. Describe impact and scope in plain language, and we will coordinate a responsible next step. Thank you for helping keep ToolBite accurate, fast, and trustworthy for everyone who relies on it.
+        </p>
+      </section>
     </div>
   </div>
-
 </BaseLayout>
+
+<style>
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    font-size: 0.875rem;
+    color: var(--text-muted, #7A8BAD);
+  }
+  .breadcrumb-list a { color: var(--text-muted, #7A8BAD); text-decoration: none; transition: color 140ms; }
+  .breadcrumb-list a:hover { color: var(--accent-blue, #4A9FE0); }
+  .breadcrumb-current { color: var(--text-secondary, #8BA3C4); font-weight: 500; }
+
+  .contact-hero { margin-bottom: 2rem; }
+  .contact-hero h1 {
+    font-size: clamp(2rem, 4vw + 1rem, 3rem);
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+  .contact-hero__accent { color: var(--accent-blue, #4A9FE0); }
+  .contact-hero__sub { font-size: 1.125rem; color: var(--text-secondary, #8BA3C4); margin: 0; }
+
+  .contact-cta-card { padding: 2rem; }
+  @media (min-width: 768px) { .contact-cta-card { padding: 3rem; } }
+  .contact-cta__text {
+    font-size: 1.0625rem;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1.25rem;
+    line-height: 1.6;
+  }
+
+  .contact-section { margin-top: 1.5rem; }
+  .contact-nav-section { margin-top: 1.5rem; padding: 1.5rem; }
+  @media (min-width: 768px) { .contact-nav-section { padding: 2rem; } }
+
+  .contact-h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1rem;
+  }
+  .contact-h2-sm {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1rem;
+  }
+  .contact-body {
+    font-size: 1rem;
+    color: var(--text-primary, #E8EDFB);
+    line-height: 1.65;
+    margin: 0 0 1rem;
+  }
+  .contact-body:last-child { margin-bottom: 0; }
+
+  .contact-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) { .contact-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+  .contact-card__title {
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.5rem;
+  }
+  .contact-card__body {
+    font-size: 0.875rem;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.55;
+  }
+</style>

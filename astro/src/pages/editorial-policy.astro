@@ -17,54 +17,131 @@ const metadata = createLegalMetadata({
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata}>
   <div class="static-page-shell">
     <div class="static-page-hero">
-<nav class="tb-breadcrumb text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2">
-        <li><a href="/" class="hover:text-blue-600 transition">Home</a></li>
-        <li>›</li>
-        <li class="text-gray-800 dark:text-gray-200 font-medium">Editorial Policy</li>
-      </ol>
-    </nav>
-    <div class="text-center mb-8">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4" data-pseo-target="h1">ToolBite <span class="text-blue-600 dark:text-blue-400">Editorial Policy</span></h1>
-    </div>
+      <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li>›</li>
+          <li class="breadcrumb-current">Editorial Policy</li>
+        </ol>
+      </nav>
+      <div class="legal-hero">
+        <h1 data-pseo-target="h1">ToolBite <span class="legal-hero__accent">Editorial Policy</span></h1>
+      </div>
     </div>
 
     <div class="static-page-cards">
-    <div class="tb-card tb-card-tool md:p-12 leading-relaxed dark:text-gray-100">
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">1. How Content Is Created</h2>
-      <p class="mb-8">ToolBite content is built from hands-on testing and research-based writing. Tools are validated directly in-browser against real usage scenarios, and guides are written to solve specific workflow problems with practical, reproducible steps.</p>
+      <div class="tb-card tb-card-tool legal-body-card">
+        <h2 class="legal-h2">1. How Content Is Created</h2>
+        <p class="legal-body">ToolBite content is built from hands-on testing and research-based writing. Tools are validated directly in-browser against real usage scenarios, and guides are written to solve specific workflow problems with practical, reproducible steps.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">2. Review &amp; Update Process</h2>
-      <p class="mb-8">Tools are re-reviewed whenever relevant browser APIs or platform behavior changes. Guide content is reviewed and refreshed at least quarterly, or sooner when critical technical updates require immediate correction.</p>
+        <h2 class="legal-h2">2. Review &amp; Update Process</h2>
+        <p class="legal-body">Tools are re-reviewed whenever relevant browser APIs or platform behavior changes. Guide content is reviewed and refreshed at least quarterly, or sooner when critical technical updates require immediate correction.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">3. Accuracy Standards</h2>
-      <p class="mb-8">Technical claims are verified against primary documentation where applicable, including MDN Web Docs, RFC specifications, and official vendor documentation. If guidance is opinionated, it is clearly framed as best-practice recommendation rather than protocol requirement.</p>
+        <h2 class="legal-h2">3. Accuracy Standards</h2>
+        <p class="legal-body">Technical claims are verified against primary documentation where applicable, including MDN Web Docs, RFC specifications, and official vendor documentation. If guidance is opinionated, it is clearly framed as best-practice recommendation rather than protocol requirement.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">4. How to Report Errors</h2>
-      <p class="mb-8">If you find an error, outdated instruction, or unclear section, please report it via our <a href="contact.html" class="text-blue-600 dark:text-blue-400 hover:underline">contact page</a>. We review correction requests continuously and prioritize fixes that affect security, accuracy, or user outcomes.</p>
+        <h2 class="legal-h2">4. How to Report Errors</h2>
+        <p class="legal-body">If you find an error, outdated instruction, or unclear section, please report it via our <a href="contact.html" class="legal-link">contact page</a>. We review correction requests continuously and prioritize fixes that affect security, accuracy, or user outcomes.</p>
 
-      <h2 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">5. Affiliate &amp; Monetization Disclosure</h2>
-      <p>ToolBite may display ads or monetization elements to sustain hosting and development. Monetization does not override accuracy standards, and paid placement does not change editorial review requirements.</p>
-    </div>
-
-    <section class="tb-card mt-8 md:p-8 dark:text-gray-100">
-      <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Related pages</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="about.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">About ToolBite</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Learn who operates ToolBite and project scope.</p>
-        </a>
-        <a href="privacy.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Privacy Policy</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Understand how local processing, cookies, and third-party services are handled.</p>
-        </a>
-        <a href="contact.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Contact</h3>
-          <p class="text-sm text-gray-900 dark:text-gray-100">Send corrections, questions, and partnership inquiries.</p>
-        </a>
+        <h2 class="legal-h2">5. Affiliate &amp; Monetization Disclosure</h2>
+        <p class="legal-body">ToolBite may display ads or monetization elements to sustain hosting and development. Monetization does not override accuracy standards, and paid placement does not change editorial review requirements.</p>
       </div>
-    </section>
+
+      <section class="tb-card legal-nav-section">
+        <h2 class="legal-h2-sm">Related pages</h2>
+        <div class="legal-grid-3">
+          <a href="about.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">About ToolBite</h3>
+            <p class="legal-card__body">Learn who operates ToolBite and project scope.</p>
+          </a>
+          <a href="privacy.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">Privacy Policy</h3>
+            <p class="legal-card__body">Understand how local processing, cookies, and third-party services are handled.</p>
+          </a>
+          <a href="contact.html" class="tb-card tb-card-soft tb-card-pad-sm">
+            <h3 class="legal-card__title">Contact</h3>
+            <p class="legal-card__body">Send corrections, questions, and partnership inquiries.</p>
+          </a>
+        </div>
+      </section>
     </div>
   </div>
-
 </BaseLayout>
+
+<style>
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    font-size: 0.875rem;
+    color: var(--text-muted, #7A8BAD);
+  }
+  .breadcrumb-list a { color: var(--text-muted, #7A8BAD); text-decoration: none; transition: color 140ms; }
+  .breadcrumb-list a:hover { color: var(--accent-blue, #4A9FE0); }
+  .breadcrumb-current { color: var(--text-secondary, #8BA3C4); font-weight: 500; }
+
+  .legal-hero { margin-bottom: 2rem; text-align: center; }
+  .legal-hero h1 {
+    font-size: clamp(1.8rem, 3vw + 1rem, 2.75rem);
+    font-weight: 800;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .legal-hero__accent { color: var(--accent-blue, #4A9FE0); }
+
+  .legal-body-card { padding: 1.5rem; line-height: 1.7; }
+  @media (min-width: 768px) { .legal-body-card { padding: 3rem; } }
+
+  .legal-h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 2rem 0 0.75rem;
+  }
+  .legal-h2:first-child { margin-top: 0; }
+  .legal-h2-sm {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 1rem;
+  }
+  .legal-body {
+    color: var(--text-secondary, #8BA3C4);
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+  }
+  .legal-body:last-child { margin-bottom: 0; }
+  .legal-link {
+    color: var(--accent-blue, #4A9FE0);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 140ms;
+  }
+  .legal-link:hover { color: #79bfef; }
+
+  .legal-nav-section { margin-top: 1.5rem; padding: 1.5rem; }
+  @media (min-width: 768px) { .legal-nav-section { padding: 2rem; } }
+
+  .legal-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) { .legal-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+  .legal-card__title {
+    font-weight: 700;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0 0 0.5rem;
+  }
+  .legal-card__body {
+    font-size: 0.875rem;
+    color: var(--text-primary, #E8EDFB);
+    margin: 0;
+    line-height: 1.55;
+  }
+</style>
