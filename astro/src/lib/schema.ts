@@ -104,6 +104,43 @@ export function buildHowToSchema(input: {
   };
 }
 
+export function buildArticleSchema(input: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished?: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${input.url}#article`,
+    headline: input.title,
+    description: input.description,
+    url: input.url,
+    ...(input.datePublished ? { datePublished: input.datePublished } : {}),
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
+    author: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "ToolBite"
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "ToolBite",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/assets/images/toolbite-logo.png`
+      }
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": input.url
+    }
+  };
+}
+
 export function dedupeSchemasByType(schemas: JsonLdObject[]): JsonLdObject[] {
   const seen = new Set<string>();
   const out: JsonLdObject[] = [];

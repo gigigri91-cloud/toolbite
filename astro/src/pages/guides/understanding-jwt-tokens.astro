@@ -1,13 +1,14 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
 import { SITE_URL } from "@/lib/seo";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "JWT Token Security — Complete Guide | ToolBite";
 const description = "Understand JWT tokens end to end: signed payloads, common claims, rotation, and safer handling in production apps. Practical examples free on ToolBite.";
 const canonicalPath = "/guides/jwt-decoder-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
+  buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
     { name: "Guides", url: `${SITE_URL}/guides/index.html` },

@@ -1,13 +1,14 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
 import { SITE_URL } from "@/lib/seo";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "UUID & GUID Guide — Complete Guide | ToolBite";
 const description = "Learn UUID and GUID basics: v4 randomness, time-sortable ideas, indexing tips, and collision myths demystified. Practical examples free on ToolBite today.";
 const canonicalPath = "/guides/uuid-guid-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
+  buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
     { name: "Guides", url: `${SITE_URL}/guides/index.html` },

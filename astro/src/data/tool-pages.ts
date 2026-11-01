@@ -77,7 +77,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     workflow: [
       { name: "JWT Decoder", href: "/tools/jwt-decoder.html", icon: "🪪" },
       { name: "CSV to JSON", href: "/tools/csv-to-json.html", icon: "🔄" },
-      { name: "Base64 Tool", href: "/tools/base64-encoder.html", icon: "📎" }
+      { name: "Base64 Tool", href: "/tools/base64-encoder.html", icon: "📎" },
+      { name: "JSON formatter guide", href: "/guides/json-formatter-guide.html", icon: "📘" }
     ]
   },
   "jwt-decoder": {
@@ -109,7 +110,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     workflow: [
       { name: "JSON Formatter", href: "/tools/json-formatter.html", icon: "💻" },
       { name: "Base64 Tool", href: "/tools/base64-encoder.html", icon: "📎" },
-      { name: "URL Encoder", href: "/tools/url-encoder.html", icon: "🌐" }
+      { name: "URL Encoder", href: "/tools/url-encoder.html", icon: "🌐" },
+      { name: "JWT decoder guide", href: "/guides/jwt-decoder-guide.html", icon: "📘" }
     ]
   },
   "image-compressor": {
@@ -205,7 +207,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     workflow: [
       { name: "JSON Formatter", href: "/tools/json-formatter.html", icon: "💻" },
       { name: "URL Encoder", href: "/tools/url-encoder.html", icon: "🌐" },
-      { name: "JWT Decoder", href: "/tools/jwt-decoder.html", icon: "🪪" }
+      { name: "JWT Decoder", href: "/tools/jwt-decoder.html", icon: "🪪" },
+      { name: "Base64 encoding guide", href: "/guides/base64-encoding-guide.html", icon: "📘" }
     ]
   },
   "case-converter": {
@@ -405,7 +408,8 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     workflow: [
       { name: "Password Generator", href: "/tools/password-generator.html", icon: "🔑" },
       { name: "UUID Generator", href: "/tools/uuid-generator.html", icon: "🆔" },
-      { name: "Base64 Encoder", href: "/tools/base64-encoder.html", icon: "📎" }
+      { name: "Base64 Encoder", href: "/tools/base64-encoder.html", icon: "📎" },
+      { name: "Hash functions guide", href: "/guides/hash-functions-explained.html", icon: "📘" }
     ]
   },
   "lorem-ipsum": {

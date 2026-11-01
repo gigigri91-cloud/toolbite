@@ -1,13 +1,14 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
 import { SITE_URL } from "@/lib/seo";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "Hash Functions Explained — Complete Guide | ToolBite";
 const description = "Understand hash functions: MD5 vs SHA families, collisions, salting, and when each algorithm fits your workflow. Clear developer examples free on ToolBite.";
 const canonicalPath = "/guides/hash-functions-explained.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
+  buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
     { name: "Guides", url: `${SITE_URL}/guides/index.html` },

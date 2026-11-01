@@ -1,13 +1,14 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
 import { SITE_URL } from "@/lib/seo";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "Base64 Encode & Decode — Complete Guide | ToolBite";
 const description = "Encode and decode Base64 step by step in your browser: UTF-8 pitfalls, padding rules, and safe copy patterns for APIs and tokens. Try examples on ToolBite.";
 const canonicalPath = "/guides/base64-encoding-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
+  buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
     { name: "Guides", url: `${SITE_URL}/guides/index.html` },

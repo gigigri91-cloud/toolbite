@@ -1,13 +1,14 @@
 ---
 import GuideLayout from "@/layouts/GuideLayout.astro";
 import { SITE_URL } from "@/lib/seo";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "URL Encoding Guide — Complete Guide | ToolBite";
 const description = "Master URL encoding for links and APIs: reserved characters, encodeURI vs encodeURIComponent, and broken query fixes. Hands-on examples free on ToolBite.";
 const canonicalPath = "/guides/url-encoding-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
+  buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
     { name: "Guides", url: `${SITE_URL}/guides/index.html` },
