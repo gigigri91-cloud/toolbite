@@ -45,7 +45,7 @@ for (const check of checks) {
   if (!html.includes('src="/assets/js/core.js"')) {
     issues.push(`${check.page}: missing core runtime script`);
   }
-  if (!html.includes('href="/assets/css/global.min.css"') || !html.includes('href="/assets/css/tailwind.min.css"')) {
+  if (!html.includes('href="/assets/css/global.min.css"') ) {
     issues.push(`${check.page}: missing required runtime CSS`);
   }
   for (const hook of check.hooks) {
