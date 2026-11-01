@@ -24,10 +24,10 @@ const mainHtml = String.raw`<div class="guide-page-root w-full py-8">
       </ol>
     </nav>
 
-    <article class="tb-card tb-card-prose tb-card-pad-lg prose max-w-none">
+    <article class="tb-card tb-card- tb-card-pad-lg">
       <h1 class="guide-h1">How to encode and decode Base64 safely</h1>
-      <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm mt-3 mb-8">
-        <div class="flex items-center gap-3">
+      <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm guide-note-mt">
+        <div class="guide-icon-row">
           <div class="guide-author__avatar">GC</div>
           <p><span class="guide-author__name">Written by <a href="/authors/gabriel-c.html" class="guide-link">Gabriel C.</a></span></p>
         </div>
@@ -87,7 +87,7 @@ console.log({ raw, encoded, decoded });
       <p>Answering "yes" to each item above usually correlates with fewer regressions and faster incident resolution. If several answers are "no," fix those process gaps before optimization work. In practice, resilient systems are built through deliberate clarity, not through brittle shortcuts that only work under ideal input.</p>
 
     </article>
-  <section class="tb-card tb-card-panel tb-card-pad-lg mt-8 not-prose" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="/tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline flex items-center gap-2 rounded-xl px-3 py-2"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
+  <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt not-" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="/tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
 </div>`;
 ---
 
