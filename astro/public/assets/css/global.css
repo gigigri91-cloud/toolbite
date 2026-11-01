@@ -757,6 +757,17 @@ header a:has(> picture.header-logo-picture) {
   font-weight: 700;
 }
 
+/* Guide page root container */
+.guide-page-root {
+  width: 100%;
+  padding: 2rem 0;
+}
+.authors-index-root,
+.author-page-root,
+.guides-index-root {
+  width: 100%;
+}
+
 /* Guide page utility classes (replaces Tailwind in String.raw HTML blocks) */
 .guide-h1 {
   font-size: clamp(1.6rem, 3vw + 1rem, 2.5rem);
@@ -1617,18 +1628,37 @@ textarea::placeholder {
 .gap-4 { gap: 1rem; }
 .w-full { width: 100%; }
 
-/* ─── Spacing utilities (replaces Tailwind mb-* in tool pages) ───────────── */
+/* ─── Spacing utilities (replaces Tailwind mb-* mt-* mr-* p-* in tool pages) */
 .mb-2 { margin-bottom: 0.5rem; }
 .mb-3 { margin-bottom: 0.75rem; }
 .mb-4 { margin-bottom: 1rem; }
+.mb-5 { margin-bottom: 1.25rem; }
 .mb-6 { margin-bottom: 1.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mr-1 { margin-right: 0.25rem; }
+.mr-2 { margin-right: 0.5rem; }
+.p-4 { padding: 1rem; }
+
+/* ─── Border & shape utilities ───────────────────────────────────────────── */
+.border { border: 1px solid var(--border-default, #2A3A55); }
+.rounded-xl { border-radius: 0.75rem; }
 
 /* ─── Height utilities (used in textareas) ───────────────────────────────── */
+.h-24 { height: 6rem; }
 .h-28 { height: 7rem; }
 .h-32 { height: 8rem; }
 .h-36 { height: 9rem; }
 .h-56 { height: 14rem; }
 .h-64 { height: 16rem; }
+.h-72 { height: 18rem; }
+.h-96 { height: 24rem; }
+
+/* ─── Display utilities ──────────────────────────────────────────────────── */
+.inline-flex { display: inline-flex; align-items: center; }
+
+/* ─── Form / input utilities ─────────────────────────────────────────────── */
+.resize-y { resize: vertical; }
+.font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 
 /* ─── Typography utilities ───────────────────────────────────────────────── */
 .text-sm { font-size: 0.875rem; line-height: 1.25rem; }

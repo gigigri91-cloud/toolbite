@@ -41,7 +41,7 @@ const related = all
   style={`background: ${filterPanelBg}; border: 1px solid ${filterPanelBorder}; border-radius: 10px;`}
 >
   <div class="search-row">
-    <input id="category-search" type="search" class="tb-input w-full sm:w-96 border" placeholder="Filter tools in this category..." aria-label={`Filter ${title}`} />
+    <input id="category-search" type="search" class="tb-input category-search-input border" placeholder="Filter tools in this category..." aria-label={`Filter ${title}`} />
     <button type="button" class="copy-tool-link tb-btn tb-btn-secondary">Copy page link</button>
   </div>
   <div id="category-tools-grid" class="tools-grid mt-4">
@@ -69,6 +69,8 @@ const related = all
 
 <style>
   .search-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .category-search-input { width: 100%; }
+  @media (min-width: 640px) { .category-search-input { width: 24rem; } }
   .tools-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
