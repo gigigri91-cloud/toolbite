@@ -133,28 +133,48 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   </section>
 
   <section class="home-section tb-reveal">
-    <div class="section-head">
-      <h2>Smart search command center</h2>
-      <p>Instant discovery with keyboard-first navigation and contextual suggestions.</p>
-    </div>
-    <div class="search-command-card tb-card tb-card-panel tb-card-pad-lg">
-      <div class="command-grid">
-        <div>
-          <p class="command-title">Quick-open style navigation</p>
-          <p class="command-copy">Press <kbd>Ctrl/⌘K</kbd> or <kbd>/</kbd> to jump into command-style search from anywhere.</p>
-        </div>
-        <a href="/search.html" class="tb-btn tb-btn-secondary">Open full search</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section tb-reveal">
     <CategoryHighlights
       categorySlug="developer-tools"
       categoryTitle="Popular categories"
       heroDescription="Explore curated category hubs with built-in cross-linking and workflow context."
       featuredTools={categoryFeatured}
     />
+  </section>
+
+  <section class="home-section tb-reveal home-guides-section" aria-labelledby="guides-heading">
+    <div class="section-head">
+      <h2 id="guides-heading">Learn the tools — free guides</h2>
+      <p>Practical explanations with real examples. No fluff, no account needed.</p>
+    </div>
+    <div class="guides-featured-grid">
+      <a href="/guides/base64-encoding-guide.html" class="tb-card tb-card-interactive tb-card-pad-lg guides-featured-card">
+        <span class="guides-featured-badge" style="--badge-color:#4A9FE0">Dev</span>
+        <h3>Base64 Encoding Explained</h3>
+        <p>Binary to text, data URIs, MIME, padding rules, and why Base64 is not encryption.</p>
+        <span class="guides-featured-cta">Read guide →</span>
+      </a>
+      <a href="/guides/json-formatter-guide.html" class="tb-card tb-card-interactive tb-card-pad-lg guides-featured-card">
+        <span class="guides-featured-badge" style="--badge-color:#4A9FE0">Dev</span>
+        <h3>JSON Formatter Workflow</h3>
+        <p>Fix parser errors, normalize quotes, remove trailing commas, choose minify or beautify.</p>
+        <span class="guides-featured-cta">Read guide →</span>
+      </a>
+      <a href="/guides/jwt-decoder-guide.html" class="tb-card tb-card-interactive tb-card-pad-lg guides-featured-card">
+        <span class="guides-featured-badge" style="--badge-color:#4A9FE0">Dev</span>
+        <h3>JWT Decoder Safety</h3>
+        <p>Inspect headers and payloads, read exp and aud, and never confuse decode with verification.</p>
+        <span class="guides-featured-cta">Read guide →</span>
+      </a>
+      <a href="/guides/password-security-guide.html" class="tb-card tb-card-interactive tb-card-pad-lg guides-featured-card">
+        <span class="guides-featured-badge" style="--badge-color:#e05a4a">Security</span>
+        <h3>Password Security Essentials</h3>
+        <p>MFA, managers, breach checks, rotation myths, and safer team sharing rules.</p>
+        <span class="guides-featured-cta">Read guide →</span>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top: 1rem;">
+      <a href="/guides/" class="tb-btn tb-btn-secondary">All guides →</a>
+    </div>
   </section>
 
   <section class="home-section tb-reveal" aria-labelledby="faq-heading">
@@ -371,10 +391,6 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   .premium-links { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .premium-links a { color: var(--color-text-secondary); text-decoration: none; border-bottom: 1px solid transparent; }
   .premium-links a:hover { border-bottom-color: var(--color-brand-blue); color: var(--color-brand-blue); }
-  .search-command-card .command-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; }
-  .command-title { margin: 0 0 0.25rem; font-weight: 700; color: var(--color-text-primary); }
-  .command-copy { margin: 0; color: var(--color-text-secondary); }
-  .search-command-card kbd { color: var(--color-brand-orange); background: var(--bg-secondary, #0d1e35); border: 1px solid var(--color-border-accent-orange); border-radius: 4px; padding: 0.05rem 0.35rem; font-family: var(--font-mono); }
   .why-section {
     padding: 1.5rem 0;
   }
@@ -426,6 +442,59 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       grid-template-columns: 1fr;
     }
   }
+  /* Guides featured */
+  .guides-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
+  }
+  @media (max-width: 960px) {
+    .guides-featured-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .guides-featured-grid { grid-template-columns: 1fr; }
+  }
+  .guides-featured-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .guides-featured-card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+  }
+  .guides-featured-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .guides-featured-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--badge-color) 15%, transparent);
+    color: var(--badge-color);
+    border: 1px solid color-mix(in srgb, var(--badge-color) 30%, transparent);
+    align-self: flex-start;
+  }
+  .guides-featured-cta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-brand-blue, #4A9FE0);
+    margin-top: 0.2rem;
+  }
+
   /* FAQ */
   .faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
   .faq-item {
