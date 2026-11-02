@@ -1,10 +1,6 @@
 ---
 import CategoryHighlights from "@/components/discovery/CategoryHighlights.astro";
-import PopularToolsSection from "@/components/discovery/PopularToolsSection.astro";
-import RecentlyAddedSection from "@/components/discovery/RecentlyAddedSection.astro";
 import RecentlyVisited from "@/components/discovery/RecentlyVisited.astro";
-import RecommendedToolsSection from "@/components/discovery/RecommendedToolsSection.astro";
-import TrendingToolsSection from "@/components/discovery/TrendingToolsSection.astro";
 import ToolCard from "@/components/discovery/ToolCard.astro";
 import SearchInput from "@/components/search/SearchInput.astro";
 import SearchOverlay from "@/components/search/SearchOverlay.astro";
@@ -15,7 +11,6 @@ import { buildOrganizationSchema, buildWebSiteSchema, buildFaqSchema } from "@/l
 import { getAllTools, getCategoryTools, getPopularTools } from "@/lib/tools";
 
 const toolsTotal = getAllTools().filter(t => t.url.startsWith('tools/')).length;
-const allItemsTotal = getAllTools().length;
 const title = HOMEPAGE_TITLE;
 const description =
   `${toolsTotal} free browser-based tools for JSON formatting, passwords, image compression, and text editing. No account, no upload—100% client-side. Start on ToolBite.`;
@@ -47,15 +42,6 @@ const homepageFaq = [
 ];
 const schemas = [buildWebSiteSchema(), buildOrganizationSchema(), buildFaqSchema(homepageFaq, "https://toolbite.org/")];
 const popularGridTools = getPopularTools(12);
-const aiTools = getPopularTools(6).filter((tool) =>
-  tool.keywords.some((k) => ["json", "slug", "read", "jwt", "text", "image"].includes(k.toLowerCase()))
-);
-const trustStats = [
-  { label: "Browser-native workflows", value: "100%" },
-  { label: "Categories powering discovery", value: "4+" },
-  { label: "Tools and guides connected", value: `${allItemsTotal}+` },
-  { label: "Server upload required", value: "0" }
-];
 const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
 ---
 
@@ -163,55 +149,12 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
   </section>
 
   <section class="home-section tb-reveal">
-    <TrendingToolsSection />
-  </section>
-
-  <section class="home-section tb-reveal">
-    <div class="section-head">
-      <h2>AI tools for modern workflows</h2>
-      <p>Prompt-ready utilities for structured output, content transformation, and optimization loops.</p>
-    </div>
-    <div class="ai-tools-grid">
-      {aiTools.map((tool) => (
-        <a href={`/${tool.url}`} class="tb-card tb-card-interactive tb-card-pad-lg ai-card">
-          <p class="ai-label">AI workflow</p>
-          <h3 class="ai-card__title">{tool.icon || "🧠"} {tool.title}</h3>
-          <p class="ai-card__desc">{tool.description}</p>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="home-section tb-reveal">
     <CategoryHighlights
       categorySlug="developer-tools"
       categoryTitle="Popular categories"
       heroDescription="Explore curated category hubs with built-in cross-linking and workflow context."
       featuredTools={categoryFeatured}
     />
-  </section>
-
-  <section class="home-section tb-reveal">
-    <RecentlyAddedSection />
-  </section>
-
-  <section class="home-section tb-reveal">
-    <div class="section-head">
-      <h2>Trust by architecture</h2>
-      <p>Platform fundamentals designed for reliability and scale.</p>
-    </div>
-    <div class="stats-grid">
-      {trustStats.map((item) => (
-        <article class="tb-card tb-card-panel tb-card-pad-lg stat-card">
-          <p class="stat-value">{item.value}</p>
-          <p class="stat-label">{item.label}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="home-section tb-reveal">
-    <RecommendedToolsSection />
   </section>
 
   <section class="home-section tb-reveal" aria-labelledby="faq-heading">
@@ -414,29 +357,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     letter-spacing: -0.01em;
   }
   .section-head p { margin: 0.35rem 0 0.85rem; color: var(--color-text-secondary); }
-  .ai-tools-grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
-  }
-  @media (min-width: 768px) {
-    .ai-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (min-width: 1024px) {
-    .ai-tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-  .ai-card { transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
-  .ai-card:hover { transform: translateY(-3px); border-color: var(--color-border-accent-blue); box-shadow: 0 12px 26px rgba(74, 159, 224, 0.22); }
-  .ai-card__title { color: var(--text-primary, #E8EDFB); font-size: 1.125rem; font-weight: 700; margin: 0 0 0.35rem; }
-  .ai-card__desc { color: var(--text-secondary, #8BA3C4); font-size: 0.875rem; margin: 0; line-height: 1.55; }
-  .ai-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-brand-blue); margin-bottom: 0.4rem; }
   .search-esc-hint { font-size: 0.875rem; margin-top: 0.75rem; color: var(--text-muted, #7A8BAD); }
-  .stats-grid { display: grid; gap: 0.85rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
-  @media (min-width: 768px) {
-    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  }
-  .stat-value { margin: 0; font-size: 1.7rem; font-weight: 800; color: var(--color-brand-blue); }
-  .stat-card .stat-label { margin: 0.25rem 0 0; color: var(--text-muted, #7A8BAD); font-size: 0.88rem; }
   .discovery-cta,
   .premium-footer {
     background:
@@ -504,10 +425,6 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     .why-grid {
       grid-template-columns: 1fr;
     }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .ai-card { transition: none; }
-    .ai-card:hover { transform: none; }
   }
   /* FAQ */
   .faq-list { display: flex; flex-direction: column; gap: 0.5rem; }

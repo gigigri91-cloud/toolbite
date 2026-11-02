@@ -2,10 +2,6 @@
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd.astro";
 import CategoryHighlights from "@/components/discovery/CategoryHighlights.astro";
 import DiscoverySection from "@/components/discovery/DiscoverySection.astro";
-import PopularToolsSection from "@/components/discovery/PopularToolsSection.astro";
-import RecentlyAddedSection from "@/components/discovery/RecentlyAddedSection.astro";
-import RecommendedToolsSection from "@/components/discovery/RecommendedToolsSection.astro";
-import TrendingToolsSection from "@/components/discovery/TrendingToolsSection.astro";
 import ToolCard from "@/components/discovery/ToolCard.astro";
 import { getAllTools, getCategoryTools } from "@/lib/tools";
 import { getCategoryAccent, hexToRgb } from "@/lib/wow-colors";
@@ -54,10 +50,6 @@ const related = all
 <DiscoverySection title="Popular in this category" subtitle="Most reused workflows in this category." tools={popularInCategory} />
 <DiscoverySection title="Recently added in this category" subtitle="Fresh additions for your workflow stack." tools={recentInCategory} />
 <DiscoverySection title="Related from other categories" subtitle="Cross-category tools with high contextual overlap." tools={related} />
-<TrendingToolsSection />
-<PopularToolsSection />
-<RecentlyAddedSection />
-<RecommendedToolsSection />
 
 <BreadcrumbJsonLd
   items={[

@@ -4,7 +4,6 @@ import ToolBreadcrumbs from "@/components/tools/ToolBreadcrumbs.astro";
 import ToolExamples from "@/components/tools/ToolExamples.astro";
 import ToolFAQ from "@/components/tools/ToolFAQ.astro";
 import ToolHero from "@/components/tools/ToolHero.astro";
-import ToolRecommendations from "@/components/tools/ToolRecommendations.astro";
 import ToolRelatedTools from "@/components/tools/ToolRelatedTools.astro";
 import ToolShell from "@/components/tools/ToolShell.astro";
 import ToolUseCases from "@/components/tools/ToolUseCases.astro";
@@ -12,7 +11,6 @@ import ToolWorkflowSuggestions from "@/components/tools/ToolWorkflowSuggestions.
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getToolRecordBySlug, type ToolPageContent } from "@/data/tool-pages";
 import { createMetadataFromToolRecord } from "@/lib/seo";
-import { getContextualRecommendations } from "@/lib/linking";
 import { buildBreadcrumbSchema, buildFaqSchema, buildWebApplicationSchema } from "@/lib/schema";
 import { getRelatedTools } from "@/lib/tools";
 import { getToolAccentFromSlug } from "@/lib/wow-colors";
@@ -47,7 +45,6 @@ const metadata = createMetadataFromToolRecord({
 });
 
 const relatedTools = getRelatedTools(tool, 4);
-const recommendations = getContextualRecommendations(tool.url, 4);
 const breadcrumbItems = [
   { name: "Home", href: "/" },
   { name: content.categoryName, href: content.categoryHref },
@@ -100,7 +97,6 @@ const schemas = [
       <ToolWorkflowSuggestions items={content.workflow} />
       <ToolFAQ items={content.faq} />
       <ToolRelatedTools tools={relatedTools} />
-      <ToolRecommendations tools={recommendations} />
 
       <div slot="aside">
         <ToolWorkflowSuggestions title="Fast workflow path" items={content.workflow} variant="aside" />
