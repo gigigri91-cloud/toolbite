@@ -473,7 +473,7 @@ export const toolPageContent: Record<string, ToolPageContent> = {
     workflow: [
       { name: "Hash Generator", href: "/tools/hash-generator.html", icon: "🔢" },
       { name: "UUID Generator", href: "/tools/uuid-generator.html", icon: "🆔" },
-      { name: "Password guide", href: "/guides/password-guide.html", icon: "📘" }
+      { name: "Password guide", href: "/guides/password-security-guide.html", icon: "📘" }
     ]
   },
   "qr-generator": {
