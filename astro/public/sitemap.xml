@@ -25,6 +25,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://toolbite.org/categories/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://toolbite.org/categories/developer-tools.html</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>

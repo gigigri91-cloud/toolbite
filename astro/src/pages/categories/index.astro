@@ -1,0 +1,157 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { createMetadata } from "@/lib/seo";
+import { buildBreadcrumbSchema } from "@/lib/schema";
+import { getCategoryTools } from "@/lib/tools";
+
+const title = "Tool Categories — Browse All Free Browser Tools | ToolBite";
+const description =
+  "Browse ToolBite by category: Developer Tools, Text Tools, Image Tools, and SEO Tools. All free, no login, 100% client-side.";
+const canonicalPath = "/categories/";
+
+const metadata = createMetadata({ title, description, canonicalPath });
+const schemas = [
+  buildBreadcrumbSchema([
+    { name: "Home", url: "https://toolbite.org/" },
+    { name: "Categories", url: "https://toolbite.org/categories/" }
+  ])
+];
+
+const categories = [
+  {
+    slug: "developer-tools",
+    href: "/categories/developer-tools.html",
+    name: "Developer Tools",
+    icon: "⚙️",
+    desc: "JSON formatter, JWT decoder, Base64, UUID generator, hash generator and more.",
+    color: "#4A9FE0"
+  },
+  {
+    slug: "text-tools",
+    href: "/categories/text-tools.html",
+    name: "Text Tools",
+    icon: "✏️",
+    desc: "Word counter, case converter, slug generator, lorem ipsum and text utilities.",
+    color: "#a855f7"
+  },
+  {
+    slug: "image-tools",
+    href: "/categories/image-tools.html",
+    name: "Image Tools",
+    icon: "🖼️",
+    desc: "Image compressor, color palette generator, QR code tools.",
+    color: "#2dd4bf"
+  },
+  {
+    slug: "seo-tools",
+    href: "/categories/seo-tools.html",
+    name: "SEO Tools",
+    icon: "🔍",
+    desc: "URL slug generator, read time calculator, and SEO workflow utilities.",
+    color: "#f5a623"
+  }
+].map(cat => ({ ...cat, count: getCategoryTools(cat.slug).length }));
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} metadata={metadata} schemas={schemas} rootPath="/">
+  <div class="cat-hub">
+    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li><li>›</li>
+        <li class="breadcrumb-current">Categories</li>
+      </ol>
+    </nav>
+
+    <div class="cat-hub-head">
+      <h1>Browse by category</h1>
+      <p>All tools are free, run in your browser, and require no account.</p>
+    </div>
+
+    <div class="cat-hub-grid">
+      {categories.map(cat => (
+        <a href={cat.href} class="tb-card tb-card-interactive tb-card-pad-lg cat-card" style={`--cat-color: ${cat.color}`}>
+          <div class="cat-card-top">
+            <span class="cat-icon" aria-hidden="true">{cat.icon}</span>
+            <span class="cat-count">{cat.count} tools</span>
+          </div>
+          <h2>{cat.name}</h2>
+          <p>{cat.desc}</p>
+          <span class="cat-cta">Browse tools →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cat-hub {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2.5rem;
+  }
+  .cat-hub-head {
+    margin: 1rem 0 1.5rem;
+  }
+  .cat-hub-head h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+  }
+  .cat-hub-head p {
+    margin: 0.35rem 0 0;
+    color: var(--color-text-secondary);
+  }
+  .cat-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 540px) {
+    .cat-hub-grid { grid-template-columns: 1fr; }
+  }
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    border-top: 3px solid var(--cat-color, #4A9FE0);
+  }
+  .cat-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cat-icon { font-size: 1.6rem; line-height: 1; }
+  .cat-count {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cat-color, #4A9FE0);
+    background: color-mix(in srgb, var(--cat-color, #4A9FE0) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cat-color, #4A9FE0) 25%, transparent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+  .cat-card h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  .cat-card p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .cat-cta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--cat-color, #4A9FE0);
+    margin-top: 0.2rem;
+  }
+</style>
