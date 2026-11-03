@@ -7,31 +7,51 @@ const { rootPath = "/" } = Astro.props;
 ---
 
 <footer id="site-footer" class="tb-shell-footer">
-  <div class="tb-shell-container">
-    <a href={`${rootPath}`} class="tb-footer-logo-link" aria-label="ToolBite home">
-      <span class="footer-logo-icon" aria-hidden="true">🔧</span>
-      <span class="footer-logo-text">Tool<span class="footer-logo-bite">Bite</span></span>
-    </a>
-    <nav class="tb-footer-nav" aria-label="Footer">
-      <a href={`${rootPath}about.html`}>About</a>
-      <a href={`${rootPath}contact.html`}>Contact</a>
-      <a href="/guides/">Guides</a>
-      <a href={`${rootPath}editorial-policy.html`}>Editorial</a>
-      <a href={`${rootPath}privacy.html`}>Privacy</a>
-      <a href={`${rootPath}cookie-policy.html`}>Cookies</a>
-      <a href={`${rootPath}terms.html`}>Terms</a>
-      <a
-        href={`${rootPath}privacy.html#ads`}
-        data-open-cookie-settings="true"
-        aria-label="Manage cookie preferences"
-      >Manage cookies</a>
-    </nav>
-    <div class="tb-footer-cta">
-      <p class="tb-footer-tagline">Browser tools that respect your time and privacy.</p>
-      <a href="#" id="random-tool-btn" class="tb-footer-random-btn" aria-label="Open a random tool">
-        <span aria-hidden="true">🎲</span> Try a random tool
-      </a>
+  <div class="tb-footer-inner">
+    <div class="tb-footer-grid">
+
+      <!-- Coloana 1: Brand -->
+      <div class="tb-footer-col tb-footer-brand">
+        <a href={`${rootPath}`} class="tb-footer-logo-link" aria-label="ToolBite home">
+          <span class="footer-logo-icon" aria-hidden="true">🔧</span>
+          <span class="footer-logo-text">Tool<span class="footer-logo-bite">Bite</span></span>
+        </a>
+        <p class="tb-footer-tagline">Browser tools that respect your time and privacy.</p>
+        <a href="#" id="random-tool-btn" class="tb-footer-random-btn" aria-label="Open a random tool">
+          <span aria-hidden="true">🎲</span> Random tool
+        </a>
+      </div>
+
+      <!-- Coloana 2: Explore -->
+      <div class="tb-footer-col">
+        <p class="tb-footer-col-title">Explore</p>
+        <nav aria-label="Explore tools">
+          <a href={`${rootPath}search.html`}>Search all tools</a>
+          <a href={`${rootPath}categories/`}>All categories</a>
+          <a href={`${rootPath}categories/developer-tools.html`}>Developer tools</a>
+          <a href={`${rootPath}categories/text-tools.html`}>Text tools</a>
+          <a href={`${rootPath}categories/image-tools.html`}>Image tools</a>
+          <a href={`${rootPath}categories/seo-tools.html`}>SEO tools</a>
+          <a href="/guides/">Guides</a>
+        </nav>
+      </div>
+
+      <!-- Coloana 3: Legal & info -->
+      <div class="tb-footer-col">
+        <p class="tb-footer-col-title">Legal & info</p>
+        <nav aria-label="Legal">
+          <a href={`${rootPath}about.html`}>About</a>
+          <a href={`${rootPath}contact.html`}>Contact</a>
+          <a href={`${rootPath}editorial-policy.html`}>Editorial policy</a>
+          <a href={`${rootPath}privacy.html`}>Privacy policy</a>
+          <a href={`${rootPath}cookie-policy.html`}>Cookie policy</a>
+          <a href={`${rootPath}terms.html`}>Terms of use</a>
+          <a href={`${rootPath}privacy.html#ads`} data-open-cookie-settings="true">Manage cookies</a>
+        </nav>
+      </div>
+
     </div>
+
     <p class="tb-footer-copy">
       &copy; <span id="current-year"></span> ToolBite.org — all rights reserved.
     </p>
@@ -49,6 +69,8 @@ const { rootPath = "/" } = Astro.props;
         window.location.href = '/' + pick;
       });
     }
+    var yr = document.getElementById('current-year');
+    if (yr) yr.textContent = new Date().getFullYear();
   })();
 </script>
 
@@ -58,24 +80,52 @@ const { rootPath = "/" } = Astro.props;
     background: var(--bg-primary, var(--color-bg-primary));
     border-top: 1px solid var(--border-subtle, var(--color-border-primary));
   }
-  .tb-shell-footer .tb-shell-container {
+  .tb-footer-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.35rem 1.25rem;
+    padding: 2rem 1.25rem 1.25rem;
+  }
+  .tb-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
+  }
+  @media (max-width: 720px) {
+    .tb-footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .tb-footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 420px) {
+    .tb-footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .tb-footer-col-title {
+    margin: 0 0 0.65rem;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted, #7A8BAD);
+  }
+  .tb-footer-col nav {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
+    gap: 0.45rem;
   }
-  @media (min-width: 768px) {
-    .tb-shell-footer .tb-shell-container {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      text-align: left;
-    }
+  .tb-footer-col nav a {
+    color: var(--text-secondary, #8BA3C4);
+    text-decoration: none;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    transition: color 140ms ease;
+  }
+  .tb-footer-col nav a:hover {
+    color: var(--accent-blue, #4A9FE0);
   }
   .tb-footer-logo-link {
     display: inline-flex;
@@ -83,7 +133,7 @@ const { rootPath = "/" } = Astro.props;
     gap: 0.45rem;
     text-decoration: none;
     line-height: 1;
-    flex-shrink: 0;
+    margin-bottom: 0.6rem;
   }
   .footer-logo-icon {
     display: inline-flex;
@@ -104,54 +154,13 @@ const { rootPath = "/" } = Astro.props;
     letter-spacing: -0.02em;
     line-height: 1;
   }
-  .footer-logo-bite {
-    color: #FF9A45;
-  }
-  .tb-footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.65rem 1rem;
-  }
-  @media (min-width: 768px) {
-    .tb-footer-nav {
-      justify-content: flex-end;
-      flex: 1;
-    }
-  }
-  .tb-footer-nav a {
-    color: var(--text-muted, #7A8BAD);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .tb-footer-nav a:hover,
-  .tb-footer-nav a:focus-visible {
-    color: var(--text-secondary, #8BA3C4);
-    outline: none;
-  }
-  .tb-footer-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.5rem 0;
-    border-top: 1px solid var(--border-subtle, rgba(255,255,255,0.04));
-  }
-  @media (min-width: 768px) {
-    .tb-footer-cta {
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 1.25rem;
-    }
-  }
+  .footer-logo-bite { color: #FF9A45; }
   .tb-footer-tagline {
-    margin: 0;
+    margin: 0 0 0.75rem;
     color: var(--text-muted, #7A8BAD);
-    font-size: 13px;
-    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 22ch;
   }
   .tb-footer-random-btn {
     display: inline-flex;
@@ -165,27 +174,21 @@ const { rootPath = "/" } = Astro.props;
     font-weight: 600;
     text-decoration: none;
     background: rgba(74,159,224,0.06);
-    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+    transition: background 160ms ease, border-color 160ms ease;
     white-space: nowrap;
   }
   .tb-footer-random-btn:hover {
     background: rgba(74,159,224,0.14);
     border-color: rgba(74,159,224,0.45);
-    color: #6bb8f0;
   }
   .tb-footer-copy {
     margin: 0;
-    width: 100%;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle, rgba(255,255,255,0.04));
     color: var(--text-muted, #7A8BAD);
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.02em;
-  }
-  @media (min-width: 768px) {
-    .tb-footer-copy {
-      width: auto;
-      flex-basis: 100%;
-      text-align: center;
-    }
+    text-align: center;
   }
 </style>
