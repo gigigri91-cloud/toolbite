@@ -810,6 +810,11 @@ header a:has(> picture.header-logo-picture) {
   font-weight: 600;
   color: var(--text-primary, #E8EDFB);
 }
+.guide-date {
+  font-size: 0.82rem;
+  color: var(--text-muted, #7A8BAD);
+  font-style: normal;
+}
 .guide-grid-3 {
   display: grid;
   grid-template-columns: 1fr;
