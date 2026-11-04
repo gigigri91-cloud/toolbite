@@ -89,16 +89,16 @@
     }
 }
 
-/* Layout rhythm refresh (step 3): more breathing room between sections/grids */
+/* Layout rhythm: breathing room for inner pages (tool, guide, category). Homepage overrides via its own sections. */
 main {
-    padding-top: clamp(3rem, 5vw, 5rem) !important;
-    padding-bottom: clamp(3rem, 5vw, 5rem) !important;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
 }
 main > section + section {
-    margin-top: clamp(2.25rem, 4vw, 3.75rem) !important;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 main .grid {
-    gap: clamp(1.25rem, 2vw, 2rem) !important;
+    gap: clamp(1rem, 2vw, 1.75rem);
 }
 
 /* Site content width: centered column inside <main> (Tool pages opt out via skipMainContainer). */

@@ -198,6 +198,10 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
 </BaseLayout>
 
 <style>
+  /* Hero starts right after header — remove global main padding-top */
+  :global(#main-content) {
+    padding-top: 0;
+  }
   .home-section {
     max-width: 1200px;
     margin: 0 auto;
