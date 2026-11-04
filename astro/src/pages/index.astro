@@ -1,6 +1,5 @@
 ---
 import CategoryHighlights from "@/components/discovery/CategoryHighlights.astro";
-import RecentlyVisited from "@/components/discovery/RecentlyVisited.astro";
 import ToolCard from "@/components/discovery/ToolCard.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -44,9 +43,6 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       <SearchSuggestions />
     </div>
   </section>
-
-  <!-- Recently visited — renders only if user has history -->
-  <RecentlyVisited variant="bar" maxItems={5} />
 
   <!-- Popular tools -->
   <section class="home-section tb-reveal home-popular-tools" aria-labelledby="popular-heading">
