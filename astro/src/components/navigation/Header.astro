@@ -173,13 +173,16 @@ const isActive = (path: string) => currentPath.includes(path);
     }
   }
   @media (min-width: 768px) and (max-width: 1023px) {
-    .tb-shell-container {
-      row-gap: 0.65rem;
+    .tb-desktop-nav {
+      gap: 0;
+    }
+    .tb-desktop-nav a {
+      padding: 0.4rem 0.4rem;
+      font-size: 13px;
     }
     .tb-header-search {
-      order: 4;
-      flex: 1 1 100%;
-      max-width: none;
+      flex: 1 1 160px;
+      max-width: 220px;
     }
   }
 </style>
