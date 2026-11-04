@@ -97,35 +97,20 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
       <p>Built for privacy, speed, and real daily workflows — no strings attached.</p>
     </div>
     <div class="why-grid">
-      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+      <article class="tb-card tb-card-pad-lg why-card-new">
         <span class="why-icon" aria-hidden="true">🔒</span>
         <h3>100% client-side processing</h3>
-        <p>Every tool runs entirely in your browser. Your JSON, passwords, tokens, and text are never sent to a server, never logged, and never stored.</p>
+        <p>Every tool runs in your browser. Your JSON, passwords, and tokens are never sent to a server, never logged, never stored.</p>
       </article>
-      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
-        <span class="why-icon" aria-hidden="true">⚡</span>
-        <h3>No account required</h3>
-        <p>All tools are free and accessible without registration — no trial period, no usage limit, no feature gating. Open and start working immediately.</p>
-      </article>
-      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+      <article class="tb-card tb-card-pad-lg why-card-new">
         <span class="why-icon" aria-hidden="true">🔗</span>
         <h3>Built for real workflows</h3>
-        <p>Focused interfaces for development, writing, SEO, and design. Contextual links turn isolated tasks into repeatable multi-step workflows.</p>
+        <p>Focused interfaces for development, writing, SEO, and design. Tools link to each other so one task leads naturally to the next.</p>
       </article>
-      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
-        <span class="why-icon" aria-hidden="true">🔍</span>
-        <h3>Search-first exploration</h3>
-        <p>Command-style discovery with <kbd>Ctrl/⌘K</kbd> helps you move from intent to action in seconds.</p>
-      </article>
-      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
-        <span class="why-icon" aria-hidden="true">🌐</span>
-        <h3>Connected ecosystem</h3>
-        <p>Cross-linked tools and guides create a discovery layer that grows with your knowledge, not just your bookmark list.</p>
-      </article>
-      <article class="tb-card tb-card-interactive tb-card-pad-lg why-card-new">
+      <article class="tb-card tb-card-pad-lg why-card-new">
         <span class="why-icon" aria-hidden="true">♾️</span>
         <h3>Free forever by design</h3>
-        <p>No freemium gates, no premium tiers. The full toolset is available to everyone, every time.</p>
+        <p>No freemium gates, no premium tiers, no account needed. The full toolset is available to everyone, every time.</p>
       </article>
     </div>
   </section>
@@ -416,16 +401,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     line-height: 1.6;
     margin: 0;
   }
-  .why-card-new kbd {
-    color: var(--accent-orange, #FF9A45);
-    background: rgba(255, 154, 69, 0.08);
-    border: 1px solid rgba(255, 154, 69, 0.2);
-    border-radius: 4px;
-    padding: 0.05rem 0.3rem;
-    font-family: var(--font-mono);
-    font-size: 0.8em;
-  }
-  @media (max-width: 900px) {
+@media (max-width: 900px) {
     .why-grid {
       grid-template-columns: repeat(2, 1fr);
     }
