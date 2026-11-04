@@ -2,8 +2,6 @@
 import CategoryHighlights from "@/components/discovery/CategoryHighlights.astro";
 import RecentlyVisited from "@/components/discovery/RecentlyVisited.astro";
 import ToolCard from "@/components/discovery/ToolCard.astro";
-import SearchInput from "@/components/search/SearchInput.astro";
-import SearchOverlay from "@/components/search/SearchOverlay.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { HOMEPAGE_TITLE, createMetadata } from "@/lib/seo";
@@ -195,15 +193,7 @@ const categoryFeatured = getCategoryTools("developer-tools").slice(0, 4);
     </div>
   </section>
 
-  <SearchOverlay>
-    <SearchInput id="search-overlay-input" placeholder="Quick open tools and guides..." />
-    <RecentlyVisited variant="list" maxItems={5} />
-    <SearchSuggestions />
-    <p class="search-esc-hint">Press <kbd>Esc</kbd> to close command search.</p>
-  </SearchOverlay>
-
   <Fragment slot="scripts">
-    <script defer src="/assets/js/search.js"></script>
   </Fragment>
 </BaseLayout>
 
