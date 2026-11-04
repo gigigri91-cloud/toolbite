@@ -1,13 +1,13 @@
 ---
 ---
 
-<section aria-label="Search suggestions" class="search-suggestions">
-  <button type="button" class="search-chip chip-blue" data-suggestion="json">json</button>
-  <button type="button" class="search-chip chip-purple" data-suggestion="slug">slug</button>
-  <button type="button" class="search-chip chip-orange" data-suggestion="password">password</button>
-  <button type="button" class="search-chip chip-teal" data-suggestion="image">image</button>
-  <button type="button" class="search-chip chip-pink" data-suggestion="seo">seo</button>
-</section>
+<nav aria-label="Search suggestions" class="search-suggestions">
+  <a href="/search.html?q=json" class="search-chip chip-blue">json</a>
+  <a href="/search.html?q=slug" class="search-chip chip-purple">slug</a>
+  <a href="/search.html?q=password" class="search-chip chip-orange">password</a>
+  <a href="/search.html?q=image" class="search-chip chip-teal">image</a>
+  <a href="/search.html?q=seo" class="search-chip chip-pink">seo</a>
+</nav>
 
 <style>
   .search-suggestions {
@@ -24,6 +24,8 @@
     font-family: var(--font-mono);
     cursor: pointer;
     border: 1px solid transparent;
+    text-decoration: none;
+    display: inline-block;
     transition: filter 160ms ease, border-color 160ms ease;
   }
   .search-chip:hover {
