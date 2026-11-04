@@ -1,7 +1,6 @@
 ---
 import SearchEmptyState from "@/components/search/SearchEmptyState.astro";
 import SearchInput from "@/components/search/SearchInput.astro";
-import SearchOverlay from "@/components/search/SearchOverlay.astro";
 import SearchResultCard from "@/components/search/SearchResultCard.astro";
 import SearchResults from "@/components/search/SearchResults.astro";
 import SearchSuggestions from "@/components/search/SearchSuggestions.astro";
@@ -73,11 +72,6 @@ const quickPicks = getPopularTools(6);
     </p>
   </section>
 
-  <SearchOverlay>
-    <p class="search-overlay-hint">Use <kbd>Ctrl/Cmd + K</kbd> to focus search, arrows to navigate, Enter to open result.</p>
-    <SearchSuggestions />
-  </SearchOverlay>
-
   <Fragment slot="scripts">
     <script defer src="/assets/js/search.js"></script>
   </Fragment>
@@ -129,9 +123,4 @@ const quickPicks = getPopularTools(6);
     line-height: 1.6;
   }
   .search-help-text:last-child { margin-bottom: 0; }
-  .search-overlay-hint {
-    font-size: 0.875rem;
-    color: var(--text-muted, #7A8BAD);
-    margin-bottom: 0.5rem;
-  }
 </style>
