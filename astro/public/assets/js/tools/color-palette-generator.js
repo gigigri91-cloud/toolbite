@@ -33,6 +33,3 @@ function generatePalette() {
     }
 }
 
-/* -----------------------------------------------
-
-if (document.getElementById('paletteContainer')) generatePalette();

@@ -44,6 +44,3 @@ function copyPassword() {
     }, 2000);
 }
 
-/* -----------------------------------------------
-
-if (document.getElementById('passwordResult')) generatePassword();

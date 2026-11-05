@@ -30,4 +30,3 @@
     document.getElementById('clear-btn')?.addEventListener('click', () => { ta.value = ''; });
 })();
 
-/* -----------------------------------------------
