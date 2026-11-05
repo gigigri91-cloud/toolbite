@@ -16,9 +16,57 @@ const content = getToolPageContent("color-palette-generator");
     privacyNote="Palette generation and HEX copy actions run locally in your browser."
   >
     <div id="paletteContainer" class="tool-palette-grid"></div>
-    <div class="text-center">
+    <div class="palette-actions">
       <button onclick="generatePalette()" class="tb-btn tb-btn-primary">Generate New Palette</button>
       <p class="tool-hint">Click any swatch to copy its HEX code.</p>
     </div>
   </ToolInterfaceWrapper>
 </ToolPageLayout>
+
+<style>
+  .tool-palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  @media (max-width: 600px) {
+    .tool-palette-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .palette-swatch {
+    position: relative;
+    height: 160px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .palette-swatch:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+  .palette-hex {
+    background: rgba(255,255,255,0.92);
+    color: #111;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-mono, monospace);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+  }
+  .palette-actions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+</style>
