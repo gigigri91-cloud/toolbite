@@ -18,7 +18,7 @@ const isActive = (path: string) => currentPath.includes(path);
     </a>
     <nav aria-label="Primary" class="tb-desktop-nav">
       <a href={`${rootPath}search.html`} class:list={{ "is-active": isActive("/search") }}>Search</a>
-      <a href={`${rootPath}categories/`} class:list={{ "is-active": isActive("/categories") }}>Categories</a>
+      <a href={`${rootPath}categories.html`} class:list={{ "is-active": isActive("/categories") }}>Categories</a>
       <a href="/guides/" class:list={{ "is-active": isActive("/guides") }}>Guides</a>
       <a href={`${rootPath}contact.html`} class:list={{ "is-active": isActive("/contact") }}>Contact</a>
     </nav>
