@@ -24,10 +24,8 @@
         window.tbCopyText(input.value, copyBtn);
         const orig = copyBtn.textContent;
         copyBtn.textContent = 'Copied!';
-        copyBtn.classList.replace('bg-gray-100', 'bg-green-100');
         setTimeout(() => {
             copyBtn.textContent = orig;
-            copyBtn.classList.replace('bg-green-100', 'bg-gray-100');
         }, 2000);
     };
 })();

@@ -35,7 +35,5 @@ function showJSONMessage(text, type) {
     const msg = document.getElementById('jsonMessage');
     if (!msg) return;
     msg.textContent = text;
-    msg.className = `mt-4 p-4 rounded-xl font-medium border ${type === 'success'
-        ? 'bg-green-50 text-green-700 border-green-200'
-        : 'bg-red-50 text-red-700 border-red-200'} block`;
+    msg.className = 'tool-status ' + (type === 'success' ? 'tool-status--ok' : 'tool-status--error');
 }
