@@ -35,12 +35,9 @@ function copyPassword() {
     const pwdResult = document.getElementById('passwordResult');
     const copyBtn   = document.getElementById('copyBtn');
     if (!pwdResult || !pwdResult.value || pwdResult.value === 'Select at least one option!') return;
-    window.tbCopyText(pwdResult.value, btn);
+    window.tbCopyText(pwdResult.value, copyBtn);
+    const orig = copyBtn.innerText;
     copyBtn.innerText = 'Copied!';
-    copyBtn.classList.replace('bg-blue-600', 'bg-green-500');
-    setTimeout(() => {
-        copyBtn.innerText = 'Copy';
-        copyBtn.classList.replace('bg-green-500', 'bg-blue-600');
-    }, 2000);
+    setTimeout(() => { copyBtn.innerText = orig; }, 2000);
 }
 

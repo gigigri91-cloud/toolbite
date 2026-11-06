@@ -6,7 +6,7 @@ import ToolPageLayout from "@/layouts/ToolPageLayout.astro";
 const content = getToolPageContent("qr-generator");
 ---
 
-<ToolPageLayout slug="qr-generator" content={content} toolScript="/assets/js/tools/qr-generator.js">
+<ToolPageLayout slug="qr-generator" content={content} toolScript="/assets/js/tools/qr-generator.js" extraScript="/assets/js/lib/qrcode.js">
   <ToolInterfaceWrapper title="Generate QR codes" privacyNote="QR generation runs locally in your browser.">
     <label for="qr-input" class="tool-label">Text or URL</label>
     <textarea id="qr-input" class="tb-textarea w-full h-28 mb-4" placeholder="https://example.com"></textarea>

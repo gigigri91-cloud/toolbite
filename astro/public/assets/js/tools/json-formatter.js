@@ -29,13 +29,7 @@ function copyJSON() {
     window.tbCopyText(input.value, copyBtn);
     const orig = copyBtn.innerText;
     copyBtn.innerText = 'Copied!';
-    copyBtn.classList.replace('bg-gray-800', 'bg-green-600');
-    copyBtn.classList.replace('hover:bg-gray-900', 'hover:bg-green-700');
-    setTimeout(() => {
-        copyBtn.innerText = orig;
-        copyBtn.classList.replace('bg-green-600', 'bg-gray-800');
-        copyBtn.classList.replace('hover:bg-green-700', 'hover:bg-gray-900');
-    }, 2000);
+    setTimeout(() => { copyBtn.innerText = orig; }, 2000);
 }
 function showJSONMessage(text, type) {
     const msg = document.getElementById('jsonMessage');

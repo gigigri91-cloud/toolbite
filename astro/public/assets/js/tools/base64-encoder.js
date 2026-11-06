@@ -29,11 +29,11 @@
         if (err) { err.classList.add('hidden'); err.textContent = ''; }
         if (tabEnc && tabDec) {
             if (enc) {
-                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-amber-500 text-white text-sm';
-                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+                tabEnc.className = 'tb-btn tb-btn-primary';
+                tabDec.className = 'tb-btn tb-btn-neutral';
             } else {
-                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-amber-500 text-white text-sm';
-                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+                tabDec.className = 'tb-btn tb-btn-primary';
+                tabEnc.className = 'tb-btn tb-btn-neutral';
             }
         }
         if (hint) hint.textContent = enc ? 'Plain text → Base64' : 'Base64 → plain text (UTF-8)';

@@ -40,7 +40,7 @@ function loadExample() {
 
       if (!raw) {
         statusEl.textContent = '⚠️ Nothing to convert. Paste some CSV first.';
-        statusEl.className = 'mt-4 text-sm font-semibold text-amber-600';
+        statusEl.className = 'tool-status tool-status--warn';
         statusEl.classList.remove('hidden');
         return;
       }
@@ -66,11 +66,11 @@ function loadExample() {
 
         document.getElementById('json-output').value = pretty ? JSON.stringify(result, null, 2) : JSON.stringify(result);
         statusEl.textContent = `✅ Converted ${result.length} row(s) with ${headers.length} field(s).`;
-        statusEl.className = 'mt-4 text-sm font-semibold text-emerald-700';
+        statusEl.className = 'tool-status tool-status--ok';
         statusEl.classList.remove('hidden');
       } catch (err) {
         statusEl.textContent = '❌ Parse error: ' + err.message;
-        statusEl.className = 'mt-4 text-sm font-semibold text-red-600';
+        statusEl.className = 'tool-status tool-status--error';
         statusEl.classList.remove('hidden');
       }
     }

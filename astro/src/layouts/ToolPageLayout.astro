@@ -19,9 +19,10 @@ export interface Props {
   slug: string;
   content: ToolPageContent;
   toolScript: string;
+  extraScript?: string;
 }
 
-const { slug, content, toolScript } = Astro.props;
+const { slug, content, toolScript, extraScript } = Astro.props;
 const tool = getToolRecordBySlug(slug);
 
 if (!tool) {
@@ -105,6 +106,7 @@ const schemas = [
   </div>
 
   <Fragment slot="scripts">
+    {extraScript && <script defer src={extraScript}></script>}
     <script defer src={toolScript}></script>
     <script is:inline>
       (() => {

@@ -28,11 +28,11 @@
         encodeMode = enc;
         if (tabEnc && tabDec) {
             if (enc) {
-                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-emerald-600 text-white text-sm';
-                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+                tabEnc.className = 'tb-tab tb-tab--active';
+                tabDec.className = 'tb-tab';
             } else {
-                tabDec.className = 'px-4 py-2 rounded-xl font-bold bg-emerald-600 text-white text-sm';
-                tabEnc.className = 'px-4 py-2 rounded-xl font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm';
+                tabDec.className = 'tb-tab tb-tab--active';
+                tabEnc.className = 'tb-tab';
             }
         }
         const run = document.getElementById('url-run-btn');
