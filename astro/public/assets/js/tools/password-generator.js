@@ -31,6 +31,8 @@ function generatePassword() {
         pwd += chars[randomIndex(chars.length)];
     pwdResult.value = pwd;
 }
+document.addEventListener('DOMContentLoaded', function() { generatePassword(); });
+
 function copyPassword() {
     const pwdResult = document.getElementById('passwordResult');
     const copyBtn   = document.getElementById('copyBtn');
