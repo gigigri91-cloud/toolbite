@@ -20,7 +20,7 @@ function clearJSON() {
     const input = document.getElementById('jsonInput');
     const msg   = document.getElementById('jsonMessage');
     if (input) input.value = '';
-    if (msg)   msg.className = 'hidden';
+    if (msg)   { msg.className = ''; msg.style.display = 'none'; }
 }
 function copyJSON() {
     const input  = document.getElementById('jsonInput');
@@ -35,5 +35,6 @@ function showJSONMessage(text, type) {
     const msg = document.getElementById('jsonMessage');
     if (!msg) return;
     msg.textContent = text;
+    msg.style.display = '';
     msg.className = 'tool-status ' + (type === 'success' ? 'tool-status--ok' : 'tool-status--error');
 }
