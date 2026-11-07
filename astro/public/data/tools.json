@@ -208,8 +208,8 @@
     "title": "How to generate strong passwords — and store them safely",
     "desc": "What makes a password strong, how long it should be, which characters to include, and how to store it safely without memorising random strings. A practical security guide.",
     "description": "What makes a password strong, how long it should be, which characters to include, and how to store it safely without memorising random strings. A practical security guide.",
-    "url": "guides/password-guide.html",
-    "canonical": "https://toolbite.org/guides/password-guide.html",
+    "url": "guides/password-security-guide.html",
+    "canonical": "https://toolbite.org/guides/password-security-guide.html",
     "icon": "🔑",
     "tags": "password guide security",
     "keywords": [
