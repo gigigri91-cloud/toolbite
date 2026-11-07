@@ -118,8 +118,8 @@ export function buildArticleSchema(input: {
     headline: input.title,
     description: input.description,
     url: input.url,
-    ...(input.datePublished ? { datePublished: input.datePublished } : {}),
-    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
+    datePublished: input.datePublished ?? "2026-11-07",
+    dateModified: input.dateModified ?? "2026-11-07",
     author: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
