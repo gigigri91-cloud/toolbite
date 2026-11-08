@@ -4,112 +4,126 @@ import { SITE_URL } from "@/lib/seo";
 import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "Base64 Encoding Explained — Complete Guide | ToolBite";
-const description = "Learn Base64 encoding plainly: binary to text, data URIs, MIME, padding, and why Base64 is not encryption. See safe examples you can use today on ToolBite.";
+const description = "What Base64 is, why it exists, common use cases (data URIs, JWT, email), Base64 vs Base64url, and why it is NOT encryption.";
 const canonicalPath = "/guides/base64-encoding-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
   buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
-    { name: "Guides", url: `${SITE_URL}/guides/index.html` },
-    { name: "Base64 encoding guide", url: pageUrl }
+    { name: "Guides", url: `${SITE_URL}/guides.html` },
+    { name: "Base64 Encoding Guide", url: pageUrl }
   ])
 ];
-
-const mainHtml = String.raw`<div class="guide-page-root">
-    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
-      <ol class="breadcrumb-list">
-        <li><a href="../" class="">Home</a></li><li>›</li>
-        <li><a href="/guides.html" class="">Guides</a></li><li>›</li>
-        <li class="breadcrumb-current">Base64 encoding explained</li>
-      </ol>
-    </nav>
-
-    <article class="tb-card tb-card- tb-card-pad-lg">
-      <h1 class="guide-h1" data-pseo-target="h1">Base64 encoding explained — what it is and when to use it</h1>
-            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm guide-note-mt">
-      </div>
-      <p class="guide-lead">Base64 appears everywhere in web development — API tokens, email attachments, data URIs, JWT tokens — yet many developers use it without understanding what it actually does. This guide explains it clearly.</p>
-
-      <div class="guide-best-for not- guide-note-mt">
-        <strong>Best for:</strong> developers working with APIs, email systems, JWT tokens, or embedding images/files in HTML and CSS.
-      </div>
-
-      <h2>What is Base64?</h2>
-      <p>Base64 is an <strong>encoding scheme</strong> that converts binary data into a string of 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It was designed to safely transmit binary data over text-based systems like email (SMTP) and HTTP headers that were not designed to handle raw bytes.</p>
-      <p>The name "Base64" comes from the fact that it uses 64 distinct characters to represent data. Each Base64 character encodes 6 bits of data (2⁶ = 64).</p>
-
-      <h2>How does Base64 encoding work?</h2>
-      <ol>
-        <li>Take the binary input (e.g., the bytes of an image or a string).</li>
-        <li>Group the bytes into 3-byte chunks (24 bits).</li>
-        <li>Split each 24-bit chunk into four 6-bit groups.</li>
-        <li>Map each 6-bit group to one of the 64 Base64 characters.</li>
-        <li>Pad with <code>=</code> characters if the input length is not divisible by 3.</li>
-      </ol>
-      <p>Example: the string <code>Hi!</code> encodes to <code>SGkh</code> in Base64. The encoded output is always about 33% larger than the original.</p>
-
-      <h2>Common use cases</h2>
-      <ul>
-        <li><strong>API authentication</strong> — Basic Auth sends credentials as <code>username:password</code> encoded in Base64 in the Authorization header.</li>
-        <li><strong>JWT tokens</strong> — The header and payload sections of a JSON Web Token are Base64url-encoded (a variant with - and _ instead of + and /).</li>
-        <li><strong>Data URIs</strong> — Embedding small images directly in HTML or CSS: <code>src="data:image/png;base64,iVBORw..."</code></li>
-        <li><strong>Email attachments</strong> — MIME protocol uses Base64 to encode binary attachments so they survive transit through SMTP servers.</li>
-        <li><strong>Storing binary in JSON</strong> — JSON is text-only, so binary data (files, images, keys) is often Base64-encoded before being stored in JSON fields.</li>
-      </ul>
-
-      <h2>Base64 is NOT encryption</h2>
-      <p>This is the most important thing to understand: <strong>Base64 is reversible by anyone, instantly, with no key required.</strong> It provides zero security. Never use Base64 to "hide" passwords, API secrets, or sensitive data.</p>
-      <p>A common mistake is to see a Base64 string and assume it is encrypted. It is not — it is just encoded for safe transport. Anyone can decode it in seconds.</p>
-      <p>For actual security, use proper encryption (AES-256) or hashing (SHA-256, bcrypt for passwords).</p>
-
-      <h2>Base64 vs Base64url</h2>
-      <p>Standard Base64 uses <code>+</code> and <code>/</code> which are special characters in URLs. <strong>Base64url</strong> replaces them with <code>-</code> and <code>_</code> to make the output safe for use in URLs and HTTP headers without percent-encoding. JWT tokens use Base64url.</p>
-
-      <h2>How to encode and decode in your browser</h2>
-      <ol>
-        <li>Open <a href="/tools/base64-encoder.html">ToolBite's Base64 encoder &amp; decoder</a>.</li>
-        <li>Paste your text or string into the input box.</li>
-        <li>Click Encode to get the Base64 output, or paste a Base64 string and click Decode to get the original.</li>
-        <li>Copy the result — it never leaves your browser tab.</li>
-      </ol>
-
-      <h2>Quick reference</h2>
-      <ul>
-        <li>Base64 output is ~33% larger than the input.</li>
-        <li>All Base64 strings end with 0, 1, or 2 padding <code>=</code> characters.</li>
-        <li>Base64 ≠ encryption — never use it to secure sensitive data.</li>
-        <li>JWT tokens use Base64url (not standard Base64).</li>
-        <li>Decoding in JavaScript: <code>atob(str)</code>. Encoding: <code>btoa(str)</code>.</li>
-      </ul>
-
-      <div class="guide-cta-row">
-        <a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline guide-cta-link">Open Base64 encoder</a>
-        <a href="/guides/jwt-decoder-guide.html" class="tb-btn tb-btn-outline guide-cta-link">JWT guide</a>
-      </div>
-    </article>
-
-    <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt">
-      <h2 class="guide-section-title">Continue with related resources</h2>
-      <div class="guide-grid-3">
-        <a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">Base64 Encoder &amp; Decoder</p>
-          <p class="guide-card-desc">Encode or decode Base64 strings in your browser.</p>
-        </a>
-        <a href="/guides/jwt-decoder-guide.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">JWT Decoder Guide</p>
-          <p class="guide-card-desc">Understand how Base64url is used in JWT tokens.</p>
-        </a>
-        <a href="/tools/hash-generator.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">Hash Generator</p>
-          <p class="guide-card-desc">SHA-256 &amp; SHA-1 hashing — actual one-way security.</p>
-        </a>
-      </div>
-    </section>
-  <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt not-" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline"><span aria-hidden="true">📎</span><span>Base64 Encoder</span></a><a href="/tools/url-encoder.html" class="tb-card tb-card-interactive tb-btn tb-btn-outline"><span aria-hidden="true">🌐</span><span>URL Encoder</span></a></div></section>
-</div>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>
-  <Fragment set:html={mainHtml} />
+<GuideLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  schemas={schemas}
+  badge="Developer"
+  badgeColor="#4A9FE0"
+  icon="📎"
+  readTime="4 min read"
+>
+  <article class="gl-article">
+
+    <div class="gl-box gl-box--info">
+      <span class="gl-box-icon">💡</span>
+      <span><strong>Best for:</strong> developers working with APIs, email systems, JWT tokens, or embedding images and files directly in HTML and CSS.</span>
+    </div>
+
+    <h2>What is Base64?</h2>
+    <p>Base64 is an <strong>encoding scheme</strong> that converts binary data into a string using 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It was designed to safely transmit binary data over text-based systems like SMTP email and HTTP headers that weren't built to handle raw bytes.</p>
+    <p>The name comes from the 64 characters used. Each character encodes 6 bits (2⁶ = 64). The output is always about <strong>33% larger</strong> than the original.</p>
+
+    <h2>How encoding works</h2>
+    <ol class="gl-steps">
+      <li>Take the binary input (bytes of an image, string, or file).</li>
+      <li>Group into 3-byte chunks (24 bits each).</li>
+      <li>Split each 24-bit chunk into four 6-bit groups.</li>
+      <li>Map each 6-bit group to one of the 64 Base64 characters.</li>
+      <li>Pad with <code>=</code> characters if the input length isn't divisible by 3.</li>
+    </ol>
+    <p>Example: the string <code>Hi!</code> encodes to <code>SGkh</code>. You can verify this in <a href="/tools/base64-encoder.html">ToolBite's Base64 encoder</a>.</p>
+
+    <h2>Common use cases</h2>
+    <ul>
+      <li><strong>API authentication</strong> — Basic Auth sends <code>username:password</code> encoded in Base64 in the Authorization header.</li>
+      <li><strong>JWT tokens</strong> — Header and payload sections are Base64url-encoded (a URL-safe variant).</li>
+      <li><strong>Data URIs</strong> — Embedding small images directly in HTML: <code>src="data:image/png;base64,iVBORw..."</code></li>
+      <li><strong>Email attachments</strong> — MIME uses Base64 to encode binary attachments for SMTP transit.</li>
+      <li><strong>Binary in JSON</strong> — JSON is text-only; binary data (files, images, keys) is Base64-encoded before storing in JSON fields.</li>
+    </ul>
+
+    <h2>Base64 is NOT encryption</h2>
+    <div class="gl-box gl-box--warn">
+      <span class="gl-box-icon">⚠️</span>
+      <span><strong>Base64 is reversible by anyone, instantly, with no key required.</strong> It provides zero security. Never use it to "hide" passwords, API secrets, or sensitive data.</span>
+    </div>
+    <p>Seeing a Base64 string doesn't mean the data is encrypted — it's just encoded for safe transport. Anyone can decode it in one second. For actual security use proper encryption (AES-256) or hashing (SHA-256, bcrypt for passwords).</p>
+
+    <h2>Base64 vs Base64url</h2>
+    <div class="gl-quick-ref">
+      <h3>Comparison</h3>
+      <ul>
+        <li><strong>Base64</strong> uses <code>+</code> and <code>/</code> — these are special in URLs and need percent-encoding.</li>
+        <li><strong>Base64url</strong> replaces <code>+</code> with <code>-</code> and <code>/</code> with <code>_</code> — safe in URLs and HTTP headers without escaping.</li>
+        <li>JWT tokens use Base64url. Data URIs use standard Base64.</li>
+      </ul>
+    </div>
+
+    <h2>JavaScript quick reference</h2>
+    <ul class="gl-checklist">
+      <li>Encode: <code>btoa(str)</code> — works for ASCII strings only.</li>
+      <li>Decode: <code>atob(str)</code> — returns the original string.</li>
+      <li>For Unicode: <code>btoa(unescape(encodeURIComponent(str)))</code>.</li>
+      <li>For files/binary: use <code>FileReader.readAsDataURL()</code>.</li>
+    </ul>
+
+    <h2>Quick reference facts</h2>
+    <ul class="gl-checklist">
+      <li>Base64 output is ~33% larger than input.</li>
+      <li>Strings end with 0, 1, or 2 padding <code>=</code> characters.</li>
+      <li>Base64 ≠ encryption — never use it for security.</li>
+      <li>JWT tokens use Base64url (not standard Base64).</li>
+    </ul>
+
+    <div class="gl-cta-row">
+      <a href="/tools/base64-encoder.html" class="tb-btn tb-btn-primary">Open Base64 Encoder →</a>
+      <a href="/guides/jwt-decoder-guide.html" class="tb-btn tb-btn-outline">JWT guide</a>
+      <a href="/guides/hash-functions-explained.html" class="tb-btn tb-btn-outline">Hash functions guide</a>
+    </div>
+  </article>
+
+  <section>
+    <p class="gl-section-heading">Tools used in this guide</p>
+    <div class="gl-tools-row">
+      <a href="/tools/base64-encoder.html" class="gl-tool-btn"><span aria-hidden="true">📎</span> Base64 Encoder</a>
+      <a href="/tools/url-encoder.html" class="gl-tool-btn"><span aria-hidden="true">🌐</span> URL Encoder</a>
+      <a href="/tools/jwt-decoder.html" class="gl-tool-btn"><span aria-hidden="true">🪪</span> JWT Decoder</a>
+    </div>
+  </section>
+
+  <section>
+    <p class="gl-section-heading">Related guides & tools</p>
+    <div class="gl-related">
+      <a href="/guides/jwt-decoder-guide.html" class="gl-card">
+        <span class="gl-card-icon">🪪</span>
+        <p class="gl-card-title">JWT Decoder Guide</p>
+        <p class="gl-card-desc">Base64url in action — how JWT tokens use encoding.</p>
+      </a>
+      <a href="/guides/hash-functions-explained.html" class="gl-card">
+        <span class="gl-card-icon">🔢</span>
+        <p class="gl-card-title">Hash Functions</p>
+        <p class="gl-card-desc">SHA-256 and bcrypt — the actual security Base64 isn't.</p>
+      </a>
+      <a href="/guides/url-encoding-guide.html" class="gl-card">
+        <span class="gl-card-icon">🌐</span>
+        <p class="gl-card-title">URL Encoding Guide</p>
+        <p class="gl-card-desc">The other encoding you'll encounter in every URL.</p>
+      </a>
+    </div>
+  </section>
 </GuideLayout>

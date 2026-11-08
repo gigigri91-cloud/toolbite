@@ -1707,3 +1707,318 @@ pre code {
   height: auto;
   border-radius: 8px;
 }
+
+/* ================================================================
+   NEW GUIDE CONTENT STYLES — articol în gl-content
+   ================================================================ */
+
+/* Article card principal */
+.gl-article {
+  background: var(--bg-secondary, #0d1623);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  border-radius: 14px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 540px) {
+  .gl-article { padding: 1.25rem; border-radius: 10px; }
+}
+
+/* Secțiune în articol cu accent line */
+.gl-section {
+  position: relative;
+  padding: 1.5rem 0 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.gl-section:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+/* h2 în ghid */
+.gl-content h2 {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 2rem 0 0.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.gl-content h2:first-child { margin-top: 0; }
+
+/* Accent line sub h2 */
+.gl-content h2::after {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--accent-blue, #4A9FE0);
+  margin-top: 0.4rem;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.gl-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.gl-content p {
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.72;
+  margin: 0.65rem 0;
+}
+
+.gl-content ul, .gl-content ol {
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.7;
+  padding-left: 1.25rem;
+  margin: 0.65rem 0;
+}
+.gl-content li { margin: 0.3rem 0; }
+
+.gl-content a {
+  color: var(--accent-blue, #4A9FE0);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 140ms;
+}
+.gl-content a:hover { color: #79c3f5; }
+
+.gl-content code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85em;
+  background: rgba(74,159,224,0.1);
+  color: #79c3f5;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  border: 1px solid rgba(74,159,224,0.15);
+}
+
+.gl-content pre {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.gl-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #d4e3f7;
+  font-size: 0.875rem;
+}
+
+.gl-content strong {
+  color: var(--text-primary, #E8EDFB);
+  font-weight: 700;
+}
+
+/* Info / warning box */
+.gl-box {
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  margin: 1.25rem 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+.gl-box--info {
+  background: rgba(74,159,224,0.08);
+  border: 1px solid rgba(74,159,224,0.2);
+  color: var(--text-secondary, #8BA3C4);
+}
+.gl-box--info .gl-box-icon { color: #4A9FE0; }
+.gl-box--warn {
+  background: rgba(251,191,36,0.07);
+  border: 1px solid rgba(251,191,36,0.2);
+  color: var(--text-secondary, #8BA3C4);
+}
+.gl-box--warn .gl-box-icon { color: #fbbf24; }
+.gl-box--success {
+  background: rgba(74,222,128,0.07);
+  border: 1px solid rgba(74,222,128,0.2);
+  color: var(--text-secondary, #8BA3C4);
+}
+.gl-box--success .gl-box-icon { color: #4ade80; }
+.gl-box-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Quick ref / checklist */
+.gl-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.gl-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.93rem;
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.55;
+}
+.gl-checklist li::before {
+  content: '✓';
+  color: #4ade80;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+/* Comparison / quick-ref box */
+.gl-quick-ref {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+}
+.gl-quick-ref h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted, #7A8BAD);
+  margin: 0 0 0.75rem;
+}
+
+/* Steps numbered */
+.gl-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  counter-reset: step-counter;
+}
+.gl-steps li {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  color: var(--text-secondary, #8BA3C4);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  counter-increment: step-counter;
+}
+.gl-steps li::before {
+  content: counter(step-counter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  min-width: 1.6rem;
+  border-radius: 50%;
+  background: rgba(74,159,224,0.15);
+  color: #4A9FE0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 0.1em;
+}
+
+/* CTA row la final articol */
+.gl-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+@media (max-width: 480px) {
+  .gl-cta-row { flex-direction: column; }
+  .gl-cta-row .tb-btn { width: 100%; text-align: center; justify-content: center; }
+}
+
+/* Related cards grid */
+.gl-related {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 768px) {
+  .gl-related { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .gl-related { grid-template-columns: 1fr; }
+}
+
+.gl-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  background: var(--bg-secondary, #0d1623);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 160ms, transform 160ms;
+}
+.gl-card:hover {
+  border-color: rgba(74,159,224,0.3);
+  transform: translateY(-2px);
+}
+.gl-card-icon { font-size: 1.3rem; margin-bottom: 0.2rem; }
+.gl-card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0;
+  line-height: 1.3;
+}
+.gl-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #8BA3C4);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Tools used section */
+.gl-tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+.gl-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(74,159,224,0.3);
+  background: rgba(74,159,224,0.07);
+  color: var(--text-secondary, #8BA3C4);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 140ms, background 140ms, color 140ms;
+}
+.gl-tool-btn:hover {
+  border-color: rgba(74,159,224,0.6);
+  background: rgba(74,159,224,0.14);
+  color: var(--text-primary, #E8EDFB);
+}
+
+/* Section heading pentru related/tools blocks */
+.gl-section-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted, #7A8BAD);
+  margin: 0 0 1rem;
+}

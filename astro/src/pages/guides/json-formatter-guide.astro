@@ -4,119 +4,120 @@ import { SITE_URL } from "@/lib/seo";
 import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "JSON Formatter & Validator — Complete Guide | ToolBite";
-const description = "Master JSON formatter workflows: fix parser errors, normalize quotes, remove trailing commas, and choose minify or beautify safely. Examples free on ToolBite.";
+const description = "Fix invalid JSON fast: trailing commas, single quotes, unquoted keys, and minify vs beautify explained with a practical debugging checklist.";
 const canonicalPath = "/guides/json-formatter-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
   buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
-    { name: "Guides", url: `${SITE_URL}/guides/index.html` },
-    { name: "JSON formatter guide", url: pageUrl }
+    { name: "Guides", url: `${SITE_URL}/guides.html` },
+    { name: "JSON Formatter Guide", url: pageUrl }
   ])
 ];
-
-const mainHtml = String.raw`<div class="guide-page-root">
-    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
-      <ol class="breadcrumb-list">
-        <li><a href="../" class="">Home</a></li><li>›</li>
-        <li><a href="/guides.html" class="">Guides</a></li><li>›</li>
-        <li class="breadcrumb-current">JSON Formatter Guide</li>
-      </ol>
-    </nav>
-
-    <article class="tb-card tb-card- tb-card-pad-lg">
-      <h1 class="guide-h1" data-pseo-target="h1">JSON formatter guide: fix invalid JSON fast</h1>
-            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm guide-note-mt">
-      </div>
-      <p class="guide-lead">Use this checklist whenever an API payload or config file fails to parse.</p>
-
-      <div class="guide-best-for not- guide-note-mt">
-        <strong>Best for:</strong> debugging API payloads, validating JSON-LD snippets, and cleaning malformed config files before you paste them into production systems.
-      </div>
-
-      <h2>Step-by-step debugging flow</h2>
-      <ol>
-        <li>Paste your raw JSON into a formatter.</li>
-        <li>Run validation and read the first syntax error.</li>
-        <li>Fix one error at a time, then re-run format.</li>
-      </ol>
-
-      <h2>Most frequent JSON errors</h2>
-      <ul>
-        <li>Trailing commas</li>
-        <li>Single quotes around strings</li>
-        <li>Unquoted property names</li>
-        <li>Comments in strict JSON</li>
-      </ul>
-
-      <h2>When to beautify vs minify</h2>
-      <p><strong>Beautify</strong> for debugging and readability. <strong>Minify</strong> for payload size and production transfer.</p>
-
-      <h2>A practical debugging sequence</h2>
-      <p>Start by formatting the raw payload exactly as received. If the parser throws an error, fix the first reported line before touching anything else. JSON problems often cascade, so one missing quote or comma can trigger multiple downstream errors that disappear after the first fix.</p>
-
-      <h2>JSON-LD and API payloads need different caution</h2>
-      <p>For API work, the goal is valid transport data. For JSON-LD, the goal is valid transport data plus correct schema structure. A formatter helps with syntax, but you still need to confirm property names, nesting, and schema types match the vocabulary you are trying to publish.</p>
-
-      <h2>Quick before-you-publish checklist</h2>
-      <ul>
-        <li>No trailing commas remain after the final key or array item.</li>
-        <li>All property names and string values use double quotes.</li>
-        <li>Objects and arrays open and close in the right order.</li>
-        <li>The minified production version still validates after copy-paste.</li>
-        <li>If the snippet is JSON-LD, required Schema.org properties are present.</li>
-      </ul>
-
-      <h2>Common JSON formatting tools and when to use them</h2>
-      <p>Browser-based formatters like ToolBite are best for quick validation during development. IDE extensions (Prettier, ESLint) are better for enforcing format on save across a codebase. Command-line tools like jq are ideal for scripting and pipeline processing. Each has its place in a complete workflow.</p>
-
-      <h2>JSON vs YAML vs TOML for configuration files</h2>
-      <p>JSON is strict about syntax, which makes it predictable but verbose for configuration. YAML allows comments and multi-line strings but its indentation-sensitive syntax introduces its own class of errors. TOML is designed specifically for configuration and is more readable than JSON for complex nested structures. If you control the format, choose based on your team's tooling and the complexity of the configuration.</p>
-
-      <h2>Validating JSON-LD for SEO</h2>
-      <p>JSON-LD structured data embedded in HTML pages must be valid JSON and must also comply with the Schema.org vocabulary for the type you are using. Browser-based JSON formatters catch syntax errors, but they do not validate Schema.org property names or required fields. After formatting, test JSON-LD output with Google's Rich Results Test to verify the structured data is readable by search crawlers.</p>
-
-      <div class="guide-cta-row">
-        <a href="/tools/json-formatter.html" class="tb-btn tb-btn-outline guide-cta-link">Open JSON Formatter</a>
-        <a href="/tools/base64-encoder.html" class="tb-btn tb-btn-outline guide-cta-link">Encode payloads</a>
-      </div>
-    </article>
-
-    <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt">
-      <h2 class="guide-section-title">Continue with related resources</h2>
-      <div class="guide-grid-3">
-        <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">Developer Tools</p>
-          <p class="guide-card-desc">Browse JSON, JWT, Base64, hashing, and other debugging helpers.</p>
-        </a>
-        <a href="/guides.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">All ToolBite guides</p>
-          <p class="guide-card-desc">See the full guide library for related workflows.</p>
-        </a>
-        <a href="/tools/jwt-decoder.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">JWT Decoder</p>
-          <p class="guide-card-desc">Inspect token payloads, then format decoded JSON if needed.</p>
-        </a>
-      </div>
-    </section>
-    <section class="tb-card tb-card-accent guide-mt">
-      <h2 class="guide-section-title">Pair this guide with related workflows</h2>
-      <div class="guide-grid-2">
-        <a href="/categories/developer-tools.html" class="tb-card tb-card-interactive">
-          <p class="guide-card-title">Browse Developer Tools</p>
-          <p class="guide-card-desc">Move from JSON cleanup into JWT, Base64, hashing, UUID, and URL encoding workflows.</p>
-        </a>
-        <a href="/categories/seo-tools.html" class="tb-card tb-card-interactive">
-          <p class="guide-card-title">Structured data support tools</p>
-          <p class="guide-card-desc">Use JSON cleanup alongside slug, read time, and content packaging work before publishing pages.</p>
-        </a>
-      </div>
-    </section>
-  <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt not-" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/json-formatter.html" class="tb-btn tb-btn-outline guide-tool-btn"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a><a href="/tools/csv-to-json.html" class="tb-btn tb-btn-outline guide-tool-btn"><span aria-hidden="true">🔄</span><span>CSV to JSON</span></a></div></section>
-</div>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>
-  <Fragment set:html={mainHtml} />
+<GuideLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  schemas={schemas}
+  badge="Developer"
+  badgeColor="#4A9FE0"
+  icon="💻"
+  readTime="4 min read"
+>
+  <!-- Main article -->
+  <article class="gl-article">
+
+    <div class="gl-box gl-box--info">
+      <span class="gl-box-icon">💡</span>
+      <span><strong>Best for:</strong> debugging API payloads, validating JSON-LD snippets, and cleaning malformed config files before pasting into production.</span>
+    </div>
+
+    <h2>Step-by-step debugging flow</h2>
+    <p>When a JSON payload fails to parse, work through these steps in order. JSON errors cascade — fixing the first one often clears several others automatically.</p>
+    <ol class="gl-steps">
+      <li>Paste your raw JSON into <a href="/tools/json-formatter.html">the formatter</a> exactly as received — don't clean it first.</li>
+      <li>Read the first syntax error only. The line and column number is exact.</li>
+      <li>Fix that one error, then re-run validation before changing anything else.</li>
+      <li>Repeat until the formatter reports no errors.</li>
+    </ol>
+
+    <h2>Most frequent JSON errors</h2>
+    <p>These four account for the vast majority of JSON parse failures in the real world:</p>
+    <ul class="gl-checklist">
+      <li><strong>Trailing commas</strong> — <code>,]</code> or <code>,}</code> at the end of an array or object. JSON does not allow them; JavaScript objects do.</li>
+      <li><strong>Single quotes</strong> — JSON requires double quotes (<code>"key": "value"</code>). Single-quoted strings are invalid.</li>
+      <li><strong>Unquoted property names</strong> — <code>{ key: "value" }</code> is valid JavaScript but invalid JSON.</li>
+      <li><strong>Comments</strong> — <code>// comment</code> and <code>/* block */</code> are not part of the JSON spec.</li>
+    </ul>
+
+    <h2>Beautify vs Minify — when to use each</h2>
+    <div class="gl-quick-ref">
+      <h3>Quick reference</h3>
+      <ul>
+        <li><strong>Beautify (pretty-print)</strong> — use during development and debugging. Indents nested structures for easy reading. Never put beautified JSON in production API responses unnecessarily — it wastes bandwidth.</li>
+        <li><strong>Minify</strong> — removes all whitespace. Use for production payloads, inline JSON-LD in HTML, and stored config files where size matters.</li>
+      </ul>
+    </div>
+
+    <h2>JSON-LD for SEO: extra considerations</h2>
+    <p>Formatting JSON-LD structured data is not just about syntax — it also needs to match the Schema.org vocabulary. The formatter catches syntax errors but won't flag incorrect property names.</p>
+    <ul>
+      <li>After fixing syntax, test with <strong>Google's Rich Results Test</strong>.</li>
+      <li>Ensure required properties for your schema type (<code>@type</code>, <code>name</code>, etc.) are present.</li>
+      <li>Minify before embedding in a <code>&lt;script type="application/ld+json"&gt;</code> tag.</li>
+    </ul>
+
+    <h2>JSON vs YAML vs TOML for configuration</h2>
+    <p>If you control the format, pick based on your needs: JSON is predictable but verbose. YAML allows comments and multi-line strings but indentation errors are silent. TOML is designed for config and handles nested structures more readably than JSON. Use JSON where tooling interoperability matters most.</p>
+
+    <h2>Before-you-publish checklist</h2>
+    <ul class="gl-checklist">
+      <li>No trailing commas after the final key or array item.</li>
+      <li>All property names and string values use double quotes.</li>
+      <li>Objects and arrays open and close in the correct order.</li>
+      <li>Minified version still validates after copy-paste.</li>
+      <li>If JSON-LD: required Schema.org properties are present.</li>
+    </ul>
+
+    <div class="gl-cta-row">
+      <a href="/tools/json-formatter.html" class="tb-btn tb-btn-primary">Open JSON Formatter →</a>
+      <a href="/guides/jwt-decoder-guide.html" class="tb-btn tb-btn-outline">JWT Decoder guide</a>
+      <a href="/guides/base64-encoding-guide.html" class="tb-btn tb-btn-outline">Base64 guide</a>
+    </div>
+  </article>
+
+  <!-- Tools used -->
+  <section>
+    <p class="gl-section-heading">Tools used in this guide</p>
+    <div class="gl-tools-row">
+      <a href="/tools/json-formatter.html" class="gl-tool-btn"><span aria-hidden="true">💻</span> JSON Formatter</a>
+      <a href="/tools/csv-to-json.html" class="gl-tool-btn"><span aria-hidden="true">🔄</span> CSV to JSON</a>
+      <a href="/tools/jwt-decoder.html" class="gl-tool-btn"><span aria-hidden="true">🪪</span> JWT Decoder</a>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section>
+    <p class="gl-section-heading">Related guides & tools</p>
+    <div class="gl-related">
+      <a href="/guides/jwt-decoder-guide.html" class="gl-card">
+        <span class="gl-card-icon">🪪</span>
+        <p class="gl-card-title">JWT Decoder Guide</p>
+        <p class="gl-card-desc">Inspect token payloads, then format decoded JSON.</p>
+      </a>
+      <a href="/guides/base64-encoding-guide.html" class="gl-card">
+        <span class="gl-card-icon">📎</span>
+        <p class="gl-card-title">Base64 Encoding</p>
+        <p class="gl-card-desc">What Base64 is, when to use it, and why it's not encryption.</p>
+      </a>
+      <a href="/categories/developer-tools.html" class="gl-card">
+        <span class="gl-card-icon">🛠️</span>
+        <p class="gl-card-title">All Developer Tools</p>
+        <p class="gl-card-desc">JSON, JWT, UUID, hashing, Base64 and more.</p>
+      </a>
+    </div>
+  </section>
 </GuideLayout>

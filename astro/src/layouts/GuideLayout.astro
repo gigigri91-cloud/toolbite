@@ -9,10 +9,28 @@ export interface Props {
   canonicalPath: string;
   keywords?: string[];
   schemas?: JsonLdObject[];
+  badge?: string;
+  badgeColor?: string;
+  icon?: string;
+  readTime?: string;
 }
 
-const { title, description, canonicalPath, keywords = [], schemas = [] } = Astro.props;
+const {
+  title,
+  description,
+  canonicalPath,
+  keywords = [],
+  schemas = [],
+  badge = "Guide",
+  badgeColor = "#4A9FE0",
+  icon = "📖",
+  readTime = "5 min read",
+} = Astro.props;
+
 const metadata = createGuideMetadata({ title, description, canonicalPath, keywords });
+
+// Extract clean title for hero (strip " | ToolBite" suffix)
+const heroTitle = title.replace(/ [—–-].*ToolBite.*$/i, "").replace(/ — Complete Guide.*$/i, "").trim();
 ---
 
 <BaseLayout
@@ -24,7 +42,301 @@ const metadata = createGuideMetadata({ title, description, canonicalPath, keywor
   schemas={schemas}
   skipMainContainer
 >
-  <div class="guide-layout-prose">
-    <slot />
+  <!-- Reading progress bar -->
+  <div class="gl-progress-bar" id="glProgress" aria-hidden="true">
+    <div class="gl-progress-fill" id="glProgressFill"></div>
   </div>
+
+  <div class="gl-root">
+    <!-- Hero -->
+    <header class="gl-hero" style={`--guide-accent: ${badgeColor};`}>
+      <div class="gl-hero-inner">
+        <nav class="gl-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="/guides.html">Guides</a>
+        </nav>
+
+        <div class="gl-hero-meta">
+          <span class="gl-badge" style={`background: color-mix(in srgb, ${badgeColor} 15%, transparent); color: ${badgeColor}; border-color: color-mix(in srgb, ${badgeColor} 30%, transparent);`}>{badge}</span>
+          <span class="gl-read-time">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {readTime}
+          </span>
+        </div>
+
+        <h1 class="gl-hero-title">{heroTitle}</h1>
+        <p class="gl-hero-desc">{description}</p>
+
+        <div class="gl-hero-icon" aria-hidden="true">{icon}</div>
+        <div class="gl-hero-glow" style={`background: radial-gradient(circle, color-mix(in srgb, ${badgeColor} 20%, transparent) 0%, transparent 70%);`} aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <!-- Body: TOC + content -->
+    <div class="gl-body">
+      <!-- Sidebar TOC -->
+      <aside class="gl-toc" id="glToc" aria-label="Table of contents">
+        <p class="gl-toc-label">On this page</p>
+        <nav id="glTocNav"></nav>
+      </aside>
+
+      <!-- Main article -->
+      <main class="gl-content" id="glContent">
+        <slot />
+      </main>
+    </div>
+  </div>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+    (function () {
+      // ── Reading progress ──────────────────────────────────────────
+      const fill = document.getElementById('glProgressFill');
+      if (fill) {
+        window.addEventListener('scroll', function () {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          fill.style.width = (docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0) + '%';
+        }, { passive: true });
+      }
+
+      // ── Auto TOC from h2 headings ─────────────────────────────────
+      const content = document.getElementById('glContent');
+      const tocNav = document.getElementById('glTocNav');
+      if (content && tocNav) {
+        const headings = content.querySelectorAll('h2');
+        if (headings.length > 1) {
+          const ul = document.createElement('ul');
+          ul.className = 'gl-toc-list';
+          headings.forEach(function (h, i) {
+            if (!h.id) h.id = 'gh-' + i + '-' + h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#' + h.id;
+            a.className = 'gl-toc-link';
+            a.textContent = h.textContent;
+            li.appendChild(a);
+            ul.appendChild(li);
+          });
+          tocNav.appendChild(ul);
+
+          // Highlight active heading on scroll
+          const links = tocNav.querySelectorAll('.gl-toc-link');
+          const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                links.forEach(function (l) { l.classList.remove('gl-toc-link--active'); });
+                const active = tocNav.querySelector('[href="#' + entry.target.id + '"]');
+                if (active) active.classList.add('gl-toc-link--active');
+              }
+            });
+          }, { rootMargin: '-20% 0px -70% 0px' });
+          headings.forEach(function (h) { observer.observe(h); });
+        } else {
+          // Hide TOC if too few headings
+          const toc = document.getElementById('glToc');
+          if (toc) toc.style.display = 'none';
+        }
+      }
+    })();
+    </script>
+  </Fragment>
 </BaseLayout>
+
+<style>
+/* ── Progress bar ─────────────────────────────────────── */
+.gl-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  z-index: 999;
+  pointer-events: none;
+}
+.gl-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4A9FE0, #FF9A45);
+  transition: width 80ms linear;
+}
+
+/* ── Root ─────────────────────────────────────────────── */
+.gl-root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.gl-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-secondary, #0d1623);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  border-radius: 16px;
+  margin: 1.25rem 0 2rem;
+  padding: 2.5rem 2rem 2rem;
+}
+.gl-hero-inner { position: relative; z-index: 1; }
+.gl-hero-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: -120px;
+  right: -80px;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.gl-hero-icon {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-size: 4rem;
+  opacity: 0.12;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.gl-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted, #7A8BAD);
+  margin-bottom: 1.25rem;
+}
+.gl-breadcrumb a {
+  color: var(--text-muted, #7A8BAD);
+  text-decoration: none;
+  transition: color 140ms;
+}
+.gl-breadcrumb a:hover { color: var(--accent-blue, #4A9FE0); }
+
+.gl-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.gl-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.gl-read-time {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: var(--text-muted, #7A8BAD);
+}
+
+.gl-hero-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0 0 0.75rem;
+  max-width: 20ch;
+}
+.gl-hero-desc {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* ── Body: sidebar + content ──────────────────────────── */
+.gl-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ── TOC ──────────────────────────────────────────────── */
+.gl-toc {
+  position: sticky;
+  top: 5.5rem;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 0;
+}
+.gl-toc::-webkit-scrollbar { display: none; }
+.gl-toc-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted, #7A8BAD);
+  margin: 0 0 0.75rem;
+}
+.gl-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.gl-toc-link {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted, #7A8BAD);
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-left: 2px solid var(--border-subtle, rgba(255,255,255,0.06));
+  transition: color 140ms, border-color 140ms, background 140ms;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.4;
+}
+.gl-toc-link:hover {
+  color: var(--text-secondary, #8BA3C4);
+  background: rgba(255,255,255,0.03);
+}
+.gl-toc-link--active {
+  color: var(--accent-blue, #4A9FE0);
+  border-left-color: var(--accent-blue, #4A9FE0);
+  background: rgba(74,159,224,0.06);
+}
+
+/* ── Content ──────────────────────────────────────────── */
+.gl-content {
+  min-width: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .gl-body {
+    grid-template-columns: 1fr;
+  }
+  .gl-toc {
+    display: none;
+  }
+  .gl-hero {
+    padding: 1.75rem 1.25rem 1.5rem;
+  }
+  .gl-hero-icon {
+    font-size: 3rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+@media (max-width: 540px) {
+  .gl-root { padding: 0 0.75rem 3rem; }
+  .gl-hero { margin: 0.75rem 0 1.5rem; border-radius: 12px; }
+  .gl-hero-title { font-size: 1.5rem; }
+}
+</style>

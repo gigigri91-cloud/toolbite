@@ -4,112 +4,120 @@ import { SITE_URL } from "@/lib/seo";
 import { buildBreadcrumbSchema, buildArticleSchema } from "@/lib/schema";
 
 const title = "JWT Decoder Workflow — Complete Guide | ToolBite";
-const description = "Learn JWT decoder safety: inspect headers and payloads, read exp and aud, and never treat decode as signature verification. Free on ToolBite.";
+const description = "Decode JWT tokens safely for debugging: inspect headers and payloads, check exp, iss and aud claims, and understand why decode is not verification.";
 const canonicalPath = "/guides/jwt-decoder-guide.html";
 const pageUrl = `${SITE_URL}${canonicalPath}`;
 const schemas = [
   buildArticleSchema({ title, description, url: pageUrl }),
   buildBreadcrumbSchema([
     { name: "Home", url: SITE_URL },
-    { name: "Guides", url: `${SITE_URL}/guides/index.html` },
-    { name: "JWT decoder guide", url: pageUrl }
+    { name: "Guides", url: `${SITE_URL}/guides.html` },
+    { name: "JWT Decoder Guide", url: pageUrl }
   ])
 ];
-
-const mainHtml = String.raw`<div class="guide-page-root">
-    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
-      <ol class="breadcrumb-list">
-        <li><a href="../" class="">Home</a></li><li>›</li>
-        <li><a href="/guides.html" class="">Guides</a></li><li>›</li>
-        <li class="breadcrumb-current">JWT Decoder Guide</li>
-      </ol>
-    </nav>
-
-    <article class="tb-card tb-card- tb-card-pad-lg">
-      <h1 class="guide-h1" data-pseo-target="h1">How to decode JWT safely (without trusting payload)</h1>
-            <div class="tb-card tb-card-soft tb-card-note tb-card-pad-sm guide-note-mt">
-      </div>
-      <p class="guide-lead">JWT decoding is useful for debugging auth flows, but decode is not the same as verification. Here is a safe workflow.</p>
-
-      <div class="guide-info-box">
-        <strong>Important:</strong> this guide is about local inspection and debugging. It does not replace signature verification, issuer checks, or audience validation in your backend.
-      </div>
-
-      <h2>1) Decode only for inspection</h2>
-      <p>Use a local decoder to inspect the first two segments (<code>header</code> and <code>payload</code>), then verify signature in your backend.</p>
-
-      <h2>2) Check key claims</h2>
-      <ul>
-        <li><strong>exp</strong>: token expiry time</li>
-        <li><strong>iss</strong>: expected issuer</li>
-        <li><strong>aud</strong>: intended audience</li>
-        <li><strong>sub</strong>: subject/user identifier</li>
-      </ul>
-
-      <h2>3) Never authorize from decoded payload alone</h2>
-      <p>Decoded data can be forged if signature is not validated. Always run server-side verification before granting access.</p>
-
-      <h2>Common mistakes</h2>
-      <ul>
-        <li>Treating any decoded token as valid.</li>
-        <li>Ignoring clock skew for <code>exp</code>/<code>nbf</code>.</li>
-        <li>Not validating issuer/audience.</li>
-      </ul>
-
-      <h2>What decode is actually good for</h2>
-      <p>Decoding is useful when you need to confirm which claims an identity provider is sending, inspect unexpected payload fields, check whether a token is expired, or compare staging vs production auth behavior without logging the token to a backend tool.</p>
-
-      <h2>A safer team workflow</h2>
-      <p>Decode locally in the browser, redact sensitive samples before sharing them in tickets, and keep verification logic in code reviewable backend services. That split keeps debugging fast without turning a convenience tool into part of your trust model.</p>
-
-      <h2>JWT review checklist</h2>
-      <ul>
-        <li>Confirm the token is meant for the expected environment and app.</li>
-        <li>Check whether <code>exp</code>, <code>nbf</code>, and <code>iat</code> line up with your session rules.</li>
-        <li>Verify <code>iss</code> and <code>aud</code> server-side before using the token.</li>
-        <li>Do not trust custom role or permission claims until signature validation passes.</li>
-      </ul>
-
-      <div class="guide-cta-row">
-        <a href="/tools/jwt-decoder.html" class="tb-btn tb-btn-outline guide-cta-link">Open JWT Decoder</a>
-        <a href="/tools/json-formatter.html" class="tb-btn tb-btn-outline guide-cta-link">Format decoded JSON</a>
-      </div>
-    </article>
-
-    <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt">
-      <h2 class="guide-section-title">Continue with related resources</h2>
-      <div class="guide-grid-3">
-        <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">Developer Tools</p>
-          <p class="guide-card-desc">Open related tools for JSON formatting, Base64, hashing, and URL encoding.</p>
-        </a>
-        <a href="/guides.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">All ToolBite guides</p>
-          <p class="guide-card-desc">Browse the rest of the guide library for adjacent workflows.</p>
-        </a>
-        <a href="/tools/json-formatter.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <p class="guide-card-title">JSON Formatter</p>
-          <p class="guide-card-desc">Clean decoded header or payload JSON after inspection.</p>
-        </a>
-      </div>
-    </section>
-    <section class="guide-info-box guide-info-box--lg guide-mt">
-      <h2 class="guide-section-title">Related authentication tooling</h2>
-      <div class="guide-grid-2">
-        <a href="/tools/base64-encoder.html" class="tb-card tb-card-interactive">
-          <p class="guide-card-title">Base64 Encoder</p>
-          <p class="guide-card-desc">Useful when you need to inspect or compare encoded values in adjacent auth workflows.</p>
-        </a>
-        <a href="/categories/developer-tools.html" class="tb-card tb-card-interactive">
-          <p class="guide-card-title">Browse Developer Tools</p>
-          <p class="guide-card-desc">Continue into JSON formatting, hashing, URL encoding, UUID generation, and related debugging utilities.</p>
-        </a>
-      </div>
-    </section>
-  <section class="tb-card tb-card-panel tb-card-pad-lg guide-mt not-" aria-label="Tools used in this guide"><h2 class="guide-section-title">Tools used in this guide</h2><div class="guide-tools-row"><a href="/tools/jwt-decoder.html" class="tb-btn tb-btn-outline guide-tool-btn"><span aria-hidden="true">🪪</span><span>JWT Decoder</span></a><a href="/tools/json-formatter.html" class="tb-btn tb-btn-outline guide-tool-btn"><span aria-hidden="true">💻</span><span>JSON Formatter</span></a></div></section>
-</div>`;
 ---
 
-<GuideLayout title={title} description={description} canonicalPath={canonicalPath} schemas={schemas}>
-  <Fragment set:html={mainHtml} />
+<GuideLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  schemas={schemas}
+  badge="Security"
+  badgeColor="#f87171"
+  icon="🪪"
+  readTime="5 min read"
+>
+  <article class="gl-article">
+
+    <div class="gl-box gl-box--warn">
+      <span class="gl-box-icon">⚠️</span>
+      <span><strong>Important:</strong> this guide is about local inspection for debugging. Decoding is not the same as signature verification — never grant access based on a decoded payload alone.</span>
+    </div>
+
+    <h2>What is a JWT?</h2>
+    <p>A JSON Web Token (JWT) has three Base64url-encoded segments separated by dots: <code>header.payload.signature</code>. The header declares the algorithm, the payload holds claims (user ID, expiry, roles), and the signature proves the token was issued by a trusted party.</p>
+    <p>Decoding reads the first two segments. Verifying checks the signature against a secret or public key — that's the step that determines whether to trust the token.</p>
+
+    <h2>Safe debugging workflow</h2>
+    <ol class="gl-steps">
+      <li>Open <a href="/tools/jwt-decoder.html">ToolBite's JWT Decoder</a> — it runs locally, your token never leaves the browser.</li>
+      <li>Paste the token and inspect the header: check <code>alg</code> and <code>kid</code>.</li>
+      <li>Read the payload claims listed below.</li>
+      <li>Verify the signature server-side before using any claim to authorize a request.</li>
+    </ol>
+
+    <h2>Key claims to inspect</h2>
+    <div class="gl-quick-ref">
+      <h3>Payload claims reference</h3>
+      <ul>
+        <li><strong>exp</strong> — expiry timestamp (Unix epoch). Token is invalid after this time.</li>
+        <li><strong>nbf</strong> — not-before. Token is invalid before this time.</li>
+        <li><strong>iat</strong> — issued-at. When the token was created.</li>
+        <li><strong>iss</strong> — issuer. Must match your expected auth provider.</li>
+        <li><strong>aud</strong> — audience. Must match your app's identifier.</li>
+        <li><strong>sub</strong> — subject. Usually the user ID.</li>
+      </ul>
+    </div>
+
+    <h2>Common mistakes to avoid</h2>
+    <ul class="gl-checklist">
+      <li><strong>Trusting decoded data without verification</strong> — the payload can be forged if the signature is not validated.</li>
+      <li><strong>Ignoring clock skew</strong> — clocks between servers drift. Allow a small buffer (60s) when checking <code>exp</code> and <code>nbf</code>.</li>
+      <li><strong>Not validating <code>iss</code> and <code>aud</code></strong> — a token from one app could be replayed in another if you skip audience checks.</li>
+      <li><strong>Using <code>alg: none</code></strong> — always reject tokens with no algorithm. Libraries should do this by default; verify yours does.</li>
+    </ul>
+
+    <h2>Safer team workflow</h2>
+    <p>Decode locally in the browser for quick debugging. Redact sensitive samples before pasting into tickets or Slack. Keep verification logic in code-reviewable backend services — never move signature checking to the client.</p>
+
+    <div class="gl-box gl-box--success">
+      <span class="gl-box-icon">✅</span>
+      <span>Browser-based decoders like ToolBite are good for inspecting tokens during development because nothing is sent to a server. Never paste production tokens into third-party online tools you don't control.</span>
+    </div>
+
+    <h2>JWT review checklist</h2>
+    <ul class="gl-checklist">
+      <li>Token is meant for the correct environment and application.</li>
+      <li><code>exp</code>, <code>nbf</code>, and <code>iat</code> align with your session rules.</li>
+      <li><code>iss</code> and <code>aud</code> are verified server-side before using the token.</li>
+      <li>Custom role or permission claims are not trusted until signature validation passes.</li>
+      <li>Algorithm is not <code>none</code>.</li>
+    </ul>
+
+    <div class="gl-cta-row">
+      <a href="/tools/jwt-decoder.html" class="tb-btn tb-btn-primary">Open JWT Decoder →</a>
+      <a href="/guides/base64-encoding-guide.html" class="tb-btn tb-btn-outline">Base64 guide</a>
+      <a href="/tools/json-formatter.html" class="tb-btn tb-btn-outline">Format decoded JSON</a>
+    </div>
+  </article>
+
+  <section>
+    <p class="gl-section-heading">Tools used in this guide</p>
+    <div class="gl-tools-row">
+      <a href="/tools/jwt-decoder.html" class="gl-tool-btn"><span aria-hidden="true">🪪</span> JWT Decoder</a>
+      <a href="/tools/json-formatter.html" class="gl-tool-btn"><span aria-hidden="true">💻</span> JSON Formatter</a>
+      <a href="/tools/base64-encoder.html" class="gl-tool-btn"><span aria-hidden="true">📎</span> Base64 Encoder</a>
+    </div>
+  </section>
+
+  <section>
+    <p class="gl-section-heading">Related guides & tools</p>
+    <div class="gl-related">
+      <a href="/guides/base64-encoding-guide.html" class="gl-card">
+        <span class="gl-card-icon">📎</span>
+        <p class="gl-card-title">Base64 Encoding</p>
+        <p class="gl-card-desc">JWT uses Base64url — understand the encoding underneath.</p>
+      </a>
+      <a href="/guides/hash-functions-explained.html" class="gl-card">
+        <span class="gl-card-icon">🔢</span>
+        <p class="gl-card-title">Hash Functions</p>
+        <p class="gl-card-desc">How HMAC and SHA-256 power JWT signature verification.</p>
+      </a>
+      <a href="/guides/json-formatter-guide.html" class="gl-card">
+        <span class="gl-card-icon">💻</span>
+        <p class="gl-card-title">JSON Formatter Guide</p>
+        <p class="gl-card-desc">Clean up decoded payloads and fix syntax errors fast.</p>
+      </a>
+    </div>
+  </section>
 </GuideLayout>
