@@ -1214,3 +1214,496 @@ textarea::placeholder {
 .tool-btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
 .tool-opts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
 .tool-label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-secondary, #8BA3C4); margin-bottom: 0.4rem; }
+
+/* ================================================================
+   GUIDE PAGE CLASSES — toate clasele folosite în paginile de guide
+   ================================================================ */
+
+/* Rădăcina paginii de guide */
+.guide-page-root { width: 100%; }
+
+/* Titlu principal */
+.guide-h1 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: var(--text-primary, #E8EDFB);
+}
+
+/* Lead paragraph */
+.guide-lead {
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--text-secondary, #8BA3C4);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Spacing helpers */
+.guide-mt   { margin-top: 1.5rem; }
+.guide-note-mt { margin-top: 1rem; }
+
+/* Link în ghid */
+.guide-link {
+  color: var(--accent-blue, #4A9FE0);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.guide-link:hover { color: #6bb8ff; }
+
+/* CTA row — butoane la finalul articolului */
+.guide-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.guide-cta-link { text-decoration: none; }
+
+/* Grid 3 coloane — related resources */
+.guide-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+/* Grid 2 coloane */
+.guide-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+/* Card titlu + desc în guide-grid */
+.guide-card-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  line-height: 1.3;
+}
+.guide-card-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.55;
+}
+
+/* Titlu secțiune în ghid */
+.guide-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0 0 1rem;
+}
+
+/* Rând butoane tool — orizontal pe desktop */
+.guide-tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+/* Info box */
+.guide-info-box {
+  background: rgba(74,159,224,0.08);
+  border: 1px solid rgba(74,159,224,0.2);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  color: var(--text-secondary, #8BA3C4);
+}
+.guide-info-box--lg { padding: 1.25rem 1.5rem; }
+
+/* Sky section */
+.guide-sky-section {
+  background: rgba(74,159,224,0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.guide-sky-box { margin-top: 0.75rem; }
+
+/* ================================================================
+   GUIDES INDEX PAGE — pagina /guides.html
+   ================================================================ */
+
+.guides-index-root { width: 100%; }
+
+.guides-hero {
+  margin: 0.5rem 0 1.5rem;
+}
+.guides-hero h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+.guides-hero__sub {
+  font-size: 1rem;
+  color: var(--text-secondary, #8BA3C4);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.guides-section {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem !important;
+}
+
+.guides-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+.guides-section-title--sub {
+  margin-top: 1.25rem;
+}
+
+.guides-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.guides-card-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+}
+.guides-card-body {
+  margin: 0;
+  font-size: 0.83rem;
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.55;
+}
+
+.guides-body {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+}
+
+/* Library section */
+.guides-library { margin-top: 2rem; }
+.guides-library-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0 0 1rem;
+}
+
+.guides-article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+.guides-article-card:hover { transform: translateY(-3px); }
+
+.guides-article-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0;
+  line-height: 1.3;
+}
+.guides-article-body {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #8BA3C4);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Badge-uri ghid */
+.guides-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  margin: 0;
+  align-self: flex-start;
+}
+.guides-badge--dev {
+  background: rgba(74,159,224,0.15);
+  color: #4A9FE0;
+  border: 1px solid rgba(74,159,224,0.3);
+}
+.guides-badge--sec {
+  background: rgba(248,113,113,0.15);
+  color: #f87171;
+  border: 1px solid rgba(248,113,113,0.3);
+}
+.guides-badge--seo {
+  background: rgba(74,222,128,0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,0.3);
+}
+
+/* ================================================================
+   TOOL PAGES — stat-value, stat-label, sizing helpers
+   ================================================================ */
+
+/* Stat cards (word-counter, read-time etc.) */
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary, #E8EDFB);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.stat-value--blue   { color: var(--accent-blue, #4A9FE0); }
+.stat-value--purple { color: #a78bfa; }
+.stat-value--sm     { font-size: 1.5rem; }
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary, #8BA3C4);
+}
+
+/* Sizing helpers folosite în tool pages (înlocuiesc Tailwind care nu e încărcat) */
+.w-full { width: 100%; }
+.h-28  { height: 7rem; }
+.h-32  { height: 8rem; }
+.h-36  { height: 9rem; }
+.h-56  { height: 14rem; }
+.h-64  { height: 16rem; }
+.h-96  { height: 24rem; }
+.h-24  { height: 6rem; }
+.h-72  { height: 18rem; }
+.mb-2  { margin-bottom: 0.5rem; }
+.mb-3  { margin-bottom: 0.75rem; }
+.mb-4  { margin-bottom: 1rem; }
+.mb-5  { margin-bottom: 1.25rem; }
+.mr-1  { margin-right: 0.25rem; }
+.mt-4  { margin-top: 1rem; }
+.p-4   { padding: 1rem; }
+.font-mono { font-family: var(--font-mono, 'JetBrains Mono', 'Fira Code', monospace); }
+.resize-y  { resize: vertical; }
+.text-center { text-align: center; }
+.text-sm { font-size: 0.875rem; }
+
+/* flex helpers folosite în tool pages */
+.flex  { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center  { align-items: center; }
+.items-start   { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+
+/* ================================================================
+   RESPONSIVE — MOBILE FIXES
+   ================================================================ */
+
+/* Guide grid: 3col → 2col → 1col */
+@media (max-width: 768px) {
+  .guide-grid-3,
+  .guides-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .guide-grid-3,
+  .guides-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .guide-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Guide layout prose — padding mic pe mobile */
+@media (max-width: 480px) {
+  .guide-layout-prose {
+    padding: 1rem 0.75rem;
+  }
+  .guide-h1 {
+    font-size: 1.5rem;
+  }
+  .guide-cta-row {
+    flex-direction: column;
+  }
+  .guide-cta-row .tb-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Guide tools row — wrap corect pe mobile */
+@media (max-width: 540px) {
+  .guide-tools-row {
+    flex-direction: column;
+  }
+  .guide-tools-row .tb-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Tool opts grid: 2col → 1col pe mobile mic */
+@media (max-width: 360px) {
+  .tool-opts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Textarea în tool pages să fie 100% width pe mobile */
+@media (max-width: 540px) {
+  .tb-textarea,
+  .tb-input,
+  .tb-select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* Butoane în rând să devină coloană pe mobil mic */
+  .tool-btn-row {
+    flex-direction: column;
+  }
+  .tool-btn-row .tb-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* pre + code blocks: overflow pe mobile */
+pre, .guide-layout-prose pre {
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+}
+code {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+pre code {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* Guides library grid responsive */
+@media (max-width: 768px) {
+  .guides-library .guides-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .guides-library .guides-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .guides-hero h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Categories hub responsive — deja 2col dar fix pentru mobile mic */
+@media (max-width: 360px) {
+  .cat-hub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Tailwind .border helper */
+.border { border: 1px solid var(--border-default, rgba(255,255,255,0.1)); }
+
+/* Stats grid pentru tool pages (word-counter, read-time etc.) */
+.tool-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 640px) {
+  .tool-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 360px) {
+  .tool-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Varianta 3 coloane pentru stat grid */
+.tool-stats-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 480px) {
+  .tool-stats-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tool hint text (mesaj sub input/output) */
+.tool-hint {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #8BA3C4);
+  margin: 0.4rem 0 0;
+  line-height: 1.5;
+}
+.tool-hint--warn { color: #fbbf24; }
+
+/* Color palette grid */
+.tool-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 540px) {
+  .tool-palette-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 360px) {
+  .tool-palette-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.palette-swatch {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  position: relative;
+  overflow: hidden;
+}
+.palette-swatch:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.palette-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* QR canvas */
+.qr-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
