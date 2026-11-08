@@ -3,9 +3,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { SITE_URL, createMetadata } from "@/lib/seo";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
-const title = "ToolBite Guides & Tutorials — Complete Guide | ToolBite";
+const title = "Free Online Tool Guides & Tutorials | ToolBite";
 const description =
-  "Browse JSON, JWT, SEO, Base64, UUID, URL, password, and image guides linked to ToolBite tools. Step-by-step tutorials with examples. Free on ToolBite.";
+  "Step-by-step guides for JSON, JWT, Base64, URL encoding, password security, QR codes, SEO slugs, and more. Practical tutorials linked to free browser tools.";
 const canonicalPath = "/guides.html";
 const metadata = createMetadata({
   title,
@@ -20,132 +20,580 @@ const schemas = [
     { name: "Guides", url: pageUrl }
   ])
 ];
-const mainHtml = String.raw`<div class="guides-index-root">
-    <nav class="tb-breadcrumb" aria-label="Breadcrumb">
-      <ol class="breadcrumb-list">
-        <li><a href="../">Home</a></li>
-        <li>›</li>
-        <li class="breadcrumb-current">Guides</li>
-      </ol>
-    </nav>
 
-    <div class="guides-hero">
-      <h1 data-pseo-target="h1">ToolBite guides &amp; tutorials</h1>
-      <p class="guides-hero__sub">Practical tutorials for JSON, JWT, SEO slugs, and other browser-based workflows that connect directly to ToolBite tools.</p>
-    </div>
+const guides = [
+  {
+    href: "/guides/json-formatter-guide.html",
+    badge: "Developer",
+    badgeColor: "#4A9FE0",
+    icon: "{ }",
+    iconType: "code",
+    title: "Fix Invalid JSON Fast",
+    body: "Trailing commas, single quotes, unquoted keys — fix the most common parse errors and choose beautify vs minify correctly.",
+    readTime: "4 min",
+  },
+  {
+    href: "/guides/jwt-decoder-guide.html",
+    badge: "Security",
+    badgeColor: "#f87171",
+    icon: "🔑",
+    iconType: "emoji",
+    title: "Decode JWT Safely",
+    body: "Understand decode vs verify, which claims to inspect, and safe production practices for auth tokens.",
+    readTime: "5 min",
+  },
+  {
+    href: "/guides/seo-slug-best-practices.html",
+    badge: "SEO",
+    badgeColor: "#4ade80",
+    icon: "/url",
+    iconType: "code",
+    title: "SEO Slug Best Practices",
+    body: "Write shorter, cleaner URLs with better keyword placement and fewer slug mistakes that hurt rankings.",
+    readTime: "5 min",
+  },
+  {
+    href: "/guides/compress-images-guide.html",
+    badge: "Performance",
+    badgeColor: "#fb923c",
+    icon: "🖼️",
+    iconType: "emoji",
+    title: "Compress Images for Web",
+    body: "WebP vs JPEG, the quality slider sweet spot, and a checklist to run before publishing any image online.",
+    readTime: "4 min",
+  },
+  {
+    href: "/guides/base64-encoding-guide.html",
+    badge: "Developer",
+    badgeColor: "#4A9FE0",
+    icon: "64",
+    iconType: "code",
+    title: "Base64 Encoding Explained",
+    body: "How encoding works, when to use it in tokens and data URIs, and why Base64 is NOT encryption.",
+    readTime: "4 min",
+  },
+  {
+    href: "/guides/uuid-guid-guide.html",
+    badge: "Developer",
+    badgeColor: "#a78bfa",
+    icon: "ID",
+    iconType: "code",
+    title: "UUID and GUID Explained",
+    body: "UUID versions, when to use v4 vs v7, database performance trade-offs, and GUID vs UUID demystified.",
+    readTime: "5 min",
+  },
+  {
+    href: "/guides/url-encoding-guide.html",
+    badge: "Developer",
+    badgeColor: "#4A9FE0",
+    icon: "%20",
+    iconType: "code",
+    title: "URL Encoding Explained",
+    body: "What %20 means, encodeURI vs encodeURIComponent, and how to fix broken links with special characters.",
+    readTime: "4 min",
+  },
+  {
+    href: "/guides/qr-code-guide.html",
+    badge: "Practical",
+    badgeColor: "#fb923c",
+    icon: "▦",
+    iconType: "symbol",
+    title: "QR Codes Explained",
+    body: "What to encode, error correction levels, print vs digital best practices, and a deployment checklist.",
+    readTime: "5 min",
+  },
+  {
+    href: "/guides/password-security-guide.html",
+    badge: "Security",
+    badgeColor: "#f87171",
+    icon: "🛡️",
+    iconType: "emoji",
+    title: "Strong Password Guide",
+    body: "Password entropy, minimum lengths, why reuse is dangerous, and how to manage passwords with a password manager.",
+    readTime: "6 min",
+  },
+];
 
-    <section class="tb-card guides-section" aria-labelledby="guides-start-title">
-      <h2 id="guides-start-title" class="guides-section-title">Start with a workflow</h2>
-      <div class="guides-grid-3">
-        <a href="/categories/developer-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">Developer tools</h3>
-          <p class="guides-card-body">JSON formatting, JWT decoding, Base64, hashing, and other debugging helpers.</p>
-        </a>
-        <a href="/categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">SEO workflows</h3>
-          <p class="guides-card-body">Slug creation, read time, structured data cleanup, and content packaging tasks.</p>
-        </a>
-        <a href="/categories/text-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">Text cleanup</h3>
-          <p class="guides-card-body">Count, clean, convert, and bulk-edit text before publishing or sharing.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="tb-card guides-section" aria-labelledby="guides-tools-title">
-      <h2 id="guides-tools-title" class="guides-section-title">Popular tools behind these guides</h2>
-      <div class="guides-grid-3">
-        <a href="/tools/json-formatter.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">JSON Formatter</h3>
-          <p class="guides-card-body">Use the formatter while following the JSON cleanup guide step by step.</p>
-        </a>
-        <a href="/tools/jwt-decoder.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">JWT Decoder</h3>
-          <p class="guides-card-body">Inspect token payloads locally before checking verification logic in your app.</p>
-        </a>
-        <a href="/tools/text-to-slug.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">Text to Slug</h3>
-          <p class="guides-card-body">Turn headlines into clean URL slugs while following the SEO slug best-practice guide.</p>
-        </a>
-        <a href="/tools/read-time-calculator.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">Reading Time Calculator</h3>
-          <p class="guides-card-body">Estimate how long articles take to read before publishing supporting content.</p>
-        </a>
-        <a href="/tools/word-counter.html" class="tb-card tb-card-interactive tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">Word Counter</h3>
-          <p class="guides-card-body">Cross-check article length, excerpt sizes, and meta copy while editing.</p>
-        </a>
-        <a href="/categories/seo-tools.html" class="tb-card tb-card-soft tb-card-pad-sm">
-          <h3 class="guides-card-title">Browse SEO &amp; Content Tools</h3>
-          <p class="guides-card-body">See the wider tool set that supports publishing, structured data, and content cleanup.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="tb-card guides-section" aria-labelledby="guides-how-title">
-      <h2 id="guides-how-title" class="guides-section-title">How to use ToolBite guides</h2>
-      <p class="guides-body">Each guide focuses on a specific task or tool and provides step-by-step instructions with practical examples. Guides are written for practitioners — developers, writers, designers, and SEO specialists — who want direct answers rather than introductory explanations. Start with the guide most relevant to your current task and follow the links at the bottom to related tools and resources.</p>
-
-      <h2 class="guides-section-title guides-section-title--sub">Guide categories on ToolBite</h2>
-      <p class="guides-body">Developer guides cover encoding, decoding, hashing, and data transformation tasks that appear regularly in backend and frontend work. Text guides help writers and editors with formatting, cleaning, and optimising written content. SEO guides explain URL structures, slug best practices, and content optimisation techniques. Image guides cover compression and color work for web and print projects.</p>
-
-      <h2 class="guides-section-title guides-section-title--sub">Keeping guides accurate</h2>
-      <p class="guides-body">Web standards, browser APIs, and best practices change over time. ToolBite guides are reviewed when the underlying tools are updated or when standards bodies publish significant changes. If you find outdated information or have a correction, use the contact page to report it.</p>
-    </section>
-
-    <section class="guides-library" aria-labelledby="guides-library-heading">
-      <h2 id="guides-library-heading" class="guides-library-title">Guide articles</h2>
-      <div class="guides-grid-3">
-        <a href="/guides/json-formatter-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--dev">Developer</p>
-          <h3 class="guides-article-title">Fix Invalid JSON Fast</h3>
-          <p class="guides-article-body">Understand parser errors, fix the usual syntax mistakes, and choose beautify vs minify correctly.</p>
-        </a>
-        <a href="/guides/jwt-decoder-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--sec">Security</p>
-          <h3 class="guides-article-title">Decode JWT Safely</h3>
-          <p class="guides-article-body">Learn decode vs verify, which claims to inspect, and safe production practices for auth tokens.</p>
-        </a>
-        <a href="/guides/seo-slug-best-practices.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--seo">SEO</p>
-          <h3 class="guides-article-title">SEO Slug Best Practices</h3>
-          <p class="guides-article-body">Write shorter, cleaner URLs with better keyword placement and fewer slug mistakes.</p>
-        </a>
-        <a href="/guides/compress-images-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--dev">Performance</p>
-          <h3 class="guides-article-title">Compress Images for Web</h3>
-          <p class="guides-article-body">WebP vs JPEG, the quality slider sweet spot, and a checklist before publishing any image.</p>
-        </a>
-        <a href="/guides/base64-encoding-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--dev">Developer</p>
-          <h3 class="guides-article-title">Base64 Encoding Explained</h3>
-          <p class="guides-article-body">How encoding works, when to use it (tokens, data URIs, email), and why it is NOT encryption.</p>
-        </a>
-        <a href="/guides/uuid-guid-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--dev">Developer</p>
-          <h3 class="guides-article-title">UUID and GUID Explained</h3>
-          <p class="guides-article-body">UUID versions, when to use v4 vs v7, database trade-offs, and GUID vs UUID demystified.</p>
-        </a>
-        <a href="/guides/url-encoding-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--dev">Developer</p>
-          <h3 class="guides-article-title">URL Encoding Explained</h3>
-          <p class="guides-article-body">What %20 means, encodeURI vs encodeURIComponent, and how to fix broken links with special characters.</p>
-        </a>
-        <a href="/guides/qr-code-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--dev">Practical</p>
-          <h3 class="guides-article-title">QR Codes Explained</h3>
-          <p class="guides-article-body">What to encode, error correction levels, print vs digital best practices, and a deployment checklist.</p>
-        </a>
-        <a href="/guides/password-security-guide.html" class="tb-card tb-card-pad-lg guides-article-card">
-          <p class="guides-badge guides-badge--sec">Security</p>
-          <h3 class="guides-article-title">Strong Password Guide</h3>
-          <p class="guides-article-body">Password entropy, minimum lengths, why reuse is dangerous, and how to store passwords safely.</p>
-        </a>
-      </div>
-    </section>
-  </div>`;
+const categories = [
+  {
+    label: "Developer",
+    color: "#4A9FE0",
+    icon: "</> ",
+    desc: "JSON, JWT, Base64, UUID, URL encoding",
+    href: "/categories/developer-tools.html",
+  },
+  {
+    label: "Security",
+    color: "#f87171",
+    icon: "🔐",
+    desc: "Passwords, tokens, auth best practices",
+    href: "/guides/password-security-guide.html",
+  },
+  {
+    label: "SEO",
+    color: "#4ade80",
+    icon: "📈",
+    desc: "Slugs, read time, structured data",
+    href: "/categories/seo-tools.html",
+  },
+  {
+    label: "Performance",
+    color: "#fb923c",
+    icon: "⚡",
+    desc: "Image compression, file size, delivery",
+    href: "/guides/compress-images-guide.html",
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas}>
-  <Fragment set:html={mainHtml} />
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} rootPath="/" metadata={metadata} schemas={schemas} skipMainContainer>
+  <div class="gi-root">
+
+    <!-- Hero -->
+    <header class="gi-hero">
+      <div class="gi-hero-inner">
+        <nav class="gi-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <span class="gi-breadcrumb-current">Guides</span>
+        </nav>
+        <div class="gi-hero-label">📚 Free tutorials</div>
+        <h1 class="gi-hero-title">Guides &amp; <span class="gi-hero-accent">Tutorials</span></h1>
+        <p class="gi-hero-sub">Practical, step-by-step guides for developers, writers, and digital professionals — each linked to a free browser tool you can use right now.</p>
+        <div class="gi-hero-stats">
+          <div class="gi-stat"><strong>9</strong><span>Guides</span></div>
+          <div class="gi-stat-sep" aria-hidden="true"></div>
+          <div class="gi-stat"><strong>18</strong><span>Free tools</span></div>
+          <div class="gi-stat-sep" aria-hidden="true"></div>
+          <div class="gi-stat"><strong>4</strong><span>Categories</span></div>
+        </div>
+        <!-- Decorative glows -->
+        <div class="gi-hero-glow gi-hero-glow--blue" aria-hidden="true"></div>
+        <div class="gi-hero-glow gi-hero-glow--orange" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <!-- Category filter chips -->
+    <section class="gi-cats-section" aria-labelledby="gi-cats-label">
+      <p id="gi-cats-label" class="gi-section-eyebrow">Browse by topic</p>
+      <div class="gi-cats-row">
+        {categories.map(cat => (
+          <a href={cat.href} class="gi-cat-chip" style={`--cat-color: ${cat.color};`}>
+            <span class="gi-cat-chip-icon" aria-hidden="true">{cat.icon}</span>
+            <span class="gi-cat-chip-label">{cat.label}</span>
+            <span class="gi-cat-chip-desc">{cat.desc}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Guide cards grid -->
+    <section class="gi-guides-section" aria-labelledby="gi-guides-label">
+      <div class="gi-guides-header">
+        <h2 id="gi-guides-label" class="gi-guides-title">All guides</h2>
+        <p class="gi-guides-count">{guides.length} articles</p>
+      </div>
+      <div class="gi-guides-grid">
+        {guides.map((g, i) => (
+          <a href={g.href} class="gi-card" style={`--card-color: ${g.badgeColor}; --card-delay: ${i * 30}ms;`}>
+            <div class="gi-card-top">
+              <div class="gi-card-icon" aria-hidden="true">
+                {g.iconType === "emoji" ? (
+                  <span class="gi-icon-emoji">{g.icon}</span>
+                ) : (
+                  <span class="gi-icon-code">{g.icon}</span>
+                )}
+              </div>
+              <div class="gi-card-meta">
+                <span class="gi-card-badge" style={`background: color-mix(in srgb, ${g.badgeColor} 15%, transparent); color: ${g.badgeColor}; border-color: color-mix(in srgb, ${g.badgeColor} 30%, transparent);`}>{g.badge}</span>
+                <span class="gi-card-time">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  {g.readTime}
+                </span>
+              </div>
+            </div>
+            <h3 class="gi-card-title">{g.title}</h3>
+            <p class="gi-card-body">{g.body}</p>
+            <span class="gi-card-cta" aria-hidden="true">
+              Read guide
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+            <div class="gi-card-glow" aria-hidden="true"></div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bottom CTA strip -->
+    <div class="gi-cta-strip">
+      <div class="gi-cta-left">
+        <span class="gi-cta-label">🛠️  Need the tool, not the guide?</span>
+        <span class="gi-cta-sub">All tools work directly in your browser — no sign-up needed.</span>
+      </div>
+      <a href="/categories.html" class="tb-btn tb-btn-primary gi-cta-btn">Browse all tools →</a>
+    </div>
+
+  </div>
 </BaseLayout>
+
+<style>
+/* ── Root ─────────────────────────────────────────────── */
+.gi-root {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 1rem 5rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.gi-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, var(--bg-secondary, #0d1623) 0%, var(--bg-primary, #090e18) 100%);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  border-radius: 20px;
+  margin: 1.25rem 0 2rem;
+  padding: 3rem 2.5rem 2.5rem;
+}
+.gi-hero-inner { position: relative; z-index: 1; }
+
+.gi-hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+}
+.gi-hero-glow--blue {
+  width: 500px; height: 500px;
+  top: -200px; right: -100px;
+  background: radial-gradient(circle, rgba(74,159,224,0.18) 0%, transparent 70%);
+}
+.gi-hero-glow--orange {
+  width: 300px; height: 300px;
+  bottom: -100px; left: -50px;
+  background: radial-gradient(circle, rgba(255,154,69,0.1) 0%, transparent 70%);
+}
+
+.gi-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted, #7A8BAD);
+  margin-bottom: 1.5rem;
+}
+.gi-breadcrumb a { color: var(--text-muted, #7A8BAD); text-decoration: none; transition: color 140ms; }
+.gi-breadcrumb a:hover { color: var(--accent-blue, #4A9FE0); }
+.gi-breadcrumb-current { color: var(--text-secondary, #8BA3C4); }
+
+.gi-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-blue, #4A9FE0);
+  background: rgba(74,159,224,0.1);
+  border: 1px solid rgba(74,159,224,0.2);
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.gi-hero-title {
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.2rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0 0 1rem;
+}
+.gi-hero-accent { color: var(--accent-blue, #4A9FE0); }
+
+.gi-hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.65;
+  margin: 0 0 1.75rem;
+  max-width: 55ch;
+}
+
+.gi-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.gi-stat {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.gi-stat strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary, #E8EDFB);
+}
+.gi-stat span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #7A8BAD);
+  margin-top: 0.1rem;
+}
+.gi-stat-sep {
+  width: 1px;
+  height: 2rem;
+  background: var(--border-subtle, rgba(255,255,255,0.08));
+}
+
+/* ── Category chips ───────────────────────────────────── */
+.gi-cats-section { margin-bottom: 2.5rem; }
+.gi-section-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted, #7A8BAD);
+  margin: 0 0 1rem;
+}
+.gi-cats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+.gi-cat-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  background: var(--bg-secondary, #0d1623);
+  text-decoration: none;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+.gi-cat-chip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--cat-color) 6%, transparent);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.gi-cat-chip:hover {
+  border-color: color-mix(in srgb, var(--cat-color) 50%, transparent);
+  transform: translateY(-2px);
+}
+.gi-cat-chip:hover::before { opacity: 1; }
+
+.gi-cat-chip-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--cat-color);
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+}
+.gi-cat-chip-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  position: relative;
+}
+.gi-cat-chip-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted, #7A8BAD);
+  line-height: 1.4;
+  position: relative;
+}
+
+/* ── Guides grid ──────────────────────────────────────── */
+.gi-guides-section { margin-bottom: 2.5rem; }
+.gi-guides-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.gi-guides-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0;
+}
+.gi-guides-count {
+  font-size: 0.8rem;
+  color: var(--text-muted, #7A8BAD);
+  margin: 0;
+  background: var(--bg-card, #141D2E);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  padding: 0.15rem 0.6rem;
+  border-radius: 100px;
+}
+
+.gi-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 1.35rem 1.25rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  background: var(--bg-card, #141D2E);
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+.gi-card:hover {
+  border-color: color-mix(in srgb, var(--card-color) 45%, transparent);
+  transform: translateY(-3px);
+}
+.gi-card:hover .gi-card-glow { opacity: 1; }
+.gi-card:hover .gi-card-cta { color: var(--card-color); }
+
+.gi-card-glow {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-color), transparent);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.gi-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.gi-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--card-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color) 25%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.gi-icon-emoji { font-size: 1.3rem; line-height: 1; }
+.gi-icon-code {
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-family: var(--font-mono, monospace);
+  color: var(--card-color);
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.gi-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+.gi-card-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.gi-card-time {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--text-muted, #7A8BAD);
+}
+
+.gi-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+}
+.gi-card-body {
+  font-size: 0.83rem;
+  color: var(--text-secondary, #8BA3C4);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  flex: 1;
+}
+.gi-card-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted, #7A8BAD);
+  margin-top: auto;
+  transition: color 180ms ease;
+}
+
+/* ── Bottom CTA ───────────────────────────────────────── */
+.gi-cta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: var(--bg-secondary, #0d1623);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.07));
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+}
+.gi-cta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.gi-cta-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #E8EDFB);
+}
+.gi-cta-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted, #7A8BAD);
+}
+.gi-cta-btn { flex-shrink: 0; }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .gi-guides-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .gi-hero { padding: 2rem 1.5rem 1.75rem; }
+  .gi-cats-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .gi-root { padding: 0 0.75rem 3rem; }
+  .gi-hero { margin: 0.75rem 0 1.5rem; border-radius: 14px; padding: 1.5rem 1.25rem; }
+  .gi-hero-title { font-size: 1.75rem; }
+  .gi-guides-grid { grid-template-columns: 1fr; }
+  .gi-cats-row { grid-template-columns: repeat(2, 1fr); }
+  .gi-cta-strip { flex-direction: column; align-items: flex-start; }
+  .gi-cta-btn { width: 100%; text-align: center; }
+  .gi-hero-stats { gap: 1rem; }
+}
+@media (max-width: 360px) {
+  .gi-cats-row { grid-template-columns: 1fr; }
+}
+</style>
